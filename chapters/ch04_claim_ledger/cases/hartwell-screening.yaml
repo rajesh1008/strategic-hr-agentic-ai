@@ -1,0 +1,40 @@
+# Hartwell business case: Talentra ranking view plus the capability center helpdesk agent.
+# Every number here is synthetic. Benefit lines point at Claim-Status Ledger entries; the
+# calculator, not the author, decides how much of each line the case may count.
+organization: Hartwell Group (synthetic)
+title: Screening and tier-1 helpdesk, FY2027
+currency: US$
+fte_hours: 1720            # productive hours per FTE per year (Hartwell finance standard)
+loaded_rate: 48            # US$ per recruiter or HR ops hour, fully loaded
+headcount_change: 0        # objective 7: redeploy, not cut
+benefits:
+  - name: recruiter screening time
+    claim: T-01
+    volume: 540000         # applications screened per year, field and customer service
+    unit_minutes: 3.88     # plain-view minutes per application (control arm, T-01 test)
+  - name: tier-1 tickets closed, no return
+    claim: D-01
+    volume: 67000          # tier-1 HR tickets per year at the capability center
+    unit_minutes: 9.0
+    return_rate: 0.146     # returns per ticket routed to the agent (D-01 test: 379 of 2,604)
+    return_extra_minutes: 5.0   # a return takes 14 minutes against 9 for a fresh ticket
+oversight:                 # hours the new setup adds, every year
+  - {name: monthly adverse-impact review (four groups), hours: 96}
+  - {name: quarterly audit sample of 1,000 rejections, hours: 400}
+  - {name: vendor and model-version management, hours: 120}
+  - {name: helpdesk answer review (2% sample), hours: 260}
+costs:
+  - {name: Talentra ranking module licence, amount: 380000}
+  - {name: helpdesk agent licence, amount: 96000}
+run_cost:                  # agent actions through Hartwell Gate, priced from run records
+  action: interview-slot proposal (Chapter 0 replay)
+  runs: runs/ch00/shortlist_agent
+  actions_per_year: 91200
+  rate_per_mtok: {input: 1.00, output: 5.00}   # illustrative contract rate, not a price list
+cash_offsets:              # spend that actually stops if the hours are released
+  - {name: overflow screening contractor, amount: 210000, hours_cap: 4400}
+redeploy:                  # where released hours go; must add up to no more than released
+  - {name: structured phone screens for the middle band, hours: 2200}
+  - {name: hiring-manager calibration before each field requisition, hours: 900}
+  - {name: payroll exception casework (Hyderabad), hours: 700}
+blockers: [T-02]           # a contested fairness claim stops the go decision

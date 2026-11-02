@@ -1,0 +1,45 @@
+# Ashby & Lowe (synthetic): the one-page case for a GBP 30,000 HR assistant add-on.
+organization: Ashby & Lowe (synthetic)
+title: HR assistant add-on, first year
+currency: GBP
+fte_hours: 1650
+loaded_rate: 31
+headcount_change: 0
+benefits:
+  - name: HR generalist time on routine queries and letters
+    claim: A-01
+    volume: 46             # working weeks a year
+    value_is: hours_per_unit   # the ledger value is hours per week
+oversight:
+  - {name: checking drafts before they go out (included in the shadow measure), hours: 0}
+costs:
+  - {name: licence, amount: 22000}
+  - {name: setup and data mapping, amount: 8000}
+cash_offsets: []
+redeploy:
+  - {name: absence case reviews with line managers, hours: 100}
+blockers: []
+ledger:
+  organization: Ashby & Lowe (synthetic)
+  claims:
+    - claim_id: A-01
+      claimant: HR suite vendor
+      statement: "Gives a small HR team 15 hours a week back"
+      metric_id: hr_generalist_hours_saved_per_week
+      metric_definition: hours per week the HR generalist no longer spends on routine queries and letters
+      value: 15
+      unit: hours per week
+      source: vendor webinar slide (synthetic)
+      owner: Rachel Okafor
+      version: "2026.2"
+      measurements:
+        - status: Measured in shadow
+          metric_id: hr_generalist_hours_saved_per_week
+          value: 3.2
+          version: "2026.2"
+          measured_by: Rachel Okafor
+          records: Rachel's timed log, every query and letter
+          n: 212
+          period: four weeks, September 2026
+          method: tool drafted in parallel; Rachel timed both routes on alternate items
+          baseline: same weeks, own drafting
