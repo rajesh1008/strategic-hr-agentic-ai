@@ -1,0 +1,701 @@
+{
+  "run_id": "ch04/claim_intake/20261102T193134Z",
+  "started_utc": "2026-11-02T19:31:34.107667+00:00",
+  "git_commit": "adb5747",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.3.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 6000,
+        "system": "You help an HR team log vendor claims before any of them enters a business case. Call propose_entry once for every distinct claim in the document. Quote the claim's words exactly as written. Name the metric it would be measured on, the population and comparison the document states (or 'not stated'), and up to three questions the buyer must ask before testing it on their own records.",
+        "tools": [
+          {
+            "name": "propose_entry",
+            "description": "Propose one Claim-Status Ledger entry for one claim in the document.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "statement": {
+                  "type": "string",
+                  "description": "exact words from the document"
+                },
+                "metric_id": {
+                  "type": "string",
+                  "description": "snake_case metric name"
+                },
+                "value": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "description": "the number claimed, or null"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "population_stated": {
+                  "type": "string"
+                },
+                "comparison_stated": {
+                  "type": "string"
+                },
+                "suggested_status": {
+                  "type": "string",
+                  "enum": [
+                    "Claimed",
+                    "Demonstrated on vendor data",
+                    "Tested on our records",
+                    "Measured in shadow",
+                    "Measured in production"
+                  ]
+                },
+                "questions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "statement",
+                "metric_id",
+                "value",
+                "unit",
+                "population_stated",
+                "comparison_stated",
+                "suggested_status",
+                "questions"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Vendor: Talentra\n\n# Talentra Smart Ranking: the business case (slide 7 of 22)\n\n**Recruiters spend 70% less time screening.** Smart Ranking reads every application in\nseconds and sorts the pool so your team starts with the strongest candidates.\n\n- Customers cut time-to-fill by 35% in the first quarter.\n- 92% of recruiters say they would not go back to manual screening.\n- Our 2025 bias audit found impact ratios of 0.91 or higher for every group.\n- Typical payback: under six months.\n\nSource: Talentra benchmark study, 2025 (12,000 applications, technology roles); customer survey, n=140."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "6df391eef1833178b33fc46c8aec569e6bc6523fa0d622b2c6c5296fc2bd0a54",
+      "response": {
+        "id": "msg_011Cgef78CRHZoJTij4FaEgU",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01ApkRDnERtarGxfwz3RMvxq",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Recruiters spend 70% less time screening.",
+              "metric_id": "screening_time_reduction",
+              "value": 70,
+              "unit": "percent",
+              "population_stated": "not stated (source cited as Talentra benchmark study, 2025: 12,000 applications, technology roles)",
+              "comparison_stated": "not stated (implied manual screening, but no baseline is given)",
+              "suggested_status": "Claimed",
+              "questions": [
+                "What was the baseline: how many minutes per application did recruiters spend manually before, and how was screening time measured?",
+                "Does the 12,000-application benchmark cover roles and hiring volumes similar to ours, and was it run by Talentra or an independent party?",
+                "Does the 70% include time spent reviewing and correcting the ranked list, or only the initial sort?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01JwMjgpKb6dLNNXsQ88r4aX",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Smart Ranking reads every application in seconds and sorts the pool so your team starts with the strongest candidates.",
+              "metric_id": "application_processing_speed",
+              "value": null,
+              "unit": "seconds per application (not quantified)",
+              "population_stated": "not stated",
+              "comparison_stated": "not stated",
+              "suggested_status": "Claimed",
+              "questions": [
+                "What is the actual median and worst-case processing time per application in our volume, including file types such as scanned PDFs?",
+                "Does 'strongest candidates' mean the ranking is validated against later hiring outcomes, and on what data?",
+                "What does the ranking rely on, and can we see the factors used to sort candidates?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01C8Rvf1dJ28K4ZVbyRdQxn2",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Customers cut time-to-fill by 35% in the first quarter.",
+              "metric_id": "time_to_fill_reduction",
+              "value": 35,
+              "unit": "percent",
+              "population_stated": "customers (number, industry, and role types not stated)",
+              "comparison_stated": "not stated (no pre-adoption baseline or control group given)",
+              "suggested_status": "Claimed",
+              "questions": [
+                "How many customers are in this figure, and were they selected or did they all report results?",
+                "What was the time-to-fill baseline before go-live, and did hiring volume or seasonality change during the first quarter?",
+                "Is time-to-fill measured from requisition open to offer accepted, and how were roles with long lead times handled?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01DR4y2uuMgDsbKhgjqGgnZZ",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "92% of recruiters say they would not go back to manual screening.",
+              "metric_id": "recruiter_retention_preference",
+              "value": 92,
+              "unit": "percent of recruiters (self-reported)",
+              "population_stated": "customer survey, n=140 (recruiter roles and industries not stated)",
+              "comparison_stated": "not stated",
+              "suggested_status": "Claimed",
+              "questions": [
+                "Who ran the survey, and were respondents Talentra-selected references or a random sample of customers?",
+                "Does 'would not go back' measure stated preference only, or actual continued use after the first year?",
+                "How many of the 140 respondents had used the tool for more than one quarter?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01NsVvmRYkrcNJKcSdjgSkCr",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Our 2025 bias audit found impact ratios of 0.91 or higher for every group.",
+              "metric_id": "adverse_impact_ratio_min",
+              "value": 0.91,
+              "unit": "impact ratio (minimum across groups)",
+              "population_stated": "not stated (which applicant groups, which roles, and how many applicants not stated)",
+              "comparison_stated": "not stated (the 0.8 four-fifths threshold is not mentioned)",
+              "suggested_status": "Claimed",
+              "questions": [
+                "Who conducted the 2025 audit, was it independent, and can we get the full report including sample sizes per group?",
+                "Which stage of the process was audited (ranking output, shortlist, or final hire), and were the ratios computed on our kind of roles?",
+                "Does the audit cover the same model version we would deploy, and will it be repeated after model updates?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01Sfov58rZtdyj1KJ9gGxoEN",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Typical payback: under six months.",
+              "metric_id": "payback_period",
+              "value": 6,
+              "unit": "months (upper bound, \"under\")",
+              "population_stated": "not stated (\"typical\" customers not defined)",
+              "comparison_stated": "not stated (no cost basis or savings assumptions given)",
+              "suggested_status": "Claimed",
+              "questions": [
+                "What costs and savings are included in the payback calculation, including licence fees, implementation, and recruiter training?",
+                "What share of customers actually reached payback, and within what time frame, and how many are in the 'typical' group?",
+                "What hiring volume and average cost-per-hire does the payback assume, and does it match our numbers?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 961,
+          "output_tokens": 3006,
+          "output_tokens_details": {
+            "thinking_tokens": 694
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 6000,
+        "system": "You help an HR team log vendor claims before any of them enters a business case. Call propose_entry once for every distinct claim in the document. Quote the claim's words exactly as written. Name the metric it would be measured on, the population and comparison the document states (or 'not stated'), and up to three questions the buyer must ask before testing it on their own records.",
+        "tools": [
+          {
+            "name": "propose_entry",
+            "description": "Propose one Claim-Status Ledger entry for one claim in the document.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "statement": {
+                  "type": "string",
+                  "description": "exact words from the document"
+                },
+                "metric_id": {
+                  "type": "string",
+                  "description": "snake_case metric name"
+                },
+                "value": {
+                  "type": [
+                    "number",
+                    "null"
+                  ],
+                  "description": "the number claimed, or null"
+                },
+                "unit": {
+                  "type": "string"
+                },
+                "population_stated": {
+                  "type": "string"
+                },
+                "comparison_stated": {
+                  "type": "string"
+                },
+                "suggested_status": {
+                  "type": "string",
+                  "enum": [
+                    "Claimed",
+                    "Demonstrated on vendor data",
+                    "Tested on our records",
+                    "Measured in shadow",
+                    "Measured in production"
+                  ]
+                },
+                "questions": {
+                  "type": "array",
+                  "items": {
+                    "type": "string"
+                  },
+                  "maxItems": 3
+                }
+              },
+              "required": [
+                "statement",
+                "metric_id",
+                "value",
+                "unit",
+                "population_stated",
+                "comparison_stated",
+                "suggested_status",
+                "questions"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Vendor: RankRight\n\n# RankRight for staffing firms\n\nRankRight gives you bias-free candidate ranking for high-volume roles. Because the model\nnever sees names or photos, every candidate is judged on skills alone.\n\n- Fill shifts 3x faster than manual matching.\n- Agencies report an average ROI of 6x in year one.\n- Saves each consultant 11 hours a week.\n\nTrusted by more than 200 staffing brands."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "a62816ae9856ce002e7ec9d7ff6527626650dd55a1043071bf7780c7c047a29f",
+      "response": {
+        "id": "msg_011Cgef82bbRrRKMP2cUSNo1",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_019Yik281Qe7R6GQWd5gHZnS",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Because the model never sees names or photos, every candidate is judged on skills alone.",
+              "metric_id": "candidate_selection_bias_adverse_impact",
+              "value": null,
+              "unit": "not stated",
+              "population_stated": "not stated",
+              "comparison_stated": "not stated",
+              "suggested_status": "Claimed",
+              "questions": [
+                "Which fairness metric is used (for example, selection-rate ratios by gender, age, or ethnicity), and what result does it show on our own candidate pool?",
+                "Do the skills inputs or training data reflect past hiring decisions that could carry bias, even without names or photos (for example, proxies such as school, postcode, or employment gaps)?",
+                "Will the vendor provide an independent audit or documentation of the model's features that we can review before relying on the claim?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_0197YimSjMjbq76c9HTBhYxR",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Fill shifts 3x faster than manual matching.",
+              "metric_id": "shift_time_to_fill",
+              "value": 3,
+              "unit": "times faster (multiplier vs manual matching)",
+              "population_stated": "not stated",
+              "comparison_stated": "manual matching",
+              "suggested_status": "Claimed",
+              "questions": [
+                "How is 'fill time' defined (from job posting, from shortlist, or from confirmed start), and does our data use the same definition?",
+                "What roles, sectors, and shift types were in the comparison, and do they resemble our high-volume roles?",
+                "Is the 3x figure measured on our own historical fill data, and does it hold when fill quality and no-show rates are also tracked?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01CroJKZFUv6uHstZc7v6RPp",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Agencies report an average ROI of 6x in year one.",
+              "metric_id": "year_one_return_on_investment",
+              "value": 6,
+              "unit": "multiple (ROI, x) in year one",
+              "population_stated": "agencies (self-reported by unnamed agencies)",
+              "comparison_stated": "not stated",
+              "suggested_status": "Claimed",
+              "questions": [
+                "How many agencies reported this, how were they selected, and does the average include those that cancelled or saw no benefit?",
+                "How is ROI calculated (which costs, including licence, training, and change management, and which gains, are counted), and what is the baseline?",
+                "What would our ROI be using our own fees, placement volumes, and subscription price, and over what period is it measured?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01WqtityHzQT5fmV9K9s55kk",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Saves each consultant 11 hours a week.",
+              "metric_id": "consultant_hours_saved_per_week",
+              "value": 11,
+              "unit": "hours per consultant per week",
+              "population_stated": "each consultant (no firm size or role mix given)",
+              "comparison_stated": "not stated",
+              "suggested_status": "Claimed",
+              "questions": [
+                "Compared with what baseline (current manual screening time, or a prior tool), and how was time saved measured (self-report or time logs)?",
+                "Does the 11 hours include time spent reviewing and correcting the tool's rankings, and does it hold across consultants with different role volumes?",
+                "Can we run a time study on a sample of our own consultants before counting these hours as a saving in the business case?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_012vhpJXxoQC91sDLQobjaZo",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "statement": "Trusted by more than 200 staffing brands.",
+              "metric_id": "number_of_customer_brands",
+              "value": 200,
+              "unit": "staffing brands (count, \"more than\")",
+              "population_stated": "staffing brands using RankRight",
+              "comparison_stated": "not stated",
+              "suggested_status": "Claimed",
+              "questions": [
+                "How many of these brands are active paying customers today versus past or trial users, and can we speak with a few of them in our sector and size?",
+                "Do these customers operate high-volume roles similar to ours, and what results did they actually see?",
+                "Does a large customer count say anything about the tool's accuracy or fairness, or should those be evaluated separately on our data?"
+              ]
+            },
+            "name": "propose_entry",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 887,
+          "output_tokens": 2399,
+          "output_tokens_details": {
+            "thinking_tokens": 474
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "vendor": "Talentra",
+      "proposal": {
+        "statement": "Recruiters spend 70% less time screening.",
+        "metric_id": "screening_time_reduction",
+        "value": 70,
+        "unit": "percent",
+        "population_stated": "not stated (source cited as Talentra benchmark study, 2025: 12,000 applications, technology roles)",
+        "comparison_stated": "not stated (implied manual screening, but no baseline is given)",
+        "suggested_status": "Claimed",
+        "questions": [
+          "What was the baseline: how many minutes per application did recruiters spend manually before, and how was screening time measured?",
+          "Does the 12,000-application benchmark cover roles and hiring volumes similar to ours, and was it run by Talentra or an independent party?",
+          "Does the 70% include time spent reviewing and correcting the ranked list, or only the initial sort?"
+        ]
+      },
+      "result": "TA-01    70 percent: Claimed"
+    },
+    {
+      "vendor": "Talentra",
+      "proposal": {
+        "statement": "Smart Ranking reads every application in seconds and sorts the pool so your team starts with the strongest candidates.",
+        "metric_id": "application_processing_speed",
+        "value": null,
+        "unit": "seconds per application (not quantified)",
+        "population_stated": "not stated",
+        "comparison_stated": "not stated",
+        "suggested_status": "Claimed",
+        "questions": [
+          "What is the actual median and worst-case processing time per application in our volume, including file types such as scanned PDFs?",
+          "Does 'strongest candidates' mean the ranking is validated against later hiring outcomes, and on what data?",
+          "What does the ranking rely on, and can we see the factors used to sort candidates?"
+        ]
+      },
+      "result": "RESTATE  no number to test: \"Smart Ranking reads every application in seconds and sor\""
+    },
+    {
+      "vendor": "Talentra",
+      "proposal": {
+        "statement": "Customers cut time-to-fill by 35% in the first quarter.",
+        "metric_id": "time_to_fill_reduction",
+        "value": 35,
+        "unit": "percent",
+        "population_stated": "customers (number, industry, and role types not stated)",
+        "comparison_stated": "not stated (no pre-adoption baseline or control group given)",
+        "suggested_status": "Claimed",
+        "questions": [
+          "How many customers are in this figure, and were they selected or did they all report results?",
+          "What was the time-to-fill baseline before go-live, and did hiring volume or seasonality change during the first quarter?",
+          "Is time-to-fill measured from requisition open to offer accepted, and how were roles with long lead times handled?"
+        ]
+      },
+      "result": "TA-03    35 percent: Claimed"
+    },
+    {
+      "vendor": "Talentra",
+      "proposal": {
+        "statement": "92% of recruiters say they would not go back to manual screening.",
+        "metric_id": "recruiter_retention_preference",
+        "value": 92,
+        "unit": "percent of recruiters (self-reported)",
+        "population_stated": "customer survey, n=140 (recruiter roles and industries not stated)",
+        "comparison_stated": "not stated",
+        "suggested_status": "Claimed",
+        "questions": [
+          "Who ran the survey, and were respondents Talentra-selected references or a random sample of customers?",
+          "Does 'would not go back' measure stated preference only, or actual continued use after the first year?",
+          "How many of the 140 respondents had used the tool for more than one quarter?"
+        ]
+      },
+      "result": "TA-04    92 percent of recruiters (s: Claimed"
+    },
+    {
+      "vendor": "Talentra",
+      "proposal": {
+        "statement": "Our 2025 bias audit found impact ratios of 0.91 or higher for every group.",
+        "metric_id": "adverse_impact_ratio_min",
+        "value": 0.91,
+        "unit": "impact ratio (minimum across groups)",
+        "population_stated": "not stated (which applicant groups, which roles, and how many applicants not stated)",
+        "comparison_stated": "not stated (the 0.8 four-fifths threshold is not mentioned)",
+        "suggested_status": "Claimed",
+        "questions": [
+          "Who conducted the 2025 audit, was it independent, and can we get the full report including sample sizes per group?",
+          "Which stage of the process was audited (ranking output, shortlist, or final hire), and were the ratios computed on our kind of roles?",
+          "Does the audit cover the same model version we would deploy, and will it be repeated after model updates?"
+        ]
+      },
+      "result": "TA-05    0.91 impact ratio (minimum ac: Claimed"
+    },
+    {
+      "vendor": "Talentra",
+      "proposal": {
+        "statement": "Typical payback: under six months.",
+        "metric_id": "payback_period",
+        "value": 6,
+        "unit": "months (upper bound, \"under\")",
+        "population_stated": "not stated (\"typical\" customers not defined)",
+        "comparison_stated": "not stated (no cost basis or savings assumptions given)",
+        "suggested_status": "Claimed",
+        "questions": [
+          "What costs and savings are included in the payback calculation, including licence fees, implementation, and recruiter training?",
+          "What share of customers actually reached payback, and within what time frame, and how many are in the 'typical' group?",
+          "What hiring volume and average cost-per-hire does the payback assume, and does it match our numbers?"
+        ]
+      },
+      "result": "TA-06    6 months (upper bound, \"un: Claimed"
+    },
+    {
+      "vendor": "RankRight",
+      "proposal": {
+        "statement": "Because the model never sees names or photos, every candidate is judged on skills alone.",
+        "metric_id": "candidate_selection_bias_adverse_impact",
+        "value": null,
+        "unit": "not stated",
+        "population_stated": "not stated",
+        "comparison_stated": "not stated",
+        "suggested_status": "Claimed",
+        "questions": [
+          "Which fairness metric is used (for example, selection-rate ratios by gender, age, or ethnicity), and what result does it show on our own candidate pool?",
+          "Do the skills inputs or training data reflect past hiring decisions that could carry bias, even without names or photos (for example, proxies such as school, postcode, or employment gaps)?",
+          "Will the vendor provide an independent audit or documentation of the model's features that we can review before relying on the claim?"
+        ]
+      },
+      "result": "RESTATE  no number to test: \"Because the model never sees names or photos, every cand\""
+    },
+    {
+      "vendor": "RankRight",
+      "proposal": {
+        "statement": "Fill shifts 3x faster than manual matching.",
+        "metric_id": "shift_time_to_fill",
+        "value": 3,
+        "unit": "times faster (multiplier vs manual matching)",
+        "population_stated": "not stated",
+        "comparison_stated": "manual matching",
+        "suggested_status": "Claimed",
+        "questions": [
+          "How is 'fill time' defined (from job posting, from shortlist, or from confirmed start), and does our data use the same definition?",
+          "What roles, sectors, and shift types were in the comparison, and do they resemble our high-volume roles?",
+          "Is the 3x figure measured on our own historical fill data, and does it hold when fill quality and no-show rates are also tracked?"
+        ]
+      },
+      "result": "RA-02    3 times faster (multiplier: Claimed"
+    },
+    {
+      "vendor": "RankRight",
+      "proposal": {
+        "statement": "Agencies report an average ROI of 6x in year one.",
+        "metric_id": "year_one_return_on_investment",
+        "value": 6,
+        "unit": "multiple (ROI, x) in year one",
+        "population_stated": "agencies (self-reported by unnamed agencies)",
+        "comparison_stated": "not stated",
+        "suggested_status": "Claimed",
+        "questions": [
+          "How many agencies reported this, how were they selected, and does the average include those that cancelled or saw no benefit?",
+          "How is ROI calculated (which costs, including licence, training, and change management, and which gains, are counted), and what is the baseline?",
+          "What would our ROI be using our own fees, placement volumes, and subscription price, and over what period is it measured?"
+        ]
+      },
+      "result": "RA-03    6 multiple (ROI, x) in yea: Claimed"
+    },
+    {
+      "vendor": "RankRight",
+      "proposal": {
+        "statement": "Saves each consultant 11 hours a week.",
+        "metric_id": "consultant_hours_saved_per_week",
+        "value": 11,
+        "unit": "hours per consultant per week",
+        "population_stated": "each consultant (no firm size or role mix given)",
+        "comparison_stated": "not stated",
+        "suggested_status": "Claimed",
+        "questions": [
+          "Compared with what baseline (current manual screening time, or a prior tool), and how was time saved measured (self-report or time logs)?",
+          "Does the 11 hours include time spent reviewing and correcting the tool's rankings, and does it hold across consultants with different role volumes?",
+          "Can we run a time study on a sample of our own consultants before counting these hours as a saving in the business case?"
+        ]
+      },
+      "result": "RA-04    11 hours per consultant per: Claimed"
+    },
+    {
+      "vendor": "RankRight",
+      "proposal": {
+        "statement": "Trusted by more than 200 staffing brands.",
+        "metric_id": "number_of_customer_brands",
+        "value": 200,
+        "unit": "staffing brands (count, \"more than\")",
+        "population_stated": "staffing brands using RankRight",
+        "comparison_stated": "not stated",
+        "suggested_status": "Claimed",
+        "questions": [
+          "How many of these brands are active paying customers today versus past or trial users, and can we speak with a few of them in our sector and size?",
+          "Do these customers operate high-volume roles similar to ours, and what results did they actually see?",
+          "Does a large customer count say anything about the tool's accuracy or fairness, or should those be evaluated separately on our data?"
+        ]
+      },
+      "result": "RA-05    200 staffing brands (count, : Claimed"
+    }
+  ],
+  "stdout": [
+    "== Talentra (talentra-roi-slide.md)",
+    "  TA-01    70 percent: Claimed",
+    "           ask: What was the baseline: how many minutes per application did recruiters spend manually before, and how was screening time measured?",
+    "  RESTATE  no number to test: \"Smart Ranking reads every application in seconds and sor\"",
+    "           ask: What is the actual median and worst-case processing time per application in our volume, including file types such as scanned PDFs?",
+    "  TA-03    35 percent: Claimed",
+    "           ask: How many customers are in this figure, and were they selected or did they all report results?",
+    "  TA-04    92 percent of recruiters (s: Claimed",
+    "           ask: Who ran the survey, and were respondents Talentra-selected references or a random sample of customers?",
+    "  TA-05    0.91 impact ratio (minimum ac: Claimed",
+    "           ask: Who conducted the 2025 audit, was it independent, and can we get the full report including sample sizes per group?",
+    "  TA-06    6 months (upper bound, \"un: Claimed",
+    "           ask: What costs and savings are included in the payback calculation, including licence fees, implementation, and recruiter training?",
+    "  tokens: 961 in, 3006 out, 6 proposals",
+    "== RankRight (crossfield-vendor-onepager.md)",
+    "  RESTATE  no number to test: \"Because the model never sees names or photos, every cand\"",
+    "           ask: Which fairness metric is used (for example, selection-rate ratios by gender, age, or ethnicity), and what result does it show on our own candidate pool?",
+    "  RA-02    3 times faster (multiplier: Claimed",
+    "           ask: How is 'fill time' defined (from job posting, from shortlist, or from confirmed start), and does our data use the same definition?",
+    "  RA-03    6 multiple (ROI, x) in yea: Claimed",
+    "           ask: How many agencies reported this, how were they selected, and does the average include those that cancelled or saw no benefit?",
+    "  RA-04    11 hours per consultant per: Claimed",
+    "           ask: Compared with what baseline (current manual screening time, or a prior tool), and how was time saved measured (self-report or time logs)?",
+    "  RA-05    200 staffing brands (count, : Claimed",
+    "           ask: How many of these brands are active paying customers today versus past or trial users, and can we speak with a few of them in our sector and size?",
+    "  tokens: 887 in, 2399 out, 5 proposals"
+  ]
+}
