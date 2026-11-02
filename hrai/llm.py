@@ -54,6 +54,7 @@ class RunRecorder:
         self.started = datetime.now(timezone.utc)
         self.calls: list[dict] = []
         self.events: list[dict] = []
+        self.stdout: list[str] = []
 
     def create(self, **request) -> anthropic.types.Message:
         request.setdefault("model", model())
@@ -67,6 +68,11 @@ class RunRecorder:
         })
         return resp
 
+    def print(self, line: str = "") -> None:
+        """Print and keep the line: the book may quote only what a run actually printed or returned."""
+        print(line)
+        self.stdout.append(line)
+
     def note(self, **event) -> None:
         self.events.append(event)
 
@@ -77,6 +83,6 @@ class RunRecorder:
         out.parent.mkdir(parents=True, exist_ok=True)
         record = {"run_id": f"{self.chapter}/{self.example}/{stamp}", "started_utc": self.started.isoformat(),
                   "git_commit": _git_sha(), "git_dirty": _git_dirty(), "model": used, "sdk": f"anthropic-python {anthropic.__version__}",
-                  "calls": self.calls, "events": self.events}
+                  "calls": self.calls, "events": self.events, "stdout": self.stdout}
         out.write_text(json.dumps(record, indent=2, ensure_ascii=False) + "\n")
         return out

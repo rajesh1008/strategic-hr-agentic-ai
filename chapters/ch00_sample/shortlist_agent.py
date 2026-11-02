@@ -77,10 +77,10 @@ def main() -> None:
                      {"role": "user", "content": results}]
 
     rec.note(final_ats=ats)
-    path = rec.save()
     for e in rec.events[:-1]:
-        print(f"{e['candidate_id']}  {e['proposed'] or '?':<20} {e['decision']:<5} {e['gate_reason']}")
-    print("final statuses:", json.dumps(ats))
+        rec.print(f"{e['candidate_id']}  {e['proposed'] or '?':<20} {e['decision']:<5}  {e['gate_reason']}")
+    rec.print("final statuses: " + json.dumps(ats))
+    path = rec.save()
     print("run record:", path.relative_to(REPO))
 
 
