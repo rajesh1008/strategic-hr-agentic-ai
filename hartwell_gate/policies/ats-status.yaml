@@ -1,0 +1,11 @@
+# Hartwell Gate policy for candidate status changes (synthetic). Book: sample chapter, Chapters 14 and 15.
+tool: ats.update_status
+version: 3
+allow:
+  - status: interview_scheduled
+    actor: agent
+  - status: not_progressed
+    actor: human
+    requires: [recruiter_id, reason_code]
+deny_default: true
+log: [requisition_id, model_version, policy_version, actor]
