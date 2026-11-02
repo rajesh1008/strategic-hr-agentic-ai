@@ -16,7 +16,7 @@ from hrai import gate, trail
 from hrai.llm import RunRecorder
 
 REPO = Path(__file__).resolve().parents[2]
-REQ = json.loads((REPO / "fixtures/hartwell/req-CS-2027-0412.json").read_text())
+REQ = json.loads((REPO / "fixtures/hartwell/smart-shortlist-412-slice.json").read_text())
 
 SYSTEM = (
     "You are the screening assistant for Hartwell Group's applicant tracking system. "
@@ -46,7 +46,7 @@ def main() -> None:
     audit = REPO / "runs/_scratch/ch00-trail.jsonl"
 
     messages = [{"role": "user", "content":
-                 "Requisition data follows. Process every candidate now.\n\n" + json.dumps(REQ, indent=1)}]
+                 "Applicant data for the Smart Shortlist batch follows. Process every candidate now.\n\n" + json.dumps(REQ, indent=1)}]
     for _turn in range(4):
         resp = rec.create(max_tokens=6000, system=SYSTEM, tools=TOOLS, messages=messages)
         calls = [b for b in resp.content if b.type == "tool_use"]
@@ -63,7 +63,8 @@ def main() -> None:
                                   context={"reason_code": c.input.get("reason_code")})
             if d.allowed:
                 ats[c.input["candidate_id"]] = c.input["status"]
-            ev = {"requisition_id": REQ["requisition_id"], "candidate_id": c.input.get("candidate_id"),
+            cand = {x["id"]: x for x in REQ["candidates"]}.get(c.input.get("candidate_id"), {})
+            ev = {"requisition_id": cand.get("requisition"), "candidate_id": c.input.get("candidate_id"),
                   "proposed": c.input.get("status"), "reason_code": c.input.get("reason_code"),
                   "decision": "ALLOW" if d.allowed else "DENY", "gate_reason": d.reason,
                   "policy": f"{d.policy} v{d.policy_version}", "model_version": resp.model, "actor": "agent"}
