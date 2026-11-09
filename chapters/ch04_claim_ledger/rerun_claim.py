@@ -127,7 +127,9 @@ def main() -> None:
     for line in led.table().splitlines():
         rec.print(line)
     out = Path(rec.save())
-    led.save(out.with_suffix(".ledger.json"))
+    # STAMP.ledger.json, so it never matches the run-record glob
+    stamp = out.name.split("-")[0]
+    led.save(out.with_name(f"{stamp}.ledger.json"))
     print("run record:", out.name)
 
 
