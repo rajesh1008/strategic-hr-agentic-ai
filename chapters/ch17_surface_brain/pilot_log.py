@@ -9,6 +9,8 @@ or personal document that manager may not read? (Another
 country's open policy is a wrong-country answer, counted in the
 evaluation, not here.) The questions are generated from a
 fixed seed and templates; the counts are computed.
+
+Run: HRAI_MODEL=no-model python -m chapters.ch17_surface_brain.pilot_log
 """
 from __future__ import annotations
 
@@ -74,3 +76,21 @@ def replay(design: str = "pilot") -> dict:
     return {"questions": len(qs), "managers": len(managers(cfg)),
             "exposed": exposed, "personal": personal,
             "by_doc": by_doc}
+
+
+def main() -> None:
+    from hrai.llm import RunRecorder
+    rec = RunRecorder("ch17", "pilot_log")
+    rec.print("Pilot questions, May 27 to June 9, 2027 (synthetic)")
+    rec.print("design    questions  unreadable  unreadable PERSONAL")
+    out = {}
+    for d in ("pilot", "entitled"):
+        r = out[d] = replay(d)
+        rec.print(f"{d:<9} {r['questions']:>9}  {r['exposed']:>10}  "
+                  f"{r['personal']:>19}")
+    rec.note(results=out)
+    print(f"\nRun record: {rec.save()}")
+
+
+if __name__ == "__main__":
+    main()
