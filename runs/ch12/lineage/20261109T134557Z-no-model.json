@@ -1,0 +1,44 @@
+{
+  "run_id": "ch12/lineage/20261109T134557Z",
+  "started_utc": "2026-11-09T13:45:57.511756+00:00",
+  "git_commit": "7518c7c",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "hop": 3,
+      "finding": "cross-border read (Hyderabad): transfer register"
+    },
+    {
+      "hop": 6,
+      "finding": "cross-border read (Manila): transfer register"
+    },
+    {
+      "hop": 7,
+      "finding": "cross-border read (US region): transfer register"
+    },
+    {
+      "hop": 8,
+      "finding": "cross-border read (Manila): transfer register"
+    }
+  ],
+  "stdout": [
+    "Lineage of D03.base_pay (UK employee): 9 hops",
+    "1 keyed after approval | HartwellOne, UK",
+    "2 held as pending | Validation queue, UK",
+    "3 validated | Validation queue, Hyderabad",
+    "4 becomes effective | HartwellOne, UK",
+    "5 read by payroll | UK payroll, UK",
+    "6 read by the letter tool | AskHartwell, Manila",
+    "7 sent to the model | Hartwell Gate, US region",
+    "8 letter approved | Controlled-action ledger, Manila",
+    "9 letter sent to the lender | Email, outside Hartwell",
+    "Findings: 4",
+    "  hop 3: cross-border read (Hyderabad): transfer register",
+    "  hop 6: cross-border read (Manila): transfer register",
+    "  hop 7: cross-border read (US region): transfer register",
+    "  hop 8: cross-border read (Manila): transfer register"
+  ]
+}

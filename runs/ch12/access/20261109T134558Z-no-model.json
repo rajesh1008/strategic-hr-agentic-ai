@@ -1,0 +1,77 @@
+{
+  "run_id": "ch12/access/20261109T134558Z",
+  "started_utc": "2026-11-09T13:45:58.430733+00:00",
+  "git_commit": "7518c7c",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "read_log": [
+        {
+          "use": "U5",
+          "source": "D02",
+          "fields": [
+            "code",
+            "title",
+            "desc"
+          ],
+          "refused": [],
+          "rows": 40,
+          "at": "2026-11-09T13:45:58.431100+00:00"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "fields": [
+            "code",
+            "title",
+            "mapped_grade"
+          ],
+          "refused": [
+            "mapped_grade"
+          ],
+          "rows": 0,
+          "at": "2026-11-09T13:45:58.431131+00:00"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "fields": [
+            "code",
+            "base_pay"
+          ],
+          "refused": [
+            "base_pay"
+          ],
+          "rows": 0,
+          "at": "2026-11-09T13:45:58.431140+00:00"
+        }
+      ],
+      "staged": [
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B01",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "trade-qualified, works alone",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        }
+      ]
+    }
+  ],
+  "stdout": [
+    "Manifest U5: reads D02 ['code', 'desc', 'title']",
+    "  may propose ['proposed_grade'] for approval by Head of Reward",
+    "read D02 code, title, desc: 40 rows served",
+    "refused: D02: ['mapped_grade'] not in the manifest for U5",
+    "refused: D02: ['base_pay'] not in the manifest for U5",
+    "refused: U3 is BLOCKED in the register",
+    "staged proposals: 1, status proposed; applied: 0",
+    "read log entries: 3 (2 refused)"
+  ]
+}

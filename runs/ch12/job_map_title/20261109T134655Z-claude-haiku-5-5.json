@@ -1,0 +1,575 @@
+{
+  "run_id": "ch12/job_map_title/20261109T134655Z",
+  "started_utc": "2026-11-09T13:46:55.465963+00:00",
+  "git_commit": "7518c7c",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 6000,
+        "system": "You help an employer's reward team map local job codes\nto its global grade structure. Grade definitions:\nF1: Entry field worker. Works under direct supervision; no trade certification required.\nF2: Qualified technician. Holds a trade certification and works alone on standard planned and reactive jobs.\nF3: Senior technician. Diagnoses complex faults and leads up to six people on one site; no budget or hiring authority.\nF4: Field supervisor. Plans work for several crews, signs safety permits, approves timesheets, hires and disciplines.\nG3: Coordinator or administrator. Follows set procedures.\nG4: Entry professional. Degree or professional qualification; works under review.\nG5: Experienced professional. Works independently on own projects or accounts.\nG6: Senior professional or team lead of up to eight people.\nG7: Manager. Runs a team or a contract; owns a budget line.\nG8: Senior manager. Runs several teams or a region.\nG9: Director.\nFor each job profile, propose the one grade whose definition fits\nthe work described. Judge from the description where there is\none; otherwise judge from the title.\nReply with a JSON array only:\n[{\"code\": \"...\", \"grade\": \"F2\", \"confidence\": 0.0 to 1.0,\n  \"basis\": \"one sentence\"}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[\n {\n  \"code\": \"UK-A01\",\n  \"title\": \"Helpdesk Coordinator\"\n },\n {\n  \"code\": \"UK-A02\",\n  \"title\": \"Site Administrator\"\n },\n {\n  \"code\": \"UK-A03\",\n  \"title\": \"Mobile Operative\"\n },\n {\n  \"code\": \"UK-A04\",\n  \"title\": \"Apprentice Engineer\"\n },\n {\n  \"code\": \"UK-B01\",\n  \"title\": \"Engineer (Multi-skilled)\"\n },\n {\n  \"code\": \"UK-B02\",\n  \"title\": \"Engineer (HVAC)\"\n },\n {\n  \"code\": \"UK-B03\",\n  \"title\": \"Electrical Engineer\"\n },\n {\n  \"code\": \"UK-B04\",\n  \"title\": \"Security Officer\"\n },\n {\n  \"code\": \"UK-B05\",\n  \"title\": \"Planner\"\n },\n {\n  \"code\": \"UK-B06\",\n  \"title\": \"Engineer (Fire Systems)\"\n },\n {\n  \"code\": \"UK-B07\",\n  \"title\": \"Payroll Officer\"\n },\n {\n  \"code\": \"UK-C01\",\n  \"title\": \"Senior Engineer\"\n },\n {\n  \"code\": \"UK-C02\",\n  \"title\": \"Lead Electrician\"\n },\n {\n  \"code\": \"UK-C03\",\n  \"title\": \"Health and Safety Advisor\"\n },\n {\n  \"code\": \"UK-C04\",\n  \"title\": \"Bid Writer\"\n },\n {\n  \"code\": \"UK-C05\",\n  \"title\": \"Quantity Surveyor\"\n },\n {\n  \"code\": \"UK-D01\",\n  \"title\": \"Supervisor\"\n },\n {\n  \"code\": \"UK-D02\",\n  \"title\": \"Shift Supervisor (Security)\"\n },\n {\n  \"code\": \"UK-D03\",\n  \"title\": \"Contract Engineer\"\n },\n {\n  \"code\": \"UK-D04\",\n  \"title\": \"HR Advisor\"\n },\n {\n  \"code\": \"UK-E01\",\n  \"title\": \"Contract Manager\"\n },\n {\n  \"code\": \"UK-E02\",\n  \"title\": \"Area Manager\"\n },\n {\n  \"code\": \"UK-E03\",\n  \"title\": \"Finance Business Partner\"\n },\n {\n  \"code\": \"UK-F01\",\n  \"title\": \"Regional Director\"\n },\n {\n  \"code\": \"DE-EG04\",\n  \"title\": \"Facility-Mitarbeiter\"\n },\n {\n  \"code\": \"DE-EG05\",\n  \"title\": \"Monteur (Betriebstechnik)\"\n },\n {\n  \"code\": \"DE-EG06\",\n  \"title\": \"Kundendiensttechniker\"\n },\n {\n  \"code\": \"DE-EG07\",\n  \"title\": \"Elektroniker (Schichtleitung)\"\n },\n {\n  \"code\": \"DE-EG08\",\n  \"title\": \"Sachbearbeiter Personal\"\n },\n {\n  \"code\": \"DE-EG09\",\n  \"title\": \"Meister (Haustechnik)\"\n },\n {\n  \"code\": \"DE-EG10\",\n  \"title\": \"Ingenieur Versorgungstechnik\"\n },\n {\n  \"code\": \"DE-AT01\",\n  \"title\": \"Objektleiter\"\n },\n {\n  \"code\": \"NL-FG04\",\n  \"title\": \"Medewerker Facilitair\"\n },\n {\n  \"code\": \"NL-FG05\",\n  \"title\": \"Administratief Medewerker HR\"\n },\n {\n  \"code\": \"NL-FG06\",\n  \"title\": \"Monteur Werktuigbouw\"\n },\n {\n  \"code\": \"NL-FG07\",\n  \"title\": \"Planner Onderhoud\"\n },\n {\n  \"code\": \"NL-FG08\",\n  \"title\": \"Technisch Specialist\"\n },\n {\n  \"code\": \"NL-FG09\",\n  \"title\": \"Ploegleider\"\n },\n {\n  \"code\": \"NL-FG10\",\n  \"title\": \"Projectleider\"\n },\n {\n  \"code\": \"NL-FG11\",\n  \"title\": \"Vestigingsmanager\"\n }\n]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "c517abda091044301913fcad752c7334e6ea818813b0f998595e431c0a94472b",
+      "response": {
+        "id": "msg_011CgsTVDfb6pzcNAa6yXE1M",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[\n{\"code\": \"UK-A01\", \"grade\": \"G3\", \"confidence\": 0.8, \"basis\": \"A helpdesk coordinator handles requests by following set procedures, which matches the coordinator/administrator definition.\"},\n{\"code\": \"UK-A02\", \"grade\": \"G3\", \"confidence\": 0.8, \"basis\": \"An administrator role that supports site operations by following set procedures fits G3.\"},\n{\"code\": \"UK-A03\", \"grade\": \"F1\", \"confidence\": 0.5, \"basis\": \"A mobile operative is a field worker; the title alone does not confirm trade certification or independent working, so F1 is the lower-bound fit.\"},\n{\"code\": \"UK-A04\", \"grade\": \"F1\", \"confidence\": 0.8, \"basis\": \"An apprentice is in training and works under direct supervision without trade certification.\"},\n{\"code\": \"UK-B01\", \"grade\": \"F2\", \"confidence\": 0.7, \"basis\": \"A multi-skilled engineer is a qualified technician who handles standard jobs, typically alone.\"},\n{\"code\": \"UK-B02\", \"grade\": \"F2\", \"confidence\": 0.7, \"basis\": \"An HVAC engineer is a certified trade technician who works alone on planned and reactive jobs.\"},\n{\"code\": \"UK-B03\", \"grade\": \"F2\", \"confidence\": 0.7, \"basis\": \"An electrical engineer is a qualified trade technician working alone on standard jobs.\"},\n{\"code\": \"UK-B04\", \"grade\": \"F1\", \"confidence\": 0.6, \"basis\": \"A security officer typically performs a field role under procedures without a trade certification requirement, so the entry field grade fits best.\"},\n{\"code\": \"UK-B05\", \"grade\": \"G3\", \"confidence\": 0.5, \"basis\": \"A planner schedules work according to set procedures without supervising crews, which fits the coordinator grade, though the role could be higher if it oversees crews.\"},\n{\"code\": \"UK-B06\", \"grade\": \"F2\", \"confidence\": 0.7, \"basis\": \"A fire systems engineer is a certified technician who works alone on standard planned and reactive jobs.\"},\n{\"code\": \"UK-B07\", \"grade\": \"G3\", \"confidence\": 0.8, \"basis\": \"A payroll officer processes payroll following set procedures, which is an administrator role.\"},\n{\"code\": \"UK-C01\", \"grade\": \"F3\", \"confidence\": 0.7, \"basis\": \"A senior engineer diagnoses complex faults, which matches the senior technician definition.\"},\n{\"code\": \"UK-C02\", \"grade\": \"F3\", \"confidence\": 0.7, \"basis\": \"A lead electrician is a senior technician who leads a small team on site without budget or hiring authority.\"},\n{\"code\": \"UK-C03\", \"grade\": \"G4\", \"confidence\": 0.5, \"basis\": \"A health and safety advisor is a professional role typically requiring a qualification and working under review, though it may be G5 if the advisor works independently.\"},\n{\"code\": \"UK-C04\", \"grade\": \"G4\", \"confidence\": 0.5, \"basis\": \"A bid writer is a professional role that usually works under review, but it could be G5 if the writer owns bids independently.\"},\n{\"code\": \"UK-C05\", \"grade\": \"G5\", \"confidence\": 0.6, \"basis\": \"A quantity surveyor is an experienced professional who typically manages their own accounts and projects independently.\"},\n{\"code\": \"UK-D01\", \"grade\": \"F4\", \"confidence\": 0.6, \"basis\": \"A supervisor in a field setting plans work for crews and approves timesheets, which fits the field supervisor definition.\"},\n{\"code\": \"UK-D02\", \"grade\": \"F3\", \"confidence\": 0.5, \"basis\": \"A shift supervisor leads a small group of security officers on site, which fits the senior technician leadership scope, though the role may be F4 if it approves timesheets and hires.\"},\n{\"code\": \"UK-D03\", \"grade\": \"G5\", \"confidence\": 0.5, \"basis\": \"A contract engineer is likely to work independently on a contract, which fits the experienced professional grade, but the title alone leaves this uncertain.\"},\n{\"code\": \"UK-D04\", \"grade\": \"G4\", \"confidence\": 0.6, \"basis\": \"An HR advisor is a professional role that usually requires a qualification and works under review.\"},\n{\"code\": \"UK-E01\", \"grade\": \"G7\", \"confidence\": 0.9, \"basis\": \"A contract manager runs a contract and owns a budget line, which matches the manager definition.\"},\n{\"code\": \"UK-E02\", \"grade\": \"G8\", \"confidence\": 0.6, \"basis\": \"An area manager runs several teams across a region, which fits the senior manager definition.\"},\n{\"code\": \"UK-E03\", \"grade\": \"G5\", \"confidence\": 0.5, \"basis\": \"A finance business partner is an experienced professional who works independently on their accounts, though it could be G6 if it leads a team.\"},\n{\"code\": \"UK-F01\", \"grade\": \"G9\", \"confidence\": 0.6, \"basis\": \"A regional director is a director-level role, though the regional scope could place it at G8 depending on the company's structure.\"},\n{\"code\": \"DE-EG04\", \"grade\": \"F1\", \"confidence\": 0.6, \"basis\": \"A facility employee is an entry field worker who performs tasks under direct supervision.\"},\n{\"code\": \"DE-EG05\", \"grade\": \"F2\", \"confidence\": 0.6, \"basis\": \"A building services fitter (Monteur) is a qualified tradesperson who works alone on standard jobs.\"},\n{\"code\": \"DE-EG06\", \"grade\": \"F2\", \"confidence\": 0.7, \"basis\": \"A customer service technician is a qualified technician who handles standard and reactive jobs independently.\"},\n{\"code\": \"DE-EG07\", \"grade\": \"F3\", \"confidence\": 0.6, \"basis\": \"A shift-lead electrician is a senior technician who leads a small crew on site, which fits F3.\"},\n{\"code\": \"DE-EG08\", \"grade\": \"G3\", \"confidence\": 0.8, \"basis\": \"A personnel clerk (Sachbearbeiter) processes HR matters by following set procedures, which is an administrator role.\"},\n{\"code\": \"DE-EG09\", \"grade\": \"F4\", \"confidence\": 0.7, \"basis\": \"A master craftsman (Meister) for building services plans work for several crews and approves work, which matches F4.\"},\n{\"code\": \"DE-EG10\", \"grade\": \"G4\", \"confidence\": 0.6, \"basis\": \"A supply engineering engineer (Ingenieur) typically holds a degree and works under review at entry professional level.\"},\n{\"code\": \"DE-AT01\", \"grade\": \"G7\", \"confidence\": 0.7, \"basis\": \"A property or object manager (Objektleiter) runs a contract or site and owns its budget, which fits the manager grade.\"},\n{\"code\": \"NL-FG04\", \"grade\": \"F1\", \"confidence\": 0.6, \"basis\": \"A facilities employee (Medewerker Facilitair) is an entry field worker operating under supervision.\"},\n{\"code\": \"NL-FG05\", \"grade\": \"G3\", \"confidence\": 0.8, \"basis\": \"An HR administrative employee follows set procedures, which is an administrator role.\"},\n{\"code\": \"NL-FG06\", \"grade\": \"F2\", \"confidence\": 0.6, \"basis\": \"A mechanical fitter (Monteur Werktuigbouw) is a qualified technician who works alone on standard jobs.\"},\n{\"code\": \"NL-FG07\", \"grade\": \"G3\", \"confidence\": 0.5, \"basis\": \"A maintenance planner schedules work by set procedures without supervising crews, which fits the coordinator grade.\"},\n{\"code\": \"NL-FG08\", \"grade\": \"G5\", \"confidence\": 0.5, \"basis\": \"A technical specialist is an experienced professional who works independently on their own areas, though it could be G6 if it leads a team.\"},\n{\"code\": \"NL-FG09\", \"grade\": \"F4\", \"confidence\": 0.6, \"basis\": \"A crew leader (Ploegleider) plans work for a crew and approves work, which fits the field supervisor definition; F3 is possible if authority is limited.\"},\n{\"code\": \"NL-FG10\", \"grade\": \"G7\", \"confidence\": 0.6, \"basis\": \"A project leader runs a project with its own budget line, which fits the manager definition.\"},\n{\"code\": \"NL-FG11\", \"grade\": \"G7\", \"confidence\": 0.6, \"basis\": \"A branch manager (Vestigingsmanager) runs a single branch and owns its budget, which fits G7; G8 applies only if it covers several teams or a region.\"}\n]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1800,
+          "output_tokens": 4688,
+          "output_tokens_details": {
+            "thinking_tokens": 1875
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "staged": [
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-A01",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "A helpdesk coordinator handles requests by following set procedures, which matches the coordinator/administrator definition.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-A02",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "An administrator role that supports site operations by following set procedures fits G3.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-A03",
+          "change": {
+            "proposed_grade": "F1"
+          },
+          "why": "A mobile operative is a field worker; the title alone does not confirm trade certification or independent working, so F1 is the lower-bound fit.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-A04",
+          "change": {
+            "proposed_grade": "F1"
+          },
+          "why": "An apprentice is in training and works under direct supervision without trade certification.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B01",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "A multi-skilled engineer is a qualified technician who handles standard jobs, typically alone.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B02",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "An HVAC engineer is a certified trade technician who works alone on planned and reactive jobs.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B03",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "An electrical engineer is a qualified trade technician working alone on standard jobs.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B04",
+          "change": {
+            "proposed_grade": "F1"
+          },
+          "why": "A security officer typically performs a field role under procedures without a trade certification requirement, so the entry field grade fits best.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B05",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "A planner schedules work according to set procedures without supervising crews, which fits the coordinator grade, though the role could be higher if it oversees crews.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B06",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "A fire systems engineer is a certified technician who works alone on standard planned and reactive jobs.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-B07",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "A payroll officer processes payroll following set procedures, which is an administrator role.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-C01",
+          "change": {
+            "proposed_grade": "F3"
+          },
+          "why": "A senior engineer diagnoses complex faults, which matches the senior technician definition.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-C02",
+          "change": {
+            "proposed_grade": "F3"
+          },
+          "why": "A lead electrician is a senior technician who leads a small team on site without budget or hiring authority.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-C03",
+          "change": {
+            "proposed_grade": "G4"
+          },
+          "why": "A health and safety advisor is a professional role typically requiring a qualification and working under review, though it may be G5 if the advisor works independently.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-C04",
+          "change": {
+            "proposed_grade": "G4"
+          },
+          "why": "A bid writer is a professional role that usually works under review, but it could be G5 if the writer owns bids independently.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-C05",
+          "change": {
+            "proposed_grade": "G5"
+          },
+          "why": "A quantity surveyor is an experienced professional who typically manages their own accounts and projects independently.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-D01",
+          "change": {
+            "proposed_grade": "F4"
+          },
+          "why": "A supervisor in a field setting plans work for crews and approves timesheets, which fits the field supervisor definition.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-D02",
+          "change": {
+            "proposed_grade": "F3"
+          },
+          "why": "A shift supervisor leads a small group of security officers on site, which fits the senior technician leadership scope, though the role may be F4 if it approves timesheets and hires.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-D03",
+          "change": {
+            "proposed_grade": "G5"
+          },
+          "why": "A contract engineer is likely to work independently on a contract, which fits the experienced professional grade, but the title alone leaves this uncertain.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-D04",
+          "change": {
+            "proposed_grade": "G4"
+          },
+          "why": "An HR advisor is a professional role that usually requires a qualification and works under review.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-E01",
+          "change": {
+            "proposed_grade": "G7"
+          },
+          "why": "A contract manager runs a contract and owns a budget line, which matches the manager definition.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-E02",
+          "change": {
+            "proposed_grade": "G8"
+          },
+          "why": "An area manager runs several teams across a region, which fits the senior manager definition.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-E03",
+          "change": {
+            "proposed_grade": "G5"
+          },
+          "why": "A finance business partner is an experienced professional who works independently on their accounts, though it could be G6 if it leads a team.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "UK-F01",
+          "change": {
+            "proposed_grade": "G9"
+          },
+          "why": "A regional director is a director-level role, though the regional scope could place it at G8 depending on the company's structure.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG04",
+          "change": {
+            "proposed_grade": "F1"
+          },
+          "why": "A facility employee is an entry field worker who performs tasks under direct supervision.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG05",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "A building services fitter (Monteur) is a qualified tradesperson who works alone on standard jobs.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG06",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "A customer service technician is a qualified technician who handles standard and reactive jobs independently.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG07",
+          "change": {
+            "proposed_grade": "F3"
+          },
+          "why": "A shift-lead electrician is a senior technician who leads a small crew on site, which fits F3.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG08",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "A personnel clerk (Sachbearbeiter) processes HR matters by following set procedures, which is an administrator role.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG09",
+          "change": {
+            "proposed_grade": "F4"
+          },
+          "why": "A master craftsman (Meister) for building services plans work for several crews and approves work, which matches F4.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-EG10",
+          "change": {
+            "proposed_grade": "G4"
+          },
+          "why": "A supply engineering engineer (Ingenieur) typically holds a degree and works under review at entry professional level.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "DE-AT01",
+          "change": {
+            "proposed_grade": "G7"
+          },
+          "why": "A property or object manager (Objektleiter) runs a contract or site and owns its budget, which fits the manager grade.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG04",
+          "change": {
+            "proposed_grade": "F1"
+          },
+          "why": "A facilities employee (Medewerker Facilitair) is an entry field worker operating under supervision.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG05",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "An HR administrative employee follows set procedures, which is an administrator role.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG06",
+          "change": {
+            "proposed_grade": "F2"
+          },
+          "why": "A mechanical fitter (Monteur Werktuigbouw) is a qualified technician who works alone on standard jobs.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG07",
+          "change": {
+            "proposed_grade": "G3"
+          },
+          "why": "A maintenance planner schedules work by set procedures without supervising crews, which fits the coordinator grade.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG08",
+          "change": {
+            "proposed_grade": "G5"
+          },
+          "why": "A technical specialist is an experienced professional who works independently on their own areas, though it could be G6 if it leads a team.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG09",
+          "change": {
+            "proposed_grade": "F4"
+          },
+          "why": "A crew leader (Ploegleider) plans work for a crew and approves work, which fits the field supervisor definition; F3 is possible if authority is limited.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG10",
+          "change": {
+            "proposed_grade": "G7"
+          },
+          "why": "A project leader runs a project with its own budget line, which fits the manager definition.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        },
+        {
+          "use": "U5",
+          "source": "D02",
+          "key": "NL-FG11",
+          "change": {
+            "proposed_grade": "G7"
+          },
+          "why": "A branch manager (Vestigingsmanager) runs a single branch and owns its budget, which fits G7; G8 applies only if it covers several teams or a region.",
+          "status": "proposed",
+          "approver": "Head of Reward"
+        }
+      ],
+      "read_log": [
+        {
+          "use": "U5",
+          "source": "D02",
+          "fields": [
+            "code",
+            "title"
+          ],
+          "refused": [],
+          "rows": 40,
+          "at": "2026-11-09T13:46:55.474571+00:00"
+        }
+      ],
+      "confidence": {
+        "UK-A01": 0.8,
+        "UK-A02": 0.8,
+        "UK-A03": 0.5,
+        "UK-A04": 0.8,
+        "UK-B01": 0.7,
+        "UK-B02": 0.7,
+        "UK-B03": 0.7,
+        "UK-B04": 0.6,
+        "UK-B05": 0.5,
+        "UK-B06": 0.7,
+        "UK-B07": 0.8,
+        "UK-C01": 0.7,
+        "UK-C02": 0.7,
+        "UK-C03": 0.5,
+        "UK-C04": 0.5,
+        "UK-C05": 0.6,
+        "UK-D01": 0.6,
+        "UK-D02": 0.5,
+        "UK-D03": 0.5,
+        "UK-D04": 0.6,
+        "UK-E01": 0.9,
+        "UK-E02": 0.6,
+        "UK-E03": 0.5,
+        "UK-F01": 0.6,
+        "DE-EG04": 0.6,
+        "DE-EG05": 0.6,
+        "DE-EG06": 0.7,
+        "DE-EG07": 0.6,
+        "DE-EG08": 0.8,
+        "DE-EG09": 0.7,
+        "DE-EG10": 0.6,
+        "DE-AT01": 0.7,
+        "NL-FG04": 0.6,
+        "NL-FG05": 0.8,
+        "NL-FG06": 0.6,
+        "NL-FG07": 0.5,
+        "NL-FG08": 0.5,
+        "NL-FG09": 0.6,
+        "NL-FG10": 0.6,
+        "NL-FG11": 0.6
+      }
+    }
+  ],
+  "stdout": [
+    "U5 register verdict: FIX FIRST (test on 40 reviewed codes only)",
+    "Agent read: code, title",
+    "Model claude-haiku-5-5: 40 proposals staged, 0 applied",
+    "Agrees with the reward team: 33 of 40",
+    "  where the 2016 grade was wrong: 11 of 14",
+    "  where the 2016 grade was right: 22 of 26",
+    "Wrong: 7; across field/salaried: 1; at confidence 0.8 or more: 1",
+    "  UK-B07 Payroll Officer            model G3 reward G4 (0.80)",
+    "  UK-C03 Health and Safety Advisor  model G4 reward G5 (0.50)",
+    "  UK-D02 Shift Supervisor (Security model F3 reward F4 (0.50)",
+    "  UK-D04 HR Advisor                 model G4 reward G5 (0.60)",
+    "  UK-E03 Finance Business Partner   model G5 reward G6 (0.50)",
+    "  DE-EG10 Ingenieur Versorgungstechn model G4 reward G5 (0.60)",
+    "  NL-FG08 Technisch Specialist       model G5 reward F3 (0.50)"
+  ]
+}
