@@ -1,0 +1,147 @@
+{
+  "run_id": "ch09/model_count/20261109T134202Z",
+  "started_utc": "2026-11-09T13:42:02.282674+00:00",
+  "git_commit": "f115e7c",
+  "git_dirty": false,
+  "model": "claude-sonnet-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You support an HR operations team in the Gulf. Apply the rules exactly as written to the headcount data. Show no working outside the JSON. Reply with one JSON object.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "RULES\nAE-EMIRATISATION:\n  name: UAE Emiratisation, mainland, 50+ staff\n  evidence: [R-113]\n  applies: {min_headcount: 50, zones: [mainland]}\n  base_skill_levels: [1, 2, 3]   # skilled jobs only\n  checkpoints:                   # share of skilled jobs\n    2026-06-30: 0.09\n    2026-12-31: 0.10\n  rounding: floor                # [VERIFY] MoHRE method\n  count_only_in_base: true       # a national in a level 4\n                                 # or 5 job does not count\n  counts_if:                     # all must be true\n    nationality: AE\n    pension_registered: true\n    wps_paid: true\n  contribution_aed_year: 120000  # per unfilled position\n\nDATA\nid: HME-AE\nname: Hartwell Middle East, Dubai (mainland)\ncountry: AE\nzone: mainland\ncohorts:\n- n: 24\n  nationality: AE\n  skill: 2\n  pension_registered: true\n  wps_paid: true\n- n: 3\n  nationality: AE\n  skill: 2\n  pension_registered: false\n  wps_paid: true\n  note: joined December, pension pending\n- n: 1\n  nationality: AE\n  skill: 3\n  pension_registered: true\n  wps_paid: false\n  note: unpaid leave since September\n- n: 2\n  nationality: AE\n  skill: 4\n  pension_registered: true\n  wps_paid: true\n  note: front-desk roles, skill level 4\n- n: 265\n  nationality: other\n  skill: 2\n- n: 205\n  nationality: other\n  skill: 5\n\nReturn {\"base\": int, \"counted\": int, \"required\": int, \"shortfall\": int} for the 2026-12-31 checkpoint."
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "c901b6eecf8f0c65c19e2fe4bb7364efb70269e4720f601b5faeec778c98be27",
+      "response": {
+        "id": "msg_011CgsT7cLVK3s9jXaow7hGw",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSpQkKEAgTGAI4AUIIdGhpbmtpbmcSDFSzrF+OCeSZRoeCOxoMdjSRW1m21MSWClx/IjAAwMX2Z6xyF2SW3ID/ilKSEO6X7fsDGHeSMeVRz+LwFqAiazGVHMKT17uB1o44tOsqwggX1MDNDDGx1eIvKFFBluFJGlWU9E59saOUoIiEDzZjJ3LHY3t/0UATmn59AmNVXitYDpKbSKLruGTadnJpYkFRwOZFvAYzJkVtSbMEGxzOjwx0PnCFSYDANxYR4sur3jZA4aearhXs1mVVvJhWspkKFBIjv0y3Ie8rSUCadw6sDEZDzuCbqoCeoY5VDSUKXXaB3Gb/0Uk5aDjE3gDAQE1OPjGj5fc52/qLGpzTuBnJlI2jrBRKNlA6J4Zs5hBFWc6wdyE9k3nlzdLyk6rFu2B2O+G9N9W+BUm0SfomZXTlQAVdOOHzdIOqOWOcAhIN785W9g5PSBizrmPfa5nHf6iEZzbvDJFNxTRSoiZF2i/o4fS4+qCCE9JrQ9OM+XT1UcziS/e5bX0FtHYksVbVzTRxEQgyuyHinVXtrFQ53LV+a41KmJ9WhvyTKKMjMNHdrU4e88P6b6HUiWxZhInSy0afGVRjfV632XxssPp2erfVNeG1b/6ZSSamIkeU4HwPAmBstDxPeuQHqgg2wph0XD4wR1Vzrw2xhS5pwZ/i14OSXeoq0T+X16BCYoSlhr1eMoFDlvx6hbKOC+2hq9jGgLzIqCUBEfzMqzYdxCaOuxnVjhoplxWRkZIT9+uxW/XSBR0M7z2OPlIm3s1ohOPRPcZcVLV6vdprKvCEp3ZUluzw6NYBy5QOKfYO/Ud4Oqdxy+2byCvHVideNEQv2NvKNDcogvRM6y9VsIEYzo6OW3OBH3ifHRkBDwe2agVw/EjlkTwuN9hnaGIeYy3x4UVwrkvq5zg9bTDdK/+Rt8D/qUpMX2JunSoFVC/C5bPLCcXyTPCMravduSEoIGs/VopMtKxH4m7exzgGFb8E5KXlynEHwvLCigQVJiVyLiCaKGcrHaW/ZRt0tlbyUBewwElvuqm8f0WEorEh1WlOdU4aTKe/J6IjkYhMdvaW2w/gCiW3roVyqS5VlP1qHTNUhejsdEz52Q6bV0eyqPAHgPWF/WpX4TaSyyI1c+bGntWTJPEUoTwKv2ueJBEf3ZavsBxK79dNq1kXfbdBJeey+JrQQnb6aibGVi4GQvAzBzc32CYq0RA3oS9IN0ag5YS8N11j7DIAti0K9jUijx+c4JfXjhA80DFBnKUkVO+DcuDEO5snOErzAF1jMu64nNPUFLKEH/8NWpiUaR7jNWneQzW5vRD0K8TkLcNnyFS9/QbzPWnxUnbjfv6l6munlf91tHLQQsV0OTC9nJrHrwc2nkYqWFaC5ZzkPVXQnmi0JvlhiNUij6Os64gU/nnWjhC6put+Upoe4Luap3HXDk6ra5yw5auFqm4v7caLusTozKERLDW70W3YuLraIlJ6NC3t/Cxh62YDpfceG8AAeJjX6LsJUk5Wr33wl3OkMfI3KNp+hhf/BVH2Azw6nGakPXXNca4QlH4SJfEh32pEdSeXGhjl/nbuhr2oGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"base\": 293, \"counted\": 24, \"required\": 29, \"shortfall\": 5}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 661,
+          "output_tokens": 293,
+          "output_tokens_details": {
+            "thinking_tokens": 262
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You support an HR operations team in the Gulf. Apply the rules exactly as written to the headcount data. Show no working outside the JSON. Reply with one JSON object.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "RULES\nSA-NITAQAT:\n  name: Saudi Nitaqat Mutawar, 2026 to 2028 cycle\n  evidence: [R-113]\n  wage_weights:                  # monthly wage, SAR\n    - {min: 4000, weight: 1.0}\n    - {min: 3000, weight: 0.5}\n    - {min: 0, weight: 0.0}\n  special:                       # capped categories\n    disability: {weight: 4.0, cap: 0.10, min_wage: 4000}\n    part_time: {weight: 0.5, cap: 0.10, min_wage: 3000}\n  cap_basis: saudi_headcount     # [VERIFY]\n  counts_if: {nationality: SA, qiwa_documented: true}\n  ratio: weighted / (weighted + non_saudi_heads)\n  bands:                         # ILLUSTRATIVE\n    - {band: Platinum, min: 0.30}\n    - {band: High Green, min: 0.23}\n    - {band: Medium Green, min: 0.19}\n    - {band: Low Green, min: 0.14}\n    - {band: Red, min: 0.0}\n\n\nDATA\nid: HME-SA\nname: Hartwell Middle East, Riyadh\ncountry: SA\ncohorts:\n- n: 78\n  nationality: SA\n  wage: 4800\n  qiwa_documented: true\n- n: 22\n  nationality: SA\n  wage: 3500\n  qiwa_documented: true\n- n: 4\n  nationality: SA\n  wage: 2900\n  qiwa_documented: true\n- n: 9\n  nationality: SA\n  wage: 5200\n  qiwa_documented: false\n  note: contracts not yet documented on Qiwa\n- n: 3\n  nationality: SA\n  wage: 4500\n  disability: true\n  qiwa_documented: true\n- n: 12\n  nationality: SA\n  wage: 3200\n  part_time: true\n  qiwa_documented: true\n- n: 472\n  nationality: other\n\nReturn {\"weighted\": number, \"ratio\": number, \"band\": string} with ratio as a fraction."
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "4845d064d32d16a082e126670fcb109ccde7b34aca322f39fd19d82c0dc0fae5",
+      "response": {
+        "id": "msg_011CgsT7p2hgRroVvfvD2Eks",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"weighted\": 106.95, \"ratio\": 0.18473, \"band\": \"Low Green\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 763,
+          "output_tokens": 951,
+          "output_tokens_details": {
+            "thinking_tokens": 917
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "entity": "HME-AE",
+      "model": {
+        "base": 293,
+        "counted": 24,
+        "required": 29,
+        "shortfall": 5
+      },
+      "calculator": {
+        "base": 293,
+        "counted": 24,
+        "required": 29,
+        "shortfall": 5
+      }
+    },
+    {
+      "entity": "HME-SA",
+      "model": {
+        "weighted": 106.95,
+        "ratio": 0.18473,
+        "band": "Low Green"
+      },
+      "calculator": {
+        "weighted": 107.0,
+        "ratio": 0.1848,
+        "band": "Low Green"
+      }
+    }
+  ],
+  "stdout": [
+    "HME-AE",
+    "  base       model 293            calculator 293          same",
+    "  counted    model 24             calculator 24           same",
+    "  required   model 29             calculator 29           same",
+    "  shortfall  model 5              calculator 5            same",
+    "HME-SA",
+    "  weighted   model 106.95         calculator 107.0        DIFFERENT",
+    "  ratio      model 0.18473        calculator 0.1848       same",
+    "  band       model Low Green      calculator Low Green    same"
+  ]
+}

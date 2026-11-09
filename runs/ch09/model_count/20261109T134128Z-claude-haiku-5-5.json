@@ -1,0 +1,147 @@
+{
+  "run_id": "ch09/model_count/20261109T134128Z",
+  "started_utc": "2026-11-09T13:41:28.563821+00:00",
+  "git_commit": "f115e7c",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You support an HR operations team in the Gulf. Apply the rules exactly as written to the headcount data. Show no working outside the JSON. Reply with one JSON object.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "RULES\nAE-EMIRATISATION:\n  name: UAE Emiratisation, mainland, 50+ staff\n  evidence: [R-113]\n  applies: {min_headcount: 50, zones: [mainland]}\n  base_skill_levels: [1, 2, 3]   # skilled jobs only\n  checkpoints:                   # share of skilled jobs\n    2026-06-30: 0.09\n    2026-12-31: 0.10\n  rounding: floor                # [VERIFY] MoHRE method\n  count_only_in_base: true       # a national in a level 4\n                                 # or 5 job does not count\n  counts_if:                     # all must be true\n    nationality: AE\n    pension_registered: true\n    wps_paid: true\n  contribution_aed_year: 120000  # per unfilled position\n\nDATA\nid: HME-AE\nname: Hartwell Middle East, Dubai (mainland)\ncountry: AE\nzone: mainland\ncohorts:\n- n: 24\n  nationality: AE\n  skill: 2\n  pension_registered: true\n  wps_paid: true\n- n: 3\n  nationality: AE\n  skill: 2\n  pension_registered: false\n  wps_paid: true\n  note: joined December, pension pending\n- n: 1\n  nationality: AE\n  skill: 3\n  pension_registered: true\n  wps_paid: false\n  note: unpaid leave since September\n- n: 2\n  nationality: AE\n  skill: 4\n  pension_registered: true\n  wps_paid: true\n  note: front-desk roles, skill level 4\n- n: 265\n  nationality: other\n  skill: 2\n- n: 205\n  nationality: other\n  skill: 5\n\nReturn {\"base\": int, \"counted\": int, \"required\": int, \"shortfall\": int} for the 2026-12-31 checkpoint."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "0d078c00c2058088e4731240ba8e854d366a47529847b739924170aaa56a5896",
+      "response": {
+        "id": "msg_011CgsT58C2E8XrymR5BNT9v",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS6woKEAgTGAI4AUIIdGhpbmtpbmcSDAEfr2aV+0/LB2G1LBoMgkhxp2stfSxFOiwiIjDT8b8G5iqzjlgdkAfmwsHffX6j4RfIEoA1Y1evv59pgAUL3HBcLW2n35XtF/qflgoqiAoat4tWzJgGLI6X6z0TZys5/3aAEXnQFVLaV1cxfqkoVICumKYk2PxtSMPwO9xdYqyYJUOQ7/p8NFcMPXzlcgJ+r0gWeYQzcF6ivYQCcGIg/+oxRh6YLaDkOHyv50QfLD2XtPgAn4OGJp4PzE2LGHrFKHDFGgH/5LMsT936Hu2I2Cx4w7kDaJHYeii8aS8MpB4wr9MPrQupZZU+EVkeXffCUbYJyuNT0qZXcPPiIgM6+ynArqY+Var5iuX15SKs6CHjL1RaimgzZEhqiAYMNLrbkhWQOVfZInE9ZjejJoiW1mGPzBqGyDF1UMCE5PSV245K4AP+mZ51D5sqor0CP5Wq7wXosX2BPlrXY5QlDidF3MARdRewM3n3TH6Wl8LzuJ8USnub9iULXcHARPtmdAnw4/+dj1wxfnJJDZzr38lrrx0jHsStQPx/CMikgLl3GUDoWEVdMU2fRgBsDITlWxnpKyhW3N+6O0CfL4wbMR6T9fGadX3RpTfchvk2kZctZBVqMzFa93Oax0BJwfj3g9JFc2+Qqsn6VR5TGwtBTISoj3yjhYeZvVF3C7Kjnqrv2EnabZXzGDmVVkA0Ff6+bInPPQMh5BDeozSMG23pairartqTpozG74ac/AfCJn14Hpgi5ItqFLZNUz+jXX3B88dRgK/wgRn8cMtlKl8jktTojzPnjqfRYAQABlrlDwGIgSKlFggPBVrYNSKQ5VGKSkBPEM+X/aSYlgRdn5tfW/CGjHgBJnEmU9XQQKe/j0w4uM7fjEPHfY3kKYa4ncKmBKnfI4gnrPD8TrpWBXTUlBUxB5HIt8flAICFseqm94dt6rL7nc0Yg088WBx4UTQY16NN8yoZVEjxELZU/c/tV4z8fZqFFSx7/tMFN3Z1Bh7zcb9H4xBQGx0tCMFN6PFmNmov3oMUx18G+U7EXypSHilmq21lX4nunKRDbnR1TxBFLzFmmCm8ZwqxmwbaEEkIoZg+SB4nZGV9rM0gT3sqZ/AhpUItLsgCZc2tXLCZ2rrwaAZr+caLf96SuVouP+NckPokeD3EWQLbOxjcKQFuAF1MvtdTGega6KJEtw/+aenFE5kZ6EFhboxzLLOQ0FYWlX4SO2DOL7OJ1kFsXBoM8bxwx/6H3K+g+EoHpF5IBysCN/+VQgGxjNQ4Zei0dayOvDVXTCpWZ1SjQDQMeNWdmBw/kezens3e28UFpe/B1eaHlABTFBpHFT5drKGNiJ/sY/lxd2TxTf72Z6HFJi0ihwWQI0IoPodyCuVzZ/nWPrzvzvbsCoiwNvaJg5zMfkS2xMfMJfLexg9WQlGmjeXNzyyq+GxJfQhm868Ga+dXaKXHAe2AfpxKFLqewFPCeJDRygLeWAzOPTvR29+QiGEul7LLdEgwEHeAcTqRfkoZ0G5lKLIvUsjOV2ENBYEQFlms9TfR4TJ29t3Rdbdx8/2utLZo/b5UP3TQpx4nBH26I+CAGpaZbNVSpxJ0Cn28CyZp5nRKpERWFV6GYP+9hheiF5QgDsQvgAzjx0rke6z3ymR65tZurFTnuzUFaCioR1urWfaSsMu1cLZdzVbnJ90Zm5IC2y0CZ12gcyts/F3Np0irG9lehjLjzxcDyvQjr4+MBnPmw6xp8ooGPFUtQBXgC51ZVcpYh3DKWm/PevHbKDH7/Hcx0dRaFgP7lXXj+nvFrX2fSCpHmgpHwnHnkOA1SHEvCmaceY51AFjdGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"base\": 293, \"counted\": 24, \"required\": 29, \"shortfall\": 5}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 661,
+          "output_tokens": 378,
+          "output_tokens_details": {
+            "thinking_tokens": 347
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You support an HR operations team in the Gulf. Apply the rules exactly as written to the headcount data. Show no working outside the JSON. Reply with one JSON object.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "RULES\nSA-NITAQAT:\n  name: Saudi Nitaqat Mutawar, 2026 to 2028 cycle\n  evidence: [R-113]\n  wage_weights:                  # monthly wage, SAR\n    - {min: 4000, weight: 1.0}\n    - {min: 3000, weight: 0.5}\n    - {min: 0, weight: 0.0}\n  special:                       # capped categories\n    disability: {weight: 4.0, cap: 0.10, min_wage: 4000}\n    part_time: {weight: 0.5, cap: 0.10, min_wage: 3000}\n  cap_basis: saudi_headcount     # [VERIFY]\n  counts_if: {nationality: SA, qiwa_documented: true}\n  ratio: weighted / (weighted + non_saudi_heads)\n  bands:                         # ILLUSTRATIVE\n    - {band: Platinum, min: 0.30}\n    - {band: High Green, min: 0.23}\n    - {band: Medium Green, min: 0.19}\n    - {band: Low Green, min: 0.14}\n    - {band: Red, min: 0.0}\n\n\nDATA\nid: HME-SA\nname: Hartwell Middle East, Riyadh\ncountry: SA\ncohorts:\n- n: 78\n  nationality: SA\n  wage: 4800\n  qiwa_documented: true\n- n: 22\n  nationality: SA\n  wage: 3500\n  qiwa_documented: true\n- n: 4\n  nationality: SA\n  wage: 2900\n  qiwa_documented: true\n- n: 9\n  nationality: SA\n  wage: 5200\n  qiwa_documented: false\n  note: contracts not yet documented on Qiwa\n- n: 3\n  nationality: SA\n  wage: 4500\n  disability: true\n  qiwa_documented: true\n- n: 12\n  nationality: SA\n  wage: 3200\n  part_time: true\n  qiwa_documented: true\n- n: 472\n  nationality: other\n\nReturn {\"weighted\": number, \"ratio\": number, \"band\": string} with ratio as a fraction."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4c266d87643af1d9c0cd1918b6a93e6a626cdf27e33f8b9df030580ce5a1faf6",
+      "response": {
+        "id": "msg_011CgsT5KFmjJ5ySAirnTEpJ",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"weighted\": 107, \"ratio\": 0.1848, \"band\": \"Low Green\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 763,
+          "output_tokens": 1265,
+          "output_tokens_details": {
+            "thinking_tokens": 1228
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "entity": "HME-AE",
+      "model": {
+        "base": 293,
+        "counted": 24,
+        "required": 29,
+        "shortfall": 5
+      },
+      "calculator": {
+        "base": 293,
+        "counted": 24,
+        "required": 29,
+        "shortfall": 5
+      }
+    },
+    {
+      "entity": "HME-SA",
+      "model": {
+        "weighted": 107,
+        "ratio": 0.1848,
+        "band": "Low Green"
+      },
+      "calculator": {
+        "weighted": 107.0,
+        "ratio": 0.1848,
+        "band": "Low Green"
+      }
+    }
+  ],
+  "stdout": [
+    "HME-AE",
+    "  base       model 293            calculator 293          same",
+    "  counted    model 24             calculator 24           same",
+    "  required   model 29             calculator 29           same",
+    "  shortfall  model 5              calculator 5            same",
+    "HME-SA",
+    "  weighted   model 107            calculator 107.0        same",
+    "  ratio      model 0.1848         calculator 0.1848       same",
+    "  band       model Low Green      calculator Low Green    same"
+  ]
+}
