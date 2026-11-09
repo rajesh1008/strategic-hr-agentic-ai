@@ -47,6 +47,7 @@ def joined(record: dict) -> list[dict]:
         conf = o.get("confidence") if o else None
         ok = isinstance(conf, (int, float))
         out.append({**a, "said": o["meets"] if o else None,
+                    "got": o or {},
                     "conf": float(conf) if ok else None,
                     "flags": flags(a["resume"],
                                    o.get("field_months")
@@ -100,6 +101,24 @@ def main(run_id: str) -> None:
     kinds: dict[str, list] = {}
     for r in use:
         kinds.setdefault(r["kind"], []).append(r)
+    # the model applied the rule to its own extraction; where
+    # did the wrong answers go wrong?
+    def months(r):
+        try:
+            return int(r["got"].get("field_months"))
+        except (TypeError, ValueError):
+            return None
+    agree = sum(r["said"] == (bool(r["got"].get("epa608"))
+                and (months(r) or 0) >= 24) for r in use)
+    p.print(f"verdict agrees with rule on own extraction: "
+            f"{agree} of {len(use)}")
+    wrong = [r for r in use if r["said"] != r["meets"]]
+    cert = sum(bool(r["got"].get("epa608")) != r["epa608"]
+               for r in wrong)
+    mon = sum(months(r) is None or (months(r) >= 24)
+              != (r["field_months"] >= 24) for r in wrong)
+    p.print(f"wrong answers {len(wrong)}: certificate misread "
+            f"{cert}; month count on wrong side of 24 {mon}")
     p.print("case type            n  right  mean stated")
     for k, rs in sorted(kinds.items()):
         ok = sum(r["said"] == r["meets"] for r in rs)
