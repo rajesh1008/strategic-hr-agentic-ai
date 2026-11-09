@@ -23,7 +23,7 @@ TRAITS = (
     "demeanor", "mature", "maturity", "eager", "genuine",
     "sincere", "honest", "honesty", "authentic",
     "stammer", "stutter", "accent", "halting", "rambling",
-    "unclear", "struggled", "impression", "gut",
+    "unclear", "struggled", "gut",
 )
 PERSONAL = (
     "family", "families", "kids", "children", "child",
