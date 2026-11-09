@@ -82,23 +82,23 @@ def main() -> None:
     m = manifest("U5", reg)
     rec.print(f"Manifest {m.use}: reads "
               + "; ".join(f"{k} {sorted(v)}" for k, v in m.reads.items()))
-    rec.print(f"  may propose {sorted(m.writes['D02'])} for "
+    rec.print(f"  may propose {sorted(m.writes['S02'])} for "
               f"approval by {m.approver}")
     r = Reader(m)
     cat = quality.rows("job_catalog.csv")
-    got = r.read("D02", ["code", "title", "desc"], cat[:40])
-    rec.print(f"read D02 code, title, desc: {len(got)} rows served")
+    got = r.read("S02", ["code", "title", "desc"], cat[:40])
+    rec.print(f"read S02 code, title, desc: {len(got)} rows served")
     for ask in (["code", "title", "mapped_grade"],
                 ["code", "base_pay"]):
         try:
-            r.read("D02", ask, cat[:40])
+            r.read("S02", ask, cat[:40])
         except PermissionError as e:
             rec.print(f"refused: {e}")
     try:
         manifest("U3", reg)
     except PermissionError as e:
         rec.print(f"refused: {e}")
-    r.propose("D02", "UK-B01", {"proposed_grade": "F2"},
+    r.propose("S02", "UK-B01", {"proposed_grade": "F2"},
               "trade-qualified, works alone")
     applied = sum(p["status"] == "applied" for p in r.staged)
     rec.print(f"staged proposals: {len(r.staged)}, status "

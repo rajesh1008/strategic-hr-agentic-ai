@@ -59,7 +59,7 @@ def main() -> None:
            if r["code"] in key]
     fields = ["code", "title"] if title_only else \
         ["code", "title", "desc"]
-    shown = reader.read("D02", fields, cat)
+    shown = reader.read("S02", fields, cat)
     resp = rec.create(max_tokens=6000,
                       system=SYSTEM.format(grades=grade_text()),
                       messages=[{"role": "user",
@@ -70,7 +70,7 @@ def main() -> None:
     props = json.loads(mt.group(0)) if mt else []
     for p in props:
         if p.get("code") in key:
-            reader.propose("D02", p["code"],
+            reader.propose("S02", p["code"],
                            {"proposed_grade": p.get("grade")},
                            p.get("basis", ""))
     got = {p["key"]: p for p in reader.staged}

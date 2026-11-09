@@ -13,7 +13,7 @@ def reg():
 
 
 def test_register_quality_matches_scorecard(reg):
-    d02 = next(s for s in reg["sources"] if s["id"] == "D02")
+    d02 = next(s for s in reg["sources"] if s["id"] == "S02")
     card = quality.scorecard("UKB")
     for m, (ok, n) in card.items():
         assert d02["quality"][m] == round(100 * ok / n, 1)
@@ -37,7 +37,7 @@ def test_verdicts(reg):
 
 def test_never_list_blocks(reg):
     u = {"id": "T", "name": "t", "purpose": "employee service",
-         "reads": {"D01": ["bank_account"]}}
+         "reads": {"S01": ["bank_account"]}}
     assert readiness.verdict(readiness.check_use(u, reg)) == "BLOCKED"
 
 
@@ -54,8 +54,8 @@ def test_consent_flag_only_for_employees_in_europe():
 
 def test_write_must_be_controlled_action(reg):
     u = {"id": "T", "name": "t", "purpose": "job architecture",
-         "reads": {"D02": ["code"]},
-         "writes": {"D02": {"fields": ["grade"], "via": "direct"}}}
+         "reads": {"S02": ["code"]},
+         "writes": {"S02": {"fields": ["grade"], "via": "direct"}}}
     assert readiness.verdict(readiness.check_use(u, reg)) == "BLOCKED"
 
 
@@ -64,14 +64,14 @@ def test_manifest_and_reader(reg):
         access.manifest("U3", reg)
     r = access.Reader(access.manifest("U5", reg))
     rows = [{"code": "A", "title": "t", "desc": "d", "mapped_grade": "G4"}]
-    assert r.read("D02", ["code", "title"], rows) == [
+    assert r.read("S02", ["code", "title"], rows) == [
         {"code": "A", "title": "t"}]
     with pytest.raises(PermissionError):
-        r.read("D02", ["code", "mapped_grade"], rows)
+        r.read("S02", ["code", "mapped_grade"], rows)
     assert [bool(x["refused"]) for x in r.log] == [False, True]
     with pytest.raises(PermissionError):
-        r.propose("D02", "A", {"mapped_grade": "F2"}, "x")
-    assert r.propose("D02", "A", {"proposed_grade": "F2"},
+        r.propose("S02", "A", {"mapped_grade": "F2"}, "x")
+    assert r.propose("S02", "A", {"proposed_grade": "F2"},
                      "x")["status"] == "proposed"
 
 

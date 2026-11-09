@@ -8,7 +8,7 @@ version: "1.0"
 as_of: 2027-03-22
 lanes: [US, CA, UK, NL, DE]
 sources:
-- id: D01
+- id: S01
   name: Core employee record
   system: HartwellOne
   owner: HR Shared Services lead (Megan Hale)
@@ -26,7 +26,7 @@ sources:
   lineage: [{system: Hartwell Careers, owner: Head of TA},
             {system: HartwellOne, owner: HR Shared Services lead},
             {system: Validation queue, owner: Data validation lead}]
-- id: D02
+- id: S02
   name: Job architecture (catalog and grade)
   system: HartwellOne
   owner: Head of Reward
@@ -44,7 +44,7 @@ sources:
   quality_note: UK legacy bands, run ch12/quality
   lineage: [{system: 2016 crosswalk spreadsheet, owner: none},
             {system: HartwellOne, owner: Head of Reward}]
-- id: D03
+- id: S03
   name: Base pay and pay changes
   system: HartwellOne
   owner: Head of Reward
@@ -67,7 +67,7 @@ sources:
              owner: HR Shared Services lead},
             {system: Model provider, owner: Enterprise architect,
              via: Hartwell Gate}]
-- id: D04
+- id: S04
   name: Absence and sickness
   system: HartwellOne
   owner: HR Shared Services lead (Megan Hale)
@@ -86,7 +86,7 @@ sources:
   lineage: [{system: AskHartwell, owner: HR Shared Services lead},
             {system: HartwellOne, owner: HR Shared Services lead},
             {system: Payroll, owner: Country payroll lead}]
-- id: D05
+- id: S05
   name: Union dues deduction
   system: Payroll
   owner: Employee relations lead
@@ -100,7 +100,7 @@ sources:
   deletion: payroll archive job
   quality: {complete: 99.0}
   lineage: [{system: Payroll, owner: Country payroll lead}]
-- id: D06
+- id: S06
   name: Voluntary self-identification
   system: Hartwell Careers (separate store)
   owner: Head of People Analytics (Tom Reilly)
@@ -117,7 +117,7 @@ sources:
   quality_note: share of applicants who answered at least one item
   lineage: [{system: Hartwell Careers, owner: Head of TA},
             {system: Audit workspace, owner: Head of People Analytics}]
-- id: D07
+- id: S07
   name: Site access badge events
   system: Facilities security platform
   owner: Group Facilities Security (outside HR)
@@ -135,7 +135,7 @@ sources:
   deletion: platform purge, daily
   quality: {complete: 99.9}
   lineage: [{system: Door controllers, owner: Group Facilities Security}]
-- id: D08
+- id: S08
   name: AskHartwell transcripts
   system: AskHartwell platform
   owner: HR Shared Services lead (Megan Hale)
@@ -153,7 +153,7 @@ sources:
   lineage: [{system: AskHartwell platform, owner: HR Shared Services lead},
             {system: Vendor platform logs, owner: none},
             {system: Evaluation copies, owner: Head of People Analytics}]
-- id: D09
+- id: S09
   name: Safety certifications (Energy Services)
   system: Learning system plus training-provider cards
   owner: Energy Services HSE director
@@ -172,34 +172,34 @@ sources:
 uses:
 - id: U1
   name: Knowledge assistant answers "what is my pay band"
-  reads: {D01: [employee_id, entity], D02: [grade, local_code],
-          D03: [base_pay, currency]}
-  need: {D02: {accurate: 95, unique: 95}}
+  reads: {S01: [employee_id, entity], S02: [grade, local_code],
+          S03: [base_pay, currency]}
+  need: {S02: {accurate: 95, unique: 95}}
   purpose: employee service
 - id: U2
   name: Letter tool drafts an employment-verification letter
-  reads: {D01: [employee_id, name, entity, hire_date],
-          D03: [base_pay, currency, pending_change]}
-  writes: {D03: {fields: [], via: none}}
-  need: {D03: {current: 95}}
+  reads: {S01: [employee_id, name, entity, hire_date],
+          S03: [base_pay, currency, pending_change]}
+  writes: {S03: {fields: [], via: none}}
+  need: {S03: {current: 95}}
   purpose: employee service
 - id: U3
   name: Attrition model reads badge events in Düsseldorf
-  reads: {D07: [badge_id, time, site]}
+  reads: {S07: [badge_id, time, site]}
   purpose: performance or behavior evaluation
   lane: DE
 - id: U4
   name: Crew-assignment agent checks safety certifications
-  reads: {D09: [employee_id, cert_type, expires]}
-  need: {D09: {complete: 99, current: 95}}
+  reads: {S09: [employee_id, cert_type, expires]}
+  need: {S09: {complete: 99, current: 95}}
   purpose: work allocation
 - id: U5
   name: Job-mapping agent proposes Hartwell Grades
-  reads: {D02: [code, title, desc]}
-  writes: {D02: {fields: [proposed_grade], via: controlled_action}}
-  need: {D02: {complete: 95}}
+  reads: {S02: [code, title, desc]}
+  writes: {S02: {fields: [proposed_grade], via: controlled_action}}
+  need: {S02: {complete: 95}}
   purpose: job architecture
 - id: U6
   name: Service agent remembers a sickness reason
-  reads: {D04: [sickness_reason], D08: [text]}
+  reads: {S04: [sickness_reason], S08: [text]}
   purpose: employee service
