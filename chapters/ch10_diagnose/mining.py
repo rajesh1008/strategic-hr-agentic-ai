@@ -107,7 +107,7 @@ def by_site(cases: dict) -> dict[str, dict]:
                 acts[-1] == "Closed, no response":
             continue
         site = next(e["team"].split()[-1] for e in evs
-                    if e["team"].startswith("Meridian"))
+                    if e["team"].startswith("Quayfen"))
         start = next(e["t"] for e in evs
                      if e["activity"] == "Ticket created")
         pick = next(e["t"] for e in evs
@@ -166,7 +166,7 @@ def main() -> None:
     p("Five most common paths:")
     for v, n in top:
         p(f"  {n:>6,}  " + " > ".join(v))
-    p("Tickets resolved, by Meridian site:")
+    p("Tickets resolved, by Quayfen site:")
     for site, d in sorted(by_site(cases).items()):
         p(f"  {site:<7} {d['n']:>6,} tickets; ping-pong "
           f"{pct(d['pp'] / d['n'])}")

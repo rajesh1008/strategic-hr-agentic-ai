@@ -225,13 +225,13 @@ def events_and_tickets(rng: random.Random):
             else "General inquiry"
         add("Ticket created", "Desk", rng.uniform(.5, 3))
         opened = t
-        add("Tier 1 picked up", f"Meridian {site}",
+        add("Tier 1 picked up", f"Quayfen {site}",
             rng.lognormvariate(math.log(150), 0.8))
         if rng.random() < .22:
-            add("Info requested", f"Meridian {site}",
+            add("Info requested", f"Quayfen {site}",
                 rng.uniform(10, 60))
             if rng.random() < .25:
-                add("Closed, no response", f"Meridian {site}",
+                add("Closed, no response", f"Quayfen {site}",
                     60 * 24 * 5)
                 tk.append([tid, cid, opened.strftime("%Y-%m-%d"),
                            country, div, site, sys_cat, cat,
@@ -246,7 +246,7 @@ def events_and_tickets(rng: random.Random):
             lag = 720 if site == "Manila" else 240
             pp = .30 if site == "Manila" else .18
             if rng.random() < pp:
-                add("Routed back to tier 1", f"Meridian {site}",
+                add("Routed back to tier 1", f"Quayfen {site}",
                     rng.lognormvariate(math.log(lag), .6))
                 add("Routed to tier 2", "Hyderabad",
                     rng.lognormvariate(math.log(lag), .6))
@@ -262,13 +262,13 @@ def events_and_tickets(rng: random.Random):
                 add("Resolved", "Hyderabad", rng.uniform(5, 60))
         else:
             if route == "act":
-                add("Change made in HartwellOne", f"Meridian {site}",
+                add("Change made in HartwellOne", f"Quayfen {site}",
                     rng.lognormvariate(math.log(90), .8))
-            add("Resolved", f"Meridian {site}",
+            add("Resolved", f"Quayfen {site}",
                 rng.lognormvariate(math.log(240), .8))
         if rng.random() < .06:
             add("Reopened", "Employee", rng.uniform(600, 4000))
-            add("Resolved", f"Meridian {site}",
+            add("Resolved", f"Quayfen {site}",
                 rng.lognormvariate(math.log(400), .8))
         tk.append([tid, cid, opened.strftime("%Y-%m-%d"), country,
                    div, site, sys_cat, cat, int(sens), text])

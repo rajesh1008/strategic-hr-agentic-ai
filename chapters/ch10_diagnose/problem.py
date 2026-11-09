@@ -17,7 +17,7 @@ import yaml
 DATA = Path(__file__).resolve().parent / "data"
 FIELDS = ("who", "now", "cost", "owner", "measure", "limits")
 TOOLS = re.compile(r"\b(AI|agent|bot|chatbot|copilot|model|"
-                   r"automate|deflect|Talentra|platform)\b", re.I)
+                   r"automate|deflect|Takefen|platform)\b", re.I)
 NOT_OWNERS = {"it", "hr", "vendor", "the vendor", "everyone"}
 
 
