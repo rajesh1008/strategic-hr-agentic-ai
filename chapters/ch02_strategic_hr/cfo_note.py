@@ -39,7 +39,7 @@ def main() -> None:
     calc = calculator_text()
     rec = RunRecorder("ch02", "cfo_note")
     resp = rec.create(
-        max_tokens=600, system=SYSTEM,
+        max_tokens=6000, system=SYSTEM,
         messages=[{"role": "user", "content":
                    f"{QUESTION}\n\nCalculator output:\n"
                    + calc}])
@@ -51,9 +51,11 @@ def main() -> None:
     rec.print("")
     extra = numbers.unsourced(note, calc)
     heads = econ.refuse_heads(note)
+    rec.print(f"CHECK note has text: {'yes' if note else 'NO'}")
     rec.print(f"CHECK unsourced numbers: {extra or '-'}")
     rec.print(f"CHECK heads language: {heads or '-'}")
-    verdict = "HOLD for edit" if extra or heads else "PASS"
+    held = extra or heads or not note
+    verdict = "HOLD for edit" if held else "PASS"
     rec.print(f"CHECK verdict: {verdict}")
     rec.note(unsourced=extra, heads=heads, verdict=verdict,
              usage=resp.usage.model_dump())

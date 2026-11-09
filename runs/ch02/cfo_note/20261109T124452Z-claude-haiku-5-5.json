@@ -1,0 +1,84 @@
+{
+  "run_id": "ch02/cfo_note/20261109T124452Z",
+  "started_utc": "2026-11-09T12:44:52.321387+00:00",
+  "git_commit": "d49fa05",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 600,
+        "system": "You draft short notes from Hartwell's HR function to its CFO. Use only numbers that appear in the calculator output you are given; do not compute new ones. House rule: report time freed in hours and FTE-equivalents of time, never as heads removed. Say which figures are claims not yet measured. Plain prose, under 170 words, no headings, no bullet points.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "From the CFO: I need HR's AI case in cost per head. How many heads does this take out, and when?\n\nCalculator output:\nTALENT TO VALUE (synthetic, USD)\nroles scored 48; critical 40\nincumbents in critical roles 606\nexpected vacancy cost, critical roles $22,939,001 a year\nrole      per day   days      a year  crit\nFT-US          84 74,958   6,273,882  no\nPD-US       3,342    598   2,000,132  yes\nFT-UK          98 19,890   1,959,029  no\nRS-CA       1,666    950   1,583,783  yes\nGM-US       1,909    804   1,534,296  yes\nBMS-US      1,358  1,008   1,368,395  yes\nCE-US       1,889    642   1,213,142  yes\nHV-UK       2,040    558   1,138,167  yes\nfill PD-US 30 days sooner: $352,964 a year\n\nCOST PER RESOLVED CONTACT (synthetic, USD)\nmodel                       seat   naive  all-in\nDenver shared services   116,680   35.38   52.35\nHyderabad center          34,710   10.87   23.96\nMeridian BPO              29,808   11.50   25.05\n\nAGENT AT TIER 0 (status: Claimed)\ncontainment 60%: $13.92 per query\ncontainment 40%: $19.83 per query\ncontainment 20%: $25.74 per query\nbreak-even containment 22.3%\n\nHOURS, NOT HEADS\nhours freed 103,200; placed 103,200\nFTE-equivalent of time 60.0\nhours measured so far 0\n  30,000  Pipelines and succession for the 40 roles\n  24,000  Agent supervision and the human route\n  18,000  Manager coaching and case backlog\n  16,000  Skills inventory (objective 4)\n  15,200  Agent-platform operations, Hyderabad\ndecision-rights problems: 0\n\nLAKEMONT: ONE VACANT ICU SHIFT (synthetic, USD)\n  agency nurse (Crossfield)        462\n  staff overtime                   178\n  bed closed                       318\n  expected                         958\n  agency-only first model          462\nvacant shifts a year 5,928; cost $5,681,988\n\nBRIGHTWATER: SALES ROLES, TWO VALUE VIEWS (synthetic)\nrevenue view: vacancy cost $161,386,091 a year\n  critical: NKA-US, RSM-US, KAM-UK, KAM-NL\nmargin view: vacancy cost $6,056,881 a year\n  critical: NKA-US, KAM-UK, KAM-NL\n\nFIELDNOTE: COST TO SERVE PER EMPLOYEE (synthetic)\n  visible People cost   $988\n  manager HR hours      27,600\n  all-in with managers  $2,180"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "367b811cb28cc56036e28ea34089b7d4e49c3d211f3af98d61c5518de6ffec95",
+      "response": {
+        "id": "msg_011CgsNkmnxkVup7aoNguqNA",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "max_tokens",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1065,
+          "output_tokens": 600,
+          "output_tokens_details": {
+            "thinking_tokens": 600
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "unsourced": [],
+      "heads": [],
+      "verdict": "PASS",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "global",
+        "input_tokens": 1065,
+        "output_tokens": 600,
+        "output_tokens_details": {
+          "thinking_tokens": 600
+        },
+        "server_tool_use": null,
+        "service_tier": "standard",
+        "speed": "standard"
+      }
+    }
+  ],
+  "stdout": [
+    "",
+    "",
+    "CHECK unsourced numbers: -",
+    "CHECK heads language: -",
+    "CHECK verdict: PASS"
+  ]
+}
