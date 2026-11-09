@@ -43,7 +43,7 @@ def main() -> None:
         rec.print(f"{style}: placeholders {len(holes)}; names 608 "
                   f"with none listed {len(invite)}; lost a date "
                   f"range {len(lost)}")
-        for cid in invite + lost:
+        for cid in dict.fromkeys(invite + lost):
             rec.print(f"  {cid} {res[cid]['kind']:<13} "
                       f"{'names 608' if cid in invite else ''}"
                       f"{' lost dates' if cid in lost else ''}")
