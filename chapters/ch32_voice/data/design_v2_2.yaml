@@ -1,0 +1,27 @@
+# Skills inventory design v2.2, Hartwell Germany (Chapter 32):
+# the configuration the works agreement of May 18, 2028 was
+# signed on. v2 and v2.1 are read from Chapter 27's
+# designs.yaml; the keys below that they lack are derived by
+# agreement_final.py, never retyped.
+# SYNTHETIC (Strategic HR and Agentic AI, Chapter 32).
+v2.2:
+  sources: [project_reports, ticket_notes, learning_records,
+            project_roles]
+  times_to_model: false
+  model_sets: [suggestion]
+  shown_before_accept: [employee]
+  readers: [talent.search, mobility.match, learning.recommend]
+  reader_consent:
+    talent.search: "BV-2028-01 s.4(1)"
+    mobility.match: "BV-2028-01 s.4(2)"
+    learning.recommend: "BV-2028-01 s.4(3)"
+  opt_out: true
+  accept_record: profile       # with the profile; Trail holds a reference
+  accept_log_days: null        # lives as long as the entry
+  reject_log_days: 90          # then counts only
+  decision_log_days: 90        # Chapter 27's WA-7 reads this key
+  group_counts_days: 2555      # shown, accepted, rejected by site, age band, sex
+  group_counts_min_cell: 10
+  case_intake_blocks: true
+  change_needs_consent: true
+  council_reads_access_log: true

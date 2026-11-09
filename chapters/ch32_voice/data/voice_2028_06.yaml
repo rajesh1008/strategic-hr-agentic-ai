@@ -1,0 +1,51 @@
+# Hartwell's voice map, version 2028-06 (June 2028): every population, the
+# channel that speaks for it, and what the law lets that channel
+# do about an AI system. right: bargain | consent | consult |
+# inform | none (the strongest right the channel holds over a
+# new AI step). basis: an evidence-register ID, or VERIFY.
+# elected: the contact was chosen by the workers, not appointed
+# by management (an HR owner is a contact, not a voice).
+# Changes from 2028-01: elected panel seats in Canada, the UK
+# (salaried), Hyderabad and Singapore; an elected welfare
+# committee at each Middle East site; Hyderabad given the
+# skills inventory pack (late, after go-live).
+# SYNTHETIC headcounts and names (Strategic HR and Agentic AI,
+# Chapter 32); totals match running-cases section 1.
+populations:
+- {id: US-REP, who: "US field staff in the union local (IL, NY, CA)", n: 3900,
+   channel: Union local, contact: Ray Delgado, right: bargain, basis: R-259, elected: true}
+- {id: US-FLD, who: "US field staff, other states", n: 14600,
+   channel: Employee panel, contact: Carla Mendes, right: none, basis: R-479, elected: true}
+- {id: US-SAL, who: US salaried staff, n: 6000,
+   channel: Employee panel, contact: Carla Mendes, right: none, basis: R-479, elected: true}
+- {id: CA, who: Hartwell Canada, n: 4000,
+   channel: Employee panel, contact: Elected panel seat (Calgary), right: none, basis: VERIFY, elected: true}
+- {id: UK-REC, who: UK site staff (recognized union), n: 1400,
+   channel: Recognized union, contact: Gareth Pryce, right: bargain, basis: VERIFY, elected: true}
+- {id: UK-OTH, who: UK salaried and other staff, n: 1800,
+   channel: Employee panel, contact: Elected panel seat (Manchester), right: none, basis: VERIFY, elected: true}
+- {id: NL, who: Hartwell Netherlands, n: 900,
+   channel: Ondernemingsraad, contact: Jeroen de Vries, right: consent, basis: R-246, elected: true}
+- {id: DE, who: Hartwell Germany, n: 1100,
+   channel: Betriebsrat, contact: Katrin Vogel, right: consent, basis: R-030, elected: true}
+- {id: AU, who: Hartwell Australia (enterprise agreement), n: 1600,
+   channel: Enterprise agreement consultation, contact: Consultative committee delegates, right: consult, basis: R-069, elected: true}
+- {id: HYD, who: Hyderabad capability center, n: 1400,
+   channel: Employee panel, contact: Elected panel seats (Hyderabad), right: none, basis: VERIFY, elected: true}
+- {id: AE, who: Hartwell Middle East, UAE, n: 500,
+   channel: Site welfare committee, contact: Elected committee (Dubai), right: none, basis: R-397, elected: true}
+- {id: SA, who: Hartwell Middle East, Saudi Arabia, n: 600,
+   channel: Site welfare committee, contact: Elected committee (Riyadh), right: none, basis: R-374, elected: true}
+- {id: SG, who: APAC hub, Singapore, n: 200,
+   channel: Employee panel, contact: Elected panel seat (Singapore), right: none, basis: R-330, elected: true}
+# AI systems in scope and the populations each one touches.
+systems:
+- {use: skills.suggest, line: [F01, F05], touches: [US-SAL, CA, UK-OTH, NL, DE, AU, HYD]}
+- {use: service.actions, line: [H01, C05, D02], touches: [US-REP, US-FLD, US-SAL, CA, UK-REC, UK-OTH]}
+- {use: shift.offer, line: [E03], touches: [US-REP]}
+# Who has been told, through which channel, before go-live
+# (the information pack sent and acknowledged).
+informed:
+  skills.suggest: [US-SAL, CA, UK-OTH, NL, DE, AU, HYD]
+  service.actions: [US-REP, US-FLD, US-SAL, CA, UK-REC, UK-OTH]
+  shift.offer: [US-REP]

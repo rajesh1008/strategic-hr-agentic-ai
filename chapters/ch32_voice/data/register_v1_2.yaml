@@ -1,0 +1,405 @@
+# Hartwell consequential-decision register, version 1.2 (Chapter 32).
+# Version 1.1 plus E03, F02 and G08 (new Keep steps in Line v1.2), and
+# a "represented" block on every Keep step that can touch a member of
+# Ray Delgado's local (Illinois, New York, California) or of Gareth
+# Pryce's recognized union (UK site staff). The block says which
+# grievance route a member uses instead of the management appeal,
+# who may see the case record, and what the member is told.
+# SYNTHETIC. Invented for the book (Strategic HR and Agentic AI).
+register: Hartwell consequential-decision register
+version: "1.2"
+line_version: "1.2"
+synthetic: true
+routes:
+  us_local:
+  - {stage: 1, who: Field supervisor with the steward, file_days: 10, answer_days: 5}
+  - {stage: 2, who: Field Operations HR lead with the business representative, file_days: 10, answer_days: 10}
+  - {stage: 3, who: Joint review, then arbitration notice, file_days: 15, answer_days: 30}
+  uk_recognized:
+  - {stage: 1, who: Hearing manager with the union representative, file_days: 10, answer_days: 10}
+  - {stage: 2, who: Appeal manager with the regional organizer, file_days: 10, answer_days: 10}
+represented_areas: [C, D, E, G, H]
+entries:
+- id: A04
+  decider: Recruiter
+  reviewer: Hiring manager
+  appeal_to: TA operations manager
+  window_days: 30
+  told: Who reviewed the application, the criteria used, and how to ask for reconsideration
+  reasons:
+  - minimum requirement not met
+  - stronger applicants on stated criteria
+  - role closed
+- id: A05
+  decider: Recruiter
+  reviewer: Hiring manager
+  appeal_to: TA operations manager
+  window_days: 30
+  told: That a recruiter decided, the main reason, and how to ask for reconsideration
+  reasons:
+  - minimum requirement not met
+  - stronger applicants on stated criteria
+  - withdrew
+  - role closed
+- id: A07
+  decider: Hiring manager
+  reviewer: Reward partner
+  appeal_to: Head of TA
+  window_days: 10
+  told: The offer terms and who to contact about them
+  reasons:
+  - band point by experience
+  - band point by market data
+- id: A08
+  decider: Head of TA
+  reviewer: Employment counsel
+  appeal_to: CPO
+  window_days: 10
+  told: The reason, the evidence relied on, and how to respond before it is final
+  reasons:
+  - background-check result
+  - right-to-work failure
+  - role eliminated
+- id: B02
+  decider: HR Shared Services lead
+  reviewer: Employment counsel
+  appeal_to: HR Director for the country
+  window_days: 10
+  told: Which check failed, what evidence would resolve it, and the deadline
+  reasons:
+  - document not verified
+  - permission expired
+  - permission excludes this work
+- id: B07
+  decider: Hiring manager
+  reviewer: Employment counsel
+  appeal_to: Head of TA
+  window_days: 10
+  told: The result relied on, a copy of the report, and time to dispute it
+  reasons:
+  - result relevant to role
+  - result not relevant to role
+- id: C03
+  decider: Line manager
+  reviewer: Reward partner
+  appeal_to: Head of Reward
+  window_days: 30
+  told: The band, the point chosen and the reasons
+  reasons:
+  - experience
+  - market data
+  - internal equity
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: C04
+  decider: Head of Reward
+  reviewer: Reward partner
+  appeal_to: CPO
+  window_days: 30
+  told: The decision and the reason
+  reasons:
+  - retention risk
+  - scarce skill
+  - market data
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: C06
+  decider: Payroll lead
+  reviewer: Employment counsel
+  appeal_to: HR Director for the country
+  window_days: 14
+  told: The amount, how it arose, the repayment plan and how to dispute it
+  reasons:
+  - payroll error
+  - leave taken in advance
+  - benefit overpaid
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: D03
+  decider: Line manager
+  reviewer: Team scheduler
+  appeal_to: HR business partner
+  window_days: 7
+  told: The reason and an alternative date where possible
+  reasons:
+  - cover rule
+  - earlier request
+  - operational need
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: D04
+  decider: Leave specialist
+  reviewer: Head of Benefits
+  appeal_to: HR Director for the country
+  window_days: 30
+  told: The decision, the rule applied and what further evidence would change it
+  reasons:
+  - eligible
+  - not eligible on service
+  - certification incomplete
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: D06
+  decider: Accommodation specialist
+  reviewer: Occupational health
+  appeal_to: Head of Benefits
+  window_days: 30
+  told: The adjustment agreed or the reasons it is not, and the alternatives considered
+  reasons:
+  - agreed as asked
+  - agreed with alternative
+  - undue hardship
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: E04
+  decider: Field supervisor
+  reviewer: Field Operations HR lead
+  appeal_to: Regional operations manager
+  window_days: 5
+  told: The shift, the reason and the agreement clause
+  reasons:
+  - no volunteer
+  - emergency cover
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: E06
+  decider: Field supervisor
+  reviewer: HR business partner
+  appeal_to: Field Operations HR lead
+  window_days: 10
+  told: The points total, each absence counted, which absences are excluded by law or agreement, and how
+    to appeal
+  reasons:
+  - threshold reached
+  - threshold reached but absence protected
+  - threshold reached with mitigation
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: E08
+  decider: Field Operations HR lead
+  reviewer: Employment counsel
+  appeal_to: HR Director for the country
+  window_days: 14
+  told: The new hours, the reason and the consultation that took place
+  reasons:
+  - agreed by employee
+  - contract variation after consultation
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: F03
+  decider: Line manager
+  reviewer: Second-line manager
+  appeal_to: HR business partner
+  window_days: 14
+  told: The rating and the evidence behind it
+  reasons:
+  - exceeds criteria
+  - meets criteria
+  - partly meets criteria
+  - does not meet criteria
+- id: F04
+  decider: Promotion panel
+  reviewer: HR business partner
+  appeal_to: Head of Talent Management
+  window_days: 14
+  told: The outcome and feedback against the criteria
+  reasons:
+  - criteria met
+  - criteria not met
+  - no vacancy at level
+- id: F05
+  decider: Hiring manager
+  reviewer: HR business partner
+  appeal_to: Head of Talent Management
+  window_days: 14
+  told: That the vacancy exists, who can apply and how the matching rules work
+  reasons:
+  - shown to all eligible
+  - restricted by published rule
+- id: F07
+  decider: Line manager
+  reviewer: HR business partner
+  appeal_to: Second-line manager
+  window_days: 14
+  told: The gaps, the support offered, the review dates and the right to be accompanied where it applies
+  reasons:
+  - capability gap documented
+  - conduct concern referred to procedure G03
+  - no plan needed
+- id: G03
+  decider: Hearing manager
+  reviewer: Employee relations adviser
+  appeal_to: Appeal manager
+  window_days: 10
+  told: The outcome, the reasons, the evidence and the right of appeal
+  reasons:
+  - no case to answer
+  - informal action
+  - written warning
+  - final warning
+  - dismissal
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: G04
+  decider: Investigator
+  reviewer: Head of Employee Relations
+  appeal_to: null
+  no_appeal_reason: Findings decide nothing alone; any action on them is a G03 decision with its own appeal
+  window_days: 0
+  told: The findings that concern them
+  reasons:
+  - upheld
+  - partly upheld
+  - not upheld
+  represented:
+    route: []
+    no_route_reason: Findings decide nothing alone; the G03 decision that uses them goes through the grievance
+      route
+    rep_access: member_written_authorization
+    told_adds: Your union representative can see the findings that concern you if you authorize it in
+      writing
+- id: G06
+  decider: Head of Employee Relations
+  reviewer: Employment counsel
+  appeal_to: HR Director for the country
+  window_days: 5
+  told: That suspension is not a finding, the pay position and the review date
+  reasons:
+  - risk to investigation
+  - risk to people
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: H04
+  decider: Hearing manager
+  reviewer: Employment counsel
+  appeal_to: Appeal manager
+  window_days: 10
+  told: The reason for dismissal, notice, final pay and the right of appeal
+  reasons:
+  - conduct
+  - capability
+  - redundancy
+  - statutory bar
+  - other substantial reason
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: H05
+  decider: Selection panel
+  reviewer: Employment counsel
+  appeal_to: Appeal manager
+  window_days: 10
+  told: The pool, the criteria, their scores and how to challenge them
+  reasons:
+  - selected on agreed criteria
+  - not selected
+  - selection deferred pending consultation
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: E03
+  decider: Team scheduler
+  reviewer: Field supervisor
+  appeal_to: Field Operations HR lead
+  window_days: 10
+  told: Who was offered the shift, in what order, and the agreement clause that sets it
+  reasons:
+  - offered in agreement order
+  - skipped as not qualified
+  - skipped as on rest break
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
+- id: F02
+  decider: Line manager
+  reviewer: Second-line manager
+  appeal_to: HR business partner
+  window_days: 14
+  told: Which source notes and outcomes the review drew on
+  reasons:
+  - objectives met
+  - objectives partly met
+  - objectives not met
+- id: G08
+  decider: Employee relations adviser
+  reviewer: Hearing manager
+  appeal_to: Head of Employee Relations
+  window_days: 5
+  told: The hearing date, the allegation, the evidence pack and the right to be accompanied
+  reasons:
+  - hearing date set
+  - hearing moved at the companion's request
+  represented:
+    route:
+    - us_local
+    - uk_recognized
+    rep_access: member_written_authorization
+    told_adds: Your union representative can go with you, see the case record if you authorize it in writing,
+      and take this decision through the grievance procedure instead of the appeal
