@@ -39,8 +39,8 @@ def verdict(c: dict[str, bool]) -> str:
     if not c["authority"]:
         return "stalled: authority"
     if c["baseline"] and c["kill criteria"] and c["run owner"]:
-        return "continue with kill criteria"
-    return "re-scope: problem statement first"
+        return "continue"
+    return "re-scope"
 
 
 def load() -> list[dict]:
@@ -65,16 +65,16 @@ def main() -> None:
           + f"  {v}")
         rec.note(pilot=pl["id"], name=pl["name"], checks=c,
                  verdict=v)
-    p("Passing each check: " + ", ".join(
-        f"{k} {sum(checks(x)[k] for x in pilots)}"
-        for k in CHECKS))
+    p("Pilots passing each check:")
+    for k in CHECKS:
+        p(f"  {k:<14}{sum(checks(x)[k] for x in pilots):>3}")
     full = sum(all(checks(x)[k] for k in
                    ("baseline", "owner", "kill criteria"))
                for x in pilots)
     p(f"Baseline, owner and kill criteria together: {full} of "
       f"{len(pilots)}")
     for v, n in tally.most_common():
-        p(f"  {v:<34}{n}")
+        p(f"  {v:<22}{n:>3}")
     print(f"\nRun record: {rec.save()}")
 
 

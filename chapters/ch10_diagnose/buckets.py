@@ -76,8 +76,9 @@ def main() -> None:
                                      for b in BUCKETS))
     ah = Counter(r["adhoc_kind"] for r in rows if r["adhoc_kind"])
     n = sum(ah.values())
-    p("Inside ad hoc: " + ", ".join(
-        f"{k} {100 * v / n:.0f}%" for k, v in ah.most_common()))
+    p("Inside ad hoc:")
+    for k, v in ah.most_common():
+        p(f"  {k:<24}{100 * v / n:>4.0f}%")
     rec.note(shares=s, interval=ci, estimate=ESTIMATE,
              groups={g: shares([r for r in rows if r["group"] == g])
                      for g in dict.fromkeys(r["group"]

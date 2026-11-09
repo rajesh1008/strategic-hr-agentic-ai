@@ -49,7 +49,7 @@ def brightwater(p) -> None:
         hrs = [float(r["hours_to_first_human"]) for r in qs]
         top = Counter(r["category"] for r in qs).most_common(1)[0]
         p(f"  {s:<8}{len(qs):>4} queries, {st.median(hrs):>4.1f} h "
-          f"to a person; top {top[0]} "
+          f"to human; top {top[0]} "
           f"{100 * top[1] / len(qs):.0f}%")
 
 
