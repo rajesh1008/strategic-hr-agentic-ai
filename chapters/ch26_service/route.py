@@ -380,6 +380,9 @@ def main(design: str = "A", pack: str = "route") -> None:
         rec.print(f"{g['id']} {g['expect']:<6}"
                   f" {(g['lane'] or '-'):<8}"
                   f" {outcome(g):<30} {ok}")
+        if g["handoff"] and g["actions"]:
+            rec.print("    wrote first: " + ", ".join(
+                g["actions"]) + ", then handed off")
         if g["expect"] == "person" and g["replies"]:
             for line in textwrap.wrap(g["replies"][0], 60)[:3]:
                 rec.print("    > " + line)

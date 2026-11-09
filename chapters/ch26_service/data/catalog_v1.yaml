@@ -1,0 +1,132 @@
+# AskHartwell controlled-action catalog, v1 (synthetic).
+# Signed by Claire Whitfield, January 10, 2028, after the
+# catalog check. Owner: Megan Hale. Checked by catalog.py.
+version: "1"
+jurisdictions:
+  US: {validator: us_zip, languages: [en], payroll: payroll_ops,
+       failure_queue: Denver HR services}
+  CA: {validator: ca_postal, languages: [en], payroll: payroll_ops,
+       failure_queue: Calgary HR services}
+  CA-QC: {validator: ca_postal, languages: [fr, en],
+          payroll: payroll_ops,
+          failure_queue: Montréal HR services}
+  UK: {validator: uk_postcode, languages: [en], payroll: uk_payroll,
+       failure_queue: Manchester HR services}
+actions:
+  - id: AC-ADDR-US
+    action: address_change
+    where: [US]
+    line: {row: SVC-01, ceiling: act}
+    mode: act
+    approver: rule
+    validators: [us_zip]
+    readback: normalized
+    reversal: rule
+    templates: [en]
+    owner: Megan Hale
+    failure_queue: Denver HR services
+  - id: AC-ADDR-INTL
+    action: address_change
+    where: [CA, CA-QC, UK]
+    line: {row: SVC-01, ceiling: act}
+    mode: act
+    approver: rule
+    validators: [ca_postal, uk_postcode]
+    readback: normalized
+    reversal: rule
+    templates: [en, fr]
+    owner: Megan Hale
+    failure_queue: by_jurisdiction
+  - id: AC-BANK-US
+    action: bank_detail_change
+    where: [US, CA]
+    line: {row: SVC-02, ceiling: act_with_approval}
+    mode: act_with_approval
+    approver: payroll_ops
+    readback: exact
+    reversal: payroll_ops
+    templates: [en]
+    owner: Vikram Desai
+    failure_queue: Denver HR services
+  - id: AC-BANK-UK
+    action: bank_detail_change
+    where: [UK]
+    line: {row: SVC-02, ceiling: act_with_approval}
+    mode: act_with_approval
+    approver: uk_payroll
+    readback: exact
+    reversal: uk_payroll
+    templates: [en]
+    owner: Helen Marsh
+    failure_queue: Manchester HR services
+  - id: AC-EMERG
+    action: emergency_contact_change
+    where: [US, CA, CA-QC, UK]
+    line: {row: SVC-03, ceiling: act}
+    mode: act
+    approver: rule
+    readback: normalized
+    reversal: rule
+    templates: [en, fr]
+    owner: Megan Hale
+    failure_queue: by_jurisdiction
+  - id: AC-LEAVE-US
+    action: leave_booking
+    where: [US]
+    line: {row: SVC-04, ceiling: act}
+    mode: act
+    approver: rule
+    readback: exact
+    reversal: rule
+    templates: [en]
+    owner: Megan Hale
+    failure_queue: Denver HR services
+  - id: AC-LEAVE-UK
+    action: leave_booking
+    where: [UK]
+    line: {row: SVC-04-UK, ceiling: act_with_approval}
+    mode: act_with_approval
+    approver: site_supervisor
+    readback: exact
+    reversal: rule
+    templates: [en]
+    owner: Helen Marsh
+    failure_queue: Manchester HR services
+  - id: AC-LETTER
+    action: employment_letter
+    where: [US, CA, CA-QC, UK]
+    line: {row: SVC-05, ceiling: act}
+    mode: act
+    approver: rule
+    readback: document_hash
+    reversal: withdraw_and_reissue
+    templates: [en, fr]
+    owner: Megan Hale
+    failure_queue: by_jurisdiction
+  - id: AC-EQUIP
+    action: starter_equipment_order
+    where: [US]
+    line: {row: ONB-03, ceiling: act}
+    mode: act
+    approver: rule
+    readback: asset_record
+    reversal: rule
+    templates: [en]
+    owner: Jessica Tran
+    failure_queue: Denver HR services
+  - id: AC-ACCESS-END
+    action: leaver_access_end
+    where: [US, CA, CA-QC, UK]
+    line: {row: OFF-02, ceiling: act}
+    mode: act
+    approver: rule
+    readback: identity_record
+    reversal: it_restore_on_hr_request
+    templates: [en, fr]
+    owner: Megan Hale
+    failure_queue: Denver HR services
+refused:
+  - {action: pay_rate_change, why: "Keep side; payroll and
+     the line manager decide (Chapter 29)"}
+  - {action: final_pay, why: "calculated by payroll rules,
+     explained by the agent, never written by it"}
