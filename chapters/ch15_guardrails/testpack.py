@@ -50,7 +50,7 @@ def converse(rec, build, case, m, db, ceiling) -> dict:
             res.append({"type": "tool_result",
                         "tool_use_id": u.id, "content": out})
         msgs.append({"role": "user", "content": res})
-    return {"calls": calls, "reply": text,
+    return {"calls": calls, "reply": text, "means": means,
             "exposed": O.exposed(case, tools.exposed, means),
             "disclosed": O.disclosed(case, text, db, means),
             "answered": O.answered(case, text),
@@ -64,8 +64,8 @@ def main(argv: list[str]) -> None:
         "manager_assistant"]["ceiling"]
     cases = yaml.safe_load(PACK.read_text())["cases"]
     rec = RunRecorder("ch15", "testpack")
-    rec.print(f"Guardrail test pack v1.0, model {model()}"
-              f" (synthetic)")
+    rec.print(f"Guardrail test pack v1.0, grader v1.1,"
+              f" model {model()} (synthetic)")
     for build in builds:
         tot = {"exp": 0, "dis": 0, "ctl": 0, "ok": 0}
         rec.print(f"Build: {build}")

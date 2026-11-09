@@ -1,0 +1,394 @@
+{
+  "run_id": "ch15/leave_demo/20261109T141659Z",
+  "started_utc": "2026-11-09T14:16:59.172818+00:00",
+  "git_commit": "f825a03",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "A split week:2.1": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-07",
+            "end": "2027-06-09"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-10",
+            "end": "2027-06-11"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": false,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "A split week:2.2": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-07",
+            "end": "2027-06-09"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-02",
+          "effect": "route_to_supervisor",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-10",
+            "end": "2027-06-11"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": false,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "B over a weekend:2.1": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-17",
+            "end": "2027-06-18"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-21",
+            "end": "2027-06-23"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": false,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "B over a weekend:2.2": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-17",
+            "end": "2027-06-18"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-02",
+          "effect": "route_to_supervisor",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-21",
+            "end": "2027-06-23"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": false,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "C second part first:2.1": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-10",
+            "end": "2027-06-11"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-07",
+            "end": "2027-06-09"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": false,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "C second part first:2.2": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-10",
+            "end": "2027-06-11"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-02",
+          "effect": "route_to_supervisor",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-07",
+            "end": "2027-06-09"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": false,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "D two separate breaks:2.1": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-07",
+            "end": "2027-06-08"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.1",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-21",
+            "end": "2027-06-22"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    },
+    {
+      "D two separate breaks:2.2": [
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-07",
+            "end": "2027-06-08"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        },
+        {
+          "policy": "hris.book_leave",
+          "version": "2.2",
+          "rule": "L-01",
+          "effect": "approve_by_rule",
+          "request": {
+            "employee": "HW-012771",
+            "type": "vacation",
+            "start": "2027-06-21",
+            "end": "2027-06-22"
+          },
+          "facts": {
+            "vacation": true,
+            "sick": false,
+            "request_le_3_days": true,
+            "run_le_3_days": true,
+            "notice_ge_7_days": true,
+            "within_balance": true,
+            "crew_at_minimum": true
+          }
+        }
+      ]
+    }
+  ],
+  "stdout": [
+    "Leave policy as code, 2.1 vs 2.2 (synthetic)",
+    "A split week",
+    "  2.1: 06-07..06-09 L-01 approve_by_rule | 06-10..06-11 L-01 approve_by_rule",
+    "  2.2: 06-07..06-09 L-01 approve_by_rule | 06-10..06-11 L-02 route_to_supervisor",
+    "B over a weekend",
+    "  2.1: 06-17..06-18 L-01 approve_by_rule | 06-21..06-23 L-01 approve_by_rule",
+    "  2.2: 06-17..06-18 L-01 approve_by_rule | 06-21..06-23 L-02 route_to_supervisor",
+    "C second part first",
+    "  2.1: 06-10..06-11 L-01 approve_by_rule | 06-07..06-09 L-01 approve_by_rule",
+    "  2.2: 06-10..06-11 L-01 approve_by_rule | 06-07..06-09 L-02 route_to_supervisor",
+    "D two separate breaks",
+    "  2.1: 06-07..06-08 L-01 approve_by_rule | 06-21..06-22 L-01 approve_by_rule",
+    "  2.2: 06-07..06-08 L-01 approve_by_rule | 06-21..06-22 L-01 approve_by_rule"
+  ]
+}
