@@ -1,0 +1,52 @@
+# Decision-first analytics briefs (Chapter 28). SYNTHETIC.
+# One brief per question people analytics is asked to answer.
+# A brief is written before any query is run. The checker is
+# chapters/ch28_people_analytics/decision_brief.py.
+- id: DB-26-00
+  title: Retention dashboard (2024 to 2026), written as a brief
+  decision: null
+  owner: null
+  options: []
+  deciding_number: null
+  deadline: null
+  population: all Hartwell entities, by entity, function, grade
+  outcome: attrition rate (HCM termination flag, any exit)
+  comparison: group target of 25%
+  method: descriptive
+  inference_owner: dashboard
+  register_use: null
+- id: DB-27-03
+  title: Attrition model v1 to managers (Intent gate, March 2027)
+  decision: which employees each manager talks to this quarter
+  owner: Claire Whitfield
+  options: [talk to the top 10% flagged, no change]
+  deciding_number: null
+  deadline: 2027-10-18
+  population: US salaried, Hartwell Germany
+  outcome: voluntary resignation within 13 weeks
+  comparison: none
+  method: predictive
+  inference_owner: Tom Reilly
+  register_use: U3
+- id: DB-28-01
+  title: Do raises to 0.95 of midpoint keep people?
+  decision: whether the compensation committee funds a range
+    correction for US salaried staff paid below 0.92 of
+    midpoint, and in what order
+  owner: Claire Whitfield, with Frank Doherty's committee
+  options: [fund the correction for all eligible from April
+      2028, fund it for critical roles only, no correction]
+  deciding_number: fund for all if at least 3 resignations
+    are avoided per 100 raises in the test quarter and the
+    interval excludes 0; critical roles only if the effect
+    is below 3; none if the interval includes 0
+  deadline: 2028-04-24
+  population: US salaried paid below 0.92 of range midpoint
+    on January 10, 2028
+  outcome: voluntary resignation (HartwellOne reason code
+    RES) between January 10 and April 7, 2028
+  comparison: randomized order; wave 1 raised January 10,
+    wave 2 April 10
+  method: causal
+  inference_owner: Tom Reilly
+  register_use: U7
