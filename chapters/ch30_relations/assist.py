@@ -41,7 +41,8 @@ and hearing manager, who will make every finding and decide
 every outcome. You never do either.
 From the case folder, write:
 1. chronology: dated events, each with the item ID and a
-   short quote copied word for word from that item;
+   short quote (under 20 words) copied word for word from
+   that item; one entry per date, not one per item;
 2. by_point: for each point in dispute, what each source
    says, as word-for-word quotes with item IDs;
 3. open_questions: questions nobody has asked yet;
@@ -67,7 +68,7 @@ def folder_text(case: dict) -> str:
 
 def call(rec, system: str, text: str) -> str:
     resp = rec.create(
-        max_tokens=3000, system=system,
+        max_tokens=8000, system=system,
         messages=[{"role": "user", "content": text}],
         thinking=THINK.get(model(), {"type": "disabled"}))
     return "".join(b.text for b in resp.content
@@ -80,6 +81,22 @@ def parse(raw: str) -> dict:
         return json.loads(m.group(0)) if m else {}
     except json.JSONDecodeError:
         return {}
+
+
+def pick(raw: str) -> list[tuple[str, str]]:
+    """The finding line and the first recommendation, as
+    written, for the book to quote."""
+    lines = [x.replace("**", "").strip(" *-#")
+             for x in raw.splitlines()]
+    lines = [x for x in lines if x]
+    out = []
+    for i, x in enumerate(lines):
+        if x.lower().startswith("finding"):
+            nxt = x if len(x) > 40 else lines[i + 1]
+            out.append(("finding", nxt[:160]))
+        if x.lower().startswith("recommended outcome"):
+            out.append(("first step", lines[i + 1][:160]))
+    return out
 
 
 def main() -> None:
@@ -105,6 +122,13 @@ def main() -> None:
                       f" conclusion words {len(c)};"
                       f" outside facts {', '.join(x) or 'none'};"
                       f" fault ticket cited {'yes' if e07 else 'no'}")
+            yrs = sorted(set(re.findall(
+                r"\b(\w+) years'?(?: of)? (?:clean )?service",
+                raw, re.I)))
+            rec.print(f"  service stated: {', '.join(yrs) or '-'}"
+                      " (record: since March 5, 2018)")
+            for label, line in pick(raw):
+                rec.print(f"  {label}: {line}")
             rec.note(design=d, run=i, text=raw, conclusions=c,
                      outcomes=o, outside=x)
             continue
