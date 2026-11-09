@@ -17,7 +17,7 @@ that asked for a person (or that a person had to take), the
 ticket, the first response of any kind, and a named person's
 first reply. Three clocks are computed from them:
 
-  contract  ticket -> first response (Quayfen SOW 2024)
+  contract  ticket -> first response (SOW No. 7 report)
   ticket    ticket -> named person's first reply
   employee  first ask -> named person's first reply (HS-01)
 
