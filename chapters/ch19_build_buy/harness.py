@@ -13,6 +13,9 @@ applications with the same measures:
   flags   the Chapter 7 flags on those rows
   GAP     how many answers gave GAP as the reason ("-"
           where the run kept no reasons)
+  meets   of applicants who meet the posted requirements,
+          how many it recommends, gap up to six months and
+          gap over six months
 
 Model outputs are read from committed run records; the
 small models are recomputed (history.py, fixed seed).
@@ -67,10 +70,20 @@ def card(rec, name, said, reasons, new, recs) -> dict:
     rec.print(f"{name}")
     rec.print(f"  sel {yes}  posted {agree}/{len(new)}"
               f"  history {hist}/{len(new)}  GAP {gap}")
+    m_short = [a for a in new if posted(a)
+               and int(a["longest_gap_months"]) <= 6]
+    m_long = [a for a in new if posted(a)
+              and int(a["longest_gap_months"]) > 6]
+    k_s = sum(sel(a) for a in m_short)
+    k_l = sum(sel(a) for a in m_long)
+    rec.print(f"  meets: gap <=6 {k_s}/{len(m_short)}, "
+              f"gap >6 {k_l}/{len(m_long)}")
     rec.print(f"  worst age {w_age} {' '.join(f_age)}")
     rec.print(f"  worst sex & age {w_sa} {' '.join(f_sa)}")
     return {"name": name, "sel": yes, "posted": agree,
             "history": hist, "gap": gap,
+            "meets_short": [k_s, len(m_short)],
+            "meets_long": [k_l, len(m_long)],
             "worst_age": w_age, "flags_age": f_age,
             "worst_sex_age": w_sa, "flags_sex_age": f_sa}
 
