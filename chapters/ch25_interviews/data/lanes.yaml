@@ -1,0 +1,44 @@
+# What the law in each lane attaches to a feature of a video
+# interview or assessment tool (synthetic summary for the
+# book; every rule is [VERIFY] until counsel signs it). A rule
+# fires when the feature matches every condition given.
+#   infers_any: the feature infers one of these PI codes
+#   inputs_any: the feature reads one of these inputs
+#   decides_any: the feature ranks, advances or rejects
+#   ai: the feature is an AI analysis (any infers or decides)
+rules:
+  - {lanes: [IE, NL, DE], infers_any: [PI-01],
+     duty: BANNED, cite: "AI Act Art 5(1)(f)"}
+  - {lanes: [IE, NL, DE], ai: true,
+     duty: HIGH-RISK, cite: "AI Act Annex III 4(a)"}
+  - {lanes: [US-IL], inputs_any: [video], ai: true,
+     duty: CONSENT, cite: "AIVIA s.5, s.15"}
+  - {lanes: [US-IL], inputs_any: [video, audio],
+     infers_any: [PI-01, PI-02, PI-03, PI-05, PI-08],
+     duty: RELEASE, cite: "BIPA s.15(b)"}
+  - {lanes: [US-NYC], decides_any: [ranks, advances, rejects],
+     duty: AUDIT, cite: "LL 144"}
+  - {lanes: [US-MA], infers_any: [PI-03],
+     duty: BANNED, cite: "lie detector statute"}
+  - {lanes: [US-CO, US-IL, US-NYC, US-MA],
+     infers_any: [PI-04, PI-06, PI-08],
+     duty: SCREEN-OUT, cite: "ADA, Title VII"}
+  - {lanes: [US-CO], decides_any: [ranks, advances, rejects],
+     duty: NOTICE, cite: "SB 26-189"}
+  - {lanes: [CA-ON], ai: true,
+     duty: NOTICE, cite: "ESA posting rule"}
+  - {lanes: [UK], decides_any: [advances, rejects],
+     duty: SAFEGUARDS, cite: "UK GDPR Art 22A-22D"}
+  - {lanes: [UK], infers_any: [PI-04, PI-06, PI-08],
+     duty: ADJUST, cite: "Equality Act s.20"}
+  - {lanes: [UK], ai: true, duty: DPIA, cite: "UK GDPR Art 35"}
+  - {lanes: [AU], ai: true,
+     duty: NOTICE, cite: "APP 1.7 to 1.9"}
+  - {lanes: [SG], infers_any: [PI-05, PI-06],
+     duty: FAIRNESS, cite: "Tripartite Guidelines; WFA"}
+  - {lanes: [SG], ai: true,
+     duty: NOTICE, cite: "PDPA AI guidelines"}
+  - {lanes: [HK], ai: true,
+     duty: OVERSIGHT, cite: "PCPD model framework"}
+  - {lanes: [MY], decides_any: [advances, rejects],
+     duty: DPIA, cite: "ADMP guideline 7.4.3"}

@@ -1,0 +1,53 @@
+# Feature manifests for three video-interview products, as
+# configured or offered (synthetic). enabled: whether the buyer's
+# configuration switches the feature on.
+restonmere:
+  org: Restonmere Hotels
+  product: one-way video for front-desk roles (vendor default)
+  lanes: [UK, IE, US-IL, US-NYC, AU]
+  features:
+    - {id: R1, name: record answers to set questions,
+       inputs: [video], infers: [], decides: none, enabled: true}
+    - {id: R2, name: transcript, inputs: [audio],
+       infers: [], decides: none, enabled: true}
+    - {id: R3, name: engagement score, inputs: [video, audio],
+       infers: [PI-01, PI-02], decides: ranks, enabled: true}
+    - {id: R4, name: communication score,
+       inputs: [video, audio],
+       infers: [PI-06], decides: ranks, enabled: true}
+    - {id: R5, name: advance the top 30 percent,
+       inputs: [], infers: [], decides: advances, enabled: true}
+hartwell:
+  org: Hartwell
+  product: scoring module offered for field interviews
+  lanes: [US-CO, US-IL, US-NYC, CA-ON, UK, NL, DE, AU]
+  features:
+    - {id: H1, name: record answers to FT-SI questions,
+       inputs: [video], infers: [], decides: none, enabled: true}
+    - {id: H2, name: transcript, inputs: [audio],
+       infers: [], decides: none, enabled: true}
+    # H3 reads the transcript made from the applicant's video
+    - {id: H3, name: answer score against Hartwell anchors,
+       inputs: [video, transcript], infers: [], decides: ranks,
+       enabled: true}
+    - {id: H4, name: presence and engagement,
+       inputs: [video, audio], infers: [PI-01, PI-02],
+       decides: ranks, enabled: true}
+    - {id: H5, name: speaking clarity,
+       inputs: [video, audio],
+       infers: [PI-06], decides: ranks, enabled: true}
+straits:
+  org: Straits Ledger
+  product: video interviews for graduate analysts
+  lanes: [SG, HK, MY]
+  features:
+    - {id: S1, name: record answers to set questions,
+       inputs: [video], infers: [], decides: none, enabled: true}
+    - {id: S2, name: transcript, inputs: [audio],
+       infers: [], decides: none, enabled: true}
+    - {id: S3, name: English proficiency score,
+       inputs: [video, audio], infers: [PI-06], decides: ranks,
+       enabled: false}
+    - {id: S4, name: integrity from micro-expressions,
+       inputs: [video], infers: [PI-03], decides: ranks,
+       enabled: false}
