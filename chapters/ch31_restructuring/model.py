@@ -12,7 +12,7 @@ from pathlib import Path
 import yaml
 
 DATA = Path(__file__).parent / "data"
-PERSON = re.compile(r"\bHW-\d{6}\b")
+PERSON = re.compile(r"\bHW-\d{6}\b|\b31\d{4}\b")
 
 
 def load(name: str = "scope.yaml") -> dict:
@@ -38,7 +38,8 @@ def absorbed(tasks: list[dict], weights: dict) -> float:
 
 
 def assert_no_people(lines: list[str]) -> None:
-    """Scenario outputs carry roles, never people."""
+    """Scenario outputs carry roles, never people. IDs are
+    matched in full (HW-310003) and short (310003) form."""
     for line in lines:
         if PERSON.search(line):
             raise ValueError(f"person ID in output: {line}")

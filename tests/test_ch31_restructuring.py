@@ -92,3 +92,17 @@ def test_agent_checks():
         " achievable.") == ["30 June 2028 is achievable."]
     assert not scenario_agent.achievable(
         "June 30, 2028 is not achievable.")
+
+
+def test_short_ids_caught():
+    with pytest.raises(ValueError):
+        assert_no_people(["Manchester: 310009, 310010"])
+    assert scenario_agent.PERSON.findall(
+        "HW-310003, 310009") == ["HW-310003", "310009"]
+
+
+def test_timeline_tool_labels_floor():
+    out = scenario_agent.tool("consultation_timeline", {
+        "site": "MAN", "count": 29, "start": "2028-06-01",
+        "effective": "2028-06-30"}, load())
+    assert "legal floor, not a plan" in out

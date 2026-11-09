@@ -54,7 +54,7 @@ def main() -> None:
         p(f"{role}: task, share, side, rate, status")
         for t in tasks:
             mark = "E" if t["exposed"] else "-"
-            p(f"  {mark} {t['task']:<28}"
+            p(f"  {mark} {t['task']:<29}"
               f"{t['share']:>5.0%} {t['side']:<8}"
               f"{t['rate']:>4.0%} {t['status']}")
     rec.note(readings=rows)
