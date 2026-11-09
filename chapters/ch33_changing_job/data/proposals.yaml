@@ -1,0 +1,56 @@
+# _synthetic: Invented for the book. No real person or employer.
+# Chapter 33: twelve agent proposals waiting for Ruth Okonjo
+# (HW-012927), supervisor of CREW-DEN-07, on Monday,
+# January 10, 2028. Each went to her because it fell outside
+# an automatic rule. checks.py runs the site checks.
+# Site rules (synthetic): crew minimum 6 of 8 on shift
+# (leave policy v2.1); 10 hours of rest between shifts;
+# overtime on a timesheet needs a work order; a shift
+# extension on certified work needs a current ticket.
+as_of: "2028-01-10"
+supervisor: {name: Ruth Okonjo, id: HW-012927}
+crew: CREW-DEN-07
+proposals:
+  - {id: P01, kind: leave, who: Lena Ruiz, emp: HW-012771,
+     days: 4, start: "2028-01-24", notice_days: 14,
+     balance_days: 9, on_shift_after: 7,
+     why: longer than 3 days}
+  - {id: P02, kind: leave, who: Marcus Hill, emp: HW-012781,
+     days: 2, start: "2028-01-18", notice_days: 8,
+     balance_days: 6, on_shift_after: 5,
+     why: crew below minimum}
+  - {id: P03, kind: timesheet, who: Ben Reyes, emp: HW-012816,
+     week_ending: "2028-01-08", overtime_h: 3.5,
+     work_order: WO-58812, why: overtime on timesheet}
+  - {id: P04, kind: timesheet, who: Nina Shah, emp: HW-012841,
+     week_ending: "2028-01-08", overtime_h: 4.0,
+     work_order: null, why: overtime on timesheet}
+  - {id: P05, kind: extension, who: Sam Ortiz, emp: HW-012846,
+     date: "2028-01-11", to_hours: 12, rest_after_h: 11,
+     certified_work: confined-space entry,
+     ticket_expires: "2027-12-31", why: shift over 10 hours}
+  - {id: P06, kind: extension, who: Jo Whitaker,
+     emp: HW-012889, date: "2028-01-11", to_hours: 11,
+     rest_after_h: 13, certified_work: null,
+     ticket_expires: null, why: shift over 10 hours}
+  - {id: P07, kind: swap, who: Andre Bell, emp: HW-012898,
+     with: Kim Duarte, with_emp: HW-012910,
+     date: "2028-01-13", rest_h: 8, why: swap across shifts}
+  - {id: P08, kind: swap, who: Kim Duarte, emp: HW-012910,
+     with: Lena Ruiz, with_emp: HW-012771,
+     date: "2028-01-20", rest_h: 14, why: swap across shifts}
+  - {id: P09, kind: notice, who: CREW-DEN-07, emp: null,
+     text: safety stand-down on January 17 from 07:00 to
+       09:00 at the depot, why: crew-wide message}
+  - {id: P10, kind: leave, who: Jo Whitaker, emp: HW-012889,
+     days: 3, start: "2028-02-02", notice_days: 23,
+     balance_days: 1.5, on_shift_after: 7,
+     why: beyond balance}
+  - {id: P11, kind: leave, who: Ben Reyes, emp: HW-012816,
+     days: 3, start: "2028-01-13", notice_days: 3,
+     balance_days: 8, on_shift_after: 6,
+     why: under 7 days' notice}
+  - {id: P12, kind: timesheet, who: Kim Duarte,
+     emp: HW-012910, week_ending: "2028-01-08",
+     overtime_h: 2.0, work_order: WO-58907,
+     why: overtime on timesheet}

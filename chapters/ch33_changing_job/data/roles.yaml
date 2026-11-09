@@ -1,0 +1,172 @@
+# _synthetic: Invented for the book. No real person or employer.
+# Chapter 33 task-exposure map. One entry per role: who holds
+# it, paid hours a week, and its tasks with their share of
+# paid hours from a two-week diary kept by job holders
+# (September 2027 for Hartwell and Quayfen, other dates as
+# stated). Per task:
+#   exposed  occupation-level exposure score marks it exposed
+#   line     Automate/Keep Line row where one exists
+#   side     automate or keep
+#   rate     share of the task's hours the agents absorb
+#   status   that rate's claim status (Chapter 4 ledger)
+# "adds" are tasks the agents create for the job holder,
+# with their share of the old week. They are measured from
+# the trail or the diary, not estimated by the vendor.
+as_of: "2028-01-31"
+weights: {Claimed: 0.0, Tested: 0.5, Shadow: 0.8,
+          Production: 1.0}
+review_share: 0.15     # review hours per absorbed hour (ch08)
+roles:
+  - id: FS-US
+    title: Field supervisor
+    org: Hartwell US
+    people: 212
+    hours: 45
+    tasks:
+      - {task: crew briefing and safety walk, share: 0.18,
+         exposed: false, side: keep, rate: 0, status: Production}
+      - {task: site visits and quality checks, share: 0.20,
+         exposed: false, side: keep, rate: 0, status: Production}
+      - {task: job allocation and dispatch, share: 0.12,
+         exposed: true, side: automate, rate: 0.25,
+         status: Tested}
+      - {task: leave and roster decisions, line: D03,
+         share: 0.08, exposed: true, side: keep, rate: 0,
+         status: Production}
+      - {task: timesheet review, line: C07, share: 0.10,
+         exposed: true, side: automate, rate: 0.60,
+         status: Production}
+      - {task: crew questions on pay and leave, line: D01,
+         share: 0.09, exposed: true, side: automate, rate: 0.45,
+         status: Production}
+      - {task: incident and safety reports, share: 0.07,
+         exposed: true, side: keep, rate: 0, status: Production}
+      - {task: coaching and check-ins, share: 0.10,
+         exposed: false, side: keep, rate: 0, status: Production}
+      - {task: customer site liaison, share: 0.06,
+         exposed: true, side: keep, rate: 0, status: Production}
+    adds:
+      - {task: approving agent proposals, share: 0.06}
+      - {task: hand-offs routed to the supervisor,
+         share: 0.02}
+  - id: QF-T1
+    title: Tier-1 HR service adviser (Hartwell account)
+    org: Quayfen Outsourcing
+    people: 450
+    hours: 45
+    tasks:
+      - {task: policy and how-to questions, line: H03,
+         share: 0.30, exposed: true, side: automate, rate: 0.40,
+         status: Production}
+      - {task: address, letter and bank requests, line: H01,
+         share: 0.10, exposed: true, side: automate, rate: 0.70,
+         status: Production}
+      - {task: pay questions, line: C01, share: 0.20,
+         exposed: true, side: automate, rate: 0.10,
+         status: Tested}
+      - {task: case notes and wrap-up, share: 0.12,
+         exposed: true, side: automate, rate: 0.15,
+         status: Tested}
+      - {task: hand-offs to HR specialists, share: 0.13,
+         exposed: true, side: keep, rate: 0, status: Production}
+      - {task: care and conduct contacts, share: 0.08,
+         exposed: false, side: keep, rate: 0, status: Production}
+      - {task: huddles and training, share: 0.07,
+         exposed: false, side: keep, rate: 0, status: Production}
+    adds: []     # what is left is harder; see the canvas
+  - id: HYD-DV
+    title: HR data validation analyst
+    org: Hartwell capability center, Hyderabad
+    people: 120
+    hours: 45
+    tasks:
+      - {task: validating HRIS changes, share: 0.45,
+         exposed: true, side: automate, rate: 0.50,
+         status: Shadow}
+      - {task: Gulf payroll exceptions, share: 0.15,
+         exposed: true, side: automate, rate: 0.30,
+         status: Tested}
+      - {task: tier-2 tickets, share: 0.20, exposed: true,
+         side: automate, rate: 0.25, status: Production}
+      - {task: monthly returns and reports, share: 0.10,
+         exposed: true, side: automate, rate: 0.50,
+         status: Tested}
+      - {task: team meetings and training, share: 0.10,
+         exposed: false, side: keep, rate: 0, status: Production}
+    adds:
+      - {task: checking agent-validated records, share: 0.08}
+  - id: CB-BR
+    title: Branch associate
+    org: Cobbleford Bank
+    people: 1900
+    hours: 40
+    tasks:
+      - {task: counter service, share: 0.30, exposed: false,
+         side: keep, rate: 0, status: Production}
+      - {task: account-opening paperwork, share: 0.20,
+         exposed: true, side: automate, rate: 0.50,
+         status: Tested}
+      - {task: product questions, share: 0.15, exposed: true,
+         side: automate, rate: 0.30, status: Shadow}
+      - {task: procedures and attestations, share: 0.10,
+         exposed: true, side: automate, rate: 0.20,
+         status: Tested}
+      - {task: cash handling, share: 0.15, exposed: false,
+         side: keep, rate: 0, status: Production}
+      - {task: outreach calls, share: 0.10, exposed: true,
+         side: automate, rate: 0.20, status: Claimed}
+    adds:
+      - {task: checking agent-prepared paperwork, share: 0.04}
+  - id: PS-SM
+    title: Store manager
+    org: Pennant Stores
+    people: 310
+    hours: 45
+    tasks:
+      - {task: building schedules, share: 0.12, exposed: true,
+         side: automate, rate: 0.12, status: Shadow}
+      - {task: swap and overtime approvals, share: 0.04,
+         exposed: true, side: keep, rate: 0,
+         status: Production}
+      - {task: floor coaching, share: 0.25, exposed: false,
+         side: keep, rate: 0, status: Production}
+      - {task: hiring interviews, share: 0.10, exposed: true,
+         side: keep, rate: 0, status: Production}
+      - {task: inventory and ordering, share: 0.15,
+         exposed: true, side: automate, rate: 0.30,
+         status: Tested}
+      - {task: store reports, share: 0.08, exposed: true,
+         side: automate, rate: 0.40, status: Production}
+      - {task: staff questions on pay and leave, share: 0.06,
+         exposed: true, side: automate, rate: 0.40,
+         status: Production}
+      - {task: customer issues, share: 0.20, exposed: false,
+         side: keep, rate: 0, status: Production}
+    adds:
+      - {task: approving scheduling-agent proposals,
+         share: 0.03}
+  - id: FN-EM
+    title: Engineering manager
+    org: Fieldnote
+    people: 180
+    hours: 45
+    tasks:
+      - {task: one-to-ones and coaching, share: 0.20,
+         exposed: false, side: keep, rate: 0, status: Production}
+      - {task: project staffing, share: 0.08, exposed: true,
+         side: automate, rate: 0.30, status: Production}
+      - {task: status reports, share: 0.12, exposed: true,
+         side: automate, rate: 0.50, status: Shadow}
+      - {task: hiring, share: 0.12, exposed: true, side: keep,
+         rate: 0, status: Production}
+      - {task: performance reviews, line: F03, share: 0.08,
+         exposed: true, side: keep, rate: 0, status: Production}
+      - {task: code review and design, share: 0.25,
+         exposed: true, side: automate, rate: 0.20,
+         status: Tested}
+      - {task: incident response, share: 0.10, exposed: false,
+         side: keep, rate: 0, status: Production}
+      - {task: planning, share: 0.05, exposed: true,
+         side: keep, rate: 0, status: Production}
+    adds:
+      - {task: reviewing agent-written changes, share: 0.08}

@@ -1,0 +1,217 @@
+# _synthetic: Invented for the book. No real person or employer.
+# Chapter 33 job-redesign canvases. Each canvas is the page a
+# role owner fills in before a job changes: the week after
+# the agents, as shares of the old week; where freed hours
+# go; which measures change; skills and plan rows for new
+# work; grade review; consultation. canvas.py checks each
+# against the task-exposure map (roles.yaml), JR-1 to JR-8.
+canvases:
+  - id: FS-US v0
+    role: FS-US
+    by: suite vendor rollout note, November 2027
+    after:
+      - {task: crew briefing and safety walk, share: 0.18}
+      - {task: site visits and quality checks, share: 0.20}
+      - {task: job allocation and dispatch, share: 0.105}
+      - {task: leave and roster decisions, share: 0.08}
+      - {task: timesheet review, share: 0.04}
+      - {task: crew questions on pay and leave, share: 0.05}
+      - {task: incident and safety reports, share: 0.07}
+      - {task: coaching and check-ins, share: 0.10}
+      - {task: customer site liaison, share: 0.06}
+    freed_to:
+      - {use: capacity, share: 0.115}
+    measures:
+      - {name: timesheets approved by Monday 10:00,
+         task: timesheet review, action: kept}
+    grade_review: null
+    consultation: null
+    holders_reviewed: false
+  - id: FS-US v1
+    role: FS-US
+    by: Megan Hale with the Field Operations HR lead,
+      March 2028
+    after:
+      - {task: crew briefing and safety walk, share: 0.18}
+      - {task: site visits and quality checks, share: 0.20}
+      - {task: job allocation and dispatch, share: 0.105}
+      - {task: leave and roster decisions, share: 0.08}
+      - {task: timesheet review, share: 0.04}
+      - {task: crew questions on pay and leave, share: 0.05}
+      - {task: incident and safety reports, share: 0.07}
+      - {task: coaching and check-ins, share: 0.10}
+      - {task: customer site liaison, share: 0.06}
+      - {task: approving agent proposals, share: 0.06,
+         new: true, skills: [reading a check card,
+         refusing with a reason], plan: RS-FS}
+      - {task: hand-offs routed to the supervisor,
+         share: 0.02, new: true, skills: [human route
+         standard HS-01], plan: RS-FS}
+      - {task: checking agent work, share: 0.017, new: true,
+         skills: [reading the trail], plan: RS-FS}
+    freed_to:
+      - {use: coaching technicians in their first year,
+         share: 0.018}
+    measures:
+      - {name: timesheets approved by Monday 10:00,
+         task: timesheet review, action: retired}
+      - {name: flagged proposals decided with a reason,
+         task: approving agent proposals, action: new}
+    grade_review: "2028-04-03"
+    consultation: {route: supervisors' forum (not in a
+      bargaining unit), date: "2028-02-21"}
+    holders_reviewed: true
+  - id: QF-T1 v0
+    role: QF-T1
+    by: Quayfen workforce management draft, December 2027
+    after:
+      - {task: policy and how-to questions, share: 0.18}
+      - {task: address, letter and bank requests, share: 0.03}
+      - {task: pay questions, share: 0.19}
+      - {task: case notes and wrap-up, share: 0.111}
+      - {task: hand-offs to HR specialists, share: 0.13}
+      - {task: care and conduct contacts, share: 0.08}
+      - {task: huddles and training, share: 0.07}
+      - {task: review of agent conversations, share: 0.031,
+         new: true}
+    freed_to:
+      - {use: SOW No. 7 seat tranche, share: 0.178,
+         headcount: true, signed: SOW-7 revised May 2027}
+    measures:
+      - {name: average handling time 13.5 minutes,
+         task: policy and how-to questions, action: kept}
+      - {name: contacts per hour 4.0,
+         task: address, letter and bank requests,
+         action: kept}
+    grade_review: null
+    consultation: null
+    holders_reviewed: false
+  - id: QF-T1 v1
+    role: QF-T1
+    by: Joy Santos with Megan Hale, February 2028
+    after:
+      - {task: policy and how-to questions, share: 0.18}
+      - {task: address, letter and bank requests, share: 0.03}
+      - {task: pay questions, share: 0.19}
+      - {task: case notes and wrap-up, share: 0.111}
+      - {task: hand-offs to HR specialists, share: 0.13}
+      - {task: care and conduct contacts, share: 0.08}
+      - {task: huddles and training, share: 0.07}
+      - {task: review of agent conversations, share: 0.031,
+         new: true, skills: [golden-set grading,
+         correcting a knowledge article], plan: RS-QF}
+    freed_to:
+      - {use: SOW No. 7 seat tranche, share: 0.178,
+         headcount: true, signed: SOW-7 revised May 2027}
+    measures:
+      - {name: average handling time 13.5 minutes,
+         task: policy and how-to questions, action: retired}
+      - {name: contacts per hour 4.0,
+         task: address, letter and bank requests,
+         action: retired}
+      - {name: resolved with no return in 7 days,
+         task: policy and how-to questions, action: new}
+    grade_review: "2028-03-01"
+    consultation: {route: Quayfen employee council, Manila
+      and Cebu, date: "2028-02-08"}
+    holders_reviewed: true
+  - id: FN-EM v1
+    role: FN-EM
+    by: Jordan Hale, January 2028
+    after:
+      - {task: one-to-ones and coaching, share: 0.20}
+      - {task: project staffing, share: 0.056}
+      - {task: status reports, share: 0.072}
+      - {task: hiring, share: 0.12}
+      - {task: performance reviews, share: 0.08}
+      - {task: code review and design, share: 0.225}
+      - {task: incident response, share: 0.10}
+      - {task: planning, share: 0.05}
+    freed_to:
+      - {use: one-to-ones with new hires, share: 0.097}
+    measures:
+      - {name: status report every Friday,
+         task: status reports, action: retired}
+    grade_review: null
+    consultation: {route: none required (US, Ireland and
+      Australia staff; no representative body), date:
+      "2028-01-14"}
+    holders_reviewed: true
+  - id: PS-SM v1
+    role: PS-SM
+    by: Elena Harlow, February 2028
+    after:
+      - {task: building schedules, share: 0.108}
+      - {task: swap and overtime approvals, share: 0.04}
+      - {task: approving scheduling-agent proposals,
+         share: 0.03, new: true, skills: [reading a check
+         card], plan: RS-PS}
+      - {task: floor coaching, share: 0.25}
+      - {task: hiring interviews, share: 0.10}
+      - {task: inventory and ordering, share: 0.1275}
+      - {task: store reports, share: 0.048}
+      - {task: staff questions on pay and leave, share: 0.036}
+      - {task: customer issues, share: 0.20}
+      - {task: checking agent work, share: 0.0135, new: true,
+         skills: [reading the trail], plan: RS-PS}
+    freed_to:
+      - {use: floor coaching at peak hours, share: 0.047}
+    measures:
+      - {name: schedule posted 14 days ahead,
+         task: building schedules, action: rebased}
+      - {name: store report by Monday noon,
+         task: store reports, action: retired}
+    grade_review: null
+    consultation: {route: store staff told in writing
+      (Ontario and US stores, no union), date: "2028-02-14"}
+    holders_reviewed: true
+  - id: CB-BR v1
+    role: CB-BR
+    by: Cobbleford retail banking, January 2028
+    after:
+      - {task: counter service, share: 0.30}
+      - {task: account-opening paperwork, share: 0.15}
+      - {task: product questions, share: 0.114}
+      - {task: procedures and attestations, share: 0.09}
+      - {task: cash handling, share: 0.15}
+      - {task: outreach calls, share: 0.10}
+      - {task: checking agent-prepared paperwork, share: 0.04,
+         new: true, skills: [identity evidence, reading
+         the check card], plan: RS-CB}
+      - {task: checking agent work, share: 0.014, new: true,
+         skills: [reading the trail], plan: RS-CB}
+    freed_to:
+      - {use: conversations with customers flagged as
+         vulnerable, share: 0.042}
+    measures:
+      - {name: accounts opened per associate per week,
+         task: account-opening paperwork, action: kept}
+    grade_review: null
+    consultation: {route: none required (US branches, no
+      union), date: "2028-01-20"}
+    holders_reviewed: true
+  - id: HYD-DV v1
+    role: HYD-DV
+    by: Ananya Rao, January 2028
+    after:
+      - {task: validating HRIS changes, share: 0.27}
+      - {task: Gulf payroll exceptions, share: 0.1275}
+      - {task: tier-2 tickets, share: 0.15}
+      - {task: monthly returns and reports, share: 0.075}
+      - {task: team meetings and training, share: 0.10}
+      - {task: checking agent-validated records, share: 0.08,
+         new: true, skills: [sampling, reading the trail],
+         plan: RS-HYD}
+      - {task: checking agent work, share: 0.0416, new: true,
+         skills: [golden-set grading], plan: RS-HYD}
+    freed_to:
+      - {use: agent-platform operations track, share: 0.156}
+    measures:
+      - {name: records validated per day,
+         task: validating HRIS changes, action: retired}
+      - {name: return rate on validated changes,
+         task: validating HRIS changes, action: new}
+    grade_review: "2028-04-15"
+    consultation: {route: center employee forum, date:
+      "2028-01-24"}
+    holders_reviewed: true
