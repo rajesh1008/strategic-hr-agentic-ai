@@ -1,0 +1,38 @@
+# Skills inventory designs checked against the draft works
+# agreement (Betriebsvereinbarung) clauses, Hartwell Germany
+# (synthetic). v1: as first built (volunteer test, July
+# 2027). v2: live in five entities from November 1, 2027.
+# v2.1: Hartwell's proposal to the Betriebsrat, February 2028.
+v1:
+  sources: [project_reports, ticket_notes, teams_channels,
+            learning_records]
+  times_to_model: true
+  model_sets: [level, confidence, insights, flags]
+  shown_before_accept: [manager, talent_team]
+  readers: [talent.search, mobility.match, ka.manager,
+            perf.pack]
+  opt_out: false
+  decision_log_days: null
+  council_reads_access_log: false
+v2:
+  sources: [project_reports, ticket_notes, learning_records,
+            project_roles]
+  times_to_model: false
+  model_sets: [suggestion]
+  shown_before_accept: [employee]
+  readers: [talent.search, mobility.match,
+            learning.recommend, ka.manager]
+  opt_out: true
+  decision_log_days: 2555
+  council_reads_access_log: true
+v2.1:
+  sources: [project_reports, ticket_notes, learning_records,
+            project_roles]
+  times_to_model: false
+  model_sets: [suggestion]
+  shown_before_accept: [employee]
+  readers: [talent.search, mobility.match,
+            learning.recommend]
+  opt_out: true
+  decision_log_days: 90
+  council_reads_access_log: true
