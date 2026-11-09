@@ -92,9 +92,11 @@ def check(aud: str, note: str) -> dict[str, bool]:
 def write(rec: RunRecorder, aud: str) -> str:
     a = AUD[aud]
     kw = {"thinking": THINK[model()]} if model() in THINK else {}
-    r = rec.create(max_tokens=1500, system=SYSTEM.format(
+    r = rec.create(max_tokens=4000, system=SYSTEM.format(
         facts=FACTS, **a), messages=[{"role": "user", "content":
         f"Write the note to {a['reader']}."}], **kw)
+    if r.stop_reason != "end_turn":
+        rec.print(f"  stop reason: {r.stop_reason}")
     return "".join(b.text for b in r.content if b.type == "text")
 
 
