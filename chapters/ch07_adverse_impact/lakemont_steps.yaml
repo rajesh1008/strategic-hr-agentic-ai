@@ -1,0 +1,28 @@
+# Lakemont Health (synthetic): the registered-nurse assessment
+# as configured before and after the redesign. Read by
+# adjustments.py; every field is a fact about the setup.
+versions:
+  "RN assessment 2026":
+    period: "2026"
+    notice: {before_step: true, says_what: false}
+    request:
+      on_invitation: false     # page 4 of the instructions
+      evidence_to_ask: true    # "attach medical evidence"
+      decider: vendor          # vendor support desk
+      days: 6
+    alternatives: [time]
+    scores: [clinical judgment, numeracy, emotion]
+    job_need: false
+    monitor_quarterly: false
+  "RN assessment 2027":
+    period: "2027Q1"
+    notice: {before_step: true, says_what: true}
+    request:
+      on_invitation: true      # a button on the invitation
+      evidence_to_ask: false
+      decider: Lakemont talent acquisition partner
+      days: 1
+    alternatives: [time, format, person]
+    scores: [clinical judgment, numeracy]
+    job_need: false
+    monitor_quarterly: true
