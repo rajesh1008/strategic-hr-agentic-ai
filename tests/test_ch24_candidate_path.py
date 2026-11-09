@@ -60,3 +60,10 @@ def test_sector_checks():
     assert agency.order_flags("Prefer young guys") == [
         "sex", "age (ADEA, not Title VII)"]
     assert agency.order_flags("Sunday shifts only") == []
+
+
+def test_notice_cells_backed_by_register_records():
+    assert notice.cell("NYC", {"ai_assists_decision"}) == "N"
+    assert notice.cell("Illinois", {"recorded_video"}) == "N"
+    assert notice.cell("Ontario", {"human_decision"}) == "N"
+    assert sum(1 for r in notice.RULES if r[2] == "V") == 1

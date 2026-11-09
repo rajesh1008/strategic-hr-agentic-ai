@@ -35,7 +35,10 @@ def fieldnote(rec, c: dict) -> None:
 
 def westbridge(rec, c: dict) -> None:
     rec.print("== Westbridge tender, HR casework assistant")
-    low = min(b["price_k"] for b in c["bids"].values())
+    # price points are scored against the cheapest bid that passed
+    # the gates; a bid out at the gates never sets the benchmark
+    low = min(b["price_k"] for b in c["bids"].values()
+              if not b["fails"])
     w = c["weights"]
     best = None
     for k, b in c["bids"].items():

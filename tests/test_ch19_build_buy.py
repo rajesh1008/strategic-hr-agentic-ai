@@ -62,3 +62,22 @@ def test_small_model_is_deterministic():
     w2 = history.train(hist[:300], history.posted,
                        ["years", "epa608"])
     assert w1 == w2
+
+
+def test_westbridge_price_benchmark_ignores_bids_out_at_gates():
+    from chapters.ch19_build_buy import sectors
+
+    class Rec:
+        def __init__(self):
+            self.lines = []
+
+        def print(self, s):
+            self.lines.append(s)
+
+    c = {"weights": {"quality": 60, "price": 40},
+         "bids": {"A": {"price_k": 200, "quality": 50, "fails": []},
+                  "B": {"price_k": 100, "quality": 90, "fails": ["G1"]}}}
+    r = Rec()
+    sectors.westbridge(r, c)
+    # A is the cheapest bid that passed, so it gets full price points
+    assert "bid A GBP 200k: quality 50, score 70.0" in r.lines

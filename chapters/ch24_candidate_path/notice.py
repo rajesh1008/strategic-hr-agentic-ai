@@ -36,12 +36,12 @@ JURIS = ["NYC", "Illinois", "California", "Connecticut",
 RULES = [
     ("NYC", "ai_assists_decision", "N", "bias audit within a "
      "year, public summary, candidate notice", "R-003 R-310"),
-    ("NYC", "ai_assists_decision", "V", "notice timing and "
-     "alternative-process detail", "-"),
+    ("NYC", "ai_assists_decision", "N", "notice 10 business days "
+     "before use; how to ask for an alternative", "R-505"),
     ("Illinois", "ai_assists_decision", "N", "notice of AI in "
      "covered decisions; no zip-code proxy", "R-064 R-325"),
-    ("Illinois", "recorded_video", "V", "AI Video Interview Act "
-     "(if AI analyses the video)", "-"),
+    ("Illinois", "recorded_video", "N", "AI Video Interview Act: "
+     "notice, explanation, consent", "R-492"),
     ("Illinois", "recorded_video", "N", "written release only if "
      "a face or voice template is made", "R-326"),
     ("California", "ai_assists_decision", "N", "FEHA rules on "
@@ -52,8 +52,8 @@ RULES = [
      "from employment-related decisions", "R-327"),
     ("Ontario", "posting", "N", "posting states whether AI "
      "screens, assesses or selects", "R-040 R-071"),
-    ("Ontario", "human_decision", "V", "post-interview response "
-     "within 45 days", "-"),
+    ("Ontario", "human_decision", "N", "tell interviewed "
+     "applicants within 45 days", "R-506"),
     ("UK", "ai_assists_decision", "N", "tell candidates how AI "
      "processes their data; DPIA", "R-105"),
     ("UK", "human_decision", "N", "if no meaningful human "

@@ -40,7 +40,7 @@ def a04_minutes(n: float) -> float:
 def designs(n: int, knock: float) -> list[tuple]:
     """(name, minutes, allowed, why) for n applications a
     month, where knock is the share a written rule removes
-    (right to work, licence, minimum age)."""
+    (right to work, license, minimum age)."""
     rej = n * 0.55
     oversight = rej * RECON * RECON_MIN + TABLE_HOURS * 60
     return [
