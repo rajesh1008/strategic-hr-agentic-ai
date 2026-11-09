@@ -1,0 +1,103 @@
+# Hartwell model inventory, October 2027 (synthetic). One row
+# per system that uses a model, or writes to a people system
+# on behalf of one. Owner = the HR process owner.
+as_of: '2027-10-29'
+systems:
+- id: ASK-CA
+  name: AskHartwell controlled actions (address, bank)
+  owner: Megan Hale
+  kind: agent
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use ask.actions
+  lanes:
+  - US
+  evals:
+    golden_set: 2027-10-25
+    shared_day: 2027-10-04
+  writes: true
+- id: A04
+  name: field-technician screening check
+  owner: Daniel Brooks
+  kind: agent
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use a04.screen
+  lanes:
+  - US-CO
+  - US-IL
+  - US-TX
+  evals:
+    routing_line: 2027-10-04
+    impact_table: 2027-10-04
+- id: KA-HR
+  name: knowledge assistant for HR partners and advisers
+  owner: Megan Hale
+  kind: agent
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use ka.hr
+  lanes:
+  - US
+  - CA
+  - UK
+  evals:
+    test_set: 2027-08-30
+- id: LINE-2R
+  name: Line second reader
+  owner: Tom Reilly
+  kind: model
+  model: claude-haiku-5-5
+  gate: Production
+  stop: none
+  lanes:
+  - group
+  evals:
+    line_rerun: 2027-04-12
+- id: NG-WF
+  name: Northgate recruiting workflow (bought)
+  owner: Daniel Brooks
+  kind: vendor
+  model: vendor-listed
+  gate: Production
+  stop: contract clause C-03
+  lanes:
+  - US
+  - UK
+  - NL
+  - DE
+  - AU
+  evals: {}
+- id: NL-ROSTER
+  name: Rotterdam crew roster
+  owner: Hartwell Netherlands HR manager
+  kind: vendor
+  model: vendor-listed
+  gate: Production
+  stop: supervisor publishes every roster
+  lanes:
+  - NL
+  eu_high_risk: true
+  log_months: 3
+  evals:
+    changed_rosters: 2027-10-01
+- id: ATTR
+  name: attrition model
+  owner: Tom Reilly
+  kind: model
+  model: in-house
+  gate: refused at Production
+  stop: not deployed
+  lanes:
+  - US
+  evals: {}
+- id: TF-SR
+  name: Takefen Smart Ranking (retired October 1, 2027)
+  owner: ''
+  kind: vendor
+  model: vendor
+  gate: retired
+  stop: tenant closed
+  lanes:
+  - US
+  evals: {}

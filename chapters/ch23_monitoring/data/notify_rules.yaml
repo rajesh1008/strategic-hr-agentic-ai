@@ -1,0 +1,36 @@
+# Notification clocks used by the regulator pack (synthetic
+# planning data). Every rule is marked verify: true until the
+# research register holds the primary text; counsel decides
+# whether a rule applies, the code only computes the clock.
+rules:
+  UK-ICO:
+    who: Information Commissioner's Office
+    applies_if: personal data breach likely to risk people
+    clock_h: 72
+    from: aware
+    verify: true
+  EU-SA:
+    who: lead supervisory authority (GDPR)
+    applies_if: personal data breach likely to risk people
+    clock_h: 72
+    from: aware
+    verify: true
+  UK-FCA:
+    who: Financial Conduct Authority
+    applies_if: anything the regulator would expect notice of
+    clock_h: null
+    note: promptly; no fixed hours
+    verify: true
+  US-BANK:
+    who: primary federal banking regulator
+    applies_if: computer-security incident that is a
+      notification incident (material disruption)
+    clock_h: 36
+    from: determined
+    verify: true
+  US-STATE:
+    who: affected residents and state regulators
+    applies_if: unauthorized acquisition of covered data
+    clock_h: null
+    note: varies by state; counsel's state table
+    verify: true

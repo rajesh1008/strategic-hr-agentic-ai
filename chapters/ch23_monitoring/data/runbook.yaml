@@ -1,0 +1,50 @@
+# Hartwell first-24-hours runbook, version 1.1 (synthetic).
+# Owner: Megan Hale, HR Shared Services lead. Each target is
+# minutes from the event named in "from" to the one in "to".
+version: "1.1"
+targets:
+  - id: T1
+    what: first harm to detection
+    from: harm
+    to: detected
+    max_min: 240
+  - id: T2
+    what: detection to an incident lead paged
+    from: detected
+    to: paged
+    max_min: 15
+  - id: T3
+    what: declaration to containment
+    from: declared
+    to: contained
+    max_min: 60
+  - id: T4
+    what: detection to scope confirmed
+    from: detected
+    to: scoped
+    max_min: 180
+  - id: T5
+    what: declaration to CPO and counsel told
+    from: declared
+    to: leaders_told
+    max_min: 120
+  - id: T6
+    what: declaration to service partner told
+    from: declared
+    to: partner_told
+    max_min: 60
+  - id: T7
+    what: detection to affected people told
+    from: detected
+    to: people_told
+    max_min: 480
+  - id: T8
+    what: detection to notification decision recorded
+    from: detected
+    to: notify_decision
+    max_min: 1440
+  - id: T9
+    what: last reversal read back before pay cutoff
+    from: last_reversal
+    to: pay_cutoff
+    min_min: 0

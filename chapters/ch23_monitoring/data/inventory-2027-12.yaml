@@ -1,0 +1,131 @@
+# Hartwell model inventory, December 2027, after the October
+# review and INC-2027-031 (synthetic). One row
+# per system that uses a model, or writes to a people system
+# on behalf of one. Owner = the HR process owner.
+as_of: '2027-12-01'
+systems:
+- id: ASK-CA
+  name: AskHartwell controlled actions (address, bank)
+  owner: Megan Hale
+  kind: agent
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use ask.actions
+  lanes:
+  - US
+  evals:
+    golden_set: '2027-11-29'
+    shared_day: '2027-11-22'
+  writes: true
+  downstream:
+  - PAY-FEED
+- id: A04
+  name: field-technician screening check
+  owner: Daniel Brooks
+  kind: agent
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use a04.screen
+  lanes:
+  - US-CO
+  - US-IL
+  - US-TX
+  evals:
+    routing_line: '2027-11-01'
+    impact_table: '2027-11-01'
+- id: KA-HR
+  name: knowledge assistant for HR partners and advisers
+  owner: Megan Hale
+  kind: agent
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use ka.hr
+  lanes:
+  - US
+  - CA
+  - UK
+  evals:
+    test_set: '2027-11-29'
+- id: LINE-2R
+  name: Line second reader
+  owner: Tom Reilly
+  kind: model
+  model: claude-haiku-5-5
+  gate: Production
+  stop: Hartwell Gate use line.reader
+  lanes:
+  - group
+  evals:
+    line_rerun: '2027-11-15'
+- id: NG-WF
+  name: Northgate recruiting workflow (bought)
+  owner: Daniel Brooks
+  kind: vendor
+  model: vendor-listed
+  gate: Production
+  stop: contract clause C-03
+  lanes:
+  - US
+  - UK
+  - NL
+  - DE
+  - AU
+  evals:
+    impact_table: '2027-11-01'
+    exit_test: '2027-10-28'
+- id: NL-ROSTER
+  name: Rotterdam crew roster
+  owner: Hartwell Netherlands HR manager
+  kind: vendor
+  model: vendor-listed
+  gate: Production
+  stop: supervisor publishes every roster
+  lanes:
+  - NL
+  eu_high_risk: true
+  log_months: 6
+  evals:
+    changed_rosters: 2027-10-01
+- id: ATTR
+  name: attrition model
+  owner: Tom Reilly
+  kind: model
+  model: in-house
+  gate: refused at Production
+  stop: not deployed
+  lanes:
+  - US
+  evals: {}
+- id: TF-SR
+  name: Takefen Smart Ranking (retired October 1, 2027)
+  owner: Daniel Brooks
+  kind: vendor
+  model: vendor
+  gate: retired
+  stop: tenant closed
+  lanes:
+  - US
+  evals: {}
+- id: PAY-FEED
+  name: HartwellOne to US payroll provider feed
+  owner: Megan Hale
+  kind: integration
+  model: none
+  gate: Production
+  stop: feed scheduler; bank rows held
+  lanes:
+  - US
+  writes_after: ASK-CA
+  evals:
+    readback_pr1: '2027-11-30'
+- id: PR-1
+  name: payroll readback (HartwellOne vs provider)
+  owner: Megan Hale
+  kind: control
+  model: none
+  gate: Production
+  stop: n/a
+  lanes:
+  - US
+  evals:
+    seeded_fault: '2027-11-24'

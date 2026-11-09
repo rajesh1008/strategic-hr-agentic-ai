@@ -1,0 +1,45 @@
+# INC-2027-031, Hartwell US (synthetic). Times are Denver
+# (Mountain Standard Time). Sources name the record each
+# event comes from; nothing here is typed from memory.
+id: INC-2027-031
+title: duplicate bank-detail changes at the US payroll provider
+severity: 2 (pay at risk)
+lead: Megan Hale
+affected: 37
+events:
+  - {t: "2027-11-16 18:00", key: batch, src: feed log,
+     what: "feed sends batch B-1116-1800 (52 changes)"}
+  - {t: "2027-11-16 18:10", key: harm, src: feed log,
+     what: "blind retry; 37 instructions held"}
+  - {t: "2027-11-16 18:40", key: notices, src: provider log,
+     what: "74 change emails to 37 employees"}
+  - {t: "2027-11-16 19:20", key: first_call, src: Quayfen tickets,
+     what: "first call to Quayfen tier 1 (Manila)"}
+  - {t: "2027-11-17 05:42", key: detected, src: PR-1 report,
+     what: "PR-1 readback: 37 bank mismatches"}
+  - {t: "2027-11-17 05:50", key: paged, src: on-call log,
+     what: "Hyderabad on-call engineer pages Megan Hale"}
+  - {t: "2027-11-17 06:05", key: declared, src: incident log,
+     what: "INC-2027-031 declared, severity 2"}
+  - {t: "2027-11-17 06:21", key: contained, src: change log,
+     what: "feed retry off; bank row paused (matrix v2.1)"}
+  - {t: "2027-11-17 06:40", key: partner_told, src: incident log,
+     what: "Joy Santos (Quayfen) told; call script changed"}
+  - {t: "2027-11-17 07:15", key: leaders_told, src: incident log,
+     what: "Claire Whitfield and employment counsel told"}
+  - {t: "2027-11-17 08:20", key: scoped, src: ledger and PR-1,
+     what: "scope: 37 people, 0 wrong accounts, pay at risk"}
+  - {t: "2027-11-17 10:05", key: reversals_open, src: ledger,
+     what: "37 reversal actions opened"}
+  - {t: "2027-11-17 11:30", key: people_told, src: notice log,
+     what: "all 37 told by email and text to number on file"}
+  - {t: "2027-11-17 13:40", key: reversals_30, src: PR-1 rerun,
+     what: "30 reversals read back"}
+  - {t: "2027-11-17 16:00", key: notify_decision, src: decision record,
+     what: "counsel: no breach notification; recorded"}
+  - {t: "2027-11-17 20:02", key: last_reversal, src: PR-1 rerun,
+     what: "last 7 reversals read back (provider desk)"}
+  - {t: "2027-11-18 12:00", key: pay_cutoff, src: provider calendar,
+     what: "provider pay-file cutoff"}
+  - {t: "2027-11-19 09:00", key: paid, src: pay confirmation,
+     what: "37 of 37 paid by direct deposit"}

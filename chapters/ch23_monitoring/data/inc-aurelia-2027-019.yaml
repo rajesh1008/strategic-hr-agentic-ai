@@ -1,0 +1,38 @@
+# Aurelia Telecom, AT-2027-019 (synthetic). Times are Toronto
+# (Eastern). The scheduling agent belongs to Aurelia's
+# workforce-management vendor; Quayfen runs the contact
+# center. Stop right in the vendor contract: 4 hours.
+id: AT-2027-019
+title: overtime shifts published to advisers on leave
+severity: 3
+lead: Luc Bernard
+affected: 64
+events:
+  - {t: "2027-10-22 14:00", key: harm, src: vendor log,
+     what: "agent publishes next week's overtime shifts"}
+  - {t: "2027-10-22 14:35", key: first_call, src: Quayfen tickets,
+     what: "first adviser query (Manila site)"}
+  - {t: "2027-10-22 15:10", key: detected, src: Quayfen cluster rule,
+     what: "cluster rule fires: 3 queries in 60 min"}
+  - {t: "2027-10-22 15:20", key: paged, src: Quayfen desk,
+     what: "Quayfen team lead pages Aurelia on-call"}
+  - {t: "2027-10-22 15:45", key: declared, src: Aurelia log,
+     what: "incident declared"}
+  - {t: "2027-10-22 15:50", key: stop_requested, src: Aurelia log,
+     what: "stop requested from vendor"}
+  - {t: "2027-10-22 19:40", key: contained, src: vendor log,
+     what: "vendor stops the agent"}
+  - {t: "2027-10-22 16:30", key: partner_told, src: Aurelia log,
+     what: "Quayfen account team told"}
+  - {t: "2027-10-22 17:00", key: leaders_told, src: Aurelia log,
+     what: "VP People Systems and counsel told"}
+  - {t: "2027-10-22 18:15", key: scoped, src: roster diff,
+     what: "scope: 64 advisers on approved leave"}
+  - {t: "2027-10-22 21:00", key: people_told, src: Quayfen desk,
+     what: "64 advisers told shifts withdrawn"}
+  - {t: "2027-10-23 10:00", key: notify_decision, src: Aurelia log,
+     what: "no notification needed; recorded"}
+  - {t: "2027-10-23 11:00", key: last_reversal, src: roster diff,
+     what: "64 shifts withdrawn, roster read back"}
+  - {t: "2027-10-25 08:00", key: pay_cutoff, src: shift start,
+     what: "first affected shift"}

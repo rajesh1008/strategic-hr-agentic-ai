@@ -1,0 +1,34 @@
+# What each organization had in its incident record when it
+# built the regulator pack (synthetic). A section is complete
+# when every field it needs is present.
+sections:
+  RP-1: {name: what happened, needs: [summary, timeline]}
+  RP-2: {name: who was affected, needs: [counts_by_lane]}
+  RP-3: {name: harm and its status, needs: [harm, harm_status]}
+  RP-4: {name: cause, with evidence, needs: [cause, cause_evidence]}
+  RP-5: {name: containment and reversal,
+         needs: [containment, reversal_readback]}
+  RP-6: {name: notification decisions,
+         needs: [lanes_assessed, decider, decision_times]}
+  RP-7: {name: people told, needs: [notice_copy, told_times]}
+  RP-8: {name: changes and owners, needs: [actions_owned]}
+  RP-9: {name: evidence index and retention,
+         needs: [evidence_ids, retention]}
+incidents:
+  INC-2027-031:
+    org: Hartwell
+    aware: "2027-11-17 12:42"        # UTC (05:42 Denver)
+    lanes: {US-STATE: not_applicable}
+    have: [summary, timeline, counts_by_lane, harm, harm_status,
+           cause, cause_evidence, containment, reversal_readback,
+           lanes_assessed, decider, decision_times, notice_copy,
+           told_times, actions_owned, evidence_ids, retention]
+  CB-2027-044:
+    org: Cobbleford Bank
+    aware: "2027-10-09 13:05"        # UTC (14:05 Edinburgh)
+    lanes: {UK-ICO: applies, UK-FCA: applies,
+            US-BANK: not_applicable, US-STATE: applies}
+    have: [summary, timeline, counts_by_lane, harm, harm_status,
+           cause, containment, reversal_readback,
+           lanes_assessed, decider, notice_copy, told_times,
+           evidence_ids]
