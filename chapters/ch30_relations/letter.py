@@ -10,6 +10,9 @@ the record before anyone reads it:
   L3  no reason appears that the record does not give
       (checked as words of admission or intent)
 
+It also prints the letter's first sentences about the
+incident and the appeal, for a person to read.
+
 Run:  HRAI_MODEL=claude-haiku-5-5 \\
         python -m chapters.ch30_relations.letter
 """
@@ -78,6 +81,10 @@ def main() -> None:
                   f"{', '.join(c['L1']) or 'none'};"
                   f" appeal route {'stated' if c['L2'] else 'MISSING'};"
                   f" added reasons {', '.join(c['L3']) or 'none'}")
+        for key in ("incident", "appeal"):
+            hit = next((x for x in re.split(r"(?<=[.])\s+|\n", g)
+                        if key in x.lower() and len(x) > 30), "")
+            rec.print(f"  {key}: {hit.strip()[:150]}")
         rec.note(run=i, text=g, checks=c)
     rec.save()
 
