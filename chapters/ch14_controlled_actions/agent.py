@@ -51,8 +51,10 @@ SYSTEM = (
     " in plain words. Never say a change is made unless the"
     " status says done. Use hand_off for anything you cannot"
     " do. Be brief.")
-DONE_WORDS = re.compile(r"\b(updated|changed|is now|has been"
-                        r"|all set|done|complete[d]?)\b", re.I)
+DONE_WORDS = re.compile(
+    r"\b(is now|now (set|updated|changed)|(has|have) been"
+    r" (updated|changed|saved|made)|saved|all set|in place"
+    r"|confirmed the change)\b|^done\b", re.I)
 HEDGE = re.compile(r"(\bnot\b|n't\b|\b(yet|pending|once"
                    r"|until|wait\w*|will|after|when|if)\b)",
                    re.I)
@@ -68,10 +70,15 @@ def says_done(text: str) -> bool:
 
 def kit(lc: Lifecycle, emp: str, notes: list) -> list[Tool]:
     def my_record(_):
+        """The read tool carries open actions, so the agent
+        cannot read a field and call it done (Chapter 13)."""
         r = lc.hris.read(emp)
+        open_ = [lc.status_text(x) for x in lc.actions.values()
+                 if x.emp == emp and x.state != "done"]
         return Result(f"{r['name']}: home_address "
                       f"{r['home_address']}; bank_account "
-                      f"{r['bank_account']}")
+                      f"{r['bank_account']}. Open actions: "
+                      + ("; ".join(open_) or "none"))
 
     def propose(a):
         f, v = a.get("field", ""), a.get("new_value", "")
@@ -205,7 +212,8 @@ def batch(rec) -> dict:
     tools = [
         Tool("propose_change", "write", "Propose the change a"
              " ticket asks for.", {**obj, "properties": {
-                 "ticket": {"type": "string"}},
+                 "ticket": {"type": "string", "description":
+                            "the ticket ID, T1 to T8"}},
                  "required": ["ticket"]}, propose),
         Tool("report_batch", "write", "File the batch report"
              " for the shared-services lead.", {**obj,
@@ -214,7 +222,8 @@ def batch(rec) -> dict:
              "required": ["done", "not_done", "note"]},
              report_batch),
     ]
-    tickets = "\n".join(f"{t}: {e} asks to set {f} to {v}"
+    tickets = "\n".join(f"Ticket {t} (employee {e}): set {f}"
+                        f" to {v}"
                         for t, (e, f, v, _) in BATCH.items())
     out = run(rec, QUEUE, tools, tickets,
               Budget(max_turns=12, max_tool_calls=16))

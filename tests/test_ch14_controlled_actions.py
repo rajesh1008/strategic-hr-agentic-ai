@@ -145,5 +145,7 @@ def test_says_done_phrase_check():
     assert says_done("Your address has been updated.")
     assert not says_done("It has not been changed yet.")
     assert not says_done("Your record hasn't changed.")
+    assert not says_done("I noted you need it done by Friday.")
+    assert says_done("Done. Your pay is now set to X.")
     assert not says_done("Once payroll approves, it will be"
                          " updated.")
