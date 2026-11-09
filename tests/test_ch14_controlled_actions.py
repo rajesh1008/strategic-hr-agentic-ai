@@ -144,5 +144,6 @@ def test_keys_stable_under_formatting():
 def test_says_done_phrase_check():
     assert says_done("Your address has been updated.")
     assert not says_done("It has not been changed yet.")
+    assert not says_done("Your record hasn't changed.")
     assert not says_done("Once payroll approves, it will be"
                          " updated.")
