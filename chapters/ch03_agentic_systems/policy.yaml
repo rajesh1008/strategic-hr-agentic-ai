@@ -1,0 +1,18 @@
+# Hartwell Gate policy for the leave-booking tool (ch03).
+# Same shape as ats-status.yaml, read by hrai.gate.evaluate.
+tool: hris.book_leave
+version: 1
+allow:
+  - status: booked
+    actor: rule
+    requires: [within_balance, notice_ok,
+               short_request, staffing_ok]
+  - status: booked
+    actor: human
+    requires: [supervisor_id]
+deny_default: true
+log:
+  - employee_id
+  - model_version
+  - policy_version
+  - approver

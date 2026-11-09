@@ -1,0 +1,42 @@
+# _synthetic: Invented for the book. No real person or employer.
+# Chapter 3 fixture: one Hartwell field-service crew in Denver
+# and the leave rules AskHartwell works with. Employee IDs are
+# Colorado field technicians from fixtures/hartwell; the crew,
+# balances and bookings are chapter-local.
+as_of: "2027-03-15"          # Monday, March 15, 2027
+crew:
+  id: CREW-DEN-07
+  name: Denver field service, crew 7
+  supervisor: HW-012927      # approves what the rule cannot
+  minimum_on_shift: 6        # of 8, every working day
+  members:
+    - {id: HW-012771, name: Lena Ruiz}
+    - {id: HW-012781, name: Marcus Hill}
+    - {id: HW-012816, name: Ben Reyes}
+    - {id: HW-012841, name: Nina Shah}
+    - {id: HW-012846, name: Sam Ortiz}
+    - {id: HW-012889, name: Jo Whitaker}
+    - {id: HW-012898, name: Andre Bell}
+    - {id: HW-012910, name: Kim Duarte}
+balances:                    # working days, at as_of
+  HW-012771: {vacation: 6.5, sick: 4.0}
+existing_bookings:           # already approved
+  - {employee: HW-012781, type: vacation,
+     start: "2027-05-26", end: "2027-05-28"}
+  - {employee: HW-012846, type: vacation,
+     start: "2027-05-27", end: "2027-05-28"}
+holidays: ["2027-05-31"]     # Memorial Day
+policy:
+  name: Hartwell US field services leave policy
+  version: "2.1"
+  text: |
+    Vacation: book in whole or half days. A request of up to
+    3 consecutive working days, made at least 7 days ahead,
+    within your balance, that leaves the crew at or above its
+    minimum on shift, is approved automatically. Anything
+    else goes to your crew supervisor.
+    Sick leave: no notice needed. You do not have to give a
+    reason or any medical detail, and AskHartwell must not
+    ask for one or keep one.
+    A balance may not go below zero without supervisor
+    approval.

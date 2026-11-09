@@ -1,0 +1,52 @@
+# _synthetic: Tool permission tables for four agents (ch03).
+# One row per tool: what it touches, read or write, who
+# approves a write, whether the result is read back, and for
+# memory, what is kept and for how long. "as_found" is the
+# configuration on the day it was reviewed.
+askhartwell_v2:
+  org: Hartwell (synthetic)
+  tools:
+    - {name: get_leave_balance, touches: HartwellOne leave,
+       kind: read, scope: signed-in employee}
+    - {name: get_crew_calendar, touches: HartwellOne roster,
+       kind: read, scope: own crew, counts only}
+    - {name: propose_leave, touches: HartwellOne leave,
+       kind: write, approver: rule or supervisor,
+       readback: true}
+    - {name: remember_preference, touches: session memory,
+       kind: write, approver: rule, readback: true,
+       keeps: [contact_channel, language, preferred_name],
+       retain_days: 90}
+ashby_lowe_suite_assistant:
+  org: Ashby & Lowe (synthetic)
+  as_found: vendor defaults, October 2026
+  tools:
+    - {name: answer_policy_question, touches: handbook,
+       kind: read, scope: all staff}
+    - {name: draft_letter, touches: document drafts,
+       kind: read, scope: HR user}
+    - {name: update_employee_record, touches: HR suite
+       records, kind: write, approver: none,
+       readback: false}
+    - {name: chat_history, touches: suite memory,
+       kind: write, approver: none, keeps: everything,
+       retain_days: null}
+aurelia_shift_swap:
+  org: Aurelia Telecom (synthetic)
+  tools:
+    - {name: read_roster, touches: workforce management,
+       kind: read, scope: own team}
+    - {name: swap_shifts, touches: workforce management,
+       kind: write, approver: rule, readback: true,
+       consent: both advisers}
+lakemont_credential_check:
+  org: Lakemont Health (synthetic)
+  tools:
+    - {name: query_license_registry, touches: state board
+       registry (external), kind: read, scope: license
+       numbers on file}
+    - {name: flag_credential, touches: credential file,
+       kind: write, approver: rule, readback: true}
+    - {name: remove_from_roster, touches: nurse roster,
+       kind: write, approver: rule, readback: true,
+       consequential: true}
