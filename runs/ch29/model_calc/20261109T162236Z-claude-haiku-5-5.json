@@ -1,0 +1,1335 @@
+{
+  "run_id": "ch29/model_calc/20261109T162236Z",
+  "started_utc": "2026-11-09T16:22:36.514593+00:00",
+  "git_commit": "6df1a3c",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX001, state TX\nBase rate $33.25/h\nHours: Mon 8, Tue 10, Wed 13, Thu 13, Fri 10, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "338378f3e0f3a58e63af401311ba0bc9af9bb5c205b24b4e271d1c4fd088a2f7",
+      "response": {
+        "id": "msg_011CgsfMo1EL7cH1jB1phvJF",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQStggKEAgTGAI4AUIIdGhpbmtpbmcSDNMZuWUSyq8LT5WWgRoMrtvqyzmS50duYmcIIjAnyI2Sgthi6wXwv6xkkyEh2+VdSQ21XwnK8OghgKccd9rkPy+K5F9Kx2fWPIQ4vG8q0wddKYteY1rR4kjsLVtGW61QfRtYJwhtmFsNUHdUi7m7mjUB1DHQ5kv76aJqCYUXYXA+mks3litg9AmbqzZNh0+pvEGl9VOW91Dp5Vu2HP9TgS+94hbheYdT6hrhDv7BCjW2QGnbxe6cPD/h29vWPIZg3oOBWQCuMFuCB/OZfkjfpNQq9SvqmQy2rwIcSO66I+ju9tLLVTUqK3r4kzakTvZ88mWuhOlKYV4NdPg76ViGybZRCAcFPuvcF3mUpuNxlrhBBJycXz1qpJc+mJyeo64gGWrzN2RNtiVsOUEPw9WGoFff7fSlZLkHqd4VHnxWVkpkJRVzfEibahO4uxLL/Vo/RJO6wgE9w9kIueXOA7wPBEyttr+drFQIVpp/KncWUaCTCRK9nviV62eh3/67xtYsHB8Hy5V1HWbcX33uunQsrLMz85tlqAnQNs+2Ff/KwOI6xEke9k4owBgC7yuPU3h90yOiosrpIx0AZUouB1YxLwLujgU4a1XrQI3iul9CqnIdLSIeMQsQ5DPZks1/0DKh94MxgDgwNxMuVQpbKzGMUc9gkPrn8ImCwsLJu/maDYLH6wOootB2rhUqccOpSldeF/39ZslQ/4Xdd6zZCKQzMtjszCkCP8mWoNOjG2w1ZbwZeWtiaAxuprM1DE/hJaNvazfuiYTmVE49UZdutngun2mXPQR77dT5qAUEIwEyKLGnzIoQEK/hZOB8E/2SwtgnN8QyaIza0ZY1BlL91dSRBLcLpIAmolFUiTfLX29fkz5IYkbd5UnxmxB0+TVa6x6uuDP75fo4XcYmnwxOAHcEAjOsYu9avz0svkRlhkuJ5dPjCLkvqBTAMjWFHcjTV+M4BdOCpiir3eyGKQfFGYTCo5XwXuEEDdwFiwfteOFXJmXIXTMpNo2vD7HkNNjzMVlc6B1LfMjn3kJtqo/sSGxxv8DZAldQKAaJTGp7rv9km5ytybQp78vKR25lDhZ6qMV2T3bRVn7NyfVSsZCfC2V7QHeV6PGJjpOyu1SnHO/lXlz3O6J8XTuJ8+oc8jD4+O9Hr2TcpkIZ4j3jcw5oq/kee+erA9ldj1p45xsH8HFjcgkkLLP6fR9iFSNi3yVi3jWlIFoSzuNrRFNyYbIa8ZdcvgipTJgyM5Xxl9R9ETlgZwQlYPiv0QuDIY0S1IRqLjWyW6HSvmGFGFp9ec4UvnyElRNhDviRW2smb0mAU3eM4+SdVAzRok2R3i98Zxsaebf2B0oHERhmKtwozIv0s6r8B6bgemlhHopzVhAEN0UnttZsLAgDpa/uYhTVcZvqL8r5A8FpGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX001 (TX), weekly gross pay**\n\n**Step 1: Total hours**\n8 + 10 + 13 + 13 + 10 + 0 + 0 = 54 hours\n\n**Step 2: Straight-time pay**\n- Hours pay: 54 × $33.25 = $1,795.50\n- Night premium: 0 hours × $0 = $0.00\n- Weekly bonus: $150.00\n- Straight-time pay = $1,945.50\n\n**Step 3: Regular rate**\n$1,945.50 ÷ 54 = 36.02777… → **$36.0278** (rounded to 4 decimals)\n\n**Step 4: Overtime hours (TX: hours over 40 in the week)**\n54 − 40 = 14 overtime hours\n\n**Step 5: Overtime premium**\n14 × 0.5 × $36.0278 = $252.1946 → **$252.19**\n\n**Step 6: Gross pay**\n$1,945.50 + $252.19 = **$2,197.69**\n\nGROSS: $2197.69",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 613,
+          "output_tokens_details": {
+            "thinking_tokens": 263
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX002, state TX\nBase rate $24.1/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 10, Sat 6, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "d997d7b65fa8833c76c6d1da1e68a11022d8b947529d8ca42c0b0f573e3be52f",
+      "response": {
+        "id": "msg_011CgsfMzt6UUsKfyQFerxxb",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSgAcKEAgTGAI4AUIIdGhpbmtpbmcSDLpNSaajIjEV9OnGDRoM/9voVxNa5Mm4dcrQIjDKoMd3cK/OUXyWs1IrmIUE1j9dGLwVwmby0B0/PRCZuwQrUA8anQhpwMab0mhpp6cqnQaWrTr70UgQdGGuSXREBKiZV2e7X6m3lEVuj2m+3pN4hNrjQ3zWqQHHIfz/Uhk9puZPAb6zkThzQ2JvkrgeF76Bm5BpUth8xe+q+NIJBAxUbJbf+yTrQ/e8BjHRqTO7bfEzMHi4NKoN2JuH+6xhC514YyseWM++5F9d6i4tef3HbVLyvkr8dlKlXpLYHQP/EEleeK+YP1Ag/WBibvhrU73xzvmHZ94E//Z0aPbg8X0MrtlcFxB6i6/mtTiABlbOhN28VV6UXUW2PAjdS3xZfL1X6oiekfcTQXXZrFZbrPre5wHrHX2c3VpMqIu+aqqxioFde9qArV0pdNLyXKRgJkzcuQ3FWuAK+SB8XbDYQ6I89eegVFX1q+xbLo8kYe1772p+vDrdao68LooYhuDQuqgsYn7dwyW6QBdZes2FTKDLJo8mHMRPx4tzV+eC+K2/+fYtxiCtJVhs/Xfj2s1hsEUzvUGXH/vT51XjR3MIlStLOoveGy6xvhwwWMLVl//7SZs33WQNfeEfSFUqNsMqB+pnQkfNrNNqMkw4PphXbBO3rlVXtZ11XyUdnPwrNIzRVGTtNOekBgzD60O8gaAwOB4NPsPNCqlJqygRY8L3uh/wh9WKlW04FLayiOojq/ePCoCsXpM9MlexulmAHe9VVLJ/XQ8hL+RWTw1ljnm+YeaXTtowAFRTniKJuH+TF9aguK9seeaY3VFnZXkD34dNTvd1MMCWtVy4zcQ8abjDQ0+21OTvmUMmWhvCv8+bmOFFJaMfqFzUuxaOD3D8y5jF8VkfyyKmz3fzQpmasXTcUGOcNqX/rq1uBhh/qDAalArrobUCbfM03bUKJuGBTmHRxm4T6Own0hTJJ0SKmrSCGmIdTZvSgfmTPM5x2jME2lNv8g0zGuWKC6QAUifNO40dTwFEYgG8GK98xfQR2U+njS39SifeGtkY4rcdpHwklAReIqQZfeX94LzbI+LkJquuP6y4Xt0zp6SzVNsIUldxn+IOM9+gA9znnAvkydsrsXSIQB3G4wiKaDsSBAmDk2uK9reULnkG/qPQV3fSSN11txgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee:** HES-TX002 (TX)\n\n**Step 1: Total hours and straight-time pay**\n- Total hours = 10 + 10 + 10 + 10 + 10 + 6 + 0 = 56\n- Straight-time pay = 56 × $24.10 + 0 night hours × $0 + $0 bonus = **$1,349.60**\n\n**Step 2: Regular rate**\n- $1,349.60 / 56 = $24.1000 (rounded to 4 decimals)\n\n**Step 3: Overtime hours (TX rule: hours over 40 in the week)**\n- 56 − 40 = **16 overtime hours**\n\n**Step 4: Overtime premium**\n- 16 × 0.5 × $24.1000 = **$192.80**\n\n**Step 5: Double-time premium**\n- Not applicable in TX (0 double-time hours)\n\n**Step 6: Gross pay**\n- $1,349.60 + $192.80 = **$1,542.40**\n\nGROSS: $1542.40",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 502,
+          "output_tokens_details": {
+            "thinking_tokens": 167
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX003, state TX\nBase rate $36.9/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 10, Sat 6, Sun 0\nNight hours 30, night premium $1.75/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "149f143a4f3590e13eff752444c8a44b6a732d3c3e9a1bd1bfa10423a14e9f19",
+      "response": {
+        "id": "msg_011CgsfNAtN9cKNqxAA8n995",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSnQkKEAgTGAI4AUIIdGhpbmtpbmcSDNc5gZvlG+tMbbvExBoMm+PqRxDQ9U4nKcQxIjDXGrc1wb9jnRn6QxMngRGmpFvmNaTligxeY1KYxvOg0s4FAT4gHPeb61fowS55PAYqugjUWJwkgpwb330AUzdtwbQsuedI26GLxwHj7qwJKLC6hT9MsCjupGp2aKo7ekEYn5N6ZHP044Mtrq0xMtImkpTNXVQxXJArqpF3GBJHdE18v3kop59l9qiDojJxCOx3V+xBoedwzNxN6QuIYCoxnLM2KTbUyUq+LE0tRpocJx5s2ses6Pb3bNmo8gyz/J4+0Wk5ufCFoS1bfZmIkRvUf1Ft/g8dw8Cc7ASuDPzpn+wyz1J4gqpmn/vnYwXyFHgYYy4wpIKnbO9WKigFvTgcRvH30KiuRdlhJnBlb+xGOisTVWWfrAM/mSYoaDECXRqV99FebC9PWw4D8lV90JFXQnsz1qGMAe94aNQ6NgKiaALY2l0bhzXDfkXRBpdjrEAPPSiIIptCX8RU+697nr0zhlpHodH8+tiF52KySu8ZM5bLHQ/gFLhPU+jkCBvRjS1r1xjLlxcoyqunDIqnmkZDAfw2z+yF7fN4VYS++Mdc3kQI032VdH7zESqF5HNOsuKgqHm5bpGa6OQqR+y7eD+n4XBebY9Fs4tKLmcJSwj9qjP7bixVPu5/TUOwPkd5FPnMr/vL8/H8bk4HbCVj+6HGdB/gWnLnmA5hojaq9S0Nal9O0WI/HhwN7MNHB5GOOhZiDamaGs2H4c82DUuGNmPNNlbaunrlWx+JOeC75iEpnGHn2KEd6Muie8WomHaTMydOWrbYlkRCZ2CZqb1J+6IZGqy4kX5P7SFaeppz91ZqEtl8o46mCD6jkP6iEWRlu5+75UFX8QWnrod5x80dMaxMBTxrKorw4MDW3F/1TNM+IFFmZ7jaZWU9HNi38kePu976ACkkmAIbm0trBzeVciV+yHPRyFXQ1CUksecKAvHhVEyLeLl/naWig7crWdJzIuYcgPnoDIxVsj5OgZz7qdZvS2u+rnaW6mXT+OlsN8cDOmClfZwe5uJ2NkUkWEIvzU7MxE8D8I0zjo8a5Ih5N7XGNW5iStNlo4uk8BCIuXnqSJTBUknUo2lf0D7VOQmPIqp3/ctcFlSWi74qRaRJxmi0yAZdeqwtVg9s0CXtLYTFHLZ9j9krkRp/psw6Qj4IFB1n2peI5BDAsb2oqU1dk3xeDlPLl9CDGqIteptm7YUPDwrW3v4NZYUicGXd8SJOC/Msr52MuKSprAMB8JZaHWbfT6p9zkgmVZ1XAdbD+295TfXireXoc1v1wWGO0c7Qa+lhdadBvZDIw57YHHqMg1AYd7VuJDAYmLORxtTg9WjeTjPzNfJ1Ro7AFApfGztkUZAw/BEYjkhSKPaz1kcW5owyGtbgO90RlrlKl8AHCuWstdut6YVKbRItJUd4c6xrqXBOL8e49pSkPyi2sZCrVad8O2pdcLQqfhlK0KHgbpojni0vmXM3hEz/shbyj1k57ozDKjR3OQV/drnzRlDGB4O0uK0uVMEVxpK1RZ450BgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX003 (Texas)**\n\n**1. Total hours:** Mon–Fri 10 × 5 = 50, plus Sat 6 = **56 hours**\n\n**2. Straight-time pay:**\n- Base: 56 × $36.90 = $2,066.40\n- Night premium: 30 × $1.75 = $52.50\n- Weekly bonus: $150.00\n- **Straight-time pay = $2,268.90**\n\n**3. Regular rate:** $2,268.90 ÷ 56 = 40.516071… → **$40.5161**\n\n**4. Overtime (TX):** hours over 40 in the week = 56 − 40 = **16 OT hours**\n\n**5. Overtime premium:** 16 × 0.5 × $40.5161 = $324.1288 → **$324.13**\n\n**6. Gross pay:** $2,268.90 + $324.13 = **$2,593.03**\n\nGROSS: $2593.03",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 633,
+          "output_tokens_details": {
+            "thinking_tokens": 319
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX004, state TX\nBase rate $33.25/h\nHours: Mon 12, Tue 12, Wed 12, Thu 12, Fri 0, Sat 0, Sun 0\nNight hours 40, night premium $1.75/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "701f4ccfcb1a94d0d461336f4a9e4f05d7c05c081b231ebb0f0c8ae2536039c0",
+      "response": {
+        "id": "msg_011CgsfNPjX7ZEsGqbgdz3Ke",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSpQkKEAgTGAI4AUIIdGhpbmtpbmcSDL8CDwVBGNqJyfSreBoMbvfDEaMPa0jgwFHfIjDGwE1pHtN0xx3SDS5QtR6gOgQndsAg+gLKtVn9CBL6jcP6KCIMZ5dlEV0v3b88I+IqwghLvJQZOvKl8uQ608BKl193ra1AD/vlXiM0pRvfNTz2DKkV0z7JBuyT9PwzRP5i8oNrGEdXj4B6VG+PAqO/6enrfn/1MDCogyCaTFaTOhSE3WLL9LZa1FECqiFw1iVfk2slhYAI7Je+J72Sc3hOY4aoeORij9y9M+syO0jtUMMJj9iI0eQYugKHL2TLtaQkCHgBH5LpmVT47xFHJUznmWIUb5dUyONV5U6zziWHqJZIp5G3r4CkVyR4Y8aKDvUtrVZv3hlbWsI1GxHERlZt0BTqXgTEV8AlXn7hEA/vBT5+tU3MZSN9LMILWGHESt3SO7/u8r9rawRgbIPrUhrRAK7ajAzRpSnvit6dmovquT2us8WE4R8xENcEWdqSY2woCZZvjFuUd2Vzbds4dybbrgPEU7ecaNImNwA8gkjNhvZy8tYP0L0KxnXX2smyscjI+JJ53PBRvId+JZ23tswJIXwALchq/1KypHyI2jIqBj8T22yL2KKGfLrVGl1G2LWCaqgJbraOJqFB+zkVji42nEHBWTe8zvDy9Jw0gVMcQMo1bnfbFHLY9NRbleS0JEJxJID1iGunZybBsyWyqQcvMly0Lzd2gGlBWyA42oLCaU/1ZQ9FaTX3iypqXI1ijQHD3krtwuiUsqCKLroht4AW4CtFgONF4x3cgt598c4fG1DlI03VVd1lEIZc4ZpFXWB5c93PqJCfs+2a+KRF7U482O7szTnPmluIgA1znW2cvP3K8XlJ1j3QAkDSztUdNZbKVoRQNqEn1VsXV+ygXgxNdXdgu9XtqXMa2FxiL1ZzMJscvKa+Lxn6egxstNzZYoHZfcTMTNGTtdkVz7Qri5SI+jP7/P2ZwJCJiyEqR0tKM/GyOjyqjTjCuNZVSnWnZ7NJwpIb3mEsXmXP/i+eSG9yUMGkkZZMUI/hWEQrvi8a6ppyZmcn5vjToggbGgVjotGk/JZ/U7ZS+dBh5754oT0voujY7RCH4PHnI/9tlSAAd8chYUITZNZ+vBYhE7HKxsbSjIr2tVkbtFJpYZlgjxVYIZXFz2BHdxzGm7k4eF++W7v5xvoHI+zG3PN0D7S4W7Shjz4XSu7EC4cid4ijZlC++5H2kDkqDXWJSijoCiezwSVj/It2sE+Lb/NjPA1Bd1oBjF2Jwx8K9KrzXWXH96cLVGJBXY2CCAsx8TQh/WKmDDrzlpYMTjPjBcj6YRCNUXTBGgeX8o8NrTwvu2iyZp+UNehLUIRTP7MGr3AkMMkshR2MGnVtVn01Lr++G55oyEdVfsUAumfJ280YjFD71x2ti7ZUPhDtFbnzrnkyvvT9ioR86yfQmQ+kTNcy6TvIdDNvELefSBxdYJioxH32u3mqL6D0yhv/fy6/PQOYbymLMVFP4/ApOFknwOZTnqks/M3zjfnfCXSGIEKPlt1mMv6twOxV6Bfys11t5ZCJp4Ql3aDkQGDuGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX004 (TX)**\n\n1. **Total hours:** 12 + 12 + 12 + 12 = 48\n2. **Straight-time pay:**\n   - Base: 48 × $33.25 = $1,596.00\n   - Night premium: 40 × $1.75 = $70.00\n   - Weekly bonus: $150.00\n   - Total: $1,816.00\n3. **Regular rate:** $1,816.00 / 48 = $37.8333 (rounded to 4 decimals)\n4. **Overtime hours (TX):** hours over 40 in the week = 48 − 40 = 8\n5. **Overtime premium:** 8 × 0.5 × $37.8333 = $151.3332, rounded to **$151.33**\n6. **Gross pay:** $1,816.00 + $151.33 = **$1,967.33**\n\nGROSS: $1967.33",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 594,
+          "output_tokens_details": {
+            "thinking_tokens": 299
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX005, state TX\nBase rate $27.85/h\nHours: Mon 8, Tue 8, Wed 8, Thu 8, Fri 8, Sat 0, Sun 0\nNight hours 30, night premium $2.75/h\nWeekly bonus $200"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4d426cbab100f5cd8d38265a56c334a023ccff558e78a484a51fdb2408c4d0d0",
+      "response": {
+        "id": "msg_011CgsfNbpoVRoUwCLR9oGbF",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSsAcKEAgTGAI4AUIIdGhpbmtpbmcSDIoOmG2HTKRdRza7gRoMNcyu7+Jz66cPGyavIjC75/c7/0WaSNv5PWNJzpV9B26l3bmaM/9FV73SbzDT41QrL+dssiCYrt55a2MksiAqzQbWWamSiE6GY93BFeosuCT0CONXcQdmTdSPiZv/TnEHU5ymA0AFQe0z9FJ5m0rf777fPtg23opmm/tMWU2iNG+Wy7yQKu0sWpv0bVSaPuxY/LR9a+BN2qtxRGIBoDTYYCvrFD141IcbXgDmcT/r6IiYbx8x5o8TOSWLRTeYtbZ5eAYmxfmpYdKX46qcb+lUzvmUR0BwzUdWMhsd2jx3+lRtoZCdN4umqDhY9jm0t2cbSD+zo1zrQBUmvRHw2oOnmQQ8wzuD60cSsxr8D/1E0AoiFFAy21ujO2v+MWY2cCEtiZSH0t/sM3foWcwtKnFUguz9Cjj0j8eL1V4BRFMq2OmpZ0+Fy0KULNJ0aq5pev9qzQJWJ6ggJZc90aTpZu8sp6Ddz2XxH+CUnbd5CQZ0lCleCzpMeWVF+T3N+b4mtZerE3HRm/EFTLw93Ii5oG1Dnw7RipDQQ1DHyPx8SlqYm2Oz0yg6UIgeraXfZF6OS08+yb2fC0c/ArzKm06xPsNan06YIcrplDWj9yxy+RisurEvxsAIqX3ApdzvaBnp9j5ieURknOPaK2dJjszW2srmhHCjC5g+6Jx7XzvkWUDPUEqLAvArG5DcJWyGxl2+8my5XpWFlzUZOCH+XlFeINA7awDSDcDzgIw1p+hlKVeSpUkwJI1eV4tCJbKIEuv/RZLFpDbaJa0Lk3X/fPFUM66xnLdg4zM7xhZ5iMtCCKMwKR27UXT1fYbES/NwXyrLghsYwSlK6ay7FvvQssiWiWL+LFVAikRlXfGpo4Ap9cm4rM8C+1gOysO3uU6t3ORPrOLDkiMxYW3/DUKMXYEull7naY3PxV5ClI4ZSbBa312p+m/GthzIM28HPh4JO9zGmUexR1ueNLygUzyB1XcD8SAsUyq3ywLOSppQ+oDhaeD4kCjP6TpBUwLBrOeGgbCgHr6f/iQL7MfBUwUXGAoMUL3oI0Uaf5n8UQo1I28AKujQBgGOH/fkehMXUfLxbzoyaZSZBcl3eiNZQsPDvTmedhOuBOWhHFwKQv7RLWAgnBFVV+0A6IOjiXtb6meG5YtPyNpVXj7bnXzriP1rEOEHw+Etrkq2dRrCMzerrCWLn38qIFZ7HqBdobvFpwMDVmJ9vhgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX005 (TX)**\n\n- **Total hours:** 8 + 8 + 8 + 8 + 8 = 40\n- **Base pay:** 40 × $27.85 = $1,114.00\n- **Night premium:** 30 × $2.75 = $82.50\n- **Weekly bonus:** $200.00\n- **Straight-time pay:** $1,114.00 + $82.50 + $200.00 = $1,396.50\n- **Regular rate:** $1,396.50 / 40 = 34.9125\n- **Overtime hours (TX):** hours over 40 in the week = 0, so overtime premium = $0.00\n- **Double-time premium:** not applicable under TX rules (0 hours)\n\n**Gross pay = $1,396.50**\n\nGROSS: $1396.50",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 441,
+          "output_tokens_details": {
+            "thinking_tokens": 173
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX006, state TX\nBase rate $27.85/h\nHours: Mon 9.5, Tue 13, Wed 11, Thu 10, Fri 10, Sat 6, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "d6aad5a144fff5d1933f59caaf85fdc8727ba748bc1e77590012b636f896f3ce",
+      "response": {
+        "id": "msg_011CgsfNmyz6S8W5wwGHj6CQ",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSpgsKEAgTGAI4AUIIdGhpbmtpbmcSDGdHfyFq0tfEySbKQBoMfbUs1mStOXU+A0viIjDxnYOgO1Z1sbAdGIlV34v91hPshhCiX6MEFJlXKffMBRsZepCcAptY63EBoRu8Xwcqwwo3sUfo9pteUrWoT2l2ZVKQYVNF6ao25e+cEaEWqjmK1BSPysLB9907vV625GzVQjjIpxmW3+M96ZGp0B6UoMNfGsodmVK1VUVNQWdn3mAMwJOBFx5CI/ArqBl2fmKQGivVU7WzfyqEU9QSrUF4VEhqQ/hD7Rs2rARVBZTcfFC+wfy2BXKYvpiFmxYLAmXFVVVzNyB5r8B29pLSrNfmNScH7ShXT0tIpJDjatCgYrk9EBr8FDblGhhQh0ldSdGxLIfh/57XUtqlqfyl4XYFzE/tmunCArSyl3x6tV6oLHifGs8Bmi4bcTC4R+AYvnE8LG70Do02IibG19TMDHajBiSbblxmQZt6Tm06q0/y0XKaTwhfi+nOp8gfFIktRiKYs7UOMtmjmvBkjJyMyhmz5Pb095+0eJtIff6+zCuBz3ONjgK91VyUwY6oOW9HcrA3zPAnbviIS1y+fQ4fclJItTQUu0qMT7AIu6160pT1VK3RB3AnSdMbK0WOmF+irem1fXv8CjMdgih7L/T5uGLeTwnn5Uka1RTZn632GjwLC89MAN3H0QIAn+vMHETTRTSNNRBCyguHsLI4TA2CxV2RJiWUvHxQkFbPmmurUEBKzBRqYvIYCq+wquyBPsYuro3LcxI4isNfP0Yi+XRKM87ZLhNVxu9l4gQVo1/f3SudrcHUfOoNOJj69Yj1Qo4hLFk2iqlZpD73BwrigwTmReLF5ypYoqS4Rn2IFHAPw75LavhQ8p6LZu4lhmxJBwP3+uExOmybnyNhCdcKlJc8wnrm+LF3rWH0ZpQW19pwekQpa92h9m5HgQyEyVIT292vj/PHqB0u6WcA2XN8JsaNyzbldDIQMOqD1pB2JHDzVspHc+pW/hxwhD2wJ9xtXNjj975h2famqIjtrDPu1cyiPbIFynJvFFltQO1k90G0rBkMwfH+ISgLSfSRUKJ1OJ1TWGZPSJ9R/+il7lacGka/Ypdd9l49KUmAqzPQfuIhGOjK8iwQ2f7NTYtj3shV3FrUIJ/61KFYY79mVhgGnrI8z+EJuupurWVOJcje+06iXkti9jakrw/CJxwD6bCEpsufgu1yYpscDDEWBGQLqOJREYceHQThqoPPb4IKw+0i1F2yIYuM3hp+TvQGn8nE5+WTuaaubV9bynY71XmK3/evXCRdhTNcMdEqbk8K/DAZcrF7jI5wbbIH2Mom9zwsqgzflV17lYmwvQLptDymqoJGo8WwQMvhHxDKJKFRxQ2XXmpH5Gs7uAcVC4dLS7NCOnluAmf7B0bK5DHW8evgkqCkArbskr/Ev2r1K5ge9gidQUNmIiECZJdsA0jaAWiIOKTTqul+n3RchWlvYLMVl2asqQFbquBAd7wX7v+OXK+2R/u3Z0aGo9xaMM9YfndgduWgEOdgGati2ERDanvRvY7YgtZsLE2IvglwosdheZYA3Y1iYQjgtftyM6kz0ztzvFit0suqsJkYhalhY69veZaDGIWlFaNw2niYa3H+xxv4UhVvznE/WBjzvjCEaifwnOlYMJDK/KM6e03D1ICK4LB/WURLkj2Unu7m3MCRZwWePvLzYQpX4bSN0dMTVVFpOv+W5iBgDSVKIuGu1qmbVf+toh5Lnn3HV1rtTgC3lQiC2t44RTb+AU5VZu/EPrST/k0k1ytJyITfF/kv9iihPWg0Js8feSgSYNnS+hAp6zEimwnjReF/pcn8PpnNrU0DIUcOXlWSFWvwvOPvNPVlG5Edoe/xsiGZ+sugSW63v7xRndOD+7NC0vJPwdfo6yLb/ccwUEryJRaSi+8YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX006 (TX), weekly gross**\n\n**Total hours:** 9.5 + 13 + 11 + 10 + 10 + 6 + 0 = 59.5\n\n**Straight-time pay:**\n- Hours pay: 59.5 × $27.85 = $1,657.075\n- Night premium: 0 hours × $0 = $0\n- Weekly bonus: $150.00\n- Total: $1,807.075, which rounds to **$1,807.08**\n\n**Regular rate:** $1,807.075 ÷ 59.5 = 30.37100… → **$30.3710**\n\n**Overtime (TX, weekly rule):** Hours over 40 = 59.5 − 40 = **19.5 hours**\n\n**Overtime premium:** 19.5 × 0.5 × $30.3710 = $296.11725, which rounds to **$296.12**\n\n**Double-time premium:** None (TX has no daily double time).\n\n**Gross pay:** $1,807.08 + $296.12 = **$2,103.20**\n\nGROSS: $2103.20",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 816,
+          "output_tokens_details": {
+            "thinking_tokens": 464
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX007, state TX\nBase rate $33.25/h\nHours: Mon 9.5, Tue 10, Wed 10, Thu 13, Fri 11, Sat 4, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ab94fc0bfa2381e697bf71ca7dd5d4972edef49110ac3a3350e4bdcd8fc9a58f",
+      "response": {
+        "id": "msg_011CgsfP4J1YaEGEwRcxHhbA",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQShgoKEAgTGAI4AUIIdGhpbmtpbmcSDOnvzG9LOGLq2W4/IBoM1y4uLLWL5ftWHiCyIjBIiH6Y6XzJRrkXgeG3RgTAZTuQ3Cbzgd4DDgPTmboD4tZe/Cz885jzYCn8/gDDl0cqown1rPTwUjRdemtgbPyAZ+GwCk3eGIPEhuDC8P2f9SnGYIOjUrkpsSRR2ADknosfXPdN2MaxmK9WiG7LpOGUflCpUc6lxyzNb9t0sFO+oAm/Jbi4BVJMMKHZ4BixqCZSRrpAF+f8Sr4F7d/e4NZdqJbu86/Xnstml3LY5r2Nj7h0e8TDE77L/emPeKHTyEFwP7BWDr1zyZ+5vDNitrauun3ga4Z1pySQR9c6/d5zFe23ZLN/YZjduer6Vfs0mb5vMpQZAGjLURsGVRPhke2oThFWqober0KgU0jplMQVEZzvv5/eOyfv5KWmZt/q8O0oUzm8wDudPw/sd7tBOGEhqKXVY55b7IZDbB8zHmn34welp6T7iqafdEWXHJ755Cm0BdVtULhsG2UHN/Nukb1CUwZTMgxek2CBL5SkKGvJDC6OUUB/S7ykDALnWQIhbr9ALTbbXQXTT2qGkkYrWaO8dDO+5vouSlLXtf0slCU075X4s+Dz1+3krv3eCCxnGkxyQTBVSkTSN53YICU7lk2Y+6Ms6fecrMmbgvRaTIpiHOBgZFWckfeXebNUNGEam5LG8XahbBuU0kGKZcoXGhtj99BxfXyyU2USqhTcLn+6fpE71Qmiu53F6K+LwfpE4Uy2frc/VUnKD2zBYggNExBD07Lc0L3W9Q3wyPerq0XFIXVI6Ao6V5VlYjjMhmOM0XLWRh7PTS0QVbSSti4gNCe+EUcByhFywLixlvoc/2he9FuafsdqNiXn3Lyaet9VQsw21gNenWFM8Y3M6iUqbdxol5WOICx9TbwRzhOwHwI9t2zTWd5YVym3X0J0V9lWz4M67YSMHBXAroZC20O8UATSrljGk81Ke0UfRuz2uh4z0OnSLHYkRP0GqIHJ/Ag5Jc0BdAqhOoHufh1oLrtesRWA1OgfZG5QjJk+NNy5+ST6uf6X9zx5noVO30ln+z4E5cx/e5gefT+cyieMAs8BNIaN5lXcLkv+FLUuQOf0Ib55KWXuZaB2yb1LOu7cQFbG1qIDvVc7tzO4dc7kjPAmzPcbDwZ/pVXcDdzeSwetxhNM7zlG2siG+ck+3ED/fYJ5OhPCXgZrWvlUXVfBoHQwjV1ORgMnuuvoo9y/r7BIB/7YoPfwSAeVUCx5tqltRr+uflzuGgkJeZMTtTxQ6jC+5DKBZLbrl6BQxiH4l2YzxbpJfzNqt0bPZEb0JpdwsNQmODght/YdMjrRGKkLcpLLacgOdReMvJpsIeVrQO2cvdNstaFR+PfepLgfxEI3eT7K42J5cGkr+JNkjpFFv3i+RfEVWBwaOvxrigYV09ENvZdPQYHPbEzjYvOyPIAQ0zmCf9/20wEXvRI9eiiMwnAXHmTotVTHY5hRBFpKBJU1ZA+RShHL8fQRnMJMmT7pypiqsggGFB5LIg7L0cOoSwMPzGVFIC7SZxgpGJghjjtmwis2vakyK1It9VHTg1F+2puPV9GNYToIwNkkvL4hh5wUXYc2rdDALk8QMR+zkKHYUTD3VV/G1Ny9laQOWt6STkTdl0nQbvXnTMnaxkQ58sk394/OSwemOVBQmQkzVi+jrup3Tg/Rf+tb6RgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay for HES-TX007 (TX): $2,202.82**\n\n**1. Straight-time pay**\n- Total hours: 9.5 + 10 + 10 + 13 + 11 + 4 + 0 = 57.5\n- Night premium: 0 hours × $0 = $0\n- Bonus: $0\n- Straight-time pay: 57.5 × $33.25 = $1,911.875, rounded half up to **$1,911.88**\n\n**2. Regular rate**\n- $1,911.875 ÷ 57.5 = 33.25, so **$33.2500**\n\n**3. Overtime (TX: hours over 40 in the week)**\n- Overtime hours: 57.5 − 40 = **17.5**\n\n**4. Overtime premium**\n- 17.5 × 0.5 × $33.2500 = $290.9375, rounded to **$290.94**\n\n**5. Gross**\n- $1,911.88 + $290.94 = **$2,202.82**\n\nGROSS: $2202.82",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 674,
+          "output_tokens_details": {
+            "thinking_tokens": 343
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX008, state TX\nBase rate $29.6/h\nHours: Mon 9, Tue 9, Wed 9, Thu 9, Fri 9, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $100"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4ae771c7bc84ac3f366255a431f8629781b3dc8a34742543afa5211d1af5a415",
+      "response": {
+        "id": "msg_011CgsfPKqAHwkrogYDKjHQe",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS6ggKEAgTGAI4AUIIdGhpbmtpbmcSDKwSywmnMTF991UMABoM2bnhx51clM9oyzheIjAFAPU20jwNBD7Tpi2Ial4mLPihqTOsa7Zh2DBFTeLuxaLz/GeGHFTVPSOffs9CjmAqhwhv1VzdfrkPTFvqzl3P7ngu14OVfPgUdKCVW2lxh1/qOSSsikqdh6knERSXGW2Lsb3s6UC9Pi4tGcdv0WMdnBm0YfRHmDuS3OKg3ZGQD6lyoONSsNVzxAChBVWeXjFJiqF/+yCgWFKgKi7naXvMYMbPEeunIuPsFaZPuQwSDXGZf+oDaLAmXVqXU5HUj+H7SWXCKL3MAwBRaKotrNUzBC01ldYXJossjnh4npVlOflTMcloArpI05GjCD5I6o6OGAAMb1jZUMpMmeyt14cDHkSGfZ2+enrGKJRsep4yfYEJ+BuQS1See2Q0+KZ8cRXwHFRaPtWR8IIHwJy3IpDFCL7j6oajO5JKIR8y7KA43N+MFb3dutSjpQZ1HjjTy4A69PwIUOvH3d4BEPQq3xinRkD9OWqQTJk2LZCwEO8at5338vy1PzYfHB31OKIcLcV+AB996s0N33AdDFBOHMWcb+K5zPfJLbavyz2TxdkvN/e+0D6sWlyGOXWENCGiJN8nlg1JWhArBVjtpVErv+mD6bx7O4FB2LZVwBTG1P9UbNoM0ji6UkUvSOY00jBe1fCDH0V9HNr1Q4MWVSTKcy3nLvREJf3tBzxb1IJwuD7NAPonTy80wGmSMq0UtWmH1FKnlsIwtz6egcS1p700FH2tfZHEZsj328zhnL7Oe1v/cby4i0uBuTMwvkh3nA1/PnaA6Zpv8RoXSGop2cIclI/dy2BDq2XgTYBWfHKe+bLOjtB4kUourBHXfBNUc2mzwXNJgYwJbQ4BvNBfN+CThwWm1QUm8UK1ard7XAPS5S0VOiRRedZJM/Cpu5fuNPcVblpgV4LAnJF67YVjJZR1HknW7RPcmZfS0wb2xt/oriAL9rSqzZwzl7D5CDZXWMens4aSnEtN4y4d5mADCJ+qDhWIhCgt+QNH+bONqqeKclrriX3hTexgWujLGG+tWEfjyOPIX7Xs0nslENH/YBwbM9SrZuILaugVzaeVhKErP8/isIZws7MYX/OMvZXp1UDTa1NSKlxSlKp7JOHGOBrrOAtMvzaozzqGl9XQL/ovY+ZXIC0urH1XUypxk/J2BFLfEaj2qT4ZIqruPuhu3wiSC+zWiIcZ91tqTO4YgnJ+bXrunEVR9sobXx/wv+FCMXtWwP9eJQcqGPrl45958c3Vn7bMDtu2zCFRiPfgZV6iC806r8WlCGbk0BSLtGx8IUL1s2KdLrvMzXWC15Q+TEJh1ExRYg/phlOvh9Rr/hk8w5MVYXtMKOd0bVtFTFCvAYBE2Lpt2iwNExXfiIhOndJO3QopZ/DiTbN4KLV7lfUmkLNHpDMB9+pbIq+wy5sI22NP7zEVhn3Pk5z4cpmxIsvrrfHThpPVtD7Nd/lxRxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay for HES-TX008: $1,511.56**\n\n**Step 1: Total hours**\nMon–Fri: 5 × 9 = 45 hours. Sat and Sun: 0. Total = 45 hours.\n\n**Step 2: Straight-time pay**\n- Hours pay: 45 × $29.60 = $1,332.00\n- Night premium: 0 hours × $0 = $0.00\n- Weekly bonus: $100.00\n- Straight-time pay = $1,432.00\n\n**Step 3: Regular rate**\n$1,432.00 ÷ 45 = 31.82222… → **$31.8222** (4 decimals)\n\n**Step 4: Overtime (TX rule: hours over 40 in the week)**\nOvertime hours = 45 − 40 = 5\n\n**Step 5: Overtime premium**\n5 × 0.5 × $31.8222 = $79.5555 → **$79.56**\n\n**Step 6: Gross**\n$1,432.00 + $79.56 = **$1,511.56**\n\nGROSS: $1511.56",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 648,
+          "output_tokens_details": {
+            "thinking_tokens": 295
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX009, state TX\nBase rate $36.9/h\nHours: Mon 8, Tue 8, Wed 8, Thu 8, Fri 8, Sat 0, Sun 0\nNight hours 20, night premium $2.75/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "37b69782064a5708fce8f0c86a38ecb0744a4f1ef6c4e34d691a8365059ccae5",
+      "response": {
+        "id": "msg_011CgsfPYNTfv1gma3gQGhsf",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS/wcKEAgTGAI4AUIIdGhpbmtpbmcSDB0aNGUkQhdh0KeFqxoMhMKYmPEchYXIy3ljIjBbH+BhygHqYPPSxvvmaGnl1gbrn7Bum94G9GgASCO6uF1uWxfDR3b9vFYpbj8P2JcqnAc4JdRePsD/W5uP1ATw02zoRQKuQ0u3pO1cI+3yhrVHPscHk2JAnTT0VFuK6+4LJFP44eGdYO4f39qhdj7wy89+RImSbPmp+rgxWnApmpxcK5bi7sqgTSLuBr+Ae9FhOLVJEH4H7MayaMOOQTVgKwJcaAPd8qXKQ/0Yuza+ALHwQakrB6FTb462i2lNVgC9cph9hVPdfvSOI6ucRmF7TM49f5OYFE+buLVQuGBpT3yMbtjennRqp5Xc/BU18SwIOWSxr+IVaTwhRlKKJQO1wlItseYbTVpv6GY8D5JiBod0xBnhH+I6f68Nc1Rem1C7U4NjwRI8irARsFYyHpi7hLxS3/7J9kAfzz2XigNc9x8o9UJteKaYgCo2Ja+np6UJKajf7vNR8ZnPutEqGNFPT4xX0bvC+cS6b3cGl/WX9NYPbxvVqQStFNpLg3HLp57fI9RTUtl34vJwphwbUcIgW29NvyKY38vgvhCjPn2NnDssphRQIYj0NQLVEvQw8oaou5gVY4wIvOabc37q1o7kX0fcV27Br2+rd4iiHiuEkgj1NODQAl7bJFBzxE4rl0PVrK/mfnadGSF2Mg7R4eJxDhdjVKQZYuPEe7Njrmh36WreNaVjwxBlf2BAj0rDoR37C8PmsDKwuFDkysK0EU2eFOVz0GhFG6AgA2OFvJGKQVBgtzskqVJoW0kouEGT0ZmFwRKs/ytvaNYlvgM4XzzDd/Uq4x36E6nA1j1DvC50N8Xm/QBNl+tjO74MOL5TiUFhvSziAIaMqbN8ZJJjVG/vy09Lbl2uQnKDxF0CjeYWgcFNoY3bPW14ndTqDd+jR+oxc3hxsVRs8Im6OrqKigFizfk37i4auSgxy0TGFokJin0nfzFnhQEpHZVCJEF/41/FjvsRetBepaPnYwJNFizz9jg1NCvXEfzrJudXakkqP4Jkoq2WbuOejilcAqm4ehacFK+H30dRX81zPt3NwKEbmESNHzt3Fxk9EHFZIm6UCvGTeuVeITR1VOw4lR2TOIqQISj8JzMRFMe42wOtSRUzblmCnhOIU4cqQzJYiHiDHX+PpteUTKn4rdXS3uRXnvhszhymJhccgD7erB4XQGvNgY5tsqR79zAw/OCx5yNDIpWyHKVlUz+Prg9kMRkFBpPt7mAqMv7h+x1W/iKtmDlP0pS2bOnGQ/MFCX2h933pFOzJl053L0VGdi9ruBOgw0B3LAATmCE1bgDhqxYNDekYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay for HES-TX009: $1,681.00**\n\n**Step 1: Straight-time pay**\n- Base pay: 40 hours × $36.90 = $1,476.00\n- Night premium: 20 hours × $2.75 = $55.00\n- Weekly bonus: $150.00\n- Straight-time pay = $1,476.00 + $55.00 + $150.00 = **$1,681.00**\n\n**Step 2: Regular rate**\n- Total hours = 8 × 5 = 40\n- Regular rate = $1,681.00 / 40 = 42.0250\n\n**Step 3: Overtime (TX)**\n- Hours over 40 in the week = 40 − 40 = 0\n- Overtime hours = 0, so the overtime premium = $0.00\n\n**Step 4: Gross**\n- Gross = $1,681.00 + $0.00 = **$1,681.00**\n\nGROSS: $1,681.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 509,
+          "output_tokens_details": {
+            "thinking_tokens": 202
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX010, state TX\nBase rate $31.4/h\nHours: Mon 8, Tue 8, Wed 8, Thu 8, Fri 8, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "634a9f89ca532b251b53497787c4d4e5ed52c49b8c2c034baadf378450128d1a",
+      "response": {
+        "id": "msg_011CgsfPinnCkhhLuMfRsGzp",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSswcKEAgTGAI4AUIIdGhpbmtpbmcSDP/oSZegqe6B7pwacxoMy4oDPC6h3IGV61JtIjByZuD2SRBwjxkJ6cGaYgMh/u8d1nhEIJDz7VhkFFCvL/58//WP0C7WYj7of7XfUagq0AbFiAjzFxVU0HjFuZG2XhE3h3FHSp67+C0Mn6RsTJKaz9l0CcWZLcPXLyhceEt6zaD1yWNq9wx4TUXfCaA7nxkzKfM2I/zMPeOhbg6x0HJmsl+Qa29oQLwXu3nPGIoYH84zYT6Fg7ajQRTDZeIus210WZ5OPUP0O63O1/2x9B9yBXHYODnH94Z+FODwjy/nv3v/Cfa48PwHwVi6I5v+ErQLGGKU6sBb+tvpWdz/5usBHKzIH00Ck/2MtyvG7D0nVnb+Du+8KBAE+BGs7b6KrS6xJifmB7GQ5LhWJmDoXpFhm3vhf2WVJXTU6XzONgP8PyuX65/s9cwGghFIMgsUDmnUhEzHo5NC9MBUr+3nEkfyp3b7zi89ckmVJ1F7ZoW0Bip3jHyOSQHGEFzl5dOKO3SYn/sCjRR9r+cOtEqNFkOxzKQrrIZ8sw8OsXuW5/zEZsvVhoCOu45t7nPPSrwJjew1jsEhkXyQTkFX3dUIvskTeMO9i/2yck9oZXDaLs73te0VWxo0eL5Nc8kDWj+UR4Uc9lWZaQshiqKr1rYLOSoKZmWJ39sCMYaNFcsVLDQhDcbhK55jVG2vpl4py5IGJn3k+/RTVDceAtwVN4xFHLZ7gzjgoWxZoptSBOk+PK1rXB0ylHUUKhI895uSalvht7iBBNEaIjXUUhTv+kEwK0UKlzhUsJG453PYpJC4l8W2vHX/XCJ3PaNPdAh9HDiUuEbAX2JCOn3CNnpU4qCANNcIao9Ed6zWYsCYSRXMc+AGx33lQXemU916mIEnhrDAwiLKLNJ91DLvvlJpld7SZTQR3S9DqsUVYChlAP+zrxEgne9tc9Of2Nztjb7A/HF5k+GhOfvI4GVvi26+RdJhrAVc1gqmC/KK6mo+ucfaYWfmms457EPYbfFs09OFrwP3KY81k67eEanXnTCwSFZrMYOL6OQFWiO4oQGq3+zs8rRJn/8IV26kj2r0cuGD7heNZbK/68a+lU0YNJ7dBa8PTlvUa2Eo7cfx8aVfHUdS/Jj8ZhIDA8DLUUKCVsqtxmibTxPyVVEZ93QrTE4MUPE9M1FQrLCxIReEqVmhlfsK8uH/1MaMODq6gEPFsAgjLPXVxaav2NuoYfRSU/JFNJas2d0xYRgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX010 (Texas)**\n\n1. **Total hours:** 8 + 8 + 8 + 8 + 8 + 0 + 0 = 40 hours\n2. **Straight-time pay:** (40 × $31.40) + (0 night hours × $0) + $150 bonus = $1,256.00 + $0 + $150.00 = **$1,406.00**\n3. **Regular rate:** $1,406.00 / 40 = $35.1500\n4. **Overtime hours (TX):** hours over 40 in the week = 40 − 40 = **0**\n5. **Overtime premium:** 0 × 0.5 × $35.1500 = **$0.00**\n6. **Double-time premium:** not applicable under TX rules = **$0.00**\n7. **Gross pay:** $1,406.00 + $0.00 + $0.00 = **$1,406.00**\n\nGROSS: $1406.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 468,
+          "output_tokens_details": {
+            "thinking_tokens": 162
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX011, state TX\nBase rate $29.6/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 10, Sat 6, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "5b5b83af8769a1ffdee6aabbef719492ca8e7897da95b517b0eecdbb005707fd",
+      "response": {
+        "id": "msg_011CgsfPuEaMUfXEJ7Fe8yoR",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSrQcKEAgTGAI4AUIIdGhpbmtpbmcSDAE7tOoonkD8sMYQHxoMqe1G0WclNeTtSUARIjBUVH+ukafG19i6NR71P8cN/7Jx9DQnxUCcF/wNA741NPWeLH4HPTFGWzudY4A4W+Yqygakk/dUeqInO2jCcDFkuEjSMi2dkD0BVwjfLELu4z9nOHXk7Rx4AhocDIleyLUA12ERALt7q8QHUleDEgDulgGD89ehnPIK3562JHCvWBhrqtBAnndgSsJAWYmY44OCda3x1OUNRZGvvhZ5qs4q5L7ZlMabND+gBRlJPP9nlV28oFU2tGgjZFHfgZt9Z/BANwXvF3jV2Vhj0EGnugh7yxOjLHhI2MNWzIBPq8nrQfDHnjePXBHApG26UO+iH9TFz6CVvy7BLpWfWMVRW7rGVQ28AQnXRtzpvc9SWeBfAMDyJT62VkT505OMB0P7k2u5XBqmHYn+pRTRPf87+GcYKQC9LDD8GouWozhmVCsArgV/3ssFB+5Nt8QvDEWigk4LeISIpdV9eB0slLlc86ECbV0U6HYbUYAGuZauiPxh30ET2zVigte+fAr0pKxjZ0hQHOZi7m+7qV5isWMkEUJJU0inpbfX5FNp/R0eEAfg5QJcBrIgLWduFdpkZCWQpVqcPW8Oix/nDawz2PW99O1BIdzqO+VNaUnYplxxvexyOTAvimcUqBgVP0X0bK91LOzHh1YhbH80Rr3IUUj6eEUheqUXakylcQ/G4VmjuMH0CXntQ6nF0R58mfpZWv1TkJLBNWbuDvFU08OwATh/9n4+R+vKcKfZV4sx7t7v3H4R+RUxVrk/M/cD1d2iO9TuCQCgc7Caljc5YXld6hq88rzhG5L50XNIv8fD1ZlqOR5ODfDVfaQ5Z367FkTLtgryS6oHnPs6f4zdf8jjSZ3apY/sdKTjFjLYt3qRMz5kkc+W7MmqRjktwzSwdBvfCD1TSInjoB2OgrCk+6DcZgnTxjnImzTEeJkxhr2JUlDX8FDZV8WWnuSklMA9huNUP52bJQcczqOE8NuI5BzQkFMnFKmF03bDkNs1ESkEgEXwqBhSBB71wEhCCWJm/9kdUjlEuAJM8QK9Gio5m4sDsdfgHckQJmQhpguToznAFwcBKdj5IC/7YCD1WR4Q8itRIrWDJM3zG3pUveEt0rM4FLhp2J0tT7CJk/yRNuCVEtTMEC8XM+MwfonHaBm0grEtV4bHMihgRtWCi4N3Qn8ePdgg0cPd8P/1kfAcOFdwVrSrLxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-TX011 (TX), weekly gross pay**\n\n**Inputs:** Base rate $29.60/h. Hours: 10 + 10 + 10 + 10 + 10 + 6 + 0 = 56. Night hours 0, weekly bonus $0.\n\n**1. Straight-time pay**\n56 h × $29.60 = $1,657.60\n\n**2. Regular rate**\n$1,657.60 / 56 h = $29.6000\n\n**3. Overtime hours (TX: hours over 40 in the week)**\n56 − 40 = 16 h\n\n**4. Overtime premium**\n16 h × 0.5 × $29.6000 = $236.80\n\n**5. Gross pay**\n$1,657.60 + $236.80 = $1,894.40\n\nCheck: 40 h × $29.60 + 16 h × $29.60 × 1.5 = $1,184.00 + $710.40 = $1,894.40\n\nGROSS: $1894.40",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 496,
+          "output_tokens_details": {
+            "thinking_tokens": 179
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-TX012, state TX\nBase rate $36.9/h\nHours: Mon 12, Tue 12, Wed 12, Thu 12, Fri 0, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "20400001fafb36d6474b866d21c68392fc0422a27ab90359f8f16eb9e36ae518",
+      "response": {
+        "id": "msg_011CgsfQ6mN51vRgEumFZcL7",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSmAcKEAgTGAI4AUIIdGhpbmtpbmcSDCz86ifKQvS9iDHwhxoM788X3R2I2bdsFoJ4IjDpaN7YeUgeUKJtK5XK+lnbpvdEgyJlnk5DFApXlzpxV4qBZUwKZmh1YtCU6ai8i9MqtQYFNhgxPrAF3LNbcrZe30lUj/zTKWwCDRVEPXs1k3SNF0YfhV+MOYXsVX2qQNtjEEGmK/IdEoZWLtpuBKD3ptEmD6dhWFLLQqfgnTQmOKZbJgWaslicbTlO/gOIMnoLdji4d5i4AX+2n5lZljCZfXQ1oLzFcWyoevxU+TDwdAt99Ov0uZPNPo00wieTIyUPtS9Sl0PLqoVRItVTCW71aKr5+/YutIxAaihFLfdSEz2VCFJzeWmIGQ9zXEkfX/PPCAKwA5R2YPGGFFkZ7aUxZtiQ/BcT1wvK3DU21zfGpE8+6y/+RsXEzkvO8ucjwavqfCxHQHnPHGox9JLh907PbCdbUzkNqeMqUQC1l9en0wU2CMRD1XK2g8lJntnTczkrN7YHwjSSEEQ21DocGhwa9Gaak7sVgD/B4c1XW5bfIz3NO02xg3jmncJyUI2vrjAvJSZt09XRTNeYil4PENJmMXDSQLDZQ+4duSkuAtki/3N95TZGQN9d+hEEAW4DQlX0silKhTkF/QlY9OyAK8eCLVmtSEt3++qIwR4Xc3L9HnS4Sft7O5k2q1Oc8n2Unc7jd2nBtVBfH56f7QJwk28PSyBKRwdeLLqS8QwdS7Bs9CL5KnHn9izz913M/9TRuDQbXjEY6fQjdDYeLtcDaGmABIscIH5kldnaoQvMZQPQ2caMblmQtxd/TVrMhYjW/3tK5EDY+PuxZNF6u1SRwUevza5t/qV4+pnGWq2/c1XrQelqpwd7sEDZQwLXo9eUYAEO0sQ47P5kLxEChXms+rdDzDHKjzBZRnRZqOw+CNTZiak8De9HZtWvU8Cwx8vwJidofNx+4xxz1frPmGH4NwxEQRvkcTmYPrLIlliLSgsqt9OsuJKxoP1rv0XNf5VXyu7ZoGJ5Yw9FELDmye9qOdQITHd4LhY08CU//4/CeOyLmOkJcIQPF85nUyTDfuFhPZbLmroTsjhsMcM4p+6PF7Txfb+5BoFJjefNoMZ4XHuzoV0/cDS1sH73fp23PX7UjZNv7oLKehXziPgl6rm5kP2WFLKe+rpJ9g4H2U77Tr62uYT33GewLzrkP23VoeBZbELaLGq6QlHzjRgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay: $1,918.80**\n\n**Calculation (TX, US-PAY v1.2)**\n\n1. **Total hours:** 12 + 12 + 12 + 12 = 48\n2. **Straight-time pay:** 48 × $36.90 = $1,771.20 (night premium and bonus are $0)\n3. **Regular rate:** $1,771.20 / 48 = 36.9000\n4. **Overtime hours (TX, over 40 in the week):** 48 − 40 = 8\n5. **Overtime premium:** 8 × 0.5 × $36.90 = $147.60\n6. **Double-time premium:** none (TX has no daily or double-time rule)\n7. **Gross:** $1,771.20 + $147.60 = $1,918.80\n\nGROSS: $1918.80",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 427,
+          "output_tokens_details": {
+            "thinking_tokens": 160
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-CO013, state CO\nBase rate $29.6/h\nHours: Mon 9, Tue 9, Wed 9, Thu 9, Fri 9, Sat 0, Sun 0\nNight hours 20, night premium $2.5/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "30bdcbad7ab92748bf351fc947ce0879a3b93de1678a7e34a0698b437f65c6d1",
+      "response": {
+        "id": "msg_011CgsfQFTzrujGjayw2mChF",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSzAgKEAgTGAI4AUIIdGhpbmtpbmcSDMKm/vAUcpiueLzewxoMZJQmu/LTNJOurZmCIjBw5MCi08k8Hr6Uur3Md94XkLndwLTQ8nNBLAzs+RqX92kbGHLeLApVThMYbh7R0MMq6Qebl1+0rcOc7YD87BweifTMmTSYDmU1ls+xeCE5/Yml/YpnWDvDrGz59MuEGVatN13HtDUcc43rkSZqBXjaRVI79ZE3NUX3JMSqpvP2xfngI4kZvn46+HuD5AUE594Xu0P/b1Qk1akm+v7LPUWwjACN5dBPMVYj0aoX0SCzipWQKab+6Y0iXR7vWgLVTJJVe4wAp+74S+HHyGNk0fcNwaV2TjCkRlGd4ZJshAcz0TfUxTu7AA/3elcXWSdxzhBztk1AxJbQXyYHyHbRXPeVwvAeIdz6TmqREkLN+07dyJ1az4TXAbYBK30RnNmLfBCkb119E1zeRfEHyafxP1iFhQM/E6BjRcZ/CUOThu49MggDis+bX4ZysuOzfje0Wfgiqp/MEcff9sY5DFEhKNC3lz9D7tTyzDjMxlGEy/HZuYNvQP43XeL9yEhpJ009bRmoMOdln4C9qXnpAtQc7JnPsF006Pxgf9IWfzvOvYtYmgzACTd2DqF/yIYlGnjUm6yX289U7KoLFimsBj1lXcmHz1Pf5juv/ec+Icw//W1dUXdi+qd47tdtgmWl3NBBd8T2Qjgu1NWCHiZ4FpFJyui0/n8j611J403ohovgasEnEv8mc6eN5ZvWkKKRcaGgTROuQ82v06PKHGW946svGz8ycsN/NkcD9FAaEYf9K/8CHGTfgbRACFAOpuErGIjRmIDNdZHiobF0gLdqXpzCcGlcBEoaxEQAC3X2NfVTBzGQjlvFr+m5OaGox+Cck6EMYxyEe/GpmkcG/Qp/eeSTe7i/BXI9kmeSzshFEs1NdO3R5i1lBLSfWJ+WsLrJf8qZVgsGXhMHN0EHeXKhN5S5KC0InZznerR35tT7M9ObyQnu0gUT9MR8EqyvtFYIXH86zxuQ7wnZyngF3vcCKzCC49nB8WjPlL3l9w8J9WZyhzixWNan5M15NXq6AnKq/8o59sjL8PcBPK4FxG2QD3bXDGU+cuFCFs0wvg7bM6jaeklWTHobE10s4e161e047l3/vHAeGYLdGk7FdO8KNfRC2P7wHTpva3FheGu2RxsywaF64JtpoJy84ATygnQx46+1FHDJTX4T9dvoAACSMWEGiD6xh6fmI9KZUmdoufNcmXkwTVxFYf0gek0PG4ucFHen+bWJVxKvguBQVUwsSG7hbr9Vo25Z8Npndt5+0509m5HBXRWkTKJxNxj76cpCRdMk7EfDaHgw52zWl/LUAD+anXBAzJsrLXUF+AUVfGkk43LoWF7SY+231GAtJlDpwY8XZLgMQqhp8q81QN0J4Q2fku1KrAVTsEMdVW+Mg8WfDM0TPc0DQMSQnH39yiiUORgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-CO013 (Colorado)**\n\n**Step 1: Total hours**\nMon–Fri: 5 × 9 = 45 hours. Sat and Sun: 0. Total = **45 hours**.\n\n**Step 2: Straight-time pay**\n- Base: 45 × $29.60 = $1,332.00\n- Night premium: 20 × $2.50 = $50.00\n- Weekly bonus: $150.00\n- Straight-time pay = **$1,532.00**\n\n**Step 3: Regular rate**\n$1,532.00 ÷ 45 = 34.0444… → **$34.0444**\n\n**Step 4: Colorado overtime hours**\nOvertime = greater of:\n- Weekly hours over 40: 45 − 40 = **5**\n- Daily hours over 12: each day is 9, so **0**\n\nOvertime hours = **5**\n\n**Step 5: Overtime premium**\n5 × 0.5 × $34.0444 = $85.111 → **$85.11**\n\nNo double-time hours apply.\n\n**Step 6: Gross pay**\n$1,532.00 + $85.11 = **$1,617.11**\n\nGROSS: $1617.11",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 663,
+          "output_tokens_details": {
+            "thinking_tokens": 273
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-CO014, state CO\nBase rate $36.9/h\nHours: Mon 9.5, Tue 11, Wed 9.5, Thu 10, Fri 8, Sat 0, Sun 0\nNight hours 40, night premium $2.5/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "9248fdb90f75c64d5223ab33f7a7921e7887cea36413e116b9763bc35d2eef1c",
+      "response": {
+        "id": "msg_011CgsfQhhLCJ55DMesfuix2",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS3ggKEAgTGAI4AUIIdGhpbmtpbmcSDLPubFZXPxV1nc4IAxoMAKlUkQD3N4QV0nJ1IjDBFLv8B7i7VJJEUohuyqG+O49tuf1xqzTcuMdjv6I6yShL3JgIm3tSjfkReEYiRVcq+wfUC/ju0IjB8S/Niyg8WCOqsrGr2bDW8AHyJmPtkreKkSRmeTuIptwjuuETA8ms/17dnvG8BQIV0ge+NLiQ2I9R05f1Iz59AjMv2J/waDCKNS7YO0DEg2GIGX1kojqS+AO3xDZQu0Ua18+ig0Tw0kVtJnbPIqg5Yu6gr5ESJJVAIkHS3hPaxE/965I8f+GpSGGvO33Gg5vFJjo40QRdOM+pMUklCmzFaANFqQ5D7NCUc7deLj3BTOO/HVvY5lVf48Us2JXlZFYYQSAdD2tNok3fAr0Ppl+wGigPj6F132RTj5odLYObsRcVH/CVyHBXaCjBBn1gL5FkDyWbcfGSLDAo3MNzdLx+kFpywiX+7wyf9U+zb/dAN0uQ0wbnZHHteI52914WdhvGcAgdV84SzVrymZGm5Itq/Fle7VzLbewq4otvaOdcWfOZ/iK7NSigicWtso+78jAKAM2hUIx4ENPQ6nZ6XqmF5mmfRCj/roE69MAYvO25kfVxdBAjHr1msI3MJr9HgmiN/ap/S1XDlRDCmJkuboXez7JO3zp31KEo66/Niu0cqPtq7ZnGFhjU3xb5H59MU1Jbc/jcDdUA6kfhH4bDAPCIlfpaWXmDs2nVqmZzep9KgISXC06PR6P4e+b7p9PEItSD7PCbTcwe8uX2UxbuVknU3cL4ClOmsGglBzNITi07az5dHhoIRWu7YyOVWkXdzbeeG90+tAvI17PHIWBLZSpzssv/5R8R2fBKg9K/Tviu4oai3FTzyIY6Qb9fqB8MdHGhjPCuh4l3O4SXawGtO/iM2yz2Hf59CicFaiNvk6oZVMSGC27Rh9BSy976Zqt5lKQT1f4d9NEjUXcF3+1xKBOPtw4Y5z+SVzFdQbWtWkQkMXlBzpiUewfdP4UKenC90xdgchvf9TjPbaWwMF5mBuePVDaYns2jaN+Gyt8iNWMDmIKo6YZCDsKfy3oTQe0r11yaaRllcepwhsnw9dhyHo7RNdACjhKka+hyco0Z/2wReUr5gj3P18W//AeG16vzVl9wDhLIUuHbs8EhwyiujEJ3aX9c2ETNzN5zhvEqjEFSD95GR7ensiBrvJOXO6h/02gj+p825HUVhbXbWPPhKGuu1B7TUomcmSDS/OpjNZzbKBvpqCbNd3pOzUdzJreXoD5y3jCGf83v9iNYLiX3MuRuAUFPhXVDEVbWHaUjWo8NtImAUSvpW9UOh1+aW54n8KgiUCQQQU3+vnijjS+4N5vJ03WqxCRBw6PyzgFoKk8280bgiBf9yRCt9d7HJGTazc/Qt63QLL2upKAeyEGUXXBQWb6XWQGimQX3FLSFX7mTNMvp/GcDaCYn/6Ie0ygZj7152vv7GBgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay for HES-CO014: $2,027.13**\n\n**Hours**\n- Total: 9.5 + 11 + 9.5 + 10 + 8 = 48 hours\n- Daily hours over 12: 0 (no day exceeds 12)\n\n**Straight-time pay**\n- Base: 48 × $36.90 = $1,771.20\n- Night: 40 × $2.50 = $100.00\n- Bonus: $0.00\n- Total: $1,871.20\n\n**Regular rate**\n- $1,871.20 / 48 = 38.98333…, rounded to 4 decimals = $38.9833\n\n**Overtime (CO)**\n- Hours over 40 in the week: 8\n- Sum of daily hours over 12: 0\n- Overtime hours = greater of 8 and 0 = 8\n\n**Overtime premium**\n- 8 × 0.5 × $38.9833 = $155.9332, rounded to $155.93\n\n**Gross**\n- $1,871.20 + $155.93 = $2,027.13\n\nGROSS: $2027.13",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 472,
+          "output_tokens": 636,
+          "output_tokens_details": {
+            "thinking_tokens": 287
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-CO015, state CO\nBase rate $36.9/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 0, Sat 0, Sun 0\nNight hours 20, night premium $1.75/h\nWeekly bonus $200"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4d7296f339b0478b514036271b16ff800ed5194b90114ec9843971a6763d1afe",
+      "response": {
+        "id": "msg_011CgsfQvyXm7b9eAeurZ9Fh",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS+wcKEAgTGAI4AUIIdGhpbmtpbmcSDBSoNJ4Wc4/MquZ+EhoMkcP9Gatw+XhN2kkOIjCSl9RIDyrUUfABnOUoFyr0UQNrdyLmH0u9SgYhNAr3ZL9vrcb8cKChdnwglRSA5qIqmAeLKxksnNWyVPPs5OPbwsU1HAc0SP0JtG7sN9zESPOH4Nkzx18Y26vh3KgCc0omF9IGgztNt1+C9dsEl8Nr4g6MwbyKa57+j2R1dZH6Pp2ctAapWTDoOlfl7y6NKJ/39XYnEzMK9HcKrfVJZIHIXNmQMj6Rajm7XQ5tpxnWA9Ei4CEI4UU4f+h9X/arqZ1UVnkSaRi8u/5cLFPgmUlSfiK08AbnvBYOHGRvzgCILlyvT4DJ8h75DnAjGIXX1R8Y4do8xohjRjzbLRrEKZcncfeShbRlJK6Y8RI7QfTInOYCpAtMPFVtbyY9D77kWvv8wUhdT0kXO2TYCMmo5ORpxZSgCZU3K8hoBtx24CQKnkW5C+fI0v4RumckC5utVlNEWPJiZlzC29gwlUACbmXSxD9LO4PSGgHPTDoja/BaEQXFTVOyPlVU8cC9Yk/z/+cUemcwxEgHhhFnHASvZdzhNVk+8pcykw+yI5k/HPBFbdghbJ1yYojIC7i7vwP1WB7O+EMD3q/jvT126dF3FasxB6BYoeFh25Nn2zfZzULuIEvh36BM3etOu54bViP/sKmlrn57fwNEfiogIpOPKJDAgjZSrREhhA0eoGuAKJIMXROOw3vyS8jYqlnsl62gfW34eWvRfSdh0Fc2OvMq4D66dIRXD0FMrGcQ7+GjgnVb5wINwgpmmKPfDA36ao6A6sX8C8Uahvz1lLRRjUoXNd0eNr7L9DLmGfDAGkzimGVpLzZIWZpXtXHwzSaLUEQf+VpeorCigDaeBDezRXGUSRO7FbLjUrZjSkB9QMd16swGoLSEhjXAZ/WvCn7vKMZOnYYKcwDx/k6lJj2peMQuAbJlW0+o5oPxYlT8oPykNTx0Z1adKZi1kCtM3ItyPYYTabm8iN8ozW3Y42u1m2rBQS5bn6GyBaiJ6FlHqwdEOaFpYNIEzEr6yENgR6OsQpnj8m4EJQhPBRbpSvJttZwCHEbwk4+jFmOPz33/Ad/INtX8w+O/fHwiSvboyD13T4v+GY86+Vdj/My7lo3pCHG7xXTmvW1/M0nBP0vyq0U+4JJOPHpuobN798gGO8ZAiepMIqcxboioApIw4I4KKsPSvlY/RTC66LbyTls4BnYqQAaqkFJimkq1rvakHy5TQB9wCdhJudhDvRZaLqpUXrPhPNgAARKzU9v1x1qxx40AsofaVAs8zPXirkMYSS5DeOolSU+aLQyP13TlIt2s4xgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-CO015 (CO)**\n\n**Step 1: Straight-time pay**\n- Total hours: 10 + 10 + 10 + 10 = 40\n- Base pay: 40 × $36.90 = $1,476.00\n- Night premium: 20 × $1.75 = $35.00\n- Weekly bonus: $200.00\n- Straight-time pay = $1,476.00 + $35.00 + $200.00 = **$1,711.00**\n\n**Step 2: Regular rate**\n- $1,711.00 / 40 = 42.775, rounded to 4 decimals = **42.7750**\n\n**Step 3: Colorado overtime hours**\n- Weekly hours over 40: 40 − 40 = 0\n- Daily hours over 12: each day is 10 hours, so 0\n- Overtime hours = greater of (0, 0) = **0**\n\n**Step 4: Premiums**\n- Overtime premium: 0 × 0.5 × 42.7750 = $0.00\n- Double-time premium: 0 (no hours over 12 in any day)\n\n**Step 5: Gross pay**\n- Gross = $1,711.00 + $0.00 + $0.00 = **$1,711.00**\n\nGROSS: $1711.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 611,
+          "output_tokens_details": {
+            "thinking_tokens": 200
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-CO016, state CO\nBase rate $27.85/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 0, Sat 0, Sun 0\nNight hours 30, night premium $2.5/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "75b4b774e3af7ade4d0ce2f6b6586efcc04c0aa258daa2bb707f67695561ed7c",
+      "response": {
+        "id": "msg_011CgsfR84Y2ui3Yfj96ZtUL",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS3wcKEAgTGAI4AUIIdGhpbmtpbmcSDI7E3DOvmhINfQv+QRoMl1A+YIB4vwdG9cECIjAf1WqucO++K4ND612wCegIJvZ75mCqraAUTdN974U6YA1LZeK1uT5/0/fW9zUDT3Eq/AaWOYIK1Ik3hVqizKjzbTwouF6n/PSJg6E0VEmg9G/0euRL4hvmseYhqaqENTn4QpQ3TZplW1vSWYJi9bjs77wh2X3RiSV1QA5ELKrcf/s7yKlLpbjHbSx9EF1uhzfhfSvMb1JmEOjZcPU7sGb3jMNMO9VMi6h/fvUaJjV2PiqJq79t2mDB730/4MKbf7VhDqwe4nHpeoF/YbkfdaNQuMCo5f7HIYLb39/J8WksY8u8yRMv3FLPg/6kwBJ3FJet/k100pVtLgNqfajMKI86/UCkbxLUZ7x3NOM4ApTyF3rsGdUZXez+nZIHk9K/ClQ16ZKjqI1tEO+kvQ+bkk54M0PtMNHVCXDCSGW4I6jZZaQE/+jJDP+jJD5cexLMmoEGeWTxqydg0JbjFKUDjUuoHjJDbyIXZBR8hLQxmISlGUTrwCfJkcTfn0vYObUISb9gEyhtgejpQYcW3NT/l7DZXrGSHImI1TSI4zMeX4eNjCchK+/6DtCo65KDHaWiebeW+IbyjKYwBvxT5JA4j726i8YJmJQ8NArAYWRSnIsX9FVQut4QLqXqINHJ5xL7iESBHudeBm3PZ9ZWvSdXXZHrbmFlRd9CG8eIJHKmOWooMy2NPJjzcBaOcyoWuuG641Y4u9Kp7Lxf2l8lO3eC3H0mZiIAJrgT461YE270UmFAZ3MpeRPG+c3qB5hjuFzW+mxMva87PNM5f25Gola4DRyhecEAppUOhmH0w4r14PL27N4NWUJPYmHL74C9FlvRDctiDvUsOLuogFyOxImL/HC53G0qqhxM8AQ+DnP6k8XCRSuLWNOJeuMHneewAWDF4727jS3GiXW+3lbLNNGh3KsEBEQgJoYFjs1tC9ROFVuTnEeQpbfCWJhBwfVO49Crp7BpX9eZWjZUuA9zxcQwLk83+BkQ0qzvbj1QEmhoV4FSBnbEY3CIuhWOHSYzbdMgmxJnrxIq6bPb4G8HL8JcajooB/6Nc5VF9JUzTO8kAvWuRIHt3k7QvgPJpDhN+wqxLpzDdBLMq05QfQvZbL/qhyvtRJEJZXuNxhUCngrwhKXKUTW3j14UOTdkOsSBwfvPWHMPCFzCZeM+czRXOZQfDQgJ50y2kxK4nFz1JFglRen64/Kwdk5hqOA9AN18vvBSlBgIjL3w53zRBvwHkBdxkXVgqgY/p6Kw6ehXYvaamsniGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-CO016 (Colorado)**\n\n**1. Straight-time pay**\n- Base pay: 40 h × $27.85 = $1,114.00\n- Night premium: 30 h × $2.50 = $75.00\n- Weekly bonus: $0.00\n- Straight-time pay = $1,189.00\n\n**2. Regular rate**\n- Total hours = 10 + 10 + 10 + 10 = 40\n- Regular rate = $1,189.00 / 40 = 29.7250\n\n**3. Overtime (CO rule)**\nOvertime hours = the greater of:\n- Hours over 40 in the week: 40 − 40 = 0\n- Sum of hours over 12 in each day: each day is 10 h, so 0\n\nOvertime hours = max(0, 0) = 0. No overtime premium applies, and no double time applies in CO under this rule.\n\n**4. Gross pay**\n- Straight-time pay $1,189.00 + premiums $0.00 = $1,189.00\n\nGROSS: $1189.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 529,
+          "output_tokens_details": {
+            "thinking_tokens": 188
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-CO017, state CO\nBase rate $24.1/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 0, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $100"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "0aa652d4ff7638c9ed5650f817a44fbb87d0082495b4d4a5c9ac8c3b3bbe8bb4",
+      "response": {
+        "id": "msg_011CgsfRNgcJggiDs3u8jLeL",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS7AcKEAgTGAI4AUIIdGhpbmtpbmcSDO+d/y/kwMMPgrkoehoM4s0p1fxiJbMCU/aiIjAHrsRPjP9RGne/UgATmiYye5svwk1XIAaKNCcYDEPdVS25f6ZQYZi2sND1d1RWV3sqiQdNAJXuCmPzw13KAxdUiq50l8dDMO2SO/B+06X4nMBYcMRamRkVqTlKAedpQ9zBkXMag/ZT0087/4/mfQq7rg3ODcMwTkpzW39ujtwhNPB6OJ5xDTdfmhHgTOD6T9Pf8EpAfHQtst0hJX7veGllCe68x5KK8nzxmvNZf8dXPfM4biPV9czGHVtVOg4HruEF8DxLMxSn8huZK0sJGYzz5YDhU0rO07/f+PLyeTATircfg56JxQX17fRYmBw5jeSfI2PkjmCOuuyrhi6XPKA9aBG8xYecmpH8BI++wNVQb86GHB4hc2a1LKz3kmt0J2xUlj9SfDj/GCgju3+7j6AsOZZlXlpnh7K8MeNZc1BT01g3ijxDZ7fSIn4TXHkhAC7i+G4RZ4YfzWHC8LWk2VogtDWKN2u0XfH7FwKzpFfLPg9xq+xhEceVfOuI9w2ma0kiHQNHAmDDW21+1f4+YUFOGIp28qn7M9odoWXYAjDXn1XFfIVIoDULk4fEoIw2lA3a0/MAxm6d63KOmiNOkfCjACrgRcviAgxpn8y/EG42x3hPPi3cxVq0+r+KmxoQXl/zwRw7m18/CMi2GfLdnp5Mm/1v5U75t2mjvrPNiH5d5JzxiKyXI8MBDN7v+9oorda3lHYzRy5YfT8eu3fZvYFqBukVZ3DhkwSzYDAMvvGjc1OqfKF04RMJCFY54rYXpiXBKJGR43vFgVA52N5FapM/nmDggHX6g2dowVi0jJo9kHKgdF2Zfvxv838qdX/SJRwlmeh5YA2Lh87p5GEEF2B9P7cdijqLE6g6uFmlFo99NLkbIF1f7urozDT1+qyslQFW1vb7bG+4/T9auv8TPi+3exgh4zUGEcGWur2fAJM3kbHIWeSSZhO++EQdzfnYPqHlHCmNOBJwtTcU/XDAmid4uqT98NBQP+ckp8xQqyd/KdPS+yfc5hCJgbWkaNQ630XinSEIIK1xP/SZYu5yM0WxZL47ho1kYGQM0T4szB3yT0/z4UHiNdycevqI3dX9d2zODE4D309N5Uy3B4LHDB7nQ7cZ4mRmKxJz0IelKVLTGqK0bRwx4uc1a1ivAIwhVbEZODL/ZrBLEb8WsExIDlNayPN2f55bbsNgdPDtE9DsYIHTw5B8RIifZYPQnaRMeaASNjPE24UHwQfBi+Rfg/qUGjNCR2pmzJYEZcIGM4fCG2LvsQU1+9QtYcKhhBgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-CO017 (CO), weekly gross pay**\n\n**Step 1: Total hours and straight-time pay**\n- Total hours: 10 + 10 + 10 + 10 = 40\n- Base pay: 40 × $24.10 = $964.00\n- Night premium: 0 hours × $0 = $0.00\n- Weekly bonus: $100.00\n- Straight-time pay: $964.00 + $0.00 + $100.00 = **$1,064.00**\n\n**Step 2: Regular rate**\n- $1,064.00 / 40 = 26.6000\n\n**Step 3: Overtime hours (CO rule)**\n- Weekly hours over 40: 40 − 40 = 0\n- Sum of daily hours over 12: each day is 10 hours, so 0\n- Overtime hours = greater of (0, 0) = **0**\n\n**Step 4: Premiums**\n- Overtime premium: 0 × 0.5 × 26.6000 = $0.00\n- Double-time premium: no double-time rule applies in CO, so $0.00\n\n**Step 5: Gross pay**\n- Straight-time pay $1,064.00 + premiums $0.00 = $1,064.00\n\nGROSS: $1064.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 466,
+          "output_tokens": 593,
+          "output_tokens_details": {
+            "thinking_tokens": 186
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HES-CO018, state CO\nBase rate $24.1/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 10, Sat 6, Sun 0\nNight hours 20, night premium $2.75/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "69af38ca0e8ee4021e5cbdc513f39d458389c36187c7918ba08d8f7ba3e7eb63",
+      "response": {
+        "id": "msg_011CgsfRat61DnGtGegpH2xP",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSuwoKEAgTGAI4AUIIdGhpbmtpbmcSDMimz6HIxXw68FUOyxoMUJqAmfI14Q20tvDnIjBK2DDhlvrZWMewZh1Rb4Y4Ee4r+IDv4WxN5A6uX0IziFs3VQ4GGFlgWDY5OGE9JBoq2Al1qU6TLAZUuaAp+0E5PAlUV7Ljk83pevKOBsz0h9m/58fLXmahB4uUQYfdVU+tkHe9rjs5OnTUuP2J7IFSVAes+/hjW6oLBl1RLTpTV8QB7PKBC6nITDUEeTQg574rxhfL13IUI5b/ddR8+npeB6T4xl2JcMyvn06/078COk2FRcDkhzPs26YjGJ0S7gLXsOwtJOZPLDSb4hGkeWMPWbKbNlC+ny4nA7bfBKjSeU2rQZDFW49LEzJ4LgOuS7Zf+T2gMBg5thIJoBzSSaV49OEcz9Q7/QEbV9wDUiuQwUb//IWqZ+qYuLhVLo2E/JjrUn/MppU+nN1F9EM2oryeDUVWOz9UucQ1u9CV7EyszdNITwZ4F0mfd/AtAjgWW44BXD4AG1JUhhhCTrosrCCvDSg8EKdtOvLSaDxXcgvsw4bb0+Bs8Sec4ej6AiWheQTr4l7TuFvx+27dgYaSnruCWitdIsYAB7+d0vp4nQsByzWs5TpJC1oe3/Sg3lexS1e0aoJgS3O0QhSC47piL9KOujJ5P+NqtFPFD8Vf7TGig0o09Y84EL/Z+EVKg1PNlFFmZG8V71IB3Hiwkvncw02+UQ7ai/g1+yBKkFs29Ghch4r4IDkZyTEwWgJYAlDWRE1s7P+5nTsHLU88AuakKJ4r/UUBNSoiXZ/P9fc13KxmQQc81mtRR46VskUiexjdQf5tL6QA2s4AoGVEA/iwbD7EEoasxjaQvgKqYL2il6L+6OKjDX7mwo3mjr6Tin1TLdiIikcanQyHP4i8Wboa28F8fPsEYRz4AqSSm8EJl4jei/KzIquxS8QP+XNY710fXe+N2aYxa+AxQ3GAxzjmQ06u4zlP2mseAD0fnHNVj8gh2eH3mfsxRDpI2QzYMhjbFVzsxII/z0jESdPECXAG+niLv82Q0JxqZaDkxNaze954/Cr3s1o3euxBJthp/u2y079aqiLf21I2Ai6/NxvPhD0gqjQHVGtvbmTRcARIZSOGjvJ+ru5WPYfy5Rdtel0WNTkhnV/cg5KW/UBLtFp2uGoLXfStmqSiExXHNJOoSg4SwJwnFVGQJcA/tKBgI/yHN0yAkEzOFxIE4JHicVHGN9XbyGF9wUflteI1Mj6T0BYf9Gf/VpD0eZ9u6Aq2nzam5TflafUkb5tv9i/qYXDxdJGFFn+5HJBUBKGvT/Zw6MMk2NXR2AjFr4Lckm/cnNnywAPi9exLONhiXQyWZICM1e9+tXPDoFrxsz/o3TOUtMbOZPBPK+zec2ez5Cl7inDY5AjJad//Iihkz/7uJtjSzgpz2jl2CiaO4yZinCyVNxn2kTWlKWsRXN02OgumgLgg00MBBSjKOx5icAxb9WEAyAOPjElhfjrzjUAnQPmINo9wXUlAsXzelu5mKqQwg1dmTBgzXYOC55WVTVszMnIYpVvVt3342aSAA3leojGvp3x8OwJrttib8D/hTS3Pw7xcLHggMofvYmu57HfYQdNJOZTp+pgfAtocwolQG7vOe0wJeGRdQaQ86R3ujoGY7ZfVL7166EstPANyXJIc+0BZn6UC6JjF8/Ve7OwrlZhtPjwJDmU8EAHHOqhMLbkEYfuJNjepoubkNgr7WCeUIMes86QnnovpuyKPi2rWAEVScWSKOw0yMY3GGl1k4tIYGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HES-CO018 (Colorado): gross pay $1,605.26**\n\n**1. Hours**\n- Total hours: 10 + 10 + 10 + 10 + 10 + 6 + 0 = 56\n- Hours over 40 in the week: 56 − 40 = 16\n- Hours over 12 in each day: none (the highest day is 10), so 0 total\n\n**2. Overtime hours (CO rule: greater of the two)**\n- max(16, 0) = **16 overtime hours**\n\n**3. Straight-time pay**\n- Hours: 56 × $24.10 = $1,349.60\n- Night premium: 20 × $2.75 = $55.00\n- Weekly bonus: $0.00\n- Straight-time pay = **$1,404.60**\n\n**4. Regular rate**\n- $1,404.60 ÷ 56 = 25.08214… → **$25.0821**\n\n**5. Overtime premium**\n- 16 × 0.5 × $25.0821 = $200.6568 → **$200.66**\n\n**6. Double-time premium**\n- None (0 double-time hours)\n\n**7. Gross pay**\n- $1,404.60 + $200.66 = **$1,605.26**\n\nGROSS: $1605.26",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 468,
+          "output_tokens": 773,
+          "output_tokens_details": {
+            "thinking_tokens": 366
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HWF-CA019, state CA\nBase rate $36.9/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 0, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "22f7435aeb54e87ec9489f5523330b888348686b2b152a4acfff33707edcd9b9",
+      "response": {
+        "id": "msg_011CgsfRr2fDYMYc9gFQqeVZ",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS/wgKEAgTGAI4AUIIdGhpbmtpbmcSDDoH1ik4ybePKhhYxRoMDoffgLtxzne/UfkOIjDsYgzzNAIQ4sjVnBzt6UFIrTQq/9YSRe6bpv69Z5f5pqCO0KGy6mPd1kGn93BTKekqnAhqEMCDOVSnjRxtCu2778/CjQEkK6MBN4PkTFpbeWocg3L3GzkFiDNfXAFiByzMXqPAigSwh2kImNZ8SH2UIsSsihdk7gNnx6qFreuv3xfXUkjZOK1kfvcXPDLYbiaBSlJiRp5witryQb/F4ib4ECpXxcaturZ30sywlPJPbum7bV7DZjp650Zm2WaOosnqvfd9IwelyKz/uuo+B4wCLCsGIOGOON4jS3YVBT/XqNkHl1Cqg92K3sBnCx2XzGgKq2J08b95poPf2N8Kxi/w0t7ZX+UQLbn7vMZhTcNwO54KphoqfeaSjM3sOV+aqqAfGlwLUV1ifb6NltpFA9RVEPYsiUIZB0jUMGOjU7TVUc7lucGE3hatPOT1IZRve0zJ779ZHuKPdsQ5rNXR+Kc8TmtNq6t71aAZd/MB2WdY7SVGUopVQaWNbu7kLN2fgaVr6avUtIAjJScPzLs+WzDOu8vMU6xkAS8yI8UxrAsBWD3CDMbkl2gSDrUNABZpOAxTzfhBTljrV9gEwTk0TmOi7sYqK5JkdWYD0YUDmGugJzsLTFOiDp7uou6MS6lUL4IpQlYdUXVZqIzMlCHCSibANqK56GGgttLCLkYtjV06Du3WJ4tMFhAgljn6V/KskPychYc1LGPbYxKKP15JN2Ormp+CTnyQwfbAX37CupWAG4XmRdpgXUkruPSzLl2aSe5FM2a8sWyFPB142GmrVryoo4K7qVjN+wMmWKraWruroNQyDM+9BkpqKejz32hMf2zTBkzCYbPO3Zp4al7wBNcOfAOaHACrblLeL1g6JgwxeY8HSln3I2sqkwck2sspuwR+zem3JXjLk4OFVJj+Lj993wMfgpthyzmjr4k1Aqw/CllgpTt6uf0kBMGzKNL898gZ+dIB0kwGtqPNmcIHOfp+fYmdxorDqyLQI8vZ/8+gdLC3e5I05IU7u5DZE5X/6W9I+aI6vMIvMIehR2h8B+eMXFLA3XodiMK9H/fTpzh5i18cPlHjqM321I7tP1xLe5NRxKY+HFIdpP1ANz1ZgPE3/79tdJt66siua6iIqrqwLkt9AS5SWiK+yR64DRjsJzaWM/jvfZnFzHqcgcgXP9mD66QV5qH/xyA/FvOIOw17dROKocJrACPb+QNl8LcvNVXY9zFDKskjrCB6avmCONDz15iWgTY/Co+LIbmnd5EWq3lNcbhSz6PDcxZj8VuFKIz6heFYYaoZbUxTwkL35frQEnxyn5B6bu/OomkATN3F+HPQPvTAOM2CUwP0mWx1cJuzo9qBhxTdl6HUGSHqJltyB29ZBIKIBG/kP9gPqlL+Qn/fECqEjUHOm7WVvjTZO5OPzaurn/AbuZBD0GldmSB/OIzFgTOglSOhAXGqmq55gii+gGWt7GzS8qe3iuamcxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay: $1,623.60**\n\n**Step 1: Straight-time pay**\n- Total hours = 10 + 10 + 10 + 10 = 40\n- 40 × $36.90 = $1,476.00\n- Night premium and bonus are $0, so straight-time pay = $1,476.00\n\n**Step 2: Regular rate**\n- $1,476.00 / 40 = $36.9000\n\n**Step 3: CA overtime classification (each day is 10 hours)**\n- Daily overtime (over 8, up to 12): 2 hours per day × 4 days = 8 hours\n- Double time (over 12): 0 hours\n- Weekly overtime (over 40 among remaining hours): 40 − 40 = 0 hours\n- Total overtime hours = 8 + 0 = 8\n\n**Step 4: Premiums**\n- Overtime premium = 8 × 0.5 × $36.9000 = $147.60\n- Double-time premium = 0 × 1.0 × $36.9000 = $0.00\n\n**Step 5: Gross**\n- $1,476.00 + $147.60 + $0.00 = $1,623.60\n\nGROSS: $1623.60",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 467,
+          "output_tokens": 641,
+          "output_tokens_details": {
+            "thinking_tokens": 255
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HWF-CA020, state CA\nBase rate $27.85/h\nHours: Mon 8, Tue 8, Wed 8, Thu 8, Fri 8, Sat 0, Sun 0\nNight hours 0, night premium $0/h\nWeekly bonus $200"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4b03a28fef6a545bf32c246dc6c8d0c2da6e7affb4fc5d715c51fc3fa756e990",
+      "response": {
+        "id": "msg_011CgsfS5Hd74snnhMgFgPkX",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSpwgKEAgTGAI4AUIIdGhpbmtpbmcSDLKqit6zpPedGcN/GRoMFqWQ7MUnwztFdklPIjAr5b5oaV0eOz9aowBk8WNRLJLhCMdqidZPs7m27Hq+4ApdT6/tg2YodNdSGB7L6FwqxAeQn/nqDamb3JDD4kILmhz1cvq0zUc3+KsOAUZTu/RR7zAvwbXAD5YtNMy2O2+Lvgh2rmqsCbroBPVrSkPew0EqPj6WwlzOM9VH9XDzZlAHNlWujno1UYwbpt6Bj1BYsqgJyCn1jsfez7N7W8HaigPAPlbIxACTj6uwtyWWCSadoAHpQK6nkioSL8TUEmAOFf3T+jH3F2yf1Kq1lNBELw0DzqNnztnHt6K1GZyN+4Ur81P6H3VBPpnR6YpMIFHRYabD54ZxP3hlbR2YouUkmmMb2ElvKJ7koWOtZib0sLv8V6tOdJHUIS8rdbWz/yu/rrBrxYaPD97ys5zx4gzb2V6KZmcvfirMPZ0ULynwxepyxrItv+hN3Doay0sppF8vzemfQmOzGvtXhfnei1lw5bQxFBajCa8V6PugwY2xboO95zzqLvqW4c5PdnyG08rXdG+pqIHono9F9qlKjzBEiTBZj7Ob4kdV6lw1jnjcQqUFyoH+gi4KGJjh5TLnoNOWiQLybBzHMlDoaHMcUoPqATQ/kxDGVsnLr6oSW3jIklQaz1SNIg59elLfdahqXGfB+a1+SWnfBZjNf6ywEKQOwiot4BoOmU5nZbHFHgmGrtvwvsRrg/+q1GxAFS46D7jU9QB1nL+J2cL++A2pCuXl1b+anmB5N2vTyPkB2yQuA1xgXFfU1/d1Ra/7spMUPdEHcnGDZvd4YzBVoKSgZ2mp3bEFrkcZLlgP9xdRVwnI3lvhAAFBrs/1l4dgAqqi2Dqlj7dEMUF/e6dOOZ0f5286boysBjtfLd4O2/rYtNeIExX04c6wvIWHDsmmqpzrRt7JkSlnnw5gbaY9AU3mIWA1XsF8cCDGxHTqg08e4XK0/wD3op3cS5nU5NlWo+fXllQCsvVujQZbgHFCU9OTqP8Ss8RVgHZxLEyYEpz8h2Ez2Eedh7/yM+B912jCbQo5G/w9pYncf4+pn6eiNfqJyEg6rJcO9TkoBrQ4r5PuRCdGsaAPQfWH76IUGI6/TCmp7RIcgKaYsDh6N3EVFvwxwlFp+a805wV0HBLwuuixHqfKyAMtxmfdf96l7KuDfZ6+knVpAzUvVHtt2Dj3YCVPikljxqrqzD8W4OVV4E4sxkcZSMZR/SxiDpZsYqbZ8R429oWgAGKr8dk26E9myH1MMwtCj7DyBRUVC5BhLay+sHdf3gWteefBsQ5RIzg0W/NUi2G4mkGjv2kGi/mgQeGcSbgaWJbRTxvq3MztRA+LBBeUdxpdfRU9TcsQhoDdJ9/ChRHAQKPVSdWoGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay: $1,314.00**\n\n**1. Straight-time pay**\n- Total hours: 8 × 5 = 40\n- Base pay: 40 × $27.85 = $1,114.00\n- Night premium: 0 hours × $0 = $0.00\n- Weekly bonus: $200.00\n- Straight-time pay = $1,114.00 + $0.00 + $200.00 = **$1,314.00**\n\n**2. Regular rate**\n- $1,314.00 / 40 = 32.85, which rounds to **32.8500**\n\n**3. CA overtime classification**\n- Daily overtime (hours over 8, up to 12, each day): no day exceeds 8 hours, so **0**\n- Double time (hours over 12 each day): **0**\n- Weekly overtime (hours over 40 that are not daily OT or DT): 40 − 40 = **0**\n- Overtime hours = 0 + 0 = **0**\n- Double-time hours = **0**\n\n**4. Premiums**\n- Overtime premium: 0 × 0.5 × 32.8500 = $0.00\n- Double-time premium: 0 × 1.0 × 32.8500 = $0.00\n\n**5. Gross pay**\n- $1,314.00 + $0.00 + $0.00 = **$1,314.00**\n\nGROSS: $1314.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 467,
+          "output_tokens": 646,
+          "output_tokens_details": {
+            "thinking_tokens": 206
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HWF-CA021, state CA\nBase rate $29.6/h\nHours: Mon 8, Tue 8, Wed 8, Thu 8, Fri 8, Sat 0, Sun 0\nNight hours 20, night premium $2.75/h\nWeekly bonus $0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4a150c393b2c179b120594e043170e1af8e1ec2a08db5f4b10263f16d73012ad",
+      "response": {
+        "id": "msg_011CgsfSH8GcdHi9oPY9nvut",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSkgkKEAgTGAI4AUIIdGhpbmtpbmcSDKKK0oTWAp+5iJANUxoMXm9JtYRgZg0GqmngIjBrEPicpw7Wtzb+o99qs7teVEe8sManETtwYB/bjTz/hQXwCl/0j+f+yJQwBrCWnWEqrwgyUsy9nBPLovRhMdRJzGi0NawRx4RxpdpDFI0TXTQX6wTQVLvFIXuljwI6CecfUbeS5xwviwg2x8BDez6rJinQ2OSySHymoMdiecJ08aWFPeLA+Eye2R9uA2fckYAXoM/Bx435BgishDuFlWeNR/wOIHC93pKhY+qhuKoWJ+xvbPw82zPIWbzdZkfn+ArBWP6yeZNEEfg/J+3Cfn8gY92RNo8oGL/d53VmwNUxgPYVZ7QxAyi8mABCykuePcjRwkC986OEDDTt+gngBj9NLQ16HeOk7o1BK506cVNe/HDCk1ACdq4jY8o0CzSWshIWTDbqhj/RQW5GZQ1mO8oBD38z4LQ022VbvOaKDPHuFfkyV0go7nEE8pyoFzxYGEbhIb/uSPqv47lLP3NuwZ1NJBqXCfmZkFOXkcYHACOu92mDtWz8b759mHswgwsD8HrChyWbKQf9fEViGrHJkqHKtNp79LgBwJpT7ZYEIPQ0XWdZq8AyFuwORs+zrZrOsl7FjmbcdjPE1IpuGGRWrjbFArhQiPXmBlKPx/EgbZR3U8C7X25HMs/E/s39dglkG42+N5dkDkD1a4c87To+CX8gwbUF5o2m9EiEPYUeZ/HZ6jq6NjeoSC1DfP1dcHValfhl5x67gF+iWicQF2WNnHy95c0bBff+NBs4ZUo6KcvZd2E5px3Zy2o9DsVcHXClmPbh70s9Vf7GU3jR6r+SWtimzF52QmeM6AOoVRPDshU5YooRpjUdsa7+t5Iml9V0BJeP05epIfPswim7gVdBEBv6k0UZDB/4lLEGoCYnzjHWW9oZm/elRx6huDEvRinq8teSATB7mjEnLz+IgAs5npvwmEU/LgCjb3CTjwtr1eWg5yZNFHxC7Oc/dIy1eYpOgvFDW0sny73pc+nCNhgdz6edxH6Ule3iHi3sUmG/gd0bMLTKXsaAscw3dw+8oTc+He5Ry2u1nAgON8dzMYYWbq7MHNteQD6xOPxdVfRIF8osLmpe/SBsejQ0oWkcjT5NCL3n0kkrZikaQ5qcODSjvZSFVh/tp1avz9l6aZMQydIsDoUA+eD9Wjnq20sqWLipYmZWTapsumFb+zZ1vbECfccfmmCm5AcLnFkuqtgEq5OzmALjIJQ2AGbCOlreHtximKXcoB0jFU6uQ2geg50qqF8pb4VWw8uRKmdLl+vi/V/Ny4Fxr9mYToPp36P0mPsCWG/nHQHR8D9nhAUx743/JOoupLb+HemE8LH/QzP6xEbXzSYlCVlX2Y0LBjsugFXUBw/DRMnJJSfr89VBoEU5z5kusWPHgaM4G2gSDhHAbX/OODsgiFP5cAMHylvUjDOy98K8vG4iPT1pRT6PuNqMSM9CxaoHJQXxpA8eTYCRDimRijro0hKosEhqfwIphD/eOF56eHEzTaOLDIvyXZHwXsfmgk4YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HWF-CA021 (CA)**\n\n**Step 1: Total hours and straight-time pay**\n- Total hours = 8 + 8 + 8 + 8 + 8 + 0 + 0 = 40\n- Base pay = 40 × $29.60 = $1,184.00\n- Night premium = 20 × $2.75 = $55.00\n- Weekly bonus = $0.00\n- Straight-time pay = $1,184.00 + $55.00 + $0.00 = **$1,239.00**\n\n**Step 2: Regular rate**\n- $1,239.00 / 40 = 30.975 → **$30.9750**\n\n**Step 3: CA overtime and double time**\n- Daily overtime (hours over 8, up to 12, each day): each day is exactly 8 hours, so **0**\n- Double time (hours over 12 each day): **0**\n- Weekly overtime (hours over 40 not already counted as daily OT or DT): 40 total hours, so **0**\n- Overtime hours = 0 + 0 = **0**\n- Double-time hours = **0**\n\n**Step 4: Premiums**\n- Overtime premium = 0 × 0.5 × $30.9750 = $0.00\n- Double-time premium = 0 × 1.0 × $30.9750 = $0.00\n\n**Step 5: Gross pay**\n- Gross = $1,239.00 + $0.00 + $0.00 = **$1,239.00**\n\nGROSS: $1239.00",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 469,
+          "output_tokens": 756,
+          "output_tokens_details": {
+            "thinking_tokens": 270
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HWF-CA022, state CA\nBase rate $33.25/h\nHours: Mon 9, Tue 9, Wed 9, Thu 9, Fri 9, Sat 0, Sun 0\nNight hours 20, night premium $2.75/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "19c5fe1299b3f1ea0b95de335140d0db862de1057c0cb1d76cac9575a785a571",
+      "response": {
+        "id": "msg_011CgsfSiAfMPDa2GxzdK6jy",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS2woKEAgTGAI4AUIIdGhpbmtpbmcSDJdeLJzXHr6tqsp9TxoMhhl/TsWEdXp9Fkm7IjDOfmsB/bVqQARZa0oTeXS2SQ0CLsBoOEC6KMfmKNcHRFvyF3mM/gJr8Vdf1UXXvQAq+AlainF7EH+djuyzy2Hu0/9taJdZDERIHeKMGFhGqbfMucsteUfcqS0xK4LG9EHvgWfU9ffHzAP24cnDKiU3HmFgp2JmsCS649Ov5FuPq3wZWpfx1oUVhX6ACI18bqcPB/AlecRPbMyxXddtcyQTcbWmim5aWMGBznyjeTmRJ/Tpx13Ogp6IQ1rCdUXZpJPkZG9MgxCnzCxZTTRwtAnWyxqalx7YYjKFPIvoNyjHQreyYvs0Uc3IoQd7ICDG8Q8Rm3CDzXO0AP+id2fPFg0NnhfGRuMZK6NQn7mIG3zpmbv+O2f1wkyPefr7aYxg/RkEsHeyBrwN7wPNitWkp7nCLe6lXhIUK7U2yGGa4zep7foQDDweRRmaJyR9R4/PV5nxLcQ8SDbriakszCTyDhnrDOO0xwwmj/xVzeVTvorklsEYnW7F8plW+Sx+Aa9YN9ufNJWUKC8+HZ7nf9MywvoHKcthcZa8k/1P2AyWYGy2tzTDlIPjaA44tHCPjf0ElCOLN1+qD0lDo0QeYVvZVRubqDp7jwskJi1MCKo/V2M8E6tZAYbAuw+1tRWRgQ/BuYorPDbYcpV2t7QHn1dOBTtIfUPGfsUckUqOksg5xaSlwFfSEhOhaVKM5P++HUVePb/4xw/fHmTEEZ/RrZ2CtFDfDuZVh0PmUy/VFF9wtSUifDNxpVboupUuqNB3z4A9Zj6Z788xLUFS7Wm6DQ6uIEJ4TPmDQ4bXwXxk6+x5hSsqrAe9Te8UMgxRkktIUGZB1Uq9/54CN2LA3f3LJsE4WSD5PKv1ODDezmX8vUflBWWaY2QtrNIyQBj0Y4U7tnrEy6dsirT39NCsltlOGDvhc/HSjEqYp3fgX9L98BOgLfdX9WE7Lp591UAu0lYQKjZpP2AoqWVyn2r4zHqu/+9lSOwnQEkrmEAtLoMZbPVfRdwkuu8k1bmc0LKVfWba1B33P4Bi1Xx5Jd+4v2x7blBvWsEu/m8Iz010PIsSvOHw8aDbnlYnYYGRcmqVDHyTTHkDXeqERMROjoKzfjRQYrd2ChzSz3gBmjzejBpHax4BF2qW6ZKZjTn9gM4JBj+3npbmJR1CJfQGEMuAT1sC336oQQM6CeeG0ZDGnQNdXdNPLKieTJt5LrIR4YtHdLhsMBMZBZp+AthskIWdu/WweNvU5i5/LjgtlI05w7RWbl0Tdjz6Yl6DQF7AHQzNpmsqeqrjkFyg4pOQJ5GvrH2f2RePdukADC2u8WlqUfRU7wbOl63mtM4ap19ezb7HxpyayyyXNgVA062ygrjiYus3SDOu1KuCUOSkFME4UQxpmahg2ZpxUlsL9lFfKQTd8sCDleZdjPt+kckeR6GnVthN0I/3kxdQwK1uEnhZ4/qwNXJSAcj5mreFDTKPDTty1dJnTfB5v+rDKkrh1VvrXjwU9Qm6NblyV4QzGEOx/yoKpeCfNO+nISIxQcqZczmp6QYU36kDs0ppZEyJQZDRpkIFQiVnDLLonjmuCzfRwg5GCRoKsVPvGTMBNH5o3DYkv5F65nYrhDJ2WsE/6OsfhvIlbUHjAWTtL/sA9I3bjukdgWcz1+3ATbZp2q8iqxA6e5C2jBgZavbhcn2lGRTVXLdqAyRK/pCexqvyU0AZLvifNo7fTVG2LY9WX93caglUEPZ7yMqlyqmOcdmENLwDeJRQIGfX69Uuau1YW2Md6YKx0k0YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Gross pay: $1,795.76**\n\n**1. Straight-time pay**\n- Total hours: 9 × 5 = 45\n- Base pay: 45 × $33.25 = $1,496.25\n- Night premium: 20 × $2.75 = $55.00\n- Weekly bonus: $150.00\n- Straight-time pay = $1,496.25 + $55.00 + $150.00 = **$1,701.25**\n\n**2. Regular rate**\n- $1,701.25 / 45 = 37.80556, rounded to 4 decimals = **$37.8056**\n\n**3. CA overtime classification (each day is 9 hours)**\n- Daily overtime (over 8, up to 12): 1 hour per day × 5 days = **5 hours**\n- Double time (over 12): 0 hours\n- Weekly overtime: the non-daily-OT hours total 8 × 5 = 40, which is not over 40, so **0 hours**\n- Total overtime hours = 5 + 0 = **5**\n\n**4. Premiums**\n- Overtime premium: 5 × 0.5 × $37.8056 = $94.514, rounded to **$94.51**\n- Double-time premium: 0 × 1.0 × $37.8056 = **$0.00**\n\n**5. Gross pay**\n- $1,701.25 + $94.51 + $0.00 = **$1,795.76**\n\nGROSS: $1795.76",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 469,
+          "output_tokens": 860,
+          "output_tokens_details": {
+            "thinking_tokens": 397
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HWF-CA023, state CA\nBase rate $29.6/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 0, Sat 0, Sun 0\nNight hours 40, night premium $1.75/h\nWeekly bonus $100"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "c8387cacb79c9df67a62d2982ae94249511f0b11126035f9a264341337beb965",
+      "response": {
+        "id": "msg_011CgsfTBoa5ma2B7bLPNiQk",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQShwkKEAgTGAI4AUIIdGhpbmtpbmcSDGDKT4eAVqB3ypiOrxoM8D2mrVW3TUJqO6kqIjBLvE5N/sDuTA6T667mGfToz3BUE5mnKROItLW0YlW2ZJIadWSU0wwiVo6uGj1nGNsqpAieCILpapOE9EJofcAyomh9RYT3JR7VPcV+RV91K5t3rmZhQgP09myJM4PDJi+vGUPvEv0zxPyFYurI1EXdaj4c9RcIU9vymfliHBhBn5fYf9wxEo/CkLhoj11ynvCmNvmdEvy6cso8WHnLurFzIwwUew6SMyBbrpnCnkHDef8s+LPF7hvYgTp5y5503WGn1QI4zqWjtSdOA+OfP0Q3BQDcvpbzfqQP2dfdA+ke03dTf/uZr4KjkiUUcOELLyDubuLXp6ZIXgBPZiPUDKFSEywrnMd70ObP8lVYzZlRl3Oo1EsucBOjkrxdZRV84XyqLibM5tz5ZPFaSHRbLB0OJNmislNBxF1rbt4WfVbJnLz3b5Z1yhAvocFTIPzs3HbTKJVG5UcK8CEe79EK/017mvggSHZO6EEUho1w1gzlJvfPfUXzG2UoqZ6XkfQaxZpdbpSnsjNNEuHd+85q65CoB4xVG2mz1Bkfb7ytaDriALbafRqVDetwYkXdqoyuixWKnp1bWACkIxLsEOMhTxDpmG1nvo0grdC8WsLIpJ5OF85NM2HKpVr/wb5cXS2UCGRGn8wr+8Jg1pzdGpngih/aTAs++lWinJyHKljA0uaW3DFIaOE7a407lIRS1h03XUuY0IUtb6YWtsJJv/RSs+DAgR79GaehgG6G0aq9Za5oPjk3nnGr3smzHe1sgaGrRa3+LafCbGhxqG0uIM8ECX2KasfstPNFUATazzG+AiBIUQ1Qx+OxJuthILntp+818y8a/iR/wXE7rSLmMqeOvoPd2h8nc7eiS3Q5cmo28R7hykcwYOc2VKJ1mCKdAfMWxcFqOKWjbslhUQWRIc1Nx94h4+2sE/SfPqCa39dTNZQ8DBATZTgYAvfObV4XpG4DApPMJRq2mdKK7cL3iwm9G81eNJlwQTdnMhn/V/mCMVQDmLc3mr53jtuczFE1dW1ELWTxKTryQhKMAhQ0/Yp+vfLMURb4jIfoJhmPHvtqACHQ7f7icOUi61MzMcJb9x7kvDeMlCUkNzTGQVXRrO+Di110s+d9S7aAOJbosnhJbZkF0Oe7gIrzhSyUXZkVrnwiOLigOwcRllo1Pe0IfiEXgi7vWu75DabTU3Dk+vaTEQKmBgipwSk+z7Tjg1K7kEXkdO5w9uG/5EE85HoYWOqH1sg30GjXB8owRg00Oq67bvMcB96stkUkG6e+q9OhfxkVH4sMCb08wuDEKmFv1InvJgfpiKwO9Ntne1JyNJRkodGjjMNfO4+kwLqjs/0efnrHdVn14GTf4V32bSLgd5oo3U9AgPPpcf6MDLMpwCdnXbjWLfLm4toVNGEnOvciQcLzfZkck6u0Qo0xrzeVIn8grJ/T0z6GCRsesSyiwQ5MRt6ixPAXDcD2El/Rykvpcw5842Qj6exmiyzlGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Employee HWF-CA023 (CA), weekly gross pay**\n\n**1. Straight-time pay**\n- Base pay: 40 h × $29.60 = $1,184.00\n- Night premium: 40 h × $1.75 = $70.00\n- Weekly bonus: $100.00\n- Straight-time pay = $1,184.00 + $70.00 + $100.00 = **$1,354.00**\n\n**2. Regular rate**\n- Total hours = 40 (4 days × 10 h)\n- $1,354.00 / 40 = **$33.85**\n\n**3. CA overtime hours**\n- Daily overtime (hours over 8, up to 12, each day): 2 h per day × 4 days = **8 h**\n- Double time (hours over 12 in a day): 0 h\n- Weekly overtime (hours over 40 not already counted as daily OT or DT): 40 − 40 = 0 h\n- Total overtime hours = 8 + 0 = **8 h**\n- Double-time hours = **0 h**\n\n**4. Premiums**\n- Overtime premium: 8 × 0.5 × $33.85 = **$135.40**\n- Double-time premium: 0 × 1.0 × $33.85 = **$0.00**\n\n**5. Gross pay**\n- $1,354.00 + $135.40 + $0.00 = **$1,489.40**\n\nGROSS: $1489.40",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 469,
+          "output_tokens": 731,
+          "output_tokens_details": {
+            "thinking_tokens": 273
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 2500,
+        "system": "You are a payroll assistant for Hartwell. Compute gross pay for one weekly timesheet under these rules (US-PAY v1.2).\n1. Straight-time pay = all hours x base rate + night hours x night premium + weekly bonus.\n2. Regular rate = straight-time pay / total hours, rounded to 4 decimals.\n3. TX: overtime hours = hours over 40 in the week.\n4. CO: overtime hours = the greater of hours over 40 in the week and the total of hours over 12 in each day.\n5. CA: daily overtime = hours over 8 and up to 12 in each day; double time = hours over 12 in each day; weekly overtime = hours over 40 among hours that are not daily overtime or double time; overtime hours = daily overtime + weekly overtime.\n6. Overtime premium = overtime hours x 0.5 x regular rate. Double-time premium = double-time hours x 1.0 x regular rate.\n7. Round each amount to the cent, half up. Gross = straight-time pay + premiums.\nEnd your reply with one line: GROSS: $<amount>",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Employee HWF-CA024, state CA\nBase rate $36.9/h\nHours: Mon 10, Tue 10, Wed 10, Thu 10, Fri 10, Sat 6, Sun 0\nNight hours 20, night premium $2.5/h\nWeekly bonus $150"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "6af6d70aa868fe868e11577d5ccebe2e4c23d894f936a2726117d28f691abc1a",
+      "response": {
+        "id": "msg_011CgsfTSAmNEoq2rpdCSGCN",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS+AsKEAgTGAI4AUIIdGhpbmtpbmcSDPfg9+VqA8WgbKPoSBoMajxN+SICn5mfpjM0IjAJRz/M3k2kw0c4qUxnaJe5epopTWNR6WP7fSShjjdBFiMpyJOG1QAGO84mK9gVDEkqlQu0wtGuQlwwqKaM567dymPEuIdi32Xu5Xht5cydsgMjhNzG4Da3lPY/uEHzZJwhgn3ZdObYiV/F8+IP91o0Xjb4mikLY41QPVaHBtsCdN5iO1kLpxrQO1a/IJxSP/uElc6SDi7uiiTw1mU84zIDHpJJnR3SYKF1+R1cz69Fxh1S+bmGkp07cXF5lZMwnUvAOmCQRH70uZclF+FIi81qcB26XXiYJs2nRciyM2owGlhHPk/uJPW8bZsDzZhFQgz0qvEOBE2H2QBfY1jyclWoSbrd+G8vvi3GR+UXkHCABCou//9EYh0y6QvIzcgGm3trHg1Zwk9dUYChm+L5MjCB0ZG8T9Oj0f6yi+9g02NcHy38eP6vx1B5+3h9mZjGG1FoYSsPZ2caL8NHMD/e4jUVXFo+LnbV9LkonLjEmWwSFcR3o3a56slbqt+6DhRF4ACyMgza2R54dLk852nS0568ZKSEiWx4zZjYJ7nqDjXxcbKNgEKhF/yqT01tsElJlQ90sS7qQoKTi8UvfKvcowKGogs7+IR/LO3AJfPq6Lt0YSfwQU8IR5PztIZvL8FxLRK3a17NPceoy+VLcJUXo6fTuoO3YpDDZbZNVG0i7PEO0S9G4JQ9j5MPed8bmpfw+IyRWgYjv5DiCAJJ7EiAGpGEy6yLeA/VJ5MqodlfyOwUMUhAdarEIdVeg0p0URTSE/iF8pzv97oj834xwr/DBrUlxTlZuJBcVax1dxb1+ub4lvuV8NWFlBQiy3nXdeKq7Bat3KQIzvkjIzOqcOka2H8CXxABkbfB1FVsjJbzZm+63rPyR0WNKhri6oTMqpVZuQKV2r1vIpfAXRF1a2fRWSfPqCxpclDZCaL26xCpOnm2ErTCjz+ch9e6x4f9Xd17CAgHn/qcRzH+H6HCbyOsHihAPytFLP0ZwmokqyT0FV7AO/fn6TP5BhgOhBRQfTFBejZ5L23Du2HZw/WnoKvzV4dEJJC1SFEfBWnB74AZDLUN5wIrZbvus2x50HN08hu5kOvr1+uT8FXg92Oa/Oa+a3tDrywiUZG+Frckr4j902kAA3OT0mbAsd9zwVtirAF95gCVb0WN7URqtK5e53j2ipEDfADKai/I3r4ajows4WxCA1mt4d3l5Ag0ixE7CSd7TonkA6F6ndTjSG3q0GCgUin9JkgaRpjAwBthku8VmPX2VQn9hDueiRDrAo0WWaFtLFSXusuYWgQqYibuR2AOe8FFApRRLYTpLcJyUscpZcxVlDZCfaI6fCpN5R9BOzQ+4sza3jaSR+xKTzA8w5gsfi2RCl4cU2whJ3FSvdZlGnXqbjHwULaek9luXKA/1ZZ10h+Dc+Iwn5687HyiBkwIB6cdO6LyjXQW1PbL2FV1Zv6bVyF7+j6Lkq37eDmpwbXS0w5AqX/zJrS8HW0IhLksZk0HJUv3b2ZuNI9dRWilFG6SdLnuqaS1mdgdGAZAMsmv+IGeJ2OLz03+LNag73PNctv6wtx7dgSBpKqFAwBZx785NTfuE7A+ZCJabJ9yc2q4kboNbQmuPiABWXynr6ZhmcB+POqM2Fju2PBLyHeJWR2gL+OpGXsy8XS4yQKYepMuWkOzZbApWdE2mPPBhQq1ZKqRU2z0tLnAJKrBMzHL+vEXR98V1TKBx/DW+uzA8knvZ71xNhYdbq5Qx9v3M7rk3W16ojhJGYU3/xKZIK11H7MKqBE7IWpaqVPuvz5XS4hfVyniNZc9opa92wcp66NOvWKK+ZtNJbkI8/bLROS0HubCMasmRq6cbBHa2E+CkYOcb/9ZcGNnAbWWNrDRTZcyhqczBFkP93B4ta2s44l0OT+Hw+R+f/rIWoZocQocD90be1fvkQCi7MCged9uTPSyPyTnMhI/SPQ+NFb5d4oNQg7DTK3pRS/TDxCTGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "**Step 1: Totals**\n- Total hours: 10 × 5 + 6 = 56\n- Base pay: 56 × $36.90 = $2,066.40\n- Night premium: 20 × $2.50 = $50.00\n- Weekly bonus: $150.00\n- Straight-time pay: $2,066.40 + $50.00 + $150.00 = $2,266.40\n\n**Step 2: Regular rate**\n- $2,266.40 / 56 = 40.472857… → **$40.4729**\n\n**Step 3: CA overtime classification**\n- Daily overtime (over 8, up to 12): 2 hrs each Mon–Fri = 10 hrs\n- Double time (over 12 in a day): 0 hrs\n- Remaining non-daily-OT/non-DT hours: 8 × 5 (Mon–Fri) + 6 (Sat) = 46 hrs\n- Weekly overtime (over 40 among those): 46 − 40 = 6 hrs\n- Total overtime hours = 10 + 6 = **16 hrs**\n- Double-time hours = **0**\n\n**Step 4: Premiums**\n- Overtime premium: 16 × 0.5 × $40.4729 = $323.7832 → **$323.78**\n- Double-time premium: 0 × 1.0 × $40.4729 = **$0.00**\n\n**Step 5: Gross pay**\n- $2,266.40 + $323.78 + $0.00 = **$2,590.18**\n\nGROSS: $2590.18",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 469,
+          "output_tokens": 978,
+          "output_tokens_details": {
+            "thinking_tokens": 478
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "emp": "HES-TX001",
+      "truth": "2197.69",
+      "got": "2197.69",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX002",
+      "truth": "1542.40",
+      "got": "1542.40",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX003",
+      "truth": "2593.03",
+      "got": "2593.03",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX004",
+      "truth": "1967.33",
+      "got": "1967.33",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX005",
+      "truth": "1396.50",
+      "got": "1396.50",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX006",
+      "truth": "2103.20",
+      "got": "2103.20",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX007",
+      "truth": "2202.82",
+      "got": "2202.82",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX008",
+      "truth": "1511.56",
+      "got": "1511.56",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX009",
+      "truth": "1681.00",
+      "got": "1681.00",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX010",
+      "truth": "1406.00",
+      "got": "1406.00",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX011",
+      "truth": "1894.40",
+      "got": "1894.40",
+      "ok": true
+    },
+    {
+      "emp": "HES-TX012",
+      "truth": "1918.80",
+      "got": "1918.80",
+      "ok": true
+    },
+    {
+      "emp": "HES-CO013",
+      "truth": "1617.11",
+      "got": "1617.11",
+      "ok": true
+    },
+    {
+      "emp": "HES-CO014",
+      "truth": "2027.13",
+      "got": "2027.13",
+      "ok": true
+    },
+    {
+      "emp": "HES-CO015",
+      "truth": "1711.00",
+      "got": "1711.00",
+      "ok": true
+    },
+    {
+      "emp": "HES-CO016",
+      "truth": "1189.00",
+      "got": "1189.00",
+      "ok": true
+    },
+    {
+      "emp": "HES-CO017",
+      "truth": "1064.00",
+      "got": "1064.00",
+      "ok": true
+    },
+    {
+      "emp": "HES-CO018",
+      "truth": "1605.26",
+      "got": "1605.26",
+      "ok": true
+    },
+    {
+      "emp": "HWF-CA019",
+      "truth": "1623.60",
+      "got": "1623.60",
+      "ok": true
+    },
+    {
+      "emp": "HWF-CA020",
+      "truth": "1314.00",
+      "got": "1314.00",
+      "ok": true
+    },
+    {
+      "emp": "HWF-CA021",
+      "truth": "1239.00",
+      "got": "1239.00",
+      "ok": true
+    },
+    {
+      "emp": "HWF-CA022",
+      "truth": "1795.76",
+      "got": "1795.76",
+      "ok": true
+    },
+    {
+      "emp": "HWF-CA023",
+      "truth": "1489.40",
+      "got": "1489.40",
+      "ok": true
+    },
+    {
+      "emp": "HWF-CA024",
+      "truth": "2590.17",
+      "got": "2590.18",
+      "ok": false
+    }
+  ],
+  "stdout": [
+    "HES-TX001 rule  2197.69 model  2197.69 ok",
+    "HES-TX002 rule  1542.40 model  1542.40 ok",
+    "HES-TX003 rule  2593.03 model  2593.03 ok",
+    "HES-TX004 rule  1967.33 model  1967.33 ok",
+    "HES-TX005 rule  1396.50 model  1396.50 ok",
+    "HES-TX006 rule  2103.20 model  2103.20 ok",
+    "HES-TX007 rule  2202.82 model  2202.82 ok",
+    "HES-TX008 rule  1511.56 model  1511.56 ok",
+    "HES-TX009 rule  1681.00 model  1681.00 ok",
+    "HES-TX010 rule  1406.00 model  1406.00 ok",
+    "HES-TX011 rule  1894.40 model  1894.40 ok",
+    "HES-TX012 rule  1918.80 model  1918.80 ok",
+    "HES-CO013 rule  1617.11 model  1617.11 ok",
+    "HES-CO014 rule  2027.13 model  2027.13 ok",
+    "HES-CO015 rule  1711.00 model  1711.00 ok",
+    "HES-CO016 rule  1189.00 model  1189.00 ok",
+    "HES-CO017 rule  1064.00 model  1064.00 ok",
+    "HES-CO018 rule  1605.26 model  1605.26 ok",
+    "HWF-CA019 rule  1623.60 model  1623.60 ok",
+    "HWF-CA020 rule  1314.00 model  1314.00 ok",
+    "HWF-CA021 rule  1239.00 model  1239.00 ok",
+    "HWF-CA022 rule  1795.76 model  1795.76 ok",
+    "HWF-CA023 rule  1489.40 model  1489.40 ok",
+    "HWF-CA024 rule  2590.17 model  2590.18 WRONG +0.01",
+    "right to the cent: 23 of 24"
+  ]
+}

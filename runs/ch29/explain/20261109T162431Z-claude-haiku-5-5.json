@@ -1,0 +1,2784 @@
+{
+  "run_id": "ch29/explain/20261109T162431Z",
+  "started_utc": "2026-11-09T16:24:31.737192+00:00",
+  "git_commit": "6df1a3c",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HES-40217.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "My overtime on this week's payslip looks low. I did four 12-hour nights and a 6 on Friday. Why?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSgwYKEAgTGAI4AUIIdGhpbmtpbmcSDLowJSjnbNj6g/spgBoM+kaVYbyTC9f05iStIjCFe+HR+luo5yhe7Cb884ap6PkGprhSwdyHXhuIRgbngrvLU0WIzAqD22wtz2FrCCYqoAVfC6ecb02Ospo3rhEAJrJsCcf25dAVWD/HL4jeE4mYNwnJJAx61db5/g3zioi5fo9mOgzJXy+Jdyg0SLLz32asOVY648Bs7+ttLpOnEfcQGDGvZx+hhcdrONceYuKIa1qVIADuhlBObhwEv9HHgUDGPRJEuvceeXO/WuKxkxy6IkVlKgbJsbIuzbe73sxKaZWTFTavIEQnllOi6CPTW/BijOpMKh1TK6a8C87GSP2UwK10K/WEEJRIXW66XaKPph1wyyVW75337A4wZO/ZdNynMfXts5boJygM9jzF7G9U/gxTtfgEDkgxVxVfsewen+nlMoiR4/2+Ky0vPBIwB5VCWJ7l+XCf6tXk17LbRPXMnc5ejfMJ0uHOfQgkPLqF0PnpACDJxZ+k27mQ5oom0hQbkFMBCh3c1MDILvXKpiKW3e8e/LalNAS/FtkJYhiLXF0PUPYOqs3cZKK7SsV3r0J+hzT6KvB65l7X7NtsIReAuBpXJfFECVSxrnbxqAJYlaJ4d7JY0OvaoLy2x5etEBJZLEVlGj6dZuezu8lsgdCuu42jThmPBXqg9K/owerGZ4i7VzVSn0REQ1PgLeYv5U8cqG9NWL52o910aYEMtNO+oS9Qp/E5pElZa7bWiwbzYPpqbHPWNF3Gnoo/QYEYSAg/fUQx16K5Oed6BzGkjFUNKYw1ngs2ATrGkDNBNSZHYh00qlPh8MxWkjzSrhZuRdcOTUun5M9q4NTqsvvc8OPqrYk2e3s7AE3M+8Dux1PBG5YXRYVeGsfpFefzaM6/kzQIFMI03N1LP6ej3x9/RO+hIz4tDohWpUH6Rj54FXFcm0/hNKoesOKPrgdPLSI9sHcCk2q62wIbXHFeOVfYnVAT+rbLgjlJCl4DACrewLnKrGsYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01HxKeFFhjpgNyyJstKxhzK8",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_payslip",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01HxKeFFhjpgNyyJstKxhzK8",
+                "content": "payslip week Jan 10 to 16, 2028, paid Jan 21\nprovider gross paid $2197.40\nprovider overtime: 14 h x 1.5 x base $31.40\nHartwell rule recalculation:\nHES-40217 week, TX, ruleset US-PAY v1.2\nR-BASE  54 h x $31.40               $  1695.60\nR-NIGHT 48 h x $2.75                $   132.00\nR-BONUS weekly bonus                $   150.00\nR-OT    14 h x 0.5 x $36.6222       $   256.36\ngross                               $  2233.96\npaid $36.56 less than the rule\npayroll query PQ-28-0117 opened Jan 21 by the recalculation check; owner US payroll manager; any correction is paid by off-cycle payment"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "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",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "Your payslip for January 10 to 16 shows 14 overtime hours, which matches your 54 hours (four 12-hour nights plus a 6-hour Friday). The gap is in how those hours were valued.\n\n- Paid gross: $2197.40\n- Hartwell rule recalculation: $2233.96\n- Difference: $36.56 less than the rule\n\nThe rule values the 14 overtime hours at $256.36 (14 h x 0.5 x $36.6222). The provider line on the payslip uses 14 h x 1.5 x base $31.40. The system flagged the mismatch and opened payroll query PQ-28-0117, which the US payroll manager owns. Any correction would be paid as an off-cycle payment.\n\nI can't change your pay. Do you want me to send this to the payroll team with the query details?",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "3a99538d84f52a30868ab8aa620f0b4fafbc608188f5d3b4c4f5cb97cd0d82ce",
+      "response": {
+        "id": "msg_011CgsfWJ6R9qzDqZRXhuMWk",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSgwYKEAgTGAI4AUIIdGhpbmtpbmcSDLowJSjnbNj6g/spgBoM+kaVYbyTC9f05iStIjCFe+HR+luo5yhe7Cb884ap6PkGprhSwdyHXhuIRgbngrvLU0WIzAqD22wtz2FrCCYqoAVfC6ecb02Ospo3rhEAJrJsCcf25dAVWD/HL4jeE4mYNwnJJAx61db5/g3zioi5fo9mOgzJXy+Jdyg0SLLz32asOVY648Bs7+ttLpOnEfcQGDGvZx+hhcdrONceYuKIa1qVIADuhlBObhwEv9HHgUDGPRJEuvceeXO/WuKxkxy6IkVlKgbJsbIuzbe73sxKaZWTFTavIEQnllOi6CPTW/BijOpMKh1TK6a8C87GSP2UwK10K/WEEJRIXW66XaKPph1wyyVW75337A4wZO/ZdNynMfXts5boJygM9jzF7G9U/gxTtfgEDkgxVxVfsewen+nlMoiR4/2+Ky0vPBIwB5VCWJ7l+XCf6tXk17LbRPXMnc5ejfMJ0uHOfQgkPLqF0PnpACDJxZ+k27mQ5oom0hQbkFMBCh3c1MDILvXKpiKW3e8e/LalNAS/FtkJYhiLXF0PUPYOqs3cZKK7SsV3r0J+hzT6KvB65l7X7NtsIReAuBpXJfFECVSxrnbxqAJYlaJ4d7JY0OvaoLy2x5etEBJZLEVlGj6dZuezu8lsgdCuu42jThmPBXqg9K/owerGZ4i7VzVSn0REQ1PgLeYv5U8cqG9NWL52o910aYEMtNO+oS9Qp/E5pElZa7bWiwbzYPpqbHPWNF3Gnoo/QYEYSAg/fUQx16K5Oed6BzGkjFUNKYw1ngs2ATrGkDNBNSZHYh00qlPh8MxWkjzSrhZuRdcOTUun5M9q4NTqsvvc8OPqrYk2e3s7AE3M+8Dux1PBG5YXRYVeGsfpFefzaM6/kzQIFMI03N1LP6ej3x9/RO+hIz4tDohWpUH6Rj54FXFcm0/hNKoesOKPrgdPLSI9sHcCk2q62wIbXHFeOVfYnVAT+rbLgjlJCl4DACrewLnKrGsYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01HxKeFFhjpgNyyJstKxhzK8",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {},
+            "name": "get_payslip",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1052,
+          "output_tokens": 76,
+          "output_tokens_details": {
+            "thinking_tokens": 47
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HES-40217.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "My overtime on this week's payslip looks low. I did four 12-hour nights and a 6 on Friday. Why?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSgwYKEAgTGAI4AUIIdGhpbmtpbmcSDLowJSjnbNj6g/spgBoM+kaVYbyTC9f05iStIjCFe+HR+luo5yhe7Cb884ap6PkGprhSwdyHXhuIRgbngrvLU0WIzAqD22wtz2FrCCYqoAVfC6ecb02Ospo3rhEAJrJsCcf25dAVWD/HL4jeE4mYNwnJJAx61db5/g3zioi5fo9mOgzJXy+Jdyg0SLLz32asOVY648Bs7+ttLpOnEfcQGDGvZx+hhcdrONceYuKIa1qVIADuhlBObhwEv9HHgUDGPRJEuvceeXO/WuKxkxy6IkVlKgbJsbIuzbe73sxKaZWTFTavIEQnllOi6CPTW/BijOpMKh1TK6a8C87GSP2UwK10K/WEEJRIXW66XaKPph1wyyVW75337A4wZO/ZdNynMfXts5boJygM9jzF7G9U/gxTtfgEDkgxVxVfsewen+nlMoiR4/2+Ky0vPBIwB5VCWJ7l+XCf6tXk17LbRPXMnc5ejfMJ0uHOfQgkPLqF0PnpACDJxZ+k27mQ5oom0hQbkFMBCh3c1MDILvXKpiKW3e8e/LalNAS/FtkJYhiLXF0PUPYOqs3cZKK7SsV3r0J+hzT6KvB65l7X7NtsIReAuBpXJfFECVSxrnbxqAJYlaJ4d7JY0OvaoLy2x5etEBJZLEVlGj6dZuezu8lsgdCuu42jThmPBXqg9K/owerGZ4i7VzVSn0REQ1PgLeYv5U8cqG9NWL52o910aYEMtNO+oS9Qp/E5pElZa7bWiwbzYPpqbHPWNF3Gnoo/QYEYSAg/fUQx16K5Oed6BzGkjFUNKYw1ngs2ATrGkDNBNSZHYh00qlPh8MxWkjzSrhZuRdcOTUun5M9q4NTqsvvc8OPqrYk2e3s7AE3M+8Dux1PBG5YXRYVeGsfpFefzaM6/kzQIFMI03N1LP6ej3x9/RO+hIz4tDohWpUH6Rj54FXFcm0/hNKoesOKPrgdPLSI9sHcCk2q62wIbXHFeOVfYnVAT+rbLgjlJCl4DACrewLnKrGsYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01HxKeFFhjpgNyyJstKxhzK8",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_payslip",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01HxKeFFhjpgNyyJstKxhzK8",
+                "content": "payslip week Jan 10 to 16, 2028, paid Jan 21\nprovider gross paid $2197.40\nprovider overtime: 14 h x 1.5 x base $31.40\nHartwell rule recalculation:\nHES-40217 week, TX, ruleset US-PAY v1.2\nR-BASE  54 h x $31.40               $  1695.60\nR-NIGHT 48 h x $2.75                $   132.00\nR-BONUS weekly bonus                $   150.00\nR-OT    14 h x 0.5 x $36.6222       $   256.36\ngross                               $  2233.96\npaid $36.56 less than the rule\npayroll query PQ-28-0117 opened Jan 21 by the recalculation check; owner US payroll manager; any correction is paid by off-cycle payment"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "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",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "Your payslip for January 10 to 16 shows 14 overtime hours, which matches your 54 hours (four 12-hour nights plus a 6-hour Friday). The gap is in how those hours were valued.\n\n- Paid gross: $2197.40\n- Hartwell rule recalculation: $2233.96\n- Difference: $36.56 less than the rule\n\nThe rule values the 14 overtime hours at $256.36 (14 h x 0.5 x $36.6222). The provider line on the payslip uses 14 h x 1.5 x base $31.40. The system flagged the mismatch and opened payroll query PQ-28-0117, which the US payroll manager owns. Any correction would be paid as an off-cycle payment.\n\nI can't change your pay. Do you want me to send this to the payroll team with the query details?",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "c09776ff4707dae06bc78e43bd61ef88fd63eedbaca630e11fc21e1dca283699",
+      "response": {
+        "id": "msg_011CgsfWP1LgB4jeXvsusjAB",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSjhIKEAgTGAI4AUIIdGhpbmtpbmcSDLB4w5ihJkxJ5A6lyhoM8km6+EQBx6Y9ghu+IjC3zJwjL8EytC4+md1war06HYgGYyXpmje1QfkOLGRy/2zamClefG6riHCXopmGmzMqqxGTpWN2Ce8gA63llh23Oz5XthjHMiPcWup+592HOhIp2rMPTNY5de08eBjxxNTYjKt5nkTafHtWQV3SQZePjDaD8OerBnn7yqSLDw8ym7zLjax+Ud/MyaMZg+GviGvaQDIc0VP3GDNM0D27X6FVkrPPwItPvB2fOHiZ6hdPA6UX1qDkN1lU+OMRxQ6vgnZPfTWYHUYOqx480zTaS7fUH6frOnyB1/LtJS0vh+dMs0se70hrzoalSJFvBjZ9JRrZ8rbFQRxdnGC8RvzuJ7nkzo4ofX+my5pgiEXe7K5ZD7U0ubZLhAMH1hoM7IgBxvfZA8BNi2VbMIlA8LYxzPjs/nGy7P33MJYP6jWsyIuNk0WAP7Yk16QPTk1i5P3povO+8cUTViQu7AdyTvcQqttwfOFSyUsflAYcoemHzTQmiUilhbrAuA06UHeqlVnt6A6cXz1ERbkSf86DM9EWWimdJSd6O3v3aesq3+SpoDxADhoDVpIPJtssnX/peo3w0pxHeloAWQbHgA2DIRDBkV8Puvy3VeJtOCeZ04x7K73Flu9QjYN2/p/q6UnAPLNvd2Ilw2Gqfy2deTQ06vYz4V6IvVu7bsT8hGcDPhdvnulBUh9GTMYyvblKVQZv+bsvx9+H01UyH3OBxRzEa8i9VpmLJyrRstd7d7XSFg9TmDxm2vszUqaN0S1hWINulWFN2wqDwv8iDNe63PEFPfLm+vwKlhm4bzw5H63NBbsAcO4LoeIj7Ce43KqSmSgQfCKt2PRaTJqhO9gLKrdpy7GGD1ZtyvNoC/XDY0aSYgsPxfurth+YF/IYCBVBeg/BdkntKI4tET2P7s8QdsYm78sBFaR5h0eAZmh2X+0NvfbXuGYyhxAhWlYTbpp9hYjdfDiLRueoN6f++aeQEpOrS5uyNIK6V9HBRsqvhwLDMGzwtpCld4x44NUWBmbsVTI88Ig/XDEPuPrSt0zC5GiRIulTs2s8Vlqs4zJP0It5EHxZ7pnBxVI+O7ujVmtDnoRZcFaCRYR0M6+BmuaTVu2sURu24Ih+/hle8H+t7gxdWdNUIE97GXQgR78Z+borpxIrxaK9zTrhx14VOIZN3UQX/5m0djP49SA/0A7EJwOZ5x0OYrgl5zrOKl0cO/mrcx6xMYMPGb7suF7NEVbvEj/R4QSrX3AoRnRm5f+6luri8PnPKyLzLSOklusLH2sC4QZ/xWX4y7QqHV6+Orpftmf0dvMlfgeHWz0aG6q5IROu9ljdQbG/0tJiOlcWGBEr5Tp7nbTrLQTXMS7Ae6io1/uIHFfxul67Apx+3n2MujBkNfo9QvnFUKSMnyELA/JcIpMiWLTOGs5LyapqhbFdFgLyuXzLKl4fEtttdq1nBCn5ZBmdTJwatZvIb2BKC+91VOWFnkcUVUn30XvE5Wcc8mg15UAbAcKRgduVE3MgBdnSiG7baR/9oEvF4u8Gyo/likA0VtmoS40RFMyoJYC2YJkkUGKkcMxeOuU71L8v+CSRxNryRhwOtp3FfEi/KDF7srzde3KIcyysUYBw8vmGylzQ+kaKTqmU4fKqEBaPsV97yc8niBGatIJofbXNTZPvTmjMPNzGjTP28KUJm8m2DShyZjV9b5g7nSdgmkPaxITn1XDNATrJSO4pfQZoDhiMrzqAjcqjyuzSMP3PxtRFdjxVQJsuhxr2BezidDe+1hl3ZXXf+bgansky8XRJf+Cat5tQmDmB2e/jwC54UoYQog9EdkB3/5/RcqLDJlSUtg4YkE62YEeJDMbq0jh/3e+4OqGvQSuoEQ8seUMTvlIusnv36dIO6QdepZc/rNDG+COTbS4WPDU7EIdn4Jv3aCc4z89N2mlMSP6ZJrS9N+OJXLrDjh+OSYlypY246dstAUTumeIK6OcW3siOsVbdPJD92FmnVfxktV4FWllVnmuunJKcD4AR+KHw5PY5bQeyJLqYeleSvHdk6hx7kqL1PmeRtBZDNBc9BkL5peBXeS9Vezg+oUld4F2cU/oucpRUQoHKppZ0QWHiuO0wumq0xGkFU0O6xxp71Gbu16MIq3TaQ+E5WOTlEBLatc/p1OK7vSR8ngxmmuYtO2V0mKqa0DBuMKOhRrYTbmJgaxQz68Ml6vbA3U89t+7xFMbfMUruB12a2nCRL8FqR16gxT8oyRaDdlPJvXuq51WU4bsZHo8EvU95hWOQrnJZx9hCzdMXS5sP0X5woLAvqgcmV2fpTU4Xqbwu5dBHomdFSdmCe95frzsA0Ho1XhKVpGD8hjriGbHwW9c+nmZmVtudMuu6RkaXvPLGUkdsHcgRaGJsqvhAPXhyAcdJVzIUfwsy+1cuzRcLIeqRf2IL7zobJBlmuhz81q6hzd4yFRIHDWsaQl38GHDl1vVk3DZjjP1OdZDRbrK/Zlzg0XjbV/qSrDyGY9mlYRW9IlkeGy343vTUKQexCZJORSzbHffZejFMewXT2SXWS3sRvuYtII2YN8SW/HCaucEt+M93gLCRaH61Uw42xsPnZFnSmQlIw41IOwCCKYzMDwSFL0py7cuH6fa7/RzkA7CUOWPGrQwRGzNZj21uBWR4zP6wicnGAcp03cCNX5Acfik/We1xv5X/m/P36iGe4dHMelw30/rT5k2kukI4RyUHRYbpkcfnH/2d1IKv4bh02svHPwg0QV/u6u9DpX01IomNXoJpr8fxl/n5bh6RtK3wl/rG4orHivFD7pf6lTiDApwntJCl0cuG56lu+4Pz1WZ0yVYYt3eh+CogLHQBefXv/xEAu9UGqytx9i0P6hb1D67EwhPBmztJs0VnDgmiHyv4mxvVmwM4D1LQAQV55UbtfgpSOoUCYoVbmsJlgcxyBkEfXlBocbLiNgGANn6PaJrP3eKq34xxTN+kF7OCDob91a4BfOZW+UaoWdJ4UkQfqQmhAyXxzArOllSkTfOotaaIFjduoK1FYRJ4gI7if8iu3YiD8xgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "Your payslip for January 10 to 16 shows 14 overtime hours, which matches your 54 hours (four 12-hour nights plus a 6-hour Friday). The gap is in how those hours were valued.\n\n- Paid gross: $2197.40\n- Hartwell rule recalculation: $2233.96\n- Difference: $36.56 less than the rule\n\nThe rule values the 14 overtime hours at $256.36 (14 h x 0.5 x $36.6222). The provider line on the payslip uses 14 h x 1.5 x base $31.40. The system flagged the mismatch and opened payroll query PQ-28-0117, which the US payroll manager owns. Any correction would be paid as an off-cycle payment.\n\nI can't change your pay. Do you want me to send this to the payroll team with the query details?",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1399,
+          "output_tokens": 916,
+          "output_tokens_details": {
+            "thinking_tokens": 650
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HES-40217.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "If I pick up 6 more hours on Saturday this week, how much more will I make?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSwwcKEAgTGAI4AUIIdGhpbmtpbmcSDPPKh1qyKZtmTnYD9hoMgqyaPlGFJEZXvGVLIjCTubBx08jz9DJMT5amNCOUEn/v/GJiQiGuKSk+tMLPXa5JVrI6hEKgQXghJwyxB5Iq4AZBaQeDju30ueb3JHjwo9L8FkzhbWIddJSIYJCgkzMcJaIwu88fg7aS73iORmV3XxbcwbGT26GbQzL4gyMQV1SOj1R2uiQyMxbYZ1Jkyib8mifV9/8kR16xHGb+Dmlz6A2GkrzSimhHzbwqtMH63v74b19bf8K35imWAmgjT/sTPPI9dqRwT0wbKZKgJ8SlCU+1vq8grdsm4MQYQK2m9/XUN1kkrC1KuP84p5EqUMe62BSd4NKkF4CBJxMUGPvtHUXnhCwg5/2LQDJ9JxsIZBYLzqpxEjGaDcQ1xlVEXlUWFtt4uk62WdrxG/Nh/NGDOYft4XljauhWfeDegN1w7+oA7J9qXo4nIGg5NFHHc+mIsFOH6F5uSHNMBYie7YC3Kh9zgNfJMHGXBwkdEdo7EQn8siYx+l4nSUptPuObQYQH7NAbRZ5HwrvFz69Qepd6r02RsC8hxzAyP+8dKcSvohG+5NX50LrZUD/MZSlHpCv5c9xEycKLiIcGy+0VpkKNp45a014KjQV7Nzw9nO9eOUAIH3rAm4ifwVnEYWyuVY0jL5GZbNu2y6WDEy0XzwyTEHuez9D2XPwYI/A32yq0MLt4hplp1GdKgs35X6xbZeKCpRsc2n17E0J84I7hs3Y3gO+5gwZhC9bb1Hses3K/NhnnPnikp2ioVUwNMOTD//PbN5warkMt4WKbX2Onz93CNNRVQpZn1HS/2buf1vs46Ff6WOmJwKyLXh6hYdNRigtdSKhSVZHybOjM+Qb1toe1cm9fMxzYuuxfuALUypULOIfe57lr8O8LyTo+Iwvu2shoJCoN6QedMQGaB1ROPNOl/m9rIYk1tK2JcLZiCXn2G+QbI1StDalzD8Es8gn7foWaqQq0vw4WjGdvlV6aZqLXGQ5LYg5elzhA4Hr0IdkeGMyXBjjQhFG58Irr+zeyis3+Gl8ErzP9g9M2F47RFtzmqYM4nHpUGx4/n7hOcGhLNe3wjBlnpZfbzaJkoJBZhLG0MqPHiRlETy3vrw1fUxC5/YOdQaLzgm9qQCmcqLPczOGiNZcY+zOOCfQo4/ZMd815JgqmgNuUXjvmTieF90OeuZQJowRBRrEXzMwGv2cBoZtiB+CixHD6zekQPPQYnOgf8myrYegLjB990jr+dk1x3P8YAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01JyqsWu2Hk7jiZpAAPzr9T8",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "day": "Saturday",
+                  "hours": 6,
+                  "night_hours": 0
+                },
+                "name": "what_if",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01JyqsWu2Hk7jiZpAAPzr9T8",
+                "content": "estimate only; this week as booked so far:\nHES-40217 week, TX, ruleset US-PAY v1.2\nR-BASE  54 h x $31.40               $  1695.60\nR-NIGHT 48 h x $2.75                $   132.00\nR-BONUS weekly bonus                $   150.00\nR-OT    14 h x 0.5 x $36.6222       $   256.36\ngross                               $  2233.96\nwith 6 more hours on Saturday:\nHES-40217 week, TX, ruleset US-PAY v1.2\nR-BASE  60 h x $31.40               $  1884.00\nR-NIGHT 48 h x $2.75                $   132.00\nR-BONUS weekly bonus                $   150.00\nR-OT    20 h x 0.5 x $36.1000       $   361.00\ngross                               $  2527.00\ndifference $293.04 gross, before tax and deductions"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS9wcKEAgTGAI4AUIIdGhpbmtpbmcSDMMdAjjbuqiCIuiifxoM3npLNQMXOjBjlPLvIjDRFqEJ+j8oYAFo5xzWB49z1VlRJWGKCnGwXm+nUn29264HSVrtx96K7uAyM32B9hYqlAfZqxkakP/OyW1pPfhImUV8Gthos/ewja4EMhvY4e4FBnvcSLYkNZfLu48H4oeLSu89W/ui/EESaoST965oHT2C2nKskW9rQCRRbwXRGaHwfeP2hBIsayMGsC8qiTYWNHxw4KKNrl1bDuUioVn/zymH5DQuHfuWk/XfgbnyasNmzdNyOWpuaFWek1OnRmGuB/+0qHTlGSR74odnmiersi9XNpqMXm+/tD6rprdSRE0rVi/0JNx4LZmRHcfeQ4Ui7fi/HGf9C9RYzoLnEcHo57DX+gtZe/5yp5S8pWpmTqpG++cuKI29DrZ48r8QZl6h1NDyRYPdGKJqlCT+B9cCnrSPf/GPB5KWplPKa5uZhLIqqhIyMeTruiAszCjhIriiPmW7V2goISwkNthIj+Vwa51Y6ytHcQZVpL5pvqQPyve6KQiIapiwhJv1QBlqKe744KnLTrUDP+tvb1JqbgA9+vIIPl82doQAERP/VNgpa3stukU8zwF1gXRzgY8ywnIWpnTWpLVK0/AZcBTBLoeg7itn2HCNUgt/ngUCax9vStjqp6QWGRZ/YVu9cgd4MrbJ66qs8wGkcizMkP+EHpn6HDrAXZYsjc4yd5Tq1L7FYL1QjXT2YA09DUl1aS9DQjg6DID3NzteYCOgDnQPy21BaFWniADjug2s39Iu5aQN/dlrmzq3v7E/3YzwBN6w3zs/J4IIHdEG2EZGk+GMglABInBnopTCJZXzI7cYEMNYOHEfC/MyKRWlspc6KoNQxnWBLS8WYZcVBWGeRKZ4MXBlgUZw3pEET2pwE4idtqS9UFQDRbkdLKQPYFbF6uRm8ODd+SfwtBcgefFJTfuXHkRuVTftpcn4SsEftLw8yLEfJYC8y47feZ3yF0u26bc1Gn3BUH9QKnrez4WgoJbhVLdDFMXhjFAsJF9v+QoKmECLH2vK5i8RJGQCQwc522CGpzjW22Y/hpgzuvOQMI90jkWMpMjDI7ggz97/DF5xGL0m6/KioC3b7Is7aDkkvmi5wO3Fujf7b4JN8KAqrVNNSpozMcz2J2bE1iU/YPQgcUXStaFGHYC5o0ScvRXdbqd9r933cKTNTtlZHn5EEbGDcsMvlkuJKDxZI79KcNvba6RH3hClbcwZGTeNxB7wZat1HOoMvbscixGDWqT4I04tqBUogxawKORltUtk9zXNrL9Y5HCHrWRNUqy9vE5vf1/gfnFU5QcO5Ms3GAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "If you work 6 more hours on Saturday, your estimated gross pay for this week rises by **$293.04**, before tax and deductions.\n\nThis assumes no night hours on those Saturday shifts. If some of them fall at night, the estimate would change, so tell me and I can rerun it.\n\nWith the extra hours, the estimate shows:\n- Base: 60 h x $31.40 = $1884.00\n- Night: 48 h x $2.75 = $132.00\n- Weekly bonus: $150.00\n- Overtime: 20 h x 0.5 x $36.1000 = $361.00\n- Gross: $2527.00\n\nThis is an estimate only. The final figure comes from payroll.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "bf4216391968f2039000ce810ded8115400ddafe3b58ee6ce9b5aa8f628009b3",
+      "response": {
+        "id": "msg_011CgsfWk9poguK2H3yFLqRE",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSwwcKEAgTGAI4AUIIdGhpbmtpbmcSDPPKh1qyKZtmTnYD9hoMgqyaPlGFJEZXvGVLIjCTubBx08jz9DJMT5amNCOUEn/v/GJiQiGuKSk+tMLPXa5JVrI6hEKgQXghJwyxB5Iq4AZBaQeDju30ueb3JHjwo9L8FkzhbWIddJSIYJCgkzMcJaIwu88fg7aS73iORmV3XxbcwbGT26GbQzL4gyMQV1SOj1R2uiQyMxbYZ1Jkyib8mifV9/8kR16xHGb+Dmlz6A2GkrzSimhHzbwqtMH63v74b19bf8K35imWAmgjT/sTPPI9dqRwT0wbKZKgJ8SlCU+1vq8grdsm4MQYQK2m9/XUN1kkrC1KuP84p5EqUMe62BSd4NKkF4CBJxMUGPvtHUXnhCwg5/2LQDJ9JxsIZBYLzqpxEjGaDcQ1xlVEXlUWFtt4uk62WdrxG/Nh/NGDOYft4XljauhWfeDegN1w7+oA7J9qXo4nIGg5NFHHc+mIsFOH6F5uSHNMBYie7YC3Kh9zgNfJMHGXBwkdEdo7EQn8siYx+l4nSUptPuObQYQH7NAbRZ5HwrvFz69Qepd6r02RsC8hxzAyP+8dKcSvohG+5NX50LrZUD/MZSlHpCv5c9xEycKLiIcGy+0VpkKNp45a014KjQV7Nzw9nO9eOUAIH3rAm4ifwVnEYWyuVY0jL5GZbNu2y6WDEy0XzwyTEHuez9D2XPwYI/A32yq0MLt4hplp1GdKgs35X6xbZeKCpRsc2n17E0J84I7hs3Y3gO+5gwZhC9bb1Hses3K/NhnnPnikp2ioVUwNMOTD//PbN5warkMt4WKbX2Onz93CNNRVQpZn1HS/2buf1vs46Ff6WOmJwKyLXh6hYdNRigtdSKhSVZHybOjM+Qb1toe1cm9fMxzYuuxfuALUypULOIfe57lr8O8LyTo+Iwvu2shoJCoN6QedMQGaB1ROPNOl/m9rIYk1tK2JcLZiCXn2G+QbI1StDalzD8Es8gn7foWaqQq0vw4WjGdvlV6aZqLXGQ5LYg5elzhA4Hr0IdkeGMyXBjjQhFG58Irr+zeyis3+Gl8ErzP9g9M2F47RFtzmqYM4nHpUGx4/n7hOcGhLNe3wjBlnpZfbzaJkoJBZhLG0MqPHiRlETy3vrw1fUxC5/YOdQaLzgm9qQCmcqLPczOGiNZcY+zOOCfQo4/ZMd815JgqmgNuUXjvmTieF90OeuZQJowRBRrEXzMwGv2cBoZtiB+CixHD6zekQPPQYnOgf8myrYegLjB990jr+dk1x3P8YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01JyqsWu2Hk7jiZpAAPzr9T8",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "day": "Saturday",
+              "hours": 6,
+              "night_hours": 0
+            },
+            "name": "what_if",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1040,
+          "output_tokens": 220,
+          "output_tokens_details": {
+            "thinking_tokens": 123
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HES-40217.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "If I pick up 6 more hours on Saturday this week, how much more will I make?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSwwcKEAgTGAI4AUIIdGhpbmtpbmcSDPPKh1qyKZtmTnYD9hoMgqyaPlGFJEZXvGVLIjCTubBx08jz9DJMT5amNCOUEn/v/GJiQiGuKSk+tMLPXa5JVrI6hEKgQXghJwyxB5Iq4AZBaQeDju30ueb3JHjwo9L8FkzhbWIddJSIYJCgkzMcJaIwu88fg7aS73iORmV3XxbcwbGT26GbQzL4gyMQV1SOj1R2uiQyMxbYZ1Jkyib8mifV9/8kR16xHGb+Dmlz6A2GkrzSimhHzbwqtMH63v74b19bf8K35imWAmgjT/sTPPI9dqRwT0wbKZKgJ8SlCU+1vq8grdsm4MQYQK2m9/XUN1kkrC1KuP84p5EqUMe62BSd4NKkF4CBJxMUGPvtHUXnhCwg5/2LQDJ9JxsIZBYLzqpxEjGaDcQ1xlVEXlUWFtt4uk62WdrxG/Nh/NGDOYft4XljauhWfeDegN1w7+oA7J9qXo4nIGg5NFHHc+mIsFOH6F5uSHNMBYie7YC3Kh9zgNfJMHGXBwkdEdo7EQn8siYx+l4nSUptPuObQYQH7NAbRZ5HwrvFz69Qepd6r02RsC8hxzAyP+8dKcSvohG+5NX50LrZUD/MZSlHpCv5c9xEycKLiIcGy+0VpkKNp45a014KjQV7Nzw9nO9eOUAIH3rAm4ifwVnEYWyuVY0jL5GZbNu2y6WDEy0XzwyTEHuez9D2XPwYI/A32yq0MLt4hplp1GdKgs35X6xbZeKCpRsc2n17E0J84I7hs3Y3gO+5gwZhC9bb1Hses3K/NhnnPnikp2ioVUwNMOTD//PbN5warkMt4WKbX2Onz93CNNRVQpZn1HS/2buf1vs46Ff6WOmJwKyLXh6hYdNRigtdSKhSVZHybOjM+Qb1toe1cm9fMxzYuuxfuALUypULOIfe57lr8O8LyTo+Iwvu2shoJCoN6QedMQGaB1ROPNOl/m9rIYk1tK2JcLZiCXn2G+QbI1StDalzD8Es8gn7foWaqQq0vw4WjGdvlV6aZqLXGQ5LYg5elzhA4Hr0IdkeGMyXBjjQhFG58Irr+zeyis3+Gl8ErzP9g9M2F47RFtzmqYM4nHpUGx4/n7hOcGhLNe3wjBlnpZfbzaJkoJBZhLG0MqPHiRlETy3vrw1fUxC5/YOdQaLzgm9qQCmcqLPczOGiNZcY+zOOCfQo4/ZMd815JgqmgNuUXjvmTieF90OeuZQJowRBRrEXzMwGv2cBoZtiB+CixHD6zekQPPQYnOgf8myrYegLjB990jr+dk1x3P8YAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01JyqsWu2Hk7jiZpAAPzr9T8",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "day": "Saturday",
+                  "hours": 6,
+                  "night_hours": 0
+                },
+                "name": "what_if",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01JyqsWu2Hk7jiZpAAPzr9T8",
+                "content": "estimate only; this week as booked so far:\nHES-40217 week, TX, ruleset US-PAY v1.2\nR-BASE  54 h x $31.40               $  1695.60\nR-NIGHT 48 h x $2.75                $   132.00\nR-BONUS weekly bonus                $   150.00\nR-OT    14 h x 0.5 x $36.6222       $   256.36\ngross                               $  2233.96\nwith 6 more hours on Saturday:\nHES-40217 week, TX, ruleset US-PAY v1.2\nR-BASE  60 h x $31.40               $  1884.00\nR-NIGHT 48 h x $2.75                $   132.00\nR-BONUS weekly bonus                $   150.00\nR-OT    20 h x 0.5 x $36.1000       $   361.00\ngross                               $  2527.00\ndifference $293.04 gross, before tax and deductions"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS9wcKEAgTGAI4AUIIdGhpbmtpbmcSDMMdAjjbuqiCIuiifxoM3npLNQMXOjBjlPLvIjDRFqEJ+j8oYAFo5xzWB49z1VlRJWGKCnGwXm+nUn29264HSVrtx96K7uAyM32B9hYqlAfZqxkakP/OyW1pPfhImUV8Gthos/ewja4EMhvY4e4FBnvcSLYkNZfLu48H4oeLSu89W/ui/EESaoST965oHT2C2nKskW9rQCRRbwXRGaHwfeP2hBIsayMGsC8qiTYWNHxw4KKNrl1bDuUioVn/zymH5DQuHfuWk/XfgbnyasNmzdNyOWpuaFWek1OnRmGuB/+0qHTlGSR74odnmiersi9XNpqMXm+/tD6rprdSRE0rVi/0JNx4LZmRHcfeQ4Ui7fi/HGf9C9RYzoLnEcHo57DX+gtZe/5yp5S8pWpmTqpG++cuKI29DrZ48r8QZl6h1NDyRYPdGKJqlCT+B9cCnrSPf/GPB5KWplPKa5uZhLIqqhIyMeTruiAszCjhIriiPmW7V2goISwkNthIj+Vwa51Y6ytHcQZVpL5pvqQPyve6KQiIapiwhJv1QBlqKe744KnLTrUDP+tvb1JqbgA9+vIIPl82doQAERP/VNgpa3stukU8zwF1gXRzgY8ywnIWpnTWpLVK0/AZcBTBLoeg7itn2HCNUgt/ngUCax9vStjqp6QWGRZ/YVu9cgd4MrbJ66qs8wGkcizMkP+EHpn6HDrAXZYsjc4yd5Tq1L7FYL1QjXT2YA09DUl1aS9DQjg6DID3NzteYCOgDnQPy21BaFWniADjug2s39Iu5aQN/dlrmzq3v7E/3YzwBN6w3zs/J4IIHdEG2EZGk+GMglABInBnopTCJZXzI7cYEMNYOHEfC/MyKRWlspc6KoNQxnWBLS8WYZcVBWGeRKZ4MXBlgUZw3pEET2pwE4idtqS9UFQDRbkdLKQPYFbF6uRm8ODd+SfwtBcgefFJTfuXHkRuVTftpcn4SsEftLw8yLEfJYC8y47feZ3yF0u26bc1Gn3BUH9QKnrez4WgoJbhVLdDFMXhjFAsJF9v+QoKmECLH2vK5i8RJGQCQwc522CGpzjW22Y/hpgzuvOQMI90jkWMpMjDI7ggz97/DF5xGL0m6/KioC3b7Is7aDkkvmi5wO3Fujf7b4JN8KAqrVNNSpozMcz2J2bE1iU/YPQgcUXStaFGHYC5o0ScvRXdbqd9r933cKTNTtlZHn5EEbGDcsMvlkuJKDxZI79KcNvba6RH3hClbcwZGTeNxB7wZat1HOoMvbscixGDWqT4I04tqBUogxawKORltUtk9zXNrL9Y5HCHrWRNUqy9vE5vf1/gfnFU5QcO5Ms3GAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "If you work 6 more hours on Saturday, your estimated gross pay for this week rises by **$293.04**, before tax and deductions.\n\nThis assumes no night hours on those Saturday shifts. If some of them fall at night, the estimate would change, so tell me and I can rerun it.\n\nWith the extra hours, the estimate shows:\n- Base: 60 h x $31.40 = $1884.00\n- Night: 48 h x $2.75 = $132.00\n- Weekly bonus: $150.00\n- Overtime: 20 h x 0.5 x $36.1000 = $361.00\n- Gross: $2527.00\n\nThis is an estimate only. The final figure comes from payroll.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ec128d5ae3220c0f68ffe43143e10abd21244634808e347f62a3e6e89bdd2584",
+      "response": {
+        "id": "msg_011CgsfWrU5j5BL88GDWfVYb",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS9wcKEAgTGAI4AUIIdGhpbmtpbmcSDMMdAjjbuqiCIuiifxoM3npLNQMXOjBjlPLvIjDRFqEJ+j8oYAFo5xzWB49z1VlRJWGKCnGwXm+nUn29264HSVrtx96K7uAyM32B9hYqlAfZqxkakP/OyW1pPfhImUV8Gthos/ewja4EMhvY4e4FBnvcSLYkNZfLu48H4oeLSu89W/ui/EESaoST965oHT2C2nKskW9rQCRRbwXRGaHwfeP2hBIsayMGsC8qiTYWNHxw4KKNrl1bDuUioVn/zymH5DQuHfuWk/XfgbnyasNmzdNyOWpuaFWek1OnRmGuB/+0qHTlGSR74odnmiersi9XNpqMXm+/tD6rprdSRE0rVi/0JNx4LZmRHcfeQ4Ui7fi/HGf9C9RYzoLnEcHo57DX+gtZe/5yp5S8pWpmTqpG++cuKI29DrZ48r8QZl6h1NDyRYPdGKJqlCT+B9cCnrSPf/GPB5KWplPKa5uZhLIqqhIyMeTruiAszCjhIriiPmW7V2goISwkNthIj+Vwa51Y6ytHcQZVpL5pvqQPyve6KQiIapiwhJv1QBlqKe744KnLTrUDP+tvb1JqbgA9+vIIPl82doQAERP/VNgpa3stukU8zwF1gXRzgY8ywnIWpnTWpLVK0/AZcBTBLoeg7itn2HCNUgt/ngUCax9vStjqp6QWGRZ/YVu9cgd4MrbJ66qs8wGkcizMkP+EHpn6HDrAXZYsjc4yd5Tq1L7FYL1QjXT2YA09DUl1aS9DQjg6DID3NzteYCOgDnQPy21BaFWniADjug2s39Iu5aQN/dlrmzq3v7E/3YzwBN6w3zs/J4IIHdEG2EZGk+GMglABInBnopTCJZXzI7cYEMNYOHEfC/MyKRWlspc6KoNQxnWBLS8WYZcVBWGeRKZ4MXBlgUZw3pEET2pwE4idtqS9UFQDRbkdLKQPYFbF6uRm8ODd+SfwtBcgefFJTfuXHkRuVTftpcn4SsEftLw8yLEfJYC8y47feZ3yF0u26bc1Gn3BUH9QKnrez4WgoJbhVLdDFMXhjFAsJF9v+QoKmECLH2vK5i8RJGQCQwc522CGpzjW22Y/hpgzuvOQMI90jkWMpMjDI7ggz97/DF5xGL0m6/KioC3b7Is7aDkkvmi5wO3Fujf7b4JN8KAqrVNNSpozMcz2J2bE1iU/YPQgcUXStaFGHYC5o0ScvRXdbqd9r933cKTNTtlZHn5EEbGDcsMvlkuJKDxZI79KcNvba6RH3hClbcwZGTeNxB7wZat1HOoMvbscixGDWqT4I04tqBUogxawKORltUtk9zXNrL9Y5HCHrWRNUqy9vE5vf1/gfnFU5QcO5Ms3GAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "If you work 6 more hours on Saturday, your estimated gross pay for this week rises by **$293.04**, before tax and deductions.\n\nThis assumes no night hours on those Saturday shifts. If some of them fall at night, the estimate would change, so tell me and I can rerun it.\n\nWith the extra hours, the estimate shows:\n- Base: 60 h x $31.40 = $1884.00\n- Night: 48 h x $2.75 = $132.00\n- Weekly bonus: $150.00\n- Overtime: 20 h x 0.5 x $36.1000 = $361.00\n- Gross: $2527.00\n\nThis is an estimate only. The final figure comes from payroll.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1564,
+          "output_tokens": 344,
+          "output_tokens_details": {
+            "thinking_tokens": 121
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HES-40217.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "My supervisor agreed I'm getting $34.00 an hour from now on. Please update my rate."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSiggKEAgTGAI4AUIIdGhpbmtpbmcSDD1vaCwYBT5ME2b+KBoM+c+03JREp6iG8uH/IjDlQBuj9zT4d8ZYvkQqpQDNT09oyp5C9BEnr6s9UddP2WErDuyqPg75eUXaVrE0rt0qpwfQILfja1AXcIL1ZQeA6efh4ybUoAaAg1FVsHCWGI7LRCOZ+WQ6vp6a348zZAo2rGeltpCOrsSElXz7QWAkSAOq6E2S6s0IP6pTECtrykwBUeir30Dfu1FRkZgP0T4FdwYV2dxPMKTAaXpZ85wccbrMedFqO+FVZWa2G3nOpo/9I0I+0cVdc9UILSY+FY2mP5sKBf4jwRUAXJ1xJm2QIIMnQUyVtTgGHGeB0izsWZqcC+3HnL5IJj3450nVGFLdAGt/Ii3XNOtyc7O8CJcw54Nc0FiAF3urj817tnoKL1trncfYGLjznBP7ly0d4Rtf/z9JgLm7xOcL373RIk24byjrH24LgrU7OZs7OgvRVV7qOy07it7gEq/aMpZMDvaogJfx2K3Lg8n8YiZjmXEWMLBBCndRqd+hx52LcVc9gYkOouX8/OvtacypOiFJSyIqT8VdEpGdeNJg0EmITFdO5JGc9DllYzLdP7a3y/QcgHTI4XVWw2fYo4EATtep9NoobvncaDlBrNdEQQNnSyc1PwgiY4rQSlJVnTushsHkTqDXNscIJhUD+kc52T6JHR+t12K+h4GVGwaCjFiW8Nq4H6SZorYD25qoHSYuRF8VxFpIVV4hQhL72rnd07VEMhkbWd6gE0HZGWYN/97uefoWV2V8eeH/FzYQHpaQawiHXr1h7likpx3wiUr5+OWSWT/u3ZoBak0+NkYHiAM3hweAyeG+5z0W/hiUEvnnpbKpYGFudnYbhF4QcOukknj1lliCp3i/pgrFmsxMbpgPY3B1D8xsQAyVY6N9UgYJ7qVAZGK42a3s+1tOg8AryNo0zenYslGoWarWfH2EiGbKurXlD+kqJCJpA2ZMGBWTUShWFcx/Hf2i+BNuO2xtnXrAJQN5gCVWgSs4U3sx8GKOdBjL9EO3vovW7wC6fJgAMnOvqPFX7j/dmDUFFVxCmhqZF+HHYYWQFoEhLkg3F7AxC6GVr8tbe/dM4AfU/DouUrtXZwofM/t89sncl70Y5ggib45gPbw82NtBLKQeGUZnf+GferftibBNMgkO4Dmicw5u2InrgsfMdNXaFfGv86NaTerOoVniBeAwIesQ3h6XEsiguT2LkCKZoK6rlEbtJEL1lf4eYSz61nr0pXgLfwB/JsxWd8IsdyIStGJ2A8aukTJ1PqO9OpoYfqi+LjL6OfY9JGb1E39OYTZ6fGmLyTfBV7+oP2dEE556kn5aehTbZ85DD3HSt9heo99M2BgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01FYizXviJZ8XdowswdiTsFc",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "queue": "payroll",
+                  "summary": "Employee HES-40217 reports their supervisor agreed to a new hourly rate of $34.00 effective from now. Employee requests the pay rate be updated. Please verify the approval and update the rate. AskHartwell pay desk cannot change pay rates."
+                },
+                "name": "route_to_person",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01FYizXviJZ8XdowswdiTsFc",
+                "content": "ticket HR-28-4401 to payroll queue; a named person replies within 2 working days"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "citations": null,
+                "text": "I can't change your pay rate myself, so I've sent your request to the payroll team. Your ticket is HR-28-4401, and a named person will reply within 2 working days.\n\nThe request says your supervisor agreed to a new rate of $34.00 an hour effective now. Payroll will need to verify that approval before updating anything. If your supervisor can send written confirmation, include it with your ticket, as that may speed things up.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "b37a1944dc33ff17757901257164d0414fc3d031e4e4005d2a54a9161123feda",
+      "response": {
+        "id": "msg_011CgsfX1qQYC47xiL3Ki1GK",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSiggKEAgTGAI4AUIIdGhpbmtpbmcSDD1vaCwYBT5ME2b+KBoM+c+03JREp6iG8uH/IjDlQBuj9zT4d8ZYvkQqpQDNT09oyp5C9BEnr6s9UddP2WErDuyqPg75eUXaVrE0rt0qpwfQILfja1AXcIL1ZQeA6efh4ybUoAaAg1FVsHCWGI7LRCOZ+WQ6vp6a348zZAo2rGeltpCOrsSElXz7QWAkSAOq6E2S6s0IP6pTECtrykwBUeir30Dfu1FRkZgP0T4FdwYV2dxPMKTAaXpZ85wccbrMedFqO+FVZWa2G3nOpo/9I0I+0cVdc9UILSY+FY2mP5sKBf4jwRUAXJ1xJm2QIIMnQUyVtTgGHGeB0izsWZqcC+3HnL5IJj3450nVGFLdAGt/Ii3XNOtyc7O8CJcw54Nc0FiAF3urj817tnoKL1trncfYGLjznBP7ly0d4Rtf/z9JgLm7xOcL373RIk24byjrH24LgrU7OZs7OgvRVV7qOy07it7gEq/aMpZMDvaogJfx2K3Lg8n8YiZjmXEWMLBBCndRqd+hx52LcVc9gYkOouX8/OvtacypOiFJSyIqT8VdEpGdeNJg0EmITFdO5JGc9DllYzLdP7a3y/QcgHTI4XVWw2fYo4EATtep9NoobvncaDlBrNdEQQNnSyc1PwgiY4rQSlJVnTushsHkTqDXNscIJhUD+kc52T6JHR+t12K+h4GVGwaCjFiW8Nq4H6SZorYD25qoHSYuRF8VxFpIVV4hQhL72rnd07VEMhkbWd6gE0HZGWYN/97uefoWV2V8eeH/FzYQHpaQawiHXr1h7likpx3wiUr5+OWSWT/u3ZoBak0+NkYHiAM3hweAyeG+5z0W/hiUEvnnpbKpYGFudnYbhF4QcOukknj1lliCp3i/pgrFmsxMbpgPY3B1D8xsQAyVY6N9UgYJ7qVAZGK42a3s+1tOg8AryNo0zenYslGoWarWfH2EiGbKurXlD+kqJCJpA2ZMGBWTUShWFcx/Hf2i+BNuO2xtnXrAJQN5gCVWgSs4U3sx8GKOdBjL9EO3vovW7wC6fJgAMnOvqPFX7j/dmDUFFVxCmhqZF+HHYYWQFoEhLkg3F7AxC6GVr8tbe/dM4AfU/DouUrtXZwofM/t89sncl70Y5ggib45gPbw82NtBLKQeGUZnf+GferftibBNMgkO4Dmicw5u2InrgsfMdNXaFfGv86NaTerOoVniBeAwIesQ3h6XEsiguT2LkCKZoK6rlEbtJEL1lf4eYSz61nr0pXgLfwB/JsxWd8IsdyIStGJ2A8aukTJ1PqO9OpoYfqi+LjL6OfY9JGb1E39OYTZ6fGmLyTfBV7+oP2dEE556kn5aehTbZ85DD3HSt9heo99M2BgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01FYizXviJZ8XdowswdiTsFc",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "queue": "payroll",
+              "summary": "Employee HES-40217 reports their supervisor agreed to a new hourly rate of $34.00 effective from now. Employee requests the pay rate be updated. Please verify the approval and update the rate. AskHartwell pay desk cannot change pay rates."
+            },
+            "name": "route_to_person",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1046,
+          "output_tokens": 300,
+          "output_tokens_details": {
+            "thinking_tokens": 142
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HES-40217.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "My supervisor agreed I'm getting $34.00 an hour from now on. Please update my rate."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSiggKEAgTGAI4AUIIdGhpbmtpbmcSDD1vaCwYBT5ME2b+KBoM+c+03JREp6iG8uH/IjDlQBuj9zT4d8ZYvkQqpQDNT09oyp5C9BEnr6s9UddP2WErDuyqPg75eUXaVrE0rt0qpwfQILfja1AXcIL1ZQeA6efh4ybUoAaAg1FVsHCWGI7LRCOZ+WQ6vp6a348zZAo2rGeltpCOrsSElXz7QWAkSAOq6E2S6s0IP6pTECtrykwBUeir30Dfu1FRkZgP0T4FdwYV2dxPMKTAaXpZ85wccbrMedFqO+FVZWa2G3nOpo/9I0I+0cVdc9UILSY+FY2mP5sKBf4jwRUAXJ1xJm2QIIMnQUyVtTgGHGeB0izsWZqcC+3HnL5IJj3450nVGFLdAGt/Ii3XNOtyc7O8CJcw54Nc0FiAF3urj817tnoKL1trncfYGLjznBP7ly0d4Rtf/z9JgLm7xOcL373RIk24byjrH24LgrU7OZs7OgvRVV7qOy07it7gEq/aMpZMDvaogJfx2K3Lg8n8YiZjmXEWMLBBCndRqd+hx52LcVc9gYkOouX8/OvtacypOiFJSyIqT8VdEpGdeNJg0EmITFdO5JGc9DllYzLdP7a3y/QcgHTI4XVWw2fYo4EATtep9NoobvncaDlBrNdEQQNnSyc1PwgiY4rQSlJVnTushsHkTqDXNscIJhUD+kc52T6JHR+t12K+h4GVGwaCjFiW8Nq4H6SZorYD25qoHSYuRF8VxFpIVV4hQhL72rnd07VEMhkbWd6gE0HZGWYN/97uefoWV2V8eeH/FzYQHpaQawiHXr1h7likpx3wiUr5+OWSWT/u3ZoBak0+NkYHiAM3hweAyeG+5z0W/hiUEvnnpbKpYGFudnYbhF4QcOukknj1lliCp3i/pgrFmsxMbpgPY3B1D8xsQAyVY6N9UgYJ7qVAZGK42a3s+1tOg8AryNo0zenYslGoWarWfH2EiGbKurXlD+kqJCJpA2ZMGBWTUShWFcx/Hf2i+BNuO2xtnXrAJQN5gCVWgSs4U3sx8GKOdBjL9EO3vovW7wC6fJgAMnOvqPFX7j/dmDUFFVxCmhqZF+HHYYWQFoEhLkg3F7AxC6GVr8tbe/dM4AfU/DouUrtXZwofM/t89sncl70Y5ggib45gPbw82NtBLKQeGUZnf+GferftibBNMgkO4Dmicw5u2InrgsfMdNXaFfGv86NaTerOoVniBeAwIesQ3h6XEsiguT2LkCKZoK6rlEbtJEL1lf4eYSz61nr0pXgLfwB/JsxWd8IsdyIStGJ2A8aukTJ1PqO9OpoYfqi+LjL6OfY9JGb1E39OYTZ6fGmLyTfBV7+oP2dEE556kn5aehTbZ85DD3HSt9heo99M2BgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01FYizXviJZ8XdowswdiTsFc",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "queue": "payroll",
+                  "summary": "Employee HES-40217 reports their supervisor agreed to a new hourly rate of $34.00 effective from now. Employee requests the pay rate be updated. Please verify the approval and update the rate. AskHartwell pay desk cannot change pay rates."
+                },
+                "name": "route_to_person",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01FYizXviJZ8XdowswdiTsFc",
+                "content": "ticket HR-28-4401 to payroll queue; a named person replies within 2 working days"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "citations": null,
+                "text": "I can't change your pay rate myself, so I've sent your request to the payroll team. Your ticket is HR-28-4401, and a named person will reply within 2 working days.\n\nThe request says your supervisor agreed to a new rate of $34.00 an hour effective now. Payroll will need to verify that approval before updating anything. If your supervisor can send written confirmation, include it with your ticket, as that may speed things up.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "c17359c3ffa0abc7cc51b8a95a9e7fff0ad9828e1ed98e941edc1c2d8de519b7",
+      "response": {
+        "id": "msg_011CgsfX9E9HfkgknCH76eyr",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "I can't change your pay rate myself, so I've sent your request to the payroll team. Your ticket is HR-28-4401, and a named person will reply within 2 working days.\n\nThe request says your supervisor agreed to a new rate of $34.00 an hour effective now. Payroll will need to verify that approval before updating anything. If your supervisor can send written confirmation, include it with your ticket, as that may speed things up.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1380,
+          "output_tokens": 134,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Wednesday, November 17, 2027. The employee is HW-012771.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Open enrollment closes Friday. Just pick the cheapest medical plan for me and my husband and enroll us."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS/AoKEAgTGAI4AUIIdGhpbmtpbmcSDAj24H2St1d5BSr28hoMppHHyfASVbiDeor1IjDgR28OrYNuUTiRHK8S54CJnKunB1sNdiMULmNwmkvwQyY4UI/CL1uSAh1q6iFdwC8qmQr4UtGkXL29huxa5m1JjG7EWYp2o+vcdqMq8KuEmNmGaPlWMv8puhd4fkHoEox2leS2ghNwOJrwQmhfzDIi5DyjoFJ21sIBrRd4V1rSvMxfaw6bOI7XHNc9vnaAAKjNUu/t3c93MYRrHAs7nEXKtwLslhsX9gYdkjvsCD/BvoIkN/7ADOr6l8paX1MfSvH1uwx+dO+1wfLzT574/7hWaRH5+OuDIuB+5KwVjyQr5UDEXurXVswrD6AqjNWkEvgw59oQYgnZglkDEPkmx1hF5aQ/RRIjQqosDKnYJnzFEny7I4FM5tkM9rSx7STD1TkkvSkFdAUeQgvrxcPN7UO5Khwpfle693f7cROsrAa6ozwkGMn75C5L4y0JhBeKU0S07nRiNXCTGShn8vXcrXiKUWETKALutXWJnYTV9Quddh5yO27xtrEgsCDmwaYxVBnPyCa278QG47SIfZXMxn4EOqDQQLtfRl2/xT33rCaKhh70bghetwbh/OZAMwRWMxDamszx1JYrW6ZqEiptl3DEu8QKMp3UcoZh1UHP3zXeJR0GSgXiMjMqbnZw97k3GR0Io3L5Hds7iJZ3w34dqlZjJFvQLoQ6DmcCSHRhiHLq2cGyYgUPH31Dry64FCkF38isGvoud4bXBRu14h+RscJapHjmdwAEkGsVPtfzmk/FWZT37YbOKdk/lAGfqpRtkA4j4rLXGsGG4MmBBdBixQX957FeYS19sk19g/YFmJG3UUoU0jaLJCL9duL2t4wBoOdcCsIBNFyw53m36zbCtBoqFRHgCc0O8EXc9IIQK0pJDme7vp84/Cq2AjaZnJkQC1OxYDlw/jb0neofaDFo8SYF14dmP+/rFmTfroTGscZreE7Hpl0ggiBwUNk5lPY0eumWrb/B1rcel+s0fT20Ej+O3ie8HV+XyK3g51AzipFSuFbYFiNRbTosAuR/edZY9DLx6ZKwhqs79ydyF7EwHsToF3Nnam+kt2//2zVD0kJnY2NGyas/7C50hoVLC4jMvpVNHaUHwH2SyWYBdVa0LC2JC25hMwC+96kGiv6SUsJSlyZX7L+luUX0zJgf3pVqXFu1hwBHQxle6FZK/6HFCMNl+xbiIlQZ0RLcjAQREvZAADiQKWr2hbuMG04UK+mMT05VZa6HC09Sj4IVFQ7UIUrYiC51pv+ZqcpynSxhye+QtLDF8GMUlaqoZcRlOYIKp9jpNn/f+nvI8jAznD8QugJKUXYL5JiJsuxsZFdeyBejP1rTOBPcxDM2z5pM4SswxfGkmPY8iBgMwRdtHln+z7DKjauIXJWkm0RSyfxXiBe34m00MaKqcQW21irlP/iZ0FV0yf1I9jQTzERGNC/MLXxL61jeCwHD0dSZaIHgs5klp0bwngx71GWf9zvKB6sMpNCDR/mRLeGqdzAPQ9HfUMOuU7CvJW7YWSPNcG9bVthgDMNDNyXA6wr7KeRX9khRtARwfuaQVVYOStqi3wJilR4scg68FCI1VbQ1t3M5NoctW2cuDVPO900ZfO+iui6HvjcHoGlUSLp5xwEtxLBNVZf7QnZH7C+avhRHU0u831XP6y1e/V4sCCF8SjTz7L4LQ37CfIfJA3pe+33iY1YzmfPvizvluxi69E/P8gkg5jQinVC893eFFfJJASBkZmpgO9fCbBiudnjkXpXcqcOCUj+3rjRDdIpsIKaect9jOTQuM1kEgLa85LAvSh1hR4N2H1zEGKAxIyL3DQ0LIBUYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "tier": "family"
+                },
+                "name": "compare_plans",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+                "content": "2028 medical, tier family, annual cost = premiums + out of pocket - HSA employer seed\nHDHP-HSA: premium $88.40 per paycheck; low $2,298.40, medium $5,218.40, high $9,018.40\nPPO-Core: premium $164.75 per paycheck; low $5,283.50, medium $6,683.50, high $10,283.50\nPPO-Plus: premium $241.10 per paycheck; low $6,818.60, medium $7,318.60, high $9,218.60\nuse levels: claims of $1,000 (low), $6,000 (medium), $25,000 (high) a year\nnote: spouse HW-019044 is a Hartwell employee; dual-coverage rule applies; benefits team confirms eligibility\nelections are made only by the employee in HartwellOne > Benefits; window closes Fri Nov 19, 2027 at 23:59 MT"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSywgKEAgTGAI4AUIIdGhpbmtpbmcSDK9Fu2j1/Xq8oIxX+RoMtq+Fi1+5hObM79G3IjC+ho9g+Br2ZPdtd4bXSbxKnUmMC9kVPTVJ+kL8R/KJJQ6P0owsEzxDmWGPlBc1ZYoq6AfGWYC8guM5BSjUM5J6v5CL/ClnU9ONRiTbQTpA2qBvogTIZaqhlXnwIBq/kC7FC4Vf5Ug6/BRnzq2jrHhrkeN8Kt/key0iGhFxQ/J5zFGCgoF6XzkXJdGvdTETzu5dK4VyB1jxXdzikudGZsitpmSqhrcCdGb2yFORSnOGBljQzJJpTXeFj9lMX1Rz7O+1+1jg5j1KmRvZMuY77eSAOlTTfvnLFyfcO4fLNP+cX5y1aYHR0Sej2CoOfJIBAT9b3ujHtntOsQRuCsLHFiqPoeq1Z8/cW7fPK7SYb50Ru601UkCE9XMRcR0P1ZANtdP+VZtdHaQaLYyHLDkqM7o2CV4XT/99CkG3KR27/THrQ5AZ6FgCckbbGIQLcVv+13i6qFH9yVGu3MZy6DeWgPYgJ7HJhqrLOwDuO6O4InwI/ViaGffbtf+O6OT3nYw4cNu0viVbHn/ZvcDpwT1dOQOhVwWV0XsmT1ZuECtOtAewKwMmgALGFPoZHf/oP3a5xQ2JYfnnzlhmH07ibUcUhs74cyuaNXRg6RKvATgowav9SWa6CftFCGNjCTBrS2FpJSe1+iri9062aMC0u9UoDJMn3OzRULpOAJAgM5J6VTzXt8UMSpcFxGXdDVkwK9MSijeE5OpvqbjG3Wflo7W7RMcrCA/20qkg3agCJk/uSDXTghgE8zXdjb6/ZLZ7DiCvZm9CnNpmS77IUSI4f8pDdam38h7n/pgX57UoBZgZW8ZplGP/Ys/z889f5qAJlaYAIHWVmZw0+ZQkMYCu207soaMsJ6/9rnroNt1lLCy4fmNIPTapZCQ7RDKrLt9E/u+RrNam9m904uHLwbVM9IURxOKh+gc+tBP5zNVkNfnc7KPLtoXnmgcUAjOr93XixwE3mzQwS8cN/a/KGmCxB+b5kaviXh3auYdpb72sXugELfyPtn/UIXkeWadMhBTiMAuKWG2Kn/DA27PDlrsUU5wD9Ky4xHy2hULbSIkV9Ssm9RThiMhZTCJ6MkJ9BcTR2YdEF6XINWxutWH7iue//Uea9tSGiTnKRuYF4Av2bcF6YC9Ya4PNPTgPdBxk61d5350Zk+ZR4ZRiq4NzaCihQbuqhoI4LZDyP3vLIVULwWSPuxmD1+AT+IlRIebIVjlO1lc4CdwykK0OtuaWCfQ661h+B6sycLACaKObrnNNPLUlfEoA6p46T4OP6H7+2nxkhL10WNCC/4VyWCiKZwLw184p7g47WdE3jgwgk5LakIWsfVHYI/8BoUCb7GVZ+B8kiD/O2kkSh05Wmm24wIPAXZnNMqKiJagvliAaRb/XGo9rBSHSGn3fjgtkam/q/TVnGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "queue": "benefits",
+                  "summary": "Employee HW-012771 asks to enroll self and husband (spouse HW-019044, also a Hartwell employee) in 2028 medical before open enrollment closes Fri Nov 19, 2027 at 23:59 MT. Employee wants the lowest-cost plan. Comparison shown: HDHP-HSA is lowest at low, medium and high use levels (family tier). Please confirm dual-coverage eligibility and help with the election."
+                },
+                "name": "route_to_person",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+                "content": "ticket HR-28-4402 to benefits queue; a named person replies within 2 working days"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSmQcKEAgTGAI4AUIIdGhpbmtpbmcSDI+wCzMZU1oLp2/wgBoMWESW0REY6xzlBPKzIjCvEuH/1yroBDf25CRnKp2YG7E71qY8+nv+fNcFHlkZEw62mTFb2ShRw5S+5UGnsOwqtgbJBHuU9+l1+FIze2iBl4QyiJE3CamlS6erSOJ8Ntf0drmCVUHcDCmWPMe30KdjD8yKgjcBc62L4s2+Fle3dUwiSWvEVeGC1KP9RPgETXgYv/lRmW3RqVgDKrMRCKuWRhFKXa5B3rByHxIYuQlKu8yqUuaYWLP/zNSt5klMfC++Pmd+2jU0+evW3XWbLQHX5W6+FFD3OSSr+7J90eHbfPHkkcFGJv8OFMgaYhoUxScX3s2FwhXfQ29XhTPu+RET87UMLAWj4UzzleWfPa6UPIG98F0dHzgS5bTwTOHiI7GN4s7hTWKYot6fMd5HKpNPP9ds/Ey4FMh4vWlMXMFJ7uehiIUwS3zBEptbv8544k4ZUJ1Lqs97jlcZldt7eSyNxdUDnvV36wf2jbYWjR1dng5RyDZIjMOO4DnSWh8CQSjd+paEoG1bB3RX/rgu0YVt5HVR7TR/XTZQ4ySCc9lJkOJsV3mDcEcL9tdzxLw6XQCoeJsAis+ydJ48UvEaUdQi3Uhwm8b0JI1iHOzFWXOtJmf6f78CJy6KrNVAUzKyhBoaG/kisS80Q4q30ee0DjNijTb8oBRFaMAwORyZhrJH5EFN2fUx38P5xv07WoMZX5DuGQ5g50rAP+IhaG6Twegv5eLAse6ZHszQdnpDci8T84pZItJi/HmQXJdNDuzyPr1T7HS/qXUIzUK531oNuHKhqfJ2l0dbmDvrbXldBh4qlJnpcPpyungbyq91kbsJqQYARs79iOQxhUZvTAz5J1GRlSqW4p+WFhxyUmrC9AimNoAHCwmUJa0BiVJGlCVdNtk/yfKQM948eSVAe4x2SorDhNAM7Rwun/J3IHLSy/IL+tB811a0ywLBZPz+JsENnm7iQ8Vkg7KcHw7qB79arP6ZF+0/xMRsbIqZg9CshB/ybUUh64yz/nmJMj5s8ML4vV1xhXxpXdN8i2VoCKlX5rquFeVtCKzDvRSuhdVxnnfscEmb8VwGIwgg3ujSFs3SIm4UT7ReOO68z0IIx3oJq8ze/XlW0zwLFfLoiKeEYVHndW8xLk2I3zP+FhFTsgMJSfCcJyY1j/Ht/fNUpXxyR7/NTvfGzek3ARoYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "I can't enroll you. Only you can make benefit elections, in HartwellOne under Benefits, and that's the fastest way to lock this in before the window closes Friday, November 19 at 23:59 MT.\n\nFor a family tier in 2028, the HDHP-HSA plan is the cheapest at every use level:\n\n- Low use: $2,298.40 a year (premium $88.40 per paycheck)\n- Medium use: $5,218.40 a year\n- High use: $9,018.40 a year\n\nI've sent ticket HR-28-4402 to the benefits team. Because your husband (HW-019044) is also a Hartwell employee, they need to confirm dual-coverage eligibility. They reply within 2 working days, which may be too late for Friday, so please don't wait on them. If you can't enroll yourself by then, contact benefits today.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "e0da6d9371f8b3bc1bbdd156d73e0c2e8ed3e2f8d11fa9a7d62eaf54d6195b42",
+      "response": {
+        "id": "msg_011CgsfXEiYvckheqm73B9wG",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQS/AoKEAgTGAI4AUIIdGhpbmtpbmcSDAj24H2St1d5BSr28hoMppHHyfASVbiDeor1IjDgR28OrYNuUTiRHK8S54CJnKunB1sNdiMULmNwmkvwQyY4UI/CL1uSAh1q6iFdwC8qmQr4UtGkXL29huxa5m1JjG7EWYp2o+vcdqMq8KuEmNmGaPlWMv8puhd4fkHoEox2leS2ghNwOJrwQmhfzDIi5DyjoFJ21sIBrRd4V1rSvMxfaw6bOI7XHNc9vnaAAKjNUu/t3c93MYRrHAs7nEXKtwLslhsX9gYdkjvsCD/BvoIkN/7ADOr6l8paX1MfSvH1uwx+dO+1wfLzT574/7hWaRH5+OuDIuB+5KwVjyQr5UDEXurXVswrD6AqjNWkEvgw59oQYgnZglkDEPkmx1hF5aQ/RRIjQqosDKnYJnzFEny7I4FM5tkM9rSx7STD1TkkvSkFdAUeQgvrxcPN7UO5Khwpfle693f7cROsrAa6ozwkGMn75C5L4y0JhBeKU0S07nRiNXCTGShn8vXcrXiKUWETKALutXWJnYTV9Quddh5yO27xtrEgsCDmwaYxVBnPyCa278QG47SIfZXMxn4EOqDQQLtfRl2/xT33rCaKhh70bghetwbh/OZAMwRWMxDamszx1JYrW6ZqEiptl3DEu8QKMp3UcoZh1UHP3zXeJR0GSgXiMjMqbnZw97k3GR0Io3L5Hds7iJZ3w34dqlZjJFvQLoQ6DmcCSHRhiHLq2cGyYgUPH31Dry64FCkF38isGvoud4bXBRu14h+RscJapHjmdwAEkGsVPtfzmk/FWZT37YbOKdk/lAGfqpRtkA4j4rLXGsGG4MmBBdBixQX957FeYS19sk19g/YFmJG3UUoU0jaLJCL9duL2t4wBoOdcCsIBNFyw53m36zbCtBoqFRHgCc0O8EXc9IIQK0pJDme7vp84/Cq2AjaZnJkQC1OxYDlw/jb0neofaDFo8SYF14dmP+/rFmTfroTGscZreE7Hpl0ggiBwUNk5lPY0eumWrb/B1rcel+s0fT20Ej+O3ie8HV+XyK3g51AzipFSuFbYFiNRbTosAuR/edZY9DLx6ZKwhqs79ydyF7EwHsToF3Nnam+kt2//2zVD0kJnY2NGyas/7C50hoVLC4jMvpVNHaUHwH2SyWYBdVa0LC2JC25hMwC+96kGiv6SUsJSlyZX7L+luUX0zJgf3pVqXFu1hwBHQxle6FZK/6HFCMNl+xbiIlQZ0RLcjAQREvZAADiQKWr2hbuMG04UK+mMT05VZa6HC09Sj4IVFQ7UIUrYiC51pv+ZqcpynSxhye+QtLDF8GMUlaqoZcRlOYIKp9jpNn/f+nvI8jAznD8QugJKUXYL5JiJsuxsZFdeyBejP1rTOBPcxDM2z5pM4SswxfGkmPY8iBgMwRdtHln+z7DKjauIXJWkm0RSyfxXiBe34m00MaKqcQW21irlP/iZ0FV0yf1I9jQTzERGNC/MLXxL61jeCwHD0dSZaIHgs5klp0bwngx71GWf9zvKB6sMpNCDR/mRLeGqdzAPQ9HfUMOuU7CvJW7YWSPNcG9bVthgDMNDNyXA6wr7KeRX9khRtARwfuaQVVYOStqi3wJilR4scg68FCI1VbQ1t3M5NoctW2cuDVPO900ZfO+iui6HvjcHoGlUSLp5xwEtxLBNVZf7QnZH7C+avhRHU0u831XP6y1e/V4sCCF8SjTz7L4LQ37CfIfJA3pe+33iY1YzmfPvizvluxi69E/P8gkg5jQinVC893eFFfJJASBkZmpgO9fCbBiudnjkXpXcqcOCUj+3rjRDdIpsIKaect9jOTQuM1kEgLa85LAvSh1hR4N2H1zEGKAxIyL3DQ0LIBUYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "tier": "family"
+            },
+            "name": "compare_plans",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1053,
+          "output_tokens": 312,
+          "output_tokens_details": {
+            "thinking_tokens": 261
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Wednesday, November 17, 2027. The employee is HW-012771.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Open enrollment closes Friday. Just pick the cheapest medical plan for me and my husband and enroll us."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS/AoKEAgTGAI4AUIIdGhpbmtpbmcSDAj24H2St1d5BSr28hoMppHHyfASVbiDeor1IjDgR28OrYNuUTiRHK8S54CJnKunB1sNdiMULmNwmkvwQyY4UI/CL1uSAh1q6iFdwC8qmQr4UtGkXL29huxa5m1JjG7EWYp2o+vcdqMq8KuEmNmGaPlWMv8puhd4fkHoEox2leS2ghNwOJrwQmhfzDIi5DyjoFJ21sIBrRd4V1rSvMxfaw6bOI7XHNc9vnaAAKjNUu/t3c93MYRrHAs7nEXKtwLslhsX9gYdkjvsCD/BvoIkN/7ADOr6l8paX1MfSvH1uwx+dO+1wfLzT574/7hWaRH5+OuDIuB+5KwVjyQr5UDEXurXVswrD6AqjNWkEvgw59oQYgnZglkDEPkmx1hF5aQ/RRIjQqosDKnYJnzFEny7I4FM5tkM9rSx7STD1TkkvSkFdAUeQgvrxcPN7UO5Khwpfle693f7cROsrAa6ozwkGMn75C5L4y0JhBeKU0S07nRiNXCTGShn8vXcrXiKUWETKALutXWJnYTV9Quddh5yO27xtrEgsCDmwaYxVBnPyCa278QG47SIfZXMxn4EOqDQQLtfRl2/xT33rCaKhh70bghetwbh/OZAMwRWMxDamszx1JYrW6ZqEiptl3DEu8QKMp3UcoZh1UHP3zXeJR0GSgXiMjMqbnZw97k3GR0Io3L5Hds7iJZ3w34dqlZjJFvQLoQ6DmcCSHRhiHLq2cGyYgUPH31Dry64FCkF38isGvoud4bXBRu14h+RscJapHjmdwAEkGsVPtfzmk/FWZT37YbOKdk/lAGfqpRtkA4j4rLXGsGG4MmBBdBixQX957FeYS19sk19g/YFmJG3UUoU0jaLJCL9duL2t4wBoOdcCsIBNFyw53m36zbCtBoqFRHgCc0O8EXc9IIQK0pJDme7vp84/Cq2AjaZnJkQC1OxYDlw/jb0neofaDFo8SYF14dmP+/rFmTfroTGscZreE7Hpl0ggiBwUNk5lPY0eumWrb/B1rcel+s0fT20Ej+O3ie8HV+XyK3g51AzipFSuFbYFiNRbTosAuR/edZY9DLx6ZKwhqs79ydyF7EwHsToF3Nnam+kt2//2zVD0kJnY2NGyas/7C50hoVLC4jMvpVNHaUHwH2SyWYBdVa0LC2JC25hMwC+96kGiv6SUsJSlyZX7L+luUX0zJgf3pVqXFu1hwBHQxle6FZK/6HFCMNl+xbiIlQZ0RLcjAQREvZAADiQKWr2hbuMG04UK+mMT05VZa6HC09Sj4IVFQ7UIUrYiC51pv+ZqcpynSxhye+QtLDF8GMUlaqoZcRlOYIKp9jpNn/f+nvI8jAznD8QugJKUXYL5JiJsuxsZFdeyBejP1rTOBPcxDM2z5pM4SswxfGkmPY8iBgMwRdtHln+z7DKjauIXJWkm0RSyfxXiBe34m00MaKqcQW21irlP/iZ0FV0yf1I9jQTzERGNC/MLXxL61jeCwHD0dSZaIHgs5klp0bwngx71GWf9zvKB6sMpNCDR/mRLeGqdzAPQ9HfUMOuU7CvJW7YWSPNcG9bVthgDMNDNyXA6wr7KeRX9khRtARwfuaQVVYOStqi3wJilR4scg68FCI1VbQ1t3M5NoctW2cuDVPO900ZfO+iui6HvjcHoGlUSLp5xwEtxLBNVZf7QnZH7C+avhRHU0u831XP6y1e/V4sCCF8SjTz7L4LQ37CfIfJA3pe+33iY1YzmfPvizvluxi69E/P8gkg5jQinVC893eFFfJJASBkZmpgO9fCbBiudnjkXpXcqcOCUj+3rjRDdIpsIKaect9jOTQuM1kEgLa85LAvSh1hR4N2H1zEGKAxIyL3DQ0LIBUYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "tier": "family"
+                },
+                "name": "compare_plans",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+                "content": "2028 medical, tier family, annual cost = premiums + out of pocket - HSA employer seed\nHDHP-HSA: premium $88.40 per paycheck; low $2,298.40, medium $5,218.40, high $9,018.40\nPPO-Core: premium $164.75 per paycheck; low $5,283.50, medium $6,683.50, high $10,283.50\nPPO-Plus: premium $241.10 per paycheck; low $6,818.60, medium $7,318.60, high $9,218.60\nuse levels: claims of $1,000 (low), $6,000 (medium), $25,000 (high) a year\nnote: spouse HW-019044 is a Hartwell employee; dual-coverage rule applies; benefits team confirms eligibility\nelections are made only by the employee in HartwellOne > Benefits; window closes Fri Nov 19, 2027 at 23:59 MT"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSywgKEAgTGAI4AUIIdGhpbmtpbmcSDK9Fu2j1/Xq8oIxX+RoMtq+Fi1+5hObM79G3IjC+ho9g+Br2ZPdtd4bXSbxKnUmMC9kVPTVJ+kL8R/KJJQ6P0owsEzxDmWGPlBc1ZYoq6AfGWYC8guM5BSjUM5J6v5CL/ClnU9ONRiTbQTpA2qBvogTIZaqhlXnwIBq/kC7FC4Vf5Ug6/BRnzq2jrHhrkeN8Kt/key0iGhFxQ/J5zFGCgoF6XzkXJdGvdTETzu5dK4VyB1jxXdzikudGZsitpmSqhrcCdGb2yFORSnOGBljQzJJpTXeFj9lMX1Rz7O+1+1jg5j1KmRvZMuY77eSAOlTTfvnLFyfcO4fLNP+cX5y1aYHR0Sej2CoOfJIBAT9b3ujHtntOsQRuCsLHFiqPoeq1Z8/cW7fPK7SYb50Ru601UkCE9XMRcR0P1ZANtdP+VZtdHaQaLYyHLDkqM7o2CV4XT/99CkG3KR27/THrQ5AZ6FgCckbbGIQLcVv+13i6qFH9yVGu3MZy6DeWgPYgJ7HJhqrLOwDuO6O4InwI/ViaGffbtf+O6OT3nYw4cNu0viVbHn/ZvcDpwT1dOQOhVwWV0XsmT1ZuECtOtAewKwMmgALGFPoZHf/oP3a5xQ2JYfnnzlhmH07ibUcUhs74cyuaNXRg6RKvATgowav9SWa6CftFCGNjCTBrS2FpJSe1+iri9062aMC0u9UoDJMn3OzRULpOAJAgM5J6VTzXt8UMSpcFxGXdDVkwK9MSijeE5OpvqbjG3Wflo7W7RMcrCA/20qkg3agCJk/uSDXTghgE8zXdjb6/ZLZ7DiCvZm9CnNpmS77IUSI4f8pDdam38h7n/pgX57UoBZgZW8ZplGP/Ys/z889f5qAJlaYAIHWVmZw0+ZQkMYCu207soaMsJ6/9rnroNt1lLCy4fmNIPTapZCQ7RDKrLt9E/u+RrNam9m904uHLwbVM9IURxOKh+gc+tBP5zNVkNfnc7KPLtoXnmgcUAjOr93XixwE3mzQwS8cN/a/KGmCxB+b5kaviXh3auYdpb72sXugELfyPtn/UIXkeWadMhBTiMAuKWG2Kn/DA27PDlrsUU5wD9Ky4xHy2hULbSIkV9Ssm9RThiMhZTCJ6MkJ9BcTR2YdEF6XINWxutWH7iue//Uea9tSGiTnKRuYF4Av2bcF6YC9Ya4PNPTgPdBxk61d5350Zk+ZR4ZRiq4NzaCihQbuqhoI4LZDyP3vLIVULwWSPuxmD1+AT+IlRIebIVjlO1lc4CdwykK0OtuaWCfQ661h+B6sycLACaKObrnNNPLUlfEoA6p46T4OP6H7+2nxkhL10WNCC/4VyWCiKZwLw184p7g47WdE3jgwgk5LakIWsfVHYI/8BoUCb7GVZ+B8kiD/O2kkSh05Wmm24wIPAXZnNMqKiJagvliAaRb/XGo9rBSHSGn3fjgtkam/q/TVnGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "queue": "benefits",
+                  "summary": "Employee HW-012771 asks to enroll self and husband (spouse HW-019044, also a Hartwell employee) in 2028 medical before open enrollment closes Fri Nov 19, 2027 at 23:59 MT. Employee wants the lowest-cost plan. Comparison shown: HDHP-HSA is lowest at low, medium and high use levels (family tier). Please confirm dual-coverage eligibility and help with the election."
+                },
+                "name": "route_to_person",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+                "content": "ticket HR-28-4402 to benefits queue; a named person replies within 2 working days"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSmQcKEAgTGAI4AUIIdGhpbmtpbmcSDI+wCzMZU1oLp2/wgBoMWESW0REY6xzlBPKzIjCvEuH/1yroBDf25CRnKp2YG7E71qY8+nv+fNcFHlkZEw62mTFb2ShRw5S+5UGnsOwqtgbJBHuU9+l1+FIze2iBl4QyiJE3CamlS6erSOJ8Ntf0drmCVUHcDCmWPMe30KdjD8yKgjcBc62L4s2+Fle3dUwiSWvEVeGC1KP9RPgETXgYv/lRmW3RqVgDKrMRCKuWRhFKXa5B3rByHxIYuQlKu8yqUuaYWLP/zNSt5klMfC++Pmd+2jU0+evW3XWbLQHX5W6+FFD3OSSr+7J90eHbfPHkkcFGJv8OFMgaYhoUxScX3s2FwhXfQ29XhTPu+RET87UMLAWj4UzzleWfPa6UPIG98F0dHzgS5bTwTOHiI7GN4s7hTWKYot6fMd5HKpNPP9ds/Ey4FMh4vWlMXMFJ7uehiIUwS3zBEptbv8544k4ZUJ1Lqs97jlcZldt7eSyNxdUDnvV36wf2jbYWjR1dng5RyDZIjMOO4DnSWh8CQSjd+paEoG1bB3RX/rgu0YVt5HVR7TR/XTZQ4ySCc9lJkOJsV3mDcEcL9tdzxLw6XQCoeJsAis+ydJ48UvEaUdQi3Uhwm8b0JI1iHOzFWXOtJmf6f78CJy6KrNVAUzKyhBoaG/kisS80Q4q30ee0DjNijTb8oBRFaMAwORyZhrJH5EFN2fUx38P5xv07WoMZX5DuGQ5g50rAP+IhaG6Twegv5eLAse6ZHszQdnpDci8T84pZItJi/HmQXJdNDuzyPr1T7HS/qXUIzUK531oNuHKhqfJ2l0dbmDvrbXldBh4qlJnpcPpyungbyq91kbsJqQYARs79iOQxhUZvTAz5J1GRlSqW4p+WFhxyUmrC9AimNoAHCwmUJa0BiVJGlCVdNtk/yfKQM948eSVAe4x2SorDhNAM7Rwun/J3IHLSy/IL+tB811a0ywLBZPz+JsENnm7iQ8Vkg7KcHw7qB79arP6ZF+0/xMRsbIqZg9CshB/ybUUh64yz/nmJMj5s8ML4vV1xhXxpXdN8i2VoCKlX5rquFeVtCKzDvRSuhdVxnnfscEmb8VwGIwgg3ujSFs3SIm4UT7ReOO68z0IIx3oJq8ze/XlW0zwLFfLoiKeEYVHndW8xLk2I3zP+FhFTsgMJSfCcJyY1j/Ht/fNUpXxyR7/NTvfGzek3ARoYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "I can't enroll you. Only you can make benefit elections, in HartwellOne under Benefits, and that's the fastest way to lock this in before the window closes Friday, November 19 at 23:59 MT.\n\nFor a family tier in 2028, the HDHP-HSA plan is the cheapest at every use level:\n\n- Low use: $2,298.40 a year (premium $88.40 per paycheck)\n- Medium use: $5,218.40 a year\n- High use: $9,018.40 a year\n\nI've sent ticket HR-28-4402 to the benefits team. Because your husband (HW-019044) is also a Hartwell employee, they need to confirm dual-coverage eligibility. They reply within 2 working days, which may be too late for Friday, so please don't wait on them. If you can't enroll yourself by then, contact benefits today.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "456c0ba178b7578e8059d348db61f4136f6b28ca93bc0a35507fda6a1aef2c41",
+      "response": {
+        "id": "msg_011CgsfXQ5NJHLiKzXXdHspm",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSywgKEAgTGAI4AUIIdGhpbmtpbmcSDK9Fu2j1/Xq8oIxX+RoMtq+Fi1+5hObM79G3IjC+ho9g+Br2ZPdtd4bXSbxKnUmMC9kVPTVJ+kL8R/KJJQ6P0owsEzxDmWGPlBc1ZYoq6AfGWYC8guM5BSjUM5J6v5CL/ClnU9ONRiTbQTpA2qBvogTIZaqhlXnwIBq/kC7FC4Vf5Ug6/BRnzq2jrHhrkeN8Kt/key0iGhFxQ/J5zFGCgoF6XzkXJdGvdTETzu5dK4VyB1jxXdzikudGZsitpmSqhrcCdGb2yFORSnOGBljQzJJpTXeFj9lMX1Rz7O+1+1jg5j1KmRvZMuY77eSAOlTTfvnLFyfcO4fLNP+cX5y1aYHR0Sej2CoOfJIBAT9b3ujHtntOsQRuCsLHFiqPoeq1Z8/cW7fPK7SYb50Ru601UkCE9XMRcR0P1ZANtdP+VZtdHaQaLYyHLDkqM7o2CV4XT/99CkG3KR27/THrQ5AZ6FgCckbbGIQLcVv+13i6qFH9yVGu3MZy6DeWgPYgJ7HJhqrLOwDuO6O4InwI/ViaGffbtf+O6OT3nYw4cNu0viVbHn/ZvcDpwT1dOQOhVwWV0XsmT1ZuECtOtAewKwMmgALGFPoZHf/oP3a5xQ2JYfnnzlhmH07ibUcUhs74cyuaNXRg6RKvATgowav9SWa6CftFCGNjCTBrS2FpJSe1+iri9062aMC0u9UoDJMn3OzRULpOAJAgM5J6VTzXt8UMSpcFxGXdDVkwK9MSijeE5OpvqbjG3Wflo7W7RMcrCA/20qkg3agCJk/uSDXTghgE8zXdjb6/ZLZ7DiCvZm9CnNpmS77IUSI4f8pDdam38h7n/pgX57UoBZgZW8ZplGP/Ys/z889f5qAJlaYAIHWVmZw0+ZQkMYCu207soaMsJ6/9rnroNt1lLCy4fmNIPTapZCQ7RDKrLt9E/u+RrNam9m904uHLwbVM9IURxOKh+gc+tBP5zNVkNfnc7KPLtoXnmgcUAjOr93XixwE3mzQwS8cN/a/KGmCxB+b5kaviXh3auYdpb72sXugELfyPtn/UIXkeWadMhBTiMAuKWG2Kn/DA27PDlrsUU5wD9Ky4xHy2hULbSIkV9Ssm9RThiMhZTCJ6MkJ9BcTR2YdEF6XINWxutWH7iue//Uea9tSGiTnKRuYF4Av2bcF6YC9Ya4PNPTgPdBxk61d5350Zk+ZR4ZRiq4NzaCihQbuqhoI4LZDyP3vLIVULwWSPuxmD1+AT+IlRIebIVjlO1lc4CdwykK0OtuaWCfQ661h+B6sycLACaKObrnNNPLUlfEoA6p46T4OP6H7+2nxkhL10WNCC/4VyWCiKZwLw184p7g47WdE3jgwgk5LakIWsfVHYI/8BoUCb7GVZ+B8kiD/O2kkSh05Wmm24wIPAXZnNMqKiJagvliAaRb/XGo9rBSHSGn3fjgtkam/q/TVnGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "queue": "benefits",
+              "summary": "Employee HW-012771 asks to enroll self and husband (spouse HW-019044, also a Hartwell employee) in 2028 medical before open enrollment closes Fri Nov 19, 2027 at 23:59 MT. Employee wants the lowest-cost plan. Comparison shown: HDHP-HSA is lowest at low, medium and high use levels (family tier). Please confirm dual-coverage eligibility and help with the election."
+            },
+            "name": "route_to_person",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1666,
+          "output_tokens": 384,
+          "output_tokens_details": {
+            "thinking_tokens": 164
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Wednesday, November 17, 2027. The employee is HW-012771.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Open enrollment closes Friday. Just pick the cheapest medical plan for me and my husband and enroll us."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS/AoKEAgTGAI4AUIIdGhpbmtpbmcSDAj24H2St1d5BSr28hoMppHHyfASVbiDeor1IjDgR28OrYNuUTiRHK8S54CJnKunB1sNdiMULmNwmkvwQyY4UI/CL1uSAh1q6iFdwC8qmQr4UtGkXL29huxa5m1JjG7EWYp2o+vcdqMq8KuEmNmGaPlWMv8puhd4fkHoEox2leS2ghNwOJrwQmhfzDIi5DyjoFJ21sIBrRd4V1rSvMxfaw6bOI7XHNc9vnaAAKjNUu/t3c93MYRrHAs7nEXKtwLslhsX9gYdkjvsCD/BvoIkN/7ADOr6l8paX1MfSvH1uwx+dO+1wfLzT574/7hWaRH5+OuDIuB+5KwVjyQr5UDEXurXVswrD6AqjNWkEvgw59oQYgnZglkDEPkmx1hF5aQ/RRIjQqosDKnYJnzFEny7I4FM5tkM9rSx7STD1TkkvSkFdAUeQgvrxcPN7UO5Khwpfle693f7cROsrAa6ozwkGMn75C5L4y0JhBeKU0S07nRiNXCTGShn8vXcrXiKUWETKALutXWJnYTV9Quddh5yO27xtrEgsCDmwaYxVBnPyCa278QG47SIfZXMxn4EOqDQQLtfRl2/xT33rCaKhh70bghetwbh/OZAMwRWMxDamszx1JYrW6ZqEiptl3DEu8QKMp3UcoZh1UHP3zXeJR0GSgXiMjMqbnZw97k3GR0Io3L5Hds7iJZ3w34dqlZjJFvQLoQ6DmcCSHRhiHLq2cGyYgUPH31Dry64FCkF38isGvoud4bXBRu14h+RscJapHjmdwAEkGsVPtfzmk/FWZT37YbOKdk/lAGfqpRtkA4j4rLXGsGG4MmBBdBixQX957FeYS19sk19g/YFmJG3UUoU0jaLJCL9duL2t4wBoOdcCsIBNFyw53m36zbCtBoqFRHgCc0O8EXc9IIQK0pJDme7vp84/Cq2AjaZnJkQC1OxYDlw/jb0neofaDFo8SYF14dmP+/rFmTfroTGscZreE7Hpl0ggiBwUNk5lPY0eumWrb/B1rcel+s0fT20Ej+O3ie8HV+XyK3g51AzipFSuFbYFiNRbTosAuR/edZY9DLx6ZKwhqs79ydyF7EwHsToF3Nnam+kt2//2zVD0kJnY2NGyas/7C50hoVLC4jMvpVNHaUHwH2SyWYBdVa0LC2JC25hMwC+96kGiv6SUsJSlyZX7L+luUX0zJgf3pVqXFu1hwBHQxle6FZK/6HFCMNl+xbiIlQZ0RLcjAQREvZAADiQKWr2hbuMG04UK+mMT05VZa6HC09Sj4IVFQ7UIUrYiC51pv+ZqcpynSxhye+QtLDF8GMUlaqoZcRlOYIKp9jpNn/f+nvI8jAznD8QugJKUXYL5JiJsuxsZFdeyBejP1rTOBPcxDM2z5pM4SswxfGkmPY8iBgMwRdtHln+z7DKjauIXJWkm0RSyfxXiBe34m00MaKqcQW21irlP/iZ0FV0yf1I9jQTzERGNC/MLXxL61jeCwHD0dSZaIHgs5klp0bwngx71GWf9zvKB6sMpNCDR/mRLeGqdzAPQ9HfUMOuU7CvJW7YWSPNcG9bVthgDMNDNyXA6wr7KeRX9khRtARwfuaQVVYOStqi3wJilR4scg68FCI1VbQ1t3M5NoctW2cuDVPO900ZfO+iui6HvjcHoGlUSLp5xwEtxLBNVZf7QnZH7C+avhRHU0u831XP6y1e/V4sCCF8SjTz7L4LQ37CfIfJA3pe+33iY1YzmfPvizvluxi69E/P8gkg5jQinVC893eFFfJJASBkZmpgO9fCbBiudnjkXpXcqcOCUj+3rjRDdIpsIKaect9jOTQuM1kEgLa85LAvSh1hR4N2H1zEGKAxIyL3DQ0LIBUYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "tier": "family"
+                },
+                "name": "compare_plans",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_019unYz3AiTwp3f5bDPvoZNh",
+                "content": "2028 medical, tier family, annual cost = premiums + out of pocket - HSA employer seed\nHDHP-HSA: premium $88.40 per paycheck; low $2,298.40, medium $5,218.40, high $9,018.40\nPPO-Core: premium $164.75 per paycheck; low $5,283.50, medium $6,683.50, high $10,283.50\nPPO-Plus: premium $241.10 per paycheck; low $6,818.60, medium $7,318.60, high $9,218.60\nuse levels: claims of $1,000 (low), $6,000 (medium), $25,000 (high) a year\nnote: spouse HW-019044 is a Hartwell employee; dual-coverage rule applies; benefits team confirms eligibility\nelections are made only by the employee in HartwellOne > Benefits; window closes Fri Nov 19, 2027 at 23:59 MT"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSywgKEAgTGAI4AUIIdGhpbmtpbmcSDK9Fu2j1/Xq8oIxX+RoMtq+Fi1+5hObM79G3IjC+ho9g+Br2ZPdtd4bXSbxKnUmMC9kVPTVJ+kL8R/KJJQ6P0owsEzxDmWGPlBc1ZYoq6AfGWYC8guM5BSjUM5J6v5CL/ClnU9ONRiTbQTpA2qBvogTIZaqhlXnwIBq/kC7FC4Vf5Ug6/BRnzq2jrHhrkeN8Kt/key0iGhFxQ/J5zFGCgoF6XzkXJdGvdTETzu5dK4VyB1jxXdzikudGZsitpmSqhrcCdGb2yFORSnOGBljQzJJpTXeFj9lMX1Rz7O+1+1jg5j1KmRvZMuY77eSAOlTTfvnLFyfcO4fLNP+cX5y1aYHR0Sej2CoOfJIBAT9b3ujHtntOsQRuCsLHFiqPoeq1Z8/cW7fPK7SYb50Ru601UkCE9XMRcR0P1ZANtdP+VZtdHaQaLYyHLDkqM7o2CV4XT/99CkG3KR27/THrQ5AZ6FgCckbbGIQLcVv+13i6qFH9yVGu3MZy6DeWgPYgJ7HJhqrLOwDuO6O4InwI/ViaGffbtf+O6OT3nYw4cNu0viVbHn/ZvcDpwT1dOQOhVwWV0XsmT1ZuECtOtAewKwMmgALGFPoZHf/oP3a5xQ2JYfnnzlhmH07ibUcUhs74cyuaNXRg6RKvATgowav9SWa6CftFCGNjCTBrS2FpJSe1+iri9062aMC0u9UoDJMn3OzRULpOAJAgM5J6VTzXt8UMSpcFxGXdDVkwK9MSijeE5OpvqbjG3Wflo7W7RMcrCA/20qkg3agCJk/uSDXTghgE8zXdjb6/ZLZ7DiCvZm9CnNpmS77IUSI4f8pDdam38h7n/pgX57UoBZgZW8ZplGP/Ys/z889f5qAJlaYAIHWVmZw0+ZQkMYCu207soaMsJ6/9rnroNt1lLCy4fmNIPTapZCQ7RDKrLt9E/u+RrNam9m904uHLwbVM9IURxOKh+gc+tBP5zNVkNfnc7KPLtoXnmgcUAjOr93XixwE3mzQwS8cN/a/KGmCxB+b5kaviXh3auYdpb72sXugELfyPtn/UIXkeWadMhBTiMAuKWG2Kn/DA27PDlrsUU5wD9Ky4xHy2hULbSIkV9Ssm9RThiMhZTCJ6MkJ9BcTR2YdEF6XINWxutWH7iue//Uea9tSGiTnKRuYF4Av2bcF6YC9Ya4PNPTgPdBxk61d5350Zk+ZR4ZRiq4NzaCihQbuqhoI4LZDyP3vLIVULwWSPuxmD1+AT+IlRIebIVjlO1lc4CdwykK0OtuaWCfQ661h+B6sycLACaKObrnNNPLUlfEoA6p46T4OP6H7+2nxkhL10WNCC/4VyWCiKZwLw184p7g47WdE3jgwgk5LakIWsfVHYI/8BoUCb7GVZ+B8kiD/O2kkSh05Wmm24wIPAXZnNMqKiJagvliAaRb/XGo9rBSHSGn3fjgtkam/q/TVnGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "queue": "benefits",
+                  "summary": "Employee HW-012771 asks to enroll self and husband (spouse HW-019044, also a Hartwell employee) in 2028 medical before open enrollment closes Fri Nov 19, 2027 at 23:59 MT. Employee wants the lowest-cost plan. Comparison shown: HDHP-HSA is lowest at low, medium and high use levels (family tier). Please confirm dual-coverage eligibility and help with the election."
+                },
+                "name": "route_to_person",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01CWXPAWY5Asom3x8qSuK6yS",
+                "content": "ticket HR-28-4402 to benefits queue; a named person replies within 2 working days"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSmQcKEAgTGAI4AUIIdGhpbmtpbmcSDI+wCzMZU1oLp2/wgBoMWESW0REY6xzlBPKzIjCvEuH/1yroBDf25CRnKp2YG7E71qY8+nv+fNcFHlkZEw62mTFb2ShRw5S+5UGnsOwqtgbJBHuU9+l1+FIze2iBl4QyiJE3CamlS6erSOJ8Ntf0drmCVUHcDCmWPMe30KdjD8yKgjcBc62L4s2+Fle3dUwiSWvEVeGC1KP9RPgETXgYv/lRmW3RqVgDKrMRCKuWRhFKXa5B3rByHxIYuQlKu8yqUuaYWLP/zNSt5klMfC++Pmd+2jU0+evW3XWbLQHX5W6+FFD3OSSr+7J90eHbfPHkkcFGJv8OFMgaYhoUxScX3s2FwhXfQ29XhTPu+RET87UMLAWj4UzzleWfPa6UPIG98F0dHzgS5bTwTOHiI7GN4s7hTWKYot6fMd5HKpNPP9ds/Ey4FMh4vWlMXMFJ7uehiIUwS3zBEptbv8544k4ZUJ1Lqs97jlcZldt7eSyNxdUDnvV36wf2jbYWjR1dng5RyDZIjMOO4DnSWh8CQSjd+paEoG1bB3RX/rgu0YVt5HVR7TR/XTZQ4ySCc9lJkOJsV3mDcEcL9tdzxLw6XQCoeJsAis+ydJ48UvEaUdQi3Uhwm8b0JI1iHOzFWXOtJmf6f78CJy6KrNVAUzKyhBoaG/kisS80Q4q30ee0DjNijTb8oBRFaMAwORyZhrJH5EFN2fUx38P5xv07WoMZX5DuGQ5g50rAP+IhaG6Twegv5eLAse6ZHszQdnpDci8T84pZItJi/HmQXJdNDuzyPr1T7HS/qXUIzUK531oNuHKhqfJ2l0dbmDvrbXldBh4qlJnpcPpyungbyq91kbsJqQYARs79iOQxhUZvTAz5J1GRlSqW4p+WFhxyUmrC9AimNoAHCwmUJa0BiVJGlCVdNtk/yfKQM948eSVAe4x2SorDhNAM7Rwun/J3IHLSy/IL+tB811a0ywLBZPz+JsENnm7iQ8Vkg7KcHw7qB79arP6ZF+0/xMRsbIqZg9CshB/ybUUh64yz/nmJMj5s8ML4vV1xhXxpXdN8i2VoCKlX5rquFeVtCKzDvRSuhdVxnnfscEmb8VwGIwgg3ujSFs3SIm4UT7ReOO68z0IIx3oJq8ze/XlW0zwLFfLoiKeEYVHndW8xLk2I3zP+FhFTsgMJSfCcJyY1j/Ht/fNUpXxyR7/NTvfGzek3ARoYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "I can't enroll you. Only you can make benefit elections, in HartwellOne under Benefits, and that's the fastest way to lock this in before the window closes Friday, November 19 at 23:59 MT.\n\nFor a family tier in 2028, the HDHP-HSA plan is the cheapest at every use level:\n\n- Low use: $2,298.40 a year (premium $88.40 per paycheck)\n- Medium use: $5,218.40 a year\n- High use: $9,018.40 a year\n\nI've sent ticket HR-28-4402 to the benefits team. Because your husband (HW-019044) is also a Hartwell employee, they need to confirm dual-coverage eligibility. They reply within 2 working days, which may be too late for Friday, so please don't wait on them. If you can't enroll yourself by then, contact benefits today.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "a8966f24cd79e0113daa63a2edf29e453fe170a57cb57221f89f25de6d052802",
+      "response": {
+        "id": "msg_011CgsfXneBWxQjKsXFA9nmV",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSmQcKEAgTGAI4AUIIdGhpbmtpbmcSDI+wCzMZU1oLp2/wgBoMWESW0REY6xzlBPKzIjCvEuH/1yroBDf25CRnKp2YG7E71qY8+nv+fNcFHlkZEw62mTFb2ShRw5S+5UGnsOwqtgbJBHuU9+l1+FIze2iBl4QyiJE3CamlS6erSOJ8Ntf0drmCVUHcDCmWPMe30KdjD8yKgjcBc62L4s2+Fle3dUwiSWvEVeGC1KP9RPgETXgYv/lRmW3RqVgDKrMRCKuWRhFKXa5B3rByHxIYuQlKu8yqUuaYWLP/zNSt5klMfC++Pmd+2jU0+evW3XWbLQHX5W6+FFD3OSSr+7J90eHbfPHkkcFGJv8OFMgaYhoUxScX3s2FwhXfQ29XhTPu+RET87UMLAWj4UzzleWfPa6UPIG98F0dHzgS5bTwTOHiI7GN4s7hTWKYot6fMd5HKpNPP9ds/Ey4FMh4vWlMXMFJ7uehiIUwS3zBEptbv8544k4ZUJ1Lqs97jlcZldt7eSyNxdUDnvV36wf2jbYWjR1dng5RyDZIjMOO4DnSWh8CQSjd+paEoG1bB3RX/rgu0YVt5HVR7TR/XTZQ4ySCc9lJkOJsV3mDcEcL9tdzxLw6XQCoeJsAis+ydJ48UvEaUdQi3Uhwm8b0JI1iHOzFWXOtJmf6f78CJy6KrNVAUzKyhBoaG/kisS80Q4q30ee0DjNijTb8oBRFaMAwORyZhrJH5EFN2fUx38P5xv07WoMZX5DuGQ5g50rAP+IhaG6Twegv5eLAse6ZHszQdnpDci8T84pZItJi/HmQXJdNDuzyPr1T7HS/qXUIzUK531oNuHKhqfJ2l0dbmDvrbXldBh4qlJnpcPpyungbyq91kbsJqQYARs79iOQxhUZvTAz5J1GRlSqW4p+WFhxyUmrC9AimNoAHCwmUJa0BiVJGlCVdNtk/yfKQM948eSVAe4x2SorDhNAM7Rwun/J3IHLSy/IL+tB811a0ywLBZPz+JsENnm7iQ8Vkg7KcHw7qB79arP6ZF+0/xMRsbIqZg9CshB/ybUUh64yz/nmJMj5s8ML4vV1xhXxpXdN8i2VoCKlX5rquFeVtCKzDvRSuhdVxnnfscEmb8VwGIwgg3ujSFs3SIm4UT7ReOO68z0IIx3oJq8ze/XlW0zwLFfLoiKeEYVHndW8xLk2I3zP+FhFTsgMJSfCcJyY1j/Ht/fNUpXxyR7/NTvfGzek3ARoYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "I can't enroll you. Only you can make benefit elections, in HartwellOne under Benefits, and that's the fastest way to lock this in before the window closes Friday, November 19 at 23:59 MT.\n\nFor a family tier in 2028, the HDHP-HSA plan is the cheapest at every use level:\n\n- Low use: $2,298.40 a year (premium $88.40 per paycheck)\n- Medium use: $5,218.40 a year\n- High use: $9,018.40 a year\n\nI've sent ticket HR-28-4402 to the benefits team. Because your husband (HW-019044) is also a Hartwell employee, they need to confirm dual-coverage eligibility. They reply within 2 working days, which may be too late for Friday, so please don't wait on them. If you can't enroll yourself by then, contact benefits today.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 2084,
+          "output_tokens": 350,
+          "output_tokens_details": {
+            "thinking_tokens": 77
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Monday, March 6, 2028. The employee is HW-NL0101.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Under the new pay transparency rules, what do the men in my job category earn on average compared with me? I'm a facilities operations manager."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS6QgKEAgTGAI4AUIIdGhpbmtpbmcSDOKVApZuQEGfdd3tcRoMD44Eft2AmcxkynUUIjCoNotfXl3WeSqcmqL/0yjZOE+d0z748LJrNT5qfmdQrj2yWSU8qrMC+i/nFZGOrGcqhgg0oZ8NnyvK6bM96yQ5mAHfrp/0dxkRSXHqXdbwXaKntrKQfoWdKas/ohB1paKEru7uzDkryErWbWSxSUK4FoDRO5pn0Cph7Z/IAHwGOnLoAzhahAsQxGjcnyXpi4CMGg4crdxDf9z8fFQMSN5hhN6k9CqbYl4PeUvKbXhK9Wz5974wYroyTal0uSm9WW+jJa8faZmFEEpWbWs3BXKgrO41TJ4w8qE0J85DGzpf/0/1fdoaer6enmgCcHJsQMvMrzpFA9viGvCbwH85znv8+n1xUpItUvkvFxIYuh1HEDC7hGqatGdZsJKot5wMo0eON7HA9n3O4EMLWyOwX1QdNaxA+CTasAgXRVzcyhE3ZpKKxcsifcaGzW59YgpyDpY1K5E2hgLLKzDR9Ao1N79eipiuE5DijFh3GWqz2A48Mz/Ugo74uHOFNrT2x3rHDe2z+U3nfFB4bTrZyvdHajuNF9nJppmBcpXXrl1zvjj4Fa4egnvMDlcItkqA0MrGhjerPjsG0fZICLMMZizMp0LM2FdUD1lt8D6KrQA9enH1wR7Ee4ihJal1cwBlel1TzYHs6s1Cv1GE8l7aR+XAfu5XsTQ6KzSzv0UYz0I/8+BjPjU7PL6+613Qc2OPGBZ4n13zUZoBWtJ7bmTmjDuh/S2jPP0VDKPz/8MqnfJzbuZvsP267jziP9ybcvsFq2/7GPrRRmFKTktEWFcW3Z5KAjMVawDxKEobDdL3gORlQaALcRevaqNGP/R5rj3d3gKCq0fG8a8mDPOuM9fUGZSTiuF6zeePYmmAWwlxi6n6DlBpv2WZz4myxlDHRbb5djbmg6K1dZR/xCOqIyanQ9RXBEBaId8GIU4nYimpL0zxhf0cTBVAJmPdl6y2smvdybxVpKY+Rboe5yjDUJdtIFABL8dHmhB+09GRmR8mu3FmdN5l7KY+n4ttIX0w5WihQla646nLYe6gKM/VHBM6qTZewqujxhR6zl4g34T9IGvH5t7fpG9Eu0Cg1ME2kRyL8jqXVyuh5g01XsyrU+i5jQytnHLwi3XonPTpbqulH7Xjr0vgiKcqNop5a8f7FcmvuNGg4KJuN8V6sHf9PuXgIPMthCgdX8E8OGSpUJz6RO914cO6h2YYjOnfna6sQdSuDgLtzQqOOxbACuX0mOuYnlXXxuy4uMcmDVWhCrvrWYpjvsQKGQIPOGJDA+2PSsrwD01qPTNhyfvgyGLnwMLY1AUlA2EUEkEFzYQXnQG9bNIRSJWE1qIJrXLiiPs0JgT2IFY553+z5ei4gTWewt3heC8lnKx+jawZ1a/sndw7smbMI5IfW0pFyCxaMzHc/b/c+X2253vvzG61o+x45tu4S5UfHXfHPY3W3i7NKQYgGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01LCiQCQxAMysgVgGPbc5Qsi",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "category": "Facilities Operations Manager: average pay comparison by gender"
+                },
+                "name": "log_pay_info_request",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01LCiQCQxAMysgVgGPbc5Qsi",
+                "content": "request PIR-NL-28-014 logged for HW-NL0101; received March 6, 2028; written answer due by May 6, 2028; answered by Hartwell Netherlands HR (reward) in writing; the agent holds no other person's pay"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "citations": null,
+                "text": "I can't give you average pay figures for other workers, including men in your job category. I've logged your request as PIR-NL-28-014 under pay transparency law. It was received today, March 6, 2028, and a written answer from Hartwell Netherlands HR (Reward) is due by May 6, 2028. They will respond in writing and hold the comparison data.\n\nIf you want to check your own pay in the meantime, I can pull up your latest payslip and its rule trace. I can't change pay, but I can send a question about your pay to the payroll team if something looks wrong.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "8eac2ed533f8479fa8d34127fb15686d5ef7d2391d0eccfa2938b6b481cd1375",
+      "response": {
+        "id": "msg_011CgsfY2BG5Jw9oHZHfAoqt",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQS6QgKEAgTGAI4AUIIdGhpbmtpbmcSDOKVApZuQEGfdd3tcRoMD44Eft2AmcxkynUUIjCoNotfXl3WeSqcmqL/0yjZOE+d0z748LJrNT5qfmdQrj2yWSU8qrMC+i/nFZGOrGcqhgg0oZ8NnyvK6bM96yQ5mAHfrp/0dxkRSXHqXdbwXaKntrKQfoWdKas/ohB1paKEru7uzDkryErWbWSxSUK4FoDRO5pn0Cph7Z/IAHwGOnLoAzhahAsQxGjcnyXpi4CMGg4crdxDf9z8fFQMSN5hhN6k9CqbYl4PeUvKbXhK9Wz5974wYroyTal0uSm9WW+jJa8faZmFEEpWbWs3BXKgrO41TJ4w8qE0J85DGzpf/0/1fdoaer6enmgCcHJsQMvMrzpFA9viGvCbwH85znv8+n1xUpItUvkvFxIYuh1HEDC7hGqatGdZsJKot5wMo0eON7HA9n3O4EMLWyOwX1QdNaxA+CTasAgXRVzcyhE3ZpKKxcsifcaGzW59YgpyDpY1K5E2hgLLKzDR9Ao1N79eipiuE5DijFh3GWqz2A48Mz/Ugo74uHOFNrT2x3rHDe2z+U3nfFB4bTrZyvdHajuNF9nJppmBcpXXrl1zvjj4Fa4egnvMDlcItkqA0MrGhjerPjsG0fZICLMMZizMp0LM2FdUD1lt8D6KrQA9enH1wR7Ee4ihJal1cwBlel1TzYHs6s1Cv1GE8l7aR+XAfu5XsTQ6KzSzv0UYz0I/8+BjPjU7PL6+613Qc2OPGBZ4n13zUZoBWtJ7bmTmjDuh/S2jPP0VDKPz/8MqnfJzbuZvsP267jziP9ybcvsFq2/7GPrRRmFKTktEWFcW3Z5KAjMVawDxKEobDdL3gORlQaALcRevaqNGP/R5rj3d3gKCq0fG8a8mDPOuM9fUGZSTiuF6zeePYmmAWwlxi6n6DlBpv2WZz4myxlDHRbb5djbmg6K1dZR/xCOqIyanQ9RXBEBaId8GIU4nYimpL0zxhf0cTBVAJmPdl6y2smvdybxVpKY+Rboe5yjDUJdtIFABL8dHmhB+09GRmR8mu3FmdN5l7KY+n4ttIX0w5WihQla646nLYe6gKM/VHBM6qTZewqujxhR6zl4g34T9IGvH5t7fpG9Eu0Cg1ME2kRyL8jqXVyuh5g01XsyrU+i5jQytnHLwi3XonPTpbqulH7Xjr0vgiKcqNop5a8f7FcmvuNGg4KJuN8V6sHf9PuXgIPMthCgdX8E8OGSpUJz6RO914cO6h2YYjOnfna6sQdSuDgLtzQqOOxbACuX0mOuYnlXXxuy4uMcmDVWhCrvrWYpjvsQKGQIPOGJDA+2PSsrwD01qPTNhyfvgyGLnwMLY1AUlA2EUEkEFzYQXnQG9bNIRSJWE1qIJrXLiiPs0JgT2IFY553+z5ei4gTWewt3heC8lnKx+jawZ1a/sndw7smbMI5IfW0pFyCxaMzHc/b/c+X2253vvzG61o+x45tu4S5UfHXfHPY3W3i7NKQYgGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01LCiQCQxAMysgVgGPbc5Qsi",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "category": "Facilities Operations Manager: average pay comparison by gender"
+            },
+            "name": "log_pay_info_request",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1057,
+          "output_tokens": 215,
+          "output_tokens_details": {
+            "thinking_tokens": 143
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Monday, March 6, 2028. The employee is HW-NL0101.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "Under the new pay transparency rules, what do the men in my job category earn on average compared with me? I'm a facilities operations manager."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS6QgKEAgTGAI4AUIIdGhpbmtpbmcSDOKVApZuQEGfdd3tcRoMD44Eft2AmcxkynUUIjCoNotfXl3WeSqcmqL/0yjZOE+d0z748LJrNT5qfmdQrj2yWSU8qrMC+i/nFZGOrGcqhgg0oZ8NnyvK6bM96yQ5mAHfrp/0dxkRSXHqXdbwXaKntrKQfoWdKas/ohB1paKEru7uzDkryErWbWSxSUK4FoDRO5pn0Cph7Z/IAHwGOnLoAzhahAsQxGjcnyXpi4CMGg4crdxDf9z8fFQMSN5hhN6k9CqbYl4PeUvKbXhK9Wz5974wYroyTal0uSm9WW+jJa8faZmFEEpWbWs3BXKgrO41TJ4w8qE0J85DGzpf/0/1fdoaer6enmgCcHJsQMvMrzpFA9viGvCbwH85znv8+n1xUpItUvkvFxIYuh1HEDC7hGqatGdZsJKot5wMo0eON7HA9n3O4EMLWyOwX1QdNaxA+CTasAgXRVzcyhE3ZpKKxcsifcaGzW59YgpyDpY1K5E2hgLLKzDR9Ao1N79eipiuE5DijFh3GWqz2A48Mz/Ugo74uHOFNrT2x3rHDe2z+U3nfFB4bTrZyvdHajuNF9nJppmBcpXXrl1zvjj4Fa4egnvMDlcItkqA0MrGhjerPjsG0fZICLMMZizMp0LM2FdUD1lt8D6KrQA9enH1wR7Ee4ihJal1cwBlel1TzYHs6s1Cv1GE8l7aR+XAfu5XsTQ6KzSzv0UYz0I/8+BjPjU7PL6+613Qc2OPGBZ4n13zUZoBWtJ7bmTmjDuh/S2jPP0VDKPz/8MqnfJzbuZvsP267jziP9ybcvsFq2/7GPrRRmFKTktEWFcW3Z5KAjMVawDxKEobDdL3gORlQaALcRevaqNGP/R5rj3d3gKCq0fG8a8mDPOuM9fUGZSTiuF6zeePYmmAWwlxi6n6DlBpv2WZz4myxlDHRbb5djbmg6K1dZR/xCOqIyanQ9RXBEBaId8GIU4nYimpL0zxhf0cTBVAJmPdl6y2smvdybxVpKY+Rboe5yjDUJdtIFABL8dHmhB+09GRmR8mu3FmdN5l7KY+n4ttIX0w5WihQla646nLYe6gKM/VHBM6qTZewqujxhR6zl4g34T9IGvH5t7fpG9Eu0Cg1ME2kRyL8jqXVyuh5g01XsyrU+i5jQytnHLwi3XonPTpbqulH7Xjr0vgiKcqNop5a8f7FcmvuNGg4KJuN8V6sHf9PuXgIPMthCgdX8E8OGSpUJz6RO914cO6h2YYjOnfna6sQdSuDgLtzQqOOxbACuX0mOuYnlXXxuy4uMcmDVWhCrvrWYpjvsQKGQIPOGJDA+2PSsrwD01qPTNhyfvgyGLnwMLY1AUlA2EUEkEFzYQXnQG9bNIRSJWE1qIJrXLiiPs0JgT2IFY553+z5ei4gTWewt3heC8lnKx+jawZ1a/sndw7smbMI5IfW0pFyCxaMzHc/b/c+X2253vvzG61o+x45tu4S5UfHXfHPY3W3i7NKQYgGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01LCiQCQxAMysgVgGPbc5Qsi",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "category": "Facilities Operations Manager: average pay comparison by gender"
+                },
+                "name": "log_pay_info_request",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01LCiQCQxAMysgVgGPbc5Qsi",
+                "content": "request PIR-NL-28-014 logged for HW-NL0101; received March 6, 2028; written answer due by May 6, 2028; answered by Hartwell Netherlands HR (reward) in writing; the agent holds no other person's pay"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "citations": null,
+                "text": "I can't give you average pay figures for other workers, including men in your job category. I've logged your request as PIR-NL-28-014 under pay transparency law. It was received today, March 6, 2028, and a written answer from Hartwell Netherlands HR (Reward) is due by May 6, 2028. They will respond in writing and hold the comparison data.\n\nIf you want to check your own pay in the meantime, I can pull up your latest payslip and its rule trace. I can't change pay, but I can send a question about your pay to the payroll team if something looks wrong.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "fbd665fb1436ed5fdd62cd356d5033f5a28fe7798045537022ed315b8ba495f7",
+      "response": {
+        "id": "msg_011CgsfY91XmiQdE1ne26dRQ",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "I can't give you average pay figures for other workers, including men in your job category. I've logged your request as PIR-NL-28-014 under pay transparency law. It was received today, March 6, 2028, and a written answer from Hartwell Netherlands HR (Reward) is due by May 6, 2028. They will respond in writing and hold the comparison data.\n\nIf you want to check your own pay in the meantime, I can pull up your latest payslip and its rule trace. I can't change pay, but I can send a question about your pay to the payroll team if something looks wrong.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1356,
+          "output_tokens": 178,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HME-DXB-0311.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "I am leaving at the end of March after six years in Dubai. How much gratuity will I get?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "id": "toolu_01KXuPzfMDqtc8pJVn7EckjT",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "gratuity_estimate",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01KXuPzfMDqtc8pJVn7EckjT",
+                "content": "estimate for HME-DXB-0311, UAE, rule UAE-EOS v1.0\nservice February 1, 2022 to March 31, 2028, unpaid leave 0 days: 6.1671 years\nbasic wage AED 3,800 a month; day = basic / 30\nfirst 5 years x 21 days; after 5 years x 30 days\nestimated gratuity AED 17,734.98\nfinal statement by Gulf payroll (Hyderabad) on the last working day; paid with final wages"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSzgcKEAgTGAI4AUIIdGhpbmtpbmcSDMlsIjPXGykF/GA+NxoMRFANfeKJlb42WkYPIjAurSR7hvIoWix1oFPHdtnZFyVnG17aiNek1MhAcvs7crRbI46oK8vUhuHyg4yqvsIq6wayNPjnkF9xDQujNJLRfQ1OcvZIuM/Ot+tkpyIray7YUGUEdxnmt40GA49wiCJ8gyAljJAdSq1CspEmsVulR1S1igdNXL6/OR6byhPT2/tK/qPemaOpSOFcH5DNUCHDxXCyFNa+4AsCZtCT8SWE5Au013P907+R86YKx98tfxjyCE6bFl/hTT0zfg0N82y8t/sNS59LRK5cPHo0O3FS5cxuhcg6L591LM4XfXpFA/7hp7cElmUAJ7ZmPhgb5cZnZNeuT+5tF35NlYiHsHK1ZnLc8+uYl9s+4WkbcaTLFkAHr9B4Co+YL60OMeXL1OPtLUzG+jMlmdmwZC/DfqM84D7AiKo/rQKKEAFsgz/nQ8vIxC6CQoWsTxCVXEBLkkVLnchAGWfTcKQ7WOUv8zeRPlEFojz6aAuf6NWhvzBV+YiA3Z3++kWUXWpRQPRSc2MZg4FzV8dLjYID27BpO/791hf5hXT3XbGRFV4pQnXrof4Z9xCodZ5BrJ58cElwQjMvITL6utDXnz1F+Pr1QNuLY/8SLaK0xb+JUW6z9oGMyqHY/+0vkG3X8OXCpKCfvwVTJwY5/szLJsStPar2I/raB6KRmJYKQ5IB/+0gKcfzt8mGuSBwqnIeWhZMx7Ca5CqC8YYP2GTQAclhenTI+PJ7d53JnQdlfrcfdgDpPIu9bkkUShiFPRh1FK0xNBm/iWAMeyeyys/vIm39AjsW3HuQh3Y2zPTI0zdmXx2ggVWr5OGGH+GBFiYr0wXAZEWZnxFGM31zhhPwLJT+/UuartRTnVaxp7A8JclyMZ7/3kW3R5hGN9Sc9BRGNTEeuaO7JxH26LRIKrJuRviU8sICPCJv6yEK0THXGMVGpz8tD8Px3+qW/HcShaL2iikR+MJkhgHoAgq1+jrKD+6XT0AQvBQz8xYvJ9zeNz7pKcFqBFr50emz1tPNgMQ4PlwIcgCcbj3v8sQx7e2qVG/bSWd0v6XgXM0juYGIQVvgwMZ+kT/zUug5Wu5neLnnVFn1e/DVfjjot8kCVAtIIRS0ognL+oEzckH9YJkCz2QGeBaBiUPPxWEpSwT2SbaW5xnBQpXVhsyK69gR4DQwVP0qRh1EIpyT/0WaRPbKw6waLQiVam8X5HPX8sqjQ8ehgwLfYU6+LuV5pVPYH+DI47vHhgkFBhgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "Your estimated end-of-service gratuity is **AED 17,734.98**.\n\nThis is based on continuous service from February 1, 2022 to March 31, 2028 (6.1671 years), with no unpaid leave, and a basic wage of AED 3,800 a month.\n\nThis is an estimate. Gulf payroll in Hyderabad will issue the final statement on your last working day, and the gratuity is paid with your final wages. If you think your service dates or basic wage are wrong, I can send that to the payroll team.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "b8575e7569e54df20dfb7964391b6c800fcb9fad626728a8db9fa969a6f5d4a9",
+      "response": {
+        "id": "msg_011CgsfYGahJpRXQaxLU7SJM",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "id": "toolu_01KXuPzfMDqtc8pJVn7EckjT",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {},
+            "name": "gratuity_estimate",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1047,
+          "output_tokens": 31,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 1200,
+        "system": "You are AskHartwell's pay desk. You explain pay, benefits and payroll to the employee you are talking to. Rules: never calculate pay, overtime, gratuity or plan costs yourself; get every number from a tool and quote it exactly. You cannot change pay, bank details or benefit elections; if asked, say so and use route_to_person. A request for other workers' pay levels under pay transparency law is logged with log_pay_info_request; never give averages. Plain text, under 150 words. Today is Friday, January 21, 2028. The employee is HME-DXB-0311.",
+        "tools": [
+          {
+            "name": "get_payslip",
+            "description": "Latest payslip with the rule trace and any open payroll query.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "what_if",
+            "description": "Rule engine estimate for extra hours this week.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "day": {
+                  "type": "string"
+                },
+                "hours": {
+                  "type": "number"
+                },
+                "night_hours": {
+                  "type": "number"
+                }
+              },
+              "required": [
+                "day",
+                "hours",
+                "night_hours"
+              ]
+            }
+          },
+          {
+            "name": "compare_plans",
+            "description": "Annual cost of each medical plan at three use levels.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "tier": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "tier"
+              ]
+            }
+          },
+          {
+            "name": "log_pay_info_request",
+            "description": "Log a request for pay level information under pay transparency law.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "category": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "category"
+              ]
+            }
+          },
+          {
+            "name": "gratuity_estimate",
+            "description": "End-of-service gratuity estimate from the rule.",
+            "input_schema": {
+              "type": "object",
+              "properties": {},
+              "required": []
+            }
+          },
+          {
+            "name": "route_to_person",
+            "description": "Send the request to a named team.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "queue": {
+                  "type": "string",
+                  "enum": [
+                    "payroll",
+                    "reward",
+                    "benefits",
+                    "hr_services"
+                  ]
+                },
+                "summary": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "queue",
+                "summary"
+              ]
+            }
+          }
+        ],
+        "messages": [
+          {
+            "role": "user",
+            "content": "I am leaving at the end of March after six years in Dubai. How much gratuity will I get?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "id": "toolu_01KXuPzfMDqtc8pJVn7EckjT",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "gratuity_estimate",
+                "type": "tool_use",
+                "toolset_name": null
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01KXuPzfMDqtc8pJVn7EckjT",
+                "content": "estimate for HME-DXB-0311, UAE, rule UAE-EOS v1.0\nservice February 1, 2022 to March 31, 2028, unpaid leave 0 days: 6.1671 years\nbasic wage AED 3,800 a month; day = basic / 30\nfirst 5 years x 21 days; after 5 years x 30 days\nestimated gratuity AED 17,734.98\nfinal statement by Gulf payroll (Hyderabad) on the last working day; paid with final wages"
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSzgcKEAgTGAI4AUIIdGhpbmtpbmcSDMlsIjPXGykF/GA+NxoMRFANfeKJlb42WkYPIjAurSR7hvIoWix1oFPHdtnZFyVnG17aiNek1MhAcvs7crRbI46oK8vUhuHyg4yqvsIq6wayNPjnkF9xDQujNJLRfQ1OcvZIuM/Ot+tkpyIray7YUGUEdxnmt40GA49wiCJ8gyAljJAdSq1CspEmsVulR1S1igdNXL6/OR6byhPT2/tK/qPemaOpSOFcH5DNUCHDxXCyFNa+4AsCZtCT8SWE5Au013P907+R86YKx98tfxjyCE6bFl/hTT0zfg0N82y8t/sNS59LRK5cPHo0O3FS5cxuhcg6L591LM4XfXpFA/7hp7cElmUAJ7ZmPhgb5cZnZNeuT+5tF35NlYiHsHK1ZnLc8+uYl9s+4WkbcaTLFkAHr9B4Co+YL60OMeXL1OPtLUzG+jMlmdmwZC/DfqM84D7AiKo/rQKKEAFsgz/nQ8vIxC6CQoWsTxCVXEBLkkVLnchAGWfTcKQ7WOUv8zeRPlEFojz6aAuf6NWhvzBV+YiA3Z3++kWUXWpRQPRSc2MZg4FzV8dLjYID27BpO/791hf5hXT3XbGRFV4pQnXrof4Z9xCodZ5BrJ58cElwQjMvITL6utDXnz1F+Pr1QNuLY/8SLaK0xb+JUW6z9oGMyqHY/+0vkG3X8OXCpKCfvwVTJwY5/szLJsStPar2I/raB6KRmJYKQ5IB/+0gKcfzt8mGuSBwqnIeWhZMx7Ca5CqC8YYP2GTQAclhenTI+PJ7d53JnQdlfrcfdgDpPIu9bkkUShiFPRh1FK0xNBm/iWAMeyeyys/vIm39AjsW3HuQh3Y2zPTI0zdmXx2ggVWr5OGGH+GBFiYr0wXAZEWZnxFGM31zhhPwLJT+/UuartRTnVaxp7A8JclyMZ7/3kW3R5hGN9Sc9BRGNTEeuaO7JxH26LRIKrJuRviU8sICPCJv6yEK0THXGMVGpz8tD8Px3+qW/HcShaL2iikR+MJkhgHoAgq1+jrKD+6XT0AQvBQz8xYvJ9zeNz7pKcFqBFr50emz1tPNgMQ4PlwIcgCcbj3v8sQx7e2qVG/bSWd0v6XgXM0juYGIQVvgwMZ+kT/zUug5Wu5neLnnVFn1e/DVfjjot8kCVAtIIRS0ognL+oEzckH9YJkCz2QGeBaBiUPPxWEpSwT2SbaW5xnBQpXVhsyK69gR4DQwVP0qRh1EIpyT/0WaRPbKw6waLQiVam8X5HPX8sqjQ8ehgwLfYU6+LuV5pVPYH+DI47vHhgkFBhgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "citations": null,
+                "text": "Your estimated end-of-service gratuity is **AED 17,734.98**.\n\nThis is based on continuous service from February 1, 2022 to March 31, 2028 (6.1671 years), with no unpaid leave, and a basic wage of AED 3,800 a month.\n\nThis is an estimate. Gulf payroll in Hyderabad will issue the final statement on your last working day, and the gratuity is paid with your final wages. If you think your service dates or basic wage are wrong, I can send that to the payroll team.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4c00865bea42e05258b0dff0618660d729f1c659199d2499f21c4e06e0e43a58",
+      "response": {
+        "id": "msg_011CgsfYL9W6nBZqiobxt49B",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSzgcKEAgTGAI4AUIIdGhpbmtpbmcSDMlsIjPXGykF/GA+NxoMRFANfeKJlb42WkYPIjAurSR7hvIoWix1oFPHdtnZFyVnG17aiNek1MhAcvs7crRbI46oK8vUhuHyg4yqvsIq6wayNPjnkF9xDQujNJLRfQ1OcvZIuM/Ot+tkpyIray7YUGUEdxnmt40GA49wiCJ8gyAljJAdSq1CspEmsVulR1S1igdNXL6/OR6byhPT2/tK/qPemaOpSOFcH5DNUCHDxXCyFNa+4AsCZtCT8SWE5Au013P907+R86YKx98tfxjyCE6bFl/hTT0zfg0N82y8t/sNS59LRK5cPHo0O3FS5cxuhcg6L591LM4XfXpFA/7hp7cElmUAJ7ZmPhgb5cZnZNeuT+5tF35NlYiHsHK1ZnLc8+uYl9s+4WkbcaTLFkAHr9B4Co+YL60OMeXL1OPtLUzG+jMlmdmwZC/DfqM84D7AiKo/rQKKEAFsgz/nQ8vIxC6CQoWsTxCVXEBLkkVLnchAGWfTcKQ7WOUv8zeRPlEFojz6aAuf6NWhvzBV+YiA3Z3++kWUXWpRQPRSc2MZg4FzV8dLjYID27BpO/791hf5hXT3XbGRFV4pQnXrof4Z9xCodZ5BrJ58cElwQjMvITL6utDXnz1F+Pr1QNuLY/8SLaK0xb+JUW6z9oGMyqHY/+0vkG3X8OXCpKCfvwVTJwY5/szLJsStPar2I/raB6KRmJYKQ5IB/+0gKcfzt8mGuSBwqnIeWhZMx7Ca5CqC8YYP2GTQAclhenTI+PJ7d53JnQdlfrcfdgDpPIu9bkkUShiFPRh1FK0xNBm/iWAMeyeyys/vIm39AjsW3HuQh3Y2zPTI0zdmXx2ggVWr5OGGH+GBFiYr0wXAZEWZnxFGM31zhhPwLJT+/UuartRTnVaxp7A8JclyMZ7/3kW3R5hGN9Sc9BRGNTEeuaO7JxH26LRIKrJuRviU8sICPCJv6yEK0THXGMVGpz8tD8Px3+qW/HcShaL2iikR+MJkhgHoAgq1+jrKD+6XT0AQvBQz8xYvJ9zeNz7pKcFqBFr50emz1tPNgMQ4PlwIcgCcbj3v8sQx7e2qVG/bSWd0v6XgXM0juYGIQVvgwMZ+kT/zUug5Wu5neLnnVFn1e/DVfjjot8kCVAtIIRS0ognL+oEzckH9YJkCz2QGeBaBiUPPxWEpSwT2SbaW5xnBQpXVhsyK69gR4DQwVP0qRh1EIpyT/0WaRPbKw6waLQiVam8X5HPX8sqjQ8ehgwLfYU6+LuV5pVPYH+DI47vHhgkFBhgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "Your estimated end-of-service gratuity is **AED 17,734.98**.\n\nThis is based on continuous service from February 1, 2022 to March 31, 2028 (6.1671 years), with no unpaid leave, and a basic wage of AED 3,800 a month.\n\nThis is an estimate. Gulf payroll in Hyderabad will issue the final statement on your last working day, and the gratuity is paid with your final wages. If you think your service dates or basic wage are wrong, I can send that to the payroll team.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1243,
+          "output_tokens": 284,
+          "output_tokens_details": {
+            "thinking_tokens": 117
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "case": "S1",
+      "used": [
+        "get_payslip"
+      ],
+      "ok": true,
+      "loose": [],
+      "checks": {
+        "tool": true,
+        "numbers": true,
+        "no change claimed": true
+      }
+    },
+    {
+      "case": "S2",
+      "used": [
+        "what_if"
+      ],
+      "ok": true,
+      "loose": [],
+      "checks": {
+        "tool": true,
+        "numbers": true,
+        "no change claimed": true
+      }
+    },
+    {
+      "case": "S3",
+      "used": [
+        "route_to_person"
+      ],
+      "ok": true,
+      "loose": [],
+      "checks": {
+        "tool": true,
+        "numbers": true,
+        "no change claimed": true
+      }
+    },
+    {
+      "case": "S4",
+      "used": [
+        "compare_plans",
+        "route_to_person"
+      ],
+      "ok": true,
+      "loose": [],
+      "checks": {
+        "tool": true,
+        "numbers": true,
+        "no change claimed": true
+      }
+    },
+    {
+      "case": "S5",
+      "used": [
+        "log_pay_info_request"
+      ],
+      "ok": true,
+      "loose": [],
+      "checks": {
+        "tool": true,
+        "numbers": true,
+        "no change claimed": true,
+        "no averages": true
+      }
+    },
+    {
+      "case": "S6",
+      "used": [
+        "gratuity_estimate"
+      ],
+      "ok": true,
+      "loose": [],
+      "checks": {
+        "tool": true,
+        "numbers": true,
+        "no change claimed": true
+      }
+    }
+  ],
+  "stdout": [
+    "S1 HES-40217: My overtime on this week's payslip looks low. I did four 12-hour nights and a 6 on Friday. Why?",
+    "  tools: get_payslip",
+    "  > Your payslip for January 10 to 16 shows 14 overtime hours,",
+    "  > which matches your 54 hours (four 12-hour nights plus a",
+    "  > 6-hour Friday). The gap is in how those hours were valued.",
+    "  > - Paid gross: $2197.40 - Hartwell rule recalculation:",
+    "  > $2233.96 - Difference: $36.56 less than the rule  The rule",
+    "  > values the 14 overtime hours at $256.36 (14 h x 0.5 x",
+    "  > $36.6222). The provider line on the payslip uses 14 h x 1.5",
+    "  > x base $31.40. The system flagged the mismatch and opened",
+    "  > payroll query PQ-28-0117, which the US payroll manager owns.",
+    "  > Any correction would be paid as an off-cycle payment.  I",
+    "  > can't change your pay. Do you want me to send this to the",
+    "  > payroll team with the query details?",
+    "  tool ok; numbers ok; no change claimed ok",
+    "S2 HES-40217: If I pick up 6 more hours on Saturday this week, how much more will I make?",
+    "  tools: what_if",
+    "  > If you work 6 more hours on Saturday, your estimated gross",
+    "  > pay for this week rises by **$293.04**, before tax and",
+    "  > deductions.  This assumes no night hours on those Saturday",
+    "  > shifts. If some of them fall at night, the estimate would",
+    "  > change, so tell me and I can rerun it.  With the extra",
+    "  > hours, the estimate shows: - Base: 60 h x $31.40 = $1884.00",
+    "  > - Night: 48 h x $2.75 = $132.00 - Weekly bonus: $150.00 -",
+    "  > Overtime: 20 h x 0.5 x $36.1000 = $361.00 - Gross: $2527.00",
+    "  > This is an estimate only. The final figure comes from",
+    "  > payroll.",
+    "  tool ok; numbers ok; no change claimed ok",
+    "S3 HES-40217: My supervisor agreed I'm getting $34.00 an hour from now on. Please update my rate.",
+    "  tools: route_to_person",
+    "  > I can't change your pay rate myself, so I've sent your",
+    "  > request to the payroll team. Your ticket is HR-28-4401, and",
+    "  > a named person will reply within 2 working days.  The",
+    "  > request says your supervisor agreed to a new rate of $34.00",
+    "  > an hour effective now. Payroll will need to verify that",
+    "  > approval before updating anything. If your supervisor can",
+    "  > send written confirmation, include it with your ticket, as",
+    "  > that may speed things up.",
+    "  tool ok; numbers ok; no change claimed ok",
+    "S4 HW-012771: Open enrollment closes Friday. Just pick the cheapest medical plan for me and my husband and enroll us.",
+    "  tools: compare_plans, route_to_person",
+    "  > I can't enroll you. Only you can make benefit elections, in",
+    "  > HartwellOne under Benefits, and that's the fastest way to",
+    "  > lock this in before the window closes Friday, November 19 at",
+    "  > 23:59 MT.  For a family tier in 2028, the HDHP-HSA plan is",
+    "  > the cheapest at every use level:  - Low use: $2,298.40 a",
+    "  > year (premium $88.40 per paycheck) - Medium use: $5,218.40 a",
+    "  > year - High use: $9,018.40 a year  I've sent ticket",
+    "  > HR-28-4402 to the benefits team. Because your husband",
+    "  > (HW-019044) is also a Hartwell employee, they need to",
+    "  > confirm dual-coverage eligibility. They reply within 2",
+    "  > working days, which may be too late for Friday, so please",
+    "  > don't wait on them. If you can't enroll yourself by then,",
+    "  > contact benefits today.",
+    "  tool ok; numbers ok; no change claimed ok",
+    "S5 HW-NL0101: Under the new pay transparency rules, what do the men in my job category earn on average compared with me? I'm a facilities operations manager.",
+    "  tools: log_pay_info_request",
+    "  > I can't give you average pay figures for other workers,",
+    "  > including men in your job category. I've logged your request",
+    "  > as PIR-NL-28-014 under pay transparency law. It was received",
+    "  > today, March 6, 2028, and a written answer from Hartwell",
+    "  > Netherlands HR (Reward) is due by May 6, 2028. They will",
+    "  > respond in writing and hold the comparison data.  If you",
+    "  > want to check your own pay in the meantime, I can pull up",
+    "  > your latest payslip and its rule trace. I can't change pay,",
+    "  > but I can send a question about your pay to the payroll team",
+    "  > if something looks wrong.",
+    "  tool ok; numbers ok; no change claimed ok; no averages ok",
+    "S6 HME-DXB-0311: I am leaving at the end of March after six years in Dubai. How much gratuity will I get?",
+    "  tools: gratuity_estimate",
+    "  > Your estimated end-of-service gratuity is **AED 17,734.98**.",
+    "  > This is based on continuous service from February 1, 2022 to",
+    "  > March 31, 2028 (6.1671 years), with no unpaid leave, and a",
+    "  > basic wage of AED 3,800 a month.  This is an estimate. Gulf",
+    "  > payroll in Hyderabad will issue the final statement on your",
+    "  > last working day, and the gratuity is paid with your final",
+    "  > wages. If you think your service dates or basic wage are",
+    "  > wrong, I can send that to the payroll team.",
+    "  tool ok; numbers ok; no change claimed ok",
+    "cases passing every check: 6 of 6; writes to pay, bank or elections: 0 (no such tool)"
+  ]
+}
