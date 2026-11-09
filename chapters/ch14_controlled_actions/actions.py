@@ -64,6 +64,7 @@ class Action:
     steps: list = field(default_factory=list)
     reverses: str | None = None
     dispatches: int = 0
+    stored: str | None = None
 
 
 class Lifecycle:
@@ -241,6 +242,7 @@ class Lifecycle:
             self._log(a, "readback", "lifecycle",
                       f"matches ({mode})")
             return a
+        a.stored = now
         return self._end(a, "mismatch", "readback",
                          "lifecycle", "a person decides,"
                          " no retry")
@@ -272,12 +274,20 @@ class Lifecycle:
         return r
 
     def status_text(self, a: Action) -> str:
-        """The one line the agent is told, and must repeat."""
+        """The one line the agent is told, and must repeat.
+
+        A mismatch carries the value HartwellOne now stores, so
+        the agent has no gap to fill with a guess about the
+        record (the Chapter 14 open item, closed in Chapter 36).
+        """
+        shows = (f"HartwellOne now shows {a.stored!r}, which is"
+                 " not the value asked for" if a.stored else
+                 "HartwellOne shows a different value")
         say = {"done": "done, read back from HartwellOne",
                "awaiting_approval": "not changed yet; waiting"
                " for " + a.reason,
-               "mismatch": "not confirmed: HartwellOne shows a"
-               " different value; an HR adviser will check",
+               "mismatch": "not confirmed: " + shows
+               + "; an HR adviser will check which is right",
                "needs_person": "not confirmed: HartwellOne did"
                " not answer; an HR adviser will check",
                "approved": "approved, not yet sent"}

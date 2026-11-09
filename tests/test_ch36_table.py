@@ -63,3 +63,28 @@ def test_recheck_plain_cause():
                                  "to be changed more than once.")
     assert not recheck.cause_v11("The agent caused the duplicate "
                                  "and it was sent twice.")
+
+
+def test_mismatch_status_carries_stored_value():
+    from chapters.ch14_controlled_actions.actions import Lifecycle
+    from chapters.ch14_controlled_actions.fakes import (Clock,
+                                                        HartwellOne)
+    from chapters.ch14_controlled_actions import agent as A
+    lc = Lifecycle(HartwellOne(), Clock(),
+                   managers={A.LENA: "HW-012927"})
+    lc.hris.inject("overwrite", emp=A.LENA)
+    act = lc.propose(A.LENA, "home_address", A.NEW,
+                     requester=A.LENA)
+    assert act.state == "mismatch"
+    assert act.stored and act.stored in lc.status_text(act)
+
+
+def test_mismatch_recheck_checks():
+    from chapters.ch36_table.mismatch_recheck import FALSE, STORED
+    assert FALSE.search("Your record still shows the old address")
+    assert FALSE.search("Your current address on file hasn't"
+                        " been changed yet")
+    assert not FALSE.search("HartwellOne shows a different address"
+                            " on file, so the change wasn't"
+                            " confirmed.")
+    assert STORED.search("it now shows 2240 Larimer St, Apt 15")
