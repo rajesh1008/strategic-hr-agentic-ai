@@ -1,0 +1,68 @@
+# Chapter 6: who must be informed, consulted or asked to consent,
+# by country. rid null means VERIFY (no checked record in
+# 01-research yet). lead_weeks are Hartwell's own planning
+# assumptions (synthetic), not legal deadlines.
+eu_baseline:
+  ref: AI Act Art 26(7) inform reps and workers
+  power: inform
+  rid: R-143
+  lead_weeks: 4
+  from: 2027-12-02
+countries:
+  DE:
+    body: Betriebsrat
+    power: consent
+    lead_weeks: 16
+    hooks:
+    - {when: monitoring_capable, rid: R-030,
+       ref: "BetrVG s87(1) no. 6 monitoring devices"}
+    - {when: new_technology, rid: R-030, power: "inform, consult",
+       ref: "BetrVG s90 planned use of AI"}
+    - {when: selection_guidelines, rid: R-030,
+       ref: "BetrVG s95(2a) AI selection guidelines"}
+  NL:
+    body: ondernemingsraad
+    power: consent
+    lead_weeks: 12
+    hooks:
+    - {when: monitoring_capable, rid: null,
+       ref: "WOR art 27(1)(l) personnel monitoring"}
+    - {when: personal_data, rid: null,
+       ref: "WOR art 27(1)(k) personal data rules"}
+    - {when: working_time, rid: null,
+       ref: "WOR art 27(1)(b) working hours, rosters"}
+  FR:
+    body: CSE
+    power: opinion
+    lead_weeks: 8
+    hooks:
+    - {when: new_technology, rid: null,
+       ref: "Code du travail L2312-8 new technology"}
+  CZ:
+    body: employee council
+    power: inform, consult
+    lead_weeks: 6
+    hooks:
+    - {when: new_technology, rid: null,
+       ref: "Labour Code information, consultation"}
+  ES:
+    body: workers' reps at the EOR
+    power: inform
+    lead_weeks: 4
+    hooks:
+    - {when: personal_data, rid: null,
+       ref: "Workers' Statute art 64.4(d) algorithms"}
+  IE: {body: none standing, power: none, lead_weeks: 0,
+       hooks: []}
+  PL: {body: none standing, power: none, lead_weeks: 0,
+       hooks: []}
+  PT: {body: none standing, power: none, lead_weeks: 0,
+       hooks: []}
+# Dates are synthetic plans. "deadline" means the system is
+# already live and the date is when the duty starts to apply.
+plans:
+- {system: H3, kind: go-live, date: 2027-09-06}
+- {system: H5, kind: go-live, date: 2027-08-02}
+- {system: A1, kind: go-live, date: 2027-10-04}
+- {system: P1, kind: go-live, date: 2027-07-05}
+- {system: F1, kind: deadline, date: 2027-12-02}

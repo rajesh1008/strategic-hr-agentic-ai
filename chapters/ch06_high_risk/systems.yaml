@@ -1,0 +1,341 @@
+# Chapter 6: AI systems that touch Hartwell's EU workforce, and
+# the sector cases. ALL SYNTHETIC. Facts are counsel's answers,
+# from contracts, product documents and configuration, as of the
+# date below. Descriptions are written the way a vendor or an
+# internal team describes the product; intake.py shows them to a
+# model, never the facts.
+as_of: November 9, 2026
+annex_iii_from: December 2, 2027   # Reg (EU) 2026/1744 [R-018]
+
+systems:
+- id: H1
+  name: Hartwell Careers ranking (Smart Shortlist)
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    Smart Shortlist reads each application and resume against
+    the requisition and shows recruiters a ranked list with a
+    match score from 0 to 100. Since February 2027 it changes
+    no statuses: the rank is a sortable column and recruiters
+    read every application. The vendor says the recruiter always
+    makes the final decision.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: true,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: false, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: true,
+    significant_effect: true, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: false}
+  council_triggers: [selection_guidelines, personal_data,
+    new_technology]
+
+- id: H2
+  name: Resume parser into the talent pool
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    The parser extracts names, contact details, employers, dates,
+    qualifications and licenses from uploaded resumes into the
+    fields of the talent-pool database so recruiters can search
+    them. It does not score, rank or filter anyone.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: true,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: false, profiling: false,
+    narrow_procedural: true, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: false}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: false,
+    significant_effect: false, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: false}
+  council_triggers: [personal_data]
+
+- id: H3
+  name: Skills inventory and vacancy matching
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    Built by Hartwell's HR-technology engineers on the HCM
+    suite's skills module. It infers each salaried employee's
+    skills from project records, timesheet codes, learning
+    history and the documents they author, keeps a skills
+    profile, and sorts internal vacancies for each employee by
+    match. Managers see team skills heat maps.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: true, task_allocation: true,
+    monitor_evaluate: true, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: true,
+    materially_influences: true}
+  role_facts: {built_in_house: true, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: false,
+    significant_effect: true, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: true}
+  council_triggers: [monitoring_capable, personal_data,
+    selection_guidelines, new_technology]
+
+- id: H4
+  name: AskHartwell service agent
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    An employee-service agent that answers policy questions,
+    books leave within balance when the employee asks, changes
+    a home address on request, and hands sickness and other
+    sensitive questions to an HR adviser. Conversations are
+    logged per employee for quality review.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: false, profiling: false,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: false}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: false,
+    significant_effect: false, meaningful_review: true}
+  data: {special_category: true, systematic_monitoring: false}
+  council_triggers: [monitoring_capable, personal_data,
+    new_technology]
+
+- id: H5
+  name: Rotterdam shift and task allocation
+  org: Hartwell
+  where: [NL]
+  description: >-
+    Allocates shifts and daily task lists across port-facility
+    crews. It scores each worker on reliability (late arrivals,
+    swaps, absences) and productivity from handheld scans, then
+    builds the roster. Supervisors can edit before publication;
+    the roster publishes automatically at 18:00 if nobody does.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: false, task_allocation: true,
+    monitor_evaluate: true, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: true,
+    significant_effect: true, meaningful_review: false}
+  data: {special_category: false, systematic_monitoring: true}
+  council_triggers: [monitoring_capable, personal_data,
+    working_time, new_technology]
+
+- id: H6
+  name: Performance evidence summary (F02)
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    Drafts, for each manager, a summary of an employee's year
+    from goals, project records and peer feedback, before the
+    manager writes the rating. The vendor calls it a preparatory
+    task: the manager decides the rating.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: true, task_allocation: false,
+    monitor_evaluate: true, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: true,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: true,
+    significant_effect: true, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: false}
+  council_triggers: [monitoring_capable, personal_data,
+    new_technology]
+
+- id: H7
+  name: Screening audit analytics
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    People Analytics runs a quarterly analysis of anonymized
+    screening outcomes by step and group to find adverse impact
+    after decisions are made. No individual is scored and no
+    output reaches a live requisition.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: true,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: false, profiling: false,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: true, preparatory: false,
+    materially_influences: false}
+  role_facts: {built_in_house: true, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: false,
+    significant_effect: false, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: false}
+  council_triggers: []
+
+- id: H8
+  name: Video interview engagement score (offered)
+  org: Hartwell
+  where: [NL, DE]
+  description: >-
+    An add-on to one-way video interviews that reads facial
+    expression and voice to score each candidate's enthusiasm
+    and confidence, to help recruiters spot engaged candidates.
+  facts: {ai_system: true, infers_emotion: true,
+    medical_or_safety: false, recruit_select: true,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: false, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: false,
+    significant_effect: true, meaningful_review: true}
+  data: {special_category: true, systematic_monitoring: false}
+  council_triggers: [selection_guidelines, personal_data]
+
+- id: A1
+  name: Aurelia call-quality scoring
+  org: Aurelia Telecom
+  where: [NL]
+  description: >-
+    Scores every recorded call handled by service advisers in
+    Utrecht on script adherence, resolution and handling time,
+    and feeds weekly coaching lists and the monthly review.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: true, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: true,
+    significant_effect: true, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: true}
+  council_triggers: [monitoring_capable, personal_data,
+    new_technology]
+
+- id: A2
+  name: Aurelia adviser wellbeing signal (offered)
+  org: Aurelia Telecom
+  where: [NL]
+  description: >-
+    A wellbeing add-on that detects stress and frustration in
+    the adviser's voice during calls and alerts the team leader
+    so they can offer a break.
+  facts: {ai_system: true, infers_emotion: true,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: true, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: false,
+    significant_effect: false, meaningful_review: true}
+  data: {special_category: true, systematic_monitoring: true}
+  council_triggers: [monitoring_capable, personal_data,
+    new_technology]
+
+- id: P1
+  name: Hollis Plzen maintenance job allocation
+  org: Hollis Precision
+  where: [CZ]
+  description: >-
+    A lookup table in the maintenance system assigns each CNC
+    maintenance job to the first available technician who holds
+    the certificate the job requires. No learning or scoring.
+  facts: {ai_system: false, infers_emotion: false,
+    medical_or_safety: false, recruit_select: false,
+    work_decisions: false, task_allocation: true,
+    monitor_evaluate: false, profiling: false,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: true, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: true,
+    significant_effect: false, meaningful_review: true}
+  data: {special_category: false, systematic_monitoring: false}
+  council_triggers: [new_technology]
+
+- id: F1
+  name: Fieldnote applicant ranking (EU roles)
+  org: Fieldnote
+  where: [IE, ES, PL, PT]
+  description: >-
+    Fieldnote's US applicant tracking system ranks applicants
+    for every role, including Dublin roles and roles employed
+    through an employer of record in Spain, Poland and Portugal.
+    The ranking is configured in Austin. Recruiters open the 30
+    top-ranked applications for each role; the rest receive an
+    automatic rejection email after 21 days.
+  facts: {ai_system: true, infers_emotion: false,
+    medical_or_safety: false, recruit_select: true,
+    work_decisions: false, task_allocation: false,
+    monitor_evaluate: false, profiling: true,
+    narrow_procedural: false, improves_human_work: false,
+    pattern_check: false, preparatory: false,
+    materially_influences: true}
+  role_facts: {built_in_house: false, own_name: false,
+    substantial_modification: false}
+  decision: {decision_about_person: true,
+    significant_effect: true, meaningful_review: false}
+  data: {special_category: false, systematic_monitoring: false}
+  council_triggers: [personal_data, new_technology]
+
+# Duties by scope. rid is the evidence-register record; null
+# means VERIFY: the book has no checked record for it yet.
+obligations:
+- {ref: "Art 4 AI literacy (amended)", applies: all,
+   from: "February 2, 2025", rid: R-228}
+- {ref: "Art 5 prohibited-practice screen", applies: all,
+   from: "February 2, 2025", rid: R-022}
+- {ref: "Art 5: do not use", applies: prohibited,
+   from: "February 2, 2025", rid: R-022}
+- {ref: "Art 6(3)-(4) record why not high-risk",
+   applies: exempt, from: "December 2, 2027", rid: null}
+- {ref: "Art 26(1) use per instructions",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 26(2) competent human oversight",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 26(4) relevant input data",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 26(5) monitor, report, suspend",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 26(6) keep logs six months or more",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 26(7) inform worker reps and workers",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: R-143}
+- {ref: "Art 26(9) DPIA with provider's information",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 26(11) tell people subject to it",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Art 86 explanation on request",
+   applies: high-risk deployer, from: "December 2, 2027",
+   rid: null}
+- {ref: "Arts 9-15 design duties",
+   applies: high-risk provider, from: "December 2, 2027",
+   rid: null}
+- {ref: "Arts 16-17, 43, 49 QMS, conformity, register",
+   applies: high-risk provider, from: "December 2, 2027",
+   rid: null}
