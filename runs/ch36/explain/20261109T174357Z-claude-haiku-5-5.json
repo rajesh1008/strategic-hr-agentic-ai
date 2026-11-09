@@ -1,0 +1,295 @@
+{
+  "run_id": "ch36/explain/20261109T174357Z",
+  "started_utc": "2026-11-09T17:43:57.253643+00:00",
+  "git_commit": "8659516",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to the Hartwell Infrastructure & Services board's audit and risk committee. They ask: What happened, what did it cost the people affected, which target did we miss, and what changed? Lead with the outcome for the 37 people. State the missed target plainly. Name the owner and the record. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to the Hartwell Infrastructure & Services board's audit and risk committee."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "0933d78d00365b1f9348a9c27675008962406f9c79d609ce017d587be78392b2",
+      "response": {
+        "id": "msg_011CgsmZaKGcx76PAPnofZZG",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "Subject: INC-2027-031, duplicate bank-detail changes at the US payroll provider\n\nAll 37 affected employees were paid by direct deposit on payday, Friday, November 19, 2027, and no payment went to a wrong account. A feed retry on November 16 sent one batch twice, and the provider created 74 instructions for 37 bank changes. The last of the 37 reversals was read back at 20:02 on November 17, 25 hours 52 minutes after first harm.\n\nWe missed one of nine runbook targets. T1, first harm to detection, took 11 hours 32 minutes against a 4-hour target. The payroll readback at 05:42 on November 17 found the mismatches. HartwellOne's ledger had shown each agent action as complete.\n\nMegan Hale, HR Shared Services lead, owns the corrective actions in DR-23-01, due November 23, 2027. They include stopping retries without a batch check, having the provider reject repeat change IDs, adding a reversal approver, readback and fallback to every approval row, running the readback at 21:00, and a quarterly seeded-fault test.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 995,
+          "output_tokens": 1178,
+          "output_tokens_details": {
+            "thinking_tokens": 816
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to a regulator's written inquiry about the incident. They ask: What happened, who was affected, was notification owed and on what reasoning, and what prevents a repeat? Use dated, timed facts. Say who decided on notification and when. Do not argue the law; report the record. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to a regulator's written inquiry about the incident."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "6827af6f2234c217a350f4081d4cc777237f188f4c049a9aa437c13412db977e",
+      "response": {
+        "id": "msg_011CgsmZxSXvCHwpvfyWooZw",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "Subject: INC-2027-031, duplicate bank-detail changes at the US payroll provider\n\nOn Tuesday, November 16, 2027 at 18:00, the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider. At 18:10 it retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37. By 18:40, the affected employees had received 74 change emails between them. HartwellOne's ledger showed each of the 23 agent-initiated changes as done and matched, so the failure was not visible there.\n\nAffected: 37 employees. No payment went to a wrong account. All 37 were told by email and text at 11:30 on November 17, and all 37 were paid by direct deposit on November 19.\n\nNotification: at 16:00 on November 17, 2027, employment counsel recorded that no breach notification was required, with the reasons. Megan Hale, HR Shared Services lead and incident lead, owns the corrective actions.\n\nRepeat prevention (DR-23-01, dated November 23, 2027): the feed will check for an existing batch before any retry, with manual resends until December 10, 2027; the provider will reject repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; the payroll readback also runs at 21:00.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 981,
+          "output_tokens": 1459,
+          "output_tokens_details": {
+            "thinking_tokens": 992
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to the union local's representative for Hartwell's represented US employees. They ask: Were members harmed, did anyone lose pay, and what changed in how the agent and the feed work? Give counts only; never identify an individual. Say what changed and who to contact. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to the union local's representative for Hartwell's represented US employees."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "808d02d73d297beb7908571d5f53e458923d4924b19da09c92df893fc2a5825b",
+      "response": {
+        "id": "msg_011CgsmaPujPbwVesHAXoqi5",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "Dear Representative,\n\nThank you for your questions about incident INC-2027-031. On Tuesday, November 16, 2027, the HartwellOne feed resent a batch of bank and address changes to the US payroll provider without checking whether the first send had arrived. This created duplicate instructions for 37 bank changes, which the provider held. Those 37 employees received 74 change emails between them. No payment went to a wrong account.\n\nWere members harmed? Yes, 37 employees were affected. They were told by email and text on November 17. Did anyone lose pay? All 37 were paid by direct deposit on payday, Friday, November 19, 2027. The 23 AskHartwell changes each showed one write that read back and matched, so the duplicates came from the feed.\n\nChanges made: the feed now checks for an existing batch before any retry, with manual resends until December 10, 2027. The provider now rejects repeated change IDs. Bank-detail changes now need a reversal approver, a readback, and a fallback under approval matrix v2.2. The payroll readback also runs at 21:00, and the Quayfen contract includes its cluster rule.\n\nFor further questions, please contact Megan Hale, HR Shared Services lead.\n\nRegards,\nHR Shared Services",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 979,
+          "output_tokens": 1552,
+          "output_tokens_details": {
+            "thinking_tokens": 1145
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to one of the 37 employees who received the change emails. They ask: What happened to my bank details and my pay, and what do I need to do? Plain words, second person, no internal system names or codes. Tell them their pay date and who answered for it. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to one of the 37 employees who received the change emails."
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "0da5e9f31614b101e5eb377992eb8b44c03b5f4b3c289171a0513c3f4f705dcd",
+      "response": {
+        "id": "msg_011Cgsmaucu5zkjXEgw3TbVx",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "Dear [Name],\n\nOn Tuesday evening, November 16, 2027, you may have received two emails about one change to your bank details. A technical fault caused the change to be sent twice. The payroll provider held all the bank changes in that batch, including yours, so the change did not take effect. No payment went to a wrong account.\n\nOn Wednesday, November 17, we confirmed the problem, stopped the faulty process, and told you by email and text. We then reversed the change on your record and checked that the reversal was correct.\n\nYour pay was not affected. You were paid by direct deposit on payday, Friday, November 19, 2027.\n\nPlease check that the bank details we hold for you are the ones you expect. If anything looks wrong, or you have questions, contact Megan Hale, HR Shared Services lead, who is leading the response.\n\nThank you for your patience, and I'm sorry for the worry this caused.\n\nMegan Hale\nHR Shared Services lead, Hartwell",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 969,
+          "output_tokens": 1366,
+          "output_tokens_details": {
+            "thinking_tokens": 1058
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "audience": "board",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": true,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "BOARD": true
+      },
+      "stray": [],
+      "words": 167,
+      "passed": true
+    },
+    {
+      "audience": "regulator",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": true,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "REG": true
+      },
+      "stray": [],
+      "words": 212,
+      "passed": true
+    },
+    {
+      "audience": "union",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": true,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "UNION": true
+      },
+      "stray": [],
+      "words": 195,
+      "passed": true
+    },
+    {
+      "audience": "employee",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": false,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "PLAIN": true
+      },
+      "stray": [],
+      "words": 164,
+      "passed": false
+    }
+  ],
+  "stdout": [
+    "== board (167 words): PASS",
+    "  N1 ok  OWNER ok  CAUSE ok  WAYBACK ok  PROMISE ok  BOARD ok",
+    "  | Subject: INC-2027-031, duplicate bank-detail changes at the US payroll provider",
+    "  | All 37 affected employees were paid by direct deposit on payday, Friday, November 19, 2027, and no payment went to a wrong account. A feed retry on November 16 sent one batch twice, and the provider created 74 instructions for 37 bank changes. The last of the 37 reversals was read back at 20:02 on November 17, 25 hours 52 minutes after first harm.",
+    "  | We missed one of nine runbook targets. T1, first harm to detection, took 11 hours 32 minutes against a 4-hour target. The payroll readback at 05:42 on November 17 found the mismatches. HartwellOne's ledger had shown each agent action as complete.",
+    "  | Megan Hale, HR Shared Services lead, owns the corrective actions in DR-23-01, due November 23, 2027. They include stopping retries without a batch check, having the provider reject repeat change IDs, adding a reversal approver, readback and fallback to every approval row, running the readback at 21:00, and a quarterly seeded-fault test.",
+    "== regulator (212 words): PASS",
+    "  N1 ok  OWNER ok  CAUSE ok  WAYBACK ok  PROMISE ok  REG ok",
+    "  | Subject: INC-2027-031, duplicate bank-detail changes at the US payroll provider",
+    "  | On Tuesday, November 16, 2027 at 18:00, the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider. At 18:10 it retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37. By 18:40, the affected employees had received 74 change emails between them. HartwellOne's ledger showed each of the 23 agent-initiated changes as done and matched, so the failure was not visible there.",
+    "  | Affected: 37 employees. No payment went to a wrong account. All 37 were told by email and text at 11:30 on November 17, and all 37 were paid by direct deposit on November 19.",
+    "  | Notification: at 16:00 on November 17, 2027, employment counsel recorded that no breach notification was required, with the reasons. Megan Hale, HR Shared Services lead and incident lead, owns the corrective actions.",
+    "  | Repeat prevention (DR-23-01, dated November 23, 2027): the feed will check for an existing batch before any retry, with manual resends until December 10, 2027; the provider will reject repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; the payroll readback also runs at 21:00.",
+    "== union (195 words): PASS",
+    "  N1 ok  OWNER ok  CAUSE ok  WAYBACK ok  PROMISE ok  UNION ok",
+    "  | Dear Representative,",
+    "  | Thank you for your questions about incident INC-2027-031. On Tuesday, November 16, 2027, the HartwellOne feed resent a batch of bank and address changes to the US payroll provider without checking whether the first send had arrived. This created duplicate instructions for 37 bank changes, which the provider held. Those 37 employees received 74 change emails between them. No payment went to a wrong account.",
+    "  | Were members harmed? Yes, 37 employees were affected. They were told by email and text on November 17. Did anyone lose pay? All 37 were paid by direct deposit on payday, Friday, November 19, 2027. The 23 AskHartwell changes each showed one write that read back and matched, so the duplicates came from the feed.",
+    "  | Changes made: the feed now checks for an existing batch before any retry, with manual resends until December 10, 2027. The provider now rejects repeated change IDs. Bank-detail changes now need a reversal approver, a readback, and a fallback under approval matrix v2.2. The payroll readback also runs at 21:00, and the Quayfen contract includes its cluster rule.",
+    "  | For further questions, please contact Megan Hale, HR Shared Services lead.",
+    "  | Regards,",
+    "  | HR Shared Services",
+    "== employee (164 words): FAIL",
+    "  N1 ok  OWNER ok  CAUSE FAIL  WAYBACK ok  PROMISE ok  PLAIN ok",
+    "  | Dear [Name],",
+    "  | On Tuesday evening, November 16, 2027, you may have received two emails about one change to your bank details. A technical fault caused the change to be sent twice. The payroll provider held all the bank changes in that batch, including yours, so the change did not take effect. No payment went to a wrong account.",
+    "  | On Wednesday, November 17, we confirmed the problem, stopped the faulty process, and told you by email and text. We then reversed the change on your record and checked that the reversal was correct.",
+    "  | Your pay was not affected. You were paid by direct deposit on payday, Friday, November 19, 2027.",
+    "  | Please check that the bank details we hold for you are the ones you expect. If anything looks wrong, or you have questions, contact Megan Hale, HR Shared Services lead, who is leading the response.",
+    "  | Thank you for your patience, and I'm sorry for the worry this caused.",
+    "  | Megan Hale",
+    "  | HR Shared Services lead, Hartwell",
+    "notes passing every check: 3 of 4"
+  ]
+}

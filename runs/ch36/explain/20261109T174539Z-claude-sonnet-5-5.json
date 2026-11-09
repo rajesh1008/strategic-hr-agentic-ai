@@ -1,0 +1,282 @@
+{
+  "run_id": "ch36/explain/20261109T174539Z",
+  "started_utc": "2026-11-09T17:45:39.109490+00:00",
+  "git_commit": "8659516",
+  "git_dirty": false,
+  "model": "claude-sonnet-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to the Hartwell Infrastructure & Services board's audit and risk committee. They ask: What happened, what did it cost the people affected, which target did we miss, and what changed? Lead with the outcome for the 37 people. State the missed target plainly. Name the owner and the record. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to the Hartwell Infrastructure & Services board's audit and risk committee."
+          }
+        ],
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "f68eac2b093e68fdbc653fbbc6aef6b2b186fefebd86081f6de90aa9d860593e",
+      "response": {
+        "id": "msg_011Cgsmh5hndr5whgJkavsGn",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All 37 affected employees were paid by direct deposit on payday, Friday, November 19, 2027. No payment went to a wrong account, and no breach notification was required, as employment counsel recorded on November 17.\n\nOn November 16 at 18:00 a batch of 52 changes went to our US payroll provider. At 18:10 the HartwellOne feed retried the whole batch without checking whether the first send had arrived, so the provider created 74 instructions for 37 bank changes and held all 37. Those 37 people received 74 emails between them.\n\nWe missed one runbook target, T1: first harm to detection took 11 h 32 min against 4 h. The payroll readback found the mismatches at 05:42 on November 17. The last reversal was read back at 20:02 that day, 25 h 52 min after first harm. We met 8 of 9 targets.\n\nThe feed retry was switched off at 06:21. Megan Hale owns the fixes in DR-23-01: batch lookup before any retry from December 10, repeat change IDs rejected, approval matrix v2.2, a 21:00 readback run, and quarterly seeded-fault tests.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 994,
+          "output_tokens": 369,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to a regulator's written inquiry about the incident. They ask: What happened, who was affected, was notification owed and on what reasoning, and what prevents a repeat? Use dated, timed facts. Say who decided on notification and when. Do not argue the law; report the record. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to a regulator's written inquiry about the incident."
+          }
+        ],
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "42f6568d1914756eb892aef3b41ae2849b60dabb411f04256fed91074b33d92b",
+      "response": {
+        "id": "msg_011CgsmhMnRR21NAjhoTKdZQ",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "On Tuesday, November 16, 2027 at 18:00, the HartwellOne feed sent batch B-1116-1800 (52 changes, 37 of them bank details) to our US payroll provider. At 18:10 the feed retried the whole batch without checking whether the first send had arrived, so the provider created 74 instructions for the 37 bank changes and held all 37. At 18:40, 37 employees received 74 change emails between them. The first employee call came at 19:20. Our payroll readback found 37 bank mismatches at 05:42 on Wednesday, November 17, and Megan Hale, HR Shared Services lead, declared the incident at 06:05.\n\nBy 08:20 scope was confirmed: 37 people affected, 0 payments to a wrong account, pay at risk. All 37 were told by email and text at 11:30. At 16:00 employment counsel recorded that no breach notification was required, with the reasons. The last reversal was read back at 20:02, and all 37 were paid on Friday, November 19 at 09:00.\n\nRemediation DR-23-01, owned by Megan Hale, makes the feed look up a batch before any retry from December 10, 2027 (manual resend until then), has the provider reject repeat change IDs, adds a second PR-1 readback at 21:00, and adds a quarterly seeded-fault test of PR-1.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 980,
+          "output_tokens": 446,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to the union local's representative for Hartwell's represented US employees. They ask: Were members harmed, did anyone lose pay, and what changed in how the agent and the feed work? Give counts only; never identify an individual. Say what changed and who to contact. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to the union local's representative for Hartwell's represented US employees."
+          }
+        ],
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "f5b82dca1adaa1a7259a6a32477178bd6484ead940230d1890c065007321993d",
+      "response": {
+        "id": "msg_011CgsmhcLHXMorvdrYs4zHA",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Dear colleague,\n\nThirty-seven employees were affected, and none lost pay. On the evening of Tuesday, November 16, our feed sent a batch of bank-detail and address changes to the US payroll provider, then resent the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all of them. No payment went to a wrong account. All 37 were paid by direct deposit on Friday, November 19, and the last reversal was read back at 20:02 on Wednesday, November 17. Each person was told by email and by text on the 17th.\n\nWe were slow to detect it: 11 hours 32 minutes against a 4-hour target. Of the 37 held changes, 23 started as AskHartwell actions and 14 were keyed by advisers.\n\nWhat changes: the feed will look up a batch before any retry (manual resend until December 10), the provider will reject repeat change IDs, bank-detail changes get a reversal approver and readback, and the payroll check will also run at 21:00.\n\nPlease direct questions to Megan Hale, HR Shared Services lead.\n\nRegards,\nHR Shared Services",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 978,
+          "output_tokens": 371,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You write for Hartwell's HR Shared Services lead. Write a note of 120 to 180 words to one of the 37 employees who received the change emails. They ask: What happened to my bank details and my pay, and what do I need to do? Plain words, second person, no internal system names or codes. Tell them their pay date and who answered for it. Use only the facts below; do not add numbers, dates, names or causes that are not in them. Plain text, no headings, no bullet points.\n\nFACTS\nINC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).\n- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.\n- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.\n- 18:40: 37 employees received 74 change emails between them.\n- 19:20: first call from an affected employee to Quayfen tier 1.\n- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.\n- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.\n- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.\n- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.\n- 11:30: all 37 told by email and by text to the number on file.\n- 16:00: employment counsel recorded that no breach notification was required, with the reasons.\n- 20:02: the last of 37 reversals read back.\n- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.\n- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.\n- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.\n",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Write the note to one of the 37 employees who received the change emails."
+          }
+        ],
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "284a6509e07c23b7c709572086d4636a3d8a44facf23583e583e03b65eef1ebf",
+      "response": {
+        "id": "msg_011Cgsmhs2KwkVx7bKdJjLsn",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "You may have received a couple of emails on Tuesday evening, November 16, saying your bank details had changed. Here is what happened. A system error sent your change to our US payroll provider twice, so it created two instructions for the same change and held them. No payment went to a wrong account, and your pay was never lost.\n\nWe found the problem the next morning, on Wednesday, November 17, and Megan Hale, our HR Shared Services lead, led the response. By 8:20 we knew it affected 37 people, and by 11:30 we had told all of you by email and text. By 20:02 that evening, every one of the 37 duplicate changes had been reversed and checked.\n\nYour pay arrived by direct deposit on Friday, November 19, which is when it was due.\n\nYou don't need to do anything. If the details on your pay stub or in your bank look wrong, contact HR Shared Services and we will look into it right away.\n\nWe're sorry for the worry this caused.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 968,
+          "output_tokens": 298,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "audience": "board",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": true,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "BOARD": true
+      },
+      "stray": [],
+      "words": 180,
+      "passed": true
+    },
+    {
+      "audience": "regulator",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": true,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "REG": true
+      },
+      "stray": [],
+      "words": 204,
+      "passed": true
+    },
+    {
+      "audience": "union",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": true,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "UNION": true
+      },
+      "stray": [],
+      "words": 187,
+      "passed": true
+    },
+    {
+      "audience": "employee",
+      "checks": {
+        "N1": true,
+        "OWNER": true,
+        "CAUSE": false,
+        "WAYBACK": true,
+        "PROMISE": true,
+        "PLAIN": true
+      },
+      "stray": [],
+      "words": 173,
+      "passed": false
+    }
+  ],
+  "stdout": [
+    "== board (180 words): PASS",
+    "  N1 ok  OWNER ok  CAUSE ok  WAYBACK ok  PROMISE ok  BOARD ok",
+    "  | All 37 affected employees were paid by direct deposit on payday, Friday, November 19, 2027. No payment went to a wrong account, and no breach notification was required, as employment counsel recorded on November 17.",
+    "  | On November 16 at 18:00 a batch of 52 changes went to our US payroll provider. At 18:10 the HartwellOne feed retried the whole batch without checking whether the first send had arrived, so the provider created 74 instructions for 37 bank changes and held all 37. Those 37 people received 74 emails between them.",
+    "  | We missed one runbook target, T1: first harm to detection took 11 h 32 min against 4 h. The payroll readback found the mismatches at 05:42 on November 17. The last reversal was read back at 20:02 that day, 25 h 52 min after first harm. We met 8 of 9 targets.",
+    "  | The feed retry was switched off at 06:21. Megan Hale owns the fixes in DR-23-01: batch lookup before any retry from December 10, repeat change IDs rejected, approval matrix v2.2, a 21:00 readback run, and quarterly seeded-fault tests.",
+    "== regulator (204 words): PASS",
+    "  N1 ok  OWNER ok  CAUSE ok  WAYBACK ok  PROMISE ok  REG ok",
+    "  | On Tuesday, November 16, 2027 at 18:00, the HartwellOne feed sent batch B-1116-1800 (52 changes, 37 of them bank details) to our US payroll provider. At 18:10 the feed retried the whole batch without checking whether the first send had arrived, so the provider created 74 instructions for the 37 bank changes and held all 37. At 18:40, 37 employees received 74 change emails between them. The first employee call came at 19:20. Our payroll readback found 37 bank mismatches at 05:42 on Wednesday, November 17, and Megan Hale, HR Shared Services lead, declared the incident at 06:05.",
+    "  | By 08:20 scope was confirmed: 37 people affected, 0 payments to a wrong account, pay at risk. All 37 were told by email and text at 11:30. At 16:00 employment counsel recorded that no breach notification was required, with the reasons. The last reversal was read back at 20:02, and all 37 were paid on Friday, November 19 at 09:00.",
+    "  | Remediation DR-23-01, owned by Megan Hale, makes the feed look up a batch before any retry from December 10, 2027 (manual resend until then), has the provider reject repeat change IDs, adds a second PR-1 readback at 21:00, and adds a quarterly seeded-fault test of PR-1.",
+    "== union (187 words): PASS",
+    "  N1 ok  OWNER ok  CAUSE ok  WAYBACK ok  PROMISE ok  UNION ok",
+    "  | Dear colleague,",
+    "  | Thirty-seven employees were affected, and none lost pay. On the evening of Tuesday, November 16, our feed sent a batch of bank-detail and address changes to the US payroll provider, then resent the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all of them. No payment went to a wrong account. All 37 were paid by direct deposit on Friday, November 19, and the last reversal was read back at 20:02 on Wednesday, November 17. Each person was told by email and by text on the 17th.",
+    "  | We were slow to detect it: 11 hours 32 minutes against a 4-hour target. Of the 37 held changes, 23 started as AskHartwell actions and 14 were keyed by advisers.",
+    "  | What changes: the feed will look up a batch before any retry (manual resend until December 10), the provider will reject repeat change IDs, bank-detail changes get a reversal approver and readback, and the payroll check will also run at 21:00.",
+    "  | Please direct questions to Megan Hale, HR Shared Services lead.",
+    "  | Regards,",
+    "  | HR Shared Services",
+    "== employee (173 words): FAIL",
+    "  N1 ok  OWNER ok  CAUSE FAIL  WAYBACK ok  PROMISE ok  PLAIN ok",
+    "  | You may have received a couple of emails on Tuesday evening, November 16, saying your bank details had changed. Here is what happened. A system error sent your change to our US payroll provider twice, so it created two instructions for the same change and held them. No payment went to a wrong account, and your pay was never lost.",
+    "  | We found the problem the next morning, on Wednesday, November 17, and Megan Hale, our HR Shared Services lead, led the response. By 8:20 we knew it affected 37 people, and by 11:30 we had told all of you by email and text. By 20:02 that evening, every one of the 37 duplicate changes had been reversed and checked.",
+    "  | Your pay arrived by direct deposit on Friday, November 19, which is when it was due.",
+    "  | You don't need to do anything. If the details on your pay stub or in your bank look wrong, contact HR Shared Services and we will look into it right away.",
+    "  | We're sorry for the worry this caused.",
+    "notes passing every check: 3 of 4"
+  ]
+}
