@@ -1,0 +1,111 @@
+{
+  "run_id": "ch02/cfo_note/20261109T124638Z",
+  "started_utc": "2026-11-09T12:46:38.516643+00:00",
+  "git_commit": "514f4c6",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 6000,
+        "system": "You draft short notes from Hartwell's HR function to its CFO. Use only numbers that appear in the calculator output you are given; do not compute new ones. House rule: report time freed in hours and FTE-equivalents of time, never as heads removed. Say which figures are claims not yet measured. Plain prose, under 170 words, no headings, no bullet points.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "From the CFO: I need HR's AI case in cost per head. How many heads does this take out, and when?\n\nCalculator output:\nTALENT TO VALUE (synthetic, USD)\nroles scored 48; critical 40\nincumbents in critical roles 606\nexpected vacancy cost, critical roles $22,939,001 a year\nrole      per day   days      a year  crit\nFT-US          84 74,958   6,273,882  no\nPD-US       3,342    598   2,000,132  yes\nFT-UK          98 19,890   1,959,029  no\nRS-CA       1,666    950   1,583,783  yes\nGM-US       1,909    804   1,534,296  yes\nBMS-US      1,358  1,008   1,368,395  yes\nCE-US       1,889    642   1,213,142  yes\nHV-UK       2,040    558   1,138,167  yes\nfill PD-US 30 days sooner: $352,964 a year\n\nCOST PER RESOLVED CONTACT (synthetic, USD)\nmodel                       seat   naive  all-in\nDenver shared services   116,680   35.38   52.35\nHyderabad center          34,710   10.87   23.96\nMeridian BPO              29,808   11.50   25.05\n\nAGENT AT TIER 0 (status: Claimed)\ncontainment 60%: $13.92 per query\ncontainment 40%: $19.83 per query\ncontainment 20%: $25.74 per query\nbreak-even containment 22.3%\n\nHOURS, NOT HEADS\nhours freed 103,200; placed 103,200\nFTE-equivalent of time 60.0\nhours measured so far 0\n  30,000  Pipelines and succession for the 40 roles\n  24,000  Agent supervision and the human route\n  18,000  Manager coaching and case backlog\n  16,000  Skills inventory (objective 4)\n  15,200  Agent-platform operations, Hyderabad\ndecision-rights problems: 0"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "59c4af9d47bf69f37d4230a3106203c2662d51ff56cdd038d3ca13a941574b48",
+      "response": {
+        "id": "msg_011CgsNtbfz7qm6L7u7X3Dwr",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "The calculator gives no cost per head and no headcount reduction, and I have not derived either. Under our reporting rule, the case is stated as time: 103,200 hours freed, equivalent to 60.0 FTE of time. None of this is measured yet, since hours measured so far is zero, so treat it all as claimed. The largest block is 30,000 hours on pipelines and succession for the 40 critical roles. The output also gives no timeline, so I can't say when any of it lands.\n\nThe cost figures available are the expected vacancy cost in critical roles of $22,939,001 a year, and one modeled lever: filling PD-US 30 days sooner, worth $352,964 a year. The agent costs are per resolved contact, not per head, and the agent case is marked Claimed, with break-even at 22.3% containment. The decision-rights count of zero is also unverified.\n\nA cost-per-head view and a date would need a separate model run.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 757,
+          "output_tokens": 1024,
+          "output_tokens_details": {
+            "thinking_tokens": 725
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "unsourced": [],
+      "heads": [
+        "headcount reduction"
+      ],
+      "verdict": "HOLD for edit",
+      "usage": {
+        "cache_creation": {
+          "ephemeral_1h_input_tokens": 0,
+          "ephemeral_5m_input_tokens": 0
+        },
+        "cache_creation_input_tokens": 0,
+        "cache_read_input_tokens": 0,
+        "inference_geo": "global",
+        "input_tokens": 757,
+        "output_tokens": 1024,
+        "output_tokens_details": {
+          "thinking_tokens": 725
+        },
+        "server_tool_use": null,
+        "service_tier": "standard",
+        "speed": "standard"
+      }
+    }
+  ],
+  "stdout": [
+    "The calculator gives no cost per head and no headcount",
+    "reduction, and I have not derived either. Under our",
+    "reporting rule, the case is stated as time: 103,200 hours",
+    "freed, equivalent to 60.0 FTE of time. None of this is",
+    "measured yet, since hours measured so far is zero, so treat",
+    "it all as claimed. The largest block is 30,000 hours on",
+    "pipelines and succession for the 40 critical roles. The",
+    "output also gives no timeline, so I can't say when any of it",
+    "lands.",
+    "",
+    "The cost figures available are the expected vacancy cost in",
+    "critical roles of $22,939,001 a year, and one modeled lever:",
+    "filling PD-US 30 days sooner, worth $352,964 a year. The",
+    "agent costs are per resolved contact, not per head, and the",
+    "agent case is marked Claimed, with break-even at 22.3%",
+    "containment. The decision-rights count of zero is also",
+    "unverified.",
+    "",
+    "A cost-per-head view and a date would need a separate model",
+    "run.",
+    "",
+    "CHECK note has text: yes",
+    "CHECK unsourced numbers: -",
+    "CHECK heads language: ['headcount reduction']",
+    "CHECK verdict: HOLD for edit"
+  ]
+}
