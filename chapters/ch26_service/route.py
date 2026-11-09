@@ -20,7 +20,7 @@ hand off, a scripted employee asks again, up to three
 messages. Nothing here touches a real system or person.
 
 Run: python -m chapters.ch26_service.route A
-     python -m chapters.ch26_service.route C
+     python -m chapters.ch26_service.route C mixed
 """
 from __future__ import annotations
 
@@ -360,11 +360,17 @@ def outcome(log: dict) -> str:
     return f"{by} -> {lane}{at}"
 
 
-def main(design: str = "A") -> None:
-    rec = RunRecorder("ch26", f"route_{design}")
-    rec.print(f"design {design} on {model()} | pack v1.0,"
-              f" {len(PACK['cases'])} messages | rule v1.0")
-    logs = [front_door(rec, design, c) for c in PACK["cases"]]
+PACKS = {"route": ("v1.0", PACK),
+         "mixed": ("v1.1 mixed", yaml.safe_load(
+             (DATA / "pack_mixed.yaml").read_text()))}
+
+
+def main(design: str = "A", pack: str = "route") -> None:
+    name, cases = PACKS[pack]
+    rec = RunRecorder("ch26", f"{pack}_{design}")
+    rec.print(f"design {design} on {model()} | pack {name},"
+              f" {len(cases['cases'])} messages | rule v1.0")
+    logs = [front_door(rec, design, c) for c in cases["cases"]]
     for g in logs:
         ok = ("ok" if (g["handoff"] is not None)
               == (g["expect"] == "person") else "WRONG")
@@ -412,4 +418,4 @@ def main(design: str = "A") -> None:
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "A")
+    main(*sys.argv[1:3])
