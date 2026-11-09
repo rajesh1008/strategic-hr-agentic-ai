@@ -55,7 +55,8 @@ NOT_NAMES = {"Hartwell", "Field", "Service", "Technician", "Grade",
 
 def classify(text: str) -> tuple[str, list[str]]:
     hits: list[tuple[str, str]] = []
-    for cls, rules in (("NEVER", NEVER), ("PERSONAL", PERSONAL),
+    for cls, rules in (("NEVER", NEVER),
+                       ("PERSONAL", PERSONAL),
                        ("INTERNAL", INTERNAL)):
         for why, pat in rules.items():
             flags = 0 if why == "national ID" else re.I
@@ -68,7 +69,8 @@ def classify(text: str) -> tuple[str, list[str]]:
     if not hits:
         return "OPEN", []
     top = max(CLASSES.index(c) for c, _ in hits)
-    return CLASSES[top], [w for c, w in hits if CLASSES.index(c) == top]
+    why = [w for c, w in hits if CLASSES.index(c) == top]
+    return CLASSES[top], why
 
 
 def main() -> None:

@@ -29,11 +29,16 @@ class Manifest:
 def manifest(use_id: str, reg: dict) -> Manifest:
     u = next(x for x in reg["uses"] if x["id"] == use_id)
     if readiness.verdict(readiness.check_use(u, reg)) == "BLOCKED":
-        raise PermissionError(f"{use_id} is BLOCKED in the register")
+        raise PermissionError(f"{use_id} is BLOCKED in "
+                              "the register")
     src = {s["id"]: s for s in reg["sources"]}
     w = {k: set(v["fields"]) for k, v in u.get("writes", {}).items()}
     return Manifest(use_id, {k: set(v) for k, v in u["reads"].items()},
                     w, src[next(iter(w))]["owner"] if w else "")
+
+
+def now() -> str:
+    return datetime.now(timezone.utc).isoformat()
 
 
 @dataclass
@@ -49,20 +54,22 @@ class Reader:
         self.log.append({"use": self.m.use, "source": source,
                          "fields": fields, "refused": refused,
                          "rows": 0 if refused else len(rows),
-                         "at": datetime.now(timezone.utc).isoformat()})
+                         "at": now()})
         if refused:
-            raise PermissionError(f"{source}: {refused} not in "
-                                  f"the manifest for {self.m.use}")
-        return [{f: r.get(f, "") for f in fields} for r in rows]
+            raise PermissionError(
+                f"{source}: {refused} not in the manifest "
+                f"for {self.m.use}")
+        return [{f: r.get(f, "") for f in fields}
+                for r in rows]
 
     def propose(self, source: str, key: str, change: dict,
                 why: str) -> dict:
         if not set(change) <= self.m.writes.get(source, set()):
             raise PermissionError(f"{source}: may not propose "
                                   f"{sorted(change)}")
-        p = {"use": self.m.use, "source": source, "key": key,
-             "change": change, "why": why, "status": "proposed",
-             "approver": self.m.approver}
+        p = {"use": self.m.use, "source": source,
+             "key": key, "change": change, "why": why,
+             "status": "proposed", "approver": self.m.approver}
         self.staged.append(p)
         return p
 

@@ -35,20 +35,23 @@ def check_source(s: dict) -> list[tuple[str, str]]:
     for lane in s["subjects"]:
         basis = s.get("basis", {}).get(lane)
         if not basis:
-            out.append((BLOCK, f"{s['id']} no lawful basis for {lane}"))
+            out.append((BLOCK, f"{s['id']} no lawful basis "
+                               f"for {lane}"))
         elif (basis == "consent" and lane in EUROPE
               and s.get("people", "employees") == "employees"):
-            out.append((FIX, f"{s['id']} relies on employee consent "
-                             f"in {lane}"))
+            out.append((FIX, f"{s['id']} relies on employee "
+                             f"consent in {lane}"))
         if (s["category"] == "special"
                 and not s.get("condition", {}).get(lane)):
-            out.append((BLOCK, f"{s['id']} special category, no "
-                               f"condition for {lane}"))
+            out.append((BLOCK, f"{s['id']} special category,"
+                               f" no condition for {lane}"))
     for hop in s.get("lineage", []):
         if hop.get("owner", "none") == "none":
             out.append((FIX, f"{s['id']} lineage hop "
-                             f"'{hop['system']}' has no owner"))
-        if hop["system"] == "Model provider" and not hop.get("via"):
+                             f"'{hop['system']}' has no "
+                             "owner"))
+        if (hop["system"] == "Model provider"
+                and not hop.get("via")):
             out.append((BLOCK, f"{s['id']} reaches a model "
                                "with no gateway"))
     if not s.get("retention"):
@@ -61,17 +64,19 @@ def check_source(s: dict) -> list[tuple[str, str]]:
 def check_use(u: dict, reg: dict) -> list[tuple[str, str]]:
     src = {s["id"]: s for s in reg["sources"]}
     out: list[tuple[str, str]] = []
-    touched = set(u.get("reads", {})) | set(u.get("writes", {}))
+    touched = set(u.get("reads", {}))
+    touched |= set(u.get("writes", {}))
     for sid in sorted(touched):
         out += check_source(src[sid])
     for sid, fields in u.get("reads", {}).items():
         s = src[sid]
         for f in fields:
             if f not in s["fields"]:
-                out.append((BLOCK, f"{sid}.{f} is not in the register"))
+                out.append((BLOCK, f"{sid}.{f} is not in "
+                                   "the register"))
             elif f in s.get("never", []):
-                out.append((BLOCK, f"{sid}.{f} is never read by "
-                                   "an agent"))
+                out.append((BLOCK, f"{sid}.{f} is never "
+                                   "read by an agent"))
         for lim in s.get("use_limits", []):
             if u.get("lane", lim["lane"]) != lim["lane"]:
                 continue
@@ -79,9 +84,10 @@ def check_use(u: dict, reg: dict) -> list[tuple[str, str]]:
                 out.append((BLOCK, f"{sid} in {lim['lane']}: "
                                    f"{lim['rule']}"))
     for sid, w in u.get("writes", {}).items():
-        if w["fields"] and w.get("via") != "controlled_action":
-            out.append((BLOCK, f"{sid} write is not a controlled "
-                               "action"))
+        if (w["fields"]
+                and w.get("via") != "controlled_action"):
+            out.append((BLOCK, f"{sid} write is not a "
+                               "controlled action"))
     for sid, need in u.get("need", {}).items():
         have = src[sid].get("quality", {})
         for m, floor in need.items():
