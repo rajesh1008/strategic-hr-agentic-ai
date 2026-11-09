@@ -1,0 +1,152 @@
+# ER-2027-0907, Hartwell UK (synthetic). A fresh fixture made
+# for Chapter 30: Gary Whitlock and every other person here
+# exist only in this case and appear nowhere else in the book.
+case: ER-2027-0907
+entity: Hartwell UK
+site: Leeds station (rail-station facilities contract)
+employee: {id: HW-032518, name: Gary Whitlock,
+           role: mobile maintenance technician, since: 2018-03-05}
+allegation: >-
+  That on 11 occasions between August 4 and August 27, 2027 you
+  recorded call-outs at Leeds station as attended when you did
+  not attend, and claimed the call-out payment for each.
+investigator: {name: Joanne Grieve, role: employee relations adviser}
+decider: {name: Stuart Naylor, role: area operations manager}
+appeal: {name: Helen Marsh, role: HR Director, Hartwell UK}
+callouts:
+  - {date: 2027-08-04, ref: CO-27-0811}
+  - {date: 2027-08-05, ref: CO-27-0818}
+  - {date: 2027-08-10, ref: CO-27-0842}
+  - {date: 2027-08-12, ref: CO-27-0851}
+  - {date: 2027-08-13, ref: CO-27-0857}
+  - {date: 2027-08-16, ref: CO-27-0866}
+  - {date: 2027-08-17, ref: CO-27-0871}
+  - {date: 2027-08-19, ref: CO-27-0880}
+  - {date: 2027-08-20, ref: CO-27-0884}
+  - {date: 2027-08-22, ref: CO-27-0893}
+  - {date: 2027-08-27, ref: CO-27-0912}
+gate3_fault: {ticket: FM-27-5521, opened: 2027-08-09T07:12,
+              closed: 2027-08-23T15:40}
+signin_book: ["2027-08-04"]
+duty_manager_nights: [2027-08-04, 2027-08-05, 2027-08-06,
+                      2027-08-25, 2027-08-26, 2027-08-27]
+items:
+  - id: E01
+    kind: email
+    source: Station duty manager (client), to Hartwell UK
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-08
+    text: >-
+      From Sunita Barlow, station duty manager, September 6, 2027.
+      Our access-control system shows no entry by your technician
+      G. Whitlock on 11 nights in August when your call-out report
+      says he attended. Please investigate and confirm whether
+      these call-outs will be credited to us.
+  - id: E02
+    kind: system_extract
+    source: Hartwell UK call-out report, August 2027
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-08
+    text: >-
+      Technician HW-032518 G. Whitlock. Call-outs recorded as
+      attended at Leeds station: Aug 4 (CO-27-0811), Aug 5
+      (CO-27-0818), Aug 10 (CO-27-0842), Aug 12 (CO-27-0851),
+      Aug 13 (CO-27-0857), Aug 16 (CO-27-0866), Aug 17
+      (CO-27-0871), Aug 19 (CO-27-0880), Aug 20 (CO-27-0884),
+      Aug 22 (CO-27-0893), Aug 27 (CO-27-0912). Call-out payment
+      58 pounds each, 638 pounds in total.
+  - id: E03
+    kind: system_extract
+    source: Station access-control export (client), Gates 1 and 3
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-09
+    text: >-
+      Badge HW-032518, August 1 to 31, 2027. Entries recorded on
+      Aug 2, Aug 3, Aug 24, Aug 25, Aug 30 and Aug 31. No entry
+      recorded on Aug 4, 5, 10, 12, 13, 16, 17, 19, 20, 22 or 27.
+      The export lists events only for readers that were online.
+  - id: E04
+    kind: interview_notes
+    source: Investigation meeting with Gary Whitlock, Sept 14, 2027
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-14
+    signed: true
+    text: >-
+      GW said he attended every one of the 11 call-outs. Gate 3,
+      the staff gate, was not reading badges for about two weeks
+      in the middle of August, so on those nights he used the side
+      door by the parcel office with the contractor key, which does
+      not log. On August 4 he signed the platform office book. On
+      August 5 the station's night supervisor let him in through
+      Gate 1 on her own badge; he did not know her name. On August
+      27 the lift alarm had cleared by the time he arrived; he
+      checked the lift panel from the car park level and reset the
+      call on his handset without going into the station. He said
+      "I've never claimed for a job I didn't go to."
+  - id: E05
+    kind: statement
+    source: Statement of Ian Kershaw, technician, Sept 15, 2027
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-15
+    signed: true
+    text: >-
+      Gate 3 was down for about two weeks in August. We all used
+      the side door by the parcel office with the contractor key.
+      I was with Gary on one of the lift jobs, the 17th I think.
+      I don't know about the other nights.
+  - id: E06
+    kind: statement
+    source: Statement of Sunita Barlow, station duty manager, Sept 16, 2027
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-16
+    signed: true
+    text: >-
+      I work nights one week in three. I was on duty on August 4,
+      5 and 6 and August 25, 26 and 27. I did not see the Hartwell
+      technician on any of those nights, but I am not always on the
+      concourse. I was not told that Gate 3 was faulty.
+  - id: E07
+    kind: system_extract
+    source: Hartwell facilities helpdesk ticket FM-27-5521
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-17
+    text: >-
+      Leeds station, Gate 3 staff reader not reading badges.
+      Opened August 9, 2027 07:12. Closed August 23, 2027 15:40,
+      controller replaced.
+  - id: E08
+    kind: document
+    source: Platform office sign-in book, August 2027 (photo, transcribed)
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-17
+    text: >-
+      Contractor entries for Hartwell: Aug 4, 23:05, "G Whitlock,
+      Hartwell, lift 2". No Hartwell entry on Aug 5 or Aug 27.
+  - id: E09
+    kind: hr_record
+    source: HartwellOne record extract, added to the folder by the HR suite
+    collected_by: HR suite (automatic)
+    collected_on: 2027-09-08
+    text: >-
+      Service since March 5, 2018. No live warnings. Grievance
+      raised March 2027 about the allocation of weekend overtime,
+      not upheld. Sickness absence June 7 to 11, 2027, back pain.
+  - id: E10
+    kind: policy
+    source: Hartwell UK call-out policy v3, section 4
+    collected_by: Joanne Grieve
+    collected_on: 2027-09-17
+    text: >-
+      A call-out payment is due when the technician attends the
+      site in response to a call-out, including where the fault
+      has cleared on arrival. The site includes the car park and
+      plant areas of the contract.
+# Joanne's coding of Gary's account (E04) by date, for the
+# evidence table. A person wrote this column, not a model.
+account_by_date:
+  2027-08-04: signed the platform office book
+  2027-08-05: let in at Gate 1 by the night supervisor
+  2027-08-27: alarm cleared; checked panel from car park
+  fault_window: side door with the contractor key
+witness_by_date:
+  2027-08-17: Ian Kershaw (E05), "the 17th I think"
