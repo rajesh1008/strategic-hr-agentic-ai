@@ -1,0 +1,72 @@
+# Hartwell's field-hiring workflow, designed in Denver, traced
+# through six legal lanes (synthetic). Steps follow the Line rows
+# in chapters/ch11_automate_keep/line_v1_1.yaml.
+as_of: 2027-02-15
+employer: Hartwell Infrastructure & Services
+employees: 38000
+
+lanes:
+  - {code: US-CO, site: Denver, Colorado}
+  - {code: US-IL, site: Joliet, Illinois}
+  - {code: CA-ON, site: Toronto, Ontario}
+  - {code: UK, site: Manchester, England}
+  - {code: NL, site: Rotterdam, Netherlands}
+  - {code: AU-QLD, site: Brisbane, Queensland}
+
+# ai: none, assist (a person decides from their own review),
+# substantial (a score or rank the decider relies on),
+# solely (no person decides).
+steps:
+  - {id: W1, line: A02, decision: advertise, ai: assist,
+     step: Draft and post the job advertisement}
+  - {id: W2, line: A04, decision: hire, ai: substantial,
+     step: Rank applicants for the recruiter}
+  - {id: W3, line: A04, decision: hire, ai: assist,
+     step: Decide who advances to interview}
+  - {id: W4, line: A03, decision: book, ai: solely,
+     step: Book interview slots}
+  - {id: W5, line: A05, decision: hire, ai: assist,
+     step: Reject an applicant with a reason code}
+  - {id: W6, line: A07, decision: hire, ai: assist,
+     step: Make an offer from a drafted letter}
+
+# The vendor default that ran in February 2027 (Chapter 1):
+# the ranking set not_progressed itself.
+vendor_default:
+  W2: solely
+  W3: solely
+  W5: solely
+
+owners:
+  NOTICE: Head of TA
+  POSTING: Head of TA
+  POLICY: Group DPO
+  EXPLAIN: Head of TA
+  CORRECT: HR Shared Services lead
+  REVIEW: Head of TA
+  OVERSIGHT: Head of TA
+  AUDIT: Head of People Analytics
+  PUBLISH: Head of People Analytics
+  ASSESS: Group DPO
+  REPS: Country HR director
+  CONSENT: Group DPO
+  NO_EFFECT: Head of People Analytics
+  NO_INTENT: Head of People Analytics
+  NO_PROXY: Head of People Analytics
+  BANNED: Employment counsel
+  LITERACY: HR learning lead
+  CONSULT: Country HR director
+  SAFETY: Country HR director
+  COUNSEL: Employment counsel
+
+# Controls in place on February 15, 2027: lane/duty -> evidence.
+controls:
+  US/NO_EFFECT: impact table per step (Chapter 7)
+  US-IL/NOTICE: Illinois applicant notice v2
+  US-IL/NO_PROXY: ZIP code removed from ranking features
+  US-IL/NO_EFFECT: impact table per step (Chapter 7)
+  US-CO/NOTICE: Colorado applicant notice v1
+  US-CO/REVIEW: reconsideration request, register A05
+  CA-ON/POSTING: posting template ON-3
+  UK/NO_EFFECT: impact table per step (Chapter 7)
+  EU/LITERACY: recruiter training record, Rotterdam

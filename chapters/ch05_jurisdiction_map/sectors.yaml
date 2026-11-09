@@ -1,0 +1,44 @@
+# Three sector organizations (synthetic) run through hrai.law.
+as_of: 2027-02-15
+
+orgs:
+  Fieldnote:
+    employees: 2200
+    lanes: [US-TX, US-CA, US-CO, US-IL, US-NYC, US-CT,
+            US-WA, US-OR, US-MA, US-GA, US-NC, US-FL, US-AZ,
+            US-UT, US-MN, US-MI, US-OH, US-PA, US-NJ, US-VA,
+            US-MD, US-TN, US-MO, US-WI, US-IN, US-KY, US-SC,
+            US-NV, US-NM, US-ID, US-NH,
+            IE, AU-NSW,
+            {code: ES, via_eor: true}, {code: PL, via_eor: true},
+            {code: PT, via_eor: true}]
+    steps:
+      - {id: F1, decision: hire, ai: substantial,
+         step: Suite agent ranks applicants for engineers}
+      - {id: F2, decision: allocate, ai: substantial,
+         subject: employee,
+         step: Suite agent proposes project staffing}
+
+  Pennant Stores:
+    employees: 48000
+    lanes: [CA-ON, CA-QC, US-NYC, US-IL, US-MI, US-WA]
+    steps:
+      - {id: P1, decision: hire, ai: substantial,
+         step: Rank seasonal applicants for store managers}
+      - {id: P2, decision: schedule, ai: solely,
+         subject: employee,
+         step: Scheduling agent publishes next week's shifts}
+      - {id: P3, decision: schedule, ai: solely,
+         subject: employee,
+         step: Scheduling agent approves a shift swap}
+
+  Larkspur Hotels:
+    employees: 11000
+    lanes: [UK, IE, US-IL, US-NYC, AU-NSW]
+    designs:
+      scoring on: {L1: {ai: substantial,
+                        features: [emotion, biometric]}}
+      scoring off: {L1: {ai: none, features: []}}
+    steps:
+      - {id: L1, decision: hire,
+         step: One-way video interview for front-desk roles}
