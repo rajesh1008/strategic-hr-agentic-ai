@@ -1,0 +1,30 @@
+# Hartwell HR ticket taxonomy v1 (synthetic), Chapter 10.
+# One row per category. route is where a ticket of this kind
+# should go: answer (an agent can resolve it from records),
+# act (it needs a controlled action in a system of record),
+# person (a named person decides or must hear it),
+# fix (failure demand: the cause sits upstream in HR).
+version: "1.0"
+routes: [answer, act, person, fix]
+categories:
+  - {code: PAY-Q, route: answer, name: "Explain a payslip or pay date"}
+  - {code: LV-BAL, route: answer, name: "Leave balance question"}
+  - {code: LV-POL, route: answer, name: "Leave policy question"}
+  - {code: BEN-Q, route: answer, name: "Benefits question"}
+  - {code: POL-Q, route: answer, name: "Other policy question"}
+  - {code: SYS-HOW, route: answer, name: "How to do something in HartwellOne"}
+  - {code: ADDR, route: act, name: "Change home address"}
+  - {code: BANK, route: act, name: "Change bank details"}
+  - {code: LTR, route: act, name: "Employment verification letter"}
+  - {code: LV-BOOK, route: act, name: "Book or correct a leave booking"}
+  - {code: TAX, route: act, name: "Change a tax form or withholding"}
+  - {code: ACC, route: act, name: "HartwellOne access or password"}
+  - {code: PAY-DISP, route: person, name: "Dispute about pay owed"}
+  - {code: ACCOM, route: person, name: "Accommodation or adjustment"}
+  - {code: CONC, route: person, name: "Concern, complaint or grievance"}
+  - {code: LV-EXC, route: person, name: "Leave outside policy or protected leave"}
+  - {code: RTW, route: person, name: "Right to work or visa"}
+  - {code: CHASE, route: fix, name: "Chasing an earlier request"}
+  - {code: PAY-ERR, route: fix, name: "Pay wrong because a process failed"}
+  - {code: REWORK, route: fix, name: "Resubmitting a form that bounced"}
+  - {code: ONB-MISS, route: fix, name: "New starter item missing"}
