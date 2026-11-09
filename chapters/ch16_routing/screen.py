@@ -30,6 +30,8 @@ from .make_data import load
 
 HERE = Path(__file__).resolve().parent
 GZIP = {"Accept-Encoding": "gzip, deflate"}
+# how each model is told not to think before answering
+NO_THINK = {"claude-sonnet-5-5": {"type": "between_tools"}}
 SYSTEM = """You screen applications for a recruiter.
 {guidance}
 Read the resume and give: epa608 (true or false),
@@ -74,7 +76,9 @@ def ask(rec, system: str, app: dict, config: str
     if config == "fast":
         resp = rec.create(
             max_tokens=400, system=system, messages=msgs,
-            thinking={"type": "disabled"}, tools=[FORM],
+            thinking=NO_THINK.get(model(),
+                                  {"type": "disabled"}),
+            tools=[FORM],
             tool_choice={"type": "tool",
                          "name": "record_screen"},
             extra_headers=GZIP)
