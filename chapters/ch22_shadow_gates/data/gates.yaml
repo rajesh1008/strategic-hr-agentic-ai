@@ -1,0 +1,31 @@
+# The Five Gates (Hartwell, synthetic). Each gate is a
+# decision to let a system into the next stage. Deny by
+# default: an item with no evidence is a refusal.
+version: 1.0
+owner: Claire Whitfield, Chief People Officer
+gates:
+  intent:
+    question: Should it exist, for this purpose and owner?
+    requires: [problem_statement, line_placement,
+      register_row, accountable_executive, kill_criteria,
+      consultation_map]
+  build:
+    question: Is it built the way the design says?
+    requires: [six_views, controls_in_code, entitlements,
+      gateway_use, rollback_tested]
+  shadow:
+    question: Does offline evidence justify running it
+      beside people on live inputs?
+    requires: [eval_levels_1_to_3, fairness_record,
+      shadow_plan, nothing_reaches_people, consent]
+  production:
+    question: Did shadow meet the criteria set before it
+      started?
+    requires: [outcome_matches_intent, benefit, groups,
+      human_comparison, appeal_path, monitoring_plan,
+      consent, signature]
+  scale:
+    question: Does production evidence carry to the new
+      population?
+    requires: [production_months, per_population_groups,
+      new_consultation, capacity]

@@ -1,0 +1,47 @@
+# Production gate pack: attrition model v1, review
+# Monday, October 18, 2027 (synthetic).
+system: attrition model v1
+gate: production
+asks: show the top 10% to managers with a drafted brief
+accountable_executive: Claire Whitfield
+prepared_by: Tom Reilly
+reviewed_by: [Olivia Grant (internal audit),
+  Marta Kowalski (privacy, DE lane), employment counsel]
+evidence:
+  outcome_matches_intent:
+    test: equals
+    value: any exit (HCM termination flag)
+    want: voluntary resignation within 13 weeks
+    record: model.py LABEL v1; Intent statement Mar 2027
+  benefit:
+    test: lift
+    run: ch22/shadow
+    path: [us]
+    min: 2.0
+  groups:
+    test: ratio_band
+    run: ch22/shadow
+    lanes: [us, de]
+    a: over50
+    b: under40
+    band: [0.80, 1.25]
+  human_comparison:
+    test: at_least_watch
+    run: ch22/shadow
+  appeal_path:
+    status: met
+    record: register entry PA-01, HR partner reviews
+  monitoring_plan:
+    status: met
+    record: monthly group table, Chapter 23 inventory
+  consent:
+    status: met
+    record: DE shadow works agreement, June 2027; covers
+      shadow only, production needs a new agreement
+    lanes: {DE: unmet}
+  signature:
+    status: unmet
+    record: not signed; waits on this review
+to_reopen: retrain on resignations only, remove the
+  milestone input, re-enter at Build, new shadow with
+  the same criteria and both ends of the age range
