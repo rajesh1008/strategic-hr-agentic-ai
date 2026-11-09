@@ -123,8 +123,8 @@ def main() -> None:
                   f"{s['not_set']:>7} {s['wrong']:>5}")
         bad = [m for m in s["miss"]
                if not m.endswith("NOT_SET")]
-        for k in range(0, len(bad), 4):
-            rec.print("   wrong: " + ", ".join(bad[k:k + 4]))
+        for k in range(0, len(bad), 3):
+            rec.print("   wrong: " + ", ".join(bad[k:k + 3]))
         rec.note(design=d, run=i, answers=g, grade=s)
     rec.save()
 
