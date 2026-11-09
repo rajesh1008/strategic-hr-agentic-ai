@@ -1,0 +1,1388 @@
+{
+  "run_id": "ch23/canary_takefen/20261109T153017Z",
+  "started_utc": "2026-11-09T15:30:17.086772+00:00",
+  "git_commit": "b9ce828",
+  "git_dirty": false,
+  "model": "claude-sonnet-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0029\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- HVAC Service Technician, regional mechanical contractor, May 2026 to present\n- Inside Sales Representative, HVAC distributor, Jul 2024 to Apr 2026\n\nCertifications and licenses\n- 608 Universal card (EPA)\n\nOther\n- Own hand tools and gauges\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "d7877c6f5432f56202bb83032a49ac72c0b32ecbd6c12cb39f6f0a6fbb49cebd",
+      "response": {
+        "id": "msg_011CgsbNNNiAS9KqeyLMY9Ns",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 12, \"meets\": false, \"confidence\": 0.93, \"evidence\": \"608 Universal held; only HVAC Service Tech May 2026-present (12 months); sales excluded.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 651,
+          "output_tokens": 75,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0013\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Field Service Technician, commercial refrigeration firm, May 2021 to present\n\nCertifications and licenses\n- none listed\n\nOther\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "9397fcb1cf3aac7c5e70c93e41b446b4f30f47d5a23de9d3395b6050e016f50e",
+      "response": {
+        "id": "msg_011CgsbNNDXbe4rmehV9PvgW",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": false, \"field_months\": 72, \"meets\": false, \"confidence\": 0.97, \"evidence\": \"No EPA 608 listed; field service May 2021 to May 2027 is 72 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 596,
+          "output_tokens": 70,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0064\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Boiler and Chiller Technician, district energy plant, Feb 2026 to present\n- Weekend On-call Technician, residential HVAC company, Sep 2026 to May 2027\n\nCertifications and licenses\n- EPA 608 certified - Universal\n\nOther\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "473a74ce3c6239977eed240bd7d42a6718cac15b73d71c9469f693cd563d6c3b",
+      "response": {
+        "id": "msg_011CgsbNNPgx2HA2XRHSdh8u",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Counting months (Present = May 2027):\n\n- Boiler and Chiller Technician: Feb 2026 to May 2027 = 15 months\n- Weekend On-call Technician: Sep 2026 to May 2027 = 8 months, fully overlapping the first role\n\nOverlap counted once, so the union runs Feb 2026 to May 2027 = 15 months. That is under the 24-month requirement.\n\nEPA 608 Universal is listed, so requirement 1 is met. Requirement 2 is not met.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 15,\n  \"meets\": false,\n  \"confidence\": 0.97,\n  \"evidence\": \"EPA 608 Universal listed; Feb 2026-May 2027 field roles overlap, totaling 15 months.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 639,
+          "output_tokens": 264,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0061\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, Jul 2025 to present\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Comfortable on ladders and roofs\n- Spanish and English\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "dbc85fdd4b11ed6cab452c802545ad6a886a17cd5dfb06320b80a61e46f9db01",
+      "response": {
+        "id": "msg_011CgsbNNPSyEGYdS7GHa8TY",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "The resume lists one role, a facilities maintenance technician at a hospital campus, from Jul 2025 to present. Using \"Present\" = May 2027, that is 22 months (May 2027 minus Jul 2025: 1 year 10 months). The role type is plausibly hands-on building systems work, but the resume doesn't detail duties, so there is slight uncertainty about whether it qualifies. Even if it fully qualifies, 22 months falls short of the required 24. The EPA 608 Type II certification satisfies requirement 1, but requirement 2 is not met.\n\n```json\n{\"epa608\": true, \"field_months\": 22, \"meets\": false, \"confidence\": 0.96, \"evidence\": \"EPA 608 Type II; one facilities role Jul 2025-present = 22 months, under 24\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 635,
+          "output_tokens": 265,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0012\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Field Service Technician, commercial refrigeration firm, Jul 2025 to Sep 2026\n- Facilities Maintenance Technician, hospital campus, Sep 2024 to Jul 2025\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Comfortable on ladders and roofs\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "8449733988df7fc3f1dc4253cf20420eed30de8cac2c3aeb41d44bc463d28d84",
+      "response": {
+        "id": "msg_011CgsbNNNTos2W5iQotbiJ6",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Field Service Technician: Jul 2025 to Sep 2026 = 14 months. Facilities Maintenance Technician, hospital campus: Sep 2024 to Jul 2025 = 10 months. The roles are adjacent, not overlapping, so total = 24 months.\n\nWhether the facilities maintenance role counts as field service: it is hands-on maintenance of building systems, which the guidance includes. The title and setting suggest hands-on work, though the resume gives no detail. EPA 608 Type II is present. Total of exactly 24 meets the threshold of at least 24.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 24,\n  \"meets\": true,\n  \"confidence\": 0.8,\n  \"evidence\": \"EPA 608 Type II; 14 months refrigeration field plus 10 months hospital facilities maintenance.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 667,
+          "output_tokens": 286,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0062\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Building Maintenance Technician, property management co., Jun 2026 to present\n- Facilities Maintenance Technician, hospital campus, Nov 2023 to Apr 2026\n- Field Service Technician, commercial refrigeration firm, Oct 2019 to Nov 2023\n\nCertifications and licenses\n- EPA Section 608 Universal certification\n\nOther\n- Valid driver's license, clean record\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "a753d6eaddd196058e305e18a19c84bd92368d639b7e922f5730995ebfc71a5d",
+      "response": {
+        "id": "msg_011CgsbNNa7HxpmowrF81erA",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Counting months (Present = May 2027):\n\n- Building Maintenance Technician: Jun 2026 to May 2027 = 11 months\n- Facilities Maintenance Technician: Nov 2023 to Apr 2026 = 29 months\n- Field Service Technician: Oct 2019 to Nov 2023 = 49 months\n\nThe roles do not overlap (the Oct 2019 to Nov 2023 role ends the same month the next begins; the hospital role ends Apr 2026 and the next starts Jun 2026), so the total is 11 + 29 + 49 = 89 months.\n\nThe EPA 608 Universal certification satisfies requirement 1. Whether the maintenance roles count as field service is ambiguous, but the Field Service Technician role in commercial refrigeration alone (49 months) exceeds the 24-month threshold, so the conclusion holds either way.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 89,\n  \"meets\": true,\n  \"confidence\": 0.95,\n  \"evidence\": \"EPA 608 Universal; 49 months refrigeration field service alone exceeds 24; total 89.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 693,
+          "output_tokens": 379,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0105\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, Aug 2019 to present\n\nCertifications and licenses\n- Completed EPA 608 exam prep course, test not yet taken\n- Journeyman electrician license, State of Colorado\n\nOther\n- Forklift certificate (warehouse)\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "7e74e42a15746561ada9df62601cb6f01905141d98a879c6a9d65ff011a05e14",
+      "response": {
+        "id": "msg_011CgsbNZ6NqLfCDyvSgz3h6",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": false, \"field_months\": 93, \"meets\": false, \"confidence\": 0.9, \"evidence\": \"No EPA 608 held: exam prep only, test not taken; electrician license doesn't count.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 648,
+          "output_tokens": 71,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0065\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- HVAC Service Technician, regional mechanical contractor, Dec 2025 to Sep 2026\n- Field Service Technician, commercial refrigeration firm, Jul 2024 to Oct 2025\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Valid driver's license, clean record\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "13a87a46f5007f0a8b525b08fa5e7c7555a4ce0e9dad2522a96ecb89b0439f5d",
+      "response": {
+        "id": "msg_011CgsbNUx61qfbi9ASiiwpP",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Role 1: Dec 2025 to Sep 2026 = 9 months (Sep minus Dec: from Dec 2025 to Dec 2026 is 12, minus 3 = 9).\nRole 2: Jul 2024 to Oct 2025 = 15 months.\nNo overlap (Oct 2025 ends before Dec 2025 begins). Total = 24 months, which meets the 24-month threshold. EPA 608 Type II is present.\n\n{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.93, \"evidence\": \"EPA 608 Type II; Jul 2024-Oct 2025 (15) plus Dec 2025-Sep 2026 (9) = 24 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 660,
+          "output_tokens": 243,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0107\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, May 2025 to present\n- Field Service Technician, commercial refrigeration firm, Sep 2021 to Mar 2025\n\nCertifications and licenses\n- Journeyman electrician license, State of Colorado\n\nOther\n- Comfortable on ladders and roofs\n- Valid driver's license, clean record\n- Own hand tools and gauges"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "144e5cd91eb1a9667360f6d88c2758cb0386747c758d86b945e8beb41a945a93",
+      "response": {
+        "id": "msg_011CgsbNa3gTWzTwJDj6cYvx",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": false, \"field_months\": 90, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"No EPA 608 listed; only electrician license. Field months: 42 + 24 = 66.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 675,
+          "output_tokens": 72,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0088\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, Feb 2026 to present\n- Weekend On-call Technician, residential HVAC company, May 2026 to Mar 2027\n\nCertifications and licenses\n- EPA 608 certified - Universal\n\nOther\n- First aid and CPR\n- Forklift certificate (warehouse)\n- Comfortable on ladders and roofs"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "185ce206accc4265acb0da86e8766c18b29ff8ffa65ac243e65169695ddd54b7",
+      "response": {
+        "id": "msg_011CgsbNVWKvqK7froF4sxmb",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "First role: Feb 2026 to present (May 2027) = 15 months (Feb 2026 to May 2027: 12 + 3). Second role: May 2026 to Mar 2027 = 10 months. The second role falls entirely within the first, so the overlap is counted once. Total = 15 months, below the 24 required.\n\nEPA 608 Universal is held, so requirement 1 is met, but requirement 2 is not.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 15,\n  \"meets\": false,\n  \"confidence\": 0.93,\n  \"evidence\": \"Universal 608 held; roles overlap, union Feb 2026-May 2027 = 15 months, under 24.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 670,
+          "output_tokens": 232,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0121\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, May 2025 to present\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Comfortable on ladders and roofs"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "f5a0b7c522578b1131a292dc7db285d0a5d33d968d93403489132b825fd488d8",
+      "response": {
+        "id": "msg_011CgsbNaH5AXQfw4bcciUnP",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.62, \"evidence\": \"EPA 608 Type II listed; May 2025 to present (May 2027) = 24 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 610,
+          "output_tokens": 72,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0191\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Boiler and Chiller Technician, district energy plant, Sep 2019 to present\n\nCertifications and licenses\n- Completed EPA 608 exam prep course, test not yet taken\n- OSHA 10-Hour General Industry\n\nOther\n- Own hand tools and gauges"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "77b6d4a7e3bde520d7707ffaf79b5038e01e6b46f3560cf1513b091548c1e1eb",
+      "response": {
+        "id": "msg_011CgsbNfw8aypLggwsjvuHj",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": false, \"field_months\": 92, \"meets\": false, \"confidence\": 0.97, \"evidence\": \"No EPA 608 held (exam not taken); Sep 2019 to May 2027 = 92 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 635,
+          "output_tokens": 75,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0127\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Refrigeration Technician, grocery chain (store visits), Sep 2021 to present\n- HVAC Service Technician, regional mechanical contractor, Jul 2020 to Aug 2021\n\nCertifications and licenses\n- 608 Universal card (EPA)\n\nOther\n- Comfortable on ladders and roofs\n- Spanish and English\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "48c3a2052ae79308ce90460c1f31e2d7c23def6c8336eb2e0cd4f91efc73ed14",
+      "response": {
+        "id": "msg_011CgsbNePcQy1gq7XsR6baB",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Months calculation:\n- Refrigeration Technician: Sep 2021 to Present (May 2027) = 5 years 8 months = 68 months\n- HVAC Service Technician: Jul 2020 to Aug 2021 = 13 months\n- No overlap (the HVAC role ends Aug 2021, the refrigeration role starts Sep 2021)\n- Total = 81 months, well over 24.\n\nEPA 608 Universal card is an EPA Section 608 certification, so requirement 1 holds. Both requirements are met.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 81,\n  \"meets\": true,\n  \"confidence\": 0.97,\n  \"evidence\": \"608 Universal card; refrigeration and HVAC service roles total 81 months.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 673,
+          "output_tokens": 259,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0211\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Boiler and Chiller Technician, district energy plant, Jun 2026 to Mar 2027\n- HVAC Apprentice, union training program (field), May 2025 to May 2026\n\nCertifications and licenses\n- Section 608 Type I and Type II (EPA)\n\nOther\n- Spanish and English\n- Valid driver's license, clean record\n- Comfortable on ladders and roofs"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "43b08b062856ab81dd37acb493cbbbf369eb9d33dcebe953ea41af03b17b6448",
+      "response": {
+        "id": "msg_011CgsbNgshFbLGyoJPT5E8b",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Roles: Boiler and Chiller Technician, Jun 2026 to Mar 2027 = 9 months. HVAC Apprentice, May 2025 to May 2026 = 12 months. The two roles do not overlap (the apprenticeship ends May 2026, the tech role starts Jun 2026), so the total is 21 months. That is under the 24-month requirement.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 21,\n  \"meets\": false,\n  \"confidence\": 0.93,\n  \"evidence\": \"608 Type I/II held; apprentice 12 + boiler tech 9 = 21 months, under 24\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 672,
+          "output_tokens": 216,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0150\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, May 2025 to present\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Own hand tools and gauges"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "5e43c4a754eabd21d439f27baea590c3ace0e0cec5f9c6610ef1f40c96220881",
+      "response": {
+        "id": "msg_011CgsbNfAFLoowKNWv8juEY",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Facilities Maintenance Technician at a hospital campus: May 2025 to present. \"Present\" = May 2027, so 24 months. Hands-on facilities maintenance on a hospital campus plausibly counts as field service (maintenance of building systems), though the resume doesn't detail duties. The EPA 608 Type II is valid, so epa608 is true. Field months equal 24, which meets the threshold exactly. The main uncertainty is whether the role counts as hands-on building systems maintenance.\n\n```json\n{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.8, \"evidence\": \"EPA 608 Type II; facilities maintenance technician May 2025-present (24 months)\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 607,
+          "output_tokens": 241,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0149\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Building Maintenance Technician, property management co., Nov 2026 to Apr 2027\n- Boiler and Chiller Technician, district energy plant, Jul 2025 to Nov 2026\n\nCertifications and licenses\n- EPA 608 certified - Universal\n\nOther\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "f9ccc5c72401e48a525fdeb51a37902c39d46e1d3d51e16f7f5d7c3797a930da",
+      "response": {
+        "id": "msg_011CgsbNffGcHgvFUGHrt28w",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Months: Jul 2025 to Nov 2026 = 16 months (Jul 2025 to Jul 2026 is 12, plus 4 to Nov 2026). Nov 2026 to Apr 2027 = 5 months. The roles are adjacent, not overlapping, so the total is 21 months. That is under the 24 required, so the candidate does not meet the requirements, even though EPA 608 Universal is present.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 21,\n  \"meets\": false,\n  \"confidence\": 0.9,\n  \"evidence\": \"EPA 608 Universal; 16 + 5 = 21 field months, below 24 required.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 647,
+          "output_tokens": 226,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0195\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Building Maintenance Technician, property management co., Feb 2026 to present\n- Weekend On-call Technician, residential HVAC company, Jul 2026 to May 2027\n\nCertifications and licenses\n- Federal EPA refrigerant handling certification, Type III\n\nOther\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "5c714d532b23e74e3db80e12f37ae804be9468c4f4a75e328ee1b531f44edf1e",
+      "response": {
+        "id": "msg_011CgsbNgZqed9PHdTDhKQ4T",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Reasoning:\n\nEPA 608: \"Federal EPA refrigerant handling certification, Type III\" is a Section 608 Type III certification, so epa608 is true.\n\nField months:\n- Building Maintenance Technician: Feb 2026 to present (May 2027). May 2027 minus Feb 2026 = 15 months.\n- Weekend On-call Technician (residential HVAC): Jul 2026 to May 2027 = 10 months. This overlaps fully with the first role, so it adds nothing.\n\nThe union is 15 months (Feb 2026 to May 2027). Both roles appear to be hands-on field service, so field_months = 15, below the 24 required.\n\nMeets: false, because field service falls short even though the certification is present.\n\n```json\n{\"epa608\": true, \"field_months\": 15, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"Type III EPA cert; Feb 2026-May 2027 overlapping field roles total 15 months.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 647,
+          "output_tokens": 321,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0233\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- HVAC Service Technician, regional mechanical contractor, Jul 2021 to Mar 2027\n\nCertifications and licenses\n- OSHA 10-Hour General Industry\n- Journeyman electrician license, State of Colorado\n\nOther\n- Valid driver's license, clean record\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "7789300d4e32e41873ca2f309c4208e15320e808d82cf358fdd0612667062338",
+      "response": {
+        "id": "msg_011CgsbNrLTgQKpj1gVL3D8Z",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": false, \"field_months\": 68, \"meets\": false, \"confidence\": 0.93, \"evidence\": \"No EPA 608 listed; only OSHA 10 and state electrician license. Jul 2021-Mar 2027 = 68 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 646,
+          "output_tokens": 86,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0226\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Facilities Maintenance Technician, hospital campus, Nov 2026 to present\n- Field Service Technician, commercial refrigeration firm, Sep 2021 to Sep 2026\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "6afb7c16365a669be0138b0a094813f44915867814ac014b25e09cf848ff2b26",
+      "response": {
+        "id": "msg_011CgsbNnMqoqWXi6yYrYQqi",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Computing months:\n- Field Service Technician: Sep 2021 to Sep 2026 = 60 months.\n- Facilities Maintenance Technician: Nov 2026 to Present (May 2027) = 6 months. Hospital campus maintenance counts as hands-on repair of building systems.\n- No overlap (Sep 2026 ends before Nov 2026 starts). Total = 66 months.\n\nEPA 608 Type II is present, so epa608 is true. Both requirements hold.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 66,\n  \"meets\": true,\n  \"confidence\": 0.95,\n  \"evidence\": \"EPA 608 Type II; refrigeration field tech 60 months plus 6 months facilities maintenance.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 640,
+          "output_tokens": 255,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0232\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Refrigeration Technician, grocery chain (store visits), Mar 2025 to present\n- Parts Counter Associate, HVAC supply house, Mar 2022 to Mar 2025\n\nCertifications and licenses\n- EPA Section 608 Universal certification\n\nOther\n- Comfortable on ladders and roofs\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "c179df58513d4eedf7061d82e37f1a01e3ca250e5e10ad64941db453e0736d87",
+      "response": {
+        "id": "msg_011CgsbNqkVLy4sSbXWFYQ3j",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Field role: Refrigeration Technician, Mar 2025 to present (May 2027). Months = May 2027 minus Mar 2025 = 26 months. Parts counter doesn't count. 26 ≥ 24, and the EPA 608 Universal certification holds.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 26,\n  \"meets\": true,\n  \"confidence\": 0.9,\n  \"evidence\": \"EPA 608 Universal listed; refrigeration technician Mar 2025-present equals 26 field months.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 662,
+          "output_tokens": 182,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0287\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Boiler and Chiller Technician, district energy plant, May 2025 to present\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- First aid and CPR\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "f5e00ccef8ed878636295a61f62baeaeb4004793cdf6a581ee00953bd2f2103f",
+      "response": {
+        "id": "msg_011CgsbNupoQDddQkov6xNG4",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.9, \"evidence\": \"May 2025 to Present (May 2027) = 24 months; EPA 608 Type II listed.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 612,
+          "output_tokens": 73,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0264\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Boiler and Chiller Technician, district energy plant, May 2025 to present\n- Building Maintenance Technician, property management co., Apr 2023 to Apr 2025\n- Field Service Technician, commercial refrigeration firm, Mar 2019 to Feb 2023\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Comfortable on ladders and roofs\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "0b5bf088abdc85c9299153a868d8f61e2e7e62263e168bcb31e09ab02cd2d94c",
+      "response": {
+        "id": "msg_011CgsbNs2dZh14Q5Lm2UxBx",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Calculating months (Present = May 2027):\n\n- Boiler/Chiller Technician: May 2025 to May 2027 = 24 months\n- Building Maintenance Technician: Apr 2023 to Apr 2025 = 24 months\n- Field Service Technician: Mar 2019 to Feb 2023 = 47 months\n\nThe roles do not overlap, so the total is 24 + 24 + 47 = 95 months. All three roles appear to be hands-on building systems or HVAC/R work, though the building maintenance role is slightly ambiguous. Even excluding it, the total is 71 months, well above 24.\n\nEPA 608 Type II is listed, so requirement 1 is met.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 95,\n  \"meets\": true,\n  \"confidence\": 0.96,\n  \"evidence\": \"EPA 608 Type II; 95 months across three field roles, no overlaps.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 684,
+          "output_tokens": 309,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0364\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Field Service Technician, commercial refrigeration firm, Jan 2026 to Sep 2026\n\nCertifications and licenses\n- EPA 608 Type II certification\n\nOther\n- Spanish and English\n- Forklift certificate (warehouse)\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "9abf56ca7a49a93b4993a7415830d1d2f73624ecee813666430180800bfb172c",
+      "response": {
+        "id": "msg_011CgsbNxKsgtS2U7x3Vf5PP",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 8, \"meets\": false, \"confidence\": 0.97, \"evidence\": \"EPA 608 Type II held; field service Jan-Sep 2026 is only 8 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 634,
+          "output_tokens": 72,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0238\nApplying for: Field Service Technician (HVAC and building systems)\n\nExperience\n- Building Maintenance Technician, property management co., Jan 2026 to present\n- Boiler and Chiller Technician, district energy plant, Sep 2021 to Jan 2026\n\nCertifications and licenses\n- Section 608 Type I and Type II (EPA)\n\nOther\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "thinking": {
+          "type": "between_tools"
+        },
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "53ef91f1aae24a6aff8aa677068d018928b448c7d945142ce6b32b574c95467a",
+      "response": {
+        "id": "msg_011CgsbNrqUYev4EUDtNZN1U",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Field months: Boiler and Chiller Technician, Sep 2021 to Jan 2026, is 52 months (Sep 2021 to Sep 2025 is 48, plus 4 more to Jan 2026). Building Maintenance Technician, Jan 2026 to present (May 2027), is 16 months. The roles are sequential with no overlap, so the total is 68 months. Both roles read as hands-on maintenance of building systems, though the building maintenance role is described only by title, which is the main source of uncertainty.\n\n```json\n{\n  \"epa608\": true,\n  \"field_months\": 68,\n  \"meets\": true,\n  \"confidence\": 0.9,\n  \"evidence\": \"EPA 608 Type I and II; boiler/chiller tech 52 months plus building maintenance 16.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 647,
+          "output_tokens": 263,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "answers": {
+        "C16-0012": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.8,
+          "evidence": "EPA 608 Type II; 14 months refrigeration field plus 10 months hospital facilities maintenance."
+        },
+        "C16-0013": {
+          "epa608": false,
+          "field_months": 72,
+          "meets": false,
+          "confidence": 0.97,
+          "evidence": "No EPA 608 listed; field service May 2021 to May 2027 is 72 months."
+        },
+        "C16-0029": {
+          "epa608": true,
+          "field_months": 12,
+          "meets": false,
+          "confidence": 0.93,
+          "evidence": "608 Universal held; only HVAC Service Tech May 2026-present (12 months); sales excluded."
+        },
+        "C16-0061": {
+          "epa608": true,
+          "field_months": 22,
+          "meets": false,
+          "confidence": 0.96,
+          "evidence": "EPA 608 Type II; one facilities role Jul 2025-present = 22 months, under 24"
+        },
+        "C16-0062": {
+          "epa608": true,
+          "field_months": 89,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Universal; 49 months refrigeration field service alone exceeds 24; total 89."
+        },
+        "C16-0064": {
+          "epa608": true,
+          "field_months": 15,
+          "meets": false,
+          "confidence": 0.97,
+          "evidence": "EPA 608 Universal listed; Feb 2026-May 2027 field roles overlap, totaling 15 months."
+        },
+        "C16-0065": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.93,
+          "evidence": "EPA 608 Type II; Jul 2024-Oct 2025 (15) plus Dec 2025-Sep 2026 (9) = 24 months."
+        },
+        "C16-0088": {
+          "epa608": true,
+          "field_months": 15,
+          "meets": false,
+          "confidence": 0.93,
+          "evidence": "Universal 608 held; roles overlap, union Feb 2026-May 2027 = 15 months, under 24."
+        },
+        "C16-0105": {
+          "epa608": false,
+          "field_months": 93,
+          "meets": false,
+          "confidence": 0.9,
+          "evidence": "No EPA 608 held: exam prep only, test not taken; electrician license doesn't count."
+        },
+        "C16-0107": {
+          "epa608": false,
+          "field_months": 90,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "No EPA 608 listed; only electrician license. Field months: 42 + 24 = 66."
+        },
+        "C16-0121": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.62,
+          "evidence": "EPA 608 Type II listed; May 2025 to present (May 2027) = 24 months."
+        },
+        "C16-0127": {
+          "epa608": true,
+          "field_months": 81,
+          "meets": true,
+          "confidence": 0.97,
+          "evidence": "608 Universal card; refrigeration and HVAC service roles total 81 months."
+        },
+        "C16-0149": {
+          "epa608": true,
+          "field_months": 21,
+          "meets": false,
+          "confidence": 0.9,
+          "evidence": "EPA 608 Universal; 16 + 5 = 21 field months, below 24 required."
+        },
+        "C16-0150": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.8,
+          "evidence": "EPA 608 Type II; facilities maintenance technician May 2025-present (24 months)"
+        },
+        "C16-0191": {
+          "epa608": false,
+          "field_months": 92,
+          "meets": false,
+          "confidence": 0.97,
+          "evidence": "No EPA 608 held (exam not taken); Sep 2019 to May 2027 = 92 months."
+        },
+        "C16-0195": {
+          "epa608": true,
+          "field_months": 15,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "Type III EPA cert; Feb 2026-May 2027 overlapping field roles total 15 months."
+        },
+        "C16-0211": {
+          "epa608": true,
+          "field_months": 21,
+          "meets": false,
+          "confidence": 0.93,
+          "evidence": "608 Type I/II held; apprentice 12 + boiler tech 9 = 21 months, under 24"
+        },
+        "C16-0226": {
+          "epa608": true,
+          "field_months": 66,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Type II; refrigeration field tech 60 months plus 6 months facilities maintenance."
+        },
+        "C16-0232": {
+          "epa608": true,
+          "field_months": 26,
+          "meets": true,
+          "confidence": 0.9,
+          "evidence": "EPA 608 Universal listed; refrigeration technician Mar 2025-present equals 26 field months."
+        },
+        "C16-0233": {
+          "epa608": false,
+          "field_months": 68,
+          "meets": false,
+          "confidence": 0.93,
+          "evidence": "No EPA 608 listed; only OSHA 10 and state electrician license. Jul 2021-Mar 2027 = 68 months."
+        },
+        "C16-0238": {
+          "epa608": true,
+          "field_months": 68,
+          "meets": true,
+          "confidence": 0.9,
+          "evidence": "EPA 608 Type I and II; boiler/chiller tech 52 months plus building maintenance 16."
+        },
+        "C16-0264": {
+          "epa608": true,
+          "field_months": 95,
+          "meets": true,
+          "confidence": 0.96,
+          "evidence": "EPA 608 Type II; 95 months across three field roles, no overlaps."
+        },
+        "C16-0287": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.9,
+          "evidence": "May 2025 to Present (May 2027) = 24 months; EPA 608 Type II listed."
+        },
+        "C16-0364": {
+          "epa608": true,
+          "field_months": 8,
+          "meets": false,
+          "confidence": 0.97,
+          "evidence": "EPA 608 Type II held; field service Jan-Sep 2026 is only 8 months."
+        }
+      }
+    }
+  ],
+  "stdout": [
+    "canary takefen on claude-sonnet-5-5: 24 cases",
+    "  C16-0012 sum_near            truth meets got True  months 24 (truth 24)",
+    "  C16-0013 clear_no            truth no    got False months 72 (truth 72)",
+    "  C16-0029 mixed_roles         truth no    got False months 12 (truth 12)",
+    "  C16-0061 present_near        truth no    got False months 22 (truth 22)",
+    "  C16-0062 clear_yes           truth meets got True  months 89 (truth 89)",
+    "  C16-0064 overlap             truth no    got False months 15 (truth 15)",
+    "  C16-0065 sum_near            truth meets got True  months 24 (truth 24)",
+    "  C16-0088 overlap             truth no    got False months 15 (truth 15)",
+    "  C16-0105 cert_pending        truth no    got False months 93 (truth 93)",
+    "  C16-0107 cert_not_epa        truth no    got False months 90 (truth 66)",
+    "  C16-0121 present_near        truth meets got True  months 24 (truth 24)",
+    "  C16-0127 cert_wording        truth meets got True  months 81 (truth 81)",
+    "  C16-0149 sum_near            truth no    got False months 21 (truth 21)",
+    "  C16-0150 present_near        truth meets got True  months 24 (truth 24)",
+    "  C16-0191 cert_pending        truth no    got False months 92 (truth 92)",
+    "  C16-0195 overlap             truth no    got False months 15 (truth 15)",
+    "  C16-0211 apprentice_military truth no    got False months 21 (truth 21)",
+    "  C16-0226 clear_yes           truth meets got True  months 66 (truth 66)",
+    "  C16-0232 mixed_roles         truth meets got True  months 26 (truth 26)",
+    "  C16-0233 cert_not_epa        truth no    got False months 68 (truth 68)",
+    "  C16-0238 cert_wording        truth meets got True  months 68 (truth 68)",
+    "  C16-0264 clear_yes           truth meets got True  months 95 (truth 95)",
+    "  C16-0287 present_near        truth meets got True  months 24 (truth 24)",
+    "  C16-0364 clear_no            truth no    got False months 8 (truth 8)",
+    "right 24 of 24"
+  ]
+}

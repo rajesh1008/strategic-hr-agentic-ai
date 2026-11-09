@@ -1,0 +1,1436 @@
+{
+  "run_id": "ch23/canary_northgate/20261109T152944Z",
+  "started_utc": "2026-11-09T15:29:44.727249+00:00",
+  "git_commit": "b9ce828",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0061\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 07/2025 - Current\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Comfortable on ladders and roofs\n- Spanish and English\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "38ea78cd67d7ae531f2a17a5481cc9c81060771faa0e483ed387d3411136ab3e",
+      "response": {
+        "id": "msg_011CgsbKyymBn57QJpFfP7FL",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSzAgKEAgTGAI4AUIIdGhpbmtpbmcSDIVFpBeijpNNlNKerxoMhVGsTjwC+VR8vjJSIjAX/wmzfntlONenuQ+HrCxScJaacnFeCSCuS5PT5woGfLKT9tb8w4R00/FYwZDCSeMq6QcEC95i64qj6Gtw9GTtU3s23vAm6dQYfI148qRZsK2UVaOy2tFhQ08jLlTUvXQinkjEO8/tiPHYaSGK9awB2uCZS7wSn1mz2qOSlVSV5UZMI/skYPuNpgWyQlhLFCg18hRpkrLNtiU5YU3yMOQLpXtX0XYfxD7W5oicQenauUvmj73powlKei+/oyIuaogUaXbhv5g95o43bbsV76Z/Xffy4DZS3/lvXntNCjeWtLtx2w7DLKSG4+W1ThZcs0yEICuBfm1veWNTpowek1A4IF1C/AmOmVgs6qGfHEY7FWhUzlCaISMSjUwmwPtP29X6by0DitpMVjx05nFxYu5bf11iYaiD0DP//dkqzABy2Zr44MQB+Aoub07L/r4ev+Wsc750ImpQzdhkzXPrFIci+0v25d191utinsyk43r0BPgs1fdASP+FDE1ffv07Upss4Pl4O80dB49bISka2uf9s9Dd7/A0u0886VTqA/G5u00dw9m+UGGXTiXjQWxaT7nVhFFp3pbMb/GRT7+irjhiM8EVeg1LA3KpNmUAAVuy/GLgaSI+E/nh7jHR43G7DGc9lFqakEOOov/OOufsuJ8ClcPWwo4Yca5Snxc1x1VZCEeY6DjNB9VHAPInL4DytpTDFisUQFXuHT7x1keMkzv9qAGMOgQ/xgbMhq1qP7KFXgxkd+lNv2+2bpdAMZtF0lXE6Pn+qGmQaitYLWszxv+7qMTd0albwYl8U4tkZ3PH7PZhgNWU7AAdJLvFhbnpSP1u/rgUvuYIjHy2VfZu945XBiyGwwq7i4uhVPwdRvoA8x1MLx7HmcF+s7MSFYCbChwiU+FXu0ceY1Q9T4y/WwkgQwP3aewz9aeLE4bGWTO1grfnfnZP4eKMzmjbsQLtMIGfR3DeSmWdfhSL6rxhG5SUdiflx8faN3r17ee4OFgosyzrAjmZ8XJRAb0deTS3rX9PkX735oA4lkLsGkollrChQjfhB2Mbihb+L9pUxTc8tMPoEePS3FGz/aJLY3Tejsg8A2zNZzLMeYeWXX/vdrZKntdHc6JXVIIePqfJ2UdrasNnLkp7v8vBTn2/tlFVPZllGuUmdFFR+BX0sqnX2PfgCNu0NVFZyT8hMBokqkqhz7MWH5UsZC8Y80Tid9EFJrpqPj2GlsFir8QVwRv8d8Xowjl42ZlFtNZ4GBCAUzybQE0UUlMA4Xpq9wIzUvuN2T1c8Er/5MhWUt6s9dRrZyBGPx02CFX1TTMvyoAPGzPCLOxyQA7MpUFGTH4ipKX/FF48i90COn5Y1CLPA+04wopM+GrVXKmOROQVJPrmuNttm4DPylB9qecWt4NLLBgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 22, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"EPA 608 Type II listed. Facilities maintenance role 07/2025-present (May 2027) is 22 months, under 24.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 645,
+          "output_tokens": 272,
+          "output_tokens_details": {
+            "thinking_tokens": 187
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0029\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nHVAC Service Technician | regional mechanical contractor | 05/2026 - Current\nInside Sales Representative | HVAC distributor | 07/2024 - 04/2026\n\nLicenses & certifications: 608 Universal card (EPA)\n\nADDITIONAL\n- Own hand tools and gauges\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ea1de4e23453afd2749681f21c41d3bd5343dc7cbee01cc70ca62c0090610004",
+      "response": {
+        "id": "msg_011CgsbKzEt4NE8G4rbjudDu",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSvQgKEAgTGAI4AUIIdGhpbmtpbmcSDF4f8TQM7OCfgdZy+RoMc26wB4SI4q/j3ZIqIjAOUrdDHbUz267R0EdRd37s8HEtvSPOJt34VPWpi5XdfQ2YQNzgvDUOzf7UDavRKk4q2geQjw1D74cpUGt8ETLdPPI5Nra0FfmbY0s2Le9DLABBR5RzTrm9IDZC1pljMMm8OXLUy1TdVlSFduYzEwvh68dSteCIOUTp2NxRUbaU70teRJ9vQEO4RJz6cu2QPUDR/xfbUePYQqVvRHNd21GGkiFqkw5zRjYSmgxXJJkpTVoeOCBHSROpHruvrTe2Xm0DRdwN83ocevGfMzuK/aQqSngP2pLH/eA4etFv2Vjel9oQ8D1VY60At2qmScmQnRZ3JWjSjTLu+3k8BAq6E7rWzoV8RnOBJCFqzo/mwIWIhzJHgFQhkAXevghDd6KXn+ceQuIO8hUxlltUs+by0V5R3gOOUpiyDGlGXa2w3Gg7LM00gkqB6dgbXZhOkyf3F6XlDAS9ccfomNuKcpgnjUJl3wyQq9zXZhucLTa/8gSC0fx7vuBeul51GT7uronTevHFmPGNSMFkzzkSh/Jeb4gvXBzf1nWIR2qgzWbPj7AMokyJQ1J76Mh3ER+PVGCI6UAEx+0rwtfsRbMJtlNNtEpHWuBdQxVUWWaClyTaoaRnqpO2q3XFKfM/zDSFkYkyU42/twarLLn9UdpLrnthBSU/nCKddDm7VPxxA+p0pkEVxOs5CEcA26zUOr/mK6OZg7vYrDyNfSbQmwz5KkKUydnUYxIsJmiW4TiA5e02xNIm+y6H5nYtjbjxzNBQGpIbIgWCAPLx5GNtt6pwi7JUnYEGxz0VOIFa1mhVeurXgDjwBZtslEmdGu4cPOcKNMlS4V5BpTKZCZqonFNxe0e7WbtYbRff6zH7iNzXriHfOAMg2i/+CmmidPWQBAwb2ovC9LyBBWD9qz7+wjoN8ae9n+LqNOyn/FmkTyBKwYHNzmlfL5vuKrGTQW0o5MhaxrkqBu/i4YL4mHPRjygkwGOcA/mldKoDVfSbhXD2mbY5/5yQhV9HH+ILqXlmwrCKRfFGFNsFywAKvRnyyhESU2Wfi6TSOaIcUhDgfuJpkGwjFBalKERVRznIYof1snzIJ5ms/eVVcHkZexpGzCs4yiXoapcBTP7nXcmmKbwC3AutEa1J99Y1+dDvu7mXr4t/gcL6Qi6IwgcLiBEzAnVcphIMX4jovaCrcE3H4EG7ycRuByXBzKphKc2oa/RfnIdtwTpHkW2xAsxjXziHnehSkQy7wnXmh2bI+CYH0mYrF35O2CSwAM/tRbWG60tDI/FG8uyLqEPxaoCsHZO43+U4lrnq+X8ryEVJYT/9w+nscbo4pJD7mGdP5+98lbpTNNVMcODFS12FJNMeyXKGmHIxVZfYdKrwpgxTmBnT1hgkZ5RGfxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 12, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"Universal 608 card listed; field role 05/2026-present is 12 months; sales role excluded.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 660,
+          "output_tokens": 261,
+          "output_tokens_details": {
+            "thinking_tokens": 183
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0013\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nField Service Technician | commercial refrigeration firm | 05/2021 - Current\n\nLicenses & certifications: none listed\n\nADDITIONAL\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ca664458fef234afc2aed0540ddfd3212795b4b4aadf694c46f16c4cf35e959b",
+      "response": {
+        "id": "msg_011CgsbKyyWMjvxZRAmy4TXN",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSyQgKEAgTGAI4AUIIdGhpbmtpbmcSDFguT6ImL+fSh9GjTBoMU95dPR5DvIK9vCtBIjAz5KX8O6M92nfu8rizUZ0SN3dkmS06AFEd2Av645Uqo7f1dbRBh21/Xbk5Pxvd2Yoq5gco/rlvua5Gy5JV1GVPkw8zkl+AJjlLA1U4ZjP3ioz3IgIvZU/hpzGhTiuoVUOHGcwLeedc6RY1D1OQozvzx65b34hPQ1feINl8qrsMczWywgUVDRSn4b8aOPuycCi2rkhCDKfxigV2Ia1X3brsrh/JYv6NEKNpY61MkvtqXxEFNyKSSwCbj540xZcQ/FtnYscpaQta0qVrOm5Kt6P2HJ7eoIboyq3lee3B1oLG47loiKXtinQ8Is/+2trjtVnJjShMg7Qh9ZOTHzbxWYeJAT0wOU9NJTFN4uu4Cay5MZ6+yahDvZicKtnMXrxtfHIvyiBur+Z78iURZATJt7JXMetkQ6ssSBD7V+P7fnWYkc/5C8aIT+vPnpmmzlX7nZ/aOZJPxL1+LtgcqBUPesOjIotLtSRiaaoSnknoG8RNGCcIu9VvZqzVFlb1VTazwfhaZtAOJlUn9scD5XdSMzddkGly69Y0R6ozXPxp7OjI8MeYZ6zchSVMEVUlFvYL+Yfj0DjUrYUQ62P46PxAAj4MrzKNDUuSwTzc7Mut880zaxhxuZY61VAXujj/bzNeF700ZGjGSZZa6B/Y36tvxQASHStHQ2vOmZXi95CUFudMUIyxlmcUgCFn2JEb80GELvbwZ4B+KcguanxZpckgHWfWYzGAQVNrWUGaltATVIyjmsGkAuKeZ7owI5etyz6WUUZD+Q4/H7gDzYOGa32NfEcUy3FI9PqQQfKCz0T5MD03FrAfWa62AGyW19ebpa2VpjT9fDlCUD4Ta1SGiw2Nf/CGVUzbXn/YY7ai2kLxoHcm/RB3mNB62+H/Ms5Hvrc7ktg7ZUCehotYP7NWAjmcsj8fFvzxJKuLHusEfq7SQ9wQjoTzAoaPadTzoafDIdCzJT0wLKlngwcDQJajb35aMNadOJuRO0Dc/t9ZZgTh2OyXceJNell+ZdkPgrtXZ6LnGu8Sq3M8MzK46kIv4VQrz03o3giRxK9W8GeQflu+XohHaZY1dqjCE3Uc+qVwxYWnV5nndMZNnCasPFgyZs4yKyvB0uaWFlv5HsISUgoRuQkHJquTwjNCZEEp82oVz4yz0gVkBO4K/Gj2HhQbz9i7T/LYP/Fr9fypD1IscxJLaTU7mVovQrJEe2K0kSzR+wTlioypJtn2G21Lyt4U1daFTQd2Yy8apoqvDMze/D+DXIkvUIC34Qp1StD3zNO/5QRWIGgSYEGm0OmD2pRKq3S3P84gHXALdMdCxjwa1RM+V42PAoMXDtyGQcut8C1ecbF47UfE1egWOEwn3nl+Fr7wUYWbZeYB9bo5mA2tYhuVXPrt1pGp8NzIAh7msBgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": false, \"field_months\": 72, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"No EPA 608 certification listed; only first aid/CPR. Field role 05/2021-present is 72 months.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 608,
+          "output_tokens": 257,
+          "output_tokens_details": {
+            "thinking_tokens": 174
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0064\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBoiler and Chiller Technician | district energy plant | 02/2026 - Current\nWeekend On-call Technician | residential HVAC company | 09/2026 - 05/2027\n\nLicenses & certifications: EPA 608 certified - Universal\n\nADDITIONAL\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "f15f484251372db61aac28e370e5e1b44e752bd83af537a96becbab3e56e76ca",
+      "response": {
+        "id": "msg_011CgsbKzDthPa7pq2H2sBwT",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 17, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"EPA 608 Universal listed. Field roles 02/2026 to present, overlap counted once: 17 months, under 24.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 648,
+          "output_tokens": 520,
+          "output_tokens_details": {
+            "thinking_tokens": 433
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0105\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 08/2019 - Current\n\nLicenses & certifications: Completed EPA 608 exam prep course, test not yet taken; Journeyman electrician license, State of Colorado\n\nADDITIONAL\n- Forklift certificate (warehouse)\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "c95c545d794c0b777017f6617ac16b96a1edd65dd0cc3bcdd81312bfbf3c72d5",
+      "response": {
+        "id": "msg_011CgsbL7rn2XeDNhDHJy1JA",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS9woKEAgTGAI4AUIIdGhpbmtpbmcSDIe5cDDeQW0e/hm2NBoM7u//Uz29g0uXZgpkIjA9FosqKCKmxSd5Rd2ur7Kt40E8K+WqH3BCTZeebO0ijoJmSCPuuWyLCTZM9dl2DicqlApXzFJvQ8GKU4LTpg5qmkVwcaC4US5wJf8+V27d3grIdEOiX+boLrOfllWkVuwX3llakWtHjHSQbR6B4aQDHKv9VCASRDiBYgG2ZAvecNPzMOe9syUufL5Mw6ubLCulrX9ECYIEPJIxkRQsk76wggRfNSb4XcN0BZhG5dkWiCUjBXy+3sDs+hzT1RDIWmM23OUHKUq3HFe+A5vA7Ld471RyHKbDQQ7+3mXX/ljaeJdbaEnO3r7p23sqHOSrKpK3SEdJ5euizR7JzPQQR8Bowy6VQ92ofFHSrZsrxiFq8TtqsZps2aOjgTqW/MGgaPN+b8oLuUDHdDByClQf2g8NF5O4x6UYCtf9BXf/A1bahxUK0ZLZQxZ4lMhqLfFXgZ9hfHL1HJzzfFqmSUL7hY0RsM5wzAitmLusp+JRzZ5GZ5MK8+84Je7KKgELSGxuOoaigFaH6awlYnyPm36ZTvB0bb+/FJ3aP3U6XC/vId08r18HZBqc/A9acBBdSrwX4b08kZEA/otcW50L6aXqxEcnE8KM0zr1dg2hQbErhg9auFW0gg50f4nV3kFOusd9AYrFO0tFT05hztDjKAtKvWJ/vSUE3RVrAo38tpbpjsJ7nm0PBRzPt9/t9JHl/I//eRN7jnotFRKmD/gsBCV1iPM6BI2N24EcWHo5dYbyqic/0QXqfGHOyy9p2WFB56OMlMvHS0CldtzPgGIU6ji1/POvKZIWL3pGRch9zPkiHxtu/TsyfFZAmVAYSU5LLCj7z6BGfNXDrmrDoaHEuGlaW1O2T5JXa2z2wtROfbwgvywIoTvPfTVCanYvltcpkVzMeNXXOKEx97PCFsDtnPASL/9Lkx/jRRVVlurO4/DlJNEtZS33mkdxCK6pKJeiOKZUd7+tdc4+8dBLgyeVWZnjZJwYcwq19Wp0uWdEP3ud8zLeKG/k7R1j9rE7R405C14KQ5PZvSgbYwBto2WsvQNzSIkrNFJnVQxuuwegsOMcEB1pYltLMOLluh6kxuaqSYIZ8zQEX+QNB3JMSI/LK5TPrIBwCfS/8t2yCjIZI/fbvZJQnR/9nSqI09P6rJB7DAYXoBfr5fd/x2CCsOhfeDOBIcVdCNqckkpBvT4+2EW1zCakhjtC6BfEfV/V6OPWlMXe7k5df1sL3E+dwPX0FACRaBsu6dI8YqYNc1nybvrkZ+j5rTtY+61EjV7Y+JmPBZt3czT0i7/1FetN4X/E3X5DOXhq+Ky4pcxDt2oW0WvjnTfpwFLN+0xgaE0zh1skBohnfXP+uG+NBecGy/oBET7fqECDfJ1/K6bWkWBKYIvztrskT8x6XXN9TWBt7WWJO4789Il8zGFKGORpMnsJr7pxcJmi5IfgHIKD9ojRNeBWl1Z53fDelTf1rnVgV2toJMMfcgEOpFUugEhjclKfH3iYB+GcbgA/P91vN5iNoxeB2CR0nMs60w3zGkrsTLRYDg+36HjV1zD4FJut87jcD9c4WkFw77Q/WELi3GB7rwiRm42ShU9ZtSsUcDfNLdfCZd5VIZ3otUe8Dhl9PahS8Nh8vY/UNx2FfeeXZm5KOwvlCVu9XOdM5cqqqlfB6lbnsMaQTYCATZe9gmgzNr1XyUfC3244FMJLSbW+j+/KMujC2K+y4KNEfijSTqlXv+/G3t96RR8HnR35ANPYeECJ7m+aq+IC0Cc9EjyHGuzYQJHFcOyjbo++ssfD4U4idR3x7rj2IzDDyKhSZMWiGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": false, \"field_months\": 93, \"meets\": false, \"confidence\": 0.96, \"evidence\": \"EPA 608 exam prep only, test not taken; electrician license does not count.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 657,
+          "output_tokens": 398,
+          "output_tokens_details": {
+            "thinking_tokens": 327
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0065\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nHVAC Service Technician | regional mechanical contractor | 12/2025 - 09/2026\nField Service Technician | commercial refrigeration firm | 07/2024 - 10/2025\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Valid driver's license, clean record\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "06f612afd35011b87fd30927edd05d63af470c046af2a19eae9d1f2e8c143fee",
+      "response": {
+        "id": "msg_011CgsbL6eqhNKvzcLKfDPny",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.93, \"evidence\": \"EPA 608 Type II listed; two field roles, 15 + 9 months, no overlap, total 24.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 665,
+          "output_tokens": 520,
+          "output_tokens_details": {
+            "thinking_tokens": 439
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0088\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 02/2026 - Current\nWeekend On-call Technician | residential HVAC company | 05/2026 - 03/2027\n\nLicenses & certifications: EPA 608 certified - Universal\n\nADDITIONAL\n- First aid and CPR\n- Forklift certificate (warehouse)\n- Comfortable on ladders and roofs"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "24047619c741a53c1355873ee12239150ef19d36bcc698909c0253d591f48e45",
+      "response": {
+        "id": "msg_011CgsbL7HJY9qHMAVAAf5tz",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 15, \"meets\": false, \"confidence\": 0.96, \"evidence\": \"Universal EPA 608 listed. Field service Feb 2026 to May 2027 is 15 months, under 24.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 679,
+          "output_tokens": 597,
+          "output_tokens_details": {
+            "thinking_tokens": 513
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0012\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nField Service Technician | commercial refrigeration firm | 07/2025 - 09/2026\nFacilities Maintenance Technician | hospital campus | 09/2024 - 07/2025\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Comfortable on ladders and roofs\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "160de941b07a190e425f027caa3afe6c0bc58ff67e453394c94b3838db936ba4",
+      "response": {
+        "id": "msg_011CgsbKyzFbCf4vbWS8tnj2",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\n  \"epa608\": true,\n  \"field_months\": 24,\n  \"meets\": true,\n  \"confidence\": 0.85,\n  \"evidence\": \"Type II 608 listed; hospital 10 + refrigeration 14 = 24 field months.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 672,
+          "output_tokens": 1010,
+          "output_tokens_details": {
+            "thinking_tokens": 922
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0062\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBuilding Maintenance Technician | property management co. | 06/2026 - Current\nFacilities Maintenance Technician | hospital campus | 11/2023 - 04/2026\nField Service Technician | commercial refrigeration firm | 10/2019 - 11/2023\n\nLicenses & certifications: EPA Section 608 Universal certification\n\nADDITIONAL\n- Valid driver's license, clean record\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "8e30624fd1f4a218059270869bf23ec70118d91960091b54b745e20eb7b37b5c",
+      "response": {
+        "id": "msg_011CgsbKzCuPF1msGyUp7o4k",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 89, \"meets\": true, \"confidence\": 0.97, \"evidence\": \"EPA Section 608 Universal listed; three hands-on maintenance/service roles totaling 89 months.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 698,
+          "output_tokens": 915,
+          "output_tokens_details": {
+            "thinking_tokens": 834
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0107\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 05/2025 - Current\nField Service Technician | commercial refrigeration firm | 09/2021 - 03/2025\n\nLicenses & certifications: Journeyman electrician license, State of Colorado\n\nADDITIONAL\n- Comfortable on ladders and roofs\n- Valid driver's license, clean record\n- Own hand tools and gauges"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "255bf5c439f7b126275d4b7bcd60b10470f86b55860d4a894a76f150c30b8ab5",
+      "response": {
+        "id": "msg_011CgsbLBDBfJXhx88KThKgw",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": false, \"field_months\": 66, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"No EPA 608 listed; only a Colorado journeyman electrician license, which doesn't count.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 684,
+          "output_tokens": 465,
+          "output_tokens_details": {
+            "thinking_tokens": 387
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0121\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 05/2025 - Current\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Comfortable on ladders and roofs"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "352d0d8fb6ee8722c85b1d00f357bd5008b40ac11be943a8ea589533c9e1871b",
+      "response": {
+        "id": "msg_011CgsbLHSyZykFCWvtjEWGk",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSwAsKEAgTGAI4AUIIdGhpbmtpbmcSDAMclWbTaszYFHJn/hoM9U9FzKyM38R4km06IjCct60OqXTicyrnU+YjMLTRcxCgdwem/1WTKVNK1hZzRXH/RJueLMxikx4QBpZ9dFwq3QphcLAXODSuMcQeTotUil9nFP28TBaS0zpkhKDXRPAZwWk+94UuLdgPlRTclMT6mNjb/x1BPkOsyYHvYBVooZ2X97Wzhk53XU4X84CgQS4S1gsa8h+QSdXej2MWf2sh4nPbp9DwkBc2doUUgrsqyOTNU7UWOQ2XA4yQBkTmVwxLbesd0tu8Hub0RhCgVkimUiLkQGYHLNWplFTQFAPRtxqRRP3cVeIqswkdfG/u5Aqu6AKKltQQ7vZ9KUrpglHI37Fu0AlUwIhIVjdFCdM7SYDmBBzpAd0q2Jy8BibEj30iXMiP+Z67ivPOrLKrCL/Hak64Jez+kSVuWk5qJhW0XAVW+XYh3mTGuTBsTglK20WX9W+2KDS2f3lrMypJjT/WBlIzFcfS1bbiKfHQfm41fX5s8gcBpyj7LMqlxBPHFm6S3luFyAVQy1+hzdItz79DNMbSDEj+e6EQfVlWeAiJrIhFH/ifvohPWoJ6WwgT296DsX5zx+u1/rwR983Vgoz5gpzv5pDhqLRKhxHDBnZ8FYZ6HrLyABBiP8V5c2W1XhLtZr2hvtO4fPvdHRAVSeYAQ0PVcSNyDsbECspPpk2O6zWZa4ydIjR0jB+ymEvTTWg/nCjotGX4MWKV0qtxDnd/s4q5+re8YJgNBW+dOaLIGSUGz4aLh5WGpgiqt8Zrj1ncXlTXbIpK8uAqTXx9inDDjhLTnmKUZ/Lyr73PQZkJLpfuZNKEgWrm8HB6yznuvIOvgaCYFU2+wuYeURp/AgosPgCHl+fdEibcpfrKwIdLVoKZSHOrRLyyZomqZaVW5Lz2xxgrNQTiDZtWZBu4/i16nGij8UPcn6e8Q3c7CX8z3l2bFaPraTGvG7VohsG2o3osuvIDE3iUFsZw5fMedwdW2cD/0lAr/Jjj53m2TGcs1zu/p4iON/ioo6+QtCCzBC1/5/mmJ1OA9FT3jlwiSh6xT+gEAjdOV8DyFW3mNXktSPUIpoaXwduCR4y1PprHxmrXP9r05zeIgg5GxeTK6BDMr4aosl5xWWcq8gD8v2+E4EMApuRhvqyTh5yQ9DsifJ+xbL786UNsNtZZZYo5CWHf0GdKoCyXqbISfKAWzp2N/wrrhddQCdGh3nYRat3+QXAjjNUhuLMTLBJ96j/rrZFq8EJfyCkLuyb3PiGbN4H8QAvXkVl/4L8KPx8AOwEzuMvzejdDWjS0HwfW6wHC65lU/SLKkaspVNf8K5CXEEkpwqFrI5WOKZsLDzyPgSe4d+DjhkzMCJK5VlqxitT1069CRjWmS7hYCGsj95R41w8zfgJlYoldiGJJgBu2LijrWEGaspAKapaZNYic0UiqhNRByPiGXkOKSbbWah4sB+mz28H3I0Pzpq2IkEVbyt86Ib4SopeByetIOB8DwsL0v9IgnjPPrC0ef8sOaDpSUoWZQjEGxUHAYleV2VhRzti2KMV4RxrxsGRZ1uJuhZmnE/phBZNvWSTDolzBu5Q/4zvQgOY3THLEqCFX9fg3YleM+aYkCt/2nQVI/G7WTcSyeT/s/6vmR38JveVQVLXKAdob9LxcWLU/yFzrSNqPtNaxgxuMw2lEqWCEEojyujQv/5gWwfGCJNejL+DwSv6Pxgrd3sdYhwMx6nYxG9tuk82y+35QGM3J/cKFmnSrFu5M0vYTynS0166p6gHz08GFaUR1nnwqpxmZ/7n64ntGH9VG16uGqhxkw9SJyzdY/2BY2NzQiNcSoUhSjv33V+Hqr0VtO12G66ZR6RYtYb3V/EUadTAatLyrb878wlqX6Vxhoum/jkg/SCtw1GgpkCim5gNKoxMAs/t+BI4g6rVUizxCKRgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.70, \"evidence\": \"EPA 608 Type II listed; facilities maintenance tech role 05/2025 to present, 24 months.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 622,
+          "output_tokens": 394,
+          "output_tokens_details": {
+            "thinking_tokens": 312
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0127\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nRefrigeration Technician | grocery chain (store visits) | 09/2021 - Current\nHVAC Service Technician | regional mechanical contractor | 07/2020 - 08/2021\n\nLicenses & certifications: 608 Universal card (EPA)\n\nADDITIONAL\n- Comfortable on ladders and roofs\n- Spanish and English\n- Forklift certificate (warehouse)"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4649c1d208ced212a50f6acfeee9343a6a6eeff208cb126a218d6e62f195aaef",
+      "response": {
+        "id": "msg_011CgsbLJef7nh3G4RFx6SiM",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSkQoKEAgTGAI4AUIIdGhpbmtpbmcSDEkuaOd23KP/5penLxoM8bYRCsi2GpPtClFRIjAYrFmERQ1rLXV4ICHp9pmk4hRiyB1DG2/cy2tzpKPLwFJAwXPEqsJkbeWrl0vQ8XEqrgn6ClLzKnVq2ebYRGbtKlPgrYuDz3biLQDDlJedHbVP47za80ScHX9I3omY3jEP5u+CKvZ619+tpleOhdl2IDcC8tRsLycMnyKJOFklMwlrLH+Na01YqVvEbLjIHIj/BVaFIzr3cXrJHzBq6D8nYh835ccw38wgxXblb9MPTFM8BA2FmR7sx3T3HrUR9ugq/bqD3efWYqsLJKvjyg5HDuwRAeyQVMoO8yOKK2CMlnc+Xa9gfHqD1G0XuKraRQQOIoCUi1yEaMnOOcMqF1Liu75GUAfNhdXJw2o7B0TpYpnKICwLGZfMdAxTpmwnVszgWtGBCYrJIOjMLF8DuTdxc4xLhwZuUvm0jYGXNUAfk1dblOxLAB1eeg9iHQW4UhmlimlZDBFHKuYo8wmUBQDD2frSj+QJyYM8oCEUMeHxoh4pFVxXe1SmdMejuDAAyDta7cHzeI7KVMqH+/m3jo5FXIctj7ThJ9LmWCkY9H4lUYh6Hgh3+t23gcc6wRtNB+5EFiF79R6ZbFrU7/ZcV/+5kmO3oBG0rkrg6jC0WdNQhBgUkKMAjMYqnWcrda2dww0HZ50Zn6YFAdmqksPdRytCcSXazPC2a+z91y0DcWZESpxozYSfOYFfZikdK3onv5l5SJoCGufaSZ3PRiOP+8XQAzcjTT62DaY6CZC1GCeM28/NtaE0O+0aG3V5VgghendkQH8gQRsuZCdTMAXasgHwiecEoP8Ycl4OzEHUM1P1HeRn9tDLmRpXoDy4MibfvvKztgFqUHMXnqhoOvvTJgRlBS4rN+KMyfgGm4ezh+ZkHWUibWUA5p3mmfrj5J3G8EQklG+kDd4WLlD2NS2ywPfkUACOBdUd6MO0abZCEgrLfmWbAGyaQT29sMW9BeK4rwI7W7hNZZuwpfy5ZGq4WC2qKyozfbmTb7MlzikzmOmf1xd0AbbjFK4Vpi5/oMy5Hz8XgwoiWfcSNHtjk8rUxAm1OKIwZYoZyKi8q3t6xuCUXMLDulXse/UUHKBp4V7UPSZI1UZR88U6drbRr6gp20LYcDQqv6/NpP/DVmbbxmy9ViipbuWWuqt0qkUSxceZO30ebB4wawv+5OVhG3NBWSOiFo8aYBdA+7bVOyeXeK0prs0c1iPVJ81FpYEWQ6F9bGei+N5QG5wL8SC6VDFIxsx6TQrkmNkahM8SaG+gaUA3XgWAOh9YDPMDGm7JII3yEJh+nCh9o0r7m2ynJxWbTrNZyYYEgN3HUZWXLsWtzOvYqx1omDazg4IuR6Pv45GYw2X6J3A1lEonip1lR0n5B3D3v5FfkzcMZffTLj4vcUEdkTT/JbkMYcSiH/hT93fQAw6LgntHrbToIKtK8aTf+88c5f+unpXbdWCe9BiVcSQsDheK0gzHIkOEyZYkriua0GVrvwjOODYvtiq2oJFD72561u4ekuENO8Nc2e8A2XuIbi47adL3tNxPnBidEFg3j0Rn0yNNDWnBwjT6P3yQEVm7Xy6lnuRGuzRa8YhlN62jfT9BzRJFzDfeieW1lbJqAFwvPiy5+2shgb7A+eGDveV4t9U03C15Mtb457G+jxLLj9B550Tt0zyDSOA2mBcdiVlEGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 81, \"meets\": true, \"confidence\": 0.95, \"evidence\": \"608 Universal card listed; refrigeration and HVAC technician roles total 81 months, no overlap.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 681,
+          "output_tokens": 383,
+          "output_tokens_details": {
+            "thinking_tokens": 308
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0191\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBoiler and Chiller Technician | district energy plant | 09/2019 - Current\n\nLicenses & certifications: Completed EPA 608 exam prep course, test not yet taken; OSHA 10-Hour General Industry\n\nADDITIONAL\n- Own hand tools and gauges"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "66153bc016c37af1fa1d1da6829fbfa4e4d178a227430fc02268f69655a834b5",
+      "response": {
+        "id": "msg_011CgsbLM6ky8wG4dqfFAmV7",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQShgsKEAgTGAI4AUIIdGhpbmtpbmcSDLgT5iwwH2+mrENgzxoM9m/61eAuOgU8uwx6IjAj29SwK4pB9LVkYImusTRZ3+6z6TrL6LyHPDDMrJGM7rCC5t4r0O5sMQ8K4MVvrUIqowqXEZ/9ISQ3XHLwEEZsHhecjxZGyBAaLsPOjLLkBrVaMh9kE48fP2xdI95ayeKazzBs9MDpzgF+0YjJSdGbO7TkVqMbuHnl+bkX1jdEyYxXWxHlTlJKfe5nLVtclZTSx9wo+aNtDIFdVah8s5vfflhXksbQJ+aIuwzz/CpEW/elqfXGzQwE9nfDpJophAVz996fTni7zOuafU/GuYh3KHzUtgGFYlYVvwEYyyfs4dxI8EZNEo2r5HO+Dr23ezpDSHJTGBrOh1d4y2iapOHuOluPZXG550Ima0nGCCh8QwQFv6mXn0BS1BccbODxPR88NpuaGZ3S7ZoYxOPCMjamVX0iLNgQurgqqIzHGuzuO/VQ6RsBUStz9B3j6eem4klJPoWbE6kfSJmqkGwlLYJgjd949ZOH4zEQ02L/MsMjpqkM+mJvT7on/juurbva73bl7K5F8rg/Ta1w7qGlaMf9LYv5BFp+z3Xbnjh5YHau/yrmmNuE04FNl/Jccn30AybeKQ6RihRiDEH35uB6xCzOFrbpJAXvbT3gbTFVs2N+bDxR+vcsPo+kjUFDpKfYZIz5QQ0DG/eOK/BbHUTqvj0BatY6CjhnwCN8VtATNMNAigLtuPP4jULGg+MjzGbMUCOSE2j96IUO1nm87r3GnrNi6QNmoyTGAn0s1wpDM1Df6b8/sutOq/lzFghVi3FP/OB6NHUZCR7LEHyZnetDpvYkOZgcPhG9AehEFSfutXwod4SKgmUk38vkhMFgFeZaH6vjAe5QoW52NedXoPqqHi20oYgT76M//VaxsPulShHxpulRViS8PWPLXYrcDiKFF80FZUh+103YPVDvySM7YqgbYScsXLDNxOCd6eJGuJPlqfy2v9ng7DIQYRvGPUeXnT2i+2rBfOP0ZexdRhvTdJayVdwC3ABPomIVwR4vm07NlYW2U+QyigB+etTuoQtXyUI8a7BPhC9hilOFdL5S5qonmIobdZUP8R669jV1+X8cfsFgEqC2hd+zK+BaWwVKvF+NEtoo5PtwinchJNxab5FhIMHR0LE/O6borXYSGuV8LNWi5cfZicZB8GryDKPyk176b8WH0xpvw2uflpi/5XZFPRh7hGa2wd4HupYL9P45w5FdThVNUYHOxtY/c4FCcPGsX0J1fRfLn61CjDMiIM+KU6YZKqB9RHGqD1wl1F5Z24UpGeSJTDlVTW2frWCFj9GPrW11IvTLg9QM0fZALf2v20PMzmgMyzVEfAeLMCmCEKNHffFlPq4SoxYW9D+uLcND+P0eHVPtjsRqMrCZEbWHqtmqDrfFZEANhXGIITmfo3IvDD4muCwwlA/FFDAC7aN9ZAnC+5Fcc/62xqj51fH3G6uxpOtRCjXvDXNBGkILMEqQfgrNUcKuPmHUwQR5h7ttccuyUvwCtwuuXE2ufIry80QFNo0UPNlbXth8/Eq1U0479ubNbnxN+p5LSmcPh197xOqtST5zDt0OAGGYbUO0GWme3O4HfhL3XRenUU/cy2DVYRYcRMewQ8oLmaNeSgw8qpJD9XOaVjs9dVaKojOruo6/vjeFrOIP49fEKepTX0CrhBnSjY9T1aSX6Xz6bOL4kaafxaIDfBb+630/R0rysLjAGtkm23pa4T9TYgoLTB2Zhv7tCCM5cWPs9+iPcqPpuFq4vYnkPNg0gp7PzwSVWnu8aFgWTb45MspwwrzTQ7IS1UNfLEjpqSgzbBc+lSXzEEAgSQ+WBDJYNVUV3BLEmj7b4jvjGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": false, \"field_months\": 92, \"meets\": false, \"confidence\": 0.97, \"evidence\": \"Only EPA 608 exam prep course, test not taken; no certification held.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 644,
+          "output_tokens": 390,
+          "output_tokens_details": {
+            "thinking_tokens": 320
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0150\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 05/2025 - Current\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Own hand tools and gauges"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ddad812e1ef521436813039c92d737ab0a83b13b349aefc6f862ff26e186c4c6",
+      "response": {
+        "id": "msg_011CgsbLLW2hMPUgzJsVoDvD",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSyAsKEAgTGAI4AUIIdGhpbmtpbmcSDAx9sDfHcY+FXBLIoRoM/XJ+cknq+KQU1IBcIjDOYBYzq9WX13pGFfxAe3JUZ6rhuBICRcflSqUZCphx9KDy94fz8FCmL+Fx/ktUnSsq5QqD9Cw+wwNbcNe1vL4GTEOt7asoGEJTCZkFjiG2ZXuL/uJONV/HrmZUxykQkrYCEq8ENgF9rtYWoaWy1PhTdpWjRgXUCaTD4rvE0STd76Bozl9RqOPpSHIEteXokJOwm56D/fJfMnFNSOMgzGs8OKbSuRjGrEFjVM17I/B2UeJGXgb+bOgk3OKvK9hCz9TgcdG7Z9Cw/vRAwfpwFzTj9ckjEdOUhovuJAj2qO9ru78Da5xlTJlPsmpgiqJGdMb24uolC6TPKx6uMoVQby3HozWLvuxtaWFEm3LPQ7PgFBWvAk5GZLWZhbx5sfC7RFXiLksEv56N7Dh2JDdgohD61ffGLastqd6XIFwZKocB4bSFJfBPHzbV5k97qR6/6VwcdPiMxQ4GAsXuz1s9s34I7BDRHGWbXXzhb438ItsHdFtoTph9XBIOP6drUXv2roPTLImu++aJa/+FR7ftXmWpzyQ1ofwt96lhZ/LHtLPu2jXQsURY//0L4F4XHr+NWsbyH8UJq2QPUgrW4MlrAiFKxpR+4ZxVvfwCJcnw/OkZWVvYlengqwMcwrWcsOPRvuxfVDxEXCwTXyAEKoZQMDbdcTrIqWYLAVhfrTNnDufvLDFa3at+FbWeMpMwZSi3lfE+Wmiq0RSxkJCj3Cnea5z/a3DJCDfaL8bZ1qZf/9F9uhdFKwDuBtOickrlSMyfaYqcWA7TvEKexRh5E8nrpopm4HRxGrLjTVdIhudDck0YPGc30N9azbasRpgFO/65aY+VSCKhPYDd3POfKFNSXelBjnQq7vLm3/5Xs5ZKN/1jjr907wt/1IXhvoj5gFJLPa4dlaXklm5xtrEEhGSEp41V4FIPEuJrNpkAFqZN4swNCGBnEE+mGawxnGTe8bbQy6zd4FAaOAMKpWWTXRAVps0SrMSfoj8lqq3LCIMxhbyF0/sVMCHNDZFHwMfmZU3X0Ej2qrFhDMuxqNZGxwQH/yslRF6pFOypceDreo9SmDkuweWaaHxKncwollMBl8+pZsjFIMT1/UZ8Lpf1/Nwy0u8l6V/oB5h1UOISCxJ+4WXLG9LQ4v0jiMUesOrXlxQTiO0hD/ng0wNBKXnHHK7EvRy13PAukLqHwfzC18PO1IL1SXcsKbK7UzMRfsplYIjoIjmGysLdqsl2JhPlFNn1eEyjrFuuJq8gfAFC/UENreqGRKCgBHFO4Z/uKz0MsikL+/w7Oj+3/3W10UWvnX1N0rgG/kY2B6/Xflo+WKpW7+Y4xBVFpFyEVNCUSs7rOlrROB6+J/E+LkX5TI1IbnrXX9knx6HUEszSyAg5IfU99IgfxBD5AfgjWYpEDf4QflGAFn0+NEVU7ey9aA5YPrOedLSjrfXPmAfDYhPqwFb607ufSmlTBYJE3vwNZ1VcePmj/Xxx5EmN6CLpARYhVibYb9MWS/M7Rzmt4HbnrQ7Vj1x3qLGg3Rkbh5Y2QXGC5jpJuy9tbCPIcYP3/p16HiwDgmtaahWfmAXFKZK5PsQAtbjXDzjEI4/uIZzkcqH+KrqW8yp2en3QCsnRCibYw0rvfi4TQz1CMxDEO6W+S/59FsUb57SbHi4u9y+qU7xUPcr5jFTgMKI5oSlhaMGI5H+xNAYuU1ZOR1ORiWF4U0npkbGsFHtN6JR/gGduRh1etuOmrsM1Pc0ZkPuy5T+uzMqMGWQF03G773AFpnP38PHmwIfOKdSFNYJimP0FVzOoFvX8PfLQBvEf6KHD3ZwgJlZbtF/hjarxmMLoiQuXMFFTs3PZ2vEMTxjkfuuC71p14a8wzQj1kCpfCCBeNN3GvlQVdopx1/xzpihbGdn4NiqO9B4UFJWzr6zDp+phGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.90, \"evidence\": \"EPA 608 Type II listed; hospital facilities maintenance technician 05/2025 to Present, 24 months.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 619,
+          "output_tokens": 391,
+          "output_tokens_details": {
+            "thinking_tokens": 311
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0195\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBuilding Maintenance Technician | property management co. | 02/2026 - Current\nWeekend On-call Technician | residential HVAC company | 07/2026 - 05/2027\n\nLicenses & certifications: Federal EPA refrigerant handling certification, Type III\n\nADDITIONAL\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "e072a99932c278016519833b922b6aea627fd90b93e876a6a8550f33aea82db3",
+      "response": {
+        "id": "msg_011CgsbLNTri731CqiWdwFgs",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSsRAKEAgTGAI4AUIIdGhpbmtpbmcSDCO6IJTgjR0su8HnjhoMhIwesoaDJBpWxNBjIjAYMhwKrAj2U2NLvMjT52dwxtunSrNcTDu2C5SmlkNJsrNZ1iKDoRHR42/pB8CEGyAqzg88lnhEVyHNnEYpdd5nX5jwdxhARmaUjje4VI80xDrQcVCMNecEwb0vpXbTEqONnEu7AEnk+fvrprUmEgOt9gbv+8v6DHIcKQsKhBOTGw329GdtZwvz3iyu9yIUmDeY8RcKuiWPgWEYGEELJgNFuXKz6FJKAcHHqD3sNKdnP/GLION+Fn9HLaPRoSECZ1PMhi+GjD/fq8gOtHKJPm4X1uIvR9Iim+GIH6Ymf9UtxvyBYw/1xPZWGn7AGsh25A4EwFoYsjElI/CADRfwgH2EHkOG7pQySU0lsxpVv1rtcUlRKaZeuqZWfS3xeL6xZtRURmTuRtyqaCHdel/Nq1705192PTnbEge39CjggIpsUWWzf+/RIoYStViXc4MQUuAl+VdRQRVccvDPWBKVFm5g/YDSoo+uQrRuN0E08fDxmUbMujJQ6DGc1zpL4hfWs9XSQr5oWb4ouPv9HyCn/AjV8BrFhi+T/T3uKPrU+J39SvW4n4GuS8kWOq8EPXmjqfoa1doADhocy/XhLm9g5Ai2Zjvm+NgcD5bG/CIixOSiyUahr9VduG0hyBV2CkznOHfJTVy3w4r38OX6ED5cjO+fuW9o8pjjbM/0xRExjb26EMs3gDIDBvpvXo35CsNfRa2d4W5uZpli1mP2sm+mw16MMpB9V/TEsotZl6+VkKNcaHAoqAPslBiQBcNtDsaqbtiR8BH5Qw4f6VPFXn7mMrMvzzChVSljAIrxLe/RoCNRbRqY9u53H/p9eLHZpuO2qgUaTXzA+zql9VQhKf28g00qyhyJF41u5qo878oy6bLIXcjxkK5IZDf8lCa3RJHyRPYjwtnrmHsOqOosADGuVPDC8jVy8eqNG2GLj0nLq5YsuYKauUNd4t/iQpDgORe05KSjqdbJINVtZbmilXSWRMBAEwo4al6nw5gMYGNt8n5wcr/CqYWgvEUOkEv4fD570iJPF9WqkNw+LyP4EstlAhSCiuBBxSTwU+/HUUKScVZuIAFsDjHnS2H0TUgc8T/f324S15W6ItsYTQ2kcUXGgwtO725Y5tRnfrUkc+5OG5Z95+iNMrKpJnz8z4+H8gHxaNcun1m+24CFal64BO0LnJFqE7w6ckW74RYZUJTaPYCPlGvl7MQspGPfn/K/72pvrsjk70OHESmF5Xi0d2ojpg0lUbuj38TFjvONlqirdojatWlQwfTkeLryFZebzbuU7kv8CtMNg7OF8zqo/q8xR+lMF6Xpv66+MjsXmmxb2An3UfTE7w2z9V6MssTL5HO34mPx2gUcsohiC8rkQ7aLShtjAEM0vimvqgaW9iD1llrOHN2d2fYrQ056wm0jWtxwMtQahgVVd0Ic6OB00GLXqoGKiqlNuVlLDJg5jBVdhgmWYNCPi7iG8laKfvau+6h2eAbTwnx0ieGJVPpVQQZLXFiaHHfMjumf2kiH/rs3TQBbBw3UkkkDlNJBtAYxDj3/eBcivnk68ywYyBHq0tZuRampt4xNvlIkJcUXTVKGYSp+ArBc/lclx06csM9Qb9mEowJEOWOsnwvY6sTc+6LAh68rO04Svzck4rIswTErGNpHzCdh6QkK+lB9x1B+zEaXHFoLHxebA8dpr8aFgcqwOUPstBDL2mstB+Cx9kR4olelZrKiQmgAem0G5fmUmRuWprcvlKxVgrWoB0jn7H21bqp1SdJA2kOFcoSAv+3+KdoqZVenO5nHJiDn0qCttXq3wxEn6xlwA3l8fzjLpHm1ifrMso/HyVujaITczag6efI1NDtDjd8ZDWxTdLYkXAycgYpzayLlrjR2y7Zv8zBPI9qVzA4nLGKYOSDIMDsvo5CLOwwJ4p5WgCL4QJJA53IELySSQnFS86Hf+we7wr8EukEH7SVE6etyVXKHaSbAatz3buAbhmXZskiQWyq4uXmdaJQZyaKtvna4rAKtCUyyc2kBsM4Q4qsvMIv2eYcrphZG4oYb9rTMjeewXrYH9lNG7e880NT1PFMAXeP7x5y2WMO2I5B5wTHzOl3bS66GDjt5Db9eK4yGJw0VZZirgjOlLwg/yHh3/29TlOM4nVB0SxeZPmge5VGAWpSW4sl+xpN0Bervw7hkzOWYG0KDRBetbdPTv3G+AZgNSzI7tYEc4NTwQC4P539L/clZoNArnF972ukWC/t4+Qh1qVPvOUsA79RW59M9ld250tRuznJpWnX0s+nnlKHBf/B3Gj8ETOy0ORIFSHweYQtMiEi0kPc0nZdVkIR05EkKO04keFC9NbrUkvDvoti+bYxcf4KJ+6GTROh7Rr9pSTIbMR472vTNOP16Lmz8wsp/dR7NazZoElq2GSEQsTevJEUj/A5LBYa2hjayOxWm/ODQbXftvgPpNIjdmT/lTeHp0M5EQO7Xv+OglU952PLyrYlqWO6yOd7FfoLkHUkgr1btA/ApcjFy90B3anpTzTK9qYs6wuOMejP4hzEt2jhKrPYXTi2U1E1vNuhly4nhDjsDWgSQf8wKKID3GBVQvqc3YRRj0n2Synytw1g08Am+WN7qU5++15MjHvFNSt4M4IPqrg2s75OzM8gzn0yzlVNT8KWnSDa3ezphhOeKz0suQNaHYDfHGaH4qmS5lATVgQpqACWn45HUYUSY4vEdXN/ow6Cw7+V2px7iTrWChHMbmzJ9CU5O9ZrVhqkYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 15, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"Field span Feb 2026–May 2027 is 15 months; overlap counted once; under 24.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 657,
+          "output_tokens": 696,
+          "output_tokens_details": {
+            "thinking_tokens": 618
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0211\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBoiler and Chiller Technician | district energy plant | 06/2026 - 03/2027\nHVAC Apprentice | union training program (field) | 05/2025 - 05/2026\n\nLicenses & certifications: Section 608 Type I and Type II (EPA)\n\nADDITIONAL\n- Spanish and English\n- Valid driver's license, clean record\n- Comfortable on ladders and roofs"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "82307853df325674e6d52d989120b82454708f80c936e9a96bd6f6e2703955a1",
+      "response": {
+        "id": "msg_011CgsbLT9tC66nrvmFTMp24",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQStAoKEAgTGAI4AUIIdGhpbmtpbmcSDArvQJHWc9wO6oYZcRoMIqCvAHeLRjep/mAvIjC4WVig+H9lr/JWuLxgyrkzY3m8pqzRdr+iPNJ3EmBg4sCmGbZf44s0pfcVlCxaa+4q0QliIHD9dg7UA6Z/PnH+X7dUVcrG0Rjh2ZqRnTfjNkdDb2JpQYvearWFMUOCyXL6UzEuqcEf6lm+Kz+NwSb4PA9I9YpVELws5juJ76mOzK0irIuWHOM6TLa2fAqT7YzWgIV1hpNGMm45GA1XNs+/YQ0wmymLToTdmlO+4wlVtYU1b+Lu9WpC+B61f93AJUGR2lJTzei6/Akh3jQuxgYxbL32FarOMdvcloYD33QxGaKYouDs8pQXdxWZeGR10UmJtijEr1BEa4/nHio27WcP+OxKvXSb3zr4uq2T7JFurHTzbg+fihHdEJBNQwkyQ9AhF39cB7D3gfH6xRfgp43xdr5taB+pNZTjEGIUB8SZUWcQjzW0Sw0Ptyla7Ak8M5VcpXZjK+mb9qwL+tAJxl9I03y2DCm/lSIzuzWRRvNgxNFKYf7sK8RfhckGbNimywLsrk9hPBtetDn5tosiY/EEpMLosAVUkkGbtsnN5vtmuK6YIqzgrKtAtsG2xQ4Kt4kz3OWOTYdYroIGt5NB5VavTpT/Y8+MFqzir30CYOq7eJ+oA/hUE37sXJq8hPzOb5bhPyzAnPeSr3EFqrLnkIczQVZprgoGhfScwWFO18caDn++BsXsUeHT5vgbCnDRXcaMSKnr/eSzln3T2m4xzLluFJ4kzbRntacO1H+r6sSCi3LEJG8XPJb65nVMCZ0qsNBBUo11818R6K7LTZVQaR0GvJfyxkDrCZ2Xx2wDZs8p7pjGyzwbkqU8AkCXuM7VlRoPjqVerAgGoNvWKEbzcnxVXglmIK4tNz8KLIQZwY9r+kfRelQ87Bn2vWIO495aRN+YCefL5eErYOIZOKA1R4VdTk+OI/94bVyeMFcAwrzwEc+cNwWgi7Fcij2Cx8cL6blOoISKOZBpY4YKKt2pMQToM4QmFCfWk6clX/xLbkdEirj46fV3cXTLCI7w74xWT3883aBqMpUNdvAalqvAIs1u3/5G03yt8KKg+w5Jco/dsTU4BNVev6PG8nVAsIGXre8CwXlhiixxirnz5ubR4lHAifJiaZByO2+0JRKseKgy07DZdLrTs4LhlwztQeeEQ5fZJyiDqrsfGDYWEhukCxBHfkyYe1N+0h7z3MrO4L0QgJIv8REcY+HFJvzKK5OTg7HmM54EzyZk8MiXsFf0L2fVqm2XdPiRZ63sjWdrdmUJRPciGBJzevh53LaR5baFHbWF8837si0auZhVSuioU+DwSd7XmeJ31r2OspM2ZOv7u5UmLe05tLWU/dtUc+a44jWFJbUcCojGQAoME6umNsmA8nWl7W3fW4dm4YZsybqja9b6Snsb0cIUD4E1I82fb5699WiwG0ft986OiXQ+cKauh32gUp0VZ/wFCs3RzHD1919baZQxEDE7vdHsrKeVeCNNU+hV4viw69AdjBMbIwspsUuhhMzTG/Mscw9Mn0dxjkFfxYDniPpMATM7XbBCSp+esHVxEjABmJQT7hqfIkyjnt54iIie4mgZ86C4GPHkVYL/EArlHmnr0ySxpAvmEkdJmmxozEdr5SnTtsMQ7WlftOWgxBQ7rupKGb5eSMJD/85+sQpWrUg3Boug1zdttMScwxoraqQ0pNtj66C+mFtftwaweb8tbwGnFv4aoVSdSiOa2TQYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 21, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"EPA 608 Type I/II listed; field roles total 21 months (9+12), below the 24 required.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 682,
+          "output_tokens": 436,
+          "output_tokens_details": {
+            "thinking_tokens": 356
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0226\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nFacilities Maintenance Technician | hospital campus | 11/2026 - Current\nField Service Technician | commercial refrigeration firm | 09/2021 - 09/2026\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ca3ddf3e7a294882d0c4ca1c1f0d6069f070b477a0122183618638c69642b3cd",
+      "response": {
+        "id": "msg_011CgsbLUtZnmyX3wVm188mN",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS2wkKEAgTGAI4AUIIdGhpbmtpbmcSDDJB0/TH3m+Xvq63khoMXd3t1Goq1rl7lCXaIjAsNwiu0wNaKQ8LhPTAiGm2qwnSOnoZ0kcdLFrRgAeBJPK6mujOvJddx7GMp0oEzwAq+AjONzJ2bmXFeRrAhaDBiYXSIuYnkki1a59/E8MFi++YRLzzbccyopFVDKt9Y/OzX2VW1Li1wtxQB7cpk6KXEPCvydgJ9Jd6oLcMMEKfuvePA6KVkSDauCm75niHNMSvwPPQezRilm9azFokGhdM0L2kgfgnMshxrXaEsIrv85Jf8YDiMSO+XB/yvC5pxwQuremd6F9rjgiDqMZgNWipoB901cLGVYVRWaMxDW0Xi419A01xC6Ce5sV/uhK/6FfiSD2NFhIDBG/i0TGIPY7wYMo+Th4hAonUP5yv7fbVmiBRRsB9u3r1TBFifKps/XU+c2MYQ118Duq7lf/+kpbSRUFg37t1OF0HLBLGlEmuNDI4mHw+yfvjnMr5LnXhZrT9eFLuDFxX2OgCXHEeUYU+1iVO2ruiJiKOBbuU7PlWJd7Fr4E26tFn30spgwfvcosIxkyAbchgQBVsTknkCPsVonbFjR3238cYD3+stC8WQ7F+uVhqG+I+6Je7fgCacN2gtW0TyuAW3EryJH52G27KNWYgqkS5eeQAXA1smdHjHjrnw+z3SRx6nvNvpJkqStBeluo25TLGLYK5Q9aIFLlHrw1JMIIm5elkrP+B/+SkafOz2qxoa3AdKyhBZISXRcUR4I1B3eNgGUBywWSVNAHr2t6qFw26J23MxRtDCWfkQcEwFqLvHNSdQPRyVD8Ol+hjm5HZU0XvsjSKWEop+W/vO+6J/vvfdURhHog73GgSpk6mK9IE8x3O844m8DPdalz7fVWNMXVn9xS2gysTsEZhOPfg7nbjLuFxt1JChUCeQpEr5mYsWON21gF/EGFraCtxHwofUD6v7SN7lXapc5gKdstLAOVSjUKfbi4gnAlqcfqxE2WG6Jx+7ExJaKTRhGbWc2EcKdoJZ2/7Gre4kea8bn6PpefRJvsqqNN/gwWPGUFNwIBG5rYE6zcu/CJttcuRO4CJ2YZh7Ry2izO7rHilviQb5r9Bv4T580M0x1jGt00Dwqd7NPFK7VHE28F5VcITAOWJjDvZIO6+UF0LBZzPL//mwM6GKuc6/zbaBlVIauY5IWSX5pI2U5WeqUjerTh35klWEr6UMJz7j9s9ZLxJ9DY7yI921jNEg/IeOgKiMzlkoelv2jh93HVIaT+RmOArwJ3hNSErssyAfVVbUoR+WK2xDXhqEr0TzvIvGza3YvibPGYht4JkZCsjriRr3xB3TBczf6/Ep6eE6zoRDr0Q+bLRbzlpHTznvNWjJQvjjF/V4vUxby03a7+0wNiez2yCk4L+l+b2nX8ePreiMofmdNoyyAjEQNLWIrv+YMzuwWOihEgg38p+RpS3Zp2n20ik4Jex5Q1BsE3yEFgc+S+ETXthVAGJW9fRguEA3uiSU0UdjxjmPbBDUFl8TB9xFtj2FiwWkaCkn/jfnoIxhlVJHFasnNpXYahiH2vcIVU84VQvbjy+Y7Z//YFVnK/I0Qi3bFeDJlBgN6pIV1j6JkpgRu1IH5+g1s4u+ooGlNZdu7zESpUwoCw81jnTGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"epa608\": true, \"field_months\": 66, \"meets\": true, \"confidence\": 0.95, \"evidence\": \"EPA 608 Type II listed; 60 months commercial refrigeration field service plus 6 months hospital maintenance.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 647,
+          "output_tokens": 354,
+          "output_tokens_details": {
+            "thinking_tokens": 273
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0232\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nRefrigeration Technician | grocery chain (store visits) | 03/2025 - Current\nParts Counter Associate | HVAC supply house | 03/2022 - 03/2025\n\nLicenses & certifications: EPA Section 608 Universal certification\n\nADDITIONAL\n- Comfortable on ladders and roofs\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "01b9c9ad0a377af5fdc40512e5d3157cf4563d235c7c87f1383fafb3dc852817",
+      "response": {
+        "id": "msg_011CgsbLW6FAzPbTD5H8gmZ8",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSyQgKEAgTGAI4AUIIdGhpbmtpbmcSDEJWyYAQv0fDqwX0uhoMveHbPzNQcEXP1iSbIjCCUJZj9rXuOMeza+Nv5jNWuPrAQv82H5WtPfs6/tUsOnqtIvIIkOT22mNgNEUBYloq5geZveFTMjLp2wJRqgrXRkcljTt5H5U/2LRVCGsttqTTNjMaD4BbMCR6Ja63BRHqYgDV33DVevurqaqph86ihZq516bTL+BU+frxJvAAMfRL0l8EK9BwFtnpokSx1+9J94K/7b9jyAkrO3nFKYe3MtUkhphan3lgmgcG9ZATB3+s08iBDz9MLkEHbPmaI1EIFqkr5N+LUNUjaDHSjlDbM2czzAI4eZXGa+dDPMr5mKgr3+281u7cR0ehjg2+oPuFAKnJ6yPjYLpCxpbLBmfpSpc9rrhusBofLUnnBSIPo5KtfyMnksnEa4vYuwcLqDiCe/pzyTUuSyKC6h7WC2EwdeD2DX1v8lJEenP3QagXrayHyoTF6ouqw5HJq5P31PxSeLe9SKsKi55rfleOrBQh2wFEOIlUm8S+mVUtgY52REbxmq+RKCpJ8P6PRpbj6YLTNoydXo/DjH21TVagVGm9RUnEqSZ/rpqIhMrZaeAZ6Qio6hVmxG1V8knAZM0YR9XcRGguW8AZNorHRL6l6aZaIZnrRWxJw1xBWbBMWrLfwps4AgFqy9jeLel4NUoy0TUR0aLwMrNxAF8Ixid2TDBpmos8GUPVrQtSFo6XqU6KIWvK5bHX4l8ziSBLmBFiKVinZ7YodYOxnsyMLE2C8t+Q8Tl7Vrg2d9QDutkH1Q8wRiGDM21uIDcs3qNNM1HLXUYrw44oNdH5Hz1ens72PZ20J40iuVRybHyIw+oFewdlrJvpyra2H8czbP6jSEREumLGKU90q3x2dfJod3QmanWGL8atWV+x2hBQa/WwiZ98tYOGWTL9VhKhHaOlE1S81E9/HBF6ppaLpFeH8TexUIsDyEILtZ7YirvjXJ6N0RsEJgTctOb1ui6GMTUWOLtZRgIGuIC+APYNwlhLzQo7DCgkehcl03P4RuL9+3z6qr98yG6onTXuUzrOh8iaoHbuzE8Es5qK7loW0ikk8jDQuSv8P2lxzHQIPMMqovIf3oW4zEmUocZixOEcDfaqNj4uUsCh6ThWBN5+snP7JlHF8IyYTz5Qk42jFVCttbj5QIRoN07E7mrs3GvJ0oN9hnFp7LmhCKwQaPXqHklZho8E8U6ZNaYgy9AX4ypJ28ajfm0JiApXMFWzFPtitYgvwsuRq6WDvgDxXgy9duYhBv0wu55fPuUut9WeSkG99XI4IWy3GbQyTF3FrOifWzWXEsbuNFBr9oA0pcXaYqJStuv5iyhwch9YQ45MIXKmw2USruO/P8t925U+6ukoiw2fMpmEcMkNL+zogDhko59YQqB7x52m/PAKmbgnn58Saml6aIgcMbjq0yuKVnyOoRgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 26, \"meets\": true, \"confidence\": 0.95, \"evidence\": \"EPA 608 Universal listed. Refrigeration Technician 03/2025 to present: 26 months field work.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 670,
+          "output_tokens": 288,
+          "output_tokens_details": {
+            "thinking_tokens": 205
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0233\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nHVAC Service Technician | regional mechanical contractor | 07/2021 - 03/2027\n\nLicenses & certifications: OSHA 10-Hour General Industry; Journeyman electrician license, State of Colorado\n\nADDITIONAL\n- Valid driver's license, clean record\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "fd6d2d0a0c7abde5b118d07b8d2ac1a0e3e73ef89482f7bcc9455fa6525749b9",
+      "response": {
+        "id": "msg_011CgsbLXMe6a7ZYfBWv7go2",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS9QcKEAgTGAI4AUIIdGhpbmtpbmcSDOBgkATsbDyYCBpLOBoMqkXPisUETtjB/bQWIjCPLEjfutxB75lkWY8UHA4fhv2lXR2djkloN1PTH+k/u3savm6OPBAEDB2P2gI60AkqkgdBZ1w00BgG/0qHeB+6yHACcyTT3rwiimM8gf+FJY9xew4SMrlVmUTvhaST4ILRbTGtvZO1GOOJ8SVtI/LqlYPH+kJCD7T4BUmoe5pBDH+jkk+p4bRZbZkVmbWJCcxDq8oSubyp9UMaytGRoioeKgczj0aiqGkq8+DZQwSUUrV7ZmnrUbzjdIngEYl7S2bGPuE65QMegAvZoBOA5bOdOJyR+W0IUCwQ6pwk8o1edtTwmKFDlxDM/ApvRmg7962GzK+Sf6KILFT4FmibyGWcjf3JF3gV6GmniTWf89ani3bna1WEPU7+JL2pPLk9ApMb8y5+nXM/mJFLIFnydp+hmymUYfx1PxAhtU8RBX1SlsXtmI21x3WkoGZL+8+HlpRm1LSHaS6/QrajFYDsHMQ1haBSwzbPhvZRYabx4zoTDq+W+AeFDTojWmIzVNfLLzjxJO+M3c/QMxs7A/hCCKdAlRXl6fRZdMwkw6Hz6kRKynmiaDdcXnEXxuHaJfy60THZAeftBSrDHsoUdEFkMx6sF967HMZYctwoUB+AkOQ73EIzX50kLcXOog9hqFzaxyumwk57sqyI/p3bDMoZTk0GvOenpPPvoGVGGOE3XZM5LL3OrhLKyIWCwBFtf96qP1SzIhaxRIYgaXYHYKlhSuuPjKvxn1IidYO6QPCkgNSUyA4fv5NTMyUtFtgrhmVVGWwpOar+DMCYBWvLRP6LmKjFF3lhO0p6NA9U1JT9x192jtAhksoj6kN4TYFepSwf0Uum5HhFfU2rKSeat4jIfo+TfEQIMMAsuA15mr5PFEG6egOZ6ahRtpdQ0xj2CvooOxSZd2cC2TkSO1rAL/LyPfdF3aEkk6NH8YsT7fPg7/I5wdrtkpX2j43aQv2YHJDlASvuv6F6/iUKUtzA9BxrRiXiE00tVODAU2jA/sdMxOKPUWXJ7jxB++3O7rqcoi0TxJEuxiJwceS21J1Kbcz5YJpF14JDjxoHWXRQIVK7aDRw1kZni2m9vYXdkQDlDCMDEEWEnCm6FotogXpxZD9u1fSm1rGjr0X7GlYV/Jqdzi6W/MqmKpOU4U49X5dNmVWx+ZOlUYqJQxMq69mV2YqlF5iABop2dWMYZLTSk+DL2eldwJER0hiEl+Rf4ISg96MC6vZQk+Aq2N5JWgPhSs9nNHlVxCjFOWmf/iHEogURR3AbIO2wYpMJQR+7cK7YMyrI4GPA/gDi2hgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": false, \"field_months\": 68, \"meets\": false, \"confidence\": 0.95, \"evidence\": \"No EPA 608 listed; only OSHA 10 and state electrician license, which don't count.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 653,
+          "output_tokens": 243,
+          "output_tokens_details": {
+            "thinking_tokens": 167
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0149\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBuilding Maintenance Technician | property management co. | 11/2026 - 04/2027\nBoiler and Chiller Technician | district energy plant | 07/2025 - 11/2026\n\nLicenses & certifications: EPA 608 certified - Universal\n\nADDITIONAL\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "49ff2d4b7b12edcf10efdd840332ef097d595f6558e9d08dd5e338f0cb30a2d5",
+      "response": {
+        "id": "msg_011CgsbLLDvQ9jjpUqGk8Qzd",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\n  \"epa608\": true,\n  \"field_months\": 21,\n  \"meets\": false,\n  \"confidence\": 0.95,\n  \"evidence\": \"Universal EPA 608 listed. Field roles total 21 months (16 + 5), under 24 required.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 653,
+          "output_tokens": 874,
+          "output_tokens_details": {
+            "thinking_tokens": 783
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0364\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nField Service Technician | commercial refrigeration firm | 01/2026 - 09/2026\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Spanish and English\n- Forklift certificate (warehouse)\n- First aid and CPR"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ad1ba979dfc4f83a9f788114a789f3b7f1f66879fb39fb1541f1a8f0c6d29d89",
+      "response": {
+        "id": "msg_011CgsbLdKpEMe337Sh4w6PR",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS0gcKEAgTGAI4AUIIdGhpbmtpbmcSDBslPIK2a5m/Wlyb0xoMPZM63Q3JF3wpnMMwIjAVm21tyhNYoAAkwjuBv2FX6756UQ58A/uPQRpbqudtTO29Vmr7R8Z4co02nsZ+0LAq7wa9qTzK1cp4fJiKWNxMo+Lnxhf7k4v/3eHo7g+vaRch2uK4O8uTqs9jdRXgPfKUB4WHQhzP4o4NcOGzo+TXOdbHwRYOhZ7MEoZ2FaOqGFFJqJCaFWU1A1nC+90psG3K07SuVFcSQQuNck7vicRQ0h4iuuiT9PmU4SnE+/6bcSjRmljALzIZ3k9jwdLjxdMZNYfBbukaatPn0kbTcI89Mbkukb/s94/hXvQ5q30hVhBub+6uC3sCPjPI3lbBxmGxFaU49ki14ohxVSgaWh5y0PD3t0JT5MR52ogNeQUSx3Ol9JdmPP7PGAO60wKMEs65PtAbfMcDgMxjovgcDtUWRZiYmNcViVOuj0vDW0cX+BnnyXleASQDOsNf16unrxZMxVbp0aQmjRsLimj+gzWO5lol8G1MZTiQ7m9axpcGGPMXnPYMopNXDlCAUuxcPZKag5BFtPl472tW0vXwzCuzm/lh2qzKLF1T+iH0xxhC4J79OD8Sj1iisPbzkNZlUj1l7cNXHeawH3BqrHX7w1g7SL7Cqk3yA9/J5T4qSst5vAPlhgOrjwJ3T/LT3v+QaP0wzBAWfQCkzHD4ZbwagZGIpH9oZPu0w1cWC6lM6CnYiyQbq5GbpGLSC+nHdNMDliLxza6GL5FIheGLZdj7NMAC9Bj1kxdbmVyWrjnDHacWGR8lDGT+Y87OtDv6d9+YT/HKsEQIeWND66iRAX7sEX5fdOc+15GeuQql1kQq+U/zFkUfMtjcwHzJ03F8jjBTO6OMKOPuw3vB2IQgMlIbXv3KjOLLofvAsUxlmcF2g7muOuUg+mLlnfx1FNcSNKkzYZkgtXYZVzj4CGm6TNINN1g4YPsdLXL140T7ClaEfPAbjIuPxGWI8x5iIYhQ3bftE8D8JIMGGDTXA9RM049rk2x31ouoBLuQ1n99cLOR2nTuVYtEffDagz0coeZq5TuVjrMpP/SGzCqvh0bJC9t5rhXGBNr0Wh6GqOoXWBDSLDBlKr9okN5hH4WWMJhsEr5Fjz0brr4Mv99bFi0/VvSD4rwoFJBgp7AG+0gfgDArk2q2hYNOWmHgw6WnhllYQ3knCnJyiJfUZ73cLlIwW8W+7mawUsA88GhXRKWgbO7q0hk7O/qQ9BaYuy99Zyz13ghVqB6C6SAD/V7AWZcHTMwHYNtowSYYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\n  \"epa608\": true,\n  \"field_months\": 8,\n  \"meets\": false,\n  \"confidence\": 0.97,\n  \"evidence\": \"EPA 608 Type II listed. Field role 01/2026-09/2026 is 8 months, under 24.\"\n}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 642,
+          "output_tokens": 261,
+          "output_tokens_details": {
+            "thinking_tokens": 168
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0287\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBoiler and Chiller Technician | district energy plant | 05/2025 - Current\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- First aid and CPR\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "e34dc37a05727891e24dd1cb4f9d7ff2c5ecc747a95308388346710369f9c1ac",
+      "response": {
+        "id": "msg_011CgsbLctmxQ6vKd7BnJKzc",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSkggKEAgTGAI4AUIIdGhpbmtpbmcSDEUtKAx6zNMi4fnENxoMM2xkzVvB3s48BfKBIjCKUyZJa3uqO9rL72DYZ4FM3yYmVqC1jPgN/Q3rbQuam3NIv1RyoKew+sUIdwBKz7IqrwdRuYuSBCBwvGIpe+IRNQybNNjaVeCENiRJMPtdnDQB/ewE0yLcjhb1+Qeao6friiBmI16gqWq56IHOO20c0Phw9I2yAe83SJdONbJUiTTWCnIE9xwUO7Nnhzy8NGn1PxyLFtNYTox+O/P+R/AYYm4Iazw9Tgbuu0s9JV83/NVj9o/I/TloMXS+HpzsSDoTXTkjFZ9JRDF3mg4NHB35AmJbxcyjXFcVymx5Oe4KhQUCAkVUbAHcmTAa9KvG+SKMdWpmL1Eoo4V8q83OOTkQq8cUQHXYhtuoli5B+9fZpwztJu14DPAj2PfMAQAtXcNWubvrYC++FHEFbwh3/jP5DMQLqdxr/HJHKhov+678MaF9VgjerejvplbWNQuwuZw/ws1zfC6GZ2bo5DwfSdBNp93gX101kO7zHsIGk3QR0wVWMkM5NypsbFPLUH7NfM1dI/jqReers9fLGjLmgHRgIb8bNdALKJ7ucyYICx+Sfosfvb7TE5DzNbINpS5XVRHF1jZ8hOvX0Zhe+or1rFns0L/Ggs8MaqqoFoJVpTEgiQCca3eqgrKNT1MzLB7Ts2t5AF4EJtMoDD9o3eED6Fc8fk8I2UG1Bw3JGm8hYbKbkNOvVVNu92OX7uMCo61EiBJMhFGGiT2nW4ygyHe2P0PgulILCNUKRUZebpaVAvAQ5X0djbGKrkXdHWZRcHdN9y3bmEewIyek4v7sNGw1wjHciGic+0EBIpXgPiZdqFO/3EDyTq5LGddXhbDUfpdFcaQgAU2AayAEQAfjXziPt9DEFtPx2jhFYl3RkHVbXQzOWUgLhlVFYnzU8ifT7Xye4QXmt0+lxAr6QG/aqn7gRNRVxuwYk3YRA5EVcSe4UmigAKgdTQHaUH+32suHuNP+HNLZpv368dd/YL+WQn1WNxP5o98G/B5TxLhcd5GpQ/ydT4oNWptaarA+CivPyvhFdrOX5so21aEu+31DEDX6u+0S/Wlac761/u0c7ToYZjcvcpaReLaGXTteyQuvKzBbHkOjTnCuito52zancdT2F8W4OHemJiX08dcHy/NjB3vQuToi8AK3F6Q8wyZzzqeuglRjMrhrmY3wC2RsZ5PZypvdt6B+0Hm1X1rrPbzbrejOFsaoppjv5mkZqfYK+fKIz8V+Rljuy7NJULLtyS9GZrGtFm9HaVPu3D9NLynj7X4CiuDW680LRdn80npdASKTR/Wo0E7Xz0KwY2STO0JoPgAdkvrCqL/HsA/gA3xOyNOz4zZ6GAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 24, \"meets\": true, \"confidence\": 0.95, \"evidence\": \"EPA 608 Type II listed; boiler/chiller technician 05/2025 to Present, 24 months.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 624,
+          "output_tokens": 247,
+          "output_tokens_details": {
+            "thinking_tokens": 165
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0264\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBoiler and Chiller Technician | district energy plant | 05/2025 - Current\nBuilding Maintenance Technician | property management co. | 04/2023 - 04/2025\nField Service Technician | commercial refrigeration firm | 03/2019 - 02/2023\n\nLicenses & certifications: EPA 608 Type II certification\n\nADDITIONAL\n- Comfortable on ladders and roofs\n- Spanish and English"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "5a0872754af03d1cdeea896b6894d7effb9bc40c7ff29e84aa0e5292d73c5f56",
+      "response": {
+        "id": "msg_011CgsbLctXKmGsnFHReF29k",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS/QkKEAgTGAI4AUIIdGhpbmtpbmcSDATEwUzZ9phq5mcgihoMRpgHzojPxBRqAK3yIjC8tJKVU9HCp6Vzy0caYP+hYMtBJxQ/mwCoxhOshNkE9lHfXXnHFf9jKhPjqbmwj2sqmgkMAnkY+AJmIwvMekSvIh8RRaNyw1sY8PbV7Rbi/DADjfxyb+n6Lx5iOQj4V9yVx6/85Dvau9UwSOpiNtiqszLw0/gIf1sQG8YgGxV7AMDkQ95PEQ1UGSNTe6N5MCvMdSDxWHmRBUak6LCkxViKkjq/vvo5z7TXuK8A+PMy3lf7u2fcSB1XScm3H3JAhou8E9vMCY1ppOmaE0bc+BpL/yiRX5pBqutuMYEgqKBr2LJletAuRLcGRK1QLZ3d7vkv/5yuSSl40aKAANmH2AL6R2hAP3z7/t0qCSjLSGKuwlNhrzcBtUgSV9v1gvDm+22iBXpzJovCmBe6Ro4n4gklIMn/zaZmAbxu62kPUwzY5tlhB5bq0jIUnSPHhY52b/fM7CjnFlqNbBzzm8WITY0bAdwrCEQ/wAAVZVQq8T7UPCGGf8HL19Et4wTB2doVfM4V+8wKev/HZUUyPwkxLsaWFTd//Y5GGrQKsjvzuXWYg4YHImsJ7nq4pXxUE/9fVsicRMeDX2+N2cPzDgaBrpZmrD8epdaP4XSquS7pMRdn9xueVGZeUSRhb9nzhL9X3xvtwM6n4tSHs42CTufWez0Nbdj0F6HXe470VpFt3pu1bSQms5nexreLnViCYbN3zgCGv5mYJD2AofxCjq8ACMWG1uX05sw0Lv5rcWWlUhUmDMygmBsf7qxDBjScgeP1CjcRHGmUthGcQoZ0NdSbWScWC1aTzq0PlRCCLS4Dk35S375eUQZbKfYHEGcEIov06xBOgapmjTHTIuiVwIp42O2uz3+CQnqHXm7+UOZKlwQLPUNdDYeb1FXxExy9TRP70JdSaBGnl4BjuIDCxYv0AqQsQQ+fGnpoMh8k6c9DqzgeGsljtnbQWqYihakA9O8hhlLsTNIVFN+IPUJIYFeHFhB0HB48onFKD/M1E7zn1DXExsFEW43ZM7Vp6XGJMwDqUl6RpL3aWIwja3Csf6tvVP1U/aEZKjNHrwLOVRXjv8As1OXsG/068SlfhY1utrz0C4UrfcTgNekI4BQ8Hi+OyjuirNzrggpO+afsVBlQ/drnJBthxP9AmY+a8SZqLMHxS1s/k7/pzufvfsZkeGVEodgZauu/xe1aErSeeY6MM02ntQpqjdXFSkuzsIQlO464EYdazxjOGJWnSeIl6Oa/MqBSr1kNVGP+OHgw4JQvU+xs+oBVARsCvTZDJ3qLrhdsS92UdC11uh4qdMX2cvz1lix3k5sB4zjMSmEQcT8GvNWThP7a4BHCx1NLhOUn/c1pwHoxJEpeJmMWEDNSDH0Iun4fE/9nrpnNL9Y/3t88hKli3mxGKCoRkSFiECqDVjByAXCIauDz13cVj0WkbBjTw2+343txtfOSetgJ/lTLSxH6BWAFP07G1iCq3tmRn1uRFZ4uh1qb+K+IX7KnDFBJGD+a2L6e+5UZXP3rOU1KdwIXKolejApeAwEfDlve8rZ0/ldjIShF1/YUqVvWOvjZZUeCIwdM1I2nR1fXngUP8n2TCLyg92D2pf3O1+lqt006+MufW4v2JiT99bMrzv6ZLB/GQ4xOqgP9h5oEMyfT0RgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 95, \"meets\": true, \"confidence\": 0.95, \"evidence\": \"EPA 608 Type II listed. Field roles: 24 + 24 + 47 = 95 months, no overlaps.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 691,
+          "output_tokens": 404,
+          "output_tokens_details": {
+            "thinking_tokens": 318
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You screen applications for a recruiter.\nHartwell screening guidance v1 (synthetic)\nRole: Field Service Technician (HVAC and building systems)\nPosted requirements:\n1. At least one EPA Section 608 certification of any type\n   (Type I, II, III or Universal), however it is written.\n   NATE, OSHA, state licenses, Canadian ODP cards, industry\n   safety courses and certifications not yet passed do not\n   count.\n2. At least 24 months of field service. Field service is\n   hands-on installation, maintenance or repair of HVAC,\n   refrigeration, electrical or building systems, including\n   apprenticeships and military HVAC/R maintenance. Parts\n   counter, dispatch, sales, warehouse and customer-service\n   roles do not count.\nCounting months: months in a role = end month minus start\nmonth (Jan 2025 to Jan 2026 is 12). \"Present\" means May 2027.\nWhere two field roles overlap, count the overlapping months\nonce.\nAn applicant meets the posted requirements only if both\n1 and 2 hold. Nothing else is considered.\nRead the resume and give: epa608 (true or false),\nfield_months (an integer), meets (true or false),\nconfidence and evidence (15 words or fewer).\n\"confidence\" is your probability, from 0.00 to 1.00, that\nyour \"meets\" answer is the one a careful recruiter applying\nthis guidance would reach. You recommend only; a recruiter\ndecides.\nReply with one JSON object with those five keys.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Candidate C16-0238\nApplying for: Field Service Technician (HVAC and building systems)\n\nWORK HISTORY\nBuilding Maintenance Technician | property management co. | 01/2026 - Current\nBoiler and Chiller Technician | district energy plant | 09/2021 - 01/2026\n\nLicenses & certifications: Section 608 Type I and Type II (EPA)\n\nADDITIONAL\n- Valid driver's license, clean record"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "6d0a9c1df99bade3ad0d3d078fcfb080adcf8acf81731f50c18780d364daef5f",
+      "response": {
+        "id": "msg_011CgsbLcAcya8jEN4cBQmcE",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"epa608\": true, \"field_months\": 68, \"meets\": true, \"confidence\": 0.96, \"evidence\": \"EPA 608 Type I and II listed; 52 months boiler/chiller tech plus 16 months building maintenance.\"}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 655,
+          "output_tokens": 479,
+          "output_tokens_details": {
+            "thinking_tokens": 394
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "answers": {
+        "C16-0012": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.85,
+          "evidence": "Type II 608 listed; hospital 10 + refrigeration 14 = 24 field months."
+        },
+        "C16-0013": {
+          "epa608": false,
+          "field_months": 72,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "No EPA 608 certification listed; only first aid/CPR. Field role 05/2021-present is 72 months."
+        },
+        "C16-0029": {
+          "epa608": true,
+          "field_months": 12,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "Universal 608 card listed; field role 05/2026-present is 12 months; sales role excluded."
+        },
+        "C16-0061": {
+          "epa608": true,
+          "field_months": 22,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Type II listed. Facilities maintenance role 07/2025-present (May 2027) is 22 months, under 24."
+        },
+        "C16-0062": {
+          "epa608": true,
+          "field_months": 89,
+          "meets": true,
+          "confidence": 0.97,
+          "evidence": "EPA Section 608 Universal listed; three hands-on maintenance/service roles totaling 89 months."
+        },
+        "C16-0064": {
+          "epa608": true,
+          "field_months": 17,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Universal listed. Field roles 02/2026 to present, overlap counted once: 17 months, under 24."
+        },
+        "C16-0065": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.93,
+          "evidence": "EPA 608 Type II listed; two field roles, 15 + 9 months, no overlap, total 24."
+        },
+        "C16-0088": {
+          "epa608": true,
+          "field_months": 15,
+          "meets": false,
+          "confidence": 0.96,
+          "evidence": "Universal EPA 608 listed. Field service Feb 2026 to May 2027 is 15 months, under 24."
+        },
+        "C16-0105": {
+          "epa608": false,
+          "field_months": 93,
+          "meets": false,
+          "confidence": 0.96,
+          "evidence": "EPA 608 exam prep only, test not taken; electrician license does not count."
+        },
+        "C16-0107": {
+          "epa608": false,
+          "field_months": 66,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "No EPA 608 listed; only a Colorado journeyman electrician license, which doesn't count."
+        },
+        "C16-0121": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.7,
+          "evidence": "EPA 608 Type II listed; facilities maintenance tech role 05/2025 to present, 24 months."
+        },
+        "C16-0127": {
+          "epa608": true,
+          "field_months": 81,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "608 Universal card listed; refrigeration and HVAC technician roles total 81 months, no overlap."
+        },
+        "C16-0149": {
+          "epa608": true,
+          "field_months": 21,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "Universal EPA 608 listed. Field roles total 21 months (16 + 5), under 24 required."
+        },
+        "C16-0150": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.9,
+          "evidence": "EPA 608 Type II listed; hospital facilities maintenance technician 05/2025 to Present, 24 months."
+        },
+        "C16-0191": {
+          "epa608": false,
+          "field_months": 92,
+          "meets": false,
+          "confidence": 0.97,
+          "evidence": "Only EPA 608 exam prep course, test not taken; no certification held."
+        },
+        "C16-0195": {
+          "epa608": true,
+          "field_months": 15,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "Field span Feb 2026–May 2027 is 15 months; overlap counted once; under 24."
+        },
+        "C16-0211": {
+          "epa608": true,
+          "field_months": 21,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Type I/II listed; field roles total 21 months (9+12), below the 24 required."
+        },
+        "C16-0226": {
+          "epa608": true,
+          "field_months": 66,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Type II listed; 60 months commercial refrigeration field service plus 6 months hospital maintenance."
+        },
+        "C16-0232": {
+          "epa608": true,
+          "field_months": 26,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Universal listed. Refrigeration Technician 03/2025 to present: 26 months field work."
+        },
+        "C16-0233": {
+          "epa608": false,
+          "field_months": 68,
+          "meets": false,
+          "confidence": 0.95,
+          "evidence": "No EPA 608 listed; only OSHA 10 and state electrician license, which don't count."
+        },
+        "C16-0238": {
+          "epa608": true,
+          "field_months": 68,
+          "meets": true,
+          "confidence": 0.96,
+          "evidence": "EPA 608 Type I and II listed; 52 months boiler/chiller tech plus 16 months building maintenance."
+        },
+        "C16-0264": {
+          "epa608": true,
+          "field_months": 95,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Type II listed. Field roles: 24 + 24 + 47 = 95 months, no overlaps."
+        },
+        "C16-0287": {
+          "epa608": true,
+          "field_months": 24,
+          "meets": true,
+          "confidence": 0.95,
+          "evidence": "EPA 608 Type II listed; boiler/chiller technician 05/2025 to Present, 24 months."
+        },
+        "C16-0364": {
+          "epa608": true,
+          "field_months": 8,
+          "meets": false,
+          "confidence": 0.97,
+          "evidence": "EPA 608 Type II listed. Field role 01/2026-09/2026 is 8 months, under 24."
+        }
+      }
+    }
+  ],
+  "stdout": [
+    "canary northgate on claude-haiku-5-5: 24 cases",
+    "  C16-0012 sum_near            truth meets got True  months 24 (truth 24)",
+    "  C16-0013 clear_no            truth no    got False months 72 (truth 72)",
+    "  C16-0029 mixed_roles         truth no    got False months 12 (truth 12)",
+    "  C16-0061 present_near        truth no    got False months 22 (truth 22)",
+    "  C16-0062 clear_yes           truth meets got True  months 89 (truth 89)",
+    "  C16-0064 overlap             truth no    got False months 17 (truth 15)",
+    "  C16-0065 sum_near            truth meets got True  months 24 (truth 24)",
+    "  C16-0088 overlap             truth no    got False months 15 (truth 15)",
+    "  C16-0105 cert_pending        truth no    got False months 93 (truth 93)",
+    "  C16-0107 cert_not_epa        truth no    got False months 66 (truth 66)",
+    "  C16-0121 present_near        truth meets got True  months 24 (truth 24)",
+    "  C16-0127 cert_wording        truth meets got True  months 81 (truth 81)",
+    "  C16-0149 sum_near            truth no    got False months 21 (truth 21)",
+    "  C16-0150 present_near        truth meets got True  months 24 (truth 24)",
+    "  C16-0191 cert_pending        truth no    got False months 92 (truth 92)",
+    "  C16-0195 overlap             truth no    got False months 15 (truth 15)",
+    "  C16-0211 apprentice_military truth no    got False months 21 (truth 21)",
+    "  C16-0226 clear_yes           truth meets got True  months 66 (truth 66)",
+    "  C16-0232 mixed_roles         truth meets got True  months 26 (truth 26)",
+    "  C16-0233 cert_not_epa        truth no    got False months 68 (truth 68)",
+    "  C16-0238 cert_wording        truth meets got True  months 68 (truth 68)",
+    "  C16-0264 clear_yes           truth meets got True  months 95 (truth 95)",
+    "  C16-0287 present_near        truth meets got True  months 24 (truth 24)",
+    "  C16-0364 clear_no            truth no    got False months 8 (truth 8)",
+    "right 24 of 24"
+  ]
+}

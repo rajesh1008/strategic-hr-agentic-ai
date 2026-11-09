@@ -125,5 +125,35 @@ def main(fmt: str) -> None:
     print(rec.save())
 
 
+def compare() -> None:
+    """Set the recorded canary runs side by side (no model)."""
+    import json
+    from hrai.llm import REPO
+    truth = {c["candidate_id"]: c for c in canary()}
+    rec = RunRecorder("ch23", "canary_compare")
+    rec.print("run                          right  months off  "
+              "mean conf  out tok")
+    for f in sorted((REPO / "runs" / "ch23").glob(
+            "canary_[nt]*/*.json")):
+        d = json.loads(f.read_text())
+        ans = d["events"][0]["answers"]
+        right = sum(a is not None and a["meets"] ==
+                    truth[k]["meets"] for k, a in ans.items())
+        off = [k[4:] for k, a in sorted(ans.items())
+               if a and a.get("field_months") !=
+               truth[k]["field_months"]]
+        conf = [a["confidence"] for a in ans.values() if a]
+        out = [c["response"]["usage"]["output_tokens"]
+               for c in d["calls"]]
+        name = (f"{f.parent.name[7:]} {d['model'][7:-4]} "
+                f"{d['run_id'][-7:-1]}")
+        rec.print(f"{name:<29}{right:>2}/24  "
+                  f"{','.join(off) or '-':<11} "
+                  f"{sum(conf) / len(conf):9.3f} "
+                  f"{sum(out) / len(out):8.0f}")
+    print(rec.save())
+
+
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else "takefen")
+    arg = sys.argv[1] if len(sys.argv) > 1 else "takefen"
+    compare() if arg == "compare" else main(arg)
