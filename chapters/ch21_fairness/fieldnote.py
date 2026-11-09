@@ -148,10 +148,17 @@ def truth(f: dict) -> int:
                                     + f["api"]]
 
 
+# The letter is framed as a document under review. Unframed, a
+# plain first-person letter reads as a message to the model,
+# and the model declined to score it (first run, discarded).
+FRAME = "Cover letter from an applicant:\n\n<letter>\n{text}\n</letter>"
+
+
 def ask(rec, system: str, text: str, key: str):
     resp = rec.create(max_tokens=200, system=system,
                       thinking={"type": "disabled"},
-                      messages=[{"role": "user", "content": text}],
+                      messages=[{"role": "user", "content":
+                                 FRAME.format(text=text)}],
                       extra_headers=GZIP)
     t = "".join(b.text for b in resp.content if b.type == "text")
     m = re.search(r"\{.*?\}", t, re.S)
@@ -182,8 +189,8 @@ def main() -> None:
            for (it, k), o in zip(jobs, outs)}
     rec.print(f"Fieldnote letters on {model()}: 15 fact sets, "
               f"3 styles, 2 prompts")
-    rec.print(f"{'style':<10}{'flagged AI':>11}{'mean p':>8}"
-              f"{'mean score':>12}{'off truth':>10}")
+    rec.print(f"{'style':<10}{'answered':>9}{'flagged':>8}"
+              f"{'mean p':>8}{'score':>7}{'off truth':>11}")
     rows = {}
     for s in STYLES:
         ps = [got[(it["id"], s, "detect")] for it in items
@@ -198,8 +205,8 @@ def main() -> None:
         off = sum(a != t for a, t in ok)
         rows[s] = dict(flagged=flagged, n=len(ps), mean_p=mean_p,
                        mean_score=mean_s, off=off)
-        rec.print(f"{s:<10}{flagged:>5} of {len(ps):<3}"
-                  f"{mean_p:>8.2f}{mean_s:>12.2f}{off:>7} of "
+        rec.print(f"{s:<10}{len(ps):>6} of 15{flagged:>5}"
+                  f"{mean_p:>11.2f}{mean_s:>7.2f}{off:>6} of "
                   f"{len(ok)}")
     lower = {s: 0 for s in STYLES}
     for it in items:
