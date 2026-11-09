@@ -31,6 +31,8 @@ def report(p, hartwell_only: bool = False) -> None:
       f"{sum(r['incumbents'] for r in crit):,}")
     p(f"expected vacancy cost, critical roles "
       f"${sum(r['annual'] for r in crit):,} a year")
+    p(f"expected vacancy days, critical roles "
+      f"{sum(r['days'] for r in crit):,} a year")
     head = f"{'role':<8}{'per day':>9}{'days':>7}{'a year':>12}"
     p(head + "  crit")
     for r in rows[:8]:
