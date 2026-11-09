@@ -1,7 +1,7 @@
 {
-  "run_id": "ch05/rule_lookup/20261109T131745Z",
-  "started_utc": "2026-11-09T13:17:45.505497+00:00",
-  "git_commit": "61db1fb",
+  "run_id": "ch05/rule_lookup/20261109T180150Z",
+  "started_utc": "2026-11-09T18:01:50.308252+00:00",
+  "git_commit": "adb720a",
   "git_dirty": false,
   "model": "no-model",
   "sdk": "anthropic-python 2.4.0",
@@ -22,6 +22,26 @@
           "W2"
         ],
         "owner": "Group DPO",
+        "control": ""
+      }
+    },
+    {
+      "row": {
+        "lane": "CA-ON",
+        "rule": "CA-ON-ESA-INTVW",
+        "duty": "OUTCOME",
+        "when": "in force",
+        "outcome": "APPLIES",
+        "evidence": [
+          "R-506"
+        ],
+        "steps": [
+          "W2",
+          "W3",
+          "W5",
+          "W6"
+        ],
+        "owner": "Head of TA",
         "control": ""
       }
     },
@@ -380,20 +400,21 @@
     }
   ],
   "stdout": [
-    "Rules loaded: 42 (31 duty rules), unchecked (VERIFY): 42",
+    "Rules loaded: 44 (32 duty rules), unchecked (VERIFY): 44",
     "Workflow: field hiring, 6 steps, as of 2027-02-15",
     "",
     "Lane    Site        Vendor default    Line design",
     "US-CO   Denver      2 rules, 5 duties 2 rules, 5 duties",
     "US-IL   Joliet      2 rules, 3 duties 2 rules, 3 duties",
-    "CA-ON   Toronto     1 rule, 1 duty    1 rule, 1 duty",
+    "CA-ON   Toronto     2 rules, 2 duties 2 rules, 2 duties",
     "UK      Manchester  2 rules, 3 duties 1 rule, 1 duty",
     "NL      Rotterdam   4 rules, 7 duties 3 rules, 5 duties",
     "AU-QLD  Brisbane    1 rule, 1 duty    1 rule, 1 duty",
     "Dropped when a person decides: EU-GDPR-22, UK-DUAA-22A",
     "",
-    "Obligation register (Line design): 16 rows",
+    "Obligation register (Line design): 17 rows",
     "-- AU     AU-APP-1-7        POLICY     now        W2",
+    "-- CA-ON  CA-ON-ESA-INTVW   OUTCOME    now        W2,W3,W5,W6",
     "ok CA-ON  CA-ON-ESA-POSTING POSTING    now        W2,W3,W5,W6",
     "-- EU     EU-AIA-ANNEX3-4   COUNSEL    2027-12-02 W1,W2,W3,W5,W6",
     "-- EU     EU-AIA-ANNEX3-4   OVERSIGHT  2027-12-02 W1,W2,W3,W5,W6",
@@ -409,13 +430,13 @@
     "ok US-IL  US-IL-HRA-AI      NOTICE     now        W2,W3,W5,W6",
     "ok US-IL  US-IL-HRA-AI      NO_EFFECT  now        W2,W3,W5,W6",
     "ok US-IL  US-IL-HRA-AI      NO_PROXY   now        W2,W3,W5,W6",
-    "Duties with a control: 9 of 16",
+    "Duties with a control: 9 of 17",
     "No control yet, by owner:",
     "  Country HR director: EU/REPS, NL/WC_CONSENT",
     "  Employment counsel: EU/COUNSEL",
     "  Group DPO: AU/POLICY",
     "  HR Shared Services lead: US-CO/CORRECT",
-    "  Head of TA: EU/OVERSIGHT, US-CO/EXPLAIN",
+    "  Head of TA: CA-ON/OUTCOME, EU/OVERSIGHT, US-CO/EXPLAIN",
     "",
     "Questions for counsel: 2",
     "  AU-QLD no rules recorded for AU-QLD",
