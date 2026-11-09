@@ -50,3 +50,39 @@ def test_hartwell_line_counts():
     assert c["keep/recommend"] + c["keep/retrieve"] == 23
     assert c["keep/retrieve"] == 12
     assert len({s["id"] for s in steps}) == 64
+
+
+def test_line_v1_1_moves_f05_to_keep():
+    d = line.load(line.HERE / "line_v1_1.yaml")
+    f05 = next(s for s in d["steps"] if s["id"] == "F05")
+    assert str(f05["placement"]) == "keep/recommend"
+    assert sum(s["placement"].side == "keep" for s in d["steps"]) == 24
+
+
+def test_register_v1_has_gaps_and_v1_1_is_clean():
+    from chapters.ch11_automate_keep import register
+    reg = register.load()
+    gaps = register.check(line.load(), reg)
+    assert {sid for sid, _ in gaps} == {
+        "D03", "E04", "E06", "F03", "F07", "G04", "H05"}
+    reg11 = register.load(register.HERE / "register_v1_1.yaml")
+    assert register.check(line.load(register.LINES["1.1"]), reg11) == []
+
+
+def test_register_flags_missing_entry_and_self_appeal():
+    from chapters.ch11_automate_keep import register
+    reg = register.load()
+    reg = {**reg, "entries": [e for e in reg["entries"] if e["id"] != "H04"]}
+    assert ("H04", "Keep step with no register entry") in register.check(
+        line.load(), reg)
+
+
+def test_sector_lines_place():
+    import yaml
+    data = yaml.safe_load((line.HERE / "sector_lines.yaml").read_text())
+    got = {s["id"]: str(line.place(s["kind"], line.answers(s["answers"])))
+           for steps in data["orgs"].values() for s in steps}
+    assert got["HP3"] == "keep/retrieve"
+    assert got["LK3"] == "keep/recommend"
+    assert got["LK4"] == "automate/act_with_approval"
+    assert got["AL08"] == "automate/act"
