@@ -1,0 +1,215 @@
+{
+  "run_id": "ch24/path/20261109T153325Z",
+  "started_utc": "2026-11-09T15:33:25.915717+00:00",
+  "git_commit": "f254429",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "funnels": [
+        {
+          "design": "2027-03 old path",
+          "rows": [
+            {
+              "step": "started",
+              "reached": 10000,
+              "left": 0,
+              "turned_away": 0
+            },
+            {
+              "step": "submitted",
+              "reached": 5862,
+              "left": 4138,
+              "turned_away": 0
+            },
+            {
+              "step": "advanced",
+              "reached": 2302,
+              "left": 925,
+              "turned_away": 2635
+            },
+            {
+              "step": "booked",
+              "reached": 2122,
+              "left": 180,
+              "turned_away": 0
+            },
+            {
+              "step": "attended",
+              "reached": 1610,
+              "left": 512,
+              "turned_away": 0
+            },
+            {
+              "step": "offered",
+              "reached": 1023,
+              "left": 170,
+              "turned_away": 417
+            },
+            {
+              "step": "accepted",
+              "reached": 885,
+              "left": 138,
+              "turned_away": 0
+            },
+            {
+              "step": "cleared",
+              "reached": 708,
+              "left": 158,
+              "turned_away": 19
+            },
+            {
+              "step": "first_day",
+              "reached": 629,
+              "left": 79,
+              "turned_away": 0
+            }
+          ],
+          "hired": 629,
+          "left": 6300,
+          "advanced": 2302,
+          "left_after_yes": 1237
+        },
+        {
+          "design": "2027-11 redesigned",
+          "rows": [
+            {
+              "step": "started",
+              "reached": 10000,
+              "left": 0,
+              "turned_away": 0
+            },
+            {
+              "step": "submitted",
+              "reached": 7341,
+              "left": 2659,
+              "turned_away": 0
+            },
+            {
+              "step": "advanced",
+              "reached": 3216,
+              "left": 262,
+              "turned_away": 3863
+            },
+            {
+              "step": "booked",
+              "reached": 3187,
+              "left": 29,
+              "turned_away": 0
+            },
+            {
+              "step": "attended",
+              "reached": 2696,
+              "left": 491,
+              "turned_away": 0
+            },
+            {
+              "step": "offered",
+              "reached": 1808,
+              "left": 65,
+              "turned_away": 823
+            },
+            {
+              "step": "accepted",
+              "reached": 1626,
+              "left": 182,
+              "turned_away": 0
+            },
+            {
+              "step": "cleared",
+              "reached": 1414,
+              "left": 175,
+              "turned_away": 37
+            },
+            {
+              "step": "first_day",
+              "reached": 1275,
+              "left": 139,
+              "turned_away": 0
+            }
+          ],
+          "hired": 1275,
+          "left": 4002,
+          "advanced": 3216,
+          "left_after_yes": 1081
+        }
+      ],
+      "designs": {
+        "2027-03 old path": {
+          "form_minutes": 38,
+          "account": true,
+          "submit": {
+            "phone": 0.52,
+            "desktop": 0.72
+          },
+          "wait": {
+            "advanced": 9.0,
+            "booked": 4.0,
+            "attended": 6.0,
+            "offered": 5.0,
+            "cleared": 11.0,
+            "first_day": 7.0
+          },
+          "no_show": 0.14,
+          "accept": 0.86
+        },
+        "2027-11 redesigned": {
+          "form_minutes": 12,
+          "account": false,
+          "submit": {
+            "phone": 0.71,
+            "desktop": 0.77
+          },
+          "wait": {
+            "advanced": 2.0,
+            "booked": 0.5,
+            "attended": 4.0,
+            "offered": 1.0,
+            "cleared": 6.0,
+            "first_day": 5.0
+          },
+          "no_show": 0.09,
+          "accept": 0.9
+        }
+      },
+      "wait_hazard": 0.02
+    }
+  ],
+  "stdout": [
+    "== 2027-03 old path: 10000 started applications",
+    "step        reached   left  left%  turned away",
+    "started       10000      0   0.0%            0",
+    "submitted      5862   4138  41.4%            0",
+    "advanced       2302    925  15.8%         2635",
+    "booked         2122    180   7.8%            0",
+    "attended       1610    512  24.1%            0",
+    "offered        1023    170  10.6%          417",
+    "accepted        885    138  13.5%            0",
+    "cleared         708    158  17.9%           19",
+    "first_day       629     79  11.2%            0",
+    "first day: 629 of 10000; left at any step 6300",
+    "advanced by a recruiter 2302; of them left before day one 1237 (53.7%)",
+    "days waiting for Hartwell, hired: median 35, mean 37.3",
+    "  form completed on phone   52.3% of 6988",
+    "  form completed on desktop 73.3% of 3012",
+    "== 2027-11 redesigned: 10000 started applications",
+    "step        reached   left  left%  turned away",
+    "started       10000      0   0.0%            0",
+    "submitted      7341   2659  26.6%            0",
+    "advanced       3216    262   3.6%         3863",
+    "booked         3187     29   0.9%            0",
+    "attended       2696    491  15.4%            0",
+    "offered        1808     65   2.4%          823",
+    "accepted       1626    182  10.1%            0",
+    "cleared        1414    175  10.8%           37",
+    "first_day      1275    139   9.8%            0",
+    "first day: 1275 of 10000; left at any step 4002",
+    "advanced by a recruiter 3216; of them left before day one 1081 (33.6%)",
+    "days waiting for Hartwell, hired: median 16, mean 17.2",
+    "  form completed on phone   71.6% of 7118",
+    "  form completed on desktop 77.8% of 2882",
+    "== change: first day 629 -> 1275; advanced who left 53.7% -> 33.6%"
+  ]
+}
