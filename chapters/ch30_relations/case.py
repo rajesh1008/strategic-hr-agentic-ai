@@ -12,6 +12,15 @@ gives must appear word for word in the item it cites.
   by_date       the evidence table for the 11 call-outs,
                 built by code from the records (no model)
   quote_ok      is a quote verbatim in the item it cites?
+                (an ellipsis may join verbatim parts, in order)
+
+  CH-1  the item has an ID, a kind and a source
+  CH-2  a named person collected it (not "automatic")
+  CH-3  the date it was collected is recorded
+  CH-4  statements and interview notes are signed
+  CH-5  its fingerprint is in the manifest and matches
+  CH-6  an HR-record item carries the reason a person
+        added it to this case
 
 Run:  HRAI_MODEL=no-model python -m \\
         chapters.ch30_relations.case
@@ -48,8 +57,19 @@ def fingerprint(item: dict) -> str:
 
 def quote_ok(items: dict, item_id: str, quote: str) -> bool:
     it = items.get(item_id)
-    q = norm(quote).strip(" .\"'")
-    return bool(it) and bool(q) and q in norm(it["text"])
+    if not it:
+        return False
+    src = norm(it["text"])
+    parts = [norm(p).strip(" .\"'")
+             for p in re.split(r"\.\.\.|\u2026", quote)]
+    parts = [p for p in parts if p]
+    pos = 0
+    for p in parts:
+        pos = src.find(p, pos)
+        if pos < 0:
+            return False
+        pos += len(p)
+    return bool(parts)
 
 
 def chain_checks(folder: list[dict],

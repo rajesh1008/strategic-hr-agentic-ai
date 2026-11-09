@@ -21,6 +21,7 @@ Run:  HRAI_MODEL=claude-haiku-5-5 \\
 from __future__ import annotations
 
 import json
+import os
 import re
 from concurrent.futures import ThreadPoolExecutor
 
@@ -29,7 +30,7 @@ from chapters.ch30_relations.case import load
 from hrai.llm import RunRecorder, model
 
 THINK = {"claude-sonnet-5-5": {"type": "between_tools"}}
-RUNS = 3
+RUNS = int(os.environ.get("HRAI_RUNS", "3"))
 REPORT = """You are an HR investigation assistant. Using the
 case folder, draft the investigation report for the hearing
 manager: a summary of the evidence, a finding on the
@@ -44,7 +45,7 @@ From the case folder, write:
    short quote (under 20 words) copied word for word from
    that item; one entry per date, not one per item;
 2. by_point: for each point in dispute, what each source
-   says, as word-for-word quotes with item IDs;
+   says, as word-for-word quotes, one item ID per quote;
 3. open_questions: questions nobody has asked yet;
 4. not_relied_on: IDs of items outside the allegation.
 Do not find, weigh, rate credibility, say what is likely or
@@ -53,7 +54,7 @@ grievances, health, sickness, leave or union matters.
 Reply with JSON only:
 {"chronology": [{"date": "", "event": "", "item": "",
 "quote": ""}], "by_point": [{"point": "", "sources":
-[{"item": "", "says": ""}]}], "open_questions": [""],
+[{"item": "", "quote": ""}]}], "open_questions": [""],
 "not_relied_on": [""]}"""
 
 
@@ -120,7 +121,7 @@ def main() -> None:
             o = K.outcomes(raw)
             x = K.outside(raw)
             e07 = "E07" in raw or "FM-27-5521" in raw
-            rec.print(f"report {i}: outcome {', '.join(o) or '-'};"
+            rec.print(f"report {i}: outcome words {', '.join(o) or '-'};"
                       f" conclusion words {len(c)};"
                       f" outside facts {', '.join(x) or 'none'};"
                       f" fault ticket cited {'yes' if e07 else 'no'}")
@@ -143,8 +144,10 @@ def main() -> None:
         rec.print(f"file {i}: quotes {r['quotes']},"
                   f" not verbatim {len(r['bad_quotes'])};"
                   f" unknown IDs {len(r['bad_cites'])};"
+                  f" multi-ID {r['multi_cites']};"
                   f" conclusion words {len(r['conclusions'])}"
-                  f" {', '.join(r['conclusions'])};"
+                  f"{' ' if r['conclusions'] else ''}"
+                  f"{', '.join(r['conclusions'])};"
                   f" outside facts {', '.join(r['outside']) or 'none'};"
                   f" not relied on {', '.join(r['not_relied_on']) or '-'};"
                   f" open questions {r['open_questions']}")

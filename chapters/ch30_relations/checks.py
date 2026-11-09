@@ -52,26 +52,39 @@ def outcomes(text: str) -> list[str]:
                    for m in OUTCOME.finditer(unquoted(text))})
 
 
+def ids(field: str) -> list[str]:
+    return [x for x in re.split(r"[,;\s]+", str(field)) if x]
+
+
 def file_checks(out: dict, items: dict) -> dict:
-    """Checks on the case-file design's JSON."""
-    cites, quotes, text = [], [], []
-    for e in out.get("chronology", []):
-        cites.append(e.get("item", ""))
-        quotes.append((e.get("item", ""), e.get("quote", "")))
-        text.append(str(e.get("event", "")))
+    """Checks on the case-file design's JSON. A quote passes
+    when it is word for word in one of the items it cites."""
+    cites, quotes, text, multi = [], [], [], 0
+    rows = [(e.get("item", ""), e.get("quote", ""),
+             e.get("event", "")) for e in out.get("chronology", [])]
     for p in out.get("by_point", []):
         text.append(str(p.get("point", "")))
-        for s in p.get("sources", []):
-            cites.append(s.get("item", ""))
-            quotes.append((s.get("item", ""), s.get("says", "")))
+        rows += [(s.get("item", ""), s.get("quote",
+                  s.get("says", "")), "")
+                 for s in p.get("sources", [])]
+    for field, q, ev in rows:
+        got = ids(field)
+        multi += len(got) > 1
+        cites += got
+        text.append(str(ev))
+        q = str(q).strip().strip('"\u201c\u201d')
+        if q:
+            quotes.append((", ".join(got), q, got))
     text += [str(q) for q in out.get("open_questions", [])]
     prose = " ".join(text)
+    bad = [(f, q) for f, q, got in quotes
+           if not any(quote_ok(items, i, q) for i in got)]
     return {
         "bad_cites": sorted({c for c in cites
                              if c not in items}),
-        "bad_quotes": [(i, q) for i, q in quotes
-                       if q and not quote_ok(items, i, q)],
-        "quotes": sum(1 for _, q in quotes if q),
+        "multi_cites": multi,
+        "bad_quotes": bad,
+        "quotes": len(quotes),
         "conclusions": conclusions(prose),
         "outside": outside(prose),
         "not_relied_on": out.get("not_relied_on", []),

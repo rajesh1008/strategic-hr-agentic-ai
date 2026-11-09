@@ -46,3 +46,13 @@ def test_letter_numbers():
 def test_sectors_seeded():
     rows = S.hollis(random.Random(S.SEED))
     assert rows[0]["rescinded"] == 29 and rows[1]["warnings"] == 141
+
+
+def test_quote_ellipsis_and_multi_ids():
+    items = {i["id"]: i for i in C.load()["items"]}
+    assert C.quote_ok(items, "E05", "I was with Gary ... the 17th I think")
+    assert not C.quote_ok(items, "E05", "the 17th and the 19th")
+    out = {"chronology": [{"item": "E02, E05",
+           "quote": "the 17th I think", "event": "x"}]}
+    r = K.file_checks(out, items)
+    assert r["multi_cites"] == 1 and not r["bad_quotes"]
