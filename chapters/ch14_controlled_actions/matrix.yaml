@@ -1,0 +1,30 @@
+# Hartwell approval matrix for AskHartwell's controlled
+# actions (synthetic). One row per action. The model is never
+# an approver; "rule" means a versioned deterministic check.
+version: 2
+actions:
+  address_change:
+    field: home_address
+    requester: self
+    approver: rule
+    rule: [own_record, session_verified, address_valid]
+    approval_ttl_min: 60
+    readback: normalized
+    tell: [employee]
+    reversal: rule
+  bank_detail_change:
+    field: bank_account
+    requester: self
+    approver: person
+    approver_roles: [payroll_ops]
+    requires: [callback_done]
+    not_approver: [requester, agent, requester_manager]
+    approval_ttl_min: 240
+    readback: exact
+    tell: [employee, old_contact]
+    reversal: person
+  pay_rate_change:
+    field: base_pay
+    requester: none
+    approver: none
+refuse_default: true
