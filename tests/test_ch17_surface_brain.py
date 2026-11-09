@@ -92,9 +92,9 @@ def test_answer_checks():
     ok = {"answer": "UK-T3 is 33,600 to 39,900 pounds.",
           "sources": ["UK-REW-03"], "route": False}
     assert assistant.check(ok, paul, DOCS, shown) == []
-    bad = dict(ok, answer="Midpoint 36,750 pounds.")
+    bad = dict(ok, answer="About 37,250 pounds.")
     assert assistant.check(bad, paul, DOCS, shown) == [
-        "number 36750 is in no cited source"]
+        "number 37250 is in no cited source"]
     nos = dict(ok, sources=[])
     assert "answer cites no source" in assistant.check(
         nos, paul, DOCS, shown)
