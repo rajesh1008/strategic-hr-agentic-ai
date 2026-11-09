@@ -1,0 +1,266 @@
+# Hand-off terms for five outsourcing and capability-center
+# arrangements, keyed by the client's procurement team.
+# SYNTHETIC. Every organization, person, clause and number is
+# invented for the book (Strategic HR and Agentic AI, Chapter 8).
+#
+# raci: one row per activity around the agent and the human route.
+#   R: who does it (entities, "agent" or a role).
+#   A: the one named person answerable to the employee.
+#   kind: design | build | control | operate | approve | keep
+#   automate: true where the Line puts the step on the Automate
+#     side; only those rows may name the agent as R.
+#   apart_from: an approve row must not share an R with this row.
+# agent_owner: client (the client's agent, on the client's model
+#   contract) or provider (the supplier's own agent platform, so
+#   its model host is the supplier's sub-processor).
+# transfers: the data-transfer register rows for this contract.
+#   mechanism: what counsel recorded; null means none recorded.
+#   The code checks that a mechanism is recorded, never whether
+#   it is legally sufficient. That is counsel's call [VERIFY].
+rules:
+  min_line_notice_days: 30
+  max_incident_hours: 24
+  min_return_window_days: 7
+  seat_cut_status: Measured in production
+contracts:
+
+- id: MER-D
+  agent_owner: client
+  name: Meridian SOW 2027, vendor draft (March 2027)
+  client: Hartwell
+  provider: Meridian Outsourcing
+  people:
+    Megan Hale: Hartwell US
+    Ananya Rao: Hartwell capability center
+    Nathan Cole: Hartwell US
+    Marta Kowalski: Hartwell privacy office
+  client_group: [Hartwell US, Hartwell UK, Hartwell Canada,
+                 Hartwell capability center,
+                 Hartwell privacy office, employing entity,
+                 line manager]
+  line_current: "1.1"
+  line_version: "1.0"
+  line_notice_days: 0
+  incident_notify_hours: 72
+  time_to_human_minutes: null
+  kpis:
+  - {name: Deflection rate, rewards: containment,
+     counts: closed by the agent, return_window_days: 0}
+  - {name: First response under 60 seconds, rewards: speed}
+  seat_cuts:
+  - {seats: 189, by: 2027-09-30, status: Claimed,
+     basis: "vendor benchmark, 60% containment"}
+  subprocessors: []
+  raci:
+  - {id: R01, act: Set policy and the Line placement,
+     kind: design, R: [Hartwell US], A: Megan Hale}
+  - {id: R02, act: Build tools, tests and gate policy,
+     kind: build, R: [Hartwell capability center],
+     A: Ananya Rao}
+  - {id: R03, act: Change an agent tool permission,
+     kind: control, R: [Meridian Outsourcing],
+     A: Meridian Outsourcing}
+  - {id: R04, act: Switch the agent off or on, kind: control,
+     R: [Meridian Outsourcing], A: Megan Hale}
+  - {id: R05, act: Answer and act on tier-0 requests,
+     kind: operate, automate: true, R: [agent],
+     A: Megan Hale}
+  - {id: R06, act: Take a hand-off and work the case,
+     kind: operate, R: [Meridian Outsourcing], A: Megan Hale}
+  - {id: R07, act: Approve a verification letter,
+     kind: approve, R: [Meridian Outsourcing], A: Megan Hale,
+     apart_from: R05}
+  - {id: R08, act: Approve a bank-details change,
+     kind: approve, R: [Meridian Outsourcing], A: Megan Hale,
+     apart_from: R06}
+  - {id: R09, act: Detect a wrong action by readback,
+     kind: operate, automate: true,
+     R: [agent, Meridian Outsourcing],
+     A: Meridian Outsourcing}
+  - {id: R10, act: Correct the record,
+     kind: operate, R: [Hartwell capability center],
+     A: Megan Hale}
+  - {id: R11, act: Tell the employee and put it right,
+     kind: operate, R: [Meridian Outsourcing],
+     A: Meridian Outsourcing}
+  - {id: R12, act: Report a personal-data incident,
+     kind: operate, R: [Meridian Outsourcing],
+     A: Marta Kowalski}
+  - {id: R13, act: Decide leave outside policy, kind: keep,
+     R: [agent], A: Megan Hale}
+  transfers:
+  - {data: Employee records, from: [US, CA], to: PH,
+     recipient: Meridian Outsourcing, access: remote,
+     mechanism: data processing agreement}
+  - {data: Employee records, from: [UK], to: PH,
+     recipient: Meridian Outsourcing, access: remote view,
+     mechanism: null}
+
+- id: MER-R
+  agent_owner: client
+  name: Meridian SOW 2027, as revised (May 2027)
+  client: Hartwell
+  provider: Meridian Outsourcing
+  people:
+    Megan Hale: Hartwell US
+    Ananya Rao: Hartwell capability center
+    Nathan Cole: Hartwell US
+    Marta Kowalski: Hartwell privacy office
+  client_group: [Hartwell US, Hartwell UK, Hartwell Canada,
+                 Hartwell capability center,
+                 Hartwell privacy office, employing entity,
+                 line manager]
+  line_current: "1.1"
+  line_version: "1.1"
+  line_notice_days: 30
+  incident_notify_hours: 4
+  time_to_human_minutes: 15
+  kpis:
+  - {name: Resolved with no return in 7 days,
+     rewards: containment, counts: no return in 7 days,
+     return_window_days: 7}
+  - {name: Time to a human after hand-off, rewards: speed}
+  seat_cuts:
+  - {seats: 80, by: 2028-03-31,
+     status: Measured in production,
+     basis: "D-01 rate 29.8%, re-measured per tranche"}
+  subprocessors: []
+  raci:
+  - {id: R01, act: Set policy and the Line placement,
+     kind: design, R: [Hartwell US], A: Megan Hale}
+  - {id: R02, act: Build tools, tests and gate policy,
+     kind: build, R: [Hartwell capability center],
+     A: Ananya Rao}
+  - {id: R03, act: Change an agent tool permission,
+     kind: control, R: [Hartwell US], A: Nathan Cole}
+  - {id: R04, act: Switch the agent off or on, kind: control,
+     R: [Hartwell US], A: Megan Hale}
+  - {id: R05, act: Answer and act on tier-0 requests,
+     kind: operate, automate: true, R: [agent],
+     A: Megan Hale}
+  - {id: R06, act: Take a hand-off and work the case,
+     kind: operate, R: [Meridian Outsourcing], A: Megan Hale}
+  - {id: R07, act: Approve a verification letter,
+     kind: approve, R: [Meridian Outsourcing], A: Megan Hale,
+     apart_from: R05}
+  - {id: R08, act: Approve a bank-details change,
+     kind: approve, R: [Hartwell capability center],
+     A: Megan Hale, apart_from: R06}
+  - {id: R09, act: Detect a wrong action by readback,
+     kind: operate, automate: true,
+     R: [agent, Meridian Outsourcing], A: Megan Hale}
+  - {id: R10, act: Correct the record,
+     kind: operate, R: [Hartwell capability center],
+     A: Megan Hale}
+  - {id: R11, act: Tell the employee and put it right,
+     kind: operate, R: [employing entity], A: Megan Hale}
+  - {id: R12, act: Report a personal-data incident,
+     kind: operate, R: [Meridian Outsourcing],
+     A: Marta Kowalski}
+  - {id: R13, act: Decide leave outside policy, kind: keep,
+     R: [line manager], A: Megan Hale}
+  transfers:
+  - {data: Employee records, from: [US, CA], to: PH,
+     recipient: Meridian Outsourcing, access: remote,
+     mechanism: data processing agreement}
+  - {data: Employee records, from: [UK], to: PH,
+     recipient: Meridian Outsourcing, access: remote view,
+     mechanism: UK IDTA}
+
+- id: CAL
+  agent_owner: client
+  name: Calder Bank HR operations seats at Meridian
+  client: Calder Bank
+  provider: Meridian Outsourcing
+  people:
+    Andrew Kerr: Calder Bank
+  client_group: [Calder Bank]
+  line_current: "2.0"
+  line_version: "2.0"
+  line_notice_days: 30
+  incident_notify_hours: 4
+  time_to_human_minutes: 10
+  kpis:
+  - {name: Resolved with no return in 7 days,
+     rewards: containment, counts: no return in 7 days,
+     return_window_days: 7}
+  seat_cuts: []
+  subprocessors: []
+  raci:
+  - {id: C01, act: Change an agent tool permission,
+     kind: control, R: [Meridian Outsourcing],
+     A: Andrew Kerr}
+  - {id: C02, act: Take a bank-details request,
+     kind: operate, R: [Meridian Outsourcing],
+     A: Andrew Kerr}
+  - {id: C03, act: Approve a bank-details change,
+     kind: approve, R: [Meridian Outsourcing],
+     A: Andrew Kerr, apart_from: C02}
+  - {id: C04, act: Answer policy questions, kind: operate,
+     automate: true, R: [agent], A: Andrew Kerr}
+  transfers:
+  - {data: Employee records, from: [US, UK], to: PH,
+     recipient: Meridian Outsourcing, access: remote,
+     mechanism: UK IDTA and data processing agreement}
+
+- id: AUR
+  agent_owner: provider
+  name: Aurelia Telecom employee helpdesk at Meridian
+  client: Aurelia Telecom
+  provider: Meridian Outsourcing
+  people:
+    Luc Bernard: Aurelia Telecom
+  client_group: [Aurelia Telecom, Aurelia Netherlands]
+  line_current: "1.0"
+  line_version: "1.0"
+  line_notice_days: 30
+  incident_notify_hours: 24
+  time_to_human_minutes: 20
+  kpis: []
+  seat_cuts: []
+  subprocessors: []
+  raci:
+  - {id: A01, act: Change an agent tool permission,
+     kind: control, R: [Aurelia Telecom], A: Luc Bernard}
+  - {id: A02, act: Answer and act on tier-0 requests,
+     kind: operate, automate: true, R: [agent],
+     A: Luc Bernard}
+  - {id: A03, act: Take a hand-off and work the case,
+     kind: operate, R: [Meridian Outsourcing],
+     A: Luc Bernard}
+  transfers:
+  - {data: Employee records, from: [CA], to: PH,
+     recipient: Meridian Outsourcing, access: remote,
+     mechanism: data processing agreement}
+  - {data: Employee records, from: [NL], to: PH,
+     recipient: Meridian Outsourcing, access: remote,
+     mechanism: EU SCCs, consent_needed: true,
+     consent_ref: null}
+
+- id: ASH
+  agent_owner: provider
+  name: Ashby & Lowe payroll bureau
+  client: Ashby & Lowe
+  provider: the bureau
+  people:
+    Rachel Okafor: Ashby & Lowe
+  client_group: [Ashby & Lowe]
+  line_current: "1.0"
+  line_version: null
+  line_notice_days: 0
+  incident_notify_hours: 120
+  time_to_human_minutes: 240
+  kpis: []
+  seat_cuts: []
+  subprocessors: []
+  raci:
+  - {id: P01, act: Calculate and pay wages, kind: operate,
+     R: [the bureau], A: the bureau}
+  - {id: P02, act: Answer payslip questions, kind: operate,
+     automate: true, R: [agent], A: Rachel Okafor}
+  - {id: P03, act: Correct a wrong payment, kind: operate,
+     R: [the bureau], A: Rachel Okafor}
+  transfers:
+  - {data: Payroll records, from: [UK], to: UK,
+     recipient: the bureau, access: processing,
+     mechanism: data processing agreement}
