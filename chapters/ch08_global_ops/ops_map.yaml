@@ -10,7 +10,9 @@
 # subjects: where the employees whose data is used are employed.
 # sites: where the data is read or written to serve the request.
 map: Hartwell Global Operations Map
-version: "2027-04"
+version: "2027-05"
+# 2027-05: AU added to the model-provider row after the 2027-04
+# run found Australian leave requests (S9) reaching the model.
 synthetic: true
 sites:
   DEN: {name: Denver shared services, entity: Hartwell US,
@@ -63,5 +65,5 @@ group_register:
    mechanism: intra-group agreement (EU SCCs, UK IDTA)}
 - {from: [CA, UK, AU], to: US, recipient: Hartwell US,
    mechanism: intra-group agreement}
-- {from: [CA, UK], to: US, recipient: Model provider,
+- {from: [CA, UK, AU], to: US, recipient: Model provider,
    mechanism: processor terms (Hartwell Gate contract)}
