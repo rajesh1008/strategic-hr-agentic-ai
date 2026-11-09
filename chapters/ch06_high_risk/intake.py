@@ -74,7 +74,9 @@ def ask(rec: RunRecorder, systems: list[dict]) -> dict:
               "description": s["description"]} for s in systems]
     resp = rec.create(max_tokens=8000, system=SYSTEM, messages=[
         {"role": "user",
-         "content": json.dumps(shown, indent=1)}])
+         "content": json.dumps(shown, indent=1)}],
+        # the box's Brotli is too old for the SDK's decoder
+        extra_headers={"Accept-Encoding": "gzip"})
     text = "".join(b.text for b in resp.content
                    if b.type == "text")
     m = re.search(r"\[.*\]", text, re.S)
