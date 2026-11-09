@@ -1,0 +1,182 @@
+{
+  "run_id": "ch10/pilots/20261109T134915Z",
+  "started_utc": "2026-11-09T13:49:15.990983+00:00",
+  "git_commit": "fd7a45c",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "pilot": "P01",
+      "name": "AskHartwell chatbot",
+      "checks": {
+        "baseline": false,
+        "owner": true,
+        "write path": false,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": true
+      },
+      "verdict": "stalled: integration"
+    },
+    {
+      "pilot": "P02",
+      "name": "Tier-1 answer agent (Hyderabad)",
+      "checks": {
+        "baseline": true,
+        "owner": true,
+        "write path": true,
+        "authority": true,
+        "kill criteria": true,
+        "run owner": true
+      },
+      "verdict": "continue"
+    },
+    {
+      "pilot": "P03",
+      "name": "Copilot licenses for HR partners",
+      "checks": {
+        "baseline": false,
+        "owner": false,
+        "write path": true,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": true
+      },
+      "verdict": "stop: no owner"
+    },
+    {
+      "pilot": "P04",
+      "name": "Interview scheduling assistant (Houston)",
+      "checks": {
+        "baseline": true,
+        "owner": true,
+        "write path": false,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": true
+      },
+      "verdict": "stalled: integration"
+    },
+    {
+      "pilot": "P05",
+      "name": "Offer letter drafter",
+      "checks": {
+        "baseline": false,
+        "owner": true,
+        "write path": true,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": false
+      },
+      "verdict": "re-scope"
+    },
+    {
+      "pilot": "P06",
+      "name": "Onboarding chatbot (UK)",
+      "checks": {
+        "baseline": false,
+        "owner": true,
+        "write path": true,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": true
+      },
+      "verdict": "re-scope"
+    },
+    {
+      "pilot": "P07",
+      "name": "Gulf payroll anomaly flags",
+      "checks": {
+        "baseline": true,
+        "owner": true,
+        "write path": true,
+        "authority": false,
+        "kill criteria": false,
+        "run owner": true
+      },
+      "verdict": "stalled: authority"
+    },
+    {
+      "pilot": "P08",
+      "name": "Skills tagging prototype (Denver)",
+      "checks": {
+        "baseline": false,
+        "owner": true,
+        "write path": true,
+        "authority": false,
+        "kill criteria": false,
+        "run owner": false
+      },
+      "verdict": "stalled: authority"
+    },
+    {
+      "pilot": "P09",
+      "name": "Exit interview summarizer",
+      "checks": {
+        "baseline": false,
+        "owner": false,
+        "write path": true,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": false
+      },
+      "verdict": "stop: no owner"
+    },
+    {
+      "pilot": "P10",
+      "name": "Rotation pay-query bot (Alberta)",
+      "checks": {
+        "baseline": false,
+        "owner": false,
+        "write path": true,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": false
+      },
+      "verdict": "stop: no owner"
+    },
+    {
+      "pilot": "P11",
+      "name": "Policy copilot for Quayfen advisers",
+      "checks": {
+        "baseline": true,
+        "owner": true,
+        "write path": true,
+        "authority": true,
+        "kill criteria": false,
+        "run owner": true
+      },
+      "verdict": "re-scope"
+    }
+  ],
+  "stdout": [
+    "HR AI pilots found: 11",
+    "     basel owner write autho  kill   run  verdict",
+    "P01      -   yes     -   yes     -   yes  stalled: integration",
+    "P02    yes   yes   yes   yes   yes   yes  continue",
+    "P03      -     -   yes   yes     -   yes  stop: no owner",
+    "P04    yes   yes     -   yes     -   yes  stalled: integration",
+    "P05      -   yes   yes   yes     -     -  re-scope",
+    "P06      -   yes   yes   yes     -   yes  re-scope",
+    "P07    yes   yes   yes     -     -   yes  stalled: authority",
+    "P08      -   yes   yes     -     -     -  stalled: authority",
+    "P09      -     -   yes   yes     -     -  stop: no owner",
+    "P10      -     -   yes   yes     -     -  stop: no owner",
+    "P11    yes   yes   yes   yes     -   yes  re-scope",
+    "Pilots passing each check:",
+    "  baseline        4",
+    "  owner           8",
+    "  write path      9",
+    "  authority       9",
+    "  kill criteria   1",
+    "  run owner       7",
+    "Baseline, owner and kill criteria together: 1 of 11",
+    "  stop: no owner          3",
+    "  re-scope                3",
+    "  stalled: integration    2",
+    "  stalled: authority      2",
+    "  continue                1"
+  ]
+}

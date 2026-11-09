@@ -1,0 +1,2283 @@
+{
+  "run_id": "ch10/triage/20261109T134629Z",
+  "started_utc": "2026-11-09T13:46:29.246257+00:00",
+  "git_commit": "bcac291",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-09438\", \"text\": \"How do I download my W-2 from HartwellOne?\"}, {\"id\": \"T-11138\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-02832\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-02505\", \"text\": \"My balance says 12 days, is that right after December?\"}, {\"id\": \"T-06045\", \"text\": \"Following up AGAIN on my request from two weeks ago.\"}, {\"id\": \"T-08515\", \"text\": \"Overtime from the Houston shutdown still not on my check.\"}, {\"id\": \"T-07532\", \"text\": \"I asked for my pay correction on October 3 and still haven't heard anything.\"}, {\"id\": \"T-04432\", \"text\": \"I'm locked out of HartwellOne. Also my manager keeps making comments about my age.\"}, {\"id\": \"T-13936\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}, {\"id\": \"T-09466\", \"text\": \"Can I get a modified duty assignment after my injury?\"}, {\"id\": \"T-05811\", \"text\": \"How many vacation days do I have left for this year?\"}, {\"id\": \"T-12843\", \"text\": \"What is the per diem for an overnight job in Joliet?\"}, {\"id\": \"T-11809\", \"text\": \"I moved, please update my address to 220 Pine Rd. I'm pregnant and want to plan around it.\"}, {\"id\": \"T-01318\", \"text\": \"Please book me off December 9 to 21, my supervisor already agreed.\"}, {\"id\": \"T-08788\", \"text\": \"Which dental plan covers orthodontics?\"}, {\"id\": \"T-05246\", \"text\": \"Open enrollment closes when? I want to add my spouse.\"}, {\"id\": \"T-15239\", \"text\": \"Where is the travel policy?\"}, {\"id\": \"T-14872\", \"text\": \"New home address from December: 14 Elm St. Thanks.\"}, {\"id\": \"T-13721\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-12935\", \"text\": \"Following up AGAIN on my request from two weeks ago.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "8162ef5b43827430c397dd0b6c3bc1135183f34a34ff00b46ef4ecf3f1fc04fd",
+      "response": {
+        "id": "msg_011CgsTTHwm1nu3pUHAzw3W9",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "[{\"id\": \"T-09438\", \"category\": \"SYS-HOW\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11138\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-02832\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02505\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06045\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-08515\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07532\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-04432\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-13936\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-09466\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-05811\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12843\", \"category\": \"POL-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11809\", \"category\": \"ADDR\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-01318\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08788\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-05246\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15239\", \"category\": \"POL-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14872\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-13721\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12935\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true}]",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1184,
+          "output_tokens": 1754,
+          "output_tokens_details": {
+            "thinking_tokens": 1023
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-08900\", \"text\": \"Overtime from the Joliet shutdown still not on my check.\"}, {\"id\": \"T-11910\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-05733\", \"text\": \"Overtime from the Calgary shutdown still not on my check.\"}, {\"id\": \"T-06531\", \"text\": \"Can I get a letter confirming my salary and start date for a rental application?\"}, {\"id\": \"T-02436\", \"text\": \"I need to change my withholding after getting married.\"}, {\"id\": \"T-14305\", \"text\": \"My balance says 2 days, is that right after November?\"}, {\"id\": \"T-15341\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-01085\", \"text\": \"Please book me off October 14 to 21, my supervisor already agreed.\"}, {\"id\": \"T-08315\", \"text\": \"I booked 2 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-08705\", \"text\": \"Password reset link expired again, can't log in.\"}, {\"id\": \"T-07131\", \"text\": \"Open enrollment closes when? I want to add my spouse.\"}, {\"id\": \"T-05419\", \"text\": \"Can you explain the deduction labeled LTD on my payslip for December?\"}, {\"id\": \"T-00174\", \"text\": \"My balance says 12 days, is that right after November?\"}, {\"id\": \"T-12389\", \"text\": \"Following up AGAIN on my request from two weeks ago.\"}, {\"id\": \"T-09067\", \"text\": \"Which dental plan covers orthodontics?\"}, {\"id\": \"T-08024\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-10992\", \"text\": \"My work permit expires in October, what do I need to send?\"}, {\"id\": \"T-06861\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}, {\"id\": \"T-08256\", \"text\": \"Can you explain the deduction labeled LTD on my payslip for October?\"}, {\"id\": \"T-08876\", \"text\": \"I moved, please update my address to 14 Elm St.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "01af6d03ef2e8657c5cbfb0b4c1b75698da0a69d86c7c8a10091eac34a171887",
+      "response": {
+        "id": "msg_011CgsTTrfWVP9ZrszCxxfp7",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[{\"id\": \"T-08900\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11910\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-05733\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06531\", \"category\": \"LTR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02436\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14305\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15341\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-01085\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08315\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08705\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07131\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-05419\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00174\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12389\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-09067\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08024\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10992\", \"category\": \"RTW\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-06861\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08256\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08876\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false}]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1151,
+          "output_tokens": 1686,
+          "output_tokens_details": {
+            "thinking_tokens": 947
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-08384\", \"text\": \"Can I take half days of vacation?\"}, {\"id\": \"T-11114\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-00925\", \"text\": \"I booked 5 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-07424\", \"text\": \"I asked for my pay correction on November 3 and still haven't heard anything.\"}, {\"id\": \"T-00428\", \"text\": \"How do I see my team's schedule? Also my manager keeps making comments about my age.\"}, {\"id\": \"T-11817\", \"text\": \"I moved, please update my address to 14 Elm St.\"}, {\"id\": \"T-07237\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-02592\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update?\"}, {\"id\": \"T-07961\", \"text\": \"New home address from October: 220 Pine Rd. Thanks. I had a panic attack at work and went home early.\"}, {\"id\": \"T-08554\", \"text\": \"Please book me off December 3 to 21, my supervisor already agreed.\"}, {\"id\": \"T-03965\", \"text\": \"I booked 12 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-12437\", \"text\": \"Something happened on site that I think HR needs to know about. Who can I speak to in confidence?\"}, {\"id\": \"T-13549\", \"text\": \"How do I see my team's schedule?\"}, {\"id\": \"T-06837\", \"text\": \"How much notice do I need to give for a week off?\"}, {\"id\": \"T-01775\", \"text\": \"Please change my bank account for pay, new bank is a credit union.\"}, {\"id\": \"T-09342\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update?\"}, {\"id\": \"T-03129\", \"text\": \"Can you explain the deduction labeled STD on my payslip for November?\"}, {\"id\": \"T-08460\", \"text\": \"My leave form was rejected because of the wrong code, I have to do it again?\"}, {\"id\": \"T-09283\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-09001\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "32470515d6616892e460016beb8dd54b94b763829ccb770abb5af9a969c93cb7",
+      "response": {
+        "id": "msg_011CgsTULiEHa4R4Up58SkuS",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "[{\"id\": \"T-08384\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11114\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-00925\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07424\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-00428\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-11817\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07237\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02592\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07961\", \"category\": \"ADDR\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-08554\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-03965\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12437\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-13549\", \"category\": \"SYS-HOW\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06837\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-01775\", \"category\": \"BANK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-09342\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-03129\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08460\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-09283\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-09001\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}]",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1223,
+          "output_tokens": 1714,
+          "output_tokens_details": {
+            "thinking_tokens": 992
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-01806\", \"text\": \"Can I take half days of vacation?\"}, {\"id\": \"T-10658\", \"text\": \"Overtime from the Houston shutdown still not on my check.\"}, {\"id\": \"T-05938\", \"text\": \"I moved, please update my address to 220 Pine Rd.\"}, {\"id\": \"T-09359\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}, {\"id\": \"T-16262\", \"text\": \"How do I change my 401(k) contribution?\"}, {\"id\": \"T-15599\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-09090\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-06331\", \"text\": \"Where is the travel policy?\"}, {\"id\": \"T-15190\", \"text\": \"Can I get a letter confirming my salary and start date for a rental application?\"}, {\"id\": \"T-00841\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update? I had a panic attack at work and went home early.\"}, {\"id\": \"T-06441\", \"text\": \"Please book me off October 14 to 18, my supervisor already agreed.\"}, {\"id\": \"T-07380\", \"text\": \"I need extended leave for the birth of my child, what are my options?\"}, {\"id\": \"T-10336\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-16189\", \"text\": \"My TD1 needs updating for the new year.\"}, {\"id\": \"T-04099\", \"text\": \"I need an employment verification letter for my mortgage lender.\"}, {\"id\": \"T-14688\", \"text\": \"I need an employment verification letter for my mortgage lender. I'm pregnant and want to plan around it.\"}, {\"id\": \"T-16423\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-05901\", \"text\": \"Can you explain the deduction labeled STD on my payslip for November?\"}, {\"id\": \"T-13672\", \"text\": \"New home address from October: 220 Pine Rd. Thanks.\"}, {\"id\": \"T-12480\", \"text\": \"Does my sick balance carry over into January?\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "dd304bf7651ba8377a8577ed8f36de23c0824eb69fbb94198e3aa8a968379608",
+      "response": {
+        "id": "msg_011CgsTUpmBz282QBhDuT61Y",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[\n  {\"id\": \"T-01806\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-10658\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-05938\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-09359\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-16262\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-15599\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n  {\"id\": \"T-09090\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n  {\"id\": \"T-06331\", \"category\": \"POL-Q\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-15190\", \"category\": \"LTR\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-00841\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n  {\"id\": \"T-06441\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-07380\", \"category\": \"LV-EXC\", \"sensitive\": true, \"chasing\": false},\n  {\"id\": \"T-10336\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n  {\"id\": \"T-16189\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-04099\", \"category\": \"LTR\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-14688\", \"category\": \"LTR\", \"sensitive\": true, \"chasing\": false},\n  {\"id\": \"T-16423\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-05901\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-13672\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n  {\"id\": \"T-12480\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false}\n]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1184,
+          "output_tokens": 1909,
+          "output_tokens_details": {
+            "thinking_tokens": 1164
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-15089\", \"text\": \"Following up AGAIN on my request from two weeks ago.\"}, {\"id\": \"T-09942\", \"text\": \"How many vacation days do I have left for this year?\"}, {\"id\": \"T-04634\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}, {\"id\": \"T-03358\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-00290\", \"text\": \"Can I get a modified duty assignment after my injury?\"}, {\"id\": \"T-04116\", \"text\": \"Does my sick balance carry over into January?\"}, {\"id\": \"T-10885\", \"text\": \"Expense claim bounced for the third time, what's wrong with it? I've been off because of chemo so I'm not sure.\"}, {\"id\": \"T-04562\", \"text\": \"Does my sick balance carry over into January? I'm asking because my visa renewal is pending.\"}, {\"id\": \"T-12575\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update?\"}, {\"id\": \"T-13581\", \"text\": \"New starter here, my first paycheck didn't arrive.\"}, {\"id\": \"T-02608\", \"text\": \"Password reset link expired again, can't log in.\"}, {\"id\": \"T-02378\", \"text\": \"Overtime from the Houston shutdown still not on my check.\"}, {\"id\": \"T-11625\", \"text\": \"What is the per diem for an overnight job in Fort McMurray?\"}, {\"id\": \"T-02600\", \"text\": \"I booked 12 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-00104\", \"text\": \"I need a different work schedule because of a medical condition. Who do I talk to?\"}, {\"id\": \"T-11396\", \"text\": \"Does my sick balance carry over into January?\"}, {\"id\": \"T-14880\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}, {\"id\": \"T-00930\", \"text\": \"I moved, please update my address to 220 Pine Rd.\"}, {\"id\": \"T-10773\", \"text\": \"Can I get a modified duty assignment after my injury?\"}, {\"id\": \"T-15480\", \"text\": \"Can I get a modified duty assignment after my injury?\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "22737bbc8052499f58f3e4b757418d7e833b49860c2e49e23fa8d8e87691a12f",
+      "response": {
+        "id": "msg_011CgsTVMpV19mCRyjavWMLZ",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "[{\"id\": \"T-15089\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-09942\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04634\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-03358\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00290\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-04116\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10885\", \"category\": \"REWORK\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-04562\", \"category\": \"LV-POL\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-12575\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-13581\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02608\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02378\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11625\", \"category\": \"POL-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02600\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00104\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-11396\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14880\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00930\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10773\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-15480\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false}]",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1200,
+          "output_tokens": 2034,
+          "output_tokens_details": {
+            "thinking_tokens": 1307
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-12883\", \"text\": \"I need to change my withholding after getting married.\"}, {\"id\": \"T-08445\", \"text\": \"I worked 2 hours overtime on the Calgary job and was paid for 1. My supervisor says it was approved.\"}, {\"id\": \"T-08521\", \"text\": \"How do I change my 401(k) contribution?\"}, {\"id\": \"T-08414\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-12076\", \"text\": \"Following up AGAIN on my request from two weeks ago.\"}, {\"id\": \"T-12370\", \"text\": \"My net pay went down this period and I don't know why, is it the benefit change?\"}, {\"id\": \"T-12571\", \"text\": \"I need to change my withholding after getting married.\"}, {\"id\": \"T-05351\", \"text\": \"Can you explain the deduction labeled STD on my payslip for December? Also my manager keeps making comments about my age.\"}, {\"id\": \"T-16168\", \"text\": \"My leave form was rejected because of the wrong code, I have to do it again?\"}, {\"id\": \"T-08139\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-12237\", \"text\": \"I asked for my letter on December 3 and still haven't heard anything.\"}, {\"id\": \"T-02294\", \"text\": \"My balance says 3 days, is that right after November?\"}, {\"id\": \"T-13678\", \"text\": \"I changed banks. How do I update my direct deposit?\"}, {\"id\": \"T-15938\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}, {\"id\": \"T-15277\", \"text\": \"Does my sick balance carry over into January?\"}, {\"id\": \"T-12000\", \"text\": \"My TD1 needs updating for the new year.\"}, {\"id\": \"T-04428\", \"text\": \"Can I take half days of vacation?\"}, {\"id\": \"T-04998\", \"text\": \"What is the per diem for an overnight job in Fort McMurray? I had a panic attack at work and went home early.\"}, {\"id\": \"T-15231\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-09379\", \"text\": \"Expense claim bounced for the third time, what's wrong with it?\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "a5fbcfbdd75c45b795c342a6ece5a94211c240a4a4a953ba97dde0c5ca0cc9cf",
+      "response": {
+        "id": "msg_011CgsTVvvoGBYbtKFjpPfy4",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[{\"id\": \"T-12883\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08445\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08521\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08414\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-12076\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-12370\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12571\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-05351\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-16168\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08139\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12237\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-02294\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-13678\", \"category\": \"BANK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15938\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15277\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12000\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04428\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04998\", \"category\": \"POL-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-15231\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-09379\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false}]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1200,
+          "output_tokens": 2217,
+          "output_tokens_details": {
+            "thinking_tokens": 1497
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-02493\", \"text\": \"How do I change my 401(k) contribution?\"}, {\"id\": \"T-14044\", \"text\": \"What is the policy on taking leave over the holidays for field crews?\"}, {\"id\": \"T-15817\", \"text\": \"I booked 3 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-03219\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}, {\"id\": \"T-07664\", \"text\": \"Password reset link expired again, can't log in.\"}, {\"id\": \"T-06541\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-02862\", \"text\": \"I booked 2 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-04579\", \"text\": \"How many vacation days do I have left for this year?\"}, {\"id\": \"T-14729\", \"text\": \"How many vacation days do I have left for this year?\"}, {\"id\": \"T-14952\", \"text\": \"Overtime from the Calgary shutdown still not on my check.\"}, {\"id\": \"T-00561\", \"text\": \"My leave form was rejected because of the wrong code, I have to do it again?\"}, {\"id\": \"T-15582\", \"text\": \"I asked for my pay correction on December 14 and still haven't heard anything.\"}, {\"id\": \"T-11061\", \"text\": \"Which dental plan covers orthodontics?\"}, {\"id\": \"T-02996\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-08760\", \"text\": \"Please book me off December 9 to 18, my supervisor already agreed.\"}, {\"id\": \"T-00623\", \"text\": \"I need to change my withholding after getting married.\"}, {\"id\": \"T-06722\", \"text\": \"How do I change my 401(k) contribution?\"}, {\"id\": \"T-10699\", \"text\": \"Can you explain the deduction labeled STD on my payslip for December?\"}, {\"id\": \"T-12537\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-12672\", \"text\": \"I'm locked out of HartwellOne.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "554d9c840b69d86cfa6dcef4ac9e7fb046b19e96622002bc1f5ef1afbb1bf591",
+      "response": {
+        "id": "msg_011CgsTWb2kTF7sWixqFSBES",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[{\"id\": \"T-02493\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14044\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15817\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-03219\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07664\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06541\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-02862\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04579\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14729\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14952\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00561\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15582\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-11061\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02996\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08760\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00623\", \"category\": \"TAX\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-06722\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10699\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-12537\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12672\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false}]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1163,
+          "output_tokens": 1796,
+          "output_tokens_details": {
+            "thinking_tokens": 1065
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-16422\", \"text\": \"I worked 12 hours overtime on the Joliet job and was paid for 1. My supervisor says it was approved.\"}, {\"id\": \"T-13076\", \"text\": \"I need an employment verification letter for my mortgage lender.\"}, {\"id\": \"T-15269\", \"text\": \"Where in HartwellOne do I update my emergency contact?\"}, {\"id\": \"T-00045\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-09919\", \"text\": \"My TD1 needs updating for the new year.\"}, {\"id\": \"T-10906\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-16026\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}, {\"id\": \"T-16482\", \"text\": \"I want to report how my crew lead talks to me. It's been going on for weeks.\"}, {\"id\": \"T-02369\", \"text\": \"I booked 12 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-10008\", \"text\": \"What is the per diem for an overnight job in Fort McMurray?\"}, {\"id\": \"T-01157\", \"text\": \"I changed banks. How do I update my direct deposit?\"}, {\"id\": \"T-05588\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-10791\", \"text\": \"My TD1 needs updating for the new year.\"}, {\"id\": \"T-12758\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-02483\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-04622\", \"text\": \"I booked 3 days off but it shows as sick leave, please fix. I'm pregnant and want to plan around it.\"}, {\"id\": \"T-12863\", \"text\": \"HR asked for my right to work documents again, which ones?\"}, {\"id\": \"T-12838\", \"text\": \"My leave form was rejected because of the wrong code, I have to do it again?\"}, {\"id\": \"T-12022\", \"text\": \"I need a different work schedule because of a medical condition. Who do I talk to?\"}, {\"id\": \"T-05526\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "7cceae6fa1aa14398616bb228dca167cadb701ac712a2a33e5702a34ccfe558d",
+      "response": {
+        "id": "msg_011CgsTX6dEEpaay6gykqA9f",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "[{\"id\": \"T-16422\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-13076\", \"category\": \"LTR\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-15269\", \"category\": \"SYS-HOW\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-00045\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-09919\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-10906\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true}, {\"id\": \"T-16026\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-16482\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false}, {\"id\": \"T-02369\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-10008\", \"category\": \"POL-Q\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-01157\", \"category\": \"BANK\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-05588\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-10791\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-12758\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-02483\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-04622\", \"category\": \"LV-BOOK\", \"sensitive\": true, \"chasing\": false}, {\"id\": \"T-12863\", \"category\": \"RTW\", \"sensitive\": true, \"chasing\": false}, {\"id\": \"T-12838\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false}, {\"id\": \"T-12022\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false}, {\"id\": \"T-05526\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}]",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1218,
+          "output_tokens": 1724,
+          "output_tokens_details": {
+            "thinking_tokens": 999
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-04702\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-06009\", \"text\": \"My work permit expires in November, what do I need to send?\"}, {\"id\": \"T-00831\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-14056\", \"text\": \"I asked for my address change on December 14 and still haven't heard anything.\"}, {\"id\": \"T-07975\", \"text\": \"I asked for my address change on October 3 and still haven't heard anything.\"}, {\"id\": \"T-07391\", \"text\": \"I need extended leave for the birth of my child, what are my options?\"}, {\"id\": \"T-05308\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}, {\"id\": \"T-12179\", \"text\": \"I moved, please update my address to 14 Elm St.\"}, {\"id\": \"T-05154\", \"text\": \"Please book me off November 9 to 18, my supervisor already agreed.\"}, {\"id\": \"T-10549\", \"text\": \"I worked 5 hours overtime on the Houston job and was paid for 6. My supervisor says it was approved.\"}, {\"id\": \"T-02192\", \"text\": \"Can I take half days of vacation?\"}, {\"id\": \"T-01759\", \"text\": \"I'm locked out of HartwellOne. Honestly I'm scared to go back to that site after what happened.\"}, {\"id\": \"T-01505\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update? Honestly I'm scared to go back to that site after what happened.\"}, {\"id\": \"T-10749\", \"text\": \"My work permit expires in December, what do I need to send?\"}, {\"id\": \"T-01962\", \"text\": \"How do I change my 401(k) contribution? I'm asking because my visa renewal is pending.\"}, {\"id\": \"T-05225\", \"text\": \"I'm locked out of HartwellOne.\"}, {\"id\": \"T-04086\", \"text\": \"Does my sick balance carry over into January?\"}, {\"id\": \"T-10244\", \"text\": \"I think I'm owed the standby rate for last weekend, I was on call both days.\"}, {\"id\": \"T-09895\", \"text\": \"My balance says 2 days, is that right after October?\"}, {\"id\": \"T-12963\", \"text\": \"I booked 3 days off but it shows as sick leave, please fix.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "2e3d9ac169fb764690b892cc96fffab997ffb5ec39eeec38f6311357ba169136",
+      "response": {
+        "id": "msg_011CgsTXbQqo1mkNPCek6zN5",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[{\"id\": \"T-04702\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06009\", \"category\": \"RTW\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-00831\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-14056\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-07975\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-07391\", \"category\": \"LV-EXC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-05308\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12179\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-05154\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10549\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02192\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-01759\", \"category\": \"ACC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-01505\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-10749\", \"category\": \"RTW\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-01962\", \"category\": \"BEN-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-05225\", \"category\": \"ACC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04086\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10244\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-09895\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12963\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false}]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1228,
+          "output_tokens": 2049,
+          "output_tokens_details": {
+            "thinking_tokens": 1318
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-10328\", \"text\": \"My net pay went down this period and I don't know why, is it the benefit change?\"}, {\"id\": \"T-03425\", \"text\": \"My net pay went down this period and I don't know why, is it the benefit change?\"}, {\"id\": \"T-09946\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}, {\"id\": \"T-06376\", \"text\": \"Please change my bank account for pay, new bank is a credit union.\"}, {\"id\": \"T-08660\", \"text\": \"I want to report how my crew lead talks to me. It's been going on for weeks.\"}, {\"id\": \"T-10955\", \"text\": \"My leave form was rejected because of the wrong code, I have to do it again?\"}, {\"id\": \"T-08787\", \"text\": \"New home address from November: 220 Pine Rd. Thanks.\"}, {\"id\": \"T-10978\", \"text\": \"The chat said someone would get back to me. Nobody did. I've been off because of chemo so I'm not sure.\"}, {\"id\": \"T-04572\", \"text\": \"My leave form was rejected because of the wrong code, I have to do it again?\"}, {\"id\": \"T-14548\", \"text\": \"I need to change my withholding after getting married.\"}, {\"id\": \"T-00287\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-05773\", \"text\": \"I asked for my address change on December 3 and still haven't heard anything.\"}, {\"id\": \"T-02027\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update? Honestly I'm scared to go back to that site after what happened.\"}, {\"id\": \"T-04290\", \"text\": \"Open enrollment closes when? I want to add my spouse. Also my manager keeps making comments about my age.\"}, {\"id\": \"T-08361\", \"text\": \"New starter here, my first paycheck didn't arrive.\"}, {\"id\": \"T-16492\", \"text\": \"Open enrollment closes when? I want to add my spouse.\"}, {\"id\": \"T-11064\", \"text\": \"I asked for my address change on October 3 and still haven't heard anything.\"}, {\"id\": \"T-01130\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update? Honestly I'm scared to go back to that site after what happened.\"}, {\"id\": \"T-05129\", \"text\": \"What is the per diem for an overnight job in Calgary? I'm pregnant and want to plan around it.\"}, {\"id\": \"T-05771\", \"text\": \"My night premium is missing again this period.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "e77baa2c7292712cc4144a7621e86641259a309b112fc324c0e8d9c3063ddee1",
+      "response": {
+        "id": "msg_011CgsTYEVnCrRSCzMdyhTCU",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[{\"id\": \"T-10328\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-03425\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-09946\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06376\", \"category\": \"BANK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08660\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-10955\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08787\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-10978\", \"category\": \"CHASE\", \"sensitive\": true, \"chasing\": true},\n{\"id\": \"T-04572\", \"category\": \"REWORK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14548\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00287\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-05773\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-02027\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-04290\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-08361\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-16492\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11064\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-01130\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-05129\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-05771\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false}]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1287,
+          "output_tokens": 2115,
+          "output_tokens_details": {
+            "thinking_tokens": 1391
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-14821\", \"text\": \"I want to report how my crew lead talks to me. It's been going on for weeks.\"}, {\"id\": \"T-16343\", \"text\": \"I asked for my address change on October 3 and still haven't heard anything.\"}, {\"id\": \"T-03496\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-11109\", \"text\": \"Can you explain the deduction labeled DNT-2 on my payslip for December? I had a panic attack at work and went home early.\"}, {\"id\": \"T-02953\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update?\"}, {\"id\": \"T-15913\", \"text\": \"I need to change my withholding after getting married.\"}, {\"id\": \"T-12982\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-12802\", \"text\": \"Can you explain the deduction labeled LTD on my payslip for October?\"}, {\"id\": \"T-06359\", \"text\": \"What is the policy on taking leave over the holidays for field crews?\"}, {\"id\": \"T-12466\", \"text\": \"I started 2 days ago and still don't have a HartwellOne login.\"}, {\"id\": \"T-07921\", \"text\": \"Please book me off October 3 to 18, my supervisor already agreed.\"}, {\"id\": \"T-16297\", \"text\": \"Overtime from the Calgary shutdown still not on my check.\"}, {\"id\": \"T-14200\", \"text\": \"I need an employment verification letter for my mortgage lender.\"}, {\"id\": \"T-05958\", \"text\": \"I need a different work schedule because of a medical condition. Who do I talk to?\"}, {\"id\": \"T-10168\", \"text\": \"Where in HartwellOne do I update my emergency contact?\"}, {\"id\": \"T-08265\", \"text\": \"Which dental plan covers orthodontics? I had a panic attack at work and went home early.\"}, {\"id\": \"T-12671\", \"text\": \"My net pay went down this period and I don't know why, is it the tax update?\"}, {\"id\": \"T-16469\", \"text\": \"Open enrollment closes when? I want to add my spouse.\"}, {\"id\": \"T-04946\", \"text\": \"Overtime from the Houston shutdown still not on my check.\"}, {\"id\": \"T-11378\", \"text\": \"My father is in hospital and I need to take time off I don't have.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "241e0c6c9b77ba3a77b231c71faf5fffc4466e33c5802cef911bff34316e54dc",
+      "response": {
+        "id": "msg_011CgsTYrt45cQDhiCziDfqN",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n[{\"id\": \"T-14821\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-16343\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-03496\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11109\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-02953\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15913\", \"category\": \"TAX\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12982\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12802\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06359\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12466\", \"category\": \"ONB-MISS\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-07921\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-16297\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-14200\", \"category\": \"LTR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-05958\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-10168\", \"category\": \"SYS-HOW\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-08265\", \"category\": \"BEN-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-12671\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-16469\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04946\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-11378\", \"category\": \"LV-EXC\", \"sensitive\": false, \"chasing\": false}]\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1235,
+          "output_tokens": 2150,
+          "output_tokens_details": {
+            "thinking_tokens": 1408
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You sort HR service tickets for an employer.\nFor each ticket choose one category code from this list:\nPAY-Q Explain a payslip or pay date\nLV-BAL Leave balance question\nLV-POL Leave policy question\nBEN-Q Benefits question\nPOL-Q Other policy question\nSYS-HOW How to do something in HartwellOne\nADDR Change home address\nBANK Change bank details\nLTR Employment verification letter\nLV-BOOK Book or correct a leave booking\nTAX Change a tax form or withholding\nACC HartwellOne access or password\nPAY-DISP Dispute about pay owed\nACCOM Accommodation or adjustment\nCONC Concern, complaint or grievance\nLV-EXC Leave outside policy or protected leave\nRTW Right to work or visa\nCHASE Chasing an earlier request\nPAY-ERR Pay wrong because a process failed\nREWORK Resubmitting a form that bounced\nONB-MISS New starter item missing\nAlso set two flags.\nsensitive: true if the text mentions the person's health,\npregnancy, disability, conduct by or toward them, harassment,\nsafety, a protected characteristic, or immigration status.\nchasing: true if the person is following up an earlier request.\nJudge only from the text. Reply with a JSON array only:\n[{\"id\": \"...\", \"category\": \"...\", \"sensitive\": false,\n\"chasing\": false}]",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[{\"id\": \"T-13266\", \"text\": \"New home address from October: 14 Elm St. Thanks.\"}, {\"id\": \"T-12866\", \"text\": \"Can you explain the deduction labeled STD on my payslip for December? I've been off because of chemo so I'm not sure.\"}, {\"id\": \"T-12714\", \"text\": \"The chat said someone would get back to me. Nobody did.\"}, {\"id\": \"T-00456\", \"text\": \"New home address from October: 220 Pine Rd. Thanks.\"}, {\"id\": \"T-02511\", \"text\": \"Please book me off December 14 to 18, my supervisor already agreed.\"}, {\"id\": \"T-12080\", \"text\": \"I booked 5 days off but it shows as sick leave, please fix.\"}, {\"id\": \"T-00982\", \"text\": \"When is pay day this month? The calendar shows two dates.\"}, {\"id\": \"T-03239\", \"text\": \"My night premium is missing again this period.\"}, {\"id\": \"T-06297\", \"text\": \"My night premium is missing again this period. Honestly I'm scared to go back to that site after what happened.\"}, {\"id\": \"T-03612\", \"text\": \"My balance says 3 days, is that right after November?\"}, {\"id\": \"T-13095\", \"text\": \"How much notice do I need to give for a week off?\"}, {\"id\": \"T-01316\", \"text\": \"How do I change my 401(k) contribution?\"}, {\"id\": \"T-13034\", \"text\": \"My work permit expires in December, what do I need to send?\"}, {\"id\": \"T-04855\", \"text\": \"Living-out allowance not paid for my last rotation.\"}, {\"id\": \"T-04938\", \"text\": \"Can I get a modified duty assignment after my injury?\"}, {\"id\": \"T-14953\", \"text\": \"Which dental plan covers orthodontics?\"}, {\"id\": \"T-01798\", \"text\": \"New home address from December: 220 Pine Rd. Thanks.\"}, {\"id\": \"T-01190\", \"text\": \"Can I get a letter confirming my salary and start date for a rental application?\"}, {\"id\": \"T-15444\", \"text\": \"Something happened on site that I think HR needs to know about. Who can I speak to in confidence?\"}, {\"id\": \"T-06380\", \"text\": \"Overtime from the Houston shutdown still not on my check.\"}]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "a1941bf26f2b1df6246119cdf74f739fb8bd674574ea3e74224afc081e5cf7f1",
+      "response": {
+        "id": "msg_011CgsTZVsGwb8CRXMjvAgVc",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "[{\"id\": \"T-13266\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12866\", \"category\": \"PAY-Q\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-12714\", \"category\": \"CHASE\", \"sensitive\": false, \"chasing\": true},\n{\"id\": \"T-00456\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-02511\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-12080\", \"category\": \"LV-BOOK\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-00982\", \"category\": \"PAY-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-03239\", \"category\": \"PAY-ERR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-06297\", \"category\": \"PAY-ERR\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-03612\", \"category\": \"LV-BAL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-13095\", \"category\": \"LV-POL\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-01316\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-13034\", \"category\": \"RTW\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-04855\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-04938\", \"category\": \"ACCOM\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-14953\", \"category\": \"BEN-Q\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-01798\", \"category\": \"ADDR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-01190\", \"category\": \"LTR\", \"sensitive\": false, \"chasing\": false},\n{\"id\": \"T-15444\", \"category\": \"CONC\", \"sensitive\": true, \"chasing\": false},\n{\"id\": \"T-06380\", \"category\": \"PAY-DISP\", \"sensitive\": false, \"chasing\": false}]",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1205,
+          "output_tokens": 1773,
+          "output_tokens_details": {
+            "thinking_tokens": 1043
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "ticket": "T-09438",
+      "gold": "answer",
+      "model": "answer",
+      "label": "SYS-HOW",
+      "read": "SYS-HOW"
+    },
+    {
+      "ticket": "T-11138",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-02832",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-02505",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-06045",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-08515",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-07532",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-04432",
+      "gold": "person",
+      "model": "person",
+      "label": "ACC",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-13936",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-09466",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-05811",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-12843",
+      "gold": "answer",
+      "model": "answer",
+      "label": "POL-Q",
+      "read": "POL-Q"
+    },
+    {
+      "ticket": "T-11809",
+      "gold": "person",
+      "model": "person",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-01318",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-08788",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-05246",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-15239",
+      "gold": "answer",
+      "model": "answer",
+      "label": "POL-Q",
+      "read": "POL-Q"
+    },
+    {
+      "ticket": "T-14872",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-13721",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-12935",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-08900",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-11910",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-05733",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-06531",
+      "gold": "act",
+      "model": "act",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-02436",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-14305",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-15341",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-01085",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-08315",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-08705",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-07131",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-05419",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-00174",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-12389",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-09067",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-08024",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-10992",
+      "gold": "person",
+      "model": "person",
+      "label": "RTW",
+      "read": "RTW"
+    },
+    {
+      "ticket": "T-06861",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-08256",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-08876",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-08384",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-11114",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-00925",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-07424",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-00428",
+      "gold": "person",
+      "model": "person",
+      "label": "SYS-HOW",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-11817",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-07237",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-02592",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-07961",
+      "gold": "person",
+      "model": "person",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-08554",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-03965",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-12437",
+      "gold": "person",
+      "model": "person",
+      "label": "CONC",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-13549",
+      "gold": "answer",
+      "model": "answer",
+      "label": "SYS-HOW",
+      "read": "SYS-HOW"
+    },
+    {
+      "ticket": "T-06837",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-01775",
+      "gold": "act",
+      "model": "act",
+      "label": "BANK",
+      "read": "BANK"
+    },
+    {
+      "ticket": "T-09342",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-03129",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-08460",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-09283",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-09001",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-01806",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-10658",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-05938",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-09359",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-16262",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-15599",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-09090",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-06331",
+      "gold": "answer",
+      "model": "answer",
+      "label": "POL-Q",
+      "read": "POL-Q"
+    },
+    {
+      "ticket": "T-15190",
+      "gold": "act",
+      "model": "act",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-00841",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-06441",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-07380",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-10336",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-16189",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-04099",
+      "gold": "act",
+      "model": "act",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-14688",
+      "gold": "person",
+      "model": "person",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-16423",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-05901",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-13672",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-12480",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-15089",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-09942",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-04634",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-03358",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-00290",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-04116",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-10885",
+      "gold": "person",
+      "model": "person",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-04562",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-BAL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-12575",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-13581",
+      "gold": "fix",
+      "model": "fix",
+      "label": "ONB-MISS",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-02608",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-02378",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-11625",
+      "gold": "answer",
+      "model": "answer",
+      "label": "POL-Q",
+      "read": "POL-Q"
+    },
+    {
+      "ticket": "T-02600",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-00104",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-11396",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-14880",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-00930",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-10773",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-15480",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-12883",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-08445",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-08521",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-08414",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-12076",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-12370",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-12571",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-05351",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-16168",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-08139",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-12237",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-02294",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-13678",
+      "gold": "act",
+      "model": "act",
+      "label": "BANK",
+      "read": "BANK"
+    },
+    {
+      "ticket": "T-15938",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-15277",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-12000",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-04428",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-04998",
+      "gold": "person",
+      "model": "person",
+      "label": "POL-Q",
+      "read": "POL-Q"
+    },
+    {
+      "ticket": "T-15231",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-09379",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-02493",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-14044",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-15817",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-03219",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-07664",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-06541",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-02862",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-04579",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-14729",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-14952",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-00561",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-15582",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-11061",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-02996",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-08760",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-00623",
+      "gold": "act",
+      "model": "person",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-06722",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-10699",
+      "gold": "answer",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-12537",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-12672",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-16422",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-13076",
+      "gold": "act",
+      "model": "act",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-15269",
+      "gold": "answer",
+      "model": "answer",
+      "label": "SYS-HOW",
+      "read": "SYS-HOW"
+    },
+    {
+      "ticket": "T-00045",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-09919",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-10906",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-16026",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-16482",
+      "gold": "person",
+      "model": "person",
+      "label": "CONC",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-02369",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-10008",
+      "gold": "answer",
+      "model": "answer",
+      "label": "POL-Q",
+      "read": "POL-Q"
+    },
+    {
+      "ticket": "T-01157",
+      "gold": "act",
+      "model": "act",
+      "label": "BANK",
+      "read": "BANK"
+    },
+    {
+      "ticket": "T-05588",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-10791",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-12758",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-02483",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-04622",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-12863",
+      "gold": "person",
+      "model": "person",
+      "label": "RTW",
+      "read": "RTW"
+    },
+    {
+      "ticket": "T-12838",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-12022",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-05526",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-04702",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-06009",
+      "gold": "person",
+      "model": "person",
+      "label": "RTW",
+      "read": "RTW"
+    },
+    {
+      "ticket": "T-00831",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-14056",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-07975",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-07391",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-05308",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-12179",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-05154",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-10549",
+      "gold": "person",
+      "model": "answer",
+      "label": "PAY-DISP",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-02192",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-01759",
+      "gold": "person",
+      "model": "person",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-01505",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-10749",
+      "gold": "person",
+      "model": "person",
+      "label": "RTW",
+      "read": "RTW"
+    },
+    {
+      "ticket": "T-01962",
+      "gold": "person",
+      "model": "person",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-05225",
+      "gold": "act",
+      "model": "act",
+      "label": "ACC",
+      "read": "ACC"
+    },
+    {
+      "ticket": "T-04086",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-10244",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-DISP",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-09895",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-12963",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-10328",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-03425",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-09946",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-06376",
+      "gold": "act",
+      "model": "act",
+      "label": "BANK",
+      "read": "BANK"
+    },
+    {
+      "ticket": "T-08660",
+      "gold": "person",
+      "model": "person",
+      "label": "CONC",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-10955",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-08787",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-10978",
+      "gold": "person",
+      "model": "person",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-04572",
+      "gold": "fix",
+      "model": "fix",
+      "label": "REWORK",
+      "read": "REWORK"
+    },
+    {
+      "ticket": "T-14548",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-00287",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-05773",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-02027",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-04290",
+      "gold": "person",
+      "model": "person",
+      "label": "BEN-Q",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-08361",
+      "gold": "fix",
+      "model": "fix",
+      "label": "ONB-MISS",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-16492",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-11064",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-01130",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-05129",
+      "gold": "person",
+      "model": "person",
+      "label": "POL-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-05771",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-14821",
+      "gold": "person",
+      "model": "person",
+      "label": "CONC",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-16343",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-03496",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-11109",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-02953",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-15913",
+      "gold": "act",
+      "model": "act",
+      "label": "TAX",
+      "read": "TAX"
+    },
+    {
+      "ticket": "T-12982",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-12802",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-06359",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-12466",
+      "gold": "fix",
+      "model": "fix",
+      "label": "ONB-MISS",
+      "read": "ONB-MISS"
+    },
+    {
+      "ticket": "T-07921",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-16297",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-14200",
+      "gold": "act",
+      "model": "act",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-05958",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-10168",
+      "gold": "answer",
+      "model": "answer",
+      "label": "SYS-HOW",
+      "read": "SYS-HOW"
+    },
+    {
+      "ticket": "T-08265",
+      "gold": "person",
+      "model": "person",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-12671",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-16469",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-04946",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-11378",
+      "gold": "person",
+      "model": "person",
+      "label": "LV-EXC",
+      "read": "LV-EXC"
+    },
+    {
+      "ticket": "T-13266",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-12866",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-12714",
+      "gold": "fix",
+      "model": "fix",
+      "label": "CHASE",
+      "read": "CHASE"
+    },
+    {
+      "ticket": "T-00456",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-02511",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-12080",
+      "gold": "act",
+      "model": "act",
+      "label": "LV-BOOK",
+      "read": "LV-BOOK"
+    },
+    {
+      "ticket": "T-00982",
+      "gold": "answer",
+      "model": "answer",
+      "label": "PAY-Q",
+      "read": "PAY-Q"
+    },
+    {
+      "ticket": "T-03239",
+      "gold": "fix",
+      "model": "fix",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-06297",
+      "gold": "person",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-ERR"
+    },
+    {
+      "ticket": "T-03612",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-BAL",
+      "read": "LV-BAL"
+    },
+    {
+      "ticket": "T-13095",
+      "gold": "answer",
+      "model": "answer",
+      "label": "LV-POL",
+      "read": "LV-POL"
+    },
+    {
+      "ticket": "T-01316",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-13034",
+      "gold": "person",
+      "model": "person",
+      "label": "RTW",
+      "read": "RTW"
+    },
+    {
+      "ticket": "T-04855",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    },
+    {
+      "ticket": "T-04938",
+      "gold": "person",
+      "model": "person",
+      "label": "ACCOM",
+      "read": "ACCOM"
+    },
+    {
+      "ticket": "T-14953",
+      "gold": "answer",
+      "model": "answer",
+      "label": "BEN-Q",
+      "read": "BEN-Q"
+    },
+    {
+      "ticket": "T-01798",
+      "gold": "act",
+      "model": "act",
+      "label": "ADDR",
+      "read": "ADDR"
+    },
+    {
+      "ticket": "T-01190",
+      "gold": "act",
+      "model": "act",
+      "label": "LTR",
+      "read": "LTR"
+    },
+    {
+      "ticket": "T-15444",
+      "gold": "person",
+      "model": "person",
+      "label": "CONC",
+      "read": "CONC"
+    },
+    {
+      "ticket": "T-06380",
+      "gold": "fix",
+      "model": "person",
+      "label": "PAY-ERR",
+      "read": "PAY-DISP"
+    }
+  ],
+  "stdout": [
+    "Tickets read: 240 (60 per route), model claude-haiku-5-5",
+    "No usable reading (sent to a person): 0",
+    "Advisers' route (rows) by the rule's route from the model's reading:",
+    "            answer     act  person     fix",
+    "  answer        59       0       1       0",
+    "  act            0      59       1       0",
+    "  person         1       0      59       0",
+    "  fix            0       0      10      50",
+    "Same route: 227 of 240",
+    "Person tickets the rule would have sent elsewhere: 1 of 60",
+    "Tickets sent to a person that the advisers routed elsewhere: 12",
+    "  MISSED T-10549: I worked 5 hours overtime on the Houston job",
+    "Tokens: 14,478 in, 22,921 out, 12 calls"
+  ]
+}
