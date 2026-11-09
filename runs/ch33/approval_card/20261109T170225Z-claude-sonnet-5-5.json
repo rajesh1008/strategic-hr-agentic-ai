@@ -1,0 +1,1541 @@
+{
+  "run_id": "ch33/approval_card/20261109T170225Z",
+  "started_utc": "2026-11-09T17:02:25.749345+00:00",
+  "git_commit": "f2ae118",
+  "git_dirty": false,
+  "model": "claude-sonnet-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P01\",\n \"kind\": \"leave\",\n \"who\": \"Lena Ruiz\",\n \"emp\": \"HW-012771\",\n \"days\": 4,\n \"start\": \"2028-01-24\",\n \"notice_days\": 14,\n \"balance_days\": 9,\n \"on_shift_after\": 7,\n \"why\": \"longer than 3 days\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "b27be53e48b0e0bb3e933794bfd2c84574f1d0a9e34d004e5249984655472351",
+      "response": {
+        "id": "msg_011CgsiPvPPUK9WT1mpVXVXk",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P01: Leave Request**\n\n**Employee:** Lena Ruiz (HW-012771)\n**Request:** 4 days of leave starting 2028-01-24\n**Notice given:** 14 days\n**Leave balance:** 9 days (5 remaining after this request)\n**Staffing impact:** 7 people on shift after approval\n**Flag for review:** Request exceeds 3 days, which requires supervisor sign-off.\n\n**Summary:** The request is within Lena's available balance, was submitted with two weeks' notice, and leaves the shift with 7 staff. The only reason it reached you is the standard length threshold. Nothing in the data indicates a coverage or eligibility problem.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 206,
+          "output_tokens": 242,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P02\",\n \"kind\": \"leave\",\n \"who\": \"Marcus Hill\",\n \"emp\": \"HW-012781\",\n \"days\": 2,\n \"start\": \"2028-01-18\",\n \"notice_days\": 8,\n \"balance_days\": 6,\n \"on_shift_after\": 5,\n \"why\": \"crew below minimum\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "77e5e0af5baa301a8dededcdc142e01a1ef779e19815342605f559e9de0c28d0",
+      "response": {
+        "id": "msg_011CgsiQ8LUbwyZviXkcs1NG",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P02: Leave Request**\n\n**Employee:** Marcus Hill (HW-012781)\n**Request:** 2 days of leave starting 2028-01-18\n**Notice given:** 8 days\n**Leave balance:** 6 days (sufficient; 4 days would remain)\n**Staffing impact:** 5 people on shift after approval\n**Flag:** \"Crew below minimum\"\n\n**Summary:** Marcus has adequate balance and reasonable notice. However, the proposal itself notes the crew would be below minimum staffing with him out. The data shows 5 remaining on shift, and the stated reason indicates this falls short of the required threshold. Approving would leave the crew understaffed for those dates, which may affect service coverage and safety requirements. The minimum crew number isn't stated here, so it's worth confirming, but the flag is explicit.\n\nIf coverage can be arranged (a swap, overtime, or reassignment from another crew), the request could be revisited or approved for adjusted dates.\n\nRecommendation: Decline",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 204,
+          "output_tokens": 341,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P03\",\n \"kind\": \"timesheet\",\n \"who\": \"Ben Reyes\",\n \"emp\": \"HW-012816\",\n \"week_ending\": \"2028-01-08\",\n \"overtime_h\": 3.5,\n \"work_order\": \"WO-58812\",\n \"why\": \"overtime on timesheet\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "28873f1b3e30b543380a50eea7e05a66107ee66bdd375751fef0a5f5ce15f60a",
+      "response": {
+        "id": "msg_011CgsiQQ5X3DpFkaLqQje73",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P03: Timesheet Overtime**\n\n- **Employee:** Ben Reyes (HW-012816)\n- **Week ending:** 2028-01-08\n- **Overtime:** 3.5 hours\n- **Work order:** WO-58812\n- **Stated reason:** Overtime on timesheet\n\n**Notes:** The proposal gives only a generic reason (\"overtime on timesheet\") and does not explain what work required the extra hours or whether they were pre-authorized. The overtime is modest and tied to a specific work order, which supports traceability. Before signing off, confirm WO-58812 was active during that week and that you or another supervisor directed or approved the extra time.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 196,
+          "output_tokens": 234,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P04\",\n \"kind\": \"timesheet\",\n \"who\": \"Nina Shah\",\n \"emp\": \"HW-012841\",\n \"week_ending\": \"2028-01-08\",\n \"overtime_h\": 4.0,\n \"work_order\": null,\n \"why\": \"overtime on timesheet\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "75decf3a22f5b632f3fc04293086d6325cd46f2357e27d1457474626b7eb54bc",
+      "response": {
+        "id": "msg_011CgsiQbAX9SB6NoxVJ6gDF",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P04: Timesheet Overtime Approval**\n\n- **Employee:** Nina Shah (HW-012841)\n- **Week ending:** 2028-01-08\n- **Overtime requested:** 4.0 hours\n- **Work order:** None listed\n- **Stated reason:** \"overtime on timesheet\"\n\n**Concerns:**\n- No work order is attached, so the 4.0 hours can't be tied to a specific job, customer, or cost code.\n- The stated reason only restates that overtime appears on the timesheet. It doesn't explain what work was done or why it ran over.\n- Without a work order or explanation, there's no way to confirm the overtime was authorized or necessary.\n\n**Suggested next step:** Ask HR to resubmit with the associated work order and a brief description of the work performed. If Nina's overtime was pre-approved, a reference to that approval would also help.\n\nRecommendation: Decline",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 190,
+          "output_tokens": 301,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P05\",\n \"kind\": \"extension\",\n \"who\": \"Sam Ortiz\",\n \"emp\": \"HW-012846\",\n \"date\": \"2028-01-11\",\n \"to_hours\": 12,\n \"rest_after_h\": 11,\n \"certified_work\": \"confined-space entry\",\n \"ticket_expires\": \"2027-12-31\",\n \"why\": \"shift over 10 hours\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "aa954510f6ee16b7e9281a6ecfd87e7d97339265d8b48b40d66e4684efd6d2e4",
+      "response": {
+        "id": "msg_011CgsiQosW94KXapERS3fKq",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P05: Shift Extension**\n\n**Employee:** Sam Ortiz (HW-012846)\n**Date:** 2028-01-11\n**Request:** Extend shift to 12 hours (exceeds the standard 10-hour threshold)\n**Rest after shift:** 11 hours\n**Work involved:** Confined-space entry\n\n**Concern:** Sam's confined-space certification ticket expired on 2027-12-31, which is before the shift date of 2028-01-11. The proposal does not show a renewal or a current valid ticket. Assigning Sam to confined-space entry on an expired certification is a safety and compliance issue, and the 12-hour extension compounds the risk, since fatigue is a known hazard in confined-space work.\n\n**What's fine:** The 11-hour rest period after the shift appears adequate. The problem is the lapsed certification, not the hours.\n\n**Before this could be reconsidered:** Confirm whether Sam has renewed the confined-space ticket (and get the new expiry date), or reassign the confined-space portion to a currently certified worker.\n\nRecommendation: Decline",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 222,
+          "output_tokens": 367,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P06\",\n \"kind\": \"extension\",\n \"who\": \"Jo Whitaker\",\n \"emp\": \"HW-012889\",\n \"date\": \"2028-01-11\",\n \"to_hours\": 11,\n \"rest_after_h\": 13,\n \"certified_work\": null,\n \"ticket_expires\": null,\n \"why\": \"shift over 10 hours\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "85e1982424417153ab2567286daa0c820a3f104e42944c365d52595c27b5a401",
+      "response": {
+        "id": "msg_011CgsiR4khgaw6jzBUf8FuF",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P06: Shift Extension**\n\n**Who:** Jo Whitaker (HW-012889)\n**Date:** 2028-01-11\n**Request:** Extend shift to 11 hours\n**Rest after shift:** 13 hours\n**Certified work involved:** None\n**Ticket expiry:** None flagged\n**Reason given:** Shift runs over 10 hours\n\n**Assessment:** The extension is one hour beyond the 10-hour threshold, which is the only trigger noted. The 13 hours of rest afterward is a comfortable margin, and no certified work or expiring credentials are involved, so there are no qualification concerns. The stated reason is just the hours threshold itself rather than an operational need, so you may want to confirm the extra hour is actually required. Nothing in the proposal raises a fatigue, rest, or compliance flag.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 210,
+          "output_tokens": 292,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P07\",\n \"kind\": \"swap\",\n \"who\": \"Andre Bell\",\n \"emp\": \"HW-012898\",\n \"with\": \"Kim Duarte\",\n \"with_emp\": \"HW-012910\",\n \"date\": \"2028-01-13\",\n \"rest_h\": 8,\n \"why\": \"swap across shifts\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "a202e653aef264aff94423691363f35aaa4b3b890d4fba8e1ffce6dc3f966386",
+      "response": {
+        "id": "msg_011CgsiRHRSwqCAVV9vUGArs",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P07: Shift Swap**\n\n**Who:** Andre Bell (HW-012898) ↔ Kim Duarte (HW-012910)\n**Date:** January 13, 2028\n**Reason given:** \"Swap across shifts\" (no further detail)\n**Rest period:** 8 hours\n\n**Key points:**\n- This is a straightforward one-day swap between two employees.\n- The proposal lists an 8-hour rest period, which appears to be the gap between the end of one shift and the start of the swapped shift. Many utility and field-crew policies, and some labor agreements, require 10-12 hours of rest between shifts, especially for safety-sensitive work. I can't confirm which minimum applies here.\n- The proposal doesn't state which shifts are being exchanged, whether both employees hold the same certifications or crew roles, or whether either swap triggers overtime.\n- The stated reason is vague, though it is not unusual for a swap request.\n\n**What to check before approving:** Confirm the minimum rest requirement under company policy or the applicable agreement. If 8 hours meets the minimum, this is low risk. If the minimum is higher, the swap would violate it as written.\n\nRecommendation: Decline",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 200,
+          "output_tokens": 396,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P08\",\n \"kind\": \"swap\",\n \"who\": \"Kim Duarte\",\n \"emp\": \"HW-012910\",\n \"with\": \"Lena Ruiz\",\n \"with_emp\": \"HW-012771\",\n \"date\": \"2028-01-20\",\n \"rest_h\": 14,\n \"why\": \"swap across shifts\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "f4c3b58c6eca29e18c4275041be51792ede0a779ebc901e3fcdf86884496f08c",
+      "response": {
+        "id": "msg_011CgsiRasgCHPmu1XXiS1p6",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P08: Shift Swap**\n\n**Who:** Kim Duarte (HW-012910) swapping with Lena Ruiz (HW-012771)\n**Date:** January 20, 2028\n**Reason given:** Swap across shifts\n**Rest period:** 14 hours\n\n**Summary:** The HR agent proposes that Kim Duarte and Lena Ruiz trade shifts on January 20, 2028. The listed rest period is 14 hours, which is comfortably above the typical 8 to 11 hour minimum for field crews. Nothing in the proposal indicates a conflict, overtime trigger, or coverage gap.\n\n**Things to confirm before approving:**\n- Both employees hold the certifications or qualifications required for the shift they are taking over.\n- The 14-hour rest figure applies to both workers, not just one.\n- Both employees have agreed to the swap.\n\nThe proposal only reports one rest value, so the checks above rest on information not shown here. Based on what is provided, the swap looks routine and low risk.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 202,
+          "output_tokens": 350,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P09\",\n \"kind\": \"notice\",\n \"who\": \"CREW-DEN-07\",\n \"emp\": null,\n \"text\": \"safety stand-down on January 17 from 07:00 to 09:00 at the depot\",\n \"why\": \"crew-wide message\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "e7e3b3f5338966ec4a2a94ce7c51792ff6df01f50d5026832a29bfc8b0f79a64",
+      "response": {
+        "id": "msg_011CgsiRqK6bCdqVd3qpweYF",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P09: Crew Notice**\n\n**What it is:** A notice to CREW-DEN-07 announcing a safety stand-down on January 17, 07:00–09:00, at the depot.\n\n**Scope:** Crew-wide message. It isn't tied to any individual employee (emp is null), so no personal records or individual actions are affected.\n\n**Rationale given:** Crew-wide communication.\n\n**Considerations:**\n- Low risk: it's an informational notice with no disciplinary, pay, or scheduling-change action attached.\n- The two-hour window at the start of the shift (07:00–09:00) will delay or displace routine field work that morning. Confirm the dispatch schedule can absorb it.\n- The proposal doesn't state the stand-down's topic or whether attendance is mandatory. Worth adding if you want the crew to have clear expectations.\n\nNothing here raises a compliance or fairness concern, and the notice is routine for a safety-focused operation.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 179,
+          "output_tokens": 328,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P10\",\n \"kind\": \"leave\",\n \"who\": \"Jo Whitaker\",\n \"emp\": \"HW-012889\",\n \"days\": 3,\n \"start\": \"2028-02-02\",\n \"notice_days\": 23,\n \"balance_days\": 1.5,\n \"on_shift_after\": 7,\n \"why\": \"beyond balance\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "12b418b79c158d169c316dbff9237669257ba3b4c676bd310d0d68dd728b7e65",
+      "response": {
+        "id": "msg_011CgsiS63sMbkHKn5ZToHin",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P10: Leave Request**\n\n**Employee:** Jo Whitaker (HW-012889)\n**Request:** 3 days of leave starting 2028-02-02\n**Notice given:** 23 days\n**Leave balance:** 1.5 days\n**Coverage:** 7 staff on shift after the leave begins\n\n**Key issue:** The request is for 3 days, but Jo has only 1.5 days of balance. That leaves a 1.5-day shortfall, which the HR agent has flagged as \"beyond balance.\" Approving as submitted would put the employee into negative leave balance or require unpaid time for the excess, and the proposal doesn't indicate that either has been authorized or arranged.\n\n**Mitigating factors:** Notice is generous at 23 days, and staffing coverage looks adequate with 7 on shift, so operational impact should be low.\n\n**Options if you want to help Jo:** Ask HR to resubmit with the request trimmed to 1.5 days, or with an explicit plan for the extra 1.5 days (unpaid leave, advance against future accrual, or other approved arrangement).\n\nRecommendation: Decline",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 206,
+          "output_tokens": 375,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P11\",\n \"kind\": \"leave\",\n \"who\": \"Ben Reyes\",\n \"emp\": \"HW-012816\",\n \"days\": 3,\n \"start\": \"2028-01-13\",\n \"notice_days\": 3,\n \"balance_days\": 8,\n \"on_shift_after\": 6,\n \"why\": \"under 7 days' notice\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "502519f46cadbb2b29219b185a4d18e5ab8cf7b40c0d5ae8ac6187156a506f7a",
+      "response": {
+        "id": "msg_011CgsiSM3GdoBDYcHWuzeTz",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P11: Leave Request**\n\n**Employee:** Ben Reyes (HW-012816)\n**Request:** 3 days of leave starting 2028-01-13\n**Notice given:** 3 days\n**Leave balance:** 8 days (5 remaining after this request)\n**Staffing impact:** 6 employees still on shift after approval\n**Flag:** Short notice (under the 7-day guideline)\n\n**Summary:** Ben has ample balance to cover the request, and coverage remains at 6 on shift, so operations should not be disrupted. The only concern is the short notice, which falls below the 7-day threshold. Since the shortfall is modest and staffing is adequate, this is a low-risk exception. Consider confirming with Ben that the timing is unavoidable and noting the exception for the record.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 206,
+          "output_tokens": 276,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You help a field supervisor at a utility services company approve proposals from an HR agent. Write a short card summarizing the proposal, then end with one line: 'Recommendation: Approve' or 'Recommendation: Decline'.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P12\",\n \"kind\": \"timesheet\",\n \"who\": \"Kim Duarte\",\n \"emp\": \"HW-012910\",\n \"week_ending\": \"2028-01-08\",\n \"overtime_h\": 2.0,\n \"work_order\": \"WO-58907\",\n \"why\": \"overtime on timesheet\"\n}"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "2233b76ed5667b5783507fe4c84a6176134493558a1b0af658580b67f3af275e",
+      "response": {
+        "id": "msg_011CgsiSZx9kQ61kaoqTPtsP",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Proposal P12: Timesheet Overtime Approval**\n\n**Employee:** Kim Duarte (HW-012910)\n**Week ending:** 2028-01-08\n**Overtime requested:** 2.0 hours\n**Work order:** WO-58907\n**Stated reason:** Overtime on timesheet\n\n**Summary:** This is a routine timesheet entry for a small amount of overtime (2 hours) tied to a specific work order. The only justification given is that the overtime appears on the timesheet, which doesn't explain why the extra time was needed.\n\n**Things to check before approving:**\n- Confirm Kim actually worked the extra 2 hours on WO-58907 (job notes, dispatch logs, or a quick check with Kim).\n- Verify the overtime was pre-authorized or falls within normal overtime policy.\n- Make sure WO-58907 is open and assigned to Kim's crew for that week.\n\nNothing here looks unusual or out of range: the amount is modest, a work order is referenced, and the entry is for a single completed week. The thin rationale is a documentation gap rather than a red flag.\n\nRecommendation: Approve",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 196,
+          "output_tokens": 376,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P01\",\n \"kind\": \"leave\",\n \"who\": \"Lena Ruiz\",\n \"emp\": \"HW-012771\",\n \"days\": 4,\n \"start\": \"2028-01-24\",\n \"notice_days\": 14,\n \"balance_days\": 9,\n \"on_shift_after\": 7,\n \"why\": \"longer than 3 days\"\n}\nCheck results:\n[\n {\n  \"check\": \"balance\",\n  \"passed\": true,\n  \"detail\": \"4 days asked, 9 left\"\n },\n {\n  \"check\": \"crew minimum\",\n  \"passed\": true,\n  \"detail\": \"7 of 8 on shift, minimum 6\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "6887271f0624eb8dda5898cc88a7124a2ef8997cb0253f7dbc0d02509c4dc5d0",
+      "response": {
+        "id": "msg_011CgsiSpCuC5MiTAvKnQwqb",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All site checks passed.\n\nLena Ruiz (HW-012771) requests 4 days of leave starting 2028-01-24, with 14 days' notice. She has 9 days of balance, leaving 5 afterward. Crew on shift would be 7 of 8, above the minimum of 6. Flagged for review because the leave is longer than 3 days.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 322,
+          "output_tokens": 116,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P02\",\n \"kind\": \"leave\",\n \"who\": \"Marcus Hill\",\n \"emp\": \"HW-012781\",\n \"days\": 2,\n \"start\": \"2028-01-18\",\n \"notice_days\": 8,\n \"balance_days\": 6,\n \"on_shift_after\": 5,\n \"why\": \"crew below minimum\"\n}\nCheck results:\n[\n {\n  \"check\": \"balance\",\n  \"passed\": true,\n  \"detail\": \"2 days asked, 6 left\"\n },\n {\n  \"check\": \"crew minimum\",\n  \"passed\": false,\n  \"detail\": \"5 of 8 on shift, minimum 6\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "9c2411fc32b8aa618b6b267f6a666429a7b0268ce05945b8e7a0db2367856ad4",
+      "response": {
+        "id": "msg_011CgsiSvn34Vs4XMnzgDeov",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Failed: crew minimum (5 of 8 on shift, minimum 6).**\n\nProposal P02 would grant Marcus Hill (HW-012781) 2 days of leave starting 2028-01-18. He gave 8 days' notice and has 6 days of balance, which covers the request. Approving would leave the crew at 5 on shift, one under the minimum.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 320,
+          "output_tokens": 122,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P03\",\n \"kind\": \"timesheet\",\n \"who\": \"Ben Reyes\",\n \"emp\": \"HW-012816\",\n \"week_ending\": \"2028-01-08\",\n \"overtime_h\": 3.5,\n \"work_order\": \"WO-58812\",\n \"why\": \"overtime on timesheet\"\n}\nCheck results:\n[\n {\n  \"check\": \"work order\",\n  \"passed\": true,\n  \"detail\": \"3.5 h overtime, work order WO-58812\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "2ebb67fa80ccad5ce1b3648d3e4e52e0e3f5adee8ab9b26815dd3b5e3476285e",
+      "response": {
+        "id": "msg_011CgsiT4wAasDS4yeggHyzm",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All checks passed.\n\nProposal P03 would record 3.5 hours of overtime for Ben Reyes (HW-012816) on his timesheet for the week ending 2028-01-08, charged to work order WO-58812.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 269,
+          "output_tokens": 74,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P04\",\n \"kind\": \"timesheet\",\n \"who\": \"Nina Shah\",\n \"emp\": \"HW-012841\",\n \"week_ending\": \"2028-01-08\",\n \"overtime_h\": 4.0,\n \"work_order\": null,\n \"why\": \"overtime on timesheet\"\n}\nCheck results:\n[\n {\n  \"check\": \"work order\",\n  \"passed\": false,\n  \"detail\": \"4.0 h overtime, work order none\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "526b6edbd36c7dd02e0d8eafa7b5398b478bc98fe63c84a5f378443e5739eff3",
+      "response": {
+        "id": "msg_011CgsiTAsrBhZkLmEwBScGs",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Failed check: work order — 4.0 h overtime, work order none.**\n\nThis proposal would record 4.0 hours of overtime on Nina Shah's (HW-012841) timesheet for the week ending 2028-01-08. The stated reason is \"overtime on timesheet.\" No work order is attached to the overtime.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 259,
+          "output_tokens": 104,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P05\",\n \"kind\": \"extension\",\n \"who\": \"Sam Ortiz\",\n \"emp\": \"HW-012846\",\n \"date\": \"2028-01-11\",\n \"to_hours\": 12,\n \"rest_after_h\": 11,\n \"certified_work\": \"confined-space entry\",\n \"ticket_expires\": \"2027-12-31\",\n \"why\": \"shift over 10 hours\"\n}\nCheck results:\n[\n {\n  \"check\": \"rest\",\n  \"passed\": true,\n  \"detail\": \"11 h before next shift\"\n },\n {\n  \"check\": \"ticket\",\n  \"passed\": false,\n  \"detail\": \"confined-space entry, ticket expired 2027-12-31\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "06476ec620909e81ba82f5134640eca723d2dca6143ff330f232f31f0fdb3d90",
+      "response": {
+        "id": "msg_011CgsiTMRNFGkVjRy4oSdYQ",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Failed check: ticket.** Confined-space entry ticket expired 2027-12-31.\n\nThe proposal would extend Sam Ortiz (HW-012846) to 12 hours on 2028-01-11, with 11 hours' rest afterward, for confined-space entry work. Rest check passed. Reason given: shift over 10 hours.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 337,
+          "output_tokens": 114,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P06\",\n \"kind\": \"extension\",\n \"who\": \"Jo Whitaker\",\n \"emp\": \"HW-012889\",\n \"date\": \"2028-01-11\",\n \"to_hours\": 11,\n \"rest_after_h\": 13,\n \"certified_work\": null,\n \"ticket_expires\": null,\n \"why\": \"shift over 10 hours\"\n}\nCheck results:\n[\n {\n  \"check\": \"rest\",\n  \"passed\": true,\n  \"detail\": \"13 h before next shift\"\n },\n {\n  \"check\": \"ticket\",\n  \"passed\": true,\n  \"detail\": \"no certified work\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "197b9a73ee9cb839f4a2871a575be0d897336aa31602ece618172f641c25cc6b",
+      "response": {
+        "id": "msg_011CgsiTUH79rE41J7YMo6bH",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All checks passed (rest: 13 h before next shift; ticket: no certified work).\n\nProposal P06 would extend Jo Whitaker's (HW-012889) shift on 2028-01-11 to 11 hours. Reason given: shift over 10 hours.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 310,
+          "output_tokens": 88,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P07\",\n \"kind\": \"swap\",\n \"who\": \"Andre Bell\",\n \"emp\": \"HW-012898\",\n \"with\": \"Kim Duarte\",\n \"with_emp\": \"HW-012910\",\n \"date\": \"2028-01-13\",\n \"rest_h\": 8,\n \"why\": \"swap across shifts\"\n}\nCheck results:\n[\n {\n  \"check\": \"rest\",\n  \"passed\": false,\n  \"detail\": \"8 h between shifts\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "dcc0c69a0a7b9471c1d436a80b4ca6a41bac42d00a3898ef6ecf2ffcb1b972c3",
+      "response": {
+        "id": "msg_011CgsiTaNEGAHFL8ySQ9yGk",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Failed check: rest — only 8 h between shifts.**\n\nProposal P07 would swap Andre Bell (HW-012898) with Kim Duarte (HW-012910) on 2028-01-13, moving them across shifts. The stated reason is \"swap across shifts.\" The 8-hour gap is the rest figure recorded in the proposal.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 264,
+          "output_tokens": 115,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P08\",\n \"kind\": \"swap\",\n \"who\": \"Kim Duarte\",\n \"emp\": \"HW-012910\",\n \"with\": \"Lena Ruiz\",\n \"with_emp\": \"HW-012771\",\n \"date\": \"2028-01-20\",\n \"rest_h\": 14,\n \"why\": \"swap across shifts\"\n}\nCheck results:\n[\n {\n  \"check\": \"rest\",\n  \"passed\": true,\n  \"detail\": \"14 h between shifts\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "01a64c302f7465d1224521285ce714e299bab89033b893276d625d9bde9eb015",
+      "response": {
+        "id": "msg_011CgsiThiVVUjYrq1MmyF3W",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All checks passed (rest: 14 h between shifts).\n\nProposal P08 would swap shifts between Kim Duarte (HW-012910) and Lena Ruiz (HW-012771) on 2028-01-20. Stated reason: swap across shifts. The supervisor decides whether to approve.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 266,
+          "output_tokens": 100,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P09\",\n \"kind\": \"notice\",\n \"who\": \"CREW-DEN-07\",\n \"emp\": null,\n \"text\": \"safety stand-down on January 17 from 07:00 to 09:00 at the depot\",\n \"why\": \"crew-wide message\"\n}\nCheck results:\n[\n {\n  \"check\": \"none\",\n  \"passed\": true,\n  \"detail\": \"no site check applies\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "1583e5e857da5f3c98b08e2204cc70b20b6e0e34de57d36690ebc541dbaff59f",
+      "response": {
+        "id": "msg_011CgsiTqU5KtgZCGnXf2e2Y",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**P09: Notice to CREW-DEN-07**\n\nAll checks passed (no site check applies).\n\nThis would send a crew-wide notice announcing a safety stand-down at the depot on January 17, 07:00-09:00. No individual employee is attached to the proposal.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 240,
+          "output_tokens": 87,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P10\",\n \"kind\": \"leave\",\n \"who\": \"Jo Whitaker\",\n \"emp\": \"HW-012889\",\n \"days\": 3,\n \"start\": \"2028-02-02\",\n \"notice_days\": 23,\n \"balance_days\": 1.5,\n \"on_shift_after\": 7,\n \"why\": \"beyond balance\"\n}\nCheck results:\n[\n {\n  \"check\": \"balance\",\n  \"passed\": false,\n  \"detail\": \"3 days asked, 1.5 left\"\n },\n {\n  \"check\": \"crew minimum\",\n  \"passed\": true,\n  \"detail\": \"7 of 8 on shift, minimum 6\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "00797674858651ee54110dd026b2776eaf45bb99124c967efdc49edda6208e89",
+      "response": {
+        "id": "msg_011CgsiTxdS3toDU5eX6Y9Xg",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "**Failed: balance. 3 days requested, 1.5 left.**\n\nJo Whitaker (HW-012889) requests 3 days' leave starting 2028-02-02, with 23 days' notice. This exceeds her balance by 1.5 days. Crew minimum is met: 7 of 8 on shift, minimum 6.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 324,
+          "output_tokens": 111,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P11\",\n \"kind\": \"leave\",\n \"who\": \"Ben Reyes\",\n \"emp\": \"HW-012816\",\n \"days\": 3,\n \"start\": \"2028-01-13\",\n \"notice_days\": 3,\n \"balance_days\": 8,\n \"on_shift_after\": 6,\n \"why\": \"under 7 days' notice\"\n}\nCheck results:\n[\n {\n  \"check\": \"balance\",\n  \"passed\": true,\n  \"detail\": \"3 days asked, 8 left\"\n },\n {\n  \"check\": \"crew minimum\",\n  \"passed\": true,\n  \"detail\": \"6 of 8 on shift, minimum 6\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "31d923b15111544aec3a104ec124be104ec48f4be4e1f325f7521da70eddca1a",
+      "response": {
+        "id": "msg_011CgsiU7F72sacQy3j7AbT9",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All checks passed (balance, crew minimum).\n\nBen Reyes (HW-012816) requests 3 days' leave starting 2028-01-13. He gave 3 days' notice, under the 7-day guideline. He has 8 days of balance, leaving 5. Crew would sit at 6 of 8, exactly the minimum.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 322,
+          "output_tokens": 110,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 400,
+        "system": "You write approval cards for a field supervisor. Code has run the site checks and gives you the results. Write at most 50 words. If any check failed, the first line must name every failed check and its detail. Then say what the proposal would do. Do not recommend approving or declining; the supervisor decides.",
+        "thinking": {
+          "type": "between_tools"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "Proposal:\n{\n \"id\": \"P12\",\n \"kind\": \"timesheet\",\n \"who\": \"Kim Duarte\",\n \"emp\": \"HW-012910\",\n \"week_ending\": \"2028-01-08\",\n \"overtime_h\": 2.0,\n \"work_order\": \"WO-58907\",\n \"why\": \"overtime on timesheet\"\n}\nCheck results:\n[\n {\n  \"check\": \"work order\",\n  \"passed\": true,\n  \"detail\": \"2.0 h overtime, work order WO-58907\"\n }\n]"
+          }
+        ],
+        "model": "claude-sonnet-5-5"
+      },
+      "prompt_sha256": "a57890604b13a8b9ff44018a7992b20317b1c427c7283fd8679fb5c5beae7221",
+      "response": {
+        "id": "msg_011CgsiUEXtwaPNrLe8phy6V",
+        "model": "claude-sonnet-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "All checks passed.\n\nProposal P12 would record 2.0 hours of overtime for Kim Duarte (HW-012910) on the timesheet for the week ending 2028-01-08, charged to work order WO-58907. The stated reason is \"overtime on timesheet.\"",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 269,
+          "output_tokens": 90,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "design": "A",
+      "id": "P01",
+      "run": 0,
+      "card": "**Proposal P01: Leave Request**\n\n**Employee:** Lena Ruiz (HW-012771)\n**Request:** 4 days of leave starting 2028-01-24\n**Notice given:** 14 days\n**Leave balance:** 9 days (5 remaining after this request)\n**Staffing impact:** 7 people on shift after approval\n**Flag for review:** Request exceeds 3 days, which requires supervisor sign-off.\n\n**Summary:** The request is within Lena's available balance, was submitted with two weeks' notice, and leaves the shift with 7 staff. The only reason it reached you is the standard length threshold. Nothing in the data indicates a coverage or eligibility problem.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 91,
+        "id": "P01",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "A",
+      "id": "P02",
+      "run": 0,
+      "card": "**Proposal P02: Leave Request**\n\n**Employee:** Marcus Hill (HW-012781)\n**Request:** 2 days of leave starting 2028-01-18\n**Notice given:** 8 days\n**Leave balance:** 6 days (sufficient; 4 days would remain)\n**Staffing impact:** 5 people on shift after approval\n**Flag:** \"Crew below minimum\"\n\n**Summary:** Marcus has adequate balance and reasonable notice. However, the proposal itself notes the crew would be below minimum staffing with him out. The data shows 5 remaining on shift, and the stated reason indicates this falls short of the required threshold. Approving would leave the crew understaffed for those dates, which may affect service coverage and safety requirements. The minimum crew number isn't stated here, so it's worth confirming, but the flag is explicit.\n\nIf coverage can be arranged (a swap, overtime, or reassignment from another crew), the request could be revisited or approved for adjusted dates.\n\nRecommendation: Decline",
+      "grade": {
+        "named": true,
+        "first": false,
+        "rec": true,
+        "rec_bad": false,
+        "words": 140,
+        "id": "P02",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "A",
+      "id": "P03",
+      "run": 0,
+      "card": "**Proposal P03: Timesheet Overtime**\n\n- **Employee:** Ben Reyes (HW-012816)\n- **Week ending:** 2028-01-08\n- **Overtime:** 3.5 hours\n- **Work order:** WO-58812\n- **Stated reason:** Overtime on timesheet\n\n**Notes:** The proposal gives only a generic reason (\"overtime on timesheet\") and does not explain what work required the extra hours or whether they were pre-authorized. The overtime is modest and tied to a specific work order, which supports traceability. Before signing off, confirm WO-58812 was active during that week and that you or another supervisor directed or approved the extra time.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 91,
+        "id": "P03",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "A",
+      "id": "P04",
+      "run": 0,
+      "card": "**Proposal P04: Timesheet Overtime Approval**\n\n- **Employee:** Nina Shah (HW-012841)\n- **Week ending:** 2028-01-08\n- **Overtime requested:** 4.0 hours\n- **Work order:** None listed\n- **Stated reason:** \"overtime on timesheet\"\n\n**Concerns:**\n- No work order is attached, so the 4.0 hours can't be tied to a specific job, customer, or cost code.\n- The stated reason only restates that overtime appears on the timesheet. It doesn't explain what work was done or why it ran over.\n- Without a work order or explanation, there's no way to confirm the overtime was authorized or necessary.\n\n**Suggested next step:** Ask HR to resubmit with the associated work order and a brief description of the work performed. If Nina's overtime was pre-approved, a reference to that approval would also help.\n\nRecommendation: Decline",
+      "grade": {
+        "named": true,
+        "first": false,
+        "rec": true,
+        "rec_bad": false,
+        "words": 129,
+        "id": "P04",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "A",
+      "id": "P05",
+      "run": 0,
+      "card": "**Proposal P05: Shift Extension**\n\n**Employee:** Sam Ortiz (HW-012846)\n**Date:** 2028-01-11\n**Request:** Extend shift to 12 hours (exceeds the standard 10-hour threshold)\n**Rest after shift:** 11 hours\n**Work involved:** Confined-space entry\n\n**Concern:** Sam's confined-space certification ticket expired on 2027-12-31, which is before the shift date of 2028-01-11. The proposal does not show a renewal or a current valid ticket. Assigning Sam to confined-space entry on an expired certification is a safety and compliance issue, and the 12-hour extension compounds the risk, since fatigue is a known hazard in confined-space work.\n\n**What's fine:** The 11-hour rest period after the shift appears adequate. The problem is the lapsed certification, not the hours.\n\n**Before this could be reconsidered:** Confirm whether Sam has renewed the confined-space ticket (and get the new expiry date), or reassign the confined-space portion to a currently certified worker.\n\nRecommendation: Decline",
+      "grade": {
+        "named": true,
+        "first": false,
+        "rec": true,
+        "rec_bad": false,
+        "words": 140,
+        "id": "P05",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "A",
+      "id": "P06",
+      "run": 0,
+      "card": "**Proposal P06: Shift Extension**\n\n**Who:** Jo Whitaker (HW-012889)\n**Date:** 2028-01-11\n**Request:** Extend shift to 11 hours\n**Rest after shift:** 13 hours\n**Certified work involved:** None\n**Ticket expiry:** None flagged\n**Reason given:** Shift runs over 10 hours\n\n**Assessment:** The extension is one hour beyond the 10-hour threshold, which is the only trigger noted. The 13 hours of rest afterward is a comfortable margin, and no certified work or expiring credentials are involved, so there are no qualification concerns. The stated reason is just the hours threshold itself rather than an operational need, so you may want to confirm the extra hour is actually required. Nothing in the proposal raises a fatigue, rest, or compliance flag.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 116,
+        "id": "P06",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "A",
+      "id": "P07",
+      "run": 0,
+      "card": "**Proposal P07: Shift Swap**\n\n**Who:** Andre Bell (HW-012898) ↔ Kim Duarte (HW-012910)\n**Date:** January 13, 2028\n**Reason given:** \"Swap across shifts\" (no further detail)\n**Rest period:** 8 hours\n\n**Key points:**\n- This is a straightforward one-day swap between two employees.\n- The proposal lists an 8-hour rest period, which appears to be the gap between the end of one shift and the start of the swapped shift. Many utility and field-crew policies, and some labor agreements, require 10-12 hours of rest between shifts, especially for safety-sensitive work. I can't confirm which minimum applies here.\n- The proposal doesn't state which shifts are being exchanged, whether both employees hold the same certifications or crew roles, or whether either swap triggers overtime.\n- The stated reason is vague, though it is not unusual for a swap request.\n\n**What to check before approving:** Confirm the minimum rest requirement under company policy or the applicable agreement. If 8 hours meets the minimum, this is low risk. If the minimum is higher, the swap would violate it as written.\n\nRecommendation: Decline",
+      "grade": {
+        "named": true,
+        "first": false,
+        "rec": true,
+        "rec_bad": false,
+        "words": 176,
+        "id": "P07",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "A",
+      "id": "P08",
+      "run": 0,
+      "card": "**Proposal P08: Shift Swap**\n\n**Who:** Kim Duarte (HW-012910) swapping with Lena Ruiz (HW-012771)\n**Date:** January 20, 2028\n**Reason given:** Swap across shifts\n**Rest period:** 14 hours\n\n**Summary:** The HR agent proposes that Kim Duarte and Lena Ruiz trade shifts on January 20, 2028. The listed rest period is 14 hours, which is comfortably above the typical 8 to 11 hour minimum for field crews. Nothing in the proposal indicates a conflict, overtime trigger, or coverage gap.\n\n**Things to confirm before approving:**\n- Both employees hold the certifications or qualifications required for the shift they are taking over.\n- The 14-hour rest figure applies to both workers, not just one.\n- Both employees have agreed to the swap.\n\nThe proposal only reports one rest value, so the checks above rest on information not shown here. Based on what is provided, the swap looks routine and low risk.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 148,
+        "id": "P08",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "A",
+      "id": "P09",
+      "run": 0,
+      "card": "**Proposal P09: Crew Notice**\n\n**What it is:** A notice to CREW-DEN-07 announcing a safety stand-down on January 17, 07:00–09:00, at the depot.\n\n**Scope:** Crew-wide message. It isn't tied to any individual employee (emp is null), so no personal records or individual actions are affected.\n\n**Rationale given:** Crew-wide communication.\n\n**Considerations:**\n- Low risk: it's an informational notice with no disciplinary, pay, or scheduling-change action attached.\n- The two-hour window at the start of the shift (07:00–09:00) will delay or displace routine field work that morning. Confirm the dispatch schedule can absorb it.\n- The proposal doesn't state the stand-down's topic or whether attendance is mandatory. Worth adding if you want the crew to have clear expectations.\n\nNothing here raises a compliance or fairness concern, and the notice is routine for a safety-focused operation.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 134,
+        "id": "P09",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "A",
+      "id": "P10",
+      "run": 0,
+      "card": "**Proposal P10: Leave Request**\n\n**Employee:** Jo Whitaker (HW-012889)\n**Request:** 3 days of leave starting 2028-02-02\n**Notice given:** 23 days\n**Leave balance:** 1.5 days\n**Coverage:** 7 staff on shift after the leave begins\n\n**Key issue:** The request is for 3 days, but Jo has only 1.5 days of balance. That leaves a 1.5-day shortfall, which the HR agent has flagged as \"beyond balance.\" Approving as submitted would put the employee into negative leave balance or require unpaid time for the excess, and the proposal doesn't indicate that either has been authorized or arranged.\n\n**Mitigating factors:** Notice is generous at 23 days, and staffing coverage looks adequate with 7 on shift, so operational impact should be low.\n\n**Options if you want to help Jo:** Ask HR to resubmit with the request trimmed to 1.5 days, or with an explicit plan for the extra 1.5 days (unpaid leave, advance against future accrual, or other approved arrangement).\n\nRecommendation: Decline",
+      "grade": {
+        "named": true,
+        "first": false,
+        "rec": true,
+        "rec_bad": false,
+        "words": 155,
+        "id": "P10",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "A",
+      "id": "P11",
+      "run": 0,
+      "card": "**Proposal P11: Leave Request**\n\n**Employee:** Ben Reyes (HW-012816)\n**Request:** 3 days of leave starting 2028-01-13\n**Notice given:** 3 days\n**Leave balance:** 8 days (5 remaining after this request)\n**Staffing impact:** 6 employees still on shift after approval\n**Flag:** Short notice (under the 7-day guideline)\n\n**Summary:** Ben has ample balance to cover the request, and coverage remains at 6 on shift, so operations should not be disrupted. The only concern is the short notice, which falls below the 7-day threshold. Since the shortfall is modest and staffing is adequate, this is a low-risk exception. Consider confirming with Ben that the timing is unavoidable and noting the exception for the record.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 111,
+        "id": "P11",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "A",
+      "id": "P12",
+      "run": 0,
+      "card": "**Proposal P12: Timesheet Overtime Approval**\n\n**Employee:** Kim Duarte (HW-012910)\n**Week ending:** 2028-01-08\n**Overtime requested:** 2.0 hours\n**Work order:** WO-58907\n**Stated reason:** Overtime on timesheet\n\n**Summary:** This is a routine timesheet entry for a small amount of overtime (2 hours) tied to a specific work order. The only justification given is that the overtime appears on the timesheet, which doesn't explain why the extra time was needed.\n\n**Things to check before approving:**\n- Confirm Kim actually worked the extra 2 hours on WO-58907 (job notes, dispatch logs, or a quick check with Kim).\n- Verify the overtime was pre-authorized or falls within normal overtime policy.\n- Make sure WO-58907 is open and assigned to Kim's crew for that week.\n\nNothing here looks unusual or out of range: the amount is modest, a work order is referenced, and the entry is for a single completed week. The thin rationale is a documentation gap rather than a red flag.\n\nRecommendation: Approve",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": true,
+        "rec_bad": false,
+        "words": 158,
+        "id": "P12",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P01",
+      "run": 0,
+      "card": "All site checks passed.\n\nLena Ruiz (HW-012771) requests 4 days of leave starting 2028-01-24, with 14 days' notice. She has 9 days of balance, leaving 5 afterward. Crew on shift would be 7 of 8, above the minimum of 6. Flagged for review because the leave is longer than 3 days.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 51,
+        "id": "P01",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P02",
+      "run": 0,
+      "card": "**Failed: crew minimum (5 of 8 on shift, minimum 6).**\n\nProposal P02 would grant Marcus Hill (HW-012781) 2 days of leave starting 2028-01-18. He gave 8 days' notice and has 6 days of balance, which covers the request. Approving would leave the crew at 5 on shift, one under the minimum.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 51,
+        "id": "P02",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "B",
+      "id": "P03",
+      "run": 0,
+      "card": "All checks passed.\n\nProposal P03 would record 3.5 hours of overtime for Ben Reyes (HW-012816) on his timesheet for the week ending 2028-01-08, charged to work order WO-58812.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 28,
+        "id": "P03",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P04",
+      "run": 0,
+      "card": "**Failed check: work order — 4.0 h overtime, work order none.**\n\nThis proposal would record 4.0 hours of overtime on Nina Shah's (HW-012841) timesheet for the week ending 2028-01-08. The stated reason is \"overtime on timesheet.\" No work order is attached to the overtime.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 44,
+        "id": "P04",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "B",
+      "id": "P05",
+      "run": 0,
+      "card": "**Failed check: ticket.** Confined-space entry ticket expired 2027-12-31.\n\nThe proposal would extend Sam Ortiz (HW-012846) to 12 hours on 2028-01-11, with 11 hours' rest afterward, for confined-space entry work. Rest check passed. Reason given: shift over 10 hours.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 38,
+        "id": "P05",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "B",
+      "id": "P06",
+      "run": 0,
+      "card": "All checks passed (rest: 13 h before next shift; ticket: no certified work).\n\nProposal P06 would extend Jo Whitaker's (HW-012889) shift on 2028-01-11 to 11 hours. Reason given: shift over 10 hours.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 32,
+        "id": "P06",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P07",
+      "run": 0,
+      "card": "**Failed check: rest — only 8 h between shifts.**\n\nProposal P07 would swap Andre Bell (HW-012898) with Kim Duarte (HW-012910) on 2028-01-13, moving them across shifts. The stated reason is \"swap across shifts.\" The 8-hour gap is the rest figure recorded in the proposal.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 44,
+        "id": "P07",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "B",
+      "id": "P08",
+      "run": 0,
+      "card": "All checks passed (rest: 14 h between shifts).\n\nProposal P08 would swap shifts between Kim Duarte (HW-012910) and Lena Ruiz (HW-012771) on 2028-01-20. Stated reason: swap across shifts. The supervisor decides whether to approve.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 34,
+        "id": "P08",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P09",
+      "run": 0,
+      "card": "**P09: Notice to CREW-DEN-07**\n\nAll checks passed (no site check applies).\n\nThis would send a crew-wide notice announcing a safety stand-down at the depot on January 17, 07:00-09:00. No individual employee is attached to the proposal.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 36,
+        "id": "P09",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P10",
+      "run": 0,
+      "card": "**Failed: balance. 3 days requested, 1.5 left.**\n\nJo Whitaker (HW-012889) requests 3 days' leave starting 2028-02-02, with 23 days' notice. This exceeds her balance by 1.5 days. Crew minimum is met: 7 of 8 on shift, minimum 6.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 38,
+        "id": "P10",
+        "run": 0,
+        "flagged": true
+      }
+    },
+    {
+      "design": "B",
+      "id": "P11",
+      "run": 0,
+      "card": "All checks passed (balance, crew minimum).\n\nBen Reyes (HW-012816) requests 3 days' leave starting 2028-01-13. He gave 3 days' notice, under the 7-day guideline. He has 8 days of balance, leaving 5. Crew would sit at 6 of 8, exactly the minimum.",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 42,
+        "id": "P11",
+        "run": 0,
+        "flagged": false
+      }
+    },
+    {
+      "design": "B",
+      "id": "P12",
+      "run": 0,
+      "card": "All checks passed.\n\nProposal P12 would record 2.0 hours of overtime for Kim Duarte (HW-012910) on the timesheet for the week ending 2028-01-08, charged to work order WO-58907. The stated reason is \"overtime on timesheet.\"",
+      "grade": {
+        "named": true,
+        "first": true,
+        "rec": false,
+        "rec_bad": false,
+        "words": 35,
+        "id": "P12",
+        "run": 0,
+        "flagged": false
+      }
+    }
+  ],
+  "stdout": [
+    "Approval card designs, model claude-sonnet-5-5, 1 run(s)",
+    "12 proposals per run, 5 with a failed check",
+    "measure                               A summary   B checks",
+    "flagged cards naming the failure         5 of 5     5 of 5",
+    "flagged cards naming it in line 1        0 of 5     5 of 5",
+    "cards recommending a decision          12 of 12    0 of 12",
+    "Approve recommended on a flagged         0 of 5     0 of 5",
+    "mean words, design A: 132",
+    "mean words, design B: 39",
+    "--- design A, P05, run 1 ---",
+    "**Proposal P05: Shift Extension**",
+    "**Employee:** Sam Ortiz (HW-012846)",
+    "**Date:** 2028-01-11",
+    "**Request:** Extend shift to 12 hours (exceeds the standard",
+    "10-hour threshold)",
+    "**Rest after shift:** 11 hours",
+    "**Work involved:** Confined-space entry",
+    "**Concern:** Sam's confined-space certification ticket expired",
+    "on 2027-12-31, which is before the shift date of 2028-01-11.",
+    "The proposal does not show a renewal or a current valid",
+    "ticket. Assigning Sam to confined-space entry on an expired",
+    "certification is a safety and compliance issue, and the",
+    "12-hour extension compounds the risk, since fatigue is a known",
+    "hazard in confined-space work.",
+    "**What's fine:** The 11-hour rest period after the shift",
+    "appears adequate. The problem is the lapsed certification, not",
+    "the hours.",
+    "**Before this could be reconsidered:** Confirm whether Sam has",
+    "renewed the confined-space ticket (and get the new expiry",
+    "date), or reassign the confined-space portion to a currently",
+    "certified worker.",
+    "Recommendation: Decline",
+    "--- design B, P05, run 1 ---",
+    "**Failed check: ticket.** Confined-space entry ticket expired",
+    "2027-12-31.",
+    "The proposal would extend Sam Ortiz (HW-012846) to 12 hours on",
+    "2028-01-11, with 11 hours' rest afterward, for confined-space",
+    "entry work. Rest check passed. Reason given: shift over 10",
+    "hours."
+  ]
+}
