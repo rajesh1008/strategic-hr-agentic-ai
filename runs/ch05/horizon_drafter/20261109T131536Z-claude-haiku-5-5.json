@@ -1,0 +1,272 @@
+{
+  "run_id": "ch05/horizon_drafter/20261109T131536Z",
+  "started_utc": "2026-11-09T13:15:36.638462+00:00",
+  "git_commit": "1075481",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 6000,
+        "system": "You draft proposed rule records for an employer's\nregister of AI-in-employment law. You do not decide whether a rule\napplies to anyone; a lawyer reviews every draft. Today is 2026-11-09.\nFor each source item, write one record per distinct obligation\nwith a distinct start date. Use only what the item says.\nFields:\n source: the item id\n lane: place code (US-CA, US-CT, CA, CA-ON, UK, EU, AU, ...)\n name: short name of the instrument and provision\n status: in_force (duties apply today), enacted (law made,\n  duties start later), paused (enforcement on hold), pending,\n  proposed (a bill), or guidance\n in_force: YYYY-MM-DD when duties start, or null if not stated\n trigger: any (applies with or without AI), ai (any AI use),\n  substantial (AI output is a substantial factor) or solely\n decisions: subset of ['advertise', 'hire', 'book', 'terms', 'discipline', 'allocate', 'schedule', 'monitor', 'layoff']\n duties: subset of these codes:\n  NOTICE: tell the person that AI is used in the decision\n  POSTING: state AI use in the public job posting\n  POLICY: describe automated decisions in the privacy policy\n  EXPLAIN: explain the decision and its main factors\n  CORRECT: let the person see and correct the data used\n  REVIEW: a person reconsiders the decision on request\n  OVERSIGHT: a person oversees and verifies the decision\n  AUDIT: independent bias audit before use\n  PUBLISH: publish the audit results\n  ASSESS: risk or impact assessment\n  REPS: inform or consult worker representatives\n  CONSENT: written consent before collecting biometrics\n  NO_EFFECT: no discriminatory effect\n  NO_INTENT: no intent to discriminate\n  NO_PROXY: no ZIP code as a proxy for a protected class\n  BANNED: the practice is prohibited\n  LITERACY: support AI literacy of the staff who use it\n  CONSULT: consult on significant workplace change\n  SAFETY: manage health and safety risk of the system\n  COUNSEL: duties not itemized in the record\n check: one sentence on what a lawyer must confirm in the\n  primary text before this record is used\nReply with a JSON array only.",
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "messages": [
+          {
+            "role": "user",
+            "content": "[\n {\n  \"id\": \"R-102\",\n  \"title\": \"Connecticut SB 5, Public Act 26-15 (AI Responsibility and Transparency), employer provisions (law-firm summary)\",\n  \"date\": \"Signed 29 May 2026; WARN-AI disclosure from 1 Oct 2026; AEDT notice from 1 Oct 2027\",\n  \"text\": \"Employers deploying 'automated employment-related decision technology' (output is a substantial factor in hire/promote/discipline/discharge/terms) must from 1 Oct 2027 give plain-language interaction disclosure and pre-decision written notice (purpose, trade name, data categories and sources, contact); AG-only enforcement as unfair trade practice, 60-day cure before 31 Dec 2027; AEDT use 'not a defense' to discrimination claims, anti-bias testing may mitigate; WARN notices must state whether layoffs relate to AI from 1 Oct 2026.\"\n },\n {\n  \"id\": \"R-007\",\n  \"title\": \"Newsom Signs McNerney's No Robo Bosses Act of 2026 Requiring Human Oversight of AI in the Workplace (sponsor's press release)\",\n  \"date\": \"30 Sep 2026\",\n  \"text\": \"SB 947 signed 30 Sep 2026; bars California employers from relying solely on ADS to fire or discipline workers and mandates human oversight and verification when ADS assists such decisions; sponsored by California Labor Federation AFL-CIO; release cites >550 'bossware' products.\"\n },\n {\n  \"id\": \"R-041\",\n  \"title\": \"Bill C-36 (45-1) Protecting Privacy and Consumer Data Act, LEGISinfo\",\n  \"date\": \"first reading 15 Jun 2026\",\n  \"text\": \"Federal privacy reform bill introduced 15 Jun 2026; at access still at second reading (no committee, Senate or assent).\"\n },\n {\n  \"id\": \"R-038\",\n  \"title\": \"APP 1.7-1.9 Transparency Obligation Fact Sheet (OAIC)\",\n  \"date\": \"Sep 2026\",\n  \"text\": \"Fact sheet confirms obligations commence 10 Dec 2026 and gives recruitment-software examples (algorithmic job-ad targeting by age/gender; AI-generated candidate profiles from video interviews) as decisions that may significantly affect rights or interests.\"\n }\n]"
+          }
+        ],
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "d9a215185b6e2154ac88d37aa423446c38e3b4777f243f24c3c6f96900b61314",
+      "response": {
+        "id": "msg_011CgsR6j5J3fhkZzTqhaxK7",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "[\n  {\n    \"source\": \"R-102\",\n    \"lane\": \"US-CT\",\n    \"name\": \"CT SB 5 (PA 26-15) WARN-AI layoff disclosure\",\n    \"status\": \"in_force\",\n    \"in_force\": \"2026-10-01\",\n    \"trigger\": \"ai\",\n    \"decisions\": [\"layoff\"],\n    \"duties\": [\"NOTICE\"],\n    \"check\": \"Confirm in the enrolled Public Act that WARN notices must state whether layoffs relate to AI from 1 Oct 2026, and confirm the covered-employer thresholds and required notice content.\"\n  },\n  {\n    \"source\": \"R-102\",\n    \"lane\": \"US-CT\",\n    \"name\": \"CT SB 5 (PA 26-15) AEDT pre-decision and interaction notice\",\n    \"status\": \"enacted\",\n    \"in_force\": \"2027-10-01\",\n    \"trigger\": \"substantial\",\n    \"decisions\": [\"hire\", \"discipline\", \"terms\"],\n    \"duties\": [\"NOTICE\"],\n    \"check\": \"Confirm the statutory definition of automated employment-related decision technology, the required notice contents (purpose, trade name, data categories and sources, contact), and whether promotion and discharge are covered, since the decision list here maps them only loosely.\"\n  },\n  {\n    \"source\": \"R-102\",\n    \"lane\": \"US-CT\",\n    \"name\": \"CT SB 5 (PA 26-15) AEDT use not a defense to discrimination claims\",\n    \"status\": \"enacted\",\n    \"in_force\": null,\n    \"trigger\": \"substantial\",\n    \"decisions\": [\"hire\", \"discipline\", \"terms\"],\n    \"duties\": [\"COUNSEL\"],\n    \"check\": \"Confirm the exact wording of the 'not a defense' and anti-bias testing mitigation provisions and the effective date, which the summary does not state.\"\n  },\n  {\n    \"source\": \"R-007\",\n    \"lane\": \"US-CA\",\n    \"name\": \"CA SB 947 No Robo Bosses Act: no sole reliance on ADS to discipline or discharge\",\n    \"status\": \"enacted\",\n    \"in_force\": null,\n    \"trigger\": \"solely\",\n    \"decisions\": [\"discipline\"],\n    \"duties\": [\"BANNED\"],\n    \"check\": \"Confirm in the chaptered text of SB 947 the exact prohibition, whether 'fire' is covered beyond 'discipline', and the operative date, which the press release does not state.\"\n  },\n  {\n    \"source\": \"R-007\",\n    \"lane\": \"US-CA\",\n    \"name\": \"CA SB 947 No Robo Bosses Act: human oversight and verification of ADS-assisted discipline\",\n    \"status\": \"enacted\",\n    \"in_force\": null,\n    \"trigger\": \"ai\",\n    \"decisions\": [\"discipline\"],\n    \"duties\": [\"OVERSIGHT\"],\n    \"check\": \"Confirm in the chaptered text what human oversight and verification mean, which ADS-assisted decisions are covered, and the operative date, since the source is a sponsor press release.\"\n  },\n  {\n    \"source\": \"R-041\",\n    \"lane\": \"CA\",\n    \"name\": \"Bill C-36 (45-1) Protecting Privacy and Consumer Data Act\",\n    \"status\": \"proposed\",\n    \"in_force\": null,\n    \"trigger\": \"any\",\n    \"decisions\": [],\n    \"duties\": [\"COUNSEL\"],\n    \"check\": \"Confirm in the bill text whether it contains any automated decision, AI, or employment-related provisions, since the LEGISinfo summary describes none and only shows the bill at second reading.\"\n  },\n  {\n    \"source\": \"R-038\",\n    \"lane\": \"AU\",\n    \"name\": \"Privacy Act APP 1.7-1.9 transparency of automated decisions\",\n    \"status\": \"enacted\",\n    \"in_force\": \"2026-12-10\",\n    \"trigger\": \"ai\",\n    \"decisions\": [\"advertise\", \"hire\"],\n    \"duties\": [\"POLICY\"],\n    \"check\": \"Confirm in the primary Privacy Act text the 10 Dec 2026 commencement date and the privacy policy content required for automated decisions that significantly affect rights or interests, since the OAIC fact sheet is guidance and not the operative text.\"\n  }\n]",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1601,
+          "output_tokens": 4790,
+          "output_tokens_details": {
+            "thinking_tokens": 3400
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "draft": {
+        "source": "R-102",
+        "lane": "US-CT",
+        "name": "CT SB 5 (PA 26-15) WARN-AI layoff disclosure",
+        "status": "in_force",
+        "in_force": "2026-10-01",
+        "trigger": "ai",
+        "decisions": [
+          "layoff"
+        ],
+        "duties": [
+          "NOTICE"
+        ],
+        "check": "Confirm in the enrolled Public Act that WARN notices must state whether layoffs relate to AI from 1 Oct 2026, and confirm the covered-employer thresholds and required notice content."
+      },
+      "compared_with": "US-CT-SB5-WARN",
+      "schema_problems": [],
+      "to": "employment counsel"
+    },
+    {
+      "draft": {
+        "source": "R-102",
+        "lane": "US-CT",
+        "name": "CT SB 5 (PA 26-15) AEDT pre-decision and interaction notice",
+        "status": "enacted",
+        "in_force": "2027-10-01",
+        "trigger": "substantial",
+        "decisions": [
+          "hire",
+          "discipline",
+          "terms"
+        ],
+        "duties": [
+          "NOTICE"
+        ],
+        "check": "Confirm the statutory definition of automated employment-related decision technology, the required notice contents (purpose, trade name, data categories and sources, contact), and whether promotion and discharge are covered, since the decision list here maps them only loosely."
+      },
+      "compared_with": "US-CT-SB5-AEDT",
+      "schema_problems": [],
+      "to": "employment counsel"
+    },
+    {
+      "draft": {
+        "source": "R-102",
+        "lane": "US-CT",
+        "name": "CT SB 5 (PA 26-15) AEDT use not a defense to discrimination claims",
+        "status": "enacted",
+        "in_force": null,
+        "trigger": "substantial",
+        "decisions": [
+          "hire",
+          "discipline",
+          "terms"
+        ],
+        "duties": [
+          "COUNSEL"
+        ],
+        "check": "Confirm the exact wording of the 'not a defense' and anti-bias testing mitigation provisions and the effective date, which the summary does not state."
+      },
+      "compared_with": "US-CT-SB5-AEDT",
+      "schema_problems": [],
+      "to": "employment counsel"
+    },
+    {
+      "draft": {
+        "source": "R-007",
+        "lane": "US-CA",
+        "name": "CA SB 947 No Robo Bosses Act: no sole reliance on ADS to discipline or discharge",
+        "status": "enacted",
+        "in_force": null,
+        "trigger": "solely",
+        "decisions": [
+          "discipline"
+        ],
+        "duties": [
+          "BANNED"
+        ],
+        "check": "Confirm in the chaptered text of SB 947 the exact prohibition, whether 'fire' is covered beyond 'discipline', and the operative date, which the press release does not state."
+      },
+      "compared_with": "US-CA-SB947",
+      "schema_problems": [],
+      "to": "employment counsel"
+    },
+    {
+      "draft": {
+        "source": "R-007",
+        "lane": "US-CA",
+        "name": "CA SB 947 No Robo Bosses Act: human oversight and verification of ADS-assisted discipline",
+        "status": "enacted",
+        "in_force": null,
+        "trigger": "ai",
+        "decisions": [
+          "discipline"
+        ],
+        "duties": [
+          "OVERSIGHT"
+        ],
+        "check": "Confirm in the chaptered text what human oversight and verification mean, which ADS-assisted decisions are covered, and the operative date, since the source is a sponsor press release."
+      },
+      "compared_with": "US-CA-SB947",
+      "schema_problems": [],
+      "to": "employment counsel"
+    },
+    {
+      "draft": {
+        "source": "R-041",
+        "lane": "CA",
+        "name": "Bill C-36 (45-1) Protecting Privacy and Consumer Data Act",
+        "status": "proposed",
+        "in_force": null,
+        "trigger": "any",
+        "decisions": [],
+        "duties": [
+          "COUNSEL"
+        ],
+        "check": "Confirm in the bill text whether it contains any automated decision, AI, or employment-related provisions, since the LEGISinfo summary describes none and only shows the bill at second reading."
+      },
+      "compared_with": "CA-FED-C36",
+      "schema_problems": [],
+      "to": "employment counsel"
+    },
+    {
+      "draft": {
+        "source": "R-038",
+        "lane": "AU",
+        "name": "Privacy Act APP 1.7-1.9 transparency of automated decisions",
+        "status": "enacted",
+        "in_force": "2026-12-10",
+        "trigger": "ai",
+        "decisions": [
+          "advertise",
+          "hire"
+        ],
+        "duties": [
+          "POLICY"
+        ],
+        "check": "Confirm in the primary Privacy Act text the 10 Dec 2026 commencement date and the privacy policy content required for automated decisions that significantly affect rights or interests, since the OAIC fact sheet is guidance and not the operative text."
+      },
+      "compared_with": "AU-APP-1-7",
+      "schema_problems": [],
+      "to": "employment counsel"
+    }
+  ],
+  "stdout": [
+    "Sources: 4; drafts from claude-haiku-5-5: 7",
+    "",
+    "R-102 draft: US-CT CT SB 5 (PA 26-15) WARN-AI layoff disclo",
+    "  register: US-CT-SB5-WARN",
+    "  trigger   draft ai                     held any",
+    "  check: Confirm in the enrolled Public Act that WARN notices",
+    "  must state whether layoffs relate to AI from 1 Oct 2026, and",
+    "  confirm the covered-employer thresholds and required notice",
+    "  content.",
+    "",
+    "R-102 draft: US-CT CT SB 5 (PA 26-15) AEDT pre-decision and",
+    "  register: US-CT-SB5-AEDT",
+    "  check: Confirm the statutory definition of automated",
+    "  employment-related decision technology, the required notice",
+    "  contents (purpose, trade name, data categories and sources,",
+    "  contact), and whether promotion and discharge are covered,",
+    "  since the decision list here maps them only loosely.",
+    "",
+    "R-102 draft: US-CT CT SB 5 (PA 26-15) AEDT use not a defens",
+    "  register: US-CT-SB5-AEDT",
+    "  in_force  draft None                   held 2027-10-01",
+    "  duties    draft COUNSEL                held NOTICE",
+    "  check: Confirm the exact wording of the 'not a defense' and",
+    "  anti-bias testing mitigation provisions and the effective",
+    "  date, which the summary does not state.",
+    "",
+    "R-007 draft: US-CA CA SB 947 No Robo Bosses Act: no sole re",
+    "  register: US-CA-SB947",
+    "  in_force  draft None                   held 2027-07-01",
+    "  trigger   draft solely                 held ai",
+    "  duties    draft BANNED                 held OVERSIGHT",
+    "  check: Confirm in the chaptered text of SB 947 the exact",
+    "  prohibition, whether 'fire' is covered beyond 'discipline',",
+    "  and the operative date, which the press release does not",
+    "  state.",
+    "",
+    "R-007 draft: US-CA CA SB 947 No Robo Bosses Act: human over",
+    "  register: US-CA-SB947",
+    "  in_force  draft None                   held 2027-07-01",
+    "  check: Confirm in the chaptered text what human oversight",
+    "  and verification mean, which ADS-assisted decisions are",
+    "  covered, and the operative date, since the source is a",
+    "  sponsor press release.",
+    "",
+    "R-041 draft: CA Bill C-36 (45-1) Protecting Privacy and ",
+    "  register: CA-FED-C36",
+    "  trigger   draft any                    held ai",
+    "  decisions draft                        held hire,terms",
+    "  check: Confirm in the bill text whether it contains any",
+    "  automated decision, AI, or employment-related provisions,",
+    "  since the LEGISinfo summary describes none and only shows",
+    "  the bill at second reading.",
+    "",
+    "R-038 draft: AU Privacy Act APP 1.7-1.9 transparency of ",
+    "  register: AU-APP-1-7",
+    "  trigger   draft ai                     held substantial",
+    "  check: Confirm in the primary Privacy Act text the 10 Dec",
+    "  2026 commencement date and the privacy policy content",
+    "  required for automated decisions that significantly affect",
+    "  rights or interests, since the OAIC fact sheet is guidance",
+    "  and not the operative text.",
+    "",
+    "Fields matching the register: 32 of 42",
+    "Queued for counsel: 7; written to rules/: 0"
+  ]
+}
