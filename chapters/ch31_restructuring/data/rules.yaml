@@ -1,0 +1,107 @@
+# Chapter 31, "The consultation timeline". Rules as data.
+# Each rule names its source: an evidence-register ID, or
+# VERIFY where the register does not yet hold the text.
+# window: days over which proposed dismissals are added.
+# bands: [minimum count, days before first dismissal].
+# Simplified for planning; counsel signs the real dates.
+UK:
+  label: UK TULRCA s.188 collective consultation
+  source: R-263
+  scope: establishment
+  window: 90
+  bands: [[20, 30], [100, 45]]
+UK-ORG:
+  label: UK ERA 2025 organization-wide count (s.195A)
+  source: R-263
+  status: threshold not yet set; 20 is the floor
+  scope: employer
+  window: 90
+  bands: [[20, 30], [100, 45]]
+EU:
+  label: EU Directive 98/59, 90-day option, Art 4(1)
+  source: R-312
+  scope: establishment
+  window: 90
+  bands: [[20, 30]]
+NL:
+  label: Netherlands WMCO notice to UWV and unions
+  source: VERIFY
+  scope: work area
+  window: 90
+  bands: [[20, 30]]
+US:
+  label: US federal WARN Act notice
+  source: R-258
+  scope: site
+  window: 90
+  employer_min: 100
+  closing_min: 50
+  layoff_min: 50
+  layoff_share: 0.333
+  layoff_any: 500
+  bands: [[1, 60]]
+US-NY:
+  label: New York WARN notice
+  source: VERIFY
+  scope: site
+  window: 90
+  employer_min: 50
+  closing_min: 25
+  layoff_min: 25
+  layoff_share: 0.333
+  layoff_any: 250
+  bands: [[1, 90]]
+US-CA:
+  label: California WARN notice
+  source: VERIFY
+  scope: site
+  window: 30
+  employer_min: 75
+  closing_min: 50
+  layoff_min: 50
+  layoff_share: 0.0
+  layoff_any: 50
+  bands: [[1, 60]]
+CA-ON:
+  label: Ontario mass termination notice (Form 1)
+  source: R-260
+  scope: establishment
+  window: 28
+  bands: [[50, 56], [200, 84], [500, 112]]
+CA-AB:
+  label: Alberta group termination notice to Minister
+  source: R-261
+  scope: site
+  window: 28
+  bands: [[50, 28]]
+AU:
+  label: Australia Fair Work notice of 15+ dismissals
+  source: R-069
+  scope: employer
+  window: 0
+  bands: [[15, 0]]
+IN:
+  label: India IRC s.70 retrenchment notice
+  source: R-347
+  scope: establishment
+  window: 0
+  bands: [[1, 30]]
+SG:
+  label: Singapore retrenchment notification to MOM
+  source: VERIFY
+  scope: employer
+  window: 180
+  employer_min: 10
+  bands: [[5, 0]]
+AE:
+  label: UAE Art 43 individual notice (no collective)
+  source: R-334
+  scope: person
+  window: 0
+  bands: [[1, 30]]
+PH:
+  label: Philippines notice to workers and DOLE
+  source: R-316
+  scope: person
+  window: 0
+  bands: [[1, 30]]

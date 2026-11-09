@@ -1,0 +1,40 @@
+# Chapter 31, "The selection-criteria check". Brightwater
+# Leeds line operatives (synthetic): pool of 120, 34 roles
+# to go. Two selection matrices as data.
+pool: {site: Brightwater Leeds, size: 120, select: 34}
+protected_absence: [maternity, disability, family,
+                    union_duties]
+proxies: [part_time, all_shifts, age, years_to_65,
+          retention_score, union_role]
+v1:
+  consulted_on: 2028-03-20
+  scored_on: 2028-03-27
+  scorer: supervisors
+  agent_mode: none
+  tie_break: [tenure]
+  criteria:
+    - {name: attendance, weight: 35, field: absence_all,
+       source: record, counts: all, live_only: true}
+    - {name: flexibility, weight: 20, field: all_shifts,
+       source: record}
+    - {name: discipline, weight: 15, field: warnings_all,
+       source: record, live_only: false}
+    - {name: skills, weight: 30, field: supervisor_view,
+       source: opinion}
+v2:
+  consulted_on: 2028-04-24
+  scored_on: 2028-05-08
+  scorer: panel of two managers
+  agent_mode: retrieve
+  tie_break: [certified_skills, panel_review]
+  criteria:
+    - {name: certified skills, weight: 40,
+       field: certified_skills, source: record}
+    - {name: qualifications, weight: 20,
+       field: qualifications, source: record}
+    - {name: attendance, weight: 25,
+       field: absence_other, source: record,
+       counts: unprotected, live_only: true}
+    - {name: discipline, weight: 15,
+       field: warnings_live, source: record,
+       live_only: true}

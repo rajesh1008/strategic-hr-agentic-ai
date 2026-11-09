@@ -1,0 +1,80 @@
+# Chapter 31, "Task exposure is not absorption" and
+# "The scenario fan". Hartwell UK and Rotterdam
+# back-office roles (synthetic). Shares are of paid hours.
+# status: claim status of the absorption rate (ch04).
+# weight: planning weight by status (ch04 ledger).
+as_of: 2028-03-31
+start: 2028Q3
+quarters: 6
+review_ratio: 0.15
+weights: {Claimed: 0.0, Tested: 0.5, Shadow: 0.8,
+          Production: 1.0}
+vendor_rate: 0.60
+units:
+  MAN: {entity: Hartwell UK, site: Manchester,
+        country: UK, attrition: 0.13, redeploy_q: 1}
+  LDS: {entity: Hartwell UK, site: Leeds,
+        country: UK, attrition: 0.15, redeploy_q: 0.5}
+  GLA: {entity: Hartwell UK, site: Glasgow,
+        country: UK, attrition: 0.11, redeploy_q: 0.5}
+  RTM: {entity: Hartwell Netherlands, site: Rotterdam,
+        country: NL, attrition: 0.09, redeploy_q: 0.5}
+headcount:
+  MAN: {hr_admin: 14, payroll_admin: 10, site_admin: 38}
+  LDS: {site_admin: 26}
+  GLA: {site_admin: 17}
+  RTM: {hr_admin: 5, payroll_admin: 4, site_admin: 21}
+roles:
+  hr_admin:
+    - {task: letters and verifications, share: 0.16,
+       side: automate, exposed: true, rate: 0.62,
+       status: Production}
+    - {task: personal and bank details,
+       share: 0.12, side: automate, exposed: true,
+       rate: 0.55, status: Production}
+    - {task: absence and leave records, share: 0.14,
+       side: automate, exposed: true, rate: 0.40,
+       status: Tested}
+    - {task: contract-change data entry, share: 0.18,
+       side: automate, exposed: true, rate: 0.30,
+       status: Shadow}
+    - {task: employee questions,
+       share: 0.14, side: automate, exposed: true,
+       rate: 0.20, status: Production}
+    - {task: case support and notes,
+       share: 0.16, side: keep, exposed: true,
+       rate: 0.0, status: Production}
+    - {task: right-to-work checks,
+       share: 0.10, side: keep, exposed: false,
+       rate: 0.0, status: Production}
+  payroll_admin:
+    - {task: payroll input checks,
+       share: 0.30, side: automate, exposed: true,
+       rate: 0.35, status: Tested}
+    - {task: pay queries, share: 0.20, side: automate,
+       exposed: true, rate: 0.30, status: Production}
+    - {task: starter and leaver pay,
+       share: 0.20, side: automate, exposed: true,
+       rate: 0.10, status: Production}
+    - {task: statutory pay and filings,
+       share: 0.15, side: keep, exposed: true,
+       rate: 0.0, status: Production}
+    - {task: reconciliations,
+       share: 0.15, side: automate, exposed: true,
+       rate: 0.20, status: Tested}
+  site_admin:
+    - {task: work-order logging,
+       share: 0.25, side: automate, exposed: true,
+       rate: 0.32, status: Shadow}
+    - {task: site access and permits,
+       share: 0.25, side: keep, exposed: false,
+       rate: 0.0, status: Production}
+    - {task: timesheets and rosters, share: 0.20,
+       side: automate, exposed: true, rate: 0.25,
+       status: Tested}
+    - {task: purchase orders and invoices, share: 0.15,
+       side: automate, exposed: true, rate: 0.20,
+       status: Tested}
+    - {task: safety records and audits, share: 0.15,
+       side: keep, exposed: true, rate: 0.0,
+       status: Production}
