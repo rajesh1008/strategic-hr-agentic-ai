@@ -18,10 +18,13 @@ def load(name: str) -> dict:
 
 # --- 1. Critical-role vacancy cost (Talent to Value) ----------
 
-def net_cost_per_day(role: dict) -> float:
+VALUE = "value_at_risk_per_day"
+
+
+def net_cost_per_day(role: dict, key: str = VALUE) -> float:
     """Value at risk plus cover premium, less pay not spent."""
     pay_per_day = role["loaded_pay_per_year"] / 365
-    return (role["value_at_risk_per_day"]
+    return (role[key]
             + role["cover_premium_per_day"]
             - pay_per_day)
 
@@ -34,25 +37,26 @@ def vacancy_days(role: dict, ramp_loss: float) -> float:
     return exits * per_exit
 
 
-def is_critical(role: dict, rule: dict) -> bool:
+def is_critical(role: dict, rule: dict,
+                key: str = VALUE) -> bool:
     productive = role["days_to_fill"] + role["ramp_days"]
-    cost = net_cost_per_day(role)
+    cost = net_cost_per_day(role, key)
     return (cost >= rule["min_net_cost_per_day"]
             and productive >= rule["min_days_to_productive"])
 
 
-def role_map(fx: dict) -> list[dict]:
+def role_map(fx: dict, key: str = VALUE) -> list[dict]:
     rows = []
     for r in fx["roles"]:
         days = vacancy_days(r, fx["ramp_loss"])
-        cost = net_cost_per_day(r)
+        cost = net_cost_per_day(r, key)
         rule = fx["critical_rule"]
         rows.append({"id": r["id"], "title": r["title"],
                      "incumbents": r["incumbents"],
                      "per_day": round(cost),
                      "days": round(days),
                      "annual": round(days * cost),
-                     "critical": is_critical(r, rule)})
+                     "critical": is_critical(r, rule, key)})
     return sorted(rows, key=lambda x: -x["annual"])
 
 
@@ -182,3 +186,22 @@ def agency_only_view(fx: dict) -> float:
     r = fx["routes"][0]
     extra = r["shift_cost"] - fx["staff_shift_cost"]
     return r["share"] * extra
+
+
+# --- 6. Sector case: cost to serve per employee (Fieldnote) ---
+
+def cost_per_employee(fx: dict) -> dict:
+    """Visible People cost, and the manager hours it hides."""
+    n = fx["employees"]
+    team = (fx["people_team"]["heads"]
+            * fx["people_team"]["loaded_cost_each"])
+    suite = fx["hr_suite_per_employee_year"] * n
+    eor = (fx["eor"]["employees"]
+           * fx["eor"]["fee_per_employee_month"] * 12)
+    hours = (fx["managers"] * fx["manager_hr_hours_per_week"]
+             * fx["working_weeks"])
+    managers = hours * fx["manager_cost_per_hour"]
+    visible = team + suite + eor
+    return {"visible": visible / n,
+            "manager_hours": hours,
+            "all_in": (visible + managers) / n}

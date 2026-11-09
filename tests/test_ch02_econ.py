@@ -64,3 +64,18 @@ def test_unsourced_numbers():
     src = "cost $22,939,001 a year; 60.0 FTE"
     assert numbers.unsourced("$22,939,001 and 60.0", src) == []
     assert numbers.unsourced("about 23 million", src) == ["23"]
+
+
+def test_revenue_view_inflates_the_sales_case():
+    bw = econ.load("brightwater_sales.json")
+    rev = econ.role_map(bw, "revenue_at_risk_per_day")
+    mar = econ.role_map(bw)
+    assert sum(r["annual"] for r in rev) > 20 * sum(
+        r["annual"] for r in mar)
+    crit = {r["id"] for r in mar if r["critical"]}
+    assert crit == {"NKA-US", "KAM-UK", "KAM-NL"}
+
+
+def test_manager_hours_more_than_double_fieldnote_cost():
+    fn = econ.cost_per_employee(econ.load("fieldnote_people.json"))
+    assert fn["all_in"] > 2 * fn["visible"]

@@ -1,7 +1,7 @@
 """Chapter 2 calculator run: deterministic, no model calls.
 
 Prints the four views the chapter quotes (role map, cost to
-serve, agent break-even, hours ledger) plus the Lakemont shift.
+serve, agent break-even, hours ledger) plus the Lakemont, Brightwater and Fieldnote sector cases.
 Run with HRAI_MODEL=deterministic so the record names no model:
   HRAI_MODEL=deterministic python -m \
       chapters.ch02_strategic_hr.workforce_economics
@@ -75,6 +75,24 @@ def report(p) -> None:
     shifts = icu["vacant_icu_fte"] * icu["shifts_per_fte_year"]
     total = shifts * sp["expected"]
     p(f"vacant shifts a year {shifts:,}; cost ${total:,.0f}")
+
+    p("")
+    bw = econ.load("brightwater_sales.json")
+    p("BRIGHTWATER: SALES ROLES, TWO VALUE VIEWS (synthetic)")
+    for label, key in (("revenue", "revenue_at_risk_per_day"),
+                       ("margin", econ.VALUE)):
+        rows = econ.role_map(bw, key)
+        crit = [r["id"] for r in rows if r["critical"]]
+        cost = sum(r["annual"] for r in rows)
+        p(f"{label} view: vacancy cost ${cost:,} a year")
+        p(f"  critical: {', '.join(crit)}")
+
+    p("")
+    fn = econ.cost_per_employee(econ.load("fieldnote_people.json"))
+    p("FIELDNOTE: COST TO SERVE PER EMPLOYEE (synthetic)")
+    p(f"  visible People cost   ${fn['visible']:,.0f}")
+    p(f"  manager HR hours      {fn['manager_hours']:,.0f}")
+    p(f"  all-in with managers  ${fn['all_in']:,.0f}")
 
 
 def main() -> None:
