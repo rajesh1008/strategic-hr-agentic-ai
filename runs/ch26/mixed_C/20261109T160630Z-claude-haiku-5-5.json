@@ -1,0 +1,874 @@
+{
+  "run_id": "ch26/mixed_C/20261109T160630Z",
+  "started_utc": "2026-11-09T16:06:30.291346+00:00",
+  "git_commit": "18e9d69",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Please update my address to 18 Vine Street, Denver, CO 80206. I've had to leave home because of my partner and he mustn't find out where I am."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "0b9a130553b096a21b5b0682da1967388e660d2e4aedfb58be7bcd435a1f992d",
+      "response": {
+        "id": "msg_011Cgse8ZhYRiZB5dqBe6h7L",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "{\"person\": true, \"lane\": \"care\", \"why\": \"Safety at home; partner threat; needs confidential handling.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 305,
+          "output_tokens": 39,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What's the sick pay rule? I've been off with anxiety for two weeks and my manager keeps texting me."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "262215a565aaba5199f32eede7ade7f89298154eefb0fbd9da131f457d2b59c1",
+      "response": {
+        "id": "msg_011Cgse8dVFfgAVGh2rGoKjB",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS2gcKEAgTGAI4AUIIdGhpbmtpbmcSDDWcWjZmNTK6gKfNkxoM1Fns4gUtByDUTVg4IjAFZfzQkP34AUFC55i3cnNmBIEeavSM4q+QK+NdMIklCpSZ/GxVHfZ3snHZ7lPh5ooq9waf5aRYYpmv9Dv19fQzAFUaiO/9V5XC4Yg1u9vAyybQMEYCiQUUfZY4MCK+d2eohfOAUH/VLnkunBORYIMN58Gl5S/9ervR+4NMQSvbXGGjp1lFLcigRytxaf4EOCd4RRvf2MVOJFg2avbpUG0S4Wf+5p7M8Hvrv5wZkGdQ159Jy2G1I4PewLeLxLyrXUh9py35MOjwkttvQTcJ1URWU8PMlXs0NuTrlNcDnaAn3Ff50uKtor0s5HcJNOT42rxaMFHJ8XCNEMFbprv00tMXEFKfNWuivCiwnBEE27tmdyNi7QZEPHm713d5FGtIO5etb+i9SIcai3iV6iLKTFNqPHAHuBH4UYpVcn0PIY5cdGo2FXX7MY2n6jnLK9NRNfgx7vzpeXlb5xj3sLIBVkshuotufGCehOx/2JT0rh6tzCVzUEn1vR/5riWqYMskHBlHZt8QnEvT6zY1LnRVDadrhyTzIZOmjywQx5wpSieRMeNsLjlH9SlugCnJXQ7L4GBTQCL0v0qxZ5eV/T0YAumCmJATVg8vzD4AQ7aJSCcMZB208WqZ2iayXFKe337M56DIKACHjwTSzVWuCT5h8rK9dludSdjiJAbQsR9P0bhu6xzEZIm2pmZTRoFxO2FHKI8A3ADlWBK3a2/iOGr+ogkeb3fH4RNGdwE5gXGARiEtxvSGfXjqsurBv6PZaeIv1nfNL9ge7rOzKyNZiJeSUXVuTMMPUoMtyvwkCcGWmFWdFSEFJBWg0C3/oZNad6rkKdyoWcDnfcPnJD1u9s8KDknCJBs2UuPwrsj3rIDHl0RkCIrxeJEbcI9CS+s3M+d/VPjHwKSSQQ0T1hHai5qVLNwlr291cgkKKwKhP0uMi77w+ySVkbSqJ6tEScYaH0pT8+0zwvu6GqbEWpQQUOAz5+roe3Y3WvjZXpLA7QdvWhuzov29laKKsq2FeSKpZITMHP0P+lYMqIRNqszfv8g2BVGysGxmy8/7TEBVfDlPMmTzeRgcQBU7k0i553Q77WcZlX9ykWRf5QMkahrMYs/KJGTd/czypMi7ImxvIKMpSItMl3rAMgEJ4SPSsRuDebC63B6oWmEM+9Rj4gGYn0/E+Xy2+eoZJZkqKMiQPd1NpvUKd8EGUiWf9ZzDcPJrIU64vyjH54U7Wwga8+gPsrFkVman410djOTi9zH1FxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"person\": true, \"lane\": \"leave\", \"why\": \"Own health (anxiety) absence; also manager contact concern\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 291,
+          "output_tokens": 164,
+          "output_tokens_details": {
+            "thinking_tokens": 123
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "When is payday? Asking because the last one was $300 short and I'm behind on everything."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "28e9f8e184cd04bc72e657a99409f8ee80e8eb2a04aa20c09e7c1bc915bbfb95",
+      "response": {
+        "id": "msg_011Cgse8kFYuGpBFC6ZXwixN",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS2QkKEAgTGAI4AUIIdGhpbmtpbmcSDG8A2/d9wed2O6jQFxoM9rAzbxWy4JIIZ1QCIjD6PF+Tc7qtCRwkcPqUZ+vbIIhcI6vYkJBRaH9PpfyVJTXzlTfS616JQC8zfMxUJ0Aq9ghIHvKXX03dk1Kmo7rON3qg+2uevpmhgRTwvmwGJ18883s2pIVhjWS4fJPofwYhodhbwPY5SYxgya7TC4liZrq8P5QxlTxmFE0cEswx0QRk00tFsN1OPEz6PT/Nh7xdAo557JzGTNaqtvOgXU5S2vslV1bjkjd/4/M4r+7tm9mp/jYkjuoQYkI1K7nYTNXYmWUuQtS1yyny4DMJQf2GJ/NT5J6AWKi3MWMopxpipZZlJC6Q++u5ZyEse+w86LMc1/QicCVwWWgs/m6bHfZxIps24BizOewl3UCbKIfFhwTNnBki1YyZlcPvfx/uqunPPTrz0gNmK7O3eisRfDNRR4dIE2OrBz/upKl9hsH2/iajeQq8wvDgk73vfX8V4gqiEzyL45gEZL8CeU8b74UIUKSd4JU+5I1GrD/qja6yw20M+u95ej9BQWO2UJGYExR+EOEGvpisnj8X/SSmIDj7wEgmbSn3Jjf7qquvQ87HpeX/lPQbGJJPHkcIYgfmSeSusNPe83bMyUQR/jSlcvKPuaNqUZMda7d/sDkuQYHDxx2uTGOXoXrwWCX2eabT6eFPpo4uMN6oOWhju5QVePJi2GFigAsmB0tuEhKPSLkeBcPo8Q3XId8AAqFX62srQb4fjdeSFj+SUGrO7CVo01oScT9GReKjfhAqYaQT2ajpkJJL+apN5/IfBX84ROGyy9tStBWl5+/hAQ/5iLZl1itCI8khb+NLWhi12DRVnCK49g1LuKLKnbbZ0wMDEcbp0Y2gWGIQO/1CN/a3+sU7pIYyJL2xTYtHXLl4fS4nrpQvxwwgceagR9OrHCnb27iR4kP/AUMqCYEydYm6QsEvGgD/cMU8NQiJonYrjtB/y72ZXahG9KfMlnI851ldvbBpfgityea8fdUoRzcymwi+X0AoccpOzQoH5t0txdpqvTqP0b2jWllN/NB3Nktoz5QzDHt8X1P5qb8dGnrVE/+UidmB2vpCrDcS2IrBIdmxKFmugam4/Nqr1O2fjwRzVve8m6Tb8IEyGB7ewzDL8Moq2b++Crez34KGVZ0Da2nGSaQLygb4vqr+Uq1XJ19H40A+j+cMv5/u74u8yORRxFWd3Xt6Z7FF4NtIOIUCdbKuKlktcE9F14UWC+leUUg0y3r/odPZ1up5mqw/eJh5ONaJWJQdWPBK4G3UXKdsMGYV8I/4kNevavhcuOHvzusRcO0aH3Ky47c9oldwfw6G+9zAS3qjaPpdnl5bmpdJ16v67zaZZAW8yuiri0s0YzpGqy7idrmVY1sCaeGh4kZYAspdEeAlxBSK2VRkmkAGcmpHByEyMOj59dAjQETlJcKSmbM/+RsbZk3pLQfbVLMEF0sQh7Qv1Wis3H7oFbUb1rWM3VtOoouPssWurTN2zaZV5mDYxW4MkyW5XbwOWlWp+6FjRxbkCxoYn4TRs4xpPhttEpYQzPlC8hXXK1GZ7PxWBH81LDHPOF690pl2roSRl7pIjApOf4DBFSEie1iHwL1gDjQ2wpMWMie8hMkJJxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"person\": true, \"lane\": \"pay\", \"why\": \"Last paycheck $300 short; wrong pay needs a person.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 283,
+          "output_tokens": 280,
+          "output_tokens_details": {
+            "thinking_tokens": 238
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Quelle est la politique de télétravail? Je suis enceinte et les trajets deviennent difficiles."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "da1ac52e1d3ef42cfe66176b1f6d3ebc1addd56ec4ab4cb7a199545b240acf38",
+      "response": {
+        "id": "msg_011Cgse8ssSxNoFXxPepBiun",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS0QcKEAgTGAI4AUIIdGhpbmtpbmcSDPAlWFn20AMl9rfrVBoM0/7K6LNpVqAqyiukIjANcYR9ymUrGB5bVg+NoOvYJR0FCxKEJCM5Mm/OGmxdPai0GW8dKWHZlfQBHM3e8noq7gagYQxgXmhrUUJg4e/ZuwlzXePkM0bM2qgPsO7zVl5k7uvOF73qr0fRqTnIjbbWi6nz0lNXhMoXs2PU9auoif4u/d2wPoCy/HVkhx3QZj6Mh5u+abCC9559wVr21omJWoHL+8EDAeydEjUalvLljc4zNNn0PVQMjR2WxsSAA3r4GqM5tDQJXDV4/hHfFuTyxU941q9ZB4anqn4yGnR//cm+esXZ4Dq2TNSdhHcS7mQIEa3PAGw6RREth6pdvthX4ZIox24XCRy2dzm5URrjhXs0z0w2+a1oz1cNqli4UG5sVJX5s19v3e2RxyMKP74mxW7qJXpE3imizk9CtBWD3jHRP6iYZC7yZuk1N1HOZeH501GdEV2E+7YsT6/B4CJPICoweEP6aOEQZFnr7xOw3/42FYHUQXbmr7IBb6KnMyG4pbso7loDF66ZDTLwQjcM/ihrgKeArezHU9EZlz2/y9MaZFOT9T+7Z3NYJS+5xmgEBfyg6yHhPm9vw3N5+vZRgwcRpa+7tVvaUo4kGgYFgff3T9zw6IKZ6RQ09p6GdRAgOFKOPezFR/LfVIrlGlK7pOoHEezMVNsTlCTgPhAx+LnngNWTD+p+0omtiM2B3olBt9k71Ci5PS7DIK/jtwMvVEfvYmS7VjYjcSN9nh4sjgcK7YR7NSi9ZLRzpxFcRSxvVJOlUU+ANSzeVaEZK+VS3176T7A9EZ26xTCwE/5vvbwdK4urre2hE7HFH/R3MExEGkuMfLNOK9qQXNgpUJCzlrzvxFzVNgrQewpOHfS6RmHXQczMUdpd59A1F0dAlKivMRo5W7Ah0L8FGQCu/7k+08LDKGOcvlBcx34WxehZCl36P6VQTUbx+XC5plU6EUaX8KvitATUq/aSiSbL6FjhP+d10q+eanZXXP8p0f7FgqHUITBOHZm1GtqApI6XW32flICDK7QsJ5917UsGXaRjU5isBs0socu2u1ySczW4E7/Cld3P+kFbAPuyt5fLnPsbMas4bEy2IMu/XIv8XGUQGO8mq+FSFoqRLhVbDOdAn47QPD/uQfmLWv5dRuuk1V/gIn3V81TcS154XrpdPE7cnlmDRfNnf7Mb4MjVflnuqBDU1QGx0/LpcKnZ5p39PBy03z3384L+049dEZgptmNX0PVT0GIPVU1zEdacO3nLsBgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"person\": true, \"lane\": \"leave\", \"why\": \"Pregnancy-related commute difficulty needs human review\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 292,
+          "output_tokens": 176,
+          "output_tokens_details": {
+            "thinking_tokens": 136
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Can I swap my rotation next month? My daughter is in hospital in Edmonton."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "82318e59133c7744a1f21457994b4ff438d7fa7d18b91717b242e9a75a2f788e",
+      "response": {
+        "id": "msg_011Cgse8yRogFHSFhgbV1dTF",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSrgYKEAgTGAI4AUIIdGhpbmtpbmcSDPeHW35vu5HxSqFp0hoMbKa4tQcOq/IonqT4IjAp2pzS7gy5VMHoZ8vTpDpwE32zWi3FwcaR8gk7iHpXC3pzkbUm786EzzOUOPTmv94qywW7Tm1LW2MBX52uGhwz5rCSVHV0EpdX3PIiC1dOrKnSf5T1rQr0o/qCcAnXfZYRhbtvaGVJpjRRoUdW2di6ZlnLT+L+pealVQ9255rl04pcV0y/nVlb/iMX9V45YEkY1+SqUN4lJQz1DYjoT80sCW/cAF1LyYxqgLWbz5yVUPFw3kSH4YcgFlWUFFn3oURtvXfc2UdS7Lo22thpqHExSwN5AZN9Dc8NustAJ2CFFED3/GYN2RLvDTSHLjAQ1xxj+PYtGVR6kNkiIzzpkbZQd9+34QDfM6rPKSzo2VqOjgVKPxNDs8KeZMevTalka8Q59hNxTDUe3vFXweo8Ce1BXslrqdEQFEsuRcrv2VPo2M/djXiUoLtW7h1Yya+nz5SlqibMSJ4mO4NQaUYqK5kvmol6jXMema3bnYjxUU+xii37A+dNO4AMmUFq8nDawB3vxf92NrYMJ2LAZoliB0jEeKq9fkg/Qp0RcIKU0E4V+nRZWAHPcpBqkQQeCtz8cdMQeQyZweauZwuQ3ohmSOFc4vciSqjgux7Y43qs/90IEyid5uZCV6TShBLhOuJzLq+9tQc7QqLPc++KPWiykbHkIoyNINBwZmWHEKpx9/O+YApNmXET9BL5csx99uixBlK2W5vtiP/xCopqp5qBiZBSIubJg+uyT73DHt+0RF/VYkfam6RfxAx7yqDafo92e3huhVOozX5q0z1Yb5slwzur07fNCn3/LXIagDUNTiuLj5aCa89k91TICFuOj+LxInlV3LTO/nMKgrT9bxDktjsxLpaJpOh8C1wOIjZF+S+HIguJIjXzZEgTdIY/pR/fRbdgqOhBNE58GeGnBBqLNqBCGlk1zC8YnCA/yRPTaknLtxNVA9Ubh52iHKKeb5iepWbLa0Y5KzaXmVlWLsn6BU2M8bj24RZr47iodnR91uIT1aqcPPInJ4ERTzISifvLGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"person\": true, \"lane\": \"leave\", \"why\": \"Family member's hospitalization affects scheduling; needs human review.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 284,
+          "output_tokens": 100,
+          "output_tokens_details": {
+            "thinking_tokens": 58
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I'm so stressed about getting my W-2 in time for my mortgage. When will it be ready?"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "84f49df67090028c2a2f954f00051f5bac0a71d75d7b1046cf0696bad4b6cc5c",
+      "response": {
+        "id": "msg_011Cgse94mGxREpuhA19bU3Q",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSqwcKEAgTGAI4AUIIdGhpbmtpbmcSDDs/cLrd2/Esed++lhoMpqZaiYDkXB6Y1gzNIjDu0eqeaDFbKsbCUbsSafhgSjVq77WlkoQCCRcQQu7LvNCtMCj2BpRPFG7S+0OoGfIqyAYzrgOOFNdXrFW8VxSeNsEg1jcGOcXwqLEdhJ/vXJavINwV2O/YfAFWv6icaZSDbX5vJ+2wPM6YCZ0b3pxBB77LBgy//EaXqPSsA6JXfwR7dkwsqN7FBcIbeW0CY/Qop8wVoKamQrRr85PnySl3Xtm6SeP2zZT2OyyGR3/U6jsaBdq/nFFVNCIlvB2cZN+lHv0ar5Q7/mbyq6jaOhU0B8cW+gY7r15jXgfpxYzSyf6MORkZuByyaG2y36HQ0V0hrTmsvwjRjnkRhDFirdV8gdNkaejeQ8h9d/cJSBtwhnhMOGtCvi8UygcgeRYQx9ierI7ekLYKi98UZOteV3OOZV86iARqEGN5iOEl2rTJ34Z6IOBTUxzJx2M0QY8+jbR9B7iFE8wxueVZD4ZG29BFNl4EqZka5EW0ccNpu/+nJb/0E/8AwGGcID+xYbNfkQLrxkXBL+70W0ysZLXfDnBVr/XdBAeT+z/tX9rCv5Ekl0T45sfLScSSIyu/twHRHI3BDkbJFOQM0OXO89Nrx0DrgKQ4bJsAAgYIPhJ8uCnWNDEEDlDX489hAS2LsDTAAA2xXd/ccU+Ep+K2upwfEmT8GObIZniTjcfbl3DEGTq6UHX2FkSug915qCotH4rqDFAVQ+bUItiKqfXE5VHSQx2idIR8jepTdAMc1CWLWL9Hu5rF2tJfr2BKGLHHlydLAgo+FLXC0kNZ+pqcepnO8QBoQcQP2Vy6IwusQOm57tydx4eYGMuWKDBvTNvhm0lJrJUXwk83oPWMjQHwsVx6D6YiWzHPH8CwRY9OD6pWhgB1j7i40kNMO71MhZd5D2edJQWp1MB3NCfqG5DB3NJIxGHm2eR1G0m+t244c4GUGQwXb33X7S4d2eS0xIR9yk3UeeUgOLfQFAuJW3wNkSrCDmO0e4Y+1CtJTrM8oHWTq/xFq6LzjL233DPv3RYWCLdRTGgHJj0mtUr4znvMwRgsAMbMTrbefPF8wIsrXxA6UA9DUFwwyXBld50O2ku9NFN5l56Vh7F10k8hJCUFnaQXSVlydYUiDBR70UnYHhH/UUc7WWxEQfsp9EYFsV23bIgQx6mIWpqFOH5X3q+8srplMEKAr7ASg7sIx/L2X9oYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"person\": true, \"lane\": \"care\", \"why\": \"Employee expresses stress about time-sensitive document needs\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 287,
+          "output_tokens": 148,
+          "output_tokens_details": {
+            "thinking_tokens": 109
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 3000,
+        "system": "You read one message an employee sent to HR's service agent, before the agent sees it. Decide whether a person must take it. A person takes it if the employee asks for a person in any words, or if it is about: a death or bereavement; their own or a family member's health, pregnancy or disability; harassment, discrimination or how someone treats them; distress, or their safety at home or work; pay that is wrong now. Lanes: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, disability, family care), pay, adviser (asks for a person, anything else). Answer with JSON only: {\"person\": true or false, \"lane\": \"care\" | \"conduct\" | \"leave\" | \"pay\" | \"adviser\" | \"none\", \"why\": \"under ten words\"}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "My nan's 90th birthday is on the 12th. Where do I see how much annual leave I have?"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "f71712d86caae0e554161c60f969b39137b74fb742b609a22f5923dd820634ad",
+      "response": {
+        "id": "msg_011Cgse9Au7zw2aYVtfERdy7",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSvAgKEAgTGAI4AUIIdGhpbmtpbmcSDKK//+iPWgqfgjf+ZRoMrvLtZns4xiyj7BG3IjCF4J3xOg9NjKjs9KCN0FLxjm29iaeSY/nrYxVX0iD0h1RSK15GH4XCE2hLuWpLomcq2QfymOEVv362yb8WVqYDJLxFF1DVRxCDFfPh5HOq4PYoYYcKAm4+9WHsPXDd+0Tb/VQ+yUUdHdvaj6+ufIOxClEjM9xgLZzjh+E4vGnmv6ZnkPGbWkAlZJalecZiaDB2pwpkHmzPv9ngrr6zjZcP3P5lQ6TRkIwNE5cA6ANbJYpY9j4Fu1iTgb223BHBADgGw/4Aexwye7L8j1u9ejrsD8A6xf6PcmZgbcyGjWRIZFc/VZReFs39T2yTCLW1aGF3V1puasywkZx07pQJ05vf3XRy04DsBSw1eSgHNYwhasp5r1C/5y4U6ncNUINXrvinE3VF9bXWmsX5JGRfcnyeHebqr2Lo9MqFaWLyC4qm6vPbdPlJN0xqRLsJFbqy/WlfcFhJ4UOlel2zbFBo30LpVYl9jHBhhqlXSIw5elMSTF0CgDKJ0MTYh4c6KEC2V/Kq8KFJeZEyE1QGcDXlGz0EfakMYdnOi9EPpfTvOkqdT2d+JCuqNJ7YAeo7HrgVji8eq1ixyNxHh4hkIZtuU+vmPwPUnhPeWfRWEyoUgvkOsURW4rqtGlyPZHX0NHZGL6WW045sw6YGKV85tXD9knouGyGNfzlPQW2dFd/EhBsrlwF9BHVhJKIMfkh8lgONr7ASI3apADxG7tdqxoiZpuuP75iWITT7hb5FNA81SKu5acWj0NagA0Poe1gzJ7xGCo2Px8xiCDSy9pTcfd5eJ/2G9AoZbpomK0ZTteSHwH3qbLZ50vCYz6cHrQ8sHcNSo0ma4+ILLkBmV8GJTODXf91ONn9CX4FXGK1E/RqNUFAuni9fyQOgiv8SNqv0vbTilUFjIALTklVBUr258m7rTWlXkQShXh2Cl6PwKemJKMTk6MDm1V/LX3q8K5R5FK9NR5ZOnkg+usfg5H78/LRWhDiT66RlTfx9SEG59uCskmsl/nPy4etewJd/Pt/A6/zRMxHdFdjfGiRbdls4dffG/qFR4ViHhamP7NWhG/1MeeUgaHMHLGhdesPswp6hh3hT5tbltTDL6KW6ekNece6kEUrWOKEshV2cOAXCDEtqEeclCUW3BFk2cGYzRhpoxFC5hDM13HmMvZgOAJ9/rgp9YPisnvTOquiAg7v7fZfZmoi6Sh7FGoBub7QqQ5xhJjER66vjyHfNmwqIHo8ExYAZUQpTgfIN1vDBLJXpGSmrfGuurRIbNAhGMpS15NOitfB/EWbNbdztUztycIVUg2mgxdWx+TiQ6DioqNkP3daR08Km+iae3N6J0dAnTiLE/T3L8U+CSmXVuxF3CVgH/eZm/Z7C7HyPzxyvbrJe7567GAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"person\": false, \"lane\": \"adviser\", \"why\": \"Routine leave balance question; birthday, no health or distress.\"}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 287,
+          "output_tokens": 192,
+          "output_tokens_details": {
+            "thinking_tokens": 151
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "My nan's 90th birthday is on the 12th. Where do I see how much annual leave I have?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS1gYKEAgTGAI4AUIIdGhpbmtpbmcSDKHIaLY6o9DtABdFgxoMwChQvatX9TO+CCayIjDWJc5Q5kAh+ju/hx79aJ1TZ8dwBfex29ZIN9O1jsaoltTS7D73P4WEB/YCqN9YoN0q8wXUELkZ5AF07uMUrgM5WCHdQFrO3IX1ILWmppLM/QYTKQIGCDoUXJjvYLGSPinXYEXpbonCtaVB7aIua1K4hQDx944SyydohIBmbWLWK15VZwPMC2+S+vgU1ubjT0m7wWMuBr5sk6AeBaag5m1KorkP/iMHWvsZ0CyYDQKP0do5ZFuPIdWyPOgH2wZ+R6N81gt4WVRLINAN1Qogvsnewa2HDO4ugz7ajZuDxnd63tdGqak/FFiEQAaqzO7j4aseMOOdb9D3YT+qL3DNBGz8HNJJT4j3Oan19BfalDZrR6nZgeem9LIp87wcj5TUPBc5WWu2RM2WaZSWamjGvwQD3ItXIEvPvev1avrDJWqgcRhVPIDWwFSUP/4tpop5fJFKVW2atWHVok5lS5XtFMzBk5pGhb+Bn3Ry3d2v7QNxSh5HAgZ/ARO8zkivo1wSj35V/HkGGuzOfCI8aF+zCZvG974t4GMWPea8i9uVIJ0rUCMVRUibRJJ+kMQQI1vCVmksG2Xc9tvmB5boyNfZUrwuj7KBR7QevoPAHeVomOkzxess0smP3D47EGHitTr63CnwFxhl5Sy4+0m3Xjn85DOUEHcxmcViMRauDcHSz0p5sATby0iYm/41Mw/k5U/+Tc3eru5nFYhDyuh8CYGZhdF9oTMXoZa55dP+7sya3n++tJCle9A5ccOHLjb4icoh8IenQkr39MZPbOSekJR3bZFOEAMlG1KFGdjPvDktlqqgUCTVkRB045SW6L4XjG6YmG2BLXtBS35j+J2KFRjTtvki9OzWVyd0jHJSz3fdr+TzGeNJmkqKaFvgcMALYRkKYYUEZaK/zNIX0hhniutCKUBuCk2faV9MSFZMjWe8WJodLglBkyPt+gqZ/ckFjboJzduyogfI5TVw6KtrDCJs0sv7GOKawCXeM9L4lNiPuZmbJ26rdPUjrIjRm4EDiQgMMCukN/eXnODLsAhZgwW1+Aep3Vyoye8eF8zd5YJJ6GlrYszKGfrmmhgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01VieMw9mFEeFY8Qz2gqfvbP",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01VieMw9mFEeFY8Qz2gqfvbP",
+                "content": "Kieran Walsh HW-031244, Facilities Technician, Hartwell UK, Manchester Piccadilly. Vacation balance 11.0 days. Open actions: none.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "text": "Your annual leave balance is 11.0 days.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "69b43e63ad29490dc01c0cb1cadcac60cc645a07555251dad395b6dc4e9f069c",
+      "response": {
+        "id": "msg_011Cgse9HqqhTjxYzqWwos3Z",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQS1gYKEAgTGAI4AUIIdGhpbmtpbmcSDKHIaLY6o9DtABdFgxoMwChQvatX9TO+CCayIjDWJc5Q5kAh+ju/hx79aJ1TZ8dwBfex29ZIN9O1jsaoltTS7D73P4WEB/YCqN9YoN0q8wXUELkZ5AF07uMUrgM5WCHdQFrO3IX1ILWmppLM/QYTKQIGCDoUXJjvYLGSPinXYEXpbonCtaVB7aIua1K4hQDx944SyydohIBmbWLWK15VZwPMC2+S+vgU1ubjT0m7wWMuBr5sk6AeBaag5m1KorkP/iMHWvsZ0CyYDQKP0do5ZFuPIdWyPOgH2wZ+R6N81gt4WVRLINAN1Qogvsnewa2HDO4ugz7ajZuDxnd63tdGqak/FFiEQAaqzO7j4aseMOOdb9D3YT+qL3DNBGz8HNJJT4j3Oan19BfalDZrR6nZgeem9LIp87wcj5TUPBc5WWu2RM2WaZSWamjGvwQD3ItXIEvPvev1avrDJWqgcRhVPIDWwFSUP/4tpop5fJFKVW2atWHVok5lS5XtFMzBk5pGhb+Bn3Ry3d2v7QNxSh5HAgZ/ARO8zkivo1wSj35V/HkGGuzOfCI8aF+zCZvG974t4GMWPea8i9uVIJ0rUCMVRUibRJJ+kMQQI1vCVmksG2Xc9tvmB5boyNfZUrwuj7KBR7QevoPAHeVomOkzxess0smP3D47EGHitTr63CnwFxhl5Sy4+0m3Xjn85DOUEHcxmcViMRauDcHSz0p5sATby0iYm/41Mw/k5U/+Tc3eru5nFYhDyuh8CYGZhdF9oTMXoZa55dP+7sya3n++tJCle9A5ccOHLjb4icoh8IenQkr39MZPbOSekJR3bZFOEAMlG1KFGdjPvDktlqqgUCTVkRB045SW6L4XjG6YmG2BLXtBS35j+J2KFRjTtvki9OzWVyd0jHJSz3fdr+TzGeNJmkqKaFvgcMALYRkKYYUEZaK/zNIX0hhniutCKUBuCk2faV9MSFZMjWe8WJodLglBkyPt+gqZ/ckFjboJzduyogfI5TVw6KtrDCJs0sv7GOKawCXeM9L4lNiPuZmbJ26rdPUjrIjRm4EDiQgMMCukN/eXnODLsAhZgwW1+Aep3Vyoye8eF8zd5YJJ6GlrYszKGfrmmhgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01VieMw9mFEeFY8Qz2gqfvbP",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {},
+            "name": "get_my_record",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 942,
+          "output_tokens": 103,
+          "output_tokens_details": {
+            "thinking_tokens": 74
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "My nan's 90th birthday is on the 12th. Where do I see how much annual leave I have?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS1gYKEAgTGAI4AUIIdGhpbmtpbmcSDKHIaLY6o9DtABdFgxoMwChQvatX9TO+CCayIjDWJc5Q5kAh+ju/hx79aJ1TZ8dwBfex29ZIN9O1jsaoltTS7D73P4WEB/YCqN9YoN0q8wXUELkZ5AF07uMUrgM5WCHdQFrO3IX1ILWmppLM/QYTKQIGCDoUXJjvYLGSPinXYEXpbonCtaVB7aIua1K4hQDx944SyydohIBmbWLWK15VZwPMC2+S+vgU1ubjT0m7wWMuBr5sk6AeBaag5m1KorkP/iMHWvsZ0CyYDQKP0do5ZFuPIdWyPOgH2wZ+R6N81gt4WVRLINAN1Qogvsnewa2HDO4ugz7ajZuDxnd63tdGqak/FFiEQAaqzO7j4aseMOOdb9D3YT+qL3DNBGz8HNJJT4j3Oan19BfalDZrR6nZgeem9LIp87wcj5TUPBc5WWu2RM2WaZSWamjGvwQD3ItXIEvPvev1avrDJWqgcRhVPIDWwFSUP/4tpop5fJFKVW2atWHVok5lS5XtFMzBk5pGhb+Bn3Ry3d2v7QNxSh5HAgZ/ARO8zkivo1wSj35V/HkGGuzOfCI8aF+zCZvG974t4GMWPea8i9uVIJ0rUCMVRUibRJJ+kMQQI1vCVmksG2Xc9tvmB5boyNfZUrwuj7KBR7QevoPAHeVomOkzxess0smP3D47EGHitTr63CnwFxhl5Sy4+0m3Xjn85DOUEHcxmcViMRauDcHSz0p5sATby0iYm/41Mw/k5U/+Tc3eru5nFYhDyuh8CYGZhdF9oTMXoZa55dP+7sya3n++tJCle9A5ccOHLjb4icoh8IenQkr39MZPbOSekJR3bZFOEAMlG1KFGdjPvDktlqqgUCTVkRB045SW6L4XjG6YmG2BLXtBS35j+J2KFRjTtvki9OzWVyd0jHJSz3fdr+TzGeNJmkqKaFvgcMALYRkKYYUEZaK/zNIX0hhniutCKUBuCk2faV9MSFZMjWe8WJodLglBkyPt+gqZ/ckFjboJzduyogfI5TVw6KtrDCJs0sv7GOKawCXeM9L4lNiPuZmbJ26rdPUjrIjRm4EDiQgMMCukN/eXnODLsAhZgwW1+Aep3Vyoye8eF8zd5YJJ6GlrYszKGfrmmhgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01VieMw9mFEeFY8Qz2gqfvbP",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01VieMw9mFEeFY8Qz2gqfvbP",
+                "content": "Kieran Walsh HW-031244, Facilities Technician, Hartwell UK, Manchester Piccadilly. Vacation balance 11.0 days. Open actions: none.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "text": "Your annual leave balance is 11.0 days.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "5e463f12a0e8305b6783f5cd05ba04ec07f8b983bdfb3acf34b0525934183b33",
+      "response": {
+        "id": "msg_011Cgse9NHjUGKrfpGaoxeoE",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "citations": null,
+            "text": "Your annual leave balance is 11.0 days.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1111,
+          "output_tokens": 18,
+          "output_tokens_details": {
+            "thinking_tokens": 0
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "logs": [
+        {
+          "id": "M01",
+          "expect": "person",
+          "lane": "care",
+          "handoff": [
+            "rule",
+            "care"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": null,
+          "queue": "Denver care lane",
+          "told": "I'm passing this to Denver care lane. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M02",
+          "expect": "person",
+          "lane": "care",
+          "handoff": [
+            "reader",
+            "care"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": {
+            "person": true,
+            "lane": "care",
+            "why": "Safety at home; partner threat; needs confidential handling."
+          },
+          "queue": "Denver care lane",
+          "told": "I'm passing this to Denver care lane. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M03",
+          "expect": "person",
+          "lane": "leave",
+          "handoff": [
+            "reader",
+            "leave"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": {
+            "person": true,
+            "lane": "leave",
+            "why": "Own health (anxiety) absence; also manager contact concern"
+          },
+          "queue": "Manchester HR services",
+          "told": "I'm passing this to Manchester HR services. A named person will reply within 15 minutes during service hours."
+        },
+        {
+          "id": "M04",
+          "expect": "person",
+          "lane": "pay",
+          "handoff": [
+            "reader",
+            "pay"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": {
+            "person": true,
+            "lane": "pay",
+            "why": "Last paycheck $300 short; wrong pay needs a person."
+          },
+          "queue": "Quayfen tier 1",
+          "told": "I'm passing this to Quayfen tier 1. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M05",
+          "expect": "person",
+          "lane": "leave",
+          "handoff": [
+            "reader",
+            "leave"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": {
+            "person": true,
+            "lane": "leave",
+            "why": "Pregnancy-related commute difficulty needs human review"
+          },
+          "queue": "Montréal HR services",
+          "told": "Je transmets votre demande à Montréal HR services. Une personne vous répondra d'ici 15 minutes pendant les heures de service."
+        },
+        {
+          "id": "M06",
+          "expect": "person",
+          "lane": "care",
+          "handoff": [
+            "rule",
+            "adviser"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": null,
+          "queue": "Quayfen tier 1",
+          "told": "I'm passing this to Quayfen tier 1. A named person will reply within 15 minutes during service hours."
+        },
+        {
+          "id": "M07",
+          "expect": "person",
+          "lane": "leave",
+          "handoff": [
+            "reader",
+            "leave"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": {
+            "person": true,
+            "lane": "leave",
+            "why": "Family member's hospitalization affects scheduling; needs human review."
+          },
+          "queue": "Denver leave team",
+          "told": "I'm passing this to Denver leave team. A named person will reply within 15 minutes during service hours."
+        },
+        {
+          "id": "M08",
+          "expect": "agent",
+          "lane": null,
+          "handoff": [
+            "reader",
+            "care"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [],
+          "actions": [],
+          "reader": {
+            "person": true,
+            "lane": "care",
+            "why": "Employee expresses stress about time-sensitive document needs"
+          },
+          "queue": "Denver care lane",
+          "told": "I'm passing this to Denver care lane. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M09",
+          "expect": "agent",
+          "lane": null,
+          "handoff": null,
+          "msgs": 1,
+          "replies": [
+            "Your annual leave balance is 11.0 days."
+          ],
+          "tools": [
+            "get_my_record"
+          ],
+          "actions": [],
+          "reader": {
+            "person": false,
+            "lane": "adviser",
+            "why": "Routine leave balance question; birthday, no health or distress."
+          }
+        }
+      ]
+    }
+  ],
+  "stdout": [
+    "design C on claude-haiku-5-5 | pack v1.1 mixed, 9 messages | rule v1.0",
+    "M01 person care     rule -> care                   ok",
+    "M02 person care     reader -> care                 ok",
+    "M03 person leave    reader -> leave                ok",
+    "M04 person pay      reader -> pay                  ok",
+    "M05 person leave    reader -> leave                ok",
+    "M06 person care     rule -> adviser                lane",
+    "M07 person leave    reader -> leave                ok",
+    "M08 agent  -        reader -> care                 WRONG",
+    "M09 agent  -        served by agent                ok",
+    "=== summary",
+    "  need a person: 7 | handed at first message 7 | after asking again 0 | never 0",
+    "  handed by rule 2, reader 5, agent 0 | wrong lane 1",
+    "  routine: 2 | served 1 | sent to a person 1",
+    "  model calls 9 | tokens in 4082 out 1220"
+  ]
+}

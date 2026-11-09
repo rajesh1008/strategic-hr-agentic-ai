@@ -1,0 +1,2370 @@
+{
+  "run_id": "ch26/mixed_A/20261109T160559Z",
+  "started_utc": "2026-11-09T16:05:59.194924+00:00",
+  "git_commit": "18e9d69",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Lena Ruiz (HW-012771), Field Service Technician, Hartwell US, Denver, Colorado. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Can I book Thursday and Friday off? It's my mum's funeral."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSswgKEAgTGAI4AUIIdGhpbmtpbmcSDNunkKiLNGzpjNYW2hoMk15jNsSI30Nuhnt/IjCSFF8yBc/GDpPEjEqo4CJj4ipPpaBczA4kmdPmtAwTt94bCutLS+dAfEnlnP9UqE8q0Ac8wWwEsd+xkI4zxgxlktUAqPHrkGpp4lJTCxdNrZfVBVP0X1btgQVCxR7RRvZWQuDGKvWDUb6itTIlJ+B5P38oId9b4uvB3AFiME5NfEHeSYVgFYRknsI/81R9W3u5AXUsOV0SFBpqogvATc3tpRXSh+NCE0yrFmaXrw4vNJ2arUGn7mHIjb2F8ZvRvWCFUvMUuW0z2YUkHBtMg7mgrNHcCGFgglRCCztpIVIyF0KycRfWnzMeeraalFteZw/VLZuSvFzRt09VwLhR2k1Gqc+GlyDttDGiUeY1Kwc9UOwQqBJNItxJFpoEHiwiuiOCzBWTbveyZ1cw8f7AvuhM9PgLPa9e1eh44evTM/KAV4IQ3uImvc+QeRj82UDMKiI+Qdm6pMn6ysF6DiDFlmgGrXD6kUGaIAoyO6HgB7HtBWVFWV/+PafZ6lN2V0Bs/XPVoEzf5DZHQeKnqn60fBmqacJXLcogKtWPRRNDjFCFZjoK2xiToRcLdnwa92+ohKDBMsOT/GlXn0gm1SEdSwCOMlD+rvzR7wXyQAKr1mtD2kMRtVKfjr2G/ZMmK3T7XsbVQgJuNq9iXSPO4wOueAvJ97/r4yB0GxC7s1FkpXrYphdLCwTNpcKNKnowPnHHT9Fpk/4xFCIsFmS/rDRehubAOIOGc/W/wRv+LjTaaiWo47AlD1g3GXDGXaRGgeg/l3mccTFKWw9W0IMdVpeCaBoK1XUkky/PNqyE5oOlAwOivdd1IsKH0g8fEig61mAe/BZxqSK2Ps6X9bM3o2t7MxO11Psgk+w4NO4SVbTMSupIECnUy6ebhqqkkMv/QJs+HscN/3LEJunGyNx19ieEN6R9Oy9WU3e8gyb9cj20NKDHlEMNB+yOZmoPlaZEhThuXd7FN8Ng+4gevaiEj7kRBaUZaIIXeCQvjMvsWZP0PhNju1m6RICTh4RLSl6/O5kq8yxIu7+G7i+xPZQmeM20AUZuwIFOM6VQDQ/3I4OcupNZ1t/KlC1GD5N3UAty7EXg33Y47PPMgcF9S/Y2iV+nTIAghgCXcSCvZD+bAwKs2QwebxL2dy9MzTklwdl2qXCIiLweaASZtc0lprpxTkEsxL8j8QULOjfS+HTLtAhnKEdE1LU+MVJCsuHAGLkQweRTIDqSYEgwnAZgJKFuV/nBPF2s3TYDnvr9plWLRE1v5yL3lMtQgY8o8SzyY//i/Qs2V3JoZx/mgKdgEmx8IpE1je8fDnEaBFaiy0yBJ8EROtah03dGMuItI2Fw93cmGv0iVUtkSi6mnhGYOSfEa0yXeC2zGpAXGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01EV6abx13JKdkg9kUKp7YQ5",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "care",
+                  "reason": "Employee Lena Ruiz (HW-012771) is asking to take Thursday and Friday off for her mother's funeral. Bereavement support and time-off arrangements are needed."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01EV6abx13JKdkg9kUKp7YQ5",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "7eeee8c833540df346867917d7c5a863863a2c5dea25cbeecb05b93d71a479e7",
+      "response": {
+        "id": "msg_011Cgse6HF34Xumf4hFJ9Q1z",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSswgKEAgTGAI4AUIIdGhpbmtpbmcSDNunkKiLNGzpjNYW2hoMk15jNsSI30Nuhnt/IjCSFF8yBc/GDpPEjEqo4CJj4ipPpaBczA4kmdPmtAwTt94bCutLS+dAfEnlnP9UqE8q0Ac8wWwEsd+xkI4zxgxlktUAqPHrkGpp4lJTCxdNrZfVBVP0X1btgQVCxR7RRvZWQuDGKvWDUb6itTIlJ+B5P38oId9b4uvB3AFiME5NfEHeSYVgFYRknsI/81R9W3u5AXUsOV0SFBpqogvATc3tpRXSh+NCE0yrFmaXrw4vNJ2arUGn7mHIjb2F8ZvRvWCFUvMUuW0z2YUkHBtMg7mgrNHcCGFgglRCCztpIVIyF0KycRfWnzMeeraalFteZw/VLZuSvFzRt09VwLhR2k1Gqc+GlyDttDGiUeY1Kwc9UOwQqBJNItxJFpoEHiwiuiOCzBWTbveyZ1cw8f7AvuhM9PgLPa9e1eh44evTM/KAV4IQ3uImvc+QeRj82UDMKiI+Qdm6pMn6ysF6DiDFlmgGrXD6kUGaIAoyO6HgB7HtBWVFWV/+PafZ6lN2V0Bs/XPVoEzf5DZHQeKnqn60fBmqacJXLcogKtWPRRNDjFCFZjoK2xiToRcLdnwa92+ohKDBMsOT/GlXn0gm1SEdSwCOMlD+rvzR7wXyQAKr1mtD2kMRtVKfjr2G/ZMmK3T7XsbVQgJuNq9iXSPO4wOueAvJ97/r4yB0GxC7s1FkpXrYphdLCwTNpcKNKnowPnHHT9Fpk/4xFCIsFmS/rDRehubAOIOGc/W/wRv+LjTaaiWo47AlD1g3GXDGXaRGgeg/l3mccTFKWw9W0IMdVpeCaBoK1XUkky/PNqyE5oOlAwOivdd1IsKH0g8fEig61mAe/BZxqSK2Ps6X9bM3o2t7MxO11Psgk+w4NO4SVbTMSupIECnUy6ebhqqkkMv/QJs+HscN/3LEJunGyNx19ieEN6R9Oy9WU3e8gyb9cj20NKDHlEMNB+yOZmoPlaZEhThuXd7FN8Ng+4gevaiEj7kRBaUZaIIXeCQvjMvsWZP0PhNju1m6RICTh4RLSl6/O5kq8yxIu7+G7i+xPZQmeM20AUZuwIFOM6VQDQ/3I4OcupNZ1t/KlC1GD5N3UAty7EXg33Y47PPMgcF9S/Y2iV+nTIAghgCXcSCvZD+bAwKs2QwebxL2dy9MzTklwdl2qXCIiLweaASZtc0lprpxTkEsxL8j8QULOjfS+HTLtAhnKEdE1LU+MVJCsuHAGLkQweRTIDqSYEgwnAZgJKFuV/nBPF2s3TYDnvr9plWLRE1v5yL3lMtQgY8o8SzyY//i/Qs2V3JoZx/mgKdgEmx8IpE1je8fDnEaBFaiy0yBJ8EROtah03dGMuItI2Fw93cmGv0iVUtkSi6mnhGYOSfEa0yXeC2zGpAXGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01EV6abx13JKdkg9kUKp7YQ5",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "care",
+              "reason": "Employee Lena Ruiz (HW-012771) is asking to take Thursday and Friday off for her mother's funeral. Bereavement support and time-off arrangements are needed."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 932,
+          "output_tokens": 285,
+          "output_tokens_details": {
+            "thinking_tokens": 155
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Inês Carvalho (HW-043906), Warehouse Coordinator, Hartwell US, Denver, Colorado. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Please update my address to 18 Vine Street, Denver, CO 80206. I've had to leave home because of my partner and he mustn't find out where I am."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "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",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01754zyZ1orvX2Hhkzguxh9p",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "care",
+                  "reason": "Employee Inês Carvalho (HW-043906) has left home because of her partner and does not want him to learn where she is. She asked to change her home address to 18 Vine Street, Denver, CO 80206. Safety concern: please handle the address change and any record access confidentially."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01754zyZ1orvX2Hhkzguxh9p",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "69bb048104895ba6c984ba7d034d0a350db5eb465ebc00373bdb15a5a1699386",
+      "response": {
+        "id": "msg_011Cgse6RMhFhdA1Vim4QSBm",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01754zyZ1orvX2Hhkzguxh9p",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "care",
+              "reason": "Employee Inês Carvalho (HW-043906) has left home because of her partner and does not want him to learn where she is. She asked to change her home address to 18 Vine Street, Denver, CO 80206. Safety concern: please handle the address change and any record access confidentially."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 960,
+          "output_tokens": 732,
+          "output_tokens_details": {
+            "thinking_tokens": 574
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What's the sick pay rule? I've been off with anxiety for two weeks and my manager keeps texting me."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSkQsKEAgTGAI4AUIIdGhpbmtpbmcSDPu1b++btVnokn58+xoMRqlWR+wticGW1oq2IjBfCGMoHyzGTXPwxx7lYp0nvR2pg13EoyXVdXGHPOLXnMLKi79F+VVlFObZdlsJcKwqrgqXvmLAY59da8GRD9iWptPBn0Np/DS4efMKMFZT5BGh9671+gpEPqRqcnMNt6wju3Oy3vvKC5HiOhkLNgXKYZX0GfETeAt+rxE0PgY3nKHkGyXCb84HGV5Hp22eQcFS49k2MqexsbCvv/zox0eNkZDbhYsr8Hr/on2VnjHO9J6nehYrKfws1bQsbM7X6PdfkrZ1H8GwPpTTAm9KiGBpSv+tV9OvyzFfQ01pAA21kI/0vxo3y6a3b7ntZbngd/d4Ojz0AGRupu+vLo+Bskzv//dqFUzxivEux4cq6PqKPrIjo44VRWWyiHoGxJ68V+6UxKoAQhahyVo/OsAQ0VWLEJCn2vTyROvl+cgKw8YnagIB7yaWWoTXuT8JrC5HNiklf9Hcv0sOuJd4MrTYzLYHid5JxHbqGrbm+u62HGT7tAhD5jQrbgKWcD7sQ1jWCyVFfVJdo5DPpIcCG/Xmcv54sYCu2Sf7cvOORChBobpANjo0DM4lqkh8Ej/pr4m+2oE+4z5FpKrNH14JDcogzqIaIkdCNmtZ+uuytIEoLjZKwOjGE/TXcNEi/m1pCpmslI1sNWIMOow90pAx6fkxOfvkGNCi62cbCsvM0y9JWJDV7DczCG13+zNQ9cykf03UhsVJOzxlhRxProit/BVijz1Z/thaK7Lt0XQr1u11exwPebaTW9aBJuyrK0bwuvFPVKxtbM3wuiD5sZKHjotBMc8wMgYkY2giep27w6hM+KsdGO9CHWcKP6Som11UQD/2OQT5apq8E2gP9cxVFofEKkxarjZpQEuIXENZNnbmVJDpVZZiWwDksYKLdylGXDMfpN3CY6yEJen2rd8j2kld+j/i4maRy1Gs89pB56ktx20oy2DPC65n7lDVo7tuxnvUahvRlHmsFDxJjuc3ntuTWGD6QVfu9lJa47k5hgkMRls81UCDPabhuJFfMKv9BaeBf4XP+Bw/jaxUsLwvV3Qo9KvY1dairu888Ej/TX8M3Z8fzVO1VGSabVcFmAD1ZVrkCQ7fn6eJbCPbt3m5vFL498lbY17EAMlBOPqGpqig8/0tAGDIYEm+MJyUJp2CXD2TlMx/fAzgcrAl2bm/oWEXIYBiRysTLKy/1mfm6rmQRfDs3IDQuLWWGiEq+y2TYhuJ1ET/Xyz4zbb5bB5pr8fN3NVP6Bbj8Qqbscr7ffuCgJCvjzNEq+9zE0i09mC098qo+MxxTeQmqUWVMn3hf6BPUWQYUaZkXE7bqnGU9pFcbSmxqr61QAcg06KJk9QrMHnNkm54HW+aa8QylPOjI74hUttHlwFA2X7tZedQVnI8dJycH/UhFpiJundSLanPxsTbepNXOUQRzk08+iw7crgtzqSg8U6xl+ZDmATVJKju2sa/pnKkmGig5BHaI2iXYFjuolLBBz5ttTi281S0ogcPOZfnD+LvpeQYZvqK4ADnmeR2k84NP91UzBwbEndiFIEQwnZnZI0dGV8Lp3ZusVd0y5p8fgMe8EatttaNCnJ2rJ5BydkoI3V2gRHVYLqoTtHWtiSv4ky3gw+upZnly6PRhpKP1sXTRpqRez25JE0sCEFTw+n1L9bAIYh5yxdmoPOWjiI9FlwAWdnkLyK0c1ghFaIfPhhHLffb2UAwQDzVPNJim9hsaw/6vaSaUrJudQPb2Obl8PgotpnMix2jM34XepBjK2zoqpLEJ/jpv/OFFO1TeI9+giVYGP38w74tmCq4hukZvLYpZQKhapToA7we1NDys/shI3WXwcWbjiOplpYk4WwYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01KCnto9kAS66QjgmKiHY2HF",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "sick pay"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01KCnto9kAS66QjgmKiHY2HF",
+                "content": "Payday: US and Canada every second Friday, next Friday, October 29, 2027. UK monthly, last working day, next Friday, October 29, 2027. Family, medical and parental leave: eligibility and job protection depend on the country and the facts. The leave team confirms them; AskHartwell does not decide eligibility.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSmwgKEAgTGAI4AUIIdGhpbmtpbmcSDC3GJ5kvKX4H7IYbtBoM5przlokt1HdSNOroIjBq1J8hRJ0eg9183sSPqFudGBf9Zt56rSzL9h7hBKCF91MHrI9N1VON0zlp2CYsFlkquAe1ClU3xcnX8QyAqhpC2g6gak8CvyOt7IPJ6gl7WMb/U7cMMwRqarXlIabDgoOO4DRSl+q5Lc7EtBqekvW1YQi2Zc1ReCdsB6exrXf0rCtCKkIAl8EOa11pyOen3GCyILqsd3AZMEsKpXwEmk/xrDDrA5Az1rYyb0oTZnMN0vWFhq9alwx/jfqzzUynSryAY6Itfpy+MPZcANZOXwxOxVpjHaR5rWXpB7hnEtuoK/K5Rk8HtyQCKTCYhhGien7xO+oT6XyiFAsodbOgtImxSvQSHpSW5uJ+ErkldIy8ZKI3a4x/S1sTAkfBS9g7wthV8Yom2b7YyMMqQTdhgpx08U0dFYkKQJg1YTh4fsOqzJd4dEn++Rh6cxmjEaYlatYC8Sfk+Q+1DXmDTE12FVo05bxu2og9JKpGx8qCZIrpnu+oRgJsB9gtk2nCo66O0ZQgfjhbAvg1yMQ/yN3tDMm1Acf/KtJDvuYGp1c2FNLZANkKO6jIw2f8WlRKpRxQKwvRdRHbN7aMrg8LY6YGZKchfgdQCULlhyEGjPyPK0wtBv7dv5oC0h2PoBraeBYQY+MexirVE74U50szd3LvPSqGJV+TLKf4Y0x8C37bffVecn9H1YLX+r6ut7jvNr8Fa6HhsAd4SKy0me0BTARZwNOgLLTG/eG6884pxk51PLnBpahcGwbw2gOS/wRgH/dbi3XMxkUesrv/+cGPu5Mt3uQ5M06O6rZOM4QsHGSwcT/h4yTKpcv5Zqb7S46ICkXzSQxBZBRJ3v2gluSgppbOUQlel5sIDPG9n7QbvVma0gd4TVCZUVnA+xAgfjdDw4uFjfPC53AXXL9J8W3zUydkd/AbZ16KzyjOaFh8n9khTUZy8RbiW/PR8hGiQ+WYEx7PdH78pF0UMP+C0QKtSK1A7AVvj6zxYTn6iupYYkVP+33smCwiK7icBMP/6KSD7QvVVL7Yg9z6obo7zqIAeHe10BCKaFg213fv9T0ZRTi3nJvIm/7daxyopNSfuebi0EwpyWNe2Fn7A82+Q3fGepnuA5IhQutsl2vpAipxMsAtaI4tRIucK/IUYBhMD2DqFOznFRWnh7lt+XtP3wiCSFi+DWE1EbWPdoRWrCYNqz/NZsJTfKpvLr2PsTgZYOjaNWzhw84Ltb4yezJDEfIXLon2HniZDH4CNcJidhfWArD8GHZyegarLtfK7HpsZewfLzZjHODX2XeR0b1akvVpVsY2wx4ZoAXc54ETRcTo8KJoPSAZb18tf/QdyiY/scyKGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_017z96VAHFEihrjRGYCTjyod",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "leave",
+                  "reason": "Kieran Walsh (HW-031244), UK, has been off work for two weeks with anxiety and asks how sick pay works. AskHartwell could not find the sick pay rule in policy search. He also says his manager keeps texting him while he is off."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_017z96VAHFEihrjRGYCTjyod",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "950d2f31da7ed23efd4c7c6b212d55efd4ada89179fa2615e42123d3a447d447",
+      "response": {
+        "id": "msg_011Cgse6mcbbR2SdJMEuxjq9",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSkQsKEAgTGAI4AUIIdGhpbmtpbmcSDPu1b++btVnokn58+xoMRqlWR+wticGW1oq2IjBfCGMoHyzGTXPwxx7lYp0nvR2pg13EoyXVdXGHPOLXnMLKi79F+VVlFObZdlsJcKwqrgqXvmLAY59da8GRD9iWptPBn0Np/DS4efMKMFZT5BGh9671+gpEPqRqcnMNt6wju3Oy3vvKC5HiOhkLNgXKYZX0GfETeAt+rxE0PgY3nKHkGyXCb84HGV5Hp22eQcFS49k2MqexsbCvv/zox0eNkZDbhYsr8Hr/on2VnjHO9J6nehYrKfws1bQsbM7X6PdfkrZ1H8GwPpTTAm9KiGBpSv+tV9OvyzFfQ01pAA21kI/0vxo3y6a3b7ntZbngd/d4Ojz0AGRupu+vLo+Bskzv//dqFUzxivEux4cq6PqKPrIjo44VRWWyiHoGxJ68V+6UxKoAQhahyVo/OsAQ0VWLEJCn2vTyROvl+cgKw8YnagIB7yaWWoTXuT8JrC5HNiklf9Hcv0sOuJd4MrTYzLYHid5JxHbqGrbm+u62HGT7tAhD5jQrbgKWcD7sQ1jWCyVFfVJdo5DPpIcCG/Xmcv54sYCu2Sf7cvOORChBobpANjo0DM4lqkh8Ej/pr4m+2oE+4z5FpKrNH14JDcogzqIaIkdCNmtZ+uuytIEoLjZKwOjGE/TXcNEi/m1pCpmslI1sNWIMOow90pAx6fkxOfvkGNCi62cbCsvM0y9JWJDV7DczCG13+zNQ9cykf03UhsVJOzxlhRxProit/BVijz1Z/thaK7Lt0XQr1u11exwPebaTW9aBJuyrK0bwuvFPVKxtbM3wuiD5sZKHjotBMc8wMgYkY2giep27w6hM+KsdGO9CHWcKP6Som11UQD/2OQT5apq8E2gP9cxVFofEKkxarjZpQEuIXENZNnbmVJDpVZZiWwDksYKLdylGXDMfpN3CY6yEJen2rd8j2kld+j/i4maRy1Gs89pB56ktx20oy2DPC65n7lDVo7tuxnvUahvRlHmsFDxJjuc3ntuTWGD6QVfu9lJa47k5hgkMRls81UCDPabhuJFfMKv9BaeBf4XP+Bw/jaxUsLwvV3Qo9KvY1dairu888Ej/TX8M3Z8fzVO1VGSabVcFmAD1ZVrkCQ7fn6eJbCPbt3m5vFL498lbY17EAMlBOPqGpqig8/0tAGDIYEm+MJyUJp2CXD2TlMx/fAzgcrAl2bm/oWEXIYBiRysTLKy/1mfm6rmQRfDs3IDQuLWWGiEq+y2TYhuJ1ET/Xyz4zbb5bB5pr8fN3NVP6Bbj8Qqbscr7ffuCgJCvjzNEq+9zE0i09mC098qo+MxxTeQmqUWVMn3hf6BPUWQYUaZkXE7bqnGU9pFcbSmxqr61QAcg06KJk9QrMHnNkm54HW+aa8QylPOjI74hUttHlwFA2X7tZedQVnI8dJycH/UhFpiJundSLanPxsTbepNXOUQRzk08+iw7crgtzqSg8U6xl+ZDmATVJKju2sa/pnKkmGig5BHaI2iXYFjuolLBBz5ttTi281S0ogcPOZfnD+LvpeQYZvqK4ADnmeR2k84NP91UzBwbEndiFIEQwnZnZI0dGV8Lp3ZusVd0y5p8fgMe8EatttaNCnJ2rJ5BydkoI3V2gRHVYLqoTtHWtiSv4ky3gw+upZnly6PRhpKP1sXTRpqRez25JE0sCEFTw+n1L9bAIYh5yxdmoPOWjiI9FlwAWdnkLyK0c1ghFaIfPhhHLffb2UAwQDzVPNJim9hsaw/6vaSaUrJudQPb2Obl8PgotpnMix2jM34XepBjK2zoqpLEJ/jpv/OFFO1TeI9+giVYGP38w74tmCq4hukZvLYpZQKhapToA7we1NDys/shI3WXwcWbjiOplpYk4WwYAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01KCnto9kAS66QjgmKiHY2HF",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "topic": "sick pay"
+            },
+            "name": "search_policy",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 946,
+          "output_tokens": 310,
+          "output_tokens_details": {
+            "thinking_tokens": 257
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "What's the sick pay rule? I've been off with anxiety for two weeks and my manager keeps texting me."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSkQsKEAgTGAI4AUIIdGhpbmtpbmcSDPu1b++btVnokn58+xoMRqlWR+wticGW1oq2IjBfCGMoHyzGTXPwxx7lYp0nvR2pg13EoyXVdXGHPOLXnMLKi79F+VVlFObZdlsJcKwqrgqXvmLAY59da8GRD9iWptPBn0Np/DS4efMKMFZT5BGh9671+gpEPqRqcnMNt6wju3Oy3vvKC5HiOhkLNgXKYZX0GfETeAt+rxE0PgY3nKHkGyXCb84HGV5Hp22eQcFS49k2MqexsbCvv/zox0eNkZDbhYsr8Hr/on2VnjHO9J6nehYrKfws1bQsbM7X6PdfkrZ1H8GwPpTTAm9KiGBpSv+tV9OvyzFfQ01pAA21kI/0vxo3y6a3b7ntZbngd/d4Ojz0AGRupu+vLo+Bskzv//dqFUzxivEux4cq6PqKPrIjo44VRWWyiHoGxJ68V+6UxKoAQhahyVo/OsAQ0VWLEJCn2vTyROvl+cgKw8YnagIB7yaWWoTXuT8JrC5HNiklf9Hcv0sOuJd4MrTYzLYHid5JxHbqGrbm+u62HGT7tAhD5jQrbgKWcD7sQ1jWCyVFfVJdo5DPpIcCG/Xmcv54sYCu2Sf7cvOORChBobpANjo0DM4lqkh8Ej/pr4m+2oE+4z5FpKrNH14JDcogzqIaIkdCNmtZ+uuytIEoLjZKwOjGE/TXcNEi/m1pCpmslI1sNWIMOow90pAx6fkxOfvkGNCi62cbCsvM0y9JWJDV7DczCG13+zNQ9cykf03UhsVJOzxlhRxProit/BVijz1Z/thaK7Lt0XQr1u11exwPebaTW9aBJuyrK0bwuvFPVKxtbM3wuiD5sZKHjotBMc8wMgYkY2giep27w6hM+KsdGO9CHWcKP6Som11UQD/2OQT5apq8E2gP9cxVFofEKkxarjZpQEuIXENZNnbmVJDpVZZiWwDksYKLdylGXDMfpN3CY6yEJen2rd8j2kld+j/i4maRy1Gs89pB56ktx20oy2DPC65n7lDVo7tuxnvUahvRlHmsFDxJjuc3ntuTWGD6QVfu9lJa47k5hgkMRls81UCDPabhuJFfMKv9BaeBf4XP+Bw/jaxUsLwvV3Qo9KvY1dairu888Ej/TX8M3Z8fzVO1VGSabVcFmAD1ZVrkCQ7fn6eJbCPbt3m5vFL498lbY17EAMlBOPqGpqig8/0tAGDIYEm+MJyUJp2CXD2TlMx/fAzgcrAl2bm/oWEXIYBiRysTLKy/1mfm6rmQRfDs3IDQuLWWGiEq+y2TYhuJ1ET/Xyz4zbb5bB5pr8fN3NVP6Bbj8Qqbscr7ffuCgJCvjzNEq+9zE0i09mC098qo+MxxTeQmqUWVMn3hf6BPUWQYUaZkXE7bqnGU9pFcbSmxqr61QAcg06KJk9QrMHnNkm54HW+aa8QylPOjI74hUttHlwFA2X7tZedQVnI8dJycH/UhFpiJundSLanPxsTbepNXOUQRzk08+iw7crgtzqSg8U6xl+ZDmATVJKju2sa/pnKkmGig5BHaI2iXYFjuolLBBz5ttTi281S0ogcPOZfnD+LvpeQYZvqK4ADnmeR2k84NP91UzBwbEndiFIEQwnZnZI0dGV8Lp3ZusVd0y5p8fgMe8EatttaNCnJ2rJ5BydkoI3V2gRHVYLqoTtHWtiSv4ky3gw+upZnly6PRhpKP1sXTRpqRez25JE0sCEFTw+n1L9bAIYh5yxdmoPOWjiI9FlwAWdnkLyK0c1ghFaIfPhhHLffb2UAwQDzVPNJim9hsaw/6vaSaUrJudQPb2Obl8PgotpnMix2jM34XepBjK2zoqpLEJ/jpv/OFFO1TeI9+giVYGP38w74tmCq4hukZvLYpZQKhapToA7we1NDys/shI3WXwcWbjiOplpYk4WwYAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01KCnto9kAS66QjgmKiHY2HF",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "sick pay"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01KCnto9kAS66QjgmKiHY2HF",
+                "content": "Payday: US and Canada every second Friday, next Friday, October 29, 2027. UK monthly, last working day, next Friday, October 29, 2027. Family, medical and parental leave: eligibility and job protection depend on the country and the facts. The leave team confirms them; AskHartwell does not decide eligibility.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSmwgKEAgTGAI4AUIIdGhpbmtpbmcSDC3GJ5kvKX4H7IYbtBoM5przlokt1HdSNOroIjBq1J8hRJ0eg9183sSPqFudGBf9Zt56rSzL9h7hBKCF91MHrI9N1VON0zlp2CYsFlkquAe1ClU3xcnX8QyAqhpC2g6gak8CvyOt7IPJ6gl7WMb/U7cMMwRqarXlIabDgoOO4DRSl+q5Lc7EtBqekvW1YQi2Zc1ReCdsB6exrXf0rCtCKkIAl8EOa11pyOen3GCyILqsd3AZMEsKpXwEmk/xrDDrA5Az1rYyb0oTZnMN0vWFhq9alwx/jfqzzUynSryAY6Itfpy+MPZcANZOXwxOxVpjHaR5rWXpB7hnEtuoK/K5Rk8HtyQCKTCYhhGien7xO+oT6XyiFAsodbOgtImxSvQSHpSW5uJ+ErkldIy8ZKI3a4x/S1sTAkfBS9g7wthV8Yom2b7YyMMqQTdhgpx08U0dFYkKQJg1YTh4fsOqzJd4dEn++Rh6cxmjEaYlatYC8Sfk+Q+1DXmDTE12FVo05bxu2og9JKpGx8qCZIrpnu+oRgJsB9gtk2nCo66O0ZQgfjhbAvg1yMQ/yN3tDMm1Acf/KtJDvuYGp1c2FNLZANkKO6jIw2f8WlRKpRxQKwvRdRHbN7aMrg8LY6YGZKchfgdQCULlhyEGjPyPK0wtBv7dv5oC0h2PoBraeBYQY+MexirVE74U50szd3LvPSqGJV+TLKf4Y0x8C37bffVecn9H1YLX+r6ut7jvNr8Fa6HhsAd4SKy0me0BTARZwNOgLLTG/eG6884pxk51PLnBpahcGwbw2gOS/wRgH/dbi3XMxkUesrv/+cGPu5Mt3uQ5M06O6rZOM4QsHGSwcT/h4yTKpcv5Zqb7S46ICkXzSQxBZBRJ3v2gluSgppbOUQlel5sIDPG9n7QbvVma0gd4TVCZUVnA+xAgfjdDw4uFjfPC53AXXL9J8W3zUydkd/AbZ16KzyjOaFh8n9khTUZy8RbiW/PR8hGiQ+WYEx7PdH78pF0UMP+C0QKtSK1A7AVvj6zxYTn6iupYYkVP+33smCwiK7icBMP/6KSD7QvVVL7Yg9z6obo7zqIAeHe10BCKaFg213fv9T0ZRTi3nJvIm/7daxyopNSfuebi0EwpyWNe2Fn7A82+Q3fGepnuA5IhQutsl2vpAipxMsAtaI4tRIucK/IUYBhMD2DqFOznFRWnh7lt+XtP3wiCSFi+DWE1EbWPdoRWrCYNqz/NZsJTfKpvLr2PsTgZYOjaNWzhw84Ltb4yezJDEfIXLon2HniZDH4CNcJidhfWArD8GHZyegarLtfK7HpsZewfLzZjHODX2XeR0b1akvVpVsY2wx4ZoAXc54ETRcTo8KJoPSAZb18tf/QdyiY/scyKGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_017z96VAHFEihrjRGYCTjyod",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "leave",
+                  "reason": "Kieran Walsh (HW-031244), UK, has been off work for two weeks with anxiety and asks how sick pay works. AskHartwell could not find the sick pay rule in policy search. He also says his manager keeps texting him while he is off."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_017z96VAHFEihrjRGYCTjyod",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "83182a6c5a774e3742bfe99caa00f6e0e602141fcbfb61c329c1dde084f1d371",
+      "response": {
+        "id": "msg_011Cgse6zRHCL4sioLSZn8ah",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSmwgKEAgTGAI4AUIIdGhpbmtpbmcSDC3GJ5kvKX4H7IYbtBoM5przlokt1HdSNOroIjBq1J8hRJ0eg9183sSPqFudGBf9Zt56rSzL9h7hBKCF91MHrI9N1VON0zlp2CYsFlkquAe1ClU3xcnX8QyAqhpC2g6gak8CvyOt7IPJ6gl7WMb/U7cMMwRqarXlIabDgoOO4DRSl+q5Lc7EtBqekvW1YQi2Zc1ReCdsB6exrXf0rCtCKkIAl8EOa11pyOen3GCyILqsd3AZMEsKpXwEmk/xrDDrA5Az1rYyb0oTZnMN0vWFhq9alwx/jfqzzUynSryAY6Itfpy+MPZcANZOXwxOxVpjHaR5rWXpB7hnEtuoK/K5Rk8HtyQCKTCYhhGien7xO+oT6XyiFAsodbOgtImxSvQSHpSW5uJ+ErkldIy8ZKI3a4x/S1sTAkfBS9g7wthV8Yom2b7YyMMqQTdhgpx08U0dFYkKQJg1YTh4fsOqzJd4dEn++Rh6cxmjEaYlatYC8Sfk+Q+1DXmDTE12FVo05bxu2og9JKpGx8qCZIrpnu+oRgJsB9gtk2nCo66O0ZQgfjhbAvg1yMQ/yN3tDMm1Acf/KtJDvuYGp1c2FNLZANkKO6jIw2f8WlRKpRxQKwvRdRHbN7aMrg8LY6YGZKchfgdQCULlhyEGjPyPK0wtBv7dv5oC0h2PoBraeBYQY+MexirVE74U50szd3LvPSqGJV+TLKf4Y0x8C37bffVecn9H1YLX+r6ut7jvNr8Fa6HhsAd4SKy0me0BTARZwNOgLLTG/eG6884pxk51PLnBpahcGwbw2gOS/wRgH/dbi3XMxkUesrv/+cGPu5Mt3uQ5M06O6rZOM4QsHGSwcT/h4yTKpcv5Zqb7S46ICkXzSQxBZBRJ3v2gluSgppbOUQlel5sIDPG9n7QbvVma0gd4TVCZUVnA+xAgfjdDw4uFjfPC53AXXL9J8W3zUydkd/AbZ16KzyjOaFh8n9khTUZy8RbiW/PR8hGiQ+WYEx7PdH78pF0UMP+C0QKtSK1A7AVvj6zxYTn6iupYYkVP+33smCwiK7icBMP/6KSD7QvVVL7Yg9z6obo7zqIAeHe10BCKaFg213fv9T0ZRTi3nJvIm/7daxyopNSfuebi0EwpyWNe2Fn7A82+Q3fGepnuA5IhQutsl2vpAipxMsAtaI4tRIucK/IUYBhMD2DqFOznFRWnh7lt+XtP3wiCSFi+DWE1EbWPdoRWrCYNqz/NZsJTfKpvLr2PsTgZYOjaNWzhw84Ltb4yezJDEfIXLon2HniZDH4CNcJidhfWArD8GHZyegarLtfK7HpsZewfLzZjHODX2XeR0b1akvVpVsY2wx4ZoAXc54ETRcTo8KJoPSAZb18tf/QdyiY/scyKGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_017z96VAHFEihrjRGYCTjyod",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "leave",
+              "reason": "Kieran Walsh (HW-031244), UK, has been off work for two weeks with anxiety and asks how sick pay works. AskHartwell could not find the sick pay rule in policy search. He also says his manager keeps texting him while he is off."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1365,
+          "output_tokens": 270,
+          "output_tokens_details": {
+            "thinking_tokens": 118
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Wes Arcand (HW-040217), Millwright, rotation crew, Hartwell Energy Services Canada, Fort McMurray camp, Alberta. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "When is payday? Asking because the last one was $300 short and I'm behind on everything."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS8AoKEAgTGAI4AUIIdGhpbmtpbmcSDOKX4+L4OhCtEJ3gqxoMx5PgmFFyY8/U2nngIjCnz6+BK5hpAREAAZQM7VOI+WulDqFWKRfeZZzLR9ICP+LqRC1a1rlggAYk8U0VJZEqjQq6rQVEpgECROEaapZDFWoPdEHtxvwwqo7O3UTLZyfhhquWV2dc9/7v0PHnLgCkCe0SFQX9c6BoAmXW8sPTeiKzJqH5sHQI0IGGDNxM0HeMnk5fcS0s3Lubsv33fNMwVQ4GNg17QHgzzdBJMUh/1Zw2zXfOVFyv+xa3e0S+k8VLHmPxcAuxgPRMKKvTekeFt95NFxuBleMenONJGMDYj0nbAA3/DZZUKCfD3mSvfeBJkCQY5Eo1Ev1vR7dcT7fEZQrCL55BE3Y61QhylQ3DkbpUf8InMHz0xZlSDnSFco/EHsdOXqe9JQ44EfXdDyNAoLpUw0rnGx1GdNriVD3pxLJyXIZfNhKsaF7gK8PDLJAaCmBsC4VbAowVBUe2sCB5njZ4H91l0oPSD99P/R9QseCor+SPy+rsqKUBIZwvHom+RlbXL+MvdNmwuZzhpMclt6bQtLUgTqqT2QTCJZfHpaHmObHb/FNX6hCWNhzNqG5JMJbOY5JfDOElc8n28vu1rNYGOek5GKXHAbtel1xYKAor5bs5pz4tLOCKsRGHBGlBygzUzhziVSeqsRIN9oweXSpMuKTFcI/uSj8+IwYuH+OaiIZ9Ce/XXpQj1i8NqE3BR4QvlHiEFx1Dmt6a1ySl/RzTr/fisbGgR4Ipd7KHJ/ck8JyO/OfIEnvtRALSEGWSkjXLlRcWmQWBOEuZrQZ5+6umWhuyvSaseaqSX7PB4ftZ4Mmfgci65k1t5R78Txy7Gy+QDctsyjPiqVGk6kYr74MbJeiSlRbEg/hRZxdOdAmUdreae/qSsbDtRDz7qPBESy3NgBexLHixOxICI/KNo4I3QibikxOOxJRHfMtJmzovhXHuMCZbDhaWyTzmjfu/orkSjouU10+ucjYBC/9CSd5QlveGaoiZY8C//laSHn1lF3jEvvGmuaNrr50r7Dz6/kcvSdrk5gBMxmWU8qWfpg/s0ycHPXO1pDGxOAobs+vCEkoTcxD1YqrC586NfaTgBDg8RMYvWZAw7xIVBjne8g0Q7lS1NeM4SO39hhNtCLbug5ezICZHbB8Sh8484mUVNRZaD6l5pZYeUKgE7JuEhweDD4UdjpEb+bhrBtUT/3FajZcWy51/XtHYpSngoAM+PFG/p4bpnOWkuxzraeaJ4Dfho7Hyi9+MP4lTIh6v6GFxUAdmqlQojIfbEZagDe6v8jpoYIM4wLQ+TTtkFvp0Tp90L8a86H2gG4ZlVUIPj9/AwFL11uQpB42mjx1fNsLAaM3MYPdtv+Ilfltk9UIFRf567zQ1ZErUx5epsX4s1EtEJ3f+ISXokPIItOvwD16It412UL0hrWNAzUxiIB2rBks76q/l8BvGSL5sbqZ6influpBUmB2dqycV8tGR0hvF+cIL9KN5n5ONeZb4zG3GH/jM5CBn+gClBKze8ReCo6pdbY3gnI0/aROD2dUGLbdTJS4OlKfbNbEJ55YPVMFAGG5+3ZNvemZtWBTlAoS17V60f7/YchR+zZGOnrKkxHzbSgUFChGkNm89Oq/nd//FXZoRaRoEQU6k+cD7blb5XMAmKyuV2b6pMj/9Q8XcvgXJW0uvuG1fy8ysuE+GDHWzjenMxLTiV5Rdo1CK0c+8CRWBsjxLL4k++3ngmYZjS1VFuiBvWI8orBu5SXcyCZGefgXC34ToXc4CYG2GnHcy9gx/+06UZL52IJmnBH+9qat++tIWovBkgkWsMDRdc+4YAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_011PzcLNd31cpnBd6YTmMfQy",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              },
+              {
+                "id": "toolu_01EFhRpB1vPFhE6ukSypJSQ4",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "pay schedule payday"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              },
+              {
+                "id": "toolu_01DHtHxzVUE5aNrM25RiDKg6",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "pay",
+                  "reason": "Employee Wes Arcand (HW-040217) says his last paycheque was about $300 short and he is behind on bills. Needs a pay check on the shortfall."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_011PzcLNd31cpnBd6YTmMfQy",
+                "content": "Wes Arcand HW-040217, Millwright, rotation crew, Hartwell Energy Services Canada, Fort McMurray camp, Alberta. Vacation balance 9.0 days. Open actions: none.",
+                "is_error": false
+              },
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01EFhRpB1vPFhE6ukSypJSQ4",
+                "content": "Payday: US and Canada every second Friday, next Friday, October 29, 2027. UK monthly, last working day, next Friday, October 29, 2027.",
+                "is_error": false
+              },
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01DHtHxzVUE5aNrM25RiDKg6",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "4aea6875110190ca04c6e5ce7dcc0596249a9e2f6792575a0f51400ceef66133",
+      "response": {
+        "id": "msg_011Cgse77xxyGPvrbGSve8Pe",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQS8AoKEAgTGAI4AUIIdGhpbmtpbmcSDOKX4+L4OhCtEJ3gqxoMx5PgmFFyY8/U2nngIjCnz6+BK5hpAREAAZQM7VOI+WulDqFWKRfeZZzLR9ICP+LqRC1a1rlggAYk8U0VJZEqjQq6rQVEpgECROEaapZDFWoPdEHtxvwwqo7O3UTLZyfhhquWV2dc9/7v0PHnLgCkCe0SFQX9c6BoAmXW8sPTeiKzJqH5sHQI0IGGDNxM0HeMnk5fcS0s3Lubsv33fNMwVQ4GNg17QHgzzdBJMUh/1Zw2zXfOVFyv+xa3e0S+k8VLHmPxcAuxgPRMKKvTekeFt95NFxuBleMenONJGMDYj0nbAA3/DZZUKCfD3mSvfeBJkCQY5Eo1Ev1vR7dcT7fEZQrCL55BE3Y61QhylQ3DkbpUf8InMHz0xZlSDnSFco/EHsdOXqe9JQ44EfXdDyNAoLpUw0rnGx1GdNriVD3pxLJyXIZfNhKsaF7gK8PDLJAaCmBsC4VbAowVBUe2sCB5njZ4H91l0oPSD99P/R9QseCor+SPy+rsqKUBIZwvHom+RlbXL+MvdNmwuZzhpMclt6bQtLUgTqqT2QTCJZfHpaHmObHb/FNX6hCWNhzNqG5JMJbOY5JfDOElc8n28vu1rNYGOek5GKXHAbtel1xYKAor5bs5pz4tLOCKsRGHBGlBygzUzhziVSeqsRIN9oweXSpMuKTFcI/uSj8+IwYuH+OaiIZ9Ce/XXpQj1i8NqE3BR4QvlHiEFx1Dmt6a1ySl/RzTr/fisbGgR4Ipd7KHJ/ck8JyO/OfIEnvtRALSEGWSkjXLlRcWmQWBOEuZrQZ5+6umWhuyvSaseaqSX7PB4ftZ4Mmfgci65k1t5R78Txy7Gy+QDctsyjPiqVGk6kYr74MbJeiSlRbEg/hRZxdOdAmUdreae/qSsbDtRDz7qPBESy3NgBexLHixOxICI/KNo4I3QibikxOOxJRHfMtJmzovhXHuMCZbDhaWyTzmjfu/orkSjouU10+ucjYBC/9CSd5QlveGaoiZY8C//laSHn1lF3jEvvGmuaNrr50r7Dz6/kcvSdrk5gBMxmWU8qWfpg/s0ycHPXO1pDGxOAobs+vCEkoTcxD1YqrC586NfaTgBDg8RMYvWZAw7xIVBjne8g0Q7lS1NeM4SO39hhNtCLbug5ezICZHbB8Sh8484mUVNRZaD6l5pZYeUKgE7JuEhweDD4UdjpEb+bhrBtUT/3FajZcWy51/XtHYpSngoAM+PFG/p4bpnOWkuxzraeaJ4Dfho7Hyi9+MP4lTIh6v6GFxUAdmqlQojIfbEZagDe6v8jpoYIM4wLQ+TTtkFvp0Tp90L8a86H2gG4ZlVUIPj9/AwFL11uQpB42mjx1fNsLAaM3MYPdtv+Ilfltk9UIFRf567zQ1ZErUx5epsX4s1EtEJ3f+ISXokPIItOvwD16It412UL0hrWNAzUxiIB2rBks76q/l8BvGSL5sbqZ6influpBUmB2dqycV8tGR0hvF+cIL9KN5n5ONeZb4zG3GH/jM5CBn+gClBKze8ReCo6pdbY3gnI0/aROD2dUGLbdTJS4OlKfbNbEJ55YPVMFAGG5+3ZNvemZtWBTlAoS17V60f7/YchR+zZGOnrKkxHzbSgUFChGkNm89Oq/nd//FXZoRaRoEQU6k+cD7blb5XMAmKyuV2b6pMj/9Q8XcvgXJW0uvuG1fy8ysuE+GDHWzjenMxLTiV5Rdo1CK0c+8CRWBsjxLL4k++3ngmYZjS1VFuiBvWI8orBu5SXcyCZGefgXC34ToXc4CYG2GnHcy9gx/+06UZL52IJmnBH+9qat++tIWovBkgkWsMDRdc+4YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_011PzcLNd31cpnBd6YTmMfQy",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {},
+            "name": "get_my_record",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01EFhRpB1vPFhE6ukSypJSQ4",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "topic": "pay schedule payday"
+            },
+            "name": "search_policy",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01DHtHxzVUE5aNrM25RiDKg6",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "pay",
+              "reason": "Employee Wes Arcand (HW-040217) says his last paycheque was about $300 short and he is behind on bills. Needs a pay check on the shortfall."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 950,
+          "output_tokens": 454,
+          "output_tokens_details": {
+            "thinking_tokens": 252
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Julie Tremblay (HW-041388), Facilities Coordinator, Hartwell Canada, Montréal, Quebec. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Quelle est la politique de télétravail? Je suis enceinte et les trajets deviennent difficiles."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSngoKEAgTGAI4AUIIdGhpbmtpbmcSDCdfRPy8XoNRfB3qshoMaT7IljG+vUBqPtJPIjBSkDHs9HX6x4LD/8G5Cq70AROFgnFKBqfmrkLbSImV0eY32vPPtgojLnP+pRxxQywquwnHs9TpU3SmuMqUZCWBLnkQI3f9eDbFASo5/vnKqaUDtymanVvq0ceEeWHSKCr7JiZ6+/IXJHUQ67+FbJ5f37oNSer4qt0ThtJWSAHh8paGZhwWGbVb6wN3ZdRlX9mYrNFUgVL/mvm9j2wAbyQ8hxlhxqqWlmpabOK0/3ql2EcvQHu/i5rASdGqn43m2eWr1s5n7fAOl3qfuN6xvB0yk47wDHHKgjGdjjsOFICV1/DlZD+wIMhq8Vd6rry1vae8d0XG9HJnGSDzR1KSvBMiHBrxJOYHpIRHibj4kz9Qvz2ZxhA05OI/1+AkFNHJ0UsjnKb77UCfcyEd4rXyM8qdv/KCfPaZVF0lSxWDZgi/pJPEUsughtKX4lokvZ29zPkxbk30ZWPoOlVcg1VXGZPEbxgS5xTG6TftLw19xUk4elTZhxOjDL4GzZ5FDqVZtlCtvaLGeZqOEDUz6KZIUIc/zxDd11n9VLvGI7YE0hNgz4rH9m1vzq+pCwFNXL7hpFXyMGcJcXV3OUjp1zId/4UuffYfXV6A11knA8dZdwAdppIW0CZsmz2y5aSgePm4kUfx2e8qdoFdFpmwwnqIFxic0AYI4F+OXs5grv0fmWdR5Be5uDOGCV1LqS7XxhUWFt1dGLdPS+rxgdlr8LtwDfyJF9X+ZQgf9Tdh11uWJ5lS3LBuR0Ng7BIF6qU+mteqrwuOsKtTVbfqX45Q6CIwEL5iy83JyqCFg10ID7dRi9tLdjsC5nzBxHBL5wiZLg/j+OZij+jIDf5FyN+9oA//4LjUhVNId5uPrte8ZLOMe0dMaSsxXsXjaA8VPH9SxmxWqAd6Z5M4n0G+dun69B5Zn3RRjFFGwypvJLjf372FxSPndjwkhZ/ueQyaVSoorC/38z3dBK0TFTV1sPQ/T1oQeMsZRUQhrATl4JuCZ5l3Go8ZRMA4Pnaqwg4WhCDmVDUESxGHT0Lek6BgxLg4mv6dh5C5FIqiBBrZiHCyjmYtSFC0XAlYBd/xP5YJiyOFk5cdsq92gJMg0WuZU5BgPZlkR+ZGqXprBlZQcYpyLSEXgaAhXkMU0PC8kgXsIqF/tK73X4EmAiYusYWjNGYTtJki7cUm3bPHZ/gTPGVK1hAAe5PXHy1LbkJws8azsbHL9e84VHvRxHTgakdDdlVGk+VfeiR3nOFM6a22RhW+qDzWcuL8K9kTQ+tUaGc5CfA82pX1VPvWx4q8tg8o4XyZOzqBVy9y3pDR9neyHT9xEl/ZBQcE5QDp35Mp4f+8Fw16D+C8ERmszpSoOxXwn5QS1kF0SmCLZ1mwBfRQrr9oqhKWZd3xkFhCCpZOV3b8sN2D2NYnThpv8bnkY5WaMlr/ZvbssvhljlesDBw2BTZMizyYHlbMwPs3V1XZDU3Op8cs2HOUhsPrrkOCWSFNTJKbT4XpbkwFJvNPGiAfcIuR/Mjg1GQSYkSo3UuMl5jDvVGIELeJo4IItoMTRKCMtGzeJUY2PK5WuaEHtDnhjd9fAMWkXjsLf0M91SIhXcHj3P+d7+1huOJpIP9TtKtNFxq0bYV2+7bPc4Kll5xEnPbv7hBAGnbs4CPKZIvyRWGFK5KHWaWzOY87c3Cas90/1pw4yzR62RgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_013MGcqCMsK1WGnjfmznDbXL",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "télétravail"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              },
+              {
+                "id": "toolu_01QbFsk132dFsyjnpkMAJypx",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "leave",
+                  "reason": "Employée enceinte (HW-041388, Facilities Coordinator, Montréal) qui dit que ses trajets deviennent difficiles. Demande des informations sur la politique de télétravail et des aménagements possibles pendant la grossesse."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_013MGcqCMsK1WGnjfmznDbXL",
+                "content": "No policy found.",
+                "is_error": false
+              },
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01QbFsk132dFsyjnpkMAJypx",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "be9e913b5b0853b7eca5616593e14de7a891e1064762a0b040f9d7b6b2398354",
+      "response": {
+        "id": "msg_011Cgse7JppiGNsLadY36Eok",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSngoKEAgTGAI4AUIIdGhpbmtpbmcSDCdfRPy8XoNRfB3qshoMaT7IljG+vUBqPtJPIjBSkDHs9HX6x4LD/8G5Cq70AROFgnFKBqfmrkLbSImV0eY32vPPtgojLnP+pRxxQywquwnHs9TpU3SmuMqUZCWBLnkQI3f9eDbFASo5/vnKqaUDtymanVvq0ceEeWHSKCr7JiZ6+/IXJHUQ67+FbJ5f37oNSer4qt0ThtJWSAHh8paGZhwWGbVb6wN3ZdRlX9mYrNFUgVL/mvm9j2wAbyQ8hxlhxqqWlmpabOK0/3ql2EcvQHu/i5rASdGqn43m2eWr1s5n7fAOl3qfuN6xvB0yk47wDHHKgjGdjjsOFICV1/DlZD+wIMhq8Vd6rry1vae8d0XG9HJnGSDzR1KSvBMiHBrxJOYHpIRHibj4kz9Qvz2ZxhA05OI/1+AkFNHJ0UsjnKb77UCfcyEd4rXyM8qdv/KCfPaZVF0lSxWDZgi/pJPEUsughtKX4lokvZ29zPkxbk30ZWPoOlVcg1VXGZPEbxgS5xTG6TftLw19xUk4elTZhxOjDL4GzZ5FDqVZtlCtvaLGeZqOEDUz6KZIUIc/zxDd11n9VLvGI7YE0hNgz4rH9m1vzq+pCwFNXL7hpFXyMGcJcXV3OUjp1zId/4UuffYfXV6A11knA8dZdwAdppIW0CZsmz2y5aSgePm4kUfx2e8qdoFdFpmwwnqIFxic0AYI4F+OXs5grv0fmWdR5Be5uDOGCV1LqS7XxhUWFt1dGLdPS+rxgdlr8LtwDfyJF9X+ZQgf9Tdh11uWJ5lS3LBuR0Ng7BIF6qU+mteqrwuOsKtTVbfqX45Q6CIwEL5iy83JyqCFg10ID7dRi9tLdjsC5nzBxHBL5wiZLg/j+OZij+jIDf5FyN+9oA//4LjUhVNId5uPrte8ZLOMe0dMaSsxXsXjaA8VPH9SxmxWqAd6Z5M4n0G+dun69B5Zn3RRjFFGwypvJLjf372FxSPndjwkhZ/ueQyaVSoorC/38z3dBK0TFTV1sPQ/T1oQeMsZRUQhrATl4JuCZ5l3Go8ZRMA4Pnaqwg4WhCDmVDUESxGHT0Lek6BgxLg4mv6dh5C5FIqiBBrZiHCyjmYtSFC0XAlYBd/xP5YJiyOFk5cdsq92gJMg0WuZU5BgPZlkR+ZGqXprBlZQcYpyLSEXgaAhXkMU0PC8kgXsIqF/tK73X4EmAiYusYWjNGYTtJki7cUm3bPHZ/gTPGVK1hAAe5PXHy1LbkJws8azsbHL9e84VHvRxHTgakdDdlVGk+VfeiR3nOFM6a22RhW+qDzWcuL8K9kTQ+tUaGc5CfA82pX1VPvWx4q8tg8o4XyZOzqBVy9y3pDR9neyHT9xEl/ZBQcE5QDp35Mp4f+8Fw16D+C8ERmszpSoOxXwn5QS1kF0SmCLZ1mwBfRQrr9oqhKWZd3xkFhCCpZOV3b8sN2D2NYnThpv8bnkY5WaMlr/ZvbssvhljlesDBw2BTZMizyYHlbMwPs3V1XZDU3Op8cs2HOUhsPrrkOCWSFNTJKbT4XpbkwFJvNPGiAfcIuR/Mjg1GQSYkSo3UuMl5jDvVGIELeJo4IItoMTRKCMtGzeJUY2PK5WuaEHtDnhjd9fAMWkXjsLf0M91SIhXcHj3P+d7+1huOJpIP9TtKtNFxq0bYV2+7bPc4Kll5xEnPbv7hBAGnbs4CPKZIvyRWGFK5KHWaWzOY87c3Cas90/1pw4yzR62RgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_013MGcqCMsK1WGnjfmznDbXL",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "topic": "télétravail"
+            },
+            "name": "search_policy",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01QbFsk132dFsyjnpkMAJypx",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "leave",
+              "reason": "Employée enceinte (HW-041388, Facilities Coordinator, Montréal) qui dit que ses trajets deviennent difficiles. Demande des informations sur la politique de télétravail et des aménagements possibles pendant la grossesse."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 949,
+          "output_tokens": 433,
+          "output_tokens_details": {
+            "thinking_tokens": 230
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "how do i change my bank details. also is there anyone i can talk to about money stuff, things are bad at home"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS5woKEAgTGAI4AUIIdGhpbmtpbmcSDPokERNli8PUhytMoBoM8DywpbPcGLvdvVjxIjDT8Ls2CWeKYtqzT29PS4CRpL00IHF0IXtoxSXogmRD8B2oXRU1q3Jfd1YWFNrX9cUqhAoQk1eVTzfHKAsoPx0DKy72QfevrppA8m9P0IFwq5iJJChUk727MPGFWnQNTiGsWWt/yDcoHceq3npRbwGXrUnwKxPhKpdoGk9W4bAqRO33lm6jAXs4o4nXyEA1mr7SsgOAqiy5vs/KP49N1GQAqqgVfcDyBZkstqXS4xbvLKOwz9Ujh4KSemKxlXiW6dQfB38/kPXm0zHXMfDZcCX834ArxfJNCRIHlTU+j+L/lARNiFey986XAAxu0JopxHOCEFxBdUTdvenmiaKmVl6UTTi72SO8FgIXszN4AvToMoKyVsCls0YwqZWNWhrWPZNuYWR/UPv0p65svdp37EJKNV32qR2zPtFqB+Bf5DlWX1dof5Ya7oGuXMdUdhUg3WfodZV69Dasn8GFbcU8FxXCPFC9WFaZ2p5XMxBFId7e0YgDfX1mWs0gno17uXSDyRPyuTEhKtSjEbv7YIa05pQO6pTVjcS04F8EB+p+czmTCu3Xv3T5feEq91ge1Y3xjg/HwAfl7owzY/ILPS1rturCuXhpJBN0rPVbbVECX8StLGW+rjregVtT4jMAwFIXA6yqGYB+zmzDuPGu95J6BA1wFayDtICQ4gb83XgfTPDO1nd5aE/zwwrqbkwEI82y0Eot3yvUts9EBKRhTbWVnTN80Bw+jgp8ZoqzRo/1q5tAKN/f7KbNQBWSj/vboKJFzrF8XidXM/Ns5nEMF1Ikf8GYigloiBnbfUNuN74nigBM8p621f7cyEWgrDjPEzv+f4X6ZRvvwLQ2ebRE7ezZFx3e4eKjQi84jZgt41cpIbjnnT4zS63bgfU47S7947aeTT1zg5BiNErltlnpMnTGNxA4i32MGtYG5GEnezajyZN4En41mLF5CYqO7D5Ay/tQHsrdQum8BYqI6KbnazZP9pFxtQ9jnkvmIBMWO+e7i5f7vzY/SAK/4/GQcioAs55uY7gy4gSPZOPRpS6ulfLRDpc5/HgxXEbeL0qmxh3eL+6TMfGL+mH3iomj9rj7y7yopeRsN0XspuFm4snYiQIMxl6H7oYkCkfRYzi5AsysPm4w2AgekvU77E/7JQW9of4pmE3FwgyvUSFefZZ/s7yfu2g9P4n4cRee9Yw3SG1VRWo3CNR80dkB9asF8OOxd+tj6btZYw7YqWid8Fxgluef/euWInCRmZ01CkE0A+c/fFoYxUgoXHszx58iE7dgwApxLosiaXkFRwMaOAjD4UplSwGFj+IyR7Nt8fvRnDgNHFgOH0JJHxF3quBQLyfwby1OdxOqPM7zzjsWLfZGSx6+UUZkYa3jGHKp/4M0XasNzWPBi+RDVc5CnHr5xbdT6ZypIDdMOPt6ddVtdcCEBtMnUZ60PKopqL5UFQxnynbjm7Nv5TnhV7CHFmEwCTU6Wfrlg8ZaFQsJr2cX87Df2CVHDuTjSvxB7Pt2fe6eFWXz8M5NYeUcslKkJZ08vR11Q31ivD/6d2pfoTffdC0zad6X8LJ1lkGDkfz9wtGc4U/S4Gps6ounxG5nLDBG0pGZKhG6b3m89w6YHQ/wSNeUpGpJl0Z1bIjLZb38r0n4MOskJ96U3hqlwV2mlsLrY+zvFl9rDgjauOc5BhQgAignbJezScbXxsIpfg3NtZrelRbpd9AmAucSWT4GF31WJ4gJFDfqyb+C5Ne6FqDGrcaNZaBDz9v0ujcSXI7bh2bsYIBrGJZB4m1da0oC/y0YAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01RgAA1LPrrnUByXEdposWkU",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "how to change bank details for pay"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              },
+              {
+                "id": "toolu_013bS8ErjP8XyNSqVJcXC3dy",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "care",
+                  "reason": "Employee Kieran Walsh (HW-031244) asked for someone to talk to about money worries and said things are bad at home. Wants a person to speak with about support."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01RgAA1LPrrnUByXEdposWkU",
+                "content": "Payday: US and Canada every second Friday, next Friday, October 29, 2027. UK monthly, last working day, next Friday, October 29, 2027.",
+                "is_error": false
+              },
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_013bS8ErjP8XyNSqVJcXC3dy",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "93abf01ccb361b15a0bd8d81b1d1393a69a19d13c15fc812f4602d52dc7d6ffc",
+      "response": {
+        "id": "msg_011Cgse7VK76FH3oS9MAqZ2M",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQS5woKEAgTGAI4AUIIdGhpbmtpbmcSDPokERNli8PUhytMoBoM8DywpbPcGLvdvVjxIjDT8Ls2CWeKYtqzT29PS4CRpL00IHF0IXtoxSXogmRD8B2oXRU1q3Jfd1YWFNrX9cUqhAoQk1eVTzfHKAsoPx0DKy72QfevrppA8m9P0IFwq5iJJChUk727MPGFWnQNTiGsWWt/yDcoHceq3npRbwGXrUnwKxPhKpdoGk9W4bAqRO33lm6jAXs4o4nXyEA1mr7SsgOAqiy5vs/KP49N1GQAqqgVfcDyBZkstqXS4xbvLKOwz9Ujh4KSemKxlXiW6dQfB38/kPXm0zHXMfDZcCX834ArxfJNCRIHlTU+j+L/lARNiFey986XAAxu0JopxHOCEFxBdUTdvenmiaKmVl6UTTi72SO8FgIXszN4AvToMoKyVsCls0YwqZWNWhrWPZNuYWR/UPv0p65svdp37EJKNV32qR2zPtFqB+Bf5DlWX1dof5Ya7oGuXMdUdhUg3WfodZV69Dasn8GFbcU8FxXCPFC9WFaZ2p5XMxBFId7e0YgDfX1mWs0gno17uXSDyRPyuTEhKtSjEbv7YIa05pQO6pTVjcS04F8EB+p+czmTCu3Xv3T5feEq91ge1Y3xjg/HwAfl7owzY/ILPS1rturCuXhpJBN0rPVbbVECX8StLGW+rjregVtT4jMAwFIXA6yqGYB+zmzDuPGu95J6BA1wFayDtICQ4gb83XgfTPDO1nd5aE/zwwrqbkwEI82y0Eot3yvUts9EBKRhTbWVnTN80Bw+jgp8ZoqzRo/1q5tAKN/f7KbNQBWSj/vboKJFzrF8XidXM/Ns5nEMF1Ikf8GYigloiBnbfUNuN74nigBM8p621f7cyEWgrDjPEzv+f4X6ZRvvwLQ2ebRE7ezZFx3e4eKjQi84jZgt41cpIbjnnT4zS63bgfU47S7947aeTT1zg5BiNErltlnpMnTGNxA4i32MGtYG5GEnezajyZN4En41mLF5CYqO7D5Ay/tQHsrdQum8BYqI6KbnazZP9pFxtQ9jnkvmIBMWO+e7i5f7vzY/SAK/4/GQcioAs55uY7gy4gSPZOPRpS6ulfLRDpc5/HgxXEbeL0qmxh3eL+6TMfGL+mH3iomj9rj7y7yopeRsN0XspuFm4snYiQIMxl6H7oYkCkfRYzi5AsysPm4w2AgekvU77E/7JQW9of4pmE3FwgyvUSFefZZ/s7yfu2g9P4n4cRee9Yw3SG1VRWo3CNR80dkB9asF8OOxd+tj6btZYw7YqWid8Fxgluef/euWInCRmZ01CkE0A+c/fFoYxUgoXHszx58iE7dgwApxLosiaXkFRwMaOAjD4UplSwGFj+IyR7Nt8fvRnDgNHFgOH0JJHxF3quBQLyfwby1OdxOqPM7zzjsWLfZGSx6+UUZkYa3jGHKp/4M0XasNzWPBi+RDVc5CnHr5xbdT6ZypIDdMOPt6ddVtdcCEBtMnUZ60PKopqL5UFQxnynbjm7Nv5TnhV7CHFmEwCTU6Wfrlg8ZaFQsJr2cX87Df2CVHDuTjSvxB7Pt2fe6eFWXz8M5NYeUcslKkJZ08vR11Q31ivD/6d2pfoTffdC0zad6X8LJ1lkGDkfz9wtGc4U/S4Gps6ounxG5nLDBG0pGZKhG6b3m89w6YHQ/wSNeUpGpJl0Z1bIjLZb38r0n4MOskJ96U3hqlwV2mlsLrY+zvFl9rDgjauOc5BhQgAignbJezScbXxsIpfg3NtZrelRbpd9AmAucSWT4GF31WJ4gJFDfqyb+C5Ne6FqDGrcaNZaBDz9v0ujcSXI7bh2bsYIBrGJZB4m1da0oC/y0YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01RgAA1LPrrnUByXEdposWkU",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "topic": "how to change bank details for pay"
+            },
+            "name": "search_policy",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_013bS8ErjP8XyNSqVJcXC3dy",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "care",
+              "reason": "Employee Kieran Walsh (HW-031244) asked for someone to talk to about money worries and said things are bad at home. Wants a person to speak with about support."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 943,
+          "output_tokens": 421,
+          "output_tokens_details": {
+            "thinking_tokens": 244
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Wes Arcand (HW-040217), Millwright, rotation crew, Hartwell Energy Services Canada, Fort McMurray camp, Alberta. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "Can I swap my rotation next month? My daughter is in hospital in Edmonton."
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSggcKEAgTGAI4AUIIdGhpbmtpbmcSDPV7OKzE2dZnOfN9dBoMl7OKgUVDobquYuNgIjDF0HMHcEjhCqrphNqizwBfyHc1MOfVVH32fdVZQkWa1ngXq1CCfmZmdme/fQGoT+cqnwbT9/QdIkSXIPYs0tTXBZKU07j+hAzO/CyQUjSFuPv1TQY1Iy5xfzQhWKqlDQ39wwuuoc35OtYo2+gfCyhmFd1zCJobouujPSHVtzTfSwIS7gT5/mJHgJEy8GlW8Yl2MrdZR/QBuvf4aFEjhLnTR8m/LLgAmKlNIqWxbRzf70DyOBaN1bKmM8nXH6wqsJBjl0Cc4Gl9C+01vmj8CgQZBX0jRd4uAs37/HaAIRfxn1pzCKmp3fKl+VhbJPGhZyZuH20o4M0qrCBvvODjNFjkgQg9QLmXLdeYIuvS1aVfCqWKfNdLDJC+oDGxoD2W7ZD21VLt/6ugc/014weDyIVRPKIPFz0xTiohUAT9VKYfWS9R+o7/d5kLMDrnUvb6xFcrdB38RFJzwG/V46XeUBIJKLrnAiB3OCTAiZC4Xk04IS3Tt+0WlEBdvvnqviWSgqaaWO/idNsJCmvzOBePpgPaMVeja+THRG9YHUOwRMebcICsN4OGSjMTMHuS3pCeVU+f7YnfdB7lZtQdZHfBqeMn15yZy0U+cQzK1H46txjQ9ga41YRe8spvXTp8FvUzbOcyAnP/t0CqzmT04EXcaGcnO89cFBCxtYQFLPd69p7FKLUwq+A6Soxl2P28D2GXbjEaVKzzC7L5iru5jfrP2TQdawN8CQSfee2yOL67Ms7k1F0YZAQhbKp6BNI1xcg0iUi5UF5iVk9Z8AnPE3eOrPPPWpgIpARhRppRqFxgym+GgFmOi5QOD7vz30mTEihnUC5j1ELemtHDZ8baFpNFiVk8bnKzL2TzpKingEXtgp84oVW33vH9v7q0CVBUvt/MF3ns4YA5zzlXe+KwdDaZ6+GbI0f5PHeBSlMDelb6VMSglK5OPqKA6exRZzQ3wtvvtzHjLfAnvw/7uFEb19xwQU8FsoCaQaCi6osQzJdSRvIudAZNtx2UchmaTHaOjoHDfkm8utFoXsQoj2rSV8CrVbcKSFp4Rw/82qAG7z3bcvIb0bhyWwj4VCrxmVXgLA78d79TGRxYoHq0SKoPzgbsvM4pPNGri54bPVM2UxE8fW5oqz1HGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_0199G1DAUB7QsmsU31YNMSCX",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "lane": "leave",
+                  "reason": "Employee Wes Arcand (HW-040217) asks to swap his rotation next month because his daughter is in hospital in Edmonton. This involves a family member's health and a schedule change."
+                },
+                "name": "hand_off",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_0199G1DAUB7QsmsU31YNMSCX",
+                "content": "Handed off.",
+                "is_error": false
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "ead11e53bec4302aaa1cf0b8d2260ab0e473be8be2000163f918e8dae6252008",
+      "response": {
+        "id": "msg_011Cgse7gZmJjMgErzWyEKkJ",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSggcKEAgTGAI4AUIIdGhpbmtpbmcSDPV7OKzE2dZnOfN9dBoMl7OKgUVDobquYuNgIjDF0HMHcEjhCqrphNqizwBfyHc1MOfVVH32fdVZQkWa1ngXq1CCfmZmdme/fQGoT+cqnwbT9/QdIkSXIPYs0tTXBZKU07j+hAzO/CyQUjSFuPv1TQY1Iy5xfzQhWKqlDQ39wwuuoc35OtYo2+gfCyhmFd1zCJobouujPSHVtzTfSwIS7gT5/mJHgJEy8GlW8Yl2MrdZR/QBuvf4aFEjhLnTR8m/LLgAmKlNIqWxbRzf70DyOBaN1bKmM8nXH6wqsJBjl0Cc4Gl9C+01vmj8CgQZBX0jRd4uAs37/HaAIRfxn1pzCKmp3fKl+VhbJPGhZyZuH20o4M0qrCBvvODjNFjkgQg9QLmXLdeYIuvS1aVfCqWKfNdLDJC+oDGxoD2W7ZD21VLt/6ugc/014weDyIVRPKIPFz0xTiohUAT9VKYfWS9R+o7/d5kLMDrnUvb6xFcrdB38RFJzwG/V46XeUBIJKLrnAiB3OCTAiZC4Xk04IS3Tt+0WlEBdvvnqviWSgqaaWO/idNsJCmvzOBePpgPaMVeja+THRG9YHUOwRMebcICsN4OGSjMTMHuS3pCeVU+f7YnfdB7lZtQdZHfBqeMn15yZy0U+cQzK1H46txjQ9ga41YRe8spvXTp8FvUzbOcyAnP/t0CqzmT04EXcaGcnO89cFBCxtYQFLPd69p7FKLUwq+A6Soxl2P28D2GXbjEaVKzzC7L5iru5jfrP2TQdawN8CQSfee2yOL67Ms7k1F0YZAQhbKp6BNI1xcg0iUi5UF5iVk9Z8AnPE3eOrPPPWpgIpARhRppRqFxgym+GgFmOi5QOD7vz30mTEihnUC5j1ELemtHDZ8baFpNFiVk8bnKzL2TzpKingEXtgp84oVW33vH9v7q0CVBUvt/MF3ns4YA5zzlXe+KwdDaZ6+GbI0f5PHeBSlMDelb6VMSglK5OPqKA6exRZzQ3wtvvtzHjLfAnvw/7uFEb19xwQU8FsoCaQaCi6osQzJdSRvIudAZNtx2UchmaTHaOjoHDfkm8utFoXsQoj2rSV8CrVbcKSFp4Rw/82qAG7z3bcvIb0bhyWwj4VCrxmVXgLA78d79TGRxYoHq0SKoPzgbsvM4pPNGri54bPVM2UxE8fW5oqz1HGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_0199G1DAUB7QsmsU31YNMSCX",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "lane": "leave",
+              "reason": "Employee Wes Arcand (HW-040217) asks to swap his rotation next month because his daughter is in hospital in Edmonton. This involves a family member's health and a schedule change."
+            },
+            "name": "hand_off",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 951,
+          "output_tokens": 222,
+          "output_tokens_details": {
+            "thinking_tokens": 90
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Lena Ruiz (HW-012771), Field Service Technician, Hartwell US, Denver, Colorado. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I'm so stressed about getting my W-2 in time for my mortgage. When will it be ready?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS6wYKEAgTGAI4AUIIdGhpbmtpbmcSDNk3vLIAa43EkjLXZBoMVdPY36gh5lxhEKtHIjDuMzIzIWM1kSJW0vQDXfKdLcCtAu/giC1iopMUA6DJd9VVhcl6mmICifxfz3jUBfsqiAYRS3KO6VKVd59H2KM4C+qk7HX9CYMe1XCZVDiDcx33QN2oLaJ0btF8PeUFUf/ZeGMtwsU+2xDdqwE/wBINf8O5GGIHX+299a6aD77hdXMKMeZJiljBeNSSBI6a2k/+jjt5Pp5eM+FRdBHeXJEfI6Kqlcj5i513An3RW4P1QwHK82pKDpa95E37lRCxHrZE8kmXDIAdnd0GISZgDz/N6zsMpdOqyjBbD2Blz6xCsjgtY1ozN5Wlbk7RJHLuxstGuYV0/Ut6svbR/uIXRXyB9GLBLEGLdnTK5/cmi2oLU8pswEFgKng9mCXxzSzsMvJQk7JuhssV/q7MOnF/cx62SwLI52iXOsQjUfoSa93o82BqdwV8w2VqdLQI7JW5L1RYgHnS/4ipjK3EoVFHAeA7Lbt4bcjc/n2pClnaKqqgi5PqgmUwoKv7vDIIwBH5qqql7cJF8K6vFWZv8IBWHLHiiNY+XW5Hugzvj+FhksCFe9y2QxjDfe3pl5fbJtYFOXFFxid6p8NP1i1IXieDKmLN7ka1l9mQ4ZJUx4NYzcdLUNXZv/+y5hknXVf7M9eog2zZgUV22nMt8qbOhR7ON/+aAcrgT4vzb7Ou5r5SNn7U9NUM8WT3ezLbDQpQMMnjm9yuQXN4UNL1BIpmWLCsJRB4U22qke9F5YHx52+pBqdbAKBdLnDJpzn3rSf8ouVJ8kcDOQf8JdW8ChnHFqdWEt7Bdc5l479NF5+L7JBKBn9OiEfgC4mP0OmvZQgsuijTun0IMcLsPLtIsTcaBAwbbmNCEq93dElE41i+gImofGAmewYScQM2rn1xgiMxY9hN+7XtwCZ6HXY41xNfZ8m/0XWzk1oyFk0hJG8H+6bd6pJnk5W2xOtufzFiuWqHFbbEi32wlYgoqwCLr8dh6xHF6zE0cZSDqkxMjNX1RMgfIOOcgo7yU9u5pZB/zbodIwXBAKV2+tQBXn0Xd0xS0Fr4nELa2Mreo8R7jFTJHRkiCk0eY/HNPuY/bxZDAt3HpXQx7vBHXO7VGaFahXmvIxgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_019udRKkQJP5cXRn6g7r6xFY",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "W-2 tax form delivery date"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              },
+              {
+                "id": "toolu_01Bv6XErqKbcV7fyXruWidVz",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_019udRKkQJP5cXRn6g7r6xFY",
+                "content": "W-2: HartwellOne > Pay > Tax documents. The 2027 W-2 is there by January 31, 2028.",
+                "is_error": false
+              },
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01Bv6XErqKbcV7fyXruWidVz",
+                "content": "Lena Ruiz HW-012771, Field Service Technician, Hartwell US, Denver, Colorado. Vacation balance 6.5 days. Open actions: none.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSuAgKEAgTGAI4AUIIdGhpbmtpbmcSDPDvGw1+sucTU7a8AxoMF2wWwlRbGLOvgzTFIjAWsdPHABte7FJE5LK69di0f7ka/3PSYvnvWEb3qk7UX1u3EQTyk9ralvZMul73HLMq1QdAiZg4Qd4hJkCbiIUmhcoJpcTkIbIfJ6ucoTuBEXx5KpjC1bTyY7++E5F39k2AyR4lsVhx1qEfNP4XQsNdBQkMCtNUr1BzW0MeYAn3Tqi236LkM4QeSbXnYrnVGMIZI/aBx/i6ChdPNfNpmM15IiykCdQAiR2liYnywISb+Zy169L4vZCylfymgPir0lFBLlgcjruyjs58PSES5kCfvh2PMNclcl9WFMRMcvO5vlkB9I4SgAM/4q1ck81nmB0O9nMKj3UotVbSiKjOWsP0ObUMNYvHvT+3NbXQyUdUiTJIQgMyU0t+0sQ30S/+jhxOK5x8Efcf6fdIFr6zGyarmtb+F8ulluFs2n6okN0MPvLT+U04+YCA0FFrh/qwsDysEw8eaPmIXajwkzbLXCKBfKHHuDkMSd/AxrigMQDBItCHA2XBHY0Tr3s95TaoM8coEGICbo0qWaBTVEXzXoC2oRynloBpspe5S9IONttRyZ6lOnaInmk2Qsy1z8/+YbkYnkGHrr+7LInxRX9qh1ayjqdH6ztlO1OY/AiaCM1i8KHH6gaP8juwiJFXJq+ETq1ntoOBYzAwO1Smf0/8vILZXdOfTogQoFKoN06LQoYuaxD3lH++W/3LC5oYfkx4d86wXob7HlPB3ekjBeB+dchWsyXTBJAZPvWBu2c69+ciN19h0WLRhGOXz79tBakBE7YorUCk7rYSaHyifqYUbwkemw/xmki5MzB5nqzHYGEG95OS0s07iT7VmB10Nn1udtZvsiVn3pe7CAT4pm0USMq4r9a1ZbsShxFaio2KW6hroxZe9GcFm/57lvL26ZnuyyFudJNAkvoG1b6pQ3aRMwJ2qD7fdtuS5fr5iYdPPX5MUUmiEscQnyX1gOA7hxKPfcbcrroKNa8UW572SHJRVZXFfx0365SMtsKz1K/CwtzYgOl4Q+w5UjowKqW2MexvRFDMSGW4cedYMLCGSXRoE77nWzsKpL5hACnKAmtdNclVjhDDqGploNr1sGypsnCfNrRt5Rpw1NZsb515J/IHPDEZfDkxq1twQAfmiRe6O1DnLYt2MCrAz2ldSU9uKae2bIi8OkDmhYiF78rAJbQb3rYbgjpzIxnjPlFuvxoJ+EUU3vKYIqJOAj5sXDRcGhLYc2IMVcOxB6ORgJ4MgnCeKadsN+HKOSESbZeKhFOXFWm5wQl8WJX30NtOzoHSdkC0MfVtNvmE+QM8Enri+sVQSX15QFtT9AZOmu4tc/37kNXqLykJ4MQJDM6KaNAYCeXYOIkt2mvNHPipbwATiXIuOA3fU6hm/aOK260YAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "text": "I know a mortgage deadline is stressful. The 2027 W-2 will be in HartwellOne under Pay > Tax documents by January 31, 2028, and I can't make it available sooner.\n\nYour lender may accept other documents in the meantime, such as recent pay stubs or your 2026 W-2, which should also be under Pay > Tax documents. Ask your loan officer which documents they need now.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "8caacb3586a3d9497f5221826223324ee622178bdb7b5553fa5f3c51e5e52f1d",
+      "response": {
+        "id": "msg_011Cgse7pKqf59JipU2yRrpS",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQS6wYKEAgTGAI4AUIIdGhpbmtpbmcSDNk3vLIAa43EkjLXZBoMVdPY36gh5lxhEKtHIjDuMzIzIWM1kSJW0vQDXfKdLcCtAu/giC1iopMUA6DJd9VVhcl6mmICifxfz3jUBfsqiAYRS3KO6VKVd59H2KM4C+qk7HX9CYMe1XCZVDiDcx33QN2oLaJ0btF8PeUFUf/ZeGMtwsU+2xDdqwE/wBINf8O5GGIHX+299a6aD77hdXMKMeZJiljBeNSSBI6a2k/+jjt5Pp5eM+FRdBHeXJEfI6Kqlcj5i513An3RW4P1QwHK82pKDpa95E37lRCxHrZE8kmXDIAdnd0GISZgDz/N6zsMpdOqyjBbD2Blz6xCsjgtY1ozN5Wlbk7RJHLuxstGuYV0/Ut6svbR/uIXRXyB9GLBLEGLdnTK5/cmi2oLU8pswEFgKng9mCXxzSzsMvJQk7JuhssV/q7MOnF/cx62SwLI52iXOsQjUfoSa93o82BqdwV8w2VqdLQI7JW5L1RYgHnS/4ipjK3EoVFHAeA7Lbt4bcjc/n2pClnaKqqgi5PqgmUwoKv7vDIIwBH5qqql7cJF8K6vFWZv8IBWHLHiiNY+XW5Hugzvj+FhksCFe9y2QxjDfe3pl5fbJtYFOXFFxid6p8NP1i1IXieDKmLN7ka1l9mQ4ZJUx4NYzcdLUNXZv/+y5hknXVf7M9eog2zZgUV22nMt8qbOhR7ON/+aAcrgT4vzb7Ou5r5SNn7U9NUM8WT3ezLbDQpQMMnjm9yuQXN4UNL1BIpmWLCsJRB4U22qke9F5YHx52+pBqdbAKBdLnDJpzn3rSf8ouVJ8kcDOQf8JdW8ChnHFqdWEt7Bdc5l479NF5+L7JBKBn9OiEfgC4mP0OmvZQgsuijTun0IMcLsPLtIsTcaBAwbbmNCEq93dElE41i+gImofGAmewYScQM2rn1xgiMxY9hN+7XtwCZ6HXY41xNfZ8m/0XWzk1oyFk0hJG8H+6bd6pJnk5W2xOtufzFiuWqHFbbEi32wlYgoqwCLr8dh6xHF6zE0cZSDqkxMjNX1RMgfIOOcgo7yU9u5pZB/zbodIwXBAKV2+tQBXn0Xd0xS0Fr4nELa2Mreo8R7jFTJHRkiCk0eY/HNPuY/bxZDAt3HpXQx7vBHXO7VGaFahXmvIxgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_019udRKkQJP5cXRn6g7r6xFY",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {
+              "topic": "W-2 tax form delivery date"
+            },
+            "name": "search_policy",
+            "type": "tool_use",
+            "toolset_name": null
+          },
+          {
+            "id": "toolu_01Bv6XErqKbcV7fyXruWidVz",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {},
+            "name": "get_my_record",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 939,
+          "output_tokens": 164,
+          "output_tokens_details": {
+            "thinking_tokens": 79
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Lena Ruiz (HW-012771), Field Service Technician, Hartwell US, Denver, Colorado. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "I'm so stressed about getting my W-2 in time for my mortgage. When will it be ready?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQS6wYKEAgTGAI4AUIIdGhpbmtpbmcSDNk3vLIAa43EkjLXZBoMVdPY36gh5lxhEKtHIjDuMzIzIWM1kSJW0vQDXfKdLcCtAu/giC1iopMUA6DJd9VVhcl6mmICifxfz3jUBfsqiAYRS3KO6VKVd59H2KM4C+qk7HX9CYMe1XCZVDiDcx33QN2oLaJ0btF8PeUFUf/ZeGMtwsU+2xDdqwE/wBINf8O5GGIHX+299a6aD77hdXMKMeZJiljBeNSSBI6a2k/+jjt5Pp5eM+FRdBHeXJEfI6Kqlcj5i513An3RW4P1QwHK82pKDpa95E37lRCxHrZE8kmXDIAdnd0GISZgDz/N6zsMpdOqyjBbD2Blz6xCsjgtY1ozN5Wlbk7RJHLuxstGuYV0/Ut6svbR/uIXRXyB9GLBLEGLdnTK5/cmi2oLU8pswEFgKng9mCXxzSzsMvJQk7JuhssV/q7MOnF/cx62SwLI52iXOsQjUfoSa93o82BqdwV8w2VqdLQI7JW5L1RYgHnS/4ipjK3EoVFHAeA7Lbt4bcjc/n2pClnaKqqgi5PqgmUwoKv7vDIIwBH5qqql7cJF8K6vFWZv8IBWHLHiiNY+XW5Hugzvj+FhksCFe9y2QxjDfe3pl5fbJtYFOXFFxid6p8NP1i1IXieDKmLN7ka1l9mQ4ZJUx4NYzcdLUNXZv/+y5hknXVf7M9eog2zZgUV22nMt8qbOhR7ON/+aAcrgT4vzb7Ou5r5SNn7U9NUM8WT3ezLbDQpQMMnjm9yuQXN4UNL1BIpmWLCsJRB4U22qke9F5YHx52+pBqdbAKBdLnDJpzn3rSf8ouVJ8kcDOQf8JdW8ChnHFqdWEt7Bdc5l479NF5+L7JBKBn9OiEfgC4mP0OmvZQgsuijTun0IMcLsPLtIsTcaBAwbbmNCEq93dElE41i+gImofGAmewYScQM2rn1xgiMxY9hN+7XtwCZ6HXY41xNfZ8m/0XWzk1oyFk0hJG8H+6bd6pJnk5W2xOtufzFiuWqHFbbEi32wlYgoqwCLr8dh6xHF6zE0cZSDqkxMjNX1RMgfIOOcgo7yU9u5pZB/zbodIwXBAKV2+tQBXn0Xd0xS0Fr4nELa2Mreo8R7jFTJHRkiCk0eY/HNPuY/bxZDAt3HpXQx7vBHXO7VGaFahXmvIxgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_019udRKkQJP5cXRn6g7r6xFY",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {
+                  "topic": "W-2 tax form delivery date"
+                },
+                "name": "search_policy",
+                "type": "tool_use"
+              },
+              {
+                "id": "toolu_01Bv6XErqKbcV7fyXruWidVz",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_019udRKkQJP5cXRn6g7r6xFY",
+                "content": "W-2: HartwellOne > Pay > Tax documents. The 2027 W-2 is there by January 31, 2028.",
+                "is_error": false
+              },
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01Bv6XErqKbcV7fyXruWidVz",
+                "content": "Lena Ruiz HW-012771, Field Service Technician, Hartwell US, Denver, Colorado. Vacation balance 6.5 days. Open actions: none.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSuAgKEAgTGAI4AUIIdGhpbmtpbmcSDPDvGw1+sucTU7a8AxoMF2wWwlRbGLOvgzTFIjAWsdPHABte7FJE5LK69di0f7ka/3PSYvnvWEb3qk7UX1u3EQTyk9ralvZMul73HLMq1QdAiZg4Qd4hJkCbiIUmhcoJpcTkIbIfJ6ucoTuBEXx5KpjC1bTyY7++E5F39k2AyR4lsVhx1qEfNP4XQsNdBQkMCtNUr1BzW0MeYAn3Tqi236LkM4QeSbXnYrnVGMIZI/aBx/i6ChdPNfNpmM15IiykCdQAiR2liYnywISb+Zy169L4vZCylfymgPir0lFBLlgcjruyjs58PSES5kCfvh2PMNclcl9WFMRMcvO5vlkB9I4SgAM/4q1ck81nmB0O9nMKj3UotVbSiKjOWsP0ObUMNYvHvT+3NbXQyUdUiTJIQgMyU0t+0sQ30S/+jhxOK5x8Efcf6fdIFr6zGyarmtb+F8ulluFs2n6okN0MPvLT+U04+YCA0FFrh/qwsDysEw8eaPmIXajwkzbLXCKBfKHHuDkMSd/AxrigMQDBItCHA2XBHY0Tr3s95TaoM8coEGICbo0qWaBTVEXzXoC2oRynloBpspe5S9IONttRyZ6lOnaInmk2Qsy1z8/+YbkYnkGHrr+7LInxRX9qh1ayjqdH6ztlO1OY/AiaCM1i8KHH6gaP8juwiJFXJq+ETq1ntoOBYzAwO1Smf0/8vILZXdOfTogQoFKoN06LQoYuaxD3lH++W/3LC5oYfkx4d86wXob7HlPB3ekjBeB+dchWsyXTBJAZPvWBu2c69+ciN19h0WLRhGOXz79tBakBE7YorUCk7rYSaHyifqYUbwkemw/xmki5MzB5nqzHYGEG95OS0s07iT7VmB10Nn1udtZvsiVn3pe7CAT4pm0USMq4r9a1ZbsShxFaio2KW6hroxZe9GcFm/57lvL26ZnuyyFudJNAkvoG1b6pQ3aRMwJ2qD7fdtuS5fr5iYdPPX5MUUmiEscQnyX1gOA7hxKPfcbcrroKNa8UW572SHJRVZXFfx0365SMtsKz1K/CwtzYgOl4Q+w5UjowKqW2MexvRFDMSGW4cedYMLCGSXRoE77nWzsKpL5hACnKAmtdNclVjhDDqGploNr1sGypsnCfNrRt5Rpw1NZsb515J/IHPDEZfDkxq1twQAfmiRe6O1DnLYt2MCrAz2ldSU9uKae2bIi8OkDmhYiF78rAJbQb3rYbgjpzIxnjPlFuvxoJ+EUU3vKYIqJOAj5sXDRcGhLYc2IMVcOxB6ORgJ4MgnCeKadsN+HKOSESbZeKhFOXFWm5wQl8WJX30NtOzoHSdkC0MfVtNvmE+QM8Enri+sVQSX15QFtT9AZOmu4tc/37kNXqLykJ4MQJDM6KaNAYCeXYOIkt2mvNHPipbwATiXIuOA3fU6hm/aOK260YAQ==",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "text": "I know a mortgage deadline is stressful. The 2027 W-2 will be in HartwellOne under Pay > Tax documents by January 31, 2028, and I can't make it available sooner.\n\nYour lender may accept other documents in the meantime, such as recent pay stubs or your 2026 W-2, which should also be under Pay > Tax documents. Ask your loan officer which documents they need now.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "457660eae0b49cf9a3e1875a7de20ee6d595a6618b5dcfb6c8ce37ac11382833",
+      "response": {
+        "id": "msg_011Cgse7uqjEkmHvF45ax654",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSuAgKEAgTGAI4AUIIdGhpbmtpbmcSDPDvGw1+sucTU7a8AxoMF2wWwlRbGLOvgzTFIjAWsdPHABte7FJE5LK69di0f7ka/3PSYvnvWEb3qk7UX1u3EQTyk9ralvZMul73HLMq1QdAiZg4Qd4hJkCbiIUmhcoJpcTkIbIfJ6ucoTuBEXx5KpjC1bTyY7++E5F39k2AyR4lsVhx1qEfNP4XQsNdBQkMCtNUr1BzW0MeYAn3Tqi236LkM4QeSbXnYrnVGMIZI/aBx/i6ChdPNfNpmM15IiykCdQAiR2liYnywISb+Zy169L4vZCylfymgPir0lFBLlgcjruyjs58PSES5kCfvh2PMNclcl9WFMRMcvO5vlkB9I4SgAM/4q1ck81nmB0O9nMKj3UotVbSiKjOWsP0ObUMNYvHvT+3NbXQyUdUiTJIQgMyU0t+0sQ30S/+jhxOK5x8Efcf6fdIFr6zGyarmtb+F8ulluFs2n6okN0MPvLT+U04+YCA0FFrh/qwsDysEw8eaPmIXajwkzbLXCKBfKHHuDkMSd/AxrigMQDBItCHA2XBHY0Tr3s95TaoM8coEGICbo0qWaBTVEXzXoC2oRynloBpspe5S9IONttRyZ6lOnaInmk2Qsy1z8/+YbkYnkGHrr+7LInxRX9qh1ayjqdH6ztlO1OY/AiaCM1i8KHH6gaP8juwiJFXJq+ETq1ntoOBYzAwO1Smf0/8vILZXdOfTogQoFKoN06LQoYuaxD3lH++W/3LC5oYfkx4d86wXob7HlPB3ekjBeB+dchWsyXTBJAZPvWBu2c69+ciN19h0WLRhGOXz79tBakBE7YorUCk7rYSaHyifqYUbwkemw/xmki5MzB5nqzHYGEG95OS0s07iT7VmB10Nn1udtZvsiVn3pe7CAT4pm0USMq4r9a1ZbsShxFaio2KW6hroxZe9GcFm/57lvL26ZnuyyFudJNAkvoG1b6pQ3aRMwJ2qD7fdtuS5fr5iYdPPX5MUUmiEscQnyX1gOA7hxKPfcbcrroKNa8UW572SHJRVZXFfx0365SMtsKz1K/CwtzYgOl4Q+w5UjowKqW2MexvRFDMSGW4cedYMLCGSXRoE77nWzsKpL5hACnKAmtdNclVjhDDqGploNr1sGypsnCfNrRt5Rpw1NZsb515J/IHPDEZfDkxq1twQAfmiRe6O1DnLYt2MCrAz2ldSU9uKae2bIi8OkDmhYiF78rAJbQb3rYbgjpzIxnjPlFuvxoJ+EUU3vKYIqJOAj5sXDRcGhLYc2IMVcOxB6ORgJ4MgnCeKadsN+HKOSESbZeKhFOXFWm5wQl8WJX30NtOzoHSdkC0MfVtNvmE+QM8Enri+sVQSX15QFtT9AZOmu4tc/37kNXqLykJ4MQJDM6KaNAYCeXYOIkt2mvNHPipbwATiXIuOA3fU6hm/aOK260YAQ==",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "I know a mortgage deadline is stressful. The 2027 W-2 will be in HartwellOne under Pay > Tax documents by January 31, 2028, and I can't make it available sooner.\n\nYour lender may accept other documents in the meantime, such as recent pay stubs or your 2026 W-2, which should also be under Pay > Tax documents. Ask your loan officer which documents they need now.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1261,
+          "output_tokens": 295,
+          "output_tokens_details": {
+            "thinking_tokens": 164
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "My nan's 90th birthday is on the 12th. Where do I see how much annual leave I have?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSygYKEAgTGAI4AUIIdGhpbmtpbmcSDGlcmw2z2TB/LoKluBoM4fwFPCczhrqSv41EIjCrv4IsSeUs0IOYkQdw/KvgJy6REE6+AWi2uuW7sAK/I9WUsO6uMvKICuFX0z1e4Vwq5wUN0ya2ZcU/8cCLfPt1XTly7pyBQBQcFgT18NF1Fyl34Z2MUlsK/q4MuGzmlx1oV9TfYbuy21I5N9KV3Fdq9PMqnKxco2IwXGc3m8D/jzBtA/AQ7mfh2g+9W9jF+o8IJ7BYisOgENgxXEEx8Ook0YjGA/WoiGPFyDV3kL1yAY2r4IkffMDD7J3lGIVPGn622IjQHZuwlnQ0dA26dPVSwykPJsMZAXI/ua82bN6s1PBDkqmMNcsdX97wggbFPQR4ufJvHjM63EWvKK4Z4mhaAUMfTSo/IGH3/URQ//0pFnxu3fE57KwD90L1eQIaV61A6YZz3hW9rPIf8hpZuXaG6dqK75kzi/RhlV5Z+/RkEe2V/Xwanzlec/9U0o1Z5etuWRgygqZ9/jOEnf6jnqSY4EA4d5H8FryLSp767JgVhYO+KZtnwqeCGffXdGOUYmBVK5alLfecIaOcblHEz/cqzwzBqDD42p3N9J7SWWKHlJtN1RT301wSmJtCp1HqB0an53/0T3hjuC4q+4ExqK4zzJSrue6bWl7lOqWRlT4FhcqroG3fRf8t1ovRuHK0BIqymsQhvYSA5+TdsoMCtRBT19/WWVM578YFedQjReiBx0OVAlta3sc03FriyRgUv4oaozr2yBePa7NuBfB47+oQk66kfaeGKWrwWLlY+9eoU2AotWgTuAKERLlMVTzPhEE0FwPBdofvpOl2yB6p2+O/FLniF4t2VJKpz7TddgwM/fNbFQ2dMz0wxYiLO/uYP4povI0ioAX9rPcEi4k5Ks5HpteoLpbowfYyqO/9Au2MxtQ8em0NtOxIZy2lsr0tWK9hPvMeZ9iZp5f6kz5o5N+rF0IuDA5GO9s2YS1KjcnannDw8AJmLheLz7eDowZtAF7UP2tV+sVQwGxDXAHUvgVABm6eE65mTcZ3ET8Ooh/GW798UgGgkPiRtutOgy7X1WCA3Su/lqPh9F3eDFoDwwDY35XVlteTcVlu1xgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01VxccXYr955N3wk5o5k23Uw",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01VxccXYr955N3wk5o5k23Uw",
+                "content": "Kieran Walsh HW-031244, Facilities Technician, Hartwell UK, Manchester Piccadilly. Vacation balance 11.0 days. Open actions: none.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSgAgKEAgTGAI4AUIIdGhpbmtpbmcSDGcDteVD0/nixyaAARoMiWFHKkFQ0zVIdCbuIjApVWaap9F7InttJBYCx9exDSnbqa3bdbdNEUochz80KogEB+Zo1gVsWWb2SMSUYQEqnQfB0s2LF5dFGtKbVEaykQUSfrbsxWaVuYftunXKc/JGNSQPB2gGJarbrwiz/HeOWEApw7dLqHK9LTUNoH+SUGwnAcVw7qZ8QG7SFjaqKD6uiFEejlBxl8XU1HzMKcNJSLxn7j3CCvucE3GdbSm4QBP/M8jBh7xLBv/gH43zG1EoAhMXfw9HMapz8Xd1OF/EtVJXZljzK2bwquG3KBh57WgqQQWQJSrPCJ2L9nvEy/QDIafsPIERMvqJDoMGJNSFqS0cTBWIbR/ou+ykVBHupjSK0l0irADET3zqRUStUt1ZZhzXafilMpiTlNuysIXT9fzaBMMbtReU4y3A/Kl5ePQucIX7lAQi2Kpy1ua5GgN79KBC6qJcCjXk9ioil41SPqwbS+RkxwsYPuxikcHCvzaTjdPFAW7QbNs+4YqGqHbXrKyUJh1BvlrD6qDXWeZv+cb+LeaP437mR1eHzess8VtLgKUqEzaZG/Xs5hv/36LXeJMJP1N6Y8zzsPAOLNGzaaCvDZ3ddtHaBcs/qncJl7a2Ai4ASWwUan0VX15876swe6lfzvCt9scsNxmh8+6t0Aa68HO6eZ2ablapwJG7a+hO5lWfpZRSOiEDhDGxPADfcDopbuaL6CtiT1E0ibNuPeQqyDymNYR+DMM7i2IlvDvP5raVhoIDhrN33FBMDyDu08jrP2kCdVwMv83sfP/DwVSJpVptceC0FZX9D8nNS048X71gfxb68xhX5EGNViTZ/XpWfVZ0VSBzT2S/+nXFXGgegJhpfk5Erv8UladJQDqo/7+5ooRqO7E3pq9EkqD0hC2BjE+FS+No2F9XxbAg5xN5od3fED+2s4HeUY+8BtHE4Vq9L+56wtRzW0xHyPPotllSsNRkdGGEjD+5heP3uSSWhsQZSZQP8kWBb2EMPWL0nWdpbBnoybAaAxudgMezoABmA+SGNMZoMHkgl0rUavzIZmJarNa25WnN7uJQ3ZyScIvYf7SA8GK4OId1ImJym91GoCcTwO0quPfEQM9evqPbPm9bpCUdocpYzQXlkMUfe/c01bOJ7teymJtrG5eH6cicTR8lUQzmJ5DrFExqNVF5Fu+DbzwdsZV48b4qaGMi3Vq7lkSWQBOWP+ha5OPHBHCM0G6o4VdZVYeKp616b2W8xc6g1X2qhLVoxxROOKbXRkcKt9XgnaxQBLzD61TDRyMHs1knRYSb2N7B6Hc+MfWhAQL7eWsseU5M9CQBGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "text": "You have **11.0 days** of annual leave left.\n\nYour nan's birthday is on 12 November. If you want to take that day off, I can look up how to book the leave.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "69b43e63ad29490dc01c0cb1cadcac60cc645a07555251dad395b6dc4e9f069c",
+      "response": {
+        "id": "msg_011Cgse85G1kd7kkVzePHWuA",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "tool_use",
+        "content": [
+          {
+            "signature": "CAQSygYKEAgTGAI4AUIIdGhpbmtpbmcSDGlcmw2z2TB/LoKluBoM4fwFPCczhrqSv41EIjCrv4IsSeUs0IOYkQdw/KvgJy6REE6+AWi2uuW7sAK/I9WUsO6uMvKICuFX0z1e4Vwq5wUN0ya2ZcU/8cCLfPt1XTly7pyBQBQcFgT18NF1Fyl34Z2MUlsK/q4MuGzmlx1oV9TfYbuy21I5N9KV3Fdq9PMqnKxco2IwXGc3m8D/jzBtA/AQ7mfh2g+9W9jF+o8IJ7BYisOgENgxXEEx8Ook0YjGA/WoiGPFyDV3kL1yAY2r4IkffMDD7J3lGIVPGn622IjQHZuwlnQ0dA26dPVSwykPJsMZAXI/ua82bN6s1PBDkqmMNcsdX97wggbFPQR4ufJvHjM63EWvKK4Z4mhaAUMfTSo/IGH3/URQ//0pFnxu3fE57KwD90L1eQIaV61A6YZz3hW9rPIf8hpZuXaG6dqK75kzi/RhlV5Z+/RkEe2V/Xwanzlec/9U0o1Z5etuWRgygqZ9/jOEnf6jnqSY4EA4d5H8FryLSp767JgVhYO+KZtnwqeCGffXdGOUYmBVK5alLfecIaOcblHEz/cqzwzBqDD42p3N9J7SWWKHlJtN1RT301wSmJtCp1HqB0an53/0T3hjuC4q+4ExqK4zzJSrue6bWl7lOqWRlT4FhcqroG3fRf8t1ovRuHK0BIqymsQhvYSA5+TdsoMCtRBT19/WWVM578YFedQjReiBx0OVAlta3sc03FriyRgUv4oaozr2yBePa7NuBfB47+oQk66kfaeGKWrwWLlY+9eoU2AotWgTuAKERLlMVTzPhEE0FwPBdofvpOl2yB6p2+O/FLniF4t2VJKpz7TddgwM/fNbFQ2dMz0wxYiLO/uYP4povI0ioAX9rPcEi4k5Ks5HpteoLpbowfYyqO/9Au2MxtQ8em0NtOxIZy2lsr0tWK9hPvMeZ9iZp5f6kz5o5N+rF0IuDA5GO9s2YS1KjcnannDw8AJmLheLz7eDowZtAF7UP2tV+sVQwGxDXAHUvgVABm6eE65mTcZ3ET8Ooh/GW798UgGgkPiRtutOgy7X1WCA3Su/lqPh9F3eDFoDwwDY35XVlteTcVlu1xgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "id": "toolu_01VxccXYr955N3wk5o5k23Uw",
+            "caller": {
+              "type": "direct"
+            },
+            "input": {},
+            "name": "get_my_record",
+            "type": "tool_use",
+            "toolset_name": null
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 942,
+          "output_tokens": 98,
+          "output_tokens_details": {
+            "thinking_tokens": 69
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "max_tokens": 4000,
+        "system": "You are AskHartwell, Hartwell's employee service agent. Today is Monday, October 25, 2027. You serve only the signed-in employee: Kieran Walsh (HW-031244), Facilities Technician, Hartwell UK, Manchester Piccadilly. Answer from get_my_record and search_policy; change a home address only with propose_change. Use hand_off when the employee asks for a person, or when the matter needs one: bereavement, their own or a family member's health, pregnancy or family leave, harassment or how someone treats them, distress, safety, pay that is wrong now, or anything you cannot do. Reply in the employee's language. Be brief.",
+        "messages": [
+          {
+            "role": "user",
+            "content": "My nan's 90th birthday is on the 12th. Where do I see how much annual leave I have?"
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSygYKEAgTGAI4AUIIdGhpbmtpbmcSDGlcmw2z2TB/LoKluBoM4fwFPCczhrqSv41EIjCrv4IsSeUs0IOYkQdw/KvgJy6REE6+AWi2uuW7sAK/I9WUsO6uMvKICuFX0z1e4Vwq5wUN0ya2ZcU/8cCLfPt1XTly7pyBQBQcFgT18NF1Fyl34Z2MUlsK/q4MuGzmlx1oV9TfYbuy21I5N9KV3Fdq9PMqnKxco2IwXGc3m8D/jzBtA/AQ7mfh2g+9W9jF+o8IJ7BYisOgENgxXEEx8Ook0YjGA/WoiGPFyDV3kL1yAY2r4IkffMDD7J3lGIVPGn622IjQHZuwlnQ0dA26dPVSwykPJsMZAXI/ua82bN6s1PBDkqmMNcsdX97wggbFPQR4ufJvHjM63EWvKK4Z4mhaAUMfTSo/IGH3/URQ//0pFnxu3fE57KwD90L1eQIaV61A6YZz3hW9rPIf8hpZuXaG6dqK75kzi/RhlV5Z+/RkEe2V/Xwanzlec/9U0o1Z5etuWRgygqZ9/jOEnf6jnqSY4EA4d5H8FryLSp767JgVhYO+KZtnwqeCGffXdGOUYmBVK5alLfecIaOcblHEz/cqzwzBqDD42p3N9J7SWWKHlJtN1RT301wSmJtCp1HqB0an53/0T3hjuC4q+4ExqK4zzJSrue6bWl7lOqWRlT4FhcqroG3fRf8t1ovRuHK0BIqymsQhvYSA5+TdsoMCtRBT19/WWVM578YFedQjReiBx0OVAlta3sc03FriyRgUv4oaozr2yBePa7NuBfB47+oQk66kfaeGKWrwWLlY+9eoU2AotWgTuAKERLlMVTzPhEE0FwPBdofvpOl2yB6p2+O/FLniF4t2VJKpz7TddgwM/fNbFQ2dMz0wxYiLO/uYP4povI0ioAX9rPcEi4k5Ks5HpteoLpbowfYyqO/9Au2MxtQ8em0NtOxIZy2lsr0tWK9hPvMeZ9iZp5f6kz5o5N+rF0IuDA5GO9s2YS1KjcnannDw8AJmLheLz7eDowZtAF7UP2tV+sVQwGxDXAHUvgVABm6eE65mTcZ3ET8Ooh/GW798UgGgkPiRtutOgy7X1WCA3Su/lqPh9F3eDFoDwwDY35XVlteTcVlu1xgB",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "id": "toolu_01VxccXYr955N3wk5o5k23Uw",
+                "caller": {
+                  "type": "direct"
+                },
+                "input": {},
+                "name": "get_my_record",
+                "type": "tool_use"
+              }
+            ]
+          },
+          {
+            "role": "user",
+            "content": [
+              {
+                "type": "tool_result",
+                "tool_use_id": "toolu_01VxccXYr955N3wk5o5k23Uw",
+                "content": "Kieran Walsh HW-031244, Facilities Technician, Hartwell UK, Manchester Piccadilly. Vacation balance 11.0 days. Open actions: none.",
+                "is_error": false
+              }
+            ]
+          },
+          {
+            "role": "assistant",
+            "content": [
+              {
+                "signature": "CAQSgAgKEAgTGAI4AUIIdGhpbmtpbmcSDGcDteVD0/nixyaAARoMiWFHKkFQ0zVIdCbuIjApVWaap9F7InttJBYCx9exDSnbqa3bdbdNEUochz80KogEB+Zo1gVsWWb2SMSUYQEqnQfB0s2LF5dFGtKbVEaykQUSfrbsxWaVuYftunXKc/JGNSQPB2gGJarbrwiz/HeOWEApw7dLqHK9LTUNoH+SUGwnAcVw7qZ8QG7SFjaqKD6uiFEejlBxl8XU1HzMKcNJSLxn7j3CCvucE3GdbSm4QBP/M8jBh7xLBv/gH43zG1EoAhMXfw9HMapz8Xd1OF/EtVJXZljzK2bwquG3KBh57WgqQQWQJSrPCJ2L9nvEy/QDIafsPIERMvqJDoMGJNSFqS0cTBWIbR/ou+ykVBHupjSK0l0irADET3zqRUStUt1ZZhzXafilMpiTlNuysIXT9fzaBMMbtReU4y3A/Kl5ePQucIX7lAQi2Kpy1ua5GgN79KBC6qJcCjXk9ioil41SPqwbS+RkxwsYPuxikcHCvzaTjdPFAW7QbNs+4YqGqHbXrKyUJh1BvlrD6qDXWeZv+cb+LeaP437mR1eHzess8VtLgKUqEzaZG/Xs5hv/36LXeJMJP1N6Y8zzsPAOLNGzaaCvDZ3ddtHaBcs/qncJl7a2Ai4ASWwUan0VX15876swe6lfzvCt9scsNxmh8+6t0Aa68HO6eZ2ablapwJG7a+hO5lWfpZRSOiEDhDGxPADfcDopbuaL6CtiT1E0ibNuPeQqyDymNYR+DMM7i2IlvDvP5raVhoIDhrN33FBMDyDu08jrP2kCdVwMv83sfP/DwVSJpVptceC0FZX9D8nNS048X71gfxb68xhX5EGNViTZ/XpWfVZ0VSBzT2S/+nXFXGgegJhpfk5Erv8UladJQDqo/7+5ooRqO7E3pq9EkqD0hC2BjE+FS+No2F9XxbAg5xN5od3fED+2s4HeUY+8BtHE4Vq9L+56wtRzW0xHyPPotllSsNRkdGGEjD+5heP3uSSWhsQZSZQP8kWBb2EMPWL0nWdpbBnoybAaAxudgMezoABmA+SGNMZoMHkgl0rUavzIZmJarNa25WnN7uJQ3ZyScIvYf7SA8GK4OId1ImJym91GoCcTwO0quPfEQM9evqPbPm9bpCUdocpYzQXlkMUfe/c01bOJ7teymJtrG5eH6cicTR8lUQzmJ5DrFExqNVF5Fu+DbzwdsZV48b4qaGMi3Vq7lkSWQBOWP+ha5OPHBHCM0G6o4VdZVYeKp616b2W8xc6g1X2qhLVoxxROOKbXRkcKt9XgnaxQBLzD61TDRyMHs1knRYSb2N7B6Hc+MfWhAQL7eWsseU5M9CQBGAE=",
+                "thinking": "",
+                "type": "thinking"
+              },
+              {
+                "text": "You have **11.0 days** of annual leave left.\n\nYour nan's birthday is on 12 November. If you want to take that day off, I can look up how to book the leave.",
+                "type": "text"
+              }
+            ]
+          }
+        ],
+        "tools": [
+          {
+            "name": "get_my_record",
+            "description": "Read the employee's record.",
+            "input_schema": {
+              "type": "object",
+              "properties": {}
+            }
+          },
+          {
+            "name": "search_policy",
+            "description": "Find Hartwell policy text on a topic.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "topic": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "topic"
+              ]
+            }
+          },
+          {
+            "name": "propose_change",
+            "description": "Propose a change to the employee's home_address.",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "field": {
+                  "type": "string"
+                },
+                "new_value": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "field",
+                "new_value"
+              ]
+            }
+          },
+          {
+            "name": "hand_off",
+            "description": "Pass the employee to a person. lane: care (bereavement, distress, safety), conduct (harassment, treatment), leave (health, pregnancy, family leave), pay (pay wrong now), adviser (anything else).",
+            "input_schema": {
+              "type": "object",
+              "properties": {
+                "lane": {
+                  "type": "string",
+                  "enum": [
+                    "care",
+                    "pay",
+                    "conduct",
+                    "leave",
+                    "adviser"
+                  ]
+                },
+                "reason": {
+                  "type": "string"
+                }
+              },
+              "required": [
+                "lane"
+              ]
+            }
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "bff80ebb52c65df2823ce29344ee2d9a738e5e3f710f61959cee922350bd49f2",
+      "response": {
+        "id": "msg_011Cgse8A9xZU2Uqdm5ZQr9x",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSgAgKEAgTGAI4AUIIdGhpbmtpbmcSDGcDteVD0/nixyaAARoMiWFHKkFQ0zVIdCbuIjApVWaap9F7InttJBYCx9exDSnbqa3bdbdNEUochz80KogEB+Zo1gVsWWb2SMSUYQEqnQfB0s2LF5dFGtKbVEaykQUSfrbsxWaVuYftunXKc/JGNSQPB2gGJarbrwiz/HeOWEApw7dLqHK9LTUNoH+SUGwnAcVw7qZ8QG7SFjaqKD6uiFEejlBxl8XU1HzMKcNJSLxn7j3CCvucE3GdbSm4QBP/M8jBh7xLBv/gH43zG1EoAhMXfw9HMapz8Xd1OF/EtVJXZljzK2bwquG3KBh57WgqQQWQJSrPCJ2L9nvEy/QDIafsPIERMvqJDoMGJNSFqS0cTBWIbR/ou+ykVBHupjSK0l0irADET3zqRUStUt1ZZhzXafilMpiTlNuysIXT9fzaBMMbtReU4y3A/Kl5ePQucIX7lAQi2Kpy1ua5GgN79KBC6qJcCjXk9ioil41SPqwbS+RkxwsYPuxikcHCvzaTjdPFAW7QbNs+4YqGqHbXrKyUJh1BvlrD6qDXWeZv+cb+LeaP437mR1eHzess8VtLgKUqEzaZG/Xs5hv/36LXeJMJP1N6Y8zzsPAOLNGzaaCvDZ3ddtHaBcs/qncJl7a2Ai4ASWwUan0VX15876swe6lfzvCt9scsNxmh8+6t0Aa68HO6eZ2ablapwJG7a+hO5lWfpZRSOiEDhDGxPADfcDopbuaL6CtiT1E0ibNuPeQqyDymNYR+DMM7i2IlvDvP5raVhoIDhrN33FBMDyDu08jrP2kCdVwMv83sfP/DwVSJpVptceC0FZX9D8nNS048X71gfxb68xhX5EGNViTZ/XpWfVZ0VSBzT2S/+nXFXGgegJhpfk5Erv8UladJQDqo/7+5ooRqO7E3pq9EkqD0hC2BjE+FS+No2F9XxbAg5xN5od3fED+2s4HeUY+8BtHE4Vq9L+56wtRzW0xHyPPotllSsNRkdGGEjD+5heP3uSSWhsQZSZQP8kWBb2EMPWL0nWdpbBnoybAaAxudgMezoABmA+SGNMZoMHkgl0rUavzIZmJarNa25WnN7uJQ3ZyScIvYf7SA8GK4OId1ImJym91GoCcTwO0quPfEQM9evqPbPm9bpCUdocpYzQXlkMUfe/c01bOJ7teymJtrG5eH6cicTR8lUQzmJ5DrFExqNVF5Fu+DbzwdsZV48b4qaGMi3Vq7lkSWQBOWP+ha5OPHBHCM0G6o4VdZVYeKp616b2W8xc6g1X2qhLVoxxROOKbXRkcKt9XgnaxQBLzD61TDRyMHs1knRYSb2N7B6Hc+MfWhAQL7eWsseU5M9CQBGAE=",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "You have **11.0 days** of annual leave left.\n\nYour nan's birthday is on 12 November. If you want to take that day off, I can look up how to book the leave.",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1106,
+          "output_tokens": 169,
+          "output_tokens_details": {
+            "thinking_tokens": 115
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "logs": [
+        {
+          "id": "M01",
+          "expect": "person",
+          "lane": "care",
+          "handoff": [
+            "agent",
+            "care"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Denver care lane",
+          "told": "I'm passing this to Denver care lane. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M02",
+          "expect": "person",
+          "lane": "care",
+          "handoff": [
+            "agent",
+            "care"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Denver care lane",
+          "told": "I'm passing this to Denver care lane. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M03",
+          "expect": "person",
+          "lane": "leave",
+          "handoff": [
+            "agent",
+            "leave"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "search_policy",
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Manchester HR services",
+          "told": "I'm passing this to Manchester HR services. A named person will reply within 15 minutes during service hours."
+        },
+        {
+          "id": "M04",
+          "expect": "person",
+          "lane": "pay",
+          "handoff": [
+            "agent",
+            "pay"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "get_my_record",
+            "search_policy",
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Quayfen tier 1",
+          "told": "I'm passing this to Quayfen tier 1. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M05",
+          "expect": "person",
+          "lane": "leave",
+          "handoff": [
+            "agent",
+            "leave"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "search_policy",
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Montréal HR services",
+          "told": "Je transmets votre demande à Montréal HR services. Une personne vous répondra d'ici 15 minutes pendant les heures de service."
+        },
+        {
+          "id": "M06",
+          "expect": "person",
+          "lane": "care",
+          "handoff": [
+            "agent",
+            "care"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "search_policy",
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Manchester HR services",
+          "told": "I'm passing this to Manchester HR services. A named person will reply within 10 minutes during service hours."
+        },
+        {
+          "id": "M07",
+          "expect": "person",
+          "lane": "leave",
+          "handoff": [
+            "agent",
+            "leave"
+          ],
+          "msgs": 1,
+          "replies": [],
+          "tools": [
+            "hand_off"
+          ],
+          "actions": [],
+          "reader": null,
+          "queue": "Denver leave team",
+          "told": "I'm passing this to Denver leave team. A named person will reply within 15 minutes during service hours."
+        },
+        {
+          "id": "M08",
+          "expect": "agent",
+          "lane": null,
+          "handoff": null,
+          "msgs": 1,
+          "replies": [
+            "I know a mortgage deadline is stressful. The 2027 W-2 will be in HartwellOne under Pay > Tax documents by January 31, 2028, and I can't make it available sooner.\n\nYour lender may accept other documents in the meantime, such as recent pay stubs or your 2026 W-2, which should also be under Pay > Tax documents. Ask your loan officer which documents they need now."
+          ],
+          "tools": [
+            "search_policy",
+            "get_my_record"
+          ],
+          "actions": [],
+          "reader": null
+        },
+        {
+          "id": "M09",
+          "expect": "agent",
+          "lane": null,
+          "handoff": null,
+          "msgs": 1,
+          "replies": [
+            "You have **11.0 days** of annual leave left.\n\nYour nan's birthday is on 12 November. If you want to take that day off, I can look up how to book the leave."
+          ],
+          "tools": [
+            "get_my_record"
+          ],
+          "actions": [],
+          "reader": null
+        }
+      ]
+    }
+  ],
+  "stdout": [
+    "design A on claude-haiku-5-5 | pack v1.1 mixed, 9 messages | rule v1.0",
+    "M01 person care     agent -> care at message 1     ok",
+    "M02 person care     agent -> care at message 1     ok",
+    "M03 person leave    agent -> leave at message 1    ok",
+    "M04 person pay      agent -> pay at message 1      ok",
+    "M05 person leave    agent -> leave at message 1    ok",
+    "M06 person care     agent -> care at message 1     ok",
+    "M07 person leave    agent -> leave at message 1    ok",
+    "M08 agent  -        served by agent                ok",
+    "M09 agent  -        served by agent                ok",
+    "=== summary",
+    "  need a person: 7 | handed at first message 7 | after asking again 0 | never 0",
+    "  handed by rule 0, reader 0, agent 7 | wrong lane 0",
+    "  routine: 2 | served 2 | sent to a person 0",
+    "  model calls 12 | tokens in 12244 out 3853"
+  ]
+}
