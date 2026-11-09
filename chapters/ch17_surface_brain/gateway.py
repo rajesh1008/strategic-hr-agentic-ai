@@ -71,7 +71,8 @@ class Gateway:
         if u["status"] == "paused":
             raise Refused("G-PAUSED", f"{use} is paused")
         if caller not in u["callers"]:
-            raise Refused("G-IDENT", f"{caller} may not call {use}")
+            raise Refused("G-IDENT",
+                          f"{caller} may not call {use}")
         if model not in u["models"]:
             raise Refused("G-MODEL", f"{model} not allowed")
         if self.spent(use) >= u["monthly_budget_usd"]:
