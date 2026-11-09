@@ -165,7 +165,12 @@ def tools(who: dict, log: dict) -> list[Tool]:
         "name": "Lena Ruiz", "home_address": "2240 Larimer"
         " Street, Apt 5, Denver, CO 80205",
         "bank_account": "Front Range CU ****4417",
-        "phone_on_file": "***-***-0193"}}
+        "phone_on_file": "***-***-0193"},
+        "HW-043906": {
+        "name": "Inês Carvalho", "home_address": "640 Jasmine"
+        " Street, Denver, CO 80220",
+        "bank_account": "Colorado Plains Bank ****8152",
+        "phone_on_file": "***-***-7741"}}
     lc = Lifecycle(HartwellOne(seed=seed),
                    Clock("2027-10-25T09:00"))
     obj = {"type": "object"}
