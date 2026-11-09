@@ -1,0 +1,42 @@
+# _synthetic: Invented for the book.
+title: Crossfield RankRight trial record, Jun to Aug 2027
+version:
+  step: shortlist shown to the coordinator
+  model: RankRight 5.2
+  configuration: Crossfield tenant, three client accounts
+  guidance: client order requirements as posted
+population:
+  who: candidates on the three accounts' orders
+  period: June 1 to August 31, 2027
+  n: 4200
+  not_reported: {self_id: counted, then excluded}
+groups:
+  axes: [sex, race/ethnicity, age 40+]
+  intersections: [sex x race, sex x race x age]
+  reference_min_n: 30
+plan:
+  fixed_before_data: 2027-05-24
+  primary: [sex, race/ethnicity, age 40+, Black women 40+]
+  correction: Holm across all intersectional cells
+  min_cell: 30 and 5 expected selections; else pool months
+  small_cells: pooled over the trial; reported as too few
+proxies:
+  inputs_scanned: [unbroken weeks on assignment, ZIP code,
+                   name, gaps]
+  counterfactual: null   # vendor's retest, not yet run
+  retest_floor: null
+errors:
+  yardstick: coordinators' blind shortlist on 300 orders
+  yardstick_owner: Crossfield delivery quality team
+lanes:
+  - {lane: US federal, test: four-fifths and significance,
+     counsel_reviewed: true}
+  - {lane: New York City, test: LL 144 incl. intersections,
+     counsel_reviewed: true}
+  - {lane: UK, test: particular disadvantage under s.19,
+     counsel_reviewed: true}
+decision:
+  outcome: trial stopped for Black women 40+; vendor to retest
+  owner: Dana Kowalczyk
+  date: 2027-09-06
+  rerun_on: [any RankRight release, any new client account]

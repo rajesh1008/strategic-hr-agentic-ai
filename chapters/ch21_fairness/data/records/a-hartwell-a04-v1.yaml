@@ -1,0 +1,48 @@
+# _synthetic: Invented for the book.
+title: Hartwell A04 v1.0, fairness test record, Aug 2027
+version:
+  step: A04 decide which applicants advance (Keep at recommend)
+  model: claude-haiku-5-5
+  configuration: work (thinking allowed, JSON in text)
+  guidance: screening guidance v1
+population:
+  who: field service technician applicants, Denver, Joliet, Houston
+  period: last three weeks of May 2027 (double-read sample)
+  n: 400
+  not_reported: {all_self_id: 53, race_only: 21}
+groups:
+  axes: [sex, age 40+, race/ethnicity, veteran, disability]
+  intersections: [sex x age, sex x race]
+  reference_min_n: 30
+plan:
+  fixed_before_data: 2027-07-26
+  primary: [sex, age 40+, race/ethnicity, veteran,
+            wrong screen-outs by group]
+  correction: Holm across every other cell
+  min_cell: 30 per group and 5 expected selections
+  small_cells: listed as too few; pooled over four quarters
+proxies:
+  inputs_scanned: [language line, Navy service, apprenticeship,
+                   non-field roles, career length, other lines]
+  counterfactual: 126 paired screens, six variants
+  retest_floor: same resume screened twice
+errors:
+  yardstick: blind double read by two senior recruiters
+  yardstick_owner: Tom Reilly (People Analytics)
+lanes:
+  - {lane: US federal, test: four-fifths and significance,
+     counsel_reviewed: true}
+  - {lane: New York City, test: LL 144 impact ratios incl.
+     sex x race, counsel_reviewed: true}
+  - {lane: Colorado, test: notice and reconsideration route,
+     counsel_reviewed: true}
+  - {lane: Illinois, test: no ZIP code or ZIP proxy in inputs,
+     counsel_reviewed: true}
+  - {lane: Texas, test: federal tests; state intent standard,
+     counsel_reviewed: true}
+decision:
+  outcome: Haiku work stays; pilot configuration retired
+  owner: Daniel Brooks
+  date: 2027-08-16
+  rerun_on: [model, configuration, guidance, new country,
+             first Monday monthly]
