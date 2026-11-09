@@ -1,4 +1,4 @@
-"""Writes the SYNTHETIC Rimal roster and January 2027 salary
+"""Writes the SYNTHETIC Ghafline roster and January 2027 salary
 file used in Chapter 9 (seeded; run once, output committed).
 Problems are planted on purpose so the checks have work."""
 import csv
@@ -10,7 +10,7 @@ rng = random.Random(9)
 N = 640
 roster, lines = [], []
 for i in range(1, N + 1):
-    wid = f"RIM-{i:05d}"
+    wid = f"GHF-{i:05d}"
     wage = rng.choice([1500, 1600, 1800, 2000, 2200, 2600])
     roster.append({"worker_id": wid, "contract_aed": wage,
                    "status": "active"})
@@ -33,18 +33,18 @@ for w in fee:
     by[w]["deduction_code"] = "RECRUITMENT_FEE"
 for w in noacct:
     by[w]["account"] = ""
-lines.append({"worker_id": "RIM-00701", "paid_aed": 1800,
+lines.append({"worker_id": "GHF-00701", "paid_aed": 1800,
               "deduction_code": "", "account": "AE" + "7" * 21,
               "paid_on": "2027-01-04"})   # left in November
-roster.append({"worker_id": "RIM-00701", "contract_aed": 1800,
+roster.append({"worker_id": "GHF-00701", "contract_aed": 1800,
                "status": "left 2026-11-20"})
 total = sum(ln["paid_aed"] for ln in lines) + 1200
-for name, rows in (("rimal_roster_2027-01.csv", roster),
-                   ("rimal_wps_2027-01.csv", lines)):
+for name, rows in (("ghafline_roster_2027-01.csv", roster),
+                   ("ghafline_wps_2027-01.csv", lines)):
     with open(HERE / name, "w", newline="") as f:
         w = csv.DictWriter(f, fieldnames=list(rows[0]))
         w.writeheader()
         w.writerows(rows)
-(HERE / "rimal_wps_2027-01.control").write_text(
+(HERE / "ghafline_wps_2027-01.control").write_text(
     f"lines={len(lines)}\ntotal_aed={total}\n"
     "salary_month=2026-12\n")

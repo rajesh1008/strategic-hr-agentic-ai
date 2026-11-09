@@ -55,8 +55,8 @@ def test_documenting_contracts_moves_band():
     assert r["band"] == "Medium Green"
 
 
-def test_rimal_drift_found():
-    rim = quota.load("rimal_ae.yaml")["entities"]
+def test_ghafline_drift_found():
+    rim = quota.load("ghafline_ae.yaml")["entities"]
     moves = quota.drift(*rim, [1, 2, 3])
     assert moves == [("site supervisor", 64)]
     a, b = (quota.emiratisation(e, R["AE-EMIRATISATION"],
@@ -66,10 +66,10 @@ def test_rimal_drift_found():
 
 def test_wps_finds_planted_problems():
     rule = wps.load_rules()
-    roster = wps.read("rimal_roster_2027-01.csv")
-    lines = wps.read("rimal_wps_2027-01.csv")
+    roster = wps.read("ghafline_roster_2027-01.csv")
+    lines = wps.read("ghafline_wps_2027-01.csv")
     ctl = dict(x.split("=") for x in (
-        wps.DATA / "rimal_wps_2027-01.control"
+        wps.DATA / "ghafline_wps_2027-01.control"
     ).read_text().split())
     from datetime import date
     found, tot = wps.check(roster, lines, ctl, rule,

@@ -213,8 +213,8 @@ def main() -> None:
              band=r["band"], weighted=r["weighted"])
     rec.print("")
     rule = rules["AE-EMIRATISATION"]
-    rim = load("rimal_ae.yaml")["entities"]
-    rec.print("Rimal Facilities, UAE, end-2026 rule")
+    rim = load("ghafline_ae.yaml")["entities"]
+    rec.print("Ghafline Facilities, UAE, end-2026 rule")
     rec.print("(synthetic)")
     for ent in rim:
         r = emiratisation(ent, rule, "2026-12-31")

@@ -79,16 +79,16 @@ def check(roster, lines, control, rule, month_due: date):
 def main() -> None:
     from hrai.llm import RunRecorder
     rule = load_rules()
-    roster = read("rimal_roster_2027-01.csv")
-    lines = read("rimal_wps_2027-01.csv")
+    roster = read("ghafline_roster_2027-01.csv")
+    lines = read("ghafline_wps_2027-01.csv")
     control = dict(x.split("=") for x in (
-        DATA / "rimal_wps_2027-01.control").read_text().split())
+        DATA / "ghafline_wps_2027-01.control").read_text().split())
     due = date(2027, 1, rule["due_day"])
     found, tot = check(roster, lines, control, rule, due)
     rec = RunRecorder("ch09", "wps")
     p = rec.print
     act = sum(r["status"] == "active" for r in roster)
-    p("Rimal Facilities, Dubai: December 2026 wages")
+    p("Ghafline Facilities, Dubai: December 2026 wages")
     p("(synthetic)")
     p(f"roster active {act}, file lines {len(lines)}, "
       f"due {due}")
