@@ -1,0 +1,42 @@
+# Nationalization quotas as data (Chapter 9).
+# Every legal value is [VERIFY] until counsel checks the
+# primary text. Bands marked ILLUSTRATIVE are invented for
+# the book: real thresholds come from HRSD's table for the
+# entity's activity and size.
+
+AE-EMIRATISATION:
+  name: UAE Emiratisation, mainland, 50+ staff
+  evidence: [R-113]
+  applies: {min_headcount: 50, zones: [mainland]}
+  base_skill_levels: [1, 2, 3]   # skilled jobs only
+  checkpoints:                   # share of skilled jobs
+    2026-06-30: 0.09
+    2026-12-31: 0.10
+  rounding: floor                # [VERIFY] MoHRE method
+  count_only_in_base: true       # a national in a level 4
+                                 # or 5 job does not count
+  counts_if:                     # all must be true
+    nationality: AE
+    pension_registered: true
+    wps_paid: true
+  contribution_aed_year: 120000  # per unfilled position
+
+SA-NITAQAT:
+  name: Saudi Nitaqat Mutawar, 2026 to 2028 cycle
+  evidence: [R-113]
+  wage_weights:                  # monthly wage, SAR
+    - {min: 4000, weight: 1.0}
+    - {min: 3000, weight: 0.5}
+    - {min: 0, weight: 0.0}
+  special:                       # capped categories
+    disability: {weight: 4.0, cap: 0.10, min_wage: 4000}
+    part_time: {weight: 0.5, cap: 0.10, min_wage: 3000}
+  cap_basis: saudi_headcount     # [VERIFY]
+  counts_if: {nationality: SA, qiwa_documented: true}
+  ratio: weighted / (weighted + non_saudi_heads)
+  bands:                         # ILLUSTRATIVE
+    - {band: Platinum, min: 0.30}
+    - {band: High Green, min: 0.23}
+    - {band: Medium Green, min: 0.19}
+    - {band: Low Green, min: 0.14}
+    - {band: Red, min: 0.0}

@@ -1,0 +1,57 @@
+# Transfer and residency checklist (Chapter 9). One row per
+# flow of employee data out of a comparison lane. Lane rules
+# are summaries for the book: every one [VERIFY]. Flows,
+# owners and controls are SYNTHETIC (Hartwell).
+_synthetic: true
+lanes:
+  AE:
+    law: UAE PDPL (Federal Decree-Law 45 of 2021)
+    regs_issued: false      # executive regulations pending
+    needs: [mechanism, minimized]
+  SA:
+    law: Saudi PDPL and transfer regulation
+    regs_issued: true
+    needs: [mechanism, minimized, risk_assessment]
+  SG:
+    law: Singapore PDPA, transfer limitation
+    regs_issued: true
+    needs: [mechanism, minimized]
+  HK:
+    law: Hong Kong PDPO
+    regs_issued: true
+    needs: [minimized]
+  MY:
+    law: Malaysia PDPA 2010, as amended 2024
+    regs_issued: true
+    needs: [mechanism, minimized]
+flows:
+  - id: T1
+    what: UAE payroll inputs
+    from: AE
+    to: IN (Hyderabad center)
+    owner: Omar Haddad
+    has: [mechanism, minimized]
+  - id: T2
+    what: Saudi payroll inputs
+    from: SA
+    to: IN (Hyderabad center)
+    owner: Noura Al-Qahtani
+    has: [mechanism, minimized]
+  - id: T3
+    what: Saudi staff records, group HRIS
+    from: SA
+    to: US (HartwellOne)
+    owner: Noura Al-Qahtani
+    has: [mechanism]
+  - id: T4
+    what: Singapore hub staff records
+    from: SG
+    to: US (HartwellOne)
+    owner: Tan Wei Ling
+    has: [mechanism, minimized]
+  - id: T5
+    what: Gulf questions to AskHartwell
+    from: AE
+    to: US (model provider)
+    owner: Megan Hale
+    has: []

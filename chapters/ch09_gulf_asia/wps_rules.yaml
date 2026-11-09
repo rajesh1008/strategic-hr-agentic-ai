@@ -1,0 +1,16 @@
+# WPS-style salary-file checks (Chapter 9). Values follow
+# the UAE rules as reported for Ministerial Resolution 340
+# of 2026; every value [VERIFY]. The file layout here is
+# simplified and is NOT the bank SIF specification.
+AE-WPS:
+  name: UAE Wage Protection System, monthly file
+  due_day: 1                # wages for last month, due 1st
+  worker_min_share: 0.85    # of contract wage, on time
+  firm_min_share: 0.85      # of all wages due, on time
+  deductions:
+    allowed: [UNPAID_LEAVE, ADVANCE, COURT_ORDER]
+    never: [RECRUITMENT_FEE, VISA_COST]
+  ladder:                   # days after the due date
+    2: alerts and notices
+    5: new work permits suspended
+    16: labor dispute registered for workers
