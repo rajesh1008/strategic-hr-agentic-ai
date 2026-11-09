@@ -1,0 +1,323 @@
+{
+  "run_id": "ch17/incident/20261109T142401Z",
+  "started_utc": "2026-11-09T14:24:01.211680+00:00",
+  "git_commit": "d83f7f5",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "model": "claude-haiku-5-5",
+        "max_tokens": 700,
+        "system": "You answer questions from Hartwell employees and\nmanagers about HR policy, using only the sources given. Write a\nshort, direct answer. Cite every source you rely on by its ID.\nIf the sources do not answer the question, say so and set route\nto true. Reply with JSON only:\n{\"answer\": \"...\", \"sources\": [\"ID\"], \"route\": false}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[NL-REW-07] Hartwell Netherlands pay bands, senior maintenance technicians and other technical roles, 2027\nPay bands (monthly salary scales) for technical roles at Hartwell Netherlands under the company collective agreement, from January 1, 2027. Pay group 6, Technicus (maintenance technician): 2,980 to 3,940 euros a month. Pay group 7, Technisch Specialist (senior maintenance technician): 3,412 to 4,689 euros a month. Pay group 8, Teamleider Technische Dienst: 3,890 to 5,320 euros a month. A holiday allowance of 8% is paid in May.\n\n[DE-REW-02] Hartwell Germany pay groups (Entgeltgruppen) for technical roles, 2027\nMonthly pay groups for Hartwell Germany technical roles from January 1, 2027. EG 6 Servicetechniker: 3,180 to 3,920 euros a month. EG 7 senior maintenance technician (Servicetechniker mit Schichtverantwortung): 3,560 to 4,310 euros a month.\n\n[GRP-REC-01] Group recruitment standard, setting an offer\nEvery offer states a base salary inside the band for the role's own country and entity. A band from one entity is never used to set an offer in another. Questions about another country's pay go to the Group Head of Reward.\n\n[NL-REW-08] Rotterdam pay group placements, technical staff, June 2027\nPlacements of Rotterdam technical staff in pay groups, June 2027. Pay group 7 (senior maintenance technician): Daan Verbeek, step 9, 4,402 euros a month; Sanne Kuipers, step 6, 4,012 euros a month; Youssef El Amrani, step 3, 3,655 euros a month. Placements are reviewed each January.\n\nQuestion: What's the pay band for a senior maintenance technician? I'm hiring two in Manchester."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        }
+      },
+      "prompt_sha256": "6831da53433e799d24ba558faaa0a22d9bd76a991d9ff154a8d72584a8e0f520",
+      "response": {
+        "id": "msg_011CgsWKHizYtRWjyWyn1wmi",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQSqAsKEAgTGAI4AUIIdGhpbmtpbmcSDK8XQQ0BCRGPg2WiIhoMRv/Ur1tEVEue7JJzIjCNbvcpEp2GoJjZEZd3EVO1tbBpSEgQpEpnHqIRH1WkNBqaZsh6t7HgZeR0u5mUzHwqxQqTxzgGZpe123bchlAXup3/mX5dQwzuLYl+gpXGTHO3dQfVq1ruoMoxiXyI08mE6L91qDdpWtrLYQ8bvMFROwxaUS4dSxJ48J95yLtcCUb1Yv0OWLlYw9FiPLEjv8kdG7qK1gGkxjc02+pveJ8VATLa9P015CdTC7/0Jha7Em7B8IuVB3UDPS/rC58KX+8uQECBf9OUl3IKbF9k3SjjUnurmyLUfzvf/qqhWht6ZkX1jIUNrRRhLJb/jXLKXY8zbmhZFvMOLFuGpEDjWYeX4pDbat0bZxmAOyt9cwY3Zoqwn2bfJP8wynhbYsFNlXzbXwOd8iRna5574CuF1e61Sw3uT5ydWjhVB/FNFmFp+pnidKgSmI8d1U7WCAWs8oi6c5WsqP1YJaUgRnPvN9z4730gHZf5n914GqH13flqcOWd9eCQC+fMgNiNZDVnTe5dwRlX1/1OGgN+RWKOKhTS+4kSCN35CjPorOgyDp7V7Ut2WTpGSOiFtYYl2Rn3BRdIV7g7e0y5QzkVrppadm7b9LmqydIKNg5pkhlVckaudCHVT3z1zqJtq1NwiNhDzFp5qJOonNN5HWshmvU8oQ7IPNTS5O0FZOWz5smkGUNzfK8AEYFd9z/2r8KNbSo3RtBe8a7zi7yATqMLfTqxmK8xfGl1oCbOOLwAo9QJnPlQplTPv+cRLLpfvrLempTfHLYHU5R+nW9zMrJxiQYhjeooj4XFHtYpHnIUca9opHxZ/eQKwI/9Eh6sJfqAnqtXHVsByzd0xeOW+MgOFWxTwPO1ko157DcTmMq6nwdklEpxJTPvv8DM3r7wPkWT6kXCVog/WL3+GCJFSjGswI4qyakDP7L6IhfVC0FmQz7uZ0VWDcJfJ3RAMZky00ooCw/Wp83Pe4Otti4cX+htPIMk2Uq6eNC3lt9Iz3ux3FpWOFv79qTgQtRM1JcSzQct9gsh5jyu1ekkePdvMIWsHG0LfpdJTVcfwc4NffTSAk1XtGqyVxtz72x17wiEcKLyNrFXaVKNyZMuALRJIsu8L0KhrRynpt2ajxBQGwkXFNy3+oQQOqFwEpdonQAPk81Cmk5wPG2WbnsLgnO8tyImJA7tdCoTqIvSVsYq6sy4ycqkWNlnYH/BD8yULt2qTneYF8JYFOkM2PRKyEZeoO/va2JFdc6eX/XgyyekjdWAJt3DWziawCFW89D5Bn4bjcC1sFA2JulvAfGznWE9LR8cKbKCL0hCIvYIahLc2jr7wxMlQbASNo3gnjf+G/PWhHcnVifMTOmqHf9+pt7ruVAb0kVjn0C3HmyMmN/+rGqH1nnFD+2CsOox/RftTtGJZ2uAkB0fBNM7ELH5JL5F6w4o2jH87aprjeur/SHUrbC/wbmjUfr+4X9iGdUpD3uIj1VBF3PVznLairk1yttVItcy1/ch4GwGHKfMcRc1VTJSxzW+2CIdP97eoMfuOu9j3pQ5mFrlHxSnqP9bhKT3FTYL9rLIjQ4euy7zhfSLN8bVRRQ4Uqj9ZN2zfHCVBgqh0WN1LMMIvp5klvfaYBVRWbzimKFicenAVHcZjZfuvOpvC/ippvbwrRK9tc86be+Kpqy3R26KIcvEaGpMKQPBeg+HIC0RXSj1upAD47VFg6g7Aq+nQ1Q9eqx/pb4AGT5vqIdWz3vyho69LvXsUGLeMNox6cxMOit9txRH6nmMvIEL44pCV1rxJUFLRu/eZJeOrSsIxhrGDz3/dN1e7FiTUtRlZSzRn4hRP/1xrc742866w9cMAL+ovCaQHmC+glezm+2BBpbwvW0jxjBPDwIlChgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"answer\": \"The sources don't include a pay band for Manchester or any UK role. The senior maintenance technician bands given are for Netherlands and Germany, and under the group recruitment standard a band from one entity can't be used to set an offer in another. Please send this question to the Group Head of Reward before making any offers.\", \"sources\": [\"GRP-REC-01\"], \"route\": true}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 767,
+          "output_tokens": 433,
+          "output_tokens_details": {
+            "thinking_tokens": 309
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    },
+    {
+      "request": {
+        "model": "claude-haiku-5-5",
+        "max_tokens": 700,
+        "system": "You answer questions from Hartwell employees and\nmanagers about HR policy, using only the sources given. Write a\nshort, direct answer. Cite every source you rely on by its ID.\nIf the sources do not answer the question, say so and set route\nto true. Reply with JSON only:\n{\"answer\": \"...\", \"sources\": [\"ID\"], \"route\": false}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "[UK-REW-03] Hartwell UK legacy bands 2027, field and facilities roles (UK-T codes)\nAnnual base salary ranges for Hartwell UK field and facilities roles from April 1, 2027, by legacy UK code. UK-T2 Maintenance Technician: 29,400 to 34,800 pounds. UK-T3 Senior Maintenance Technician: 33,600 to 39,900 pounds. UK-T4 Facilities Supervisor: 33,600 to 41,200 pounds. New hires start in the lower half of the range. An offer above the midpoint needs approval under UK-REW-04. Check the job code with Hartwell UK HR before quoting a range to a candidate.\n\n[GRP-REC-01] Group recruitment standard, setting an offer\nEvery offer states a base salary inside the band for the role's own country and entity. A band from one entity is never used to set an offer in another. Questions about another country's pay go to the Group Head of Reward.\n\n[UK-REW-06] Setting a starting salary for a new hire, Hartwell UK\nSet the starting salary from the UK band for the role's UK-T code, in the lower half unless the candidate's experience is recorded against the role profile. Hartwell UK HR confirms the code before the offer is made.\n\n[UK-REW-04] Offers above the band midpoint, Hartwell UK\nAn offer above the midpoint of the band needs written approval from the Hartwell UK HR Director before it is made. An offer above the band maximum also needs the Group Head of Reward. Record the reason code in Hartwell Careers.\n\nQuestion: What's the pay band for a senior maintenance technician? I'm hiring two in Manchester."
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        }
+      },
+      "prompt_sha256": "832e9599bbddad568c5a41f465f9eb0d14464329d38af93a8ae78adef823a8c5",
+      "response": {
+        "id": "msg_011CgsWKUvCPQp89WxvCuxNY",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "CAQS4woKEAgTGAI4AUIIdGhpbmtpbmcSDEo34lkvERBj3AkY0hoMBZPZTyJslnKrbZB3IjDvzs2CmHRvaI6joWrwG6Ykkf8bi7YkAsGpgulHMmk3RC+XKcixMOpBtBtkWM9/AjYqgAoLHYCu/zzon1KiOKeXQdmJfoXwcu/tIgpy7srqmpmVyXbqeQW7oeVjApkimmFhIJ2iFWLi+e0sCt5jbkmJ4MQWVmtxRdrvoDXoYYRaGYGnzjKxHL+egmrVJGRrTguOcGyhTfZbNoyQKwfzPtafGefdMJq1mTBs8rRNNGHl1KGVKgM1SgZhs7e0BBCN39V8efuUlwboI8ASOyV30ECYGE1oEDoywj40goPf12WjRJ7cTPUJPc+YNWVKkr3pW2XLWV7549wYWN5HVnqHO0xjTudBJkVbVpyuZU5Ol3RPa62TTIg4+dfld+V5q6XoF4rG7ti02P4iYqaV8buUgDHv7uXnr4tG9zWWy+iMVU5FR3RaaGvqCwY2CfjPer4XP9VV/ADZltAaOSSJGFft1QwzS6didanx95oqzaET1D3u0a5B4Z7VlBCeil2r09p9D3VU1eyipxVh0aCN9uRQ7wC7CP3cHRn2EqEp9GMpRGGMruGrd32gKJLtJ3o1xMgpco6tVnT/FWpK/9MaEHnLEBCRpx2azUUYBa34rsm09/M6mP93Zm3GHDSV9MnHWxKdqjZM7gMgbIBB4ZJPIbtHu+E9bvf4D9lKhmF3G8fzev4WbEZJb8/4Tope5bmrs3yOxRVl/bxVjrOBm8Qx3GOys1ycLr/kY9o4yjSMRnbU8qHASYrTclxjjzKIq2CHzcTH80gzj5vQls7ua1Ez8efqOP6OgS6IeY6qut+GQGROYnExkeCkP1EPbFpQGthwIokx6wE0/djIu1yBt58E/4aQyL882WtAL/DJ08vaqkF2NUspHSQZNsNA2ylHdteeKev6E1zxQjkPUmYUfYJk5SO3/00e8+zQ1MmJ+yhU6lsVqT6fF9fuGqIg5Oupgpqf2OTCJOkfso3R4JvxVkZdtXKWgQVz2Zy8rqKHJlgTPXIomS9PQYJoYeoSM1t2aVwQTDs+Hlw6CwwfejOxRs3gBvYEBmtm9Xs5fJNrZWCR9DCQp6t0p2EnaIAgR0XaJof1AkW5O6R4c4DWCoMAuLmuobCrmKe7IU8hnT727LEd4VtZkYZ4250FrPWgPzvzgt0Y5qif3LUtAf9pby6lRpc8uemdvNxnfChNESzlEsZUxNV21f6AVbReuVlWicLiUs5VSBoPYmc63qqK84tUPsRBuG2z//Xe49nlWac3r0rJXypYm6M9HVBB0XTQIOxrmvkSDtS7oYf1EczePY8NJQRhITvB0THIHz2mF9nlJVvgO3GawcKx8FnZWqMtFOfdGUzNQrbGn7eKTKjyLzFu3IdsgVn3+NdIpX+RLHKXl7HNFbQqEIER8NtyMUPKk18+qt8evWP/S1nHRYkgi3QCYD768hz8Y+3FGYzVNEqJGAGrNzw1UaIPM8z/nq3ngWRPVckfKVH7RYQM35BepSOusitAMUSv8hN8vtFAN5L6/6QTir6H5Rq1MQDDcbPtZ22LrnhJoksJelCtQgOVGeQYfotXj+DRoJaz2LEwanHNLnPn5HpaNA4qnr+4O7rBHGa44GeCUUXCYpB1pNgDk2n92FnX6funsr4nZFxOVPernr7fxdYiYuRGlmtxGzeOXdjTSWTybfW0ChFgWIGLC7JIiGhu3IKS95uNCvx6vcwEdH4jHgV094QhHzv4ewTbfdPYQWqHmPOBhlofSMAXrN18kse6EGMXITRfmipwGbbdi9zBOSBtjVrmQs5pqhgB",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "{\"answer\": \"The UK-T3 Senior Maintenance Technician band is £33,600 to £39,900 a year, effective from 1 April 2027. Manchester is a UK role, so this Hartwell UK band applies. Confirm the UK-T3 code with Hartwell UK HR before quoting the range to candidates. New hires start in the lower half of the range, roughly £33,600 to £36,750, unless the candidate's experience is recorded against the role profile. Any offer above the midpoint (£36,750) needs written approval from the Hartwell UK HR Director before it is made, and the reason code must be recorded in Hartwell Careers.\", \"sources\": [\"UK-REW-03\", \"UK-REW-06\", \"UK-REW-04\"], \"route\": false}",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 678,
+          "output_tokens": 564,
+          "output_tokens_details": {
+            "thinking_tokens": 311
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "gateway_log": [
+        {
+          "use": "ka.manager",
+          "caller": "svc-knowledge-assistant",
+          "surface": "teams-ka-pilot",
+          "user": "0357513deb",
+          "model": "claude-haiku-5-5",
+          "docs": [
+            "NL-REW-07",
+            "DE-REW-02",
+            "GRP-REC-01",
+            "NL-REW-08"
+          ],
+          "status": "ok",
+          "question_class": "OPEN",
+          "redactions": 0,
+          "tokens_in": 767,
+          "tokens_out": 433,
+          "cost_usd": 0.002932,
+          "latency_ms": 2552,
+          "prompt_sha": "c131f562b50f",
+          "check": "pass"
+        },
+        {
+          "event": "pause",
+          "use": "ka.manager",
+          "by": "Megan Hale"
+        },
+        {
+          "use": "ka.manager",
+          "caller": "svc-knowledge-assistant",
+          "surface": "teams-ka-pilot",
+          "user": "0357513deb",
+          "model": "claude-haiku-5-5",
+          "docs": [
+            "NL-REW-07",
+            "DE-REW-02",
+            "GRP-REC-01",
+            "NL-REW-08"
+          ],
+          "status": "G-PAUSED",
+          "reason": "ka.manager is paused"
+        },
+        {
+          "use": "ka.eval",
+          "caller": "svc-ka-eval",
+          "surface": "test",
+          "user": "0357513deb",
+          "model": "claude-haiku-5-5",
+          "docs": [
+            "UK-REW-03",
+            "GRP-REC-01",
+            "UK-REW-06",
+            "UK-REW-04"
+          ],
+          "status": "ok",
+          "question_class": "OPEN",
+          "redactions": 0,
+          "tokens_in": 678,
+          "tokens_out": 564,
+          "cost_usd": 0.003498,
+          "latency_ms": 2530,
+          "prompt_sha": "c7b3dcfd7f96",
+          "check": "fail"
+        }
+      ],
+      "pilot": {
+        "design": "pilot",
+        "user": "paul",
+        "shown": [
+          "NL-REW-07",
+          "DE-REW-02",
+          "GRP-REC-01",
+          "NL-REW-08"
+        ],
+        "question": "What's the pay band for a senior maintenance technician? I'm hiring two in Manchester.",
+        "draft": {
+          "answer": "The sources don't include a pay band for Manchester or any UK role. The senior maintenance technician bands given are for Netherlands and Germany, and under the group recruitment standard a band from one entity can't be used to set an offer in another. Please send this question to the Group Head of Reward before making any offers.",
+          "sources": [
+            "GRP-REC-01"
+          ],
+          "route": true
+        },
+        "fails": [],
+        "held": false,
+        "final": "The sources don't include a pay band for Manchester or any UK role. The senior maintenance technician bands given are for Netherlands and Germany, and under the group recruitment standard a band from one entity can't be used to set an offer in another. Please send this question to the Group Head of Reward before making any offers.",
+        "routed": false,
+        "leaks": [],
+        "exposed": [
+          "NL-REW-07",
+          "DE-REW-02",
+          "NL-REW-08"
+        ],
+        "tokens": [
+          767,
+          433
+        ],
+        "cost": 0.002932
+      },
+      "entitled": {
+        "design": "entitled",
+        "user": "paul",
+        "shown": [
+          "UK-REW-03",
+          "GRP-REC-01",
+          "UK-REW-06",
+          "UK-REW-04"
+        ],
+        "question": "What's the pay band for a senior maintenance technician? I'm hiring two in Manchester.",
+        "draft": {
+          "answer": "The UK-T3 Senior Maintenance Technician band is £33,600 to £39,900 a year, effective from 1 April 2027. Manchester is a UK role, so this Hartwell UK band applies. Confirm the UK-T3 code with Hartwell UK HR before quoting the range to candidates. New hires start in the lower half of the range, roughly £33,600 to £36,750, unless the candidate's experience is recorded against the role profile. Any offer above the midpoint (£36,750) needs written approval from the Hartwell UK HR Director before it is made, and the reason code must be recorded in Hartwell Careers.",
+          "sources": [
+            "UK-REW-03",
+            "UK-REW-06",
+            "UK-REW-04"
+          ],
+          "route": false
+        },
+        "fails": [
+          "number 36750 is in no cited source"
+        ],
+        "held": true,
+        "final": "I can't give you a sourced answer to that. I have passed your question to HR, and a person will reply.",
+        "routed": true,
+        "leaks": [],
+        "exposed": [],
+        "tokens": [
+          678,
+          564
+        ],
+        "cost": 0.003498
+      }
+    }
+  ],
+  "stdout": [
+    "Hartwell Gate replay, June 9, 2027 (synthetic)",
+    "User: Paul Whitaker, contract manager, Manchester (UK, manager)",
+    "Question: What's the pay band for a senior maintenance technician? I'm hiring two in Manchester.",
+    "",
+    "1. Pilot design: one index, no entitlement filter",
+    "Retrieved, in rank order:",
+    "  NL-REW-07  NL    INTERNAL may NOT read: entity NL",
+    "  DE-REW-02  DE    INTERNAL may NOT read: entity DE",
+    "  GRP-REC-01 GROUP INTERNAL may read",
+    "  NL-REW-08  NL    PERSONAL may NOT read: entity NL",
+    "Answer drafted:",
+    "  The sources don't include a pay band for Manchester or any UK",
+    "  role. The senior maintenance technician bands given are for",
+    "  Netherlands and Germany, and under the group recruitment",
+    "  standard a band from one entity can't be used to set an offer",
+    "  in another. Please send this question to the Group Head of",
+    "  Reward before making any offers.",
+    "Sources cited: GRP-REC-01",
+    "Checks: pass",
+    "What the person saw: the answer",
+    "Unreadable documents in what they saw: none",
+    "Gate log: use ka.manager surface teams-ka-pilot status ok docs 4 tokens 767/433 cost $0.0029",
+    "",
+    "2. Surface check against use status",
+    "  teams-ka-pilot: shows answers, but ka.manager is at shadow",
+    "",
+    "3. Pilot questions replayed through retrieval only",
+    "  220 questions from 40 managers, May 27 to June 9",
+    "  with an unreadable document in the context: 193",
+    "  with an unreadable PERSONAL document: 65",
+    "    NL-REW-07  NL    INTERNAL 81",
+    "    US-REW-09  US    INTERNAL 54",
+    "    UK-ER-09   UK    PERSONAL 49",
+    "    UK-REW-03  UK    INTERNAL 47",
+    "    US-IL-CBA  US    INTERNAL 39",
+    "    DE-REW-02  DE    INTERNAL 24",
+    "    US-ER-03   US    INTERNAL 17",
+    "    NL-REW-08  NL    PERSONAL 16",
+    "    UK-REW-06  UK    INTERNAL 14",
+    "    UK-REW-04  UK    INTERNAL 14",
+    "",
+    "4. Off switch",
+    "  10:14  Paul Whitaker asks the Teams app for the band for a senior maintenance technician",
+    "  10:14  The app shows him the answer directly (use ka.manager at status shadow)",
+    "  11:02  Paul forwards the answer to Helen Marsh: are these our UK rates?",
+    "  11:31  Helen calls Megan Hale, who owns the assistant",
+    "  11:38  Megan pauses use ka.manager at Hartwell Gate",
+    "  11:38  First refused call from the Teams app (G-PAUSED)",
+    "  12:10  Marta Kowalski's office opens a breach assessment",
+    "  next call: G-PAUSED (ka.manager is paused)",
+    "",
+    "5. Same question, entitled design (test use ka.eval)",
+    "Retrieved, in rank order:",
+    "  UK-REW-03  UK    INTERNAL may read",
+    "  GRP-REC-01 GROUP INTERNAL may read",
+    "  UK-REW-06  UK    INTERNAL may read",
+    "  UK-REW-04  UK    INTERNAL may read",
+    "Answer drafted:",
+    "  The UK-T3 Senior Maintenance Technician band is £33,600 to",
+    "  £39,900 a year, effective from 1 April 2027. Manchester is a",
+    "  UK role, so this Hartwell UK band applies. Confirm the UK-T3",
+    "  code with Hartwell UK HR before quoting the range to",
+    "  candidates. New hires start in the lower half of the range,",
+    "  roughly £33,600 to £36,750, unless the candidate's experience",
+    "  is recorded against the role profile. Any offer above the",
+    "  midpoint (£36,750) needs written approval from the Hartwell UK",
+    "  HR Director before it is made, and the reason code must be",
+    "  recorded in Hartwell Careers.",
+    "Sources cited: UK-REW-03, UK-REW-06, UK-REW-04",
+    "Checks: ",
+    "  FAIL number 36750 is in no cited source",
+    "What the person saw: route to HR",
+    "Unreadable documents in what they saw: none"
+  ]
+}
