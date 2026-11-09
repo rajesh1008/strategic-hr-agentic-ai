@@ -264,14 +264,23 @@ def cases() -> dict:
     return g
 
 
-def play(rec, case: dict) -> dict:
+# F4, found by the suite above, not one of Chapter 20's three:
+# the prompt's "hand_off for anything you cannot do" sends a
+# bank change that waits for payroll to an adviser, which
+# golden set v1.1 forbids (G03, G15).
+F4 = (" A bank change waiting for payroll's callback is not"
+      " for an adviser: say payroll operations will call to"
+      " confirm it, and do not use hand_off for it.")
+
+
+def play(rec, case: dict, extra: str = "") -> dict:
     emp = case["emp"]
     lc = Lifecycle3(HartwellOne(), Clock(),
                     managers={ch14.LENA: "HW-012927"})
     if case.get("faults"):
         lc.hris.inject(*case["faults"], emp=emp)
     calls: list = []
-    out = run(rec, ch14.SYSTEM.format(emp=emp),
+    out = run(rec, ch14.SYSTEM.format(emp=emp) + extra,
               kit3(lc, emp, calls), case["ask"], Budget())
     seen = {"emp": emp, "reply": out.final_text,
             "handoff": "handoff" in calls,
@@ -316,6 +325,28 @@ def suite_main(k: int = 3) -> None:
     rec.note(summary={"pass1": [once, n * k],
                       "passk": [allk, n],
                       "blocking": blocking})
+    print(rec.save())
+
+
+PROBE = ("G03", "G13", "G14", "G15")
+
+
+def probe_main(k: int = 3) -> None:
+    """A diagnostic, not a gate result: F4 on the three
+    blocking cases and G14, where hand-off is required."""
+    rec = RunRecorder("ch22", "release_probe")
+    cs = cases()
+    rec.print(f"F4 probe, {len(PROBE)} cases x {k}; not a"
+              " gate result")
+    for cid in PROBE:
+        rs = [play(rec, cs[cid], F4) for _ in range(k)]
+        p = sum(r["grade"]["pass"] for r in rs)
+        fails = sorted({f for r in rs
+                        for f in r["grade"]["fails"]})
+        rec.print(f"{cid} {p}/{k}" + (f"  {','.join(fails)}"
+                                      if fails else ""))
+        for r in rs:
+            rec.note(case=cid, seen=r["seen"], grade=r["grade"])
     print(rec.save())
 
 
@@ -382,5 +413,5 @@ def day_main() -> None:
 
 if __name__ == "__main__":
     {"unit": unit_main, "suite": suite_main,
-     "day": day_main}[sys.argv[1] if len(sys.argv) > 1
+     "day": day_main, "probe": probe_main}[sys.argv[1] if len(sys.argv) > 1
                       else "unit"]()
