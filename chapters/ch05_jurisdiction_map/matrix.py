@@ -75,8 +75,10 @@ def main() -> None:
             if r["file"] != fname:
                 continue
             ev = " ".join(f"[{e}]" for e in r["evidence"])
+            check = "" if r.get("checked") else \
+                "; not yet checked by counsel"
             print(f"| {r['name']} ({r['lane']}) {ev} | {asks(r)} "
-                  f"| {when(r)} [VERIFY] |")
+                  f"| {when(r)}{check} |")
         print(":::\n")
 
 

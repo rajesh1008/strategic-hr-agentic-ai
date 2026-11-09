@@ -22,6 +22,7 @@ RULES = HERE / "rules"
 DUTIES = {
     "NOTICE": "tell the person that AI is used in the decision",
     "POSTING": "state AI use in the public job posting",
+    "OUTCOME": "tell interviewed applicants if a hire was made",
     "POLICY": "describe automated decisions in the privacy policy",
     "EXPLAIN": "explain the decision and its main factors",
     "CORRECT": "let the person see and correct the data used",
