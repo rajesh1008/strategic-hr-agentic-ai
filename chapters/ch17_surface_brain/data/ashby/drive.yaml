@@ -1,0 +1,92 @@
+# Ashby & Lowe shared drive, permission export (synthetic),
+# before and after Rachel Okafor's two-week clean-up, autumn
+# 2026. Group sizes come from the HR suite. "everyone" is the
+# all-staff group that a "share with the company" link grants.
+groups:
+  everyone: 410
+  managers: 41
+  warehouse_leads: 18
+  finance: 6
+  directors: 5
+  hr: 2
+people:
+  - {id: dave, name: Dave Pritchard,
+     title: warehouse shift supervisor, Leicester,
+     groups: [everyone, warehouse_leads]}
+files:
+  - path: HR/Redundancy 2026/Leicester selection matrix v3.xlsx
+    hr: true
+    sensitive: PERSONAL
+    before: [everyone]
+    after: [hr, directors]
+    text: >-
+      Redundancy selection matrix, Leicester warehouse pickers.
+      Scores for attendance, skills and disciplinary record by
+      named employee. Proposed pool of 14, 6 to be selected.
+  - path: HR/Redundancy 2026/consultation timetable.docx
+    hr: true
+    sensitive: INTERNAL
+    before: [everyone]
+    after: [hr, directors]
+    text: >-
+      Collective consultation timetable for the Leicester
+      warehouse redundancy proposal, with the HR1 date.
+  - path: HR/Pay/2026 salary review all staff.xlsx
+    hr: true
+    sensitive: PERSONAL
+    before: [managers, finance, hr]
+    after: [finance, hr]
+    text: >-
+      Salary review 2026 by named employee with current salary,
+      proposed increase and manager rating.
+  - path: HR/Casework/grievance J Malik 2026.docx
+    hr: true
+    sensitive: PERSONAL
+    before: [managers, hr]
+    after: [hr]
+    text: >-
+      Grievance raised by J Malik against a warehouse lead,
+      investigation notes and witness statements.
+  - path: HR/Casework/absence trigger report Q3.xlsx
+    hr: true
+    sensitive: PERSONAL
+    before: [warehouse_leads, managers, hr]
+    after: [hr]
+    text: >-
+      Absence trigger report Q3 by named employee, with reasons
+      recorded at return-to-work meetings, including health
+      reasons.
+  - path: HR/Policies/Employee handbook 2026.pdf
+    hr: true
+    sensitive: OPEN
+    before: [everyone]
+    after: [everyone]
+    text: >-
+      Employee handbook: holidays, sickness reporting, overtime,
+      conduct, grievance and disciplinary procedures.
+  - path: HR/Policies/Holiday request process.docx
+    hr: true
+    sensitive: OPEN
+    before: [everyone]
+    after: [everyone]
+    text: Holiday requests go through the HR suite app.
+  - path: HR/Recruitment/Depot NI applicants 2026.xlsx
+    hr: true
+    sensitive: PERSONAL
+    before: [everyone]
+    after: [hr, managers]
+    text: >-
+      Applicants for depot roles in Northern Ireland with
+      community background monitoring returns.
+  - path: HR/Org/Org chart 2026.pptx
+    hr: true
+    sensitive: OPEN
+    before: [everyone]
+    after: [everyone]
+    text: Organization chart for 2026, names and reporting lines.
+  - path: Ops/Leicester/rota templates.xlsx
+    hr: false
+    sensitive: OPEN
+    before: [everyone]
+    after: [everyone]
+    text: Shift rota templates for the Leicester warehouse.

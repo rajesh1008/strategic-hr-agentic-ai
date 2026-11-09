@@ -23,6 +23,9 @@ from . import assistant, entitled
 from .entitled import DATA
 from .gateway import Gateway
 
+NAMES = {"hartwell": "Hartwell", "thorne": "Thorne Kessler",
+         "brightwater": "Brightwater"}
+
 
 def outcome(q: dict, res: dict) -> str:
     if res.get("refused"):
@@ -44,7 +47,8 @@ def main(org: str, design: str, model: str) -> None:
     rows = []
     for q in qs:
         res = assistant.ask(gw, q["q"], users[q["user"]], docs,
-                            design, "ka.eval", model)
+                            design, "ka.eval", model,
+                            org=NAMES[org])
         got = outcome(q, res)
         right = (got == "answer") == (q["expect"] == "answer")
         if right and got == "answer":

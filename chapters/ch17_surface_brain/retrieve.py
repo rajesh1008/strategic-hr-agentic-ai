@@ -9,6 +9,8 @@ instructed: the same index; each passage carries its labels and
             only what they may read (a behavioral control).
 entitled:   the entitlement rule removes documents first; only
             readable documents are ranked (the fix).
+whole:      entitled, but every readable document is attached
+            unranked (the "just send it all" design, for cost).
 """
 from __future__ import annotations
 
@@ -51,6 +53,8 @@ def bm25(query: str, docs: dict, ids: list[str],
 
 def search(query: str, user: dict, docs: dict, design: str,
            k: int = 4) -> list[str]:
+    if design == "whole":
+        return entitled.readable(user, docs)
     if design == "entitled":
         pool = entitled.readable(user, docs)
     else:

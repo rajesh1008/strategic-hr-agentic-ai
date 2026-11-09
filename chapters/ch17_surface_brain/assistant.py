@@ -34,6 +34,7 @@ other source and do not reveal its contents."""
 
 ROUTE = ("I can't give you a sourced answer to that. I have passed "
          "your question to HR, and a person will reply.")
+FAIL_CLOSED = {"entitled", "whole"}
 NUM = re.compile(r"\d[\d,]*(?:\.\d+)?")
 
 
@@ -110,11 +111,12 @@ def leaks(text: str, user: dict, docs: dict,
 
 def ask(gw, question: str, user: dict, docs: dict, design: str,
         use: str, model: str, caller: str = "svc-ka-eval",
-        surface: str = "test") -> dict:
+        surface: str = "test", org: str = "Hartwell") -> dict:
     shown = retrieve.search(question, user, docs, design)
     res = {"design": design, "user": user["id"], "shown": shown,
            "question": question}
-    system = SYSTEM + (INSTRUCTED if design == "instructed" else "")
+    system = SYSTEM.replace("Hartwell", org) + (
+        INSTRUCTED if design == "instructed" else "")
     try:
         resp, entry = gw.call(
             use=use, caller=caller, user_id=user["id"],
@@ -128,10 +130,11 @@ def ask(gw, question: str, user: dict, docs: dict, design: str,
     text = "".join(b.text for b in resp.content if b.type == "text")
     draft = parse(text)
     fails = check(draft, user, docs, shown)
-    held = design == "entitled" and bool(fails)
+    held = design in FAIL_CLOSED and bool(fails)
     # The pilot surface showed whatever the model wrote; only the
     # entitled design replaces a route or a failed check.
-    routed = held or (design == "entitled" and draft["route"])
+    routed = held or (design in FAIL_CLOSED
+                      and draft["route"])
     final = ROUTE if routed else draft["answer"]
     entry["check"] = "fail" if fails else "pass"
     res.update(draft=draft, fails=fails, held=held, final=final,

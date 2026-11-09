@@ -127,3 +127,23 @@ def test_surface_check_and_pilot_replay():
     r = pilot_log.replay("pilot")
     assert r["questions"] == 220 and r["exposed"] > 0
     assert pilot_log.replay("entitled")["exposed"] == 0
+
+
+def test_whole_design_and_sector_entitlements():
+    whole = retrieve.search("x", USERS["paul"], DOCS, "whole")
+    assert set(whole) == set(entitled.readable(USERS["paul"], DOCS))
+    tk, tu = entitled.load("thorne")
+    assert entitled.can_read(tu["ny_senior"], tk["TK-US-LV-26"]) == (
+        False, "superseded")
+    assert not entitled.can_read(tu["ny_senior"],
+                                 tk["TK-PTR-PAY"])[0]
+    bw, bu = entitled.load("brightwater")
+    assert entitled.readable(bu["kiosk"], bw) == ["BW-GRP-SAFE"]
+    assert not entitled.can_read(bu["in_rep"], bw["BWA-SG-INC"])[0]
+
+
+def test_drive_scan_reach():
+    from chapters.ch17_surface_brain import drive_scan
+    sizes = {"everyone": 410, "managers": 41, "hr": 2}
+    assert drive_scan.reach(["everyone", "hr"], sizes) == 410
+    assert drive_scan.reach(["hr"], sizes) == 0
