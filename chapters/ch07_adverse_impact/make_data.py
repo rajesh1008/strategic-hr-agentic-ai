@@ -10,7 +10,7 @@ reader gets byte-identical files).
       apart from the screening data as an ATS keeps it
   data/crossfield-nyc.csv        a Crossfield client's
       warehouse assessment in New York City, 12 months
-  data/calder-tellers.csv        Calder Bank branch-teller test,
+  data/calder-tellers.csv        Cobbleford Bank branch-teller test,
       six regions x four quarters of 2026
   data/pennant-associates.csv    Pennant seasonal store-associate
       applicants, US and Canada, with the work-style test

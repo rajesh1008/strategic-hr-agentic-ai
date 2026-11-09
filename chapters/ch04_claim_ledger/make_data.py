@@ -1,9 +1,9 @@
 """Build the synthetic records for Chapter 4 (seeded, so every reader gets the same file).
 
-  data/screening-test.json   Hartwell's offline test of Talentra's ranking: 40 closed
+  data/screening-test.json   Hartwell's offline test of Takefen's ranking: 40 closed
                              field-technician and customer-service requisitions, every
                              application screened once by a recruiter, half of each pool
-                             with the Talentra ranking view and half without (synthetic)
+                             with the Takefen ranking view and half without (synthetic)
   data/askhr-queue.json      Hyderabad capability center tier-1 HR tickets, eight weeks,
                              with and without the vendor's deflection agent (synthetic)
 
@@ -31,10 +31,10 @@ def screening(rng: random.Random) -> dict:
         for k in range(n):
             older = rng.random() < 0.31                 # applicant self-identified 40 or over
             fit = rng.gauss(0, 1)
-            # Talentra's score weights "years since latest certification", a proxy that
+            # Takefen's score weights "years since latest certification", a proxy that
             # runs against longer careers (synthetic mechanism for the chapter)
             score = fit + rng.gauss(0, 0.8) - (0.42 if older else 0.0)
-            arm = "talentra" if k % 2 else "control"
+            arm = "takefen" if k % 2 else "control"
             base = rng.lognormvariate(1.25, 0.45)       # minutes, about 3.8 on average
             apps.append({"application": f"{rid}-{k:03d}", "requisition": rid, "arm": arm,
                          "age_band": "40+" if older else "under 40", "score": round(score, 3),
@@ -61,7 +61,7 @@ def screening(rng: random.Random) -> dict:
         a["minutes"] = round(m, 2)
         a["score"] = round(a["score"], 2)
     return {"_synthetic": True, "organization": "Hartwell Group (synthetic)",
-            "test": "Talentra ranking view vs plain view, same recruiters, closed requisitions",
+            "test": "Takefen ranking view vs plain view, same recruiters, closed requisitions",
             "period": "requisitions closed April-June 2026; replay run August 2026",
             "requisitions": reqs, "applications": apps}
 

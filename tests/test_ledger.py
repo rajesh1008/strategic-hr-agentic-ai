@@ -5,7 +5,7 @@ from hrai.ledger import Claim, Ledger, LedgerError, Measurement, Status
 
 
 def claim(**kw):
-    base = dict(claim_id="C-01", claimant="Talentra", statement="cuts screening time by 70%",
+    base = dict(claim_id="C-01", claimant="Takefen", statement="cuts screening time by 70%",
                 metric_id="screening_minutes", metric_definition="recruiter minutes per application",
                 value=70.0, unit="percent reduction", source="contract schedule", owner="Daniel Brooks",
                 version="4.2")
@@ -50,12 +50,12 @@ def test_missing_evidence_refused():
 
 def test_vendor_cannot_test_its_own_claim():
     with pytest.raises(LedgerError, match="measured by us"):
-        claim().add(tested(measured_by="Talentra customer success"))
+        claim().add(tested(measured_by="Takefen customer success"))
 
 
 def test_vendor_may_demonstrate():
     m = Measurement(status="Demonstrated on vendor data", metric_id="screening_minutes", value=70,
-                    version="4.2", measured_by="Talentra", records="benchmark set", n=5000, period="2025")
+                    version="4.2", measured_by="Takefen", records="benchmark set", n=5000, period="2025")
     assert claim().add(m) is Status.DEMONSTRATED
 
 

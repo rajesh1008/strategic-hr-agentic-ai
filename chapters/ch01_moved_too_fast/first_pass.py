@@ -3,7 +3,7 @@
 Book section: "A first pass at the Line". Ten steps from the
 chapter's three incidents (Hartwell's Smart Shortlist release,
 Brightwater's plant chatbot, Ashby & Lowe's bundled screen and
-Calder Bank's letter copilot), placed with the Chapter 11 rule.
+Cobbleford Bank's letter copilot), placed with the Chapter 11 rule.
 No model is involved: the rule places, and the script compares
 each placement with the mode the software actually ran in.
 

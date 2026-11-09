@@ -56,7 +56,7 @@ def test_applicants_and_invitations():
 
 
 def test_sector_sizes():
-    want = {"brightwater": 21000, "calder-bank": 16000,
+    want = {"brightwater": 21000, "cobbleford-bank": 16000,
             "hollis": 6400, "pennant": 48000, "restonmere": 11000,
             "westbridge": 7500, "thorne-kessler": 6800,
             "aurelia": 19000, "ashby-lowe": 410}

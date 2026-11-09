@@ -1,8 +1,8 @@
-"""Re-run a vendor claim on our own records: Talentra's "70% less screening time".
+"""Re-run a vendor claim on our own records: Takefen's "70% less screening time".
 
 The claim (contract schedule, synthetic): the ranking view "cuts recruiter screening time
 by 70%". Hartwell replays 40 closed requisitions (synthetic). In each pool, alternate
-applications are screened with the Talentra view or the plain view, by the same
+applications are screened with the Takefen view or the plain view, by the same
 recruiters, and every rejection is still decided by a person (the Automate/Keep Line in
 Chapter 11). The script prints three numbers for the same metric, then the impact ratio
 of the "progress" band by age group, and writes the ledger entries.
@@ -27,7 +27,7 @@ METRIC = "screening_minutes_per_application"
 def mean_minutes(apps, arm, vendor_rule=False):
     xs = [a for a in apps if a["arm"] == arm]
     if vendor_rule:
-        # Talentra counts auto-closed applications as 0 minutes
+        # Takefen counts auto-closed applications as 0 minutes
         return sum(0 if a["band"] == "bottom" else a["minutes"]
                    for a in xs) / len(xs)
     return sum(a["minutes"] for a in xs) / len(xs)
@@ -35,7 +35,7 @@ def mean_minutes(apps, arm, vendor_rule=False):
 
 def reduction(apps, vendor_rule=False):
     base = mean_minutes(apps, "control")
-    return 100 * (1 - mean_minutes(apps, "talentra", vendor_rule) / base)
+    return 100 * (1 - mean_minutes(apps, "takefen", vendor_rule) / base)
 
 
 def interval(apps, draws=2000, seed=7):
@@ -66,20 +66,20 @@ def build_ledger(apps=None) -> Ledger:
     apps = apps or DATA["applications"]
     led = Ledger("Hartwell Group (synthetic)")
     t1 = led.register(Claim(
-        claim_id="T-01", claimant="Talentra",
+        claim_id="T-01", claimant="Takefen",
         statement="Smart ranking cuts recruiter screening time by 70%",
         metric_id=METRIC, metric_definition="recruiter minutes per application, ranked view vs plain",
-        value=70.0, unit="percent reduction", source="Talentra order form, schedule 2 (synthetic)",
-        owner="Daniel Brooks", version="Talentra 4.2"))
+        value=70.0, unit="percent reduction", source="Takefen order form, schedule 2 (synthetic)",
+        owner="Daniel Brooks", version="Takefen 4.2"))
     t1.add(Measurement(status="Demonstrated on vendor data", metric_id=METRIC, value=70.0,
-                       version="Talentra 4.2", measured_by="Talentra", n=12000,
-                       records="Talentra benchmark set (technology roles)", period="2025",
+                       version="Takefen 4.2", measured_by="Takefen", n=12000,
+                       records="Takefen benchmark set (technology roles)", period="2025",
                        note="auto-close of bottom-ranked applications counted as zero minutes"),
            on="2026-07-14")
     lo, hi = interval(apps)
     n_req = len({a["requisition"] for a in apps})
     t1.add(Measurement(status="Tested on our records", metric_id=METRIC,
-                       value=round(reduction(apps), 1), version="Talentra 4.2",
+                       value=round(reduction(apps), 1), version="Takefen 4.2",
                        measured_by="Hartwell people analytics (Tom Reilly)",
                        records=f"{n_req} closed requisitions, field and customer service",
                        n=len(apps), period="closed Apr-Jun 2026, replayed Aug 2026",
@@ -90,17 +90,17 @@ def build_ledger(apps=None) -> Ledger:
     ir = impact_ratio(apps)
     worst = min(v[2] for v in ir.values())
     t2 = led.register(Claim(
-        claim_id="T-02", claimant="Talentra",
+        claim_id="T-02", claimant="Takefen",
         statement="Ranking meets the four-fifths rule for every group (vendor bias audit)",
         metric_id="impact_ratio_progress_band_min", metric_definition="lowest group selection "
         "rate into the progress band over the highest group's rate",
-        value=0.91, unit="ratio", source="Talentra bias audit summary, 2025 (synthetic)",
-        owner="Daniel Brooks", version="Talentra 4.2"))
+        value=0.91, unit="ratio", source="Takefen bias audit summary, 2025 (synthetic)",
+        owner="Daniel Brooks", version="Takefen 4.2"))
     t2.add(Measurement(status="Tested on our records", metric_id=t2.metric_id, value=round(worst, 2),
-                       version="Talentra 4.2", measured_by="Hartwell people analytics (Tom Reilly)",
+                       version="Takefen 4.2", measured_by="Hartwell people analytics (Tom Reilly)",
                        records=f"{n_req} closed requisitions, self-identified age band",
                        n=len(apps), period="closed Apr-Jun 2026, replayed Aug 2026",
-                       method="top 30% of each pool by Talentra score"), on="2026-08-28")
+                       method="top 30% of each pool by Takefen score"), on="2026-08-28")
     t2.contest("Hartwell people analytics", on="2026-08-28")
     return led
 
@@ -111,9 +111,9 @@ def main() -> None:
     n_req = len({a["requisition"] for a in apps})
     rec.print(f"records: {len(apps)} applications, {n_req} requisitions (synthetic)")
     rec.print(f"plain view    {mean_minutes(apps, 'control'):.2f} min per application")
-    rec.print(f"ranked view   {mean_minutes(apps, 'talentra'):.2f} min per application")
-    rec.print("claimed by Talentra (its benchmark)          70%")
-    rec.print(f"Talentra's counting rule on our records      {reduction(apps, True):.0f}%")
+    rec.print(f"ranked view   {mean_minutes(apps, 'takefen'):.2f} min per application")
+    rec.print("claimed by Takefen (its benchmark)          70%")
+    rec.print(f"Takefen's counting rule on our records      {reduction(apps, True):.0f}%")
     lo, hi = interval(apps)
     rec.print(f"our workflow (a person decides rejections)   {reduction(apps):.0f}%"
               f"  (95% interval {lo:.0f} to {hi:.0f})")

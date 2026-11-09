@@ -17,7 +17,7 @@ from hrai.ledger import Claim, Ledger, Status
 from hrai.llm import RunRecorder
 
 HERE = Path(__file__).resolve().parent
-DOCS = {"Talentra": "talentra-roi-slide.md", "RankRight": "crossfield-vendor-onepager.md"}
+DOCS = {"Takefen": "takefen-roi-slide.md", "RankRight": "crossfield-vendor-onepager.md"}
 
 SYSTEM = (
     "You help an HR team log vendor claims before any of them enters a business case. "

@@ -266,7 +266,7 @@ HARTWELL_ORG = {
                     "capability_center_hr_ops": 260,
                     "meridian_seats": 450},
     "systems": {"HRIS": "HartwellOne (2016)",
-                "ATS": "Hartwell Careers on Talentra",
+                "ATS": "Hartwell Careers on Takefen",
                 "employee_service": "AskHartwell",
                 "gateway": "Hartwell Gate"},
     "peak_hires_per_month": 1900,
@@ -297,7 +297,7 @@ SLICE = HERE / "hartwell" / "smart-shortlist-412-slice.json"
 # two are fixed so chapters can name them; the rest are drawn
 INVITED_FIXED = ["C-0412-118", "C-0412-201"]
 APP_COLS = ["candidate_id", "requisition", "applied_at", "status_fri",
-            "talentra_score", "rank_on_req", "batch_rank",
+            "takefen_score", "rank_on_req", "batch_rank",
             "years_field_service", "employment_gap_months",
             "certifications", "recruiter_invited"]
 SELF_ID_COLS = ["candidate_id", "sex", "age_40_plus",
@@ -318,7 +318,7 @@ def _cand_attrs(rng, older: bool, female: bool) -> dict:
                 certifications=certs)
 
 
-def _talentra(a: dict, rng) -> float:
+def _takefen(a: dict, rng) -> float:
     """The vendor's opaque fit score, as we model it: keyword-heavy,
     with a steep penalty for any employment gap."""
     s = 40 + 3.0 * min(a["years_field_service"], 10)
@@ -367,7 +367,7 @@ def batch_412(rng):
         a["employment_gap_months"] = max(
             a["employment_gap_months"], 0)
         pool.append(dict(id=cid, requisition=req, **a,
-                         _raw=_talentra(a, rng) - 25))
+                         _raw=_takefen(a, rng) - 25))
         selfid[cid] = sid
     for cid in fixed:
         selfid[cid] = _self_id(rng)
@@ -386,7 +386,7 @@ def batch_412(rng):
     top, bottom = scores[0] + 2, scores[-1] - 2
     for c in ranked:
         frac = (c["shortlist_rank"] - 1) / 411
-        c["talentra_score"] = round(top - (top - bottom) * frac, 1)
+        c["takefen_score"] = round(top - (top - bottom) * frac, 1)
         c.pop("_raw", None)
     # recruiters' later invitations: 14 from the batch
     rest = [c["id"] for c in ranked if c["id"] not in INVITED_FIXED]
@@ -400,12 +400,12 @@ def batch_412(rng):
         batch.append({
             "id": c["id"], "requisition": c["requisition"],
             "shortlist_rank": c["shortlist_rank"],
-            "talentra_score": c["talentra_score"],
+            "takefen_score": c["takefen_score"],
             "years_field_service": c["years_field_service"],
             "employment_gap_months": c["employment_gap_months"],
             "certifications": c["certifications"],
             "set_to": "not_progressed",
-            "set_by": "talentra.smart_shortlist",
+            "set_by": "takefen.smart_shortlist",
             "recruiter_id": None, "reason_code": None,
             "recruiter_invited_later": c["id"] in invited})
     return batch, selfid
@@ -415,9 +415,9 @@ def applicants(rng, batch, selfid):
     """All 1,031 applicants: the kept top half, the 412, later
     arrivals. Recruiters invited 61 in all, 14 of them from the 412."""
     rows = []
-    lo = {r: min(c["talentra_score"] for c in batch
+    lo = {r: min(c["takefen_score"] for c in batch
                  if c["requisition"] == r) for r in REQS}
-    hi = {r: max(c["talentra_score"] for c in batch
+    hi = {r: max(c["takefen_score"] for c in batch
                  if c["requisition"] == r) for r in REQS}
     kept_all = []
     for req, spec in REQS.items():
@@ -432,10 +432,10 @@ def applicants(rng, batch, selfid):
                 a["employment_gap_months"], 6)
             sc = round(hi[req] + 0.5 + abs(rng.gauss(0, 9)), 1)
             kept.append(dict(candidate_id=cid, requisition=req,
-                             status_fri="applied", talentra_score=sc,
+                             status_fri="applied", takefen_score=sc,
                              **a))
             selfid[cid] = sid
-        kept.sort(key=lambda r: -r["talentra_score"])
+        kept.sort(key=lambda r: -r["takefen_score"])
         for i, r in enumerate(kept, 1):
             r["rank_on_req"] = i
         kept_all += kept
@@ -445,7 +445,7 @@ def applicants(rng, batch, selfid):
             rows.append(dict(
                 candidate_id=c["id"], requisition=req,
                 status_fri="not_progressed",
-                talentra_score=c["talentra_score"], rank_on_req=j,
+                takefen_score=c["takefen_score"], rank_on_req=j,
                 batch_rank=c["shortlist_rank"],
                 years_field_service=c["years_field_service"],
                 employment_gap_months=c["employment_gap_months"],
@@ -591,15 +591,15 @@ SECTORS = {
              sites={"Cincinnati HQ": 1}, worker_type="salaried",
              families=OFFICE, payroll="in-house (US)"),
     ], "Nadia Ferreira, VP HR Operations"),
-    "calder-bank": ("Calder Bank", "Charlotte, North Carolina", [
-        dict(entity="Calder Bank US", country="US", n=12400,
+    "cobbleford-bank": ("Cobbleford Bank", "Charlotte, North Carolina", [
+        dict(entity="Cobbleford Bank US", country="US", n=12400,
              sites={"Charlotte, NC": 55, "branches, NC/SC/VA": 45},
              worker_type="salaried",
              families={"Retail Banking": 40, "Operations": 20,
                        "Risk and Compliance": 12, "Technology": 18,
                        "Finance": 6, "HR": 4},
              payroll="in-house (US)"),
-        dict(entity="Calder Bank UK", country="GB", n=3600,
+        dict(entity="Cobbleford Bank UK", country="GB", n=3600,
              sites={"Edinburgh": 1}, worker_type="salaried",
              families={"Operations": 40, "Technology": 25,
                        "Risk and Compliance": 20, "HR": 4,

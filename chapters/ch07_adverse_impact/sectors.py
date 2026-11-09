@@ -1,7 +1,7 @@
 """Chapter 7: the sector cases (no model).
 
 Book sections on Crossfield Staffing (a New York City bias
-audit of a client's step), Calder Bank (24 small slices and
+audit of a client's step), Cobbleford Bank (24 small slices and
 one alarming ratio) and Pennant Stores (an intersection that
 the single-axis tables hide).
 
@@ -46,7 +46,7 @@ def crossfield(rec, out) -> None:
 
 def calder(rec, out) -> None:
     rows = load("calder-tellers.csv")
-    rec.print(f"== Calder Bank: branch-teller test, "
+    rec.print(f"== Cobbleford Bank: branch-teller test, "
               f"{len(rows)} applicants, 2026")
     age = lambda r: "40+" if r["age_40_plus"] == "Y" \
         else "under 40"  # noqa: E731

@@ -44,9 +44,9 @@ def test_intake_rules():
     doc = "Recruiters spend 70% less time screening. RankRight gives you bias-free ranking."
     ok = {"statement": "Recruiters spend 70% less time screening.", "metric_id": "screening_time",
           "value": 70, "unit": "percent reduction", "suggested_status": "Measured in production"}
-    assert "Claimed (model suggested Measured in production)" in claim_intake.admit(led, "Talentra", doc, ok, 1)
+    assert "Claimed (model suggested Measured in production)" in claim_intake.admit(led, "Takefen", doc, ok, 1)
     assert led["TA-01"].effective_status() is Status.CLAIMED
     vague = dict(ok, statement="bias-free ranking", value=None)
     assert claim_intake.admit(led, "RankRight", doc, vague, 2).startswith("RESTATE")
     fake = dict(ok, statement="cuts cost by half")
-    assert claim_intake.admit(led, "Talentra", doc, fake, 3).startswith("REFUSED")
+    assert claim_intake.admit(led, "Takefen", doc, fake, 3).startswith("REFUSED")
