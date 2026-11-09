@@ -1,0 +1,76 @@
+# Hartwell group transfer register, extract, August 2027
+# (synthetic). Owner of the register: Marta Kowalski, group
+# DPO, Dublin. mode: send | remote_view | model_context |
+# replica. assessment: date of the transfer impact or risk
+# assessment, or "".
+- id: X01
+  data: HartwellOne HR records, validation queue
+  lanes: [NL, DE]
+  store: hartwellone
+  recipient: Hyderabad capability center
+  site: IN-HYD
+  mode: remote_view
+  mechanism: SCCs
+  assessment: 2026-11-30
+  owner: Marta Kowalski
+- id: X02
+  data: HartwellOne HR records, validation queue
+  lanes: [UK]
+  store: hartwellone
+  recipient: Hyderabad capability center
+  site: IN-HYD
+  mode: remote_view
+  mechanism: IDTA
+  assessment: 2026-11-30
+  owner: Marta Kowalski
+- id: X03
+  data: HartwellOne HR records, payroll operations
+  lanes: [CA]
+  store: hartwellone
+  recipient: Hyderabad capability center
+  site: IN-HYD
+  mode: remote_view
+  mechanism: contract
+  assessment: 2026-12-15
+  owner: Hartwell Canada privacy officer
+- id: X04
+  data: HartwellOne employee and applicant records
+  lanes: [AU]
+  store: hartwellone
+  recipient: Hyderabad capability center
+  site: IN-HYD
+  mode: remote_view
+  mechanism: contract
+  assessment: 2027-07-14
+  owner: Hartwell Australia privacy officer
+- id: X05
+  data: AskHartwell and copilot prompts through Hartwell Gate
+  lanes: [NL, DE, UK, CA, AU]
+  store: gate
+  recipient: Model provider (processor), US region
+  site: US
+  mode: model_context
+  mechanism: {NL: SCCs, DE: SCCs, UK: Addendum, CA: contract,
+              AU: contract}
+  assessment: 2027-01-20
+  owner: Nathan Cole
+- id: X06
+  data: Tier-1 tickets and transcripts
+  lanes: [UK, CA, NL]
+  store: transcripts
+  recipient: Quayfen Outsourcing, Manila and Cebu
+  site: PH
+  mode: remote_view
+  mechanism: {UK: IDTA, CA: contract, NL: SCCs}
+  assessment: 2027-07-30
+  owner: Marta Kowalski
+- id: X07
+  data: AskHartwell transcripts, masked debug view (EU region)
+  lanes: [NL, DE, UK]
+  store: debug_masked_view
+  recipient: Hyderabad capability center, platform engineering
+  site: IN-HYD
+  mode: remote_view
+  mechanism: {NL: SCCs, DE: SCCs, UK: IDTA}
+  assessment: 2027-07-22
+  owner: Marta Kowalski

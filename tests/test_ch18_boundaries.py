@@ -77,3 +77,14 @@ def test_retention_gaps():
     n = sum(len(retention.check(c, set(cfg["never"])))
             for c in cfg["classes"])
     assert n == 8
+
+
+def test_august_files_close_every_gap():
+    d = transfers.DATA
+    reg = yaml.safe_load((d / "register_aug.yaml").read_text())
+    log = yaml.safe_load((d / "access_log_aug.yaml").read_text())
+    assert all(hit for _, hit in transfers.reconcile(reg, log))
+    assert not any(transfers.check_row(x) for x in reg)
+    cfg = yaml.safe_load((d / "retention_aug.yaml").read_text())
+    assert not any(retention.check(c, set(cfg["never"]))
+                   for c in cfg["classes"])

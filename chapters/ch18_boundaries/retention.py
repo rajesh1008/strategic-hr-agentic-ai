@@ -48,9 +48,11 @@ def check(c: dict, never: set[str]) -> list[str]:
     return out
 
 
-def main() -> None:
-    rec = RunRecorder("ch18", "retention")
-    cfg = yaml.safe_load((DATA / "retention.yaml").read_text())
+def main(month: str = "") -> None:
+    sfx = f"_{month}" if month else ""
+    rec = RunRecorder("ch18", "retention" + sfx)
+    cfg = yaml.safe_load(
+        (DATA / f"retention{sfx}.yaml").read_text())
     never, total = set(cfg["never"]), 0
     for c in cfg["classes"]:
         gaps = check(c, never)
@@ -65,4 +67,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(*sys.argv[1:2])

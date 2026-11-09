@@ -59,10 +59,17 @@ def reconcile(reg: list[dict], log: list[dict]):
         yield a, hit
 
 
-def main() -> None:
-    rec = RunRecorder("ch18", "transfers")
-    reg = yaml.safe_load((DATA / "register.yaml").read_text())
-    log = yaml.safe_load((DATA / "access_log.yaml").read_text())
+def log_month(month: str) -> str:
+    return {"": "May 2027", "aug": "August 2027"}[month]
+
+
+def main(month: str = "") -> None:
+    sfx = f"_{month}" if month else ""
+    rec = RunRecorder("ch18", "transfers" + sfx)
+    reg = yaml.safe_load(
+        (DATA / f"register{sfx}.yaml").read_text())
+    log = yaml.safe_load(
+        (DATA / f"access_log{sfx}.yaml").read_text())
     rec.print("Register rows")
     for x in reg:
         gaps = check_row(x)
@@ -70,7 +77,7 @@ def main() -> None:
         rec.print(f"  {x['id']} {x['site']:<6} {x['mode']:<13}"
                   + (" ok" if not gaps else " GAP " +
                      "; ".join(gaps)))
-    rec.print("Access log, May 2027")
+    rec.print(f"Access log, {log_month(month)}")
     missing = 0
     for a, hit in reconcile(reg, log):
         who = f"{a['principal']} {a['lane']} {a['store']}"
@@ -86,4 +93,5 @@ def main() -> None:
 
 
 if __name__ == "__main__":
-    main()
+    import sys
+    main(*sys.argv[1:2])
