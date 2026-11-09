@@ -84,3 +84,23 @@ def test_payslip_trace_opening_week():
     lines = rules.trace(OPENING_WEEK)
     assert lines[-1].endswith("2233.96")
     assert rules.legacy(OPENING_WEEK) == rules.money(rules.D("2197.40"))
+
+
+def test_colorado_consecutive_hours_test():
+    # COMPS Order #40 Rule 4.1.1(C): 12 consecutive hours whatever
+    # the workday; the greatest of the three tests applies (R-517).
+    from chapters.ch29_pay.sheets import NIGHT_CREW_CO as n
+    from dataclasses import replace
+    assert max(n.days) < 12 and sum(n.days) == 42
+    assert rules.compute(n).ot == 6               # 3 shifts x 2 h
+    assert rules.compute(replace(n, spans=None)).ot == 2   # weekly
+    # the test does not apply outside Colorado
+    assert rules.compute(replace(n, state="TX")).ot == 2
+
+
+def test_consecutive_test_changes_no_seeded_sheet():
+    from dataclasses import replace
+    for s in sheets():
+        assert s.spans is None
+        assert rules.compute(s).gross == rules.compute(
+            replace(s, spans=list(s.days))).gross

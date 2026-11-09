@@ -18,7 +18,7 @@ from dataclasses import dataclass, field
 from decimal import ROUND_HALF_UP, Decimal as D
 
 CENT = D("0.01")
-RULESET = "US-PAY v1.2"
+RULESET = "US-PAY v1.3"
 RULES = {
     "R-BASE": "every hour worked at the base rate",
     "R-NIGHT": "night premium per night hour",
@@ -42,6 +42,10 @@ class Sheet:
     night: D = D(0)       # hours on the night shift
     premium: D = D(0)     # night premium per hour
     bonus: D = D(0)       # nondiscretionary, this week
+    # Periods of consecutive work, in hours, each counted once,
+    # even when it runs from one workday into the next. None
+    # means each day's hours were one period inside that day.
+    spans: list[D] | None = None
 
 
 @dataclass
@@ -64,8 +68,13 @@ def premium_hours(s: Sheet) -> tuple[D, D]:
         rest = total - dot - ddt
         return dot + max(rest - 40, D(0)), ddt
     if s.state == "CO":
+        # COMPS Order #40, Rule 4.1: over 40 in the workweek,
+        # over 12 in a workday, or over 12 consecutive hours
+        # whatever the workday; the greatest applies (v1.3).
         d12 = sum((max(h - 12, D(0)) for h in s.days), D(0))
-        return max(weekly, d12), D(0)
+        spans = s.spans if s.spans is not None else s.days
+        c12 = sum((max(h - 12, D(0)) for h in spans), D(0))
+        return max(weekly, d12, c12), D(0)
     return weekly, D(0)
 
 

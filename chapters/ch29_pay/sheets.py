@@ -18,6 +18,15 @@ OPENING_WEEK = Sheet("HES-40217", "TX", D("31.40"),
                 [D(12), D(12), D(12), D(12), D(6), D(0), D(0)],
                 night=D(48), premium=D("2.75"), bonus=D(150))
 
+# A Colorado night crew: three 14-hour shifts, 6 p.m. to 8 a.m.,
+# each split 6 + 8 across the midnight workday boundary. No
+# workday reaches 12 hours; each shift is 14 consecutive hours.
+NIGHT_CREW_CO = Sheet("HES-CO025", "CO", D("29.60"),
+                      [D(6), D(8), D(6), D(8), D(6), D(8), D(0)],
+                      night=D(42), premium=D("2.50"),
+                      spans=[D(14), D(14), D(14)])
+
+
 
 def week(rng: random.Random, state: str) -> list[D]:
     pat = rng.choice(["4x10", "5x8", "4x12", "6x10",

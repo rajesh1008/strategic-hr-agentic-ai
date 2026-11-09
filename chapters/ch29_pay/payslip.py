@@ -3,8 +3,10 @@
 Book section "The deterministic pay rule". Prints the rule
 trace for the opening's week (Rosa Elizondo, HES-40217,
 Pasadena, Texas), the provider's figure computed the 2019
-way, and the same trace for one Colorado and one California
-week from the seeded timesheets, so the daily rules show.
+way, the same trace for one Colorado and one California
+week from the seeded timesheets, so the daily rules show, and
+a Colorado night-crew week whose shifts cross midnight, so
+the consecutive-hours test (US-PAY v1.3) shows.
 No model is called. All synthetic.
 
 Run:  HRAI_MODEL=no-model python -m chapters.ch29_pay.payslip
@@ -16,7 +18,7 @@ from dataclasses import replace
 from hrai.llm import RunRecorder
 
 from . import rules
-from .sheets import OPENING_WEEK, sheets
+from .sheets import NIGHT_CREW_CO, OPENING_WEEK, sheets
 
 
 def main() -> None:
@@ -40,7 +42,22 @@ def main() -> None:
             rec.print(line)
         rec.print(f"provider (2019 setup, 1.5 x base)    "
                   f"${rules.legacy(x):>9}")
-    rec.note(gross=str(r.gross), legacy=str(old))
+    n = NIGHT_CREW_CO
+    rn = rules.compute(n)
+    rec.print("hours by day, Monday to Sunday: "
+              + " ".join(f"{h:g}" for h in n.days))
+    rec.print("consecutive hours per shift: "
+              + " ".join(f"{h:g}" for h in n.spans))
+    for line in rules.trace(n, rn):
+        rec.print(line)
+    v12 = rules.compute(replace(n, spans=None))
+    rec.print(f"without the consecutive-hours test (v1.2)  "
+              f"${v12.gross:>9}")
+    rec.print(f"provider (2019 setup, 1.5 x base)    "
+              f"${rules.legacy(n):>9}")
+    rec.note(gross=str(r.gross), legacy=str(old),
+             night_crew_gross=str(rn.gross),
+             night_crew_v12=str(v12.gross))
     print(rec.save())
 
 
