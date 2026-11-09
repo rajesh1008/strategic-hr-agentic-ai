@@ -42,3 +42,25 @@ def test_crew_rules_check_the_last_day():
     assert crew.rules(o, "X", t) == []
     assert crew.rules(o, "none", t) == ["NONE"]
     assert crew.TODAY == date(2027, 7, 30)
+
+
+def test_day_reconciles_with_payroll_queue(monkeypatch):
+    lines = []
+
+    class Out:
+        final_text = "Noted."
+
+    class Rec:
+        def print(self, line=""):
+            lines.append(line)
+
+        def note(self, **k):
+            pass
+
+        def save(self):
+            return "saved"
+    monkeypatch.setattr(release, "run", lambda *a, **k: Out())
+    monkeypatch.setattr(release, "RunRecorder",
+                        lambda *a: Rec())
+    release.day_main()
+    assert "=== end of day" in lines

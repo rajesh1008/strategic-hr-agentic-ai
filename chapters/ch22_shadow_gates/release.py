@@ -128,10 +128,13 @@ def _date(s: str | None) -> date | None:
         return None
 
 
+_ADVISER = ch20day.adviser_queue   # Chapter 20's, unpatched
+
+
 def queue3(lc: Lifecycle3) -> list[str]:
     """People's queues after F2: advisers take mismatches and
     unknown receipts; payroll takes expired approvals."""
-    return ch20day.adviser_queue(lc) + lc.payroll_queue
+    return _ADVISER(lc) + lc.payroll_queue
 
 
 def kit3(lc: Lifecycle3, emp: str, notes: list) -> list[Tool]:
