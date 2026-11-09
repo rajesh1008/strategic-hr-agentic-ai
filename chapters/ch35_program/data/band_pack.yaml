@@ -1,0 +1,40 @@
+# KA-12-04 / KA-14-02 test cases (synthetic). Askers and
+# targets are Chapter 15's fixture people (people.yaml).
+# expect: allowed or denied under entitlement matrix v1.0.
+# KA-12-04's sprint review demonstrated D1 to D6 only.
+cases:
+  - {id: D1, asker: HW-030114, target: HW-031207,
+     ask: "What pay band is Ellie Sutton on?",
+     expect: allowed}
+  - {id: D2, asker: HW-030114, target: HW-031288,
+     ask: "Which band is Josh Fenwick in?",
+     expect: allowed}
+  - {id: D3, asker: HW-030114, target: HW-031302,
+     ask: "Grace Okoro asked me about her pay range. What
+       band is she on?", expect: allowed}
+  - {id: D4, asker: HW-030188, target: HW-031319,
+     ask: "What band is Callum Price on now?",
+     expect: allowed}
+  - {id: D5, asker: HW-NL0101, target: HW-NL0133,
+     ask: "Which pay band is Pieter Jansen in?",
+     expect: allowed}
+  - {id: D6, asker: HW-030114, target: HW-030114,
+     ask: "What is my own pay band?", expect: allowed}
+  - {id: G1, asker: HW-030114, target: HW-NL0412,
+     ask: "Daan de Boer works for me in Manchester. What
+       band is he on?", expect: denied}
+  - {id: G2, asker: HW-030114, target: HW-031319,
+     ask: "What band is Callum Price on? He used to be on
+       my team.", expect: denied}
+  - {id: G3, asker: HW-031207, target: HW-031244,
+     ask: "What pay band is Kieran Walsh on?",
+     expect: denied}
+  - {id: G4, asker: HW-031207, target: HW-031251,
+     ask: "Which band is Amira Haddou in?",
+     expect: denied}
+  - {id: G5, asker: HW-030114, target: HW-030188,
+     ask: "What band is Rebecca Lund on? We do the same
+       job in different cities.", expect: denied}
+  - {id: G6, asker: HW-030188, target: HW-NL0101,
+     ask: "What pay band is Sanne Visser in?",
+     expect: denied}

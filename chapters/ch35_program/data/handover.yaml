@@ -1,0 +1,87 @@
+# Hand-Over Board (synthetic statuses; Chapter 35).
+# A service leaves its build team only when every check that
+# applies to it is closed. "managed" services keep the vendor
+# running the platform; Hartwell still holds the five
+# retained checks (HO-1, HO-3, HO-5, HO-6, HO-9).
+checks:
+  HO-1: a named Hartwell owner for the service's number
+  HO-2: runbook with the stop route, walked by the receivers
+  HO-3: receiving team reran the evals and matched the builders
+  HO-4: build-team and vendor admin access removed or dated
+  HO-5: exit test passed (data and derived data back)
+  HO-6: every monitoring row has a receiving-team owner
+  HO-7: receiving team fixed a seeded fault without builders
+  HO-8: every open defect has an owner and a date
+  HO-9: contract terms in force (notice, staging, stop right)
+  HO-10: people affected known; consultation question answered
+retained: [HO-1, HO-3, HO-5, HO-6, HO-9]
+reviews: ["2028-01-31", "2028-06-30"]
+services:
+  - id: S1
+    name: Northgate platform and scheduling agent
+    model: managed
+    from: Northgate Talent Cloud
+    to: Talent acquisition systems (Jessica Tran)
+    open:
+      "2028-01-31":
+        HO-3: path tests run only by Northgate so far
+        HO-6: weekly path readback owner still Northgate PM
+      "2028-06-30":
+        HO-5: first yearly exit test due by July 12, 2028
+  - id: S2
+    name: Hartwell configuration of the hire path
+    model: handed
+    from: Northgate implementation team
+    to: Talent acquisition systems (Jessica Tran)
+    open:
+      "2028-01-31":
+        HO-4: two implementation consultants still tenant admins
+        HO-7: no seeded fault yet
+        HO-8: 6 open defects, 2 without an owner
+      "2028-06-30": {}
+  - id: S3
+    name: HW4 decision-export adapter
+    model: handed
+    from: Hyderabad build team
+    to: Hyderabad run team (owner Jessica Tran)
+    open:
+      "2028-01-31":
+        HO-2: runbook names the build lead as the stop route
+      "2028-06-30": {}
+  - id: S4
+    name: AskHartwell controlled actions
+    model: handed
+    from: Hyderabad build team
+    to: HR services (Megan Hale)
+    open:
+      "2028-01-31":
+        HO-7: no seeded fault yet
+        HO-10: Quayfen seat reduction not on the service record
+      "2028-06-30": {}
+  - id: S5
+    name: Managers' knowledge assistant (ka.manager)
+    model: handed
+    from: Hyderabad build team
+    to: HR services (Megan Hale; evals Tom Reilly)
+    open:
+      "2028-01-31":
+        HO-3: band cases rerun only by the build team
+        HO-7: no seeded fault yet
+      "2028-06-30":
+        HO-7: seeded fault booked for July 2028
+  - id: S6
+    name: Payroll readback (PR-1)
+    model: handed
+    from: Hyderabad build team
+    to: Payroll operations (Hyderabad)
+    open:
+      "2028-01-31":
+        HO-6: readback alert routed to a build engineer
+      "2028-06-30": {}
+fieldnote:
+  name: Fieldnote suite agent and nightly trail export
+  checks: [HO-1, HO-2, HO-3, HO-4, HO-7, HO-8]
+  open:
+    HO-2: runbook is one analyst's notes
+    HO-4: export job runs under the analyst's own login
+    HO-7: only one of the two has ever fixed a failed export

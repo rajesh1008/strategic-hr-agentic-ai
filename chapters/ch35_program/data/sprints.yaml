@@ -1,0 +1,107 @@
+# Sprint items as recorded (synthetic). Fields are what the
+# team's tracker, the run records and the review minutes
+# hold; rda.py reads nothing else.
+# classes: data classes the story reads or writes, with the
+#   entitlement rule (ch15 matrix) and register use (ch12).
+# cases: acceptance cases; denied = a case that must refuse.
+# evidence: "demo" or a run ID (runs/<id>-<model>.json).
+items:
+  - id: KA-12-04
+    use: ka.manager
+    story: >-
+      As a line manager I can ask which pay band a team
+      member is on, so I can answer a pay-range question.
+    sprint: {name: KA-12, start: 2027-08-16, end: 2027-08-27}
+    team: Hyderabad HR-tech engineering
+    line_row: H03
+    mode: retrieve
+    classes: []
+    tools: [{name: get_pay_band, reads: band,
+             enforced_at: none}]
+    cases: {allowed: 6, denied: 0}
+    gate_items: []
+    hr_owner: null
+    accepted_by: Megan Hale
+    accepted_on: 2027-08-26
+    evidence: demo
+    checks_run: {level1: true, test_pack_runs: 0}
+    registry_updated: false
+    runbook: false
+    run_team_read: false
+    pack_needed: null
+  - id: KA-14-02
+    use: ka.manager
+    story: >-
+      As a line manager I can ask which pay band a team
+      member is on, so I can answer a pay-range question.
+    sprint: {name: KA-14, start: 2027-09-27, end: 2027-10-08}
+    team: Hyderabad HR-tech engineering
+    line_row: H03
+    mode: retrieve
+    classes: [{class: band, rule: M-02, use: U1}]
+    tools: [{name: get_pay_band, reads: band,
+             enforced_at: adapter}]
+    cases: {allowed: 6, denied: 6}
+    gate_items: [entitlements, eval_levels_1_to_3,
+                 nothing_reaches_people]
+    hr_owner: Megan Hale
+    accepted_by: Megan Hale
+    gate_evidence_ok_by: Tom Reilly
+    accepted_on: 2027-10-08
+    evidence: RUN_FIXED
+    checks_run: {level1: true, test_pack_runs: 3}
+    registry_updated: true
+    runbook: true
+    run_team_read: true
+    pack_needed: "no: UK and US only; DE excluded (WA-5)"
+  - id: NG-06-02
+    use: hire.path
+    story: >-
+      As a candidate who has heard nothing for five business
+      days I get a status message saying where my
+      application is and who to ask.
+    sprint: {name: NG-06, start: 2027-10-11, end: 2027-10-22}
+    team: Northgate People Systems
+    line_row: A06
+    mode: act_with_approval
+    classes: [{class: candidate_status, rule: ATS-03,
+               use: path}]
+    tools: [{name: send_status_message, reads:
+             candidate_status, enforced_at: adapter}]
+    cases: {allowed: 9, denied: 0}
+    gate_items: []
+    hr_owner: null
+    accepted_by: deemed (10 business days, SOW 4.6)
+    accepted_on: 2027-11-05
+    evidence: demo
+    checks_run: {level1: true, test_pack_runs: 0}
+    registry_updated: true
+    runbook: true
+    run_team_read: false
+    pack_needed: null
+  - id: NG-07-01
+    use: hire.path
+    story: >-
+      As a candidate who has heard nothing for five business
+      days I get a status message saying where my
+      application is and who to ask.
+    sprint: {name: NG-07, start: 2027-10-25, end: 2027-11-05}
+    team: Northgate People Systems
+    line_row: A06
+    mode: act_with_approval
+    classes: [{class: candidate_status, rule: ATS-03,
+               use: path}]
+    tools: [{name: send_status_message, reads:
+             candidate_status, enforced_at: adapter}]
+    cases: {allowed: 9, denied: 3}
+    gate_items: [controls_in_code, eval_levels_1_to_3]
+    hr_owner: Jessica Tran
+    accepted_by: Jessica Tran
+    gate_evidence_ok_by: Tom Reilly
+    accepted_on: 2027-11-12
+    evidence: northgate-staging/NG-07-01
+    checks_run: {level1: true, test_pack_runs: 3}
+    registry_updated: true
+    runbook: true
+    run_team_read: true
+    pack_needed: "no: US field roles only"

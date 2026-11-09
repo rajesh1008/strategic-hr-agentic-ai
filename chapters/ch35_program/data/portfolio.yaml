@@ -1,0 +1,187 @@
+# Hartwell agentic HR program: portfolio board (synthetic).
+# Every event is copied from a decision, gate or go-live the
+# book has already recorded (continuity.md, chapter given).
+# Nothing here is new except the rows marked ch35.
+# kinds: gate (passed), refuse (gate refused, back to `to`),
+#        back (returned to `to` after a finding, no gate),
+#        live (in use for real people), decide (a DR),
+#        stop (stopped or paused), plan (a dated target),
+#        note (recorded, does not move the row).
+# month: true means the book gives only the month; the day
+#        is set to the 1st and the board prints the month.
+program: Hartwell agentic HR program
+window: ["2027-01-01", "2028-06-30"]
+budget_usd: 4000000
+owner: Claire Whitfield
+rows:
+  - id: P01
+    name: A04 screening check
+    owner: Daniel Brooks
+    line: [A04]
+    events:
+      - {date: 2027-04-01, kind: decide, ref: DR-07-01, ch: 7}
+      - {date: 2027-06-14, kind: live, ref: DR-16-01,
+         note: routing line v1.0, ch: 16}
+      - {date: 2027-08-16, kind: decide, ref: DR-21-01, ch: 21}
+      - {date: 2027-11-01, kind: note,
+         note: confirm lane closed (parser change), ch: 23}
+    stage: live
+  - id: P02
+    name: Northgate workflow (Takefen exit)
+    owner: Daniel Brooks
+    line: [A01, A03, A05]
+    events:
+      - {date: 2027-06-21, kind: decide, ref: DR-19-01, ch: 19}
+      - {date: 2027-09-01, kind: plan, note: parallel run,
+         ch: 19}
+      - {date: 2027-10-01, kind: live, note: cutover, ch: 19}
+    stage: live
+  - id: P03
+    name: Decision-export adapter HW4 (Hyderabad build)
+    owner: Jessica Tran
+    line: []
+    events:
+      - {date: 2027-06-22, kind: plan, note: build started, ch: 19}
+      - {date: 2027-09-14, kind: live, note: delivered, ch: 19}
+    stage: live
+  - id: P04
+    name: Hire-to-onboard path v1.0 (US field)
+    owner: Jessica Tran
+    line: [A01, A02, A03, A06]
+    events:
+      - {date: 2027-11-19, kind: decide, ref: DR-24-01, ch: 24}
+      - {date: 2027-11-22, kind: live, ch: 24}
+    stage: live
+  - id: P05
+    name: AskHartwell controlled actions (US)
+    owner: Megan Hale
+    line: [H01, H02]
+    events:
+      - {date: 2027-05-24, kind: decide, ref: DR-14-01, ch: 14}
+      - {date: 2027-07-06, kind: decide, ref: DR-20-01, ch: 20}
+      - {date: 2027-07-26, kind: refuse, gate: Shadow, to: Build,
+         note: golden set G03 and G15, ch: 22}
+      - {date: 2027-08-09, kind: gate, gate: Shadow, ch: 22}
+      - {date: 2027-09-27, kind: gate, gate: Production, ch: 22}
+      - {date: 2027-10-04, kind: live, ch: 22}
+      - {date: 2027-11-23, kind: decide, ref: DR-23-01, ch: 23}
+      - {date: 2028-01-10, kind: decide, ref: DR-26-01, ch: 26}
+    stage: live
+  - id: P06
+    name: Knowledge assistant, manager use (ka.manager)
+    owner: Megan Hale
+    line: [H03]
+    events:
+      - {date: 2027-03-01, month: true, kind: gate,
+         gate: Intent, ch: 17}
+      - {date: 2027-05-01, month: true, kind: gate, gate: Build,
+         ch: 17}
+      - {date: 2027-05-27, kind: gate, gate: Shadow, ch: 17}
+      - {date: 2027-06-09, kind: stop, note: paused, ch: 17}
+      - {date: 2027-07-19, kind: decide, ref: DR-17-01, ch: 17}
+      - {date: 2027-07-21, kind: gate, gate: Shadow,
+         note: re-entered, ch: 17}
+      - {date: 2027-09-13, kind: refuse, gate: Production,
+         to: Build,
+         ref: DR-35-01, ch: 35}
+      - {date: 2027-10-18, kind: gate, gate: Shadow,
+         note: re-entered with band checks, ch: 35}
+      - {date: 2027-12-13, kind: gate, gate: Production, ch: 35}
+      - {date: 2028-01-17, kind: live, note: US and UK managers,
+         ch: 35}
+    stage: live
+  - id: P07
+    name: Attrition model (people analytics)
+    owner: Tom Reilly
+    line: []
+    events:
+      - {date: 2027-03-01, month: true, kind: gate,
+         gate: Intent, ch: 22}
+      - {date: 2027-07-12, kind: gate, gate: Shadow, ch: 22}
+      - {date: 2027-10-18, kind: refuse, gate: Production,
+         to: Build, ref: DR-22-01, ch: 22}
+      - {date: 2028-04-24, kind: decide, ref: DR-28-01, ch: 28}
+    stage: build
+  - id: P08
+    name: Skills inventory H3
+    owner: Erin Castillo
+    line: [F01]
+    events:
+      - {date: 2027-08-10, kind: stop,
+         note: Betriebsrat refused consent to v1, ch: 27}
+      - {date: 2027-08-12, kind: decide, ref: DR-27-01, ch: 27}
+      - {date: 2027-11-01, kind: live,
+         note: US, CA, UK, AU, Hyderabad, ch: 27}
+      - {date: 2028-01-10, kind: live, note: Netherlands, ch: 27}
+      - {date: 2028-06-05, kind: live, note: Germany, ch: 32}
+    stage: live
+  - id: P09
+    name: Automate/Keep Line and signatures
+    owner: Claire Whitfield
+    line: []
+    events:
+      - {date: 2027-03-01, month: true, kind: decide,
+         note: Line v1.0, ch: 11}
+      - {date: 2027-04-01, month: true, kind: decide,
+         note: Line v1.1, ch: 11}
+      - {date: 2028-02-29, kind: decide, note: Line v1.2, ch: 32}
+      - {date: 2028-05-18, kind: decide,
+         note: fourth signature, ch: 32}
+    stage: live
+  - id: P10
+    name: Structured interview FT-SI v1
+    owner: Daniel Brooks
+    line: [A04]
+    events:
+      - {date: 2027-10-04, kind: decide, ref: DR-25-01, ch: 25}
+      - {date: 2027-10-18, kind: live, ch: 25}
+    stage: live
+  - id: P11
+    name: Pay desk and pay-information requests
+    owner: Claire Whitfield
+    line: [C01]
+    events:
+      - {date: 2027-11-22, kind: decide, ref: DR-29-01, ch: 29}
+      - {date: 2028-01-01, kind: live, note: EU Article 7, ch: 29}
+    stage: live
+  - id: P12
+    name: ER case-file assistant (er.casefile)
+    owner: Monica Ferraro
+    line: [G05]
+    events:
+      - {date: 2027-11-15, kind: decide, ref: DR-30-01, ch: 30}
+    stage: live
+  - id: P13
+    name: Energy Services crew assignment agent
+    owner: Megan Hale
+    line: []
+    events:
+      - {date: 2027-08-02, kind: gate, gate: Shadow,
+         note: crew shadow run, ch: 22}
+      - {date: 2027-08-12, kind: back, to: Build,
+         note: induction field missing, ch: 22}
+    stage: build
+  - id: P14
+    name: Quayfen tier-1 transition (450 to 370 seats)
+    owner: Megan Hale
+    line: []
+    events:
+      - {date: 2027-05-01, month: true, kind: decide,
+         note: SOW No. 7 revised, ch: 8}
+      - {date: 2028-03-31, kind: plan, note: 370 seats, ch: 8}
+    stage: live
+  - id: P15
+    name: Gulf permits and status reports
+    owner: Omar Haddad
+    line: []
+    events:
+      - {date: 2027-01-12, kind: decide, ref: DR-09-01,
+         note: no agent, by design, ch: 9}
+    stage: refused
+  - id: P16
+    name: UK and Rotterdam restructuring plan
+    owner: Claire Whitfield
+    line: [H05]
+    events:
+      - {date: 2028-06-20, kind: decide, ref: DR-31-01, ch: 31}
+    stage: decided
