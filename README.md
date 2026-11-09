@@ -1,4 +1,4 @@
-# Strategic HR and Agentic AI: companion code
+# The Strategic HR and Agentic AI Handbook: companion code
 
 Runnable examples, fixtures and evaluation harnesses for the book by Rajesh Ranjan Mahapatra.
 **All people data here is synthetic.** No real person, employer or applicant appears in any fixture.
