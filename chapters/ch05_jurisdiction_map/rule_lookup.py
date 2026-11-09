@@ -57,7 +57,7 @@ def main() -> None:
         when = "now" if r.when == "in force" else r.when[5:]
         if r.outcome == "PAUSED":
             when = "paused"
-        rec.print(f"{flag}{r.lane:<6} {r.rule:<18} {r.duty:<9} "
+        rec.print(f"{flag}{r.lane:<6} {r.rule:<17} {r.duty:<10} "
                   f"{when:<10} {','.join(r.steps)}")
         rec.note(row=vars(r))
     done = sum(1 for r in rows if r.control)

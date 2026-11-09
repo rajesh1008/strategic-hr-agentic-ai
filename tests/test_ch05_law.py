@@ -107,9 +107,10 @@ def test_unknown_duty_rejected(tmp_path):
 def test_hartwell_register_counts():
     wf = reg.load()
     rows, qs = reg.register(wf, RULES, D)
-    assert len(rows) == 15
+    assert len(rows) == 16
     assert sum(1 for r in rows if r.control) == 9
-    assert len(qs) == 4
+    assert len(qs) == 2
+    assert any(r.rule == "NL-WOR-27" for r in rows)
 
 
 def test_horizon_sorted_and_windowed():

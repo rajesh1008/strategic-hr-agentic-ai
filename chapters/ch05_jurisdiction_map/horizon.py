@@ -27,7 +27,8 @@ def main() -> None:
         rec.print(f"{r['date']}{mark} {r['lane']:<6} {r['id']}")
         rec.note(**{**r, "date": r["date"].isoformat()})
     rec.print("~ expected or target date, not a fixed one")
-    rec.print("? date from a secondary source only")
+    if any("secondary" in r["date_basis"] for r in rows):
+        rec.print("? date from a secondary source only")
     undated = [r for r in rules if r["status"] in
                ("pending", "proposed") and not r.get("in_force")
                and not r.get("expected")]

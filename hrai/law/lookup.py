@@ -38,6 +38,7 @@ DUTIES = {
     "BANNED": "the practice is prohibited",
     "LITERACY": "support AI literacy of the staff who use it",
     "CONSULT": "consult on significant workplace change",
+    "WC_CONSENT": "works council consents before the rules change",
     "SAFETY": "manage health and safety risk of the system",
     "COUNSEL": "duties not itemized in the record",
 }
