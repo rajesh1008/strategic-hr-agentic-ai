@@ -71,13 +71,14 @@ def brier(pairs: list[Pair]) -> float:
 def isotonic(pairs: list[Pair]) -> list[tuple[float, float]]:
     """Pool-adjacent-violators fit: a step map from stated
     confidence to measured accuracy that never goes down as
-    confidence goes up. Returns (upper confidence, value)."""
+    confidence goes up. Blocks with equal values merge.
+    Returns (upper confidence, value)."""
     pts = sorted(pairs)
     blocks: list[list[float]] = []   # [hi, sum, n]
     for c, r in pts:
         blocks.append([c, float(r), 1.0])
         while len(blocks) > 1 and (blocks[-2][1] / blocks[-2][2]
-                                   > blocks[-1][1] / blocks[-1][2]):
+                                   >= blocks[-1][1] / blocks[-1][2]):
             hi, s, n = blocks.pop()
             blocks[-1][0] = hi
             blocks[-1][1] += s
@@ -103,6 +104,7 @@ class RoutingLine:
     complete_at: float      # calibrated score to complete
     review_at: float        # below this, escalate
     fail_closed: list[str] = field(default_factory=list)
+    review_if: list[str] = field(default_factory=list)
     owner: str = ""
     review_by: str = ""
 
@@ -116,7 +118,8 @@ class Case:
 
 
 def route(case: Case, line: RoutingLine) -> tuple[str, str]:
-    """Fail closed first; then the score decides the lane."""
+    """Fail closed first; then hard-case flags; then the
+    score decides the lane."""
     if case.proposal in line.fail_closed:
         return "fail_closed", f"proposal {case.proposal}"
     for f in case.flags:
@@ -125,6 +128,9 @@ def route(case: Case, line: RoutingLine) -> tuple[str, str]:
     s = case.score
     if s is None or not 0.0 <= s <= 1.0:
         return "fail_closed", "no usable score"
+    hard = [f for f in case.flags if f in line.review_if]
+    if hard:
+        return "review", "flag " + ",".join(hard)
     if s >= line.complete_at:
         return "complete", f"score {s:.2f}"
     if s >= line.review_at:

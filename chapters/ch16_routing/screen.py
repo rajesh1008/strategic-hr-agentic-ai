@@ -32,6 +32,9 @@ HERE = Path(__file__).resolve().parent
 GZIP = {"Accept-Encoding": "gzip, deflate"}
 # how each model is told not to think before answering
 NO_THINK = {"claude-sonnet-5-5": {"type": "between_tools"}}
+# models that refuse a forced tool call: asked in words, and
+# free to write a line of working before the form
+NO_FORCE = {"claude-sonnet-5-5"}
 SYSTEM = """You screen applications for a recruiter.
 {guidance}
 Read the resume and give: epa608 (true or false),
@@ -74,13 +77,16 @@ def ask(rec, system: str, app: dict, config: str
         ) -> dict | None:
     msgs = [{"role": "user", "content": app["resume"]}]
     if config == "fast":
+        force = model() not in NO_FORCE
+        choice = {"type": "tool", "name": "record_screen"} \
+            if force else {"type": "auto"}
+        ask_in_words = "" if force else \
+            "\nAnswer only by calling record_screen."
         resp = rec.create(
-            max_tokens=400, system=system, messages=msgs,
+            max_tokens=800, system=system + ask_in_words,
+            messages=msgs, tools=[FORM], tool_choice=choice,
             thinking=NO_THINK.get(model(),
                                   {"type": "disabled"}),
-            tools=[FORM],
-            tool_choice={"type": "tool",
-                         "name": "record_screen"},
             extra_headers=GZIP)
         for b in resp.content:
             if b.type == "tool_use":

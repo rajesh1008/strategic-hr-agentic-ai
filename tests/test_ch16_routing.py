@@ -4,7 +4,8 @@ from hrai import routing as rt
 
 LINE = rt.RoutingLine(step="A04", version="t", model="m",
                       complete_at=0.9, review_at=0.7,
-                      fail_closed=["not_meets", "rehire"])
+                      fail_closed=["not_meets", "rehire"],
+                      review_if=["NEAR"])
 
 
 def test_fail_closed_beats_any_score():
@@ -68,3 +69,17 @@ def test_overlap_counts_once():
     r2 = {"field": True, "start": 6, "end": 18}
     r3 = {"field": False, "start": 0, "end": 40}
     assert make_data.field_months([r1, r2, r3]) == 18
+
+
+def test_review_flag_beats_high_score():
+    c = rt.Case("x", "meets", 0.99, flags=["NEAR"])
+    assert rt.route(c, LINE)[0] == "review"
+
+
+def test_flags_from_text():
+    from chapters.ch16_routing.flags import flags
+    text = ("Experience\n- A, Jan 2025 to present\n"
+            "- B, Mar 2025 to Jan 2026\nCertifications")
+    assert "OVERLAP" in flags(text, 28)
+    assert "NEAR" in flags(text, 28)
+    assert "NO_COUNT" in flags(text, "n/a")
