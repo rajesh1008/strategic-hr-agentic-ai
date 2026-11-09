@@ -5,7 +5,7 @@ taxonomy. Step 2 draws a random sample of 600 tickets, which two
 advisers labeled with the taxonomy, and estimates the share of
 each route with a 95% interval. No model is used.
 
-Run: python -m chapters.ch10_diagnose.export
+Run: HRAI_MODEL=no-model python -m chapters.ch10_diagnose.export
 """
 from __future__ import annotations
 
@@ -62,8 +62,10 @@ def main() -> None:
     p("  " + ", ".join(f"{rt} {gg[rt]}" for rt in ROUTES))
     sens = [r for r in s if r["sensitive"] == "1"]
     hid = Counter(r["system_category"] for r in sens)
-    p(f"Disclosures inside routine tickets: {len(sens)}, filed as "
-      + ", ".join(f"{k} {v}" for k, v in hid.most_common()))
+    p(f"Disclosures inside routine tickets: {len(sens)}")
+    p("  filed as " + ", ".join(
+        f"{k} {v}" for k, v in hid.most_common(3)) + ", other "
+      + str(sum(v for _, v in hid.most_common()[3:])))
     top = Counter(r["label"] for r in s).most_common(8)
     p("Largest categories in the sample:")
     for k, v in top:
@@ -74,8 +76,8 @@ def main() -> None:
     pa = sum(r["division"] == "HES" and r["country"] == "CA"
              for r in pe)
     p(f"Hartwell Energy Services, Alberta: {len(hes):,} tickets "
-      f"({100 * len(hes) / len(rows):.1f}% of all); in the "
-      f"sample, {pa} of {len(pe)} pay-error tickets")
+      f"({100 * len(hes) / len(rows):.1f}%)")
+    p(f"  in the sample: {pa} of {len(pe)} pay-error tickets")
     rec.note(sample_ids=[r["ticket_id"] for r in s],
              routes=dict(g), general_inquiry=dict(gg))
     print(f"\nRun record: {rec.save()}")

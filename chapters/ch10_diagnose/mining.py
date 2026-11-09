@@ -9,7 +9,7 @@ Time-to-nothing: for an AskHartwell conversation that ended with
 no accepted answer, no ticket and no change, the minutes from the
 first message to the last event.
 
-Run: python -m chapters.ch10_diagnose.mining
+Run: HRAI_MODEL=no-model python -m chapters.ch10_diagnose.mining
 """
 from __future__ import annotations
 
@@ -157,10 +157,10 @@ def main() -> None:
     p(f"Handoffs promised: {s['promised']:,}; no ticket created: "
       f"{s['false_handoffs']:,} "
       f"({pct(s['false_handoffs'] / s['promised'])})")
-    p(f"Time-to-nothing ({s['ttn_n']:,} conversations): mean "
-      f"{s['ttn_mean']:.1f} min, median {s['ttn_median']:.1f}, "
-      f"90th percentile {s['ttn_p90']:.1f}")
-    p(f"Employee hours in conversations that ended with nothing: "
+    p(f"Time-to-nothing, {s['ttn_n']:,} conversations:")
+    p(f"  mean {s['ttn_mean']:.1f} min, median "
+      f"{s['ttn_median']:.1f}, 90th percentile {s['ttn_p90']:.1f}")
+    p(f"  employee hours spent: "
       f"{s['ttn_n'] * s['ttn_mean'] / 60:,.0f}")
     top = Counter(path(c) for c in cases.values()).most_common(5)
     p("Five most common paths:")
@@ -168,8 +168,9 @@ def main() -> None:
         p(f"  {n:>6,}  " + " > ".join(v))
     p("Tickets resolved, by Meridian site:")
     for site, d in sorted(by_site(cases).items()):
-        p(f"  {site:<7} {d['n']:>5,} tickets; ping-pong "
-          f"{pct(d['pp'] / d['n'])}; first pick-up median "
+        p(f"  {site:<7} {d['n']:>6,} tickets; ping-pong "
+          f"{pct(d['pp'] / d['n'])}")
+        p(f"          first pick-up median "
           f"{st.median(d['first']):.1f} h; resolved median "
           f"{st.median(d['days']):.1f} days")
     rec.note(summary={k: v for k, v in s.items()

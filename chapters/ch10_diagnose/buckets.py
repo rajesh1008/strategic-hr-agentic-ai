@@ -7,7 +7,7 @@ in a bucket estimates the share of time. The interval resamples
 whole people (a cluster bootstrap), because one person's answers
 are not independent of each other. No model is used.
 
-Run: python -m chapters.ch10_diagnose.buckets
+Run: HRAI_MODEL=no-model python -m chapters.ch10_diagnose.buckets
 """
 from __future__ import annotations
 

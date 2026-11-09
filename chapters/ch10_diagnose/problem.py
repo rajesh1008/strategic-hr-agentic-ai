@@ -5,7 +5,7 @@ field, no number for today, no number for success, an owner who
 is a department or a vendor, or a tool named where the problem
 should be. No model is used.
 
-Run: python -m chapters.ch10_diagnose.problem
+Run: HRAI_MODEL=no-model python -m chapters.ch10_diagnose.problem
 """
 from __future__ import annotations
 

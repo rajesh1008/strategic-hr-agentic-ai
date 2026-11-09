@@ -6,7 +6,7 @@ integration layer; one that changes something for a person with
 no named approver is stalled at the authority layer. Only a pilot
 with a baseline, kill criteria and a run owner continues.
 
-Run: python -m chapters.ch10_diagnose.pilots
+Run: HRAI_MODEL=no-model python -m chapters.ch10_diagnose.pilots
 """
 from __future__ import annotations
 
@@ -53,7 +53,7 @@ def main() -> None:
     p = rec.print
     pilots = load()
     p(f"HR AI pilots found: {len(pilots)}")
-    p("     " + " ".join(f"{c[:5]:>5}" for c in CHECKS)
+    p("     " + " ".join(f"{c.split()[0][:5]:>5}" for c in CHECKS)
       + "  verdict")
     tally: Counter = Counter()
     for pl in pilots:

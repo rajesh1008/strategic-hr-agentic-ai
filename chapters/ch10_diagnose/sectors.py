@@ -6,7 +6,7 @@ shift, and what night-shift workers ask about.
 Westbridge City Council: process mining on HR casework.
 All synthetic. No model is used.
 
-Run: python -m chapters.ch10_diagnose.sectors
+Run: HRAI_MODEL=no-model python -m chapters.ch10_diagnose.sectors
 """
 from __future__ import annotations
 
@@ -34,11 +34,11 @@ def lakemont(p) -> None:
     allt = sched + sum(int(r["other_tickets"]) for r in w)
     p(f"Lakemont Health: {len(w)} wards, {allt:,} HR tickets, "
       f"scheduling {100 * sched / allt:.0f}%")
-    p(f"  Roster published under 14 days ahead: {len(late)} wards,"
-      f" {st.mean(r['rate'] for r in late):.0f} scheduling "
-      f"tickets per 100 staff")
-    p(f"  Published 14 days or more ahead: {len(early)} wards, "
-      f"{st.mean(r['rate'] for r in early):.0f} per 100 staff")
+    p("  Scheduling tickets per 100 staff, by roster lead time:")
+    p(f"    under 14 days: {len(late):>2} wards, "
+      f"{st.mean(r['rate'] for r in late):.0f}")
+    p(f"    14 days or more: {len(early):>2} wards, "
+      f"{st.mean(r['rate'] for r in early):.0f}")
 
 
 def brightwater(p) -> None:
@@ -48,8 +48,8 @@ def brightwater(p) -> None:
         qs = [r for r in q if r["shift"] == s]
         hrs = [float(r["hours_to_first_human"]) for r in qs]
         top = Counter(r["category"] for r in qs).most_common(1)[0]
-        p(f"  {s:<8}{len(qs):>4} queries; first human answer median"
-          f" {st.median(hrs):>5.1f} h; top: {top[0]} "
+        p(f"  {s:<8}{len(qs):>4} queries, {st.median(hrs):>4.1f} h "
+          f"to a person; top {top[0]} "
           f"{100 * top[1] / len(qs):.0f}%")
 
 
@@ -67,12 +67,14 @@ def westbridge(p) -> None:
     open_ = [c for c in cases.values()
              if c[-1]["activity"] != "Case closed"]
     stuck = Counter(c[-1]["activity"] for c in open_)
-    p(f"Westbridge casework: {len(cases)} cases opened July to "
-      f"December 2026; open on December 31: {len(open_)}")
+    p(f"Westbridge casework: {len(cases)} cases opened "
+      f"July to December 2026")
+    p(f"  open on December 31: {len(open_)}; median wait:")
     for k, v in waits.items():
-        p(f"  {k:<46} median {st.median(v):>4.1f} days")
-    p("  Open cases by last step: " + ", ".join(
-        f"{k} {v}" for k, v in stuck.most_common()))
+        p(f"  {k:<42}{st.median(v):>5.1f} days")
+    p("  Open cases by last step:")
+    for k, v in stuck.most_common():
+        p(f"    {k:<38}{v:>4}")
 
 
 def main() -> None:

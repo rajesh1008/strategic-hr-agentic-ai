@@ -116,7 +116,11 @@ def main() -> None:
         if g == "person" and m is not None and route(
                 str(m.get("category")), m.get("sensitive") is True,
                 m.get("chasing") is True) != "person":
-            p(f"  MISSED {t['ticket_id']} {t['text'][:70]}")
+            p(f"  MISSED {t['ticket_id']}: {t['text'][:44]}")
+    use = [c["response"]["usage"] for c in rec.calls]
+    p(f"Tokens: {sum(u['input_tokens'] for u in use):,} in, "
+      f"{sum(u['output_tokens'] for u in use):,} out, "
+      f"{len(use)} calls")
     print(f"\nRun record: {rec.save()}")
 
 
