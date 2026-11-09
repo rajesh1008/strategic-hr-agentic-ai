@@ -24,6 +24,7 @@ from __future__ import annotations
 
 import json
 import sys
+import textwrap
 from pathlib import Path
 
 import yaml
@@ -97,22 +98,28 @@ def main() -> None:
     name = sys.argv[1] if len(sys.argv) > 1 else \
         "pack_attrition"
     pack = yaml.safe_load((DATA / f"{name}.yaml").read_text())
-    rec = RunRecorder("ch22", f"gate_{name.removeprefix('pack_')}")
+    ex = "gate_" + name.removeprefix("pack_")
+    rec = RunRecorder("ch22", ex)
     r = review(pack)
+
+    def say(text, lead="", more="  "):
+        for i, ln in enumerate(textwrap.wrap(
+                " ".join(str(text).split()), 58)):
+            rec.print((lead if i == 0 else more) + ln)
     rec.print(f"{pack['system']}: {r['gate']} gate")
-    rec.print(f"asks: {pack['asks']}")
+    say(f"asks: {pack['asks']}")
     for item, probs in r["items"].items():
         rec.print(f"  {'ok  ' if not probs else 'FAIL'} {item}")
         for p in probs:
-            rec.print(f"       {p}")
+            say(p, "       ", "       ")
     rec.print(f"decision: {r['decision']}")
     if r["decision"] == "REFUSE":
         rec.print("--- refusal record")
         rec.print(f"owner: {pack['accountable_executive']}")
         rec.print(f"prepared by: {pack['prepared_by']}")
-        rec.print("reasons: " + ", ".join(
+        say("reasons: " + ", ".join(
             k for k, v in r["items"].items() if v))
-        rec.print(f"to reopen: {' '.join(pack['to_reopen'].split())}")
+        say(f"to reopen: {pack['to_reopen']}")
     rec.note(review=r)
     print(rec.save())
 
