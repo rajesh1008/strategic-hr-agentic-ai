@@ -80,11 +80,12 @@ TAGS = {
 }
 
 # Evidence each status needs, on top of metric_id, value and version.
+_BASE = ("measured_by", "records", "n", "period")
 REQUIRED = {
-    Status.DEMONSTRATED: ("measured_by", "records", "n", "period"),
-    Status.TESTED: ("measured_by", "records", "n", "period", "method"),
-    Status.SHADOW: ("measured_by", "records", "n", "period", "method", "baseline"),
-    Status.PRODUCTION: ("measured_by", "records", "n", "period", "method", "baseline", "owner"),
+    Status.DEMONSTRATED: _BASE,
+    Status.TESTED: _BASE + ("method",),
+    Status.SHADOW: _BASE + ("method", "baseline"),
+    Status.PRODUCTION: _BASE + ("method", "baseline", "owner"),
 }
 
 # Share of a measured value the base case may count, by status (rule 5).
@@ -140,25 +141,32 @@ class Claim:
 
     # -- evidence -----------------------------------------------------------------------
     def add(self, m: Measurement, on: str = "") -> Status:
-        """Attach a measurement if it is admissible; return the new effective status."""
+        """Attach admissible evidence; return the new status."""
         level = m.level
         if self.quarantined and level > Status.CLAIMED:
-            raise LedgerError(f"{self.claim_id} is quarantined: resolve the source before testing it")
+            raise LedgerError(f"{self.claim_id} is quarantined: "
+                              "resolve the source first")
         if m.metric_id != self.metric_id:
-            raise LedgerError(f"metric mismatch: claim measures {self.metric_id!r}, "
-                              f"evidence measures {m.metric_id!r}")
+            raise LedgerError(
+                f"metric mismatch: claim measures "
+                f"{self.metric_id!r}, evidence {m.metric_id!r}")
         if level == Status.CLAIMED:
             raise LedgerError("a claim is not evidence for itself")
-        missing = [k for k in REQUIRED[level] if not getattr(m, k)]
+        missing = [k for k in REQUIRED[level]
+                   if not getattr(m, k)]
         if missing:
-            raise LedgerError(f"{level.label} needs {', '.join(missing)}")
-        if level > Status.DEMONSTRATED and _same_party(m.measured_by, self.claimant):
-            raise LedgerError(f"{level.label} must be measured by us, not by {self.claimant}")
+            raise LedgerError(
+                f"{level.label} needs {', '.join(missing)}")
+        if (level > Status.DEMONSTRATED
+                and _same_party(m.measured_by, self.claimant)):
+            raise LedgerError(f"{level.label} must be measured "
+                              f"by us, not by {self.claimant}")
         before = self.effective_status(m.version)
         self.measurements.append(m)
         after = self.effective_status(m.version)
-        self.history.append({"on": on, "from": before.label, "to": after.label,
-                             "value": m.value, "version": m.version, "n": m.n})
+        self.history.append({
+            "on": on, "from": before.label, "to": after.label,
+            "value": m.value, "version": m.version, "n": m.n})
         return after
 
     def contest(self, by: str, on: str = "") -> None:
@@ -181,10 +189,12 @@ class Claim:
         top = max(m.level for m in ms)
         return [m for m in ms if m.level == top][-1]
 
-    def board_number(self, version: str | None = None) -> float | None:
-        """Rule 5: only a production measurement may go in front of a board."""
+    def board_number(self, version=None) -> float | None:
+        """Rule 5: only production evidence reaches a board."""
         b = self.best(version)
-        return b.value if b and b.level == Status.PRODUCTION else None
+        if b and b.level == Status.PRODUCTION:
+            return b.value
+        return None
 
     def case_value(self, case: str = "base", version: str | None = None) -> float:
         weights = BASE_CASE_WEIGHT if case == "base" else PLANNING_CASE_WEIGHT

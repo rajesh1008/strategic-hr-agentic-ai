@@ -9,7 +9,7 @@ calculator counts it three ways:
 
 Hours released minus oversight hours added is the capacity the case creates. It is shown
 in hours and FTE-equivalents with headcount_change fixed by the case (Hartwell: 0). Money
-appears only as licence and run cost against cash that actually stops.
+appears only as license and run cost against cash that actually stops.
 
 Run:  HRAI_MODEL=no-model python -m chapters.ch04_claim_ledger.business_case hartwell-screening
 """

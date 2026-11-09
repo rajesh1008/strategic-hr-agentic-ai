@@ -26,8 +26,10 @@ METRIC = "screening_minutes_per_application"
 
 def mean_minutes(apps, arm, vendor_rule=False):
     xs = [a for a in apps if a["arm"] == arm]
-    if vendor_rule:  # Talentra counts auto-closed applications as zero minutes
-        return sum(0 if a["band"] == "bottom" else a["minutes"] for a in xs) / len(xs)
+    if vendor_rule:
+        # Talentra counts auto-closed applications as 0 minutes
+        return sum(0 if a["band"] == "bottom" else a["minutes"]
+                   for a in xs) / len(xs)
     return sum(a["minutes"] for a in xs) / len(xs)
 
 
