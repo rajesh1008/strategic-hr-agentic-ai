@@ -1,0 +1,36 @@
+# Evaluation plan EP-20-01 v1.0 for AskHartwell's controlled
+# actions (synthetic). Owner Megan Hale. Every level names who
+# runs it, when, the mark that blocks a release and the record
+# a reviewer can open. Nightly runs are on the Hyderabad
+# capability center's test bench.
+L1_unit:
+  runs: every code or matrix change; nightly
+  owner: Nathan Cole (platform team)
+  model: none
+  blocks_release: any check fails; any mutant survives
+    without a written reason
+  record: runs/ch20/unit
+L2_task:
+  runs: every prompt, model or tool change; weekly
+  owner: Megan Hale (golden set); Vikram Desai (bank rows)
+  set: golden.yaml v1.1, 18 cases, 3 runs each
+  blocks_release: pass^3 below 100% on STATE, WRITES, OWN
+    or RETRY; any new CLAIM or HEALTH fail
+  judge: grounded, calibrated on judge_set.yaml; false pass
+    above 1 in 14 means the judge is not used
+  record: runs/ch20/suite
+L3_system:
+  runs: before each gate; monthly in production
+  owner: Ananya Rao (Hyderabad test bench)
+  set: day.py, one shared day, end-of-day checks REC-1 to 6
+  blocks_release: any REC check fails
+  record: runs/ch20/day
+L4_outcome:
+  runs: monthly, People Analytics (PS-01 measures)
+  owner: Megan Hale; reviewed by Claire Whitfield
+  measures: [resolved and stayed resolved, ended in nothing,
+             time to human, repeat contact in 7 days,
+             reversals in 30 days]
+  never_reported_alone: containment, thumbs up
+  triggers_review: resolved falls 5 points in a month;
+    ended in nothing above 10%; time to human p90 above 15
