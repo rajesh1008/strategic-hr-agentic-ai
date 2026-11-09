@@ -2,7 +2,7 @@
 
 Book sections: "The weekend the software decided", "Ashby & Lowe:
 the switch nobody read" and "Brightwater: the chatbot that
-cancelled". Deterministic counts over synthetic fixtures; no model.
+canceled". Deterministic counts over synthetic fixtures; no model.
 
 Run:  HRAI_MODEL=no-model python -m \\
         chapters.ch01_moved_too_fast.incidents
@@ -85,9 +85,9 @@ def brightwater(p) -> dict:
     both = [x for x in lost if x["candidate_told"] == "none"]
     p("BRIGHTWATER  plant chatbot, one week at OH-2")
     p(f"  interviews booked by the chatbot  {len(b):>5}")
-    p(f"  cancelled by the chatbot          {len(can):>5}")
-    p(f"  cancelled and never rebooked      {len(lost):>5}")
-    p(f"  cancelled, candidate not told     {len(silent):>5}")
+    p(f"  canceled by the chatbot           {len(can):>5}")
+    p(f"  canceled and never rebooked       {len(lost):>5}")
+    p(f"  canceled, candidate not told      {len(silent):>5}")
     p(f"  never rebooked and never told     {len(both):>5}")
     return {"booked": len(b), "cancelled": len(can),
             "not_rebooked": len(lost), "not_told": len(silent),
