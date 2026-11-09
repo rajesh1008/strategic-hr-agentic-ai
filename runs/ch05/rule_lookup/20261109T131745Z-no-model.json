@@ -1,7 +1,7 @@
 {
-  "run_id": "ch05/rule_lookup/20261109T131345Z",
-  "started_utc": "2026-11-09T13:13:45.854531+00:00",
-  "git_commit": "e6ce8d8",
+  "run_id": "ch05/rule_lookup/20261109T131745Z",
+  "started_utc": "2026-11-09T13:17:45.505497+00:00",
+  "git_commit": "61db1fb",
   "git_dirty": false,
   "model": "no-model",
   "sdk": "anthropic-python 2.4.0",
@@ -57,6 +57,7 @@
           "R-020",
           "R-021",
           "R-018",
+          "R-245",
           "R-143"
         ],
         "steps": [
@@ -81,6 +82,7 @@
           "R-020",
           "R-021",
           "R-018",
+          "R-245",
           "R-143"
         ],
         "steps": [
@@ -105,6 +107,7 @@
           "R-020",
           "R-021",
           "R-018",
+          "R-245",
           "R-143"
         ],
         "steps": [
@@ -138,6 +141,26 @@
         ],
         "owner": "HR learning lead",
         "control": "recruiter training record, Rotterdam"
+      }
+    },
+    {
+      "row": {
+        "lane": "NL",
+        "rule": "NL-WOR-27",
+        "duty": "WC_CONSENT",
+        "when": "in force",
+        "outcome": "APPLIES",
+        "evidence": [
+          "R-246"
+        ],
+        "steps": [
+          "W2",
+          "W3",
+          "W5",
+          "W6"
+        ],
+        "owner": "Country HR director",
+        "control": ""
       }
     },
     {
@@ -190,7 +213,8 @@
         "outcome": "PAUSED",
         "evidence": [
           "R-001",
-          "R-002"
+          "R-002",
+          "R-247"
         ],
         "steps": [
           "W2",
@@ -211,7 +235,8 @@
         "outcome": "PAUSED",
         "evidence": [
           "R-001",
-          "R-002"
+          "R-002",
+          "R-247"
         ],
         "steps": [
           "W2",
@@ -232,7 +257,8 @@
         "outcome": "PAUSED",
         "evidence": [
           "R-001",
-          "R-002"
+          "R-002",
+          "R-247"
         ],
         "steps": [
           "W2",
@@ -253,7 +279,8 @@
         "outcome": "PAUSED",
         "evidence": [
           "R-001",
-          "R-002"
+          "R-002",
+          "R-247"
         ],
         "steps": [
           "W2",
@@ -350,32 +377,10 @@
         "W5",
         "W6"
       ]
-    },
-    {
-      "question": "Dutch works-council consent rights: no record",
-      "site": "NL",
-      "lane": "NL",
-      "rule": "",
-      "steps": [
-        "W2",
-        "W3",
-        "W5",
-        "W6"
-      ]
-    },
-    {
-      "question": "no rules recorded for NL",
-      "site": "NL",
-      "lane": "NL",
-      "rule": "",
-      "steps": [
-        "W1",
-        "W4"
-      ]
     }
   ],
   "stdout": [
-    "Rules loaded: 41 (30 duty rules), unchecked (VERIFY): 41",
+    "Rules loaded: 42 (31 duty rules), unchecked (VERIFY): 42",
     "Workflow: field hiring, 6 steps, as of 2027-02-15",
     "",
     "Lane    Site        Vendor default    Line design",
@@ -383,38 +388,37 @@
     "US-IL   Joliet      2 rules, 3 duties 2 rules, 3 duties",
     "CA-ON   Toronto     1 rule, 1 duty    1 rule, 1 duty",
     "UK      Manchester  2 rules, 3 duties 1 rule, 1 duty",
-    "NL      Rotterdam   3 rules, 6 duties 2 rules, 4 duties",
+    "NL      Rotterdam   4 rules, 7 duties 3 rules, 5 duties",
     "AU-QLD  Brisbane    1 rule, 1 duty    1 rule, 1 duty",
     "Dropped when a person decides: EU-GDPR-22, UK-DUAA-22A",
     "",
-    "Obligation register (Line design): 15 rows",
-    "-- AU     AU-APP-1-7         POLICY    now        W2",
-    "ok CA-ON  CA-ON-ESA-POSTING  POSTING   now        W2,W3,W5,W6",
-    "-- EU     EU-AIA-ANNEX3-4    COUNSEL   2027-12-02 W1,W2,W3,W5,W6",
-    "-- EU     EU-AIA-ANNEX3-4    OVERSIGHT 2027-12-02 W1,W2,W3,W5,W6",
-    "-- EU     EU-AIA-ANNEX3-4    REPS      2027-12-02 W1,W2,W3,W5,W6",
-    "ok EU     EU-AIA-ART4        LITERACY  now        W1,W2,W3,W5,W6",
-    "ok UK     UK-EQA-S19         NO_EFFECT now        W2,W3,W5,W6",
-    "ok US     US-FED-TITLE7      NO_EFFECT now        W2,W3,W5,W6",
-    "-- US-CO  US-CO-SB26-189     CORRECT   paused     W2,W3,W5,W6",
-    "-- US-CO  US-CO-SB26-189     EXPLAIN   paused     W2,W3,W5,W6",
-    "ok US-CO  US-CO-SB26-189     NOTICE    paused     W2,W3,W5,W6",
-    "ok US-CO  US-CO-SB26-189     REVIEW    paused     W2,W3,W5,W6",
-    "ok US-IL  US-IL-HRA-AI       NOTICE    now        W2,W3,W5,W6",
-    "ok US-IL  US-IL-HRA-AI       NO_EFFECT now        W2,W3,W5,W6",
-    "ok US-IL  US-IL-HRA-AI       NO_PROXY  now        W2,W3,W5,W6",
-    "Duties with a control: 9 of 15",
+    "Obligation register (Line design): 16 rows",
+    "-- AU     AU-APP-1-7        POLICY     now        W2",
+    "ok CA-ON  CA-ON-ESA-POSTING POSTING    now        W2,W3,W5,W6",
+    "-- EU     EU-AIA-ANNEX3-4   COUNSEL    2027-12-02 W1,W2,W3,W5,W6",
+    "-- EU     EU-AIA-ANNEX3-4   OVERSIGHT  2027-12-02 W1,W2,W3,W5,W6",
+    "-- EU     EU-AIA-ANNEX3-4   REPS       2027-12-02 W1,W2,W3,W5,W6",
+    "ok EU     EU-AIA-ART4       LITERACY   now        W1,W2,W3,W5,W6",
+    "-- NL     NL-WOR-27         WC_CONSENT now        W2,W3,W5,W6",
+    "ok UK     UK-EQA-S19        NO_EFFECT  now        W2,W3,W5,W6",
+    "ok US     US-FED-TITLE7     NO_EFFECT  now        W2,W3,W5,W6",
+    "-- US-CO  US-CO-SB26-189    CORRECT    paused     W2,W3,W5,W6",
+    "-- US-CO  US-CO-SB26-189    EXPLAIN    paused     W2,W3,W5,W6",
+    "ok US-CO  US-CO-SB26-189    NOTICE     paused     W2,W3,W5,W6",
+    "ok US-CO  US-CO-SB26-189    REVIEW     paused     W2,W3,W5,W6",
+    "ok US-IL  US-IL-HRA-AI      NOTICE     now        W2,W3,W5,W6",
+    "ok US-IL  US-IL-HRA-AI      NO_EFFECT  now        W2,W3,W5,W6",
+    "ok US-IL  US-IL-HRA-AI      NO_PROXY   now        W2,W3,W5,W6",
+    "Duties with a control: 9 of 16",
     "No control yet, by owner:",
-    "  Country HR director: EU/REPS",
+    "  Country HR director: EU/REPS, NL/WC_CONSENT",
     "  Employment counsel: EU/COUNSEL",
     "  Group DPO: AU/POLICY",
     "  HR Shared Services lead: US-CO/CORRECT",
     "  Head of TA: EU/OVERSIGHT, US-CO/EXPLAIN",
     "",
-    "Questions for counsel: 4",
+    "Questions for counsel: 2",
     "  AU-QLD no rules recorded for AU-QLD",
-    "  CA-ON  PIPEDA: no record in the register",
-    "  NL     Dutch works-council consent rights: no record",
-    "  NL     no rules recorded for NL"
+    "  CA-ON  PIPEDA: no record in the register"
   ]
 }
