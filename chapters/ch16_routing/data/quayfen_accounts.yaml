@@ -1,0 +1,104 @@
+# Quayfen Outsourcing (synthetic): one ticket-sorting agent
+# across three client accounts. Each client owns its own
+# category list. "person" categories fail closed whatever
+# the score. Tickets are written from the templates below
+# by quayfen.py with a fixed seed; the label is the
+# category the template was written for.
+accounts:
+  HARTWELL:
+    client: Hartwell Infrastructure & Services (synthetic)
+    categories:
+      LEAVE_BAL: {route: answer, about: leave balance or leave policy question}
+      PAYSLIP_Q: {route: answer, about: question about a payslip line}
+      ADDRESS: {route: act, about: change of home address}
+      LETTER: {route: act, about: employment verification letter}
+      PAY_DISPUTE: {route: person, about: says pay is wrong or missing}
+      CONDUCT: {route: person, about: complaint about a manager or colleague}
+    templates:
+      LEAVE_BAL:
+        - How many vacation days do I have left this year?
+        - Can I carry unused PTO into next year?
+        - What's my sick leave balance, I need a day off {when}
+      PAYSLIP_Q:
+        - What does the line {code} on my pay stub mean?
+        - Why is there a deduction called {code} this month?
+      ADDRESS:
+        - I moved, new address is {addr}, please update
+        - Please change my home address to {addr}
+      LETTER:
+        - I need a letter confirming my job for my landlord
+        - Can I get proof of employment for a car loan?
+      PAY_DISPUTE:
+        - My overtime from {when} is not on my check
+        - I was paid for 32 hours but I worked 40
+        - The {code} amount is wrong, it should be higher
+      CONDUCT:
+        - My supervisor keeps changing my shifts as punishment
+        - A coworker made comments about my religion again
+  AURELIA:
+    client: Aurelia Telecom (synthetic)
+    categories:
+      SCHEDULE_Q: {route: answer, about: question about the published schedule or shift rules}
+      SWAP: {route: act, about: request to swap a shift with a named colleague}
+      PAYSLIP_Q: {route: answer, about: question about a payslip line}
+      TRAINING: {route: act, about: enroll in a course or certification}
+      PAY_DISPUTE: {route: person, about: says pay is wrong or missing}
+      MONITORING: {route: person, about: objects to call scoring, recording or monitoring}
+    templates:
+      SCHEDULE_Q:
+        - When is next week's roster published?
+        - How many weekend shifts am I required to work?
+        - Is {when} a paid holiday for the contact center?
+      SWAP:
+        - Can I swap my {when} shift with Sam on my team?
+        - I'd like to trade shifts with Lee for {when}
+      PAYSLIP_Q:
+        - What is the {code} line on my pay stub?
+        - Why did my shift premium show as {code}?
+      TRAINING:
+        - Please sign me up for the fiber splicing course
+        - I want to enroll in the team lead program
+      PAY_DISPUTE:
+        - My night premium for {when} is missing
+        - I think my pay is short, the {code} looks wrong
+      MONITORING:
+        - Why was my call scored low, nobody listened to it
+        - I don't agree with the quality score on my calls from {when}
+        - Who can see the recordings of my calls?
+  COBBLEFORD:
+    client: Cobbleford Bank (synthetic)
+    categories:
+      LEAVE_BAL: {route: answer, about: leave balance or leave policy question}
+      PAYSLIP_Q: {route: answer, about: question about a payslip line}
+      BANK_DETAILS: {route: act, about: change of bank account for salary}
+      CERT_STATUS: {route: answer, about: question about own regulatory certification status or dates}
+      PAY_DISPUTE: {route: person, about: says pay or bonus is wrong or missing}
+      FITNESS: {route: person, about: anything about conduct, fitness and propriety, or a regulatory reference}
+      CONDUCT: {route: person, about: complaint about a manager or colleague}
+    templates:
+      LEAVE_BAL:
+        - How much annual leave do I have left?
+        - Do I need to take two weeks in a row this year?
+      PAYSLIP_Q:
+        - What is the {code} deduction on my payslip?
+        - Why is my {code} line different this month?
+      BANK_DETAILS:
+        - Please pay my salary into my new account from {when}
+        - I changed banks, how do I update where my pay goes?
+      CERT_STATUS:
+        - When is my annual certification due?
+        - Has my certification been renewed for this year?
+      PAY_DISPUTE:
+        - My bonus deferral amount looks wrong
+        - The {code} on my payslip is lower than agreed
+      FITNESS:
+        - I was asked for a regulatory reference about a former colleague
+        - My certification was not renewed, why?
+        - HR mentioned a conduct rule breach, what happens now?
+      CONDUCT:
+        - My manager shouts at the team in meetings
+        - A colleague keeps sending me inappropriate messages
+fills:
+  when: [last Friday, the 14th, next Saturday, two weeks ago, the bank holiday]
+  code: [SHIFT DIFF, 401K, NI ADJ, BENEFIT IMP, OT 1.5, RETRO]
+  addr: [14 Elm Street Joliet IL, 220 Pine Road Houston TX, 9 Mill Lane Leeds]

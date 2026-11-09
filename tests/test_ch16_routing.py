@@ -83,3 +83,19 @@ def test_flags_from_text():
     assert "OVERLAP" in flags(text, 28)
     assert "NEAR" in flags(text, 28)
     assert "NO_COUNT" in flags(text, "n/a")
+
+
+def test_quayfen_tickets_seeded():
+    from chapters.ch16_routing.quayfen import tickets
+    a, _ = tickets()
+    b, _ = tickets()
+    assert a == b and len(a) == 135
+    assert all(t["_synthetic"] for t in a)
+
+
+def test_person_category_fails_closed_at_any_score():
+    line = rt.RoutingLine(step="t", version="1", model="m",
+                          complete_at=0.8, review_at=0.5,
+                          fail_closed=["person"])
+    assert rt.route(rt.Case("x", "person", 0.99),
+                    line)[0] == "fail_closed"

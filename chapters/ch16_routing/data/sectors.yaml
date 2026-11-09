@@ -1,0 +1,43 @@
+# Sector fixtures for Chapter 16. Every number is synthetic.
+crossfield:
+  # Crossfield Staffing's audit of 2,000 shift matches,
+  # July to September 2026: the matcher's score, binned, and
+  # how many matches a coordinator judged right (worker held
+  # the site's required certificate, lived within the travel
+  # limit and was free for the whole shift)
+  audit:
+    - {lo: 0.95, n: 520, right: 509}
+    - {lo: 0.90, n: 610, right: 580}
+    - {lo: 0.85, n: 380, right: 341}
+    - {lo: 0.80, n: 240, right: 199}
+    - {lo: 0.75, n: 150, right: 111}
+    - {lo: 0.00, n: 100, right: 52}
+  peak_week_matches: 6200
+  review_minutes: 4
+  coordinator_review_hours: 210
+pennant:
+  # Pennant Stores' seasonal store-associate applications.
+  # The vendor's fit score, binned, for applicants who met
+  # the posted availability and for those who did not
+  # (shares within each group, from a 600-application audit)
+  met: {0.9: 0.46, 0.8: 0.31, 0.6: 0.15, 0.0: 0.08}
+  not_met: {0.9: 0.05, 0.8: 0.12, 0.6: 0.28, 0.0: 0.55}
+  advance_at: 0.8
+  months:
+    September: {applications: 3100, met_share: 0.64}
+    October: {applications: 2700, met_share: 0.52}
+    November: {applications: 3200, met_share: 0.36}
+lakemont:
+  # Lakemont Health: agency-nurse credential checks in
+  # 2027 Q1 (nurses supplied by Crossfield)
+  checks: 1240
+  exact_active: 1131       # license number and name match;
+                           # board says active
+  exact_lapsed: 20         # match; board says lapsed
+  residual:
+    name_mismatch: 51      # e.g. a married name
+    compact_state: 24      # multistate license, home state
+    board_timeout: 14      # lookup did not answer
+  vendor_said_match_wrong: 3   # residual cases the vendor
+                               # scored 0.90+ that were a
+                               # different nurse or lapsed

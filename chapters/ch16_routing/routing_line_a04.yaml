@@ -1,0 +1,34 @@
+# Routing line record (hartwell-kit, Appendix A). Synthetic.
+# One record per step, per model and configuration, per
+# version. A new model, configuration or guidance version
+# needs a new record; the old one stays in the register.
+step: A04 decide which applicants advance to interview
+line_row: A04 (Keep at recommend, Line v1.1)
+version: 1.0
+model: claude-haiku-5-5
+configuration: work (the model may think before answering)
+guidance: screening guidance v1
+lanes:
+  confirm: >-
+    "meets" answer, no hard-case flag, calibrated score at
+    or above the line; a recruiter confirms with the
+    evidence quote shown and opens 1 in 10 in full
+  review: >-
+    "meets" answer with any flag (OVERLAP, NEAR, NONFIELD,
+    TRAINING, NO_COUNT) or below the line; full review
+  escalate: calibrated score below 0.80; senior recruiter
+  fail_closed: >-
+    every "does not meet" answer, every missing or
+    unreadable answer; a named recruiter decides and
+    records a reason code (Line row A05)
+target: lower bound of lane accuracy at least 0.92
+evidence: runs/ch16/calibrate (fit on odd, checked on even)
+owner: Head of TA (Daniel Brooks)
+measured_by: People Analytics (Tom Reilly), monthly
+review: quarterly, and at once on any trigger
+triggers:
+  - model, configuration or guidance version changes
+  - audited lane accuracy lower bound below the target
+  - lane share moves more than 10 points in a month
+  - a new requisition family or country
+on_trigger: the confirm lane closes; every case is reviewed
