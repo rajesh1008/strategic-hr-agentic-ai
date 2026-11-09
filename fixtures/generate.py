@@ -636,8 +636,8 @@ SECTORS = {
              sites={"Toronto HQ": 1}, worker_type="salaried",
              families=OFFICE, payroll="in-house"),
     ], "Elena Harlow, Director of Store HR"),
-    "larkspur": ("Larkspur Hotels", "London", [
-        dict(entity="Larkspur", country=c, n=n,
+    "restonmere": ("Restonmere Hotels", "London", [
+        dict(entity="Restonmere", country=c, n=n,
              sites={f"hotel {c}-{i:02d}": 1 for i in range(1, h + 1)},
              worker_type="hourly", pt=0.3,
              families={"Front Desk": 20, "Housekeeping": 35,

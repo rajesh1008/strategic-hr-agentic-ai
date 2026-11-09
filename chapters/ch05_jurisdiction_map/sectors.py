@@ -3,7 +3,7 @@
 Fieldnote (software; 31 US states, Dublin, Sydney and staff in
 Spain, Poland and Portugal through an employer of record),
 Pennant Stores (retail scheduling in Canada and US cities) and
-Larkspur Hotels (one-way video for front-desk hiring). All
+Restonmere Hotels (one-way video for front-desk hiring). All
 synthetic. No model is involved.
 
 Run: HRAI_MODEL=no-model python -m chapters.ch05_jurisdiction_map.sectors
