@@ -18,6 +18,7 @@ from pathlib import Path
 from statistics import mean
 
 from hrai.llm import RunRecorder
+from .loop import GZIP
 
 REPO = Path(__file__).resolve().parents[2]
 TIMES = 5
@@ -57,7 +58,8 @@ def main() -> None:
     for name, cv in versions.items():
         got = []
         for i in range(TIMES):
-            r = rec.create(max_tokens=400, messages=[{
+            r = rec.create(max_tokens=400, extra_headers=GZIP,
+                           messages=[{
                 "role": "user",
                 "content": ASK.format(job=JOB, resume=cv)}])
             text = " ".join(b.text for b in r.content

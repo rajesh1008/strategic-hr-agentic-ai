@@ -15,6 +15,10 @@ from typing import Callable
 
 from hrai.llm import RunRecorder
 
+# The box's Brotli build cannot decode streamed replies, so
+# ask for gzip. Transport only; the request is unchanged.
+GZIP = {"Accept-Encoding": "gzip, deflate"}
+
 
 @dataclass
 class Budget:
@@ -74,7 +78,8 @@ def run(rec: RunRecorder, system: str, tools: list[Tool],
             return out
         resp = rec.create(
             max_tokens=4000, system=system, messages=memory,
-            tools=[t.spec() for t in tools])
+            tools=[t.spec() for t in tools],
+            extra_headers=GZIP)
         out.turns += 1
         spent += resp.usage.output_tokens
         memory.append({"role": "assistant", "content": [

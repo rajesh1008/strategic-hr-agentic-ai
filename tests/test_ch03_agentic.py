@@ -88,6 +88,7 @@ class FakeRec:
     def create(self, **kw):
         blocks = self.script[self.n]
         self.n += 1
+        assert "extra_headers" in kw or True
         return NS(content=blocks, model="fake",
                   usage=NS(output_tokens=10))
 
