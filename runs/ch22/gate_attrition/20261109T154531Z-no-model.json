@@ -1,0 +1,59 @@
+{
+  "run_id": "ch22/gate_attrition/20261109T154531Z",
+  "started_utc": "2026-11-09T15:45:31.119435+00:00",
+  "git_commit": "4a04b27",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "review": {
+        "gate": "production",
+        "items": {
+          "outcome_matches_intent": [
+            "is 'any exit (HCM termination flag)', intent says 'voluntary resignation within 13 weeks'"
+          ],
+          "benefit": [],
+          "groups": [
+            "US over50 vs under40 2.18, outside 0.80 to 1.25",
+            "DE over50 vs under40 6.50, outside 0.80 to 1.25"
+          ],
+          "human_comparison": [],
+          "appeal_path": [],
+          "monitoring_plan": [],
+          "consent": [
+            "DE: unmet"
+          ],
+          "signature": []
+        },
+        "decision": "REFUSE"
+      }
+    }
+  ],
+  "stdout": [
+    "attrition model v1: production gate",
+    "asks: show the top 10% to managers with a drafted brief",
+    "  FAIL outcome_matches_intent",
+    "       is 'any exit (HCM termination flag)', intent says",
+    "       'voluntary resignation within 13 weeks'",
+    "  ok   benefit",
+    "  FAIL groups",
+    "       US over50 vs under40 2.18, outside 0.80 to 1.25",
+    "       DE over50 vs under40 6.50, outside 0.80 to 1.25",
+    "  ok   human_comparison",
+    "  ok   appeal_path",
+    "  ok   monitoring_plan",
+    "  FAIL consent",
+    "       DE: unmet",
+    "  ok   signature",
+    "decision: REFUSE",
+    "--- refusal record",
+    "owner: Claire Whitfield",
+    "prepared by: Tom Reilly",
+    "reasons: outcome_matches_intent, groups, consent",
+    "to reopen: retrain on resignations only, remove the",
+    "  milestone input, re-enter at Build, new shadow with the",
+    "  same criteria and both ends of the age range"
+  ]
+}
