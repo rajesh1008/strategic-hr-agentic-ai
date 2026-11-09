@@ -1,0 +1,133 @@
+{
+  "run_id": "ch01/first_pass/20261109T125307Z",
+  "started_utc": "2026-11-09T12:53:07.010997+00:00",
+  "git_commit": "ddf2a80",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "steps": [
+        {
+          "id": "S1",
+          "org": "Hartwell",
+          "kind": "draft",
+          "answers": "NYNNN",
+          "as_shipped": "recommend",
+          "step": "Rank applicants against the job description",
+          "placed": "automate/recommend",
+          "within": true
+        },
+        {
+          "id": "S2",
+          "org": "Hartwell",
+          "kind": "write",
+          "answers": "YNNYN",
+          "as_shipped": "act",
+          "line_v1": "A05",
+          "step": "Set an application to not_progressed",
+          "placed": "keep/recommend",
+          "within": false
+        },
+        {
+          "id": "S3",
+          "org": "Hartwell",
+          "kind": "write",
+          "answers": "YNNYN",
+          "as_shipped": "act",
+          "step": "Email the candidate before anyone decides",
+          "placed": "keep/recommend",
+          "within": false
+        },
+        {
+          "id": "S4",
+          "org": "Hartwell",
+          "kind": "write",
+          "answers": "NNYNN",
+          "as_shipped": "new",
+          "line_v1": "A06",
+          "step": "Email the outcome a recruiter recorded",
+          "placed": "automate/act_with_approval",
+          "within": true
+        },
+        {
+          "id": "S5",
+          "org": "Hartwell",
+          "kind": "write",
+          "answers": "NYYNN",
+          "as_shipped": "act",
+          "line_v1": "A03",
+          "step": "Book an interview a recruiter advanced",
+          "placed": "automate/act",
+          "within": true
+        },
+        {
+          "id": "B1",
+          "org": "Brightwater",
+          "kind": "write",
+          "answers": "YNYNN",
+          "as_shipped": "act",
+          "step": "Cancel a booked shift interview",
+          "placed": "keep/recommend",
+          "within": false
+        },
+        {
+          "id": "B2",
+          "org": "Brightwater",
+          "kind": "write",
+          "answers": "NYYNN",
+          "as_shipped": "new",
+          "step": "Offer new slots; the candidate picks",
+          "placed": "automate/act",
+          "within": true
+        },
+        {
+          "id": "A1",
+          "org": "Ashby & Lowe",
+          "kind": "write",
+          "answers": "YNYYN",
+          "as_shipped": "act",
+          "step": "Decline a form without the keyword",
+          "placed": "keep/recommend",
+          "within": false
+        },
+        {
+          "id": "C1",
+          "org": "Calder Bank",
+          "kind": "draft",
+          "answers": "NYNNY",
+          "as_shipped": "recommend",
+          "step": "Draft a disciplinary letter",
+          "placed": "automate/recommend",
+          "within": true
+        },
+        {
+          "id": "C2",
+          "org": "Calder Bank",
+          "kind": "write",
+          "answers": "YNNYY",
+          "as_shipped": "act",
+          "line_v1": "G03",
+          "step": "Decide what the letter tells the employee",
+          "placed": "keep/retrieve",
+          "within": false
+        }
+      ]
+    }
+  ],
+  "stdout": [
+    "id  answers placed                     shipped   ok",
+    "S1  NYNNN   automate/recommend         recommend yes",
+    "S2  YNNYN   keep/recommend             act       NO",
+    "S3  YNNYN   keep/recommend             act       NO",
+    "S4  NNYNN   automate/act_with_approval new       yes",
+    "S5  NYYNN   automate/act               act       yes",
+    "B1  YNYNN   keep/recommend             act       NO",
+    "B2  NYYNN   automate/act               new       yes",
+    "A1  YNYYN   keep/recommend             act       NO",
+    "C1  NYNNY   automate/recommend         recommend yes",
+    "C2  YNNYY   keep/retrieve              act       NO",
+    "steps run above their ceiling: 5 (S2, S3, B1, A1, C2)"
+  ]
+}
