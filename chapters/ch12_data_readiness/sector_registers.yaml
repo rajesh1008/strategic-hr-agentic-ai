@@ -1,0 +1,86 @@
+# Register rows for three sector cases (synthetic), in the same shape
+# as Hartwell's register so the same checks run on them.
+_synthetic: Invented for the book. No real employer.
+hollis:
+  version: "0.1"
+  as_of: 2027-04-12
+  lanes: [US, CZ]
+  sources:
+  - id: H1
+    name: Skills matrix boards, CNC and maintenance cells
+    system: Paper boards, photographed monthly
+    owner: none
+    fields: [employee_id, machine, skill_level, signed_off_by, date]
+    category: ordinary
+    subjects: [US, CZ]
+    basis: {US: notice, CZ: consent}
+    retention: ""
+    deletion: ""
+    quality: {}
+    lineage: [{system: Cell board, owner: Cell supervisor},
+              {system: Phone photo, owner: none},
+              {system: Shared drive, owner: none}]
+  uses:
+  - id: HU1
+    name: Training planner suggests who to train next
+    reads: {H1: [employee_id, machine, skill_level]}
+    need: {H1: {complete: 95, current: 90}}
+    purpose: training plan
+calder:
+  version: "1.0"
+  as_of: 2027-04-19
+  lanes: [US, UK]
+  sources:
+  - id: C1
+    name: Role and certification records
+    system: HRIS plus certification tracker
+    owner: Head of HR Technology and Controls (Andrew Kerr)
+    fields: [employee_id, role_code, certified_function, cert_date,
+             fit_and_proper_check]
+    category: ordinary
+    subjects: [UK]
+    basis: {UK: legal_obligation}
+    retention: employment plus 6 years
+    deletion: HRIS archive job
+    quality: {complete: 98.7, current: 91.2}
+    lineage: [{system: HRIS, owner: HR operations, Edinburgh},
+              {system: Certification tracker spreadsheet, owner: none},
+              {system: Compliance attestation pack,
+               owner: Head of Compliance}]
+  - id: C2
+    name: Attrition model features
+    system: People analytics warehouse
+    owner: Head of People Analytics
+    fields: [employee_id, tenure, pay_ratio, manager_changes,
+             absence_days]
+    category: ordinary
+    subjects: [US, UK]
+    basis: {US: notice, UK: legitimate_interests}
+    retention: 2 years
+    deletion: warehouse purge job
+    quality: {complete: 97.5}
+    lineage: [{system: HRIS, owner: HR operations},
+              {system: Feature pipeline, owner: none},
+              {system: Model provider, owner: Head of People Analytics}]
+  uses:
+  - id: CU1
+    name: HR copilot drafts the annual certification list
+    reads: {C1: [employee_id, role_code, certified_function,
+                 cert_date]}
+    need: {C1: {complete: 99, current: 99}}
+    purpose: regulatory certification
+  - id: CU2
+    name: Attrition model goes to the model risk committee
+    reads: {C2: [employee_id, tenure, pay_ratio, manager_changes]}
+    need: {C2: {complete: 95}}
+    purpose: workforce planning
+validation_queue:
+  # Hartwell capability center, Hyderabad: pay and job changes keyed
+  # by each entity in March 2027 and returned for correction.
+  month: 2027-03
+  rows:
+  - {entity: US, keyed: 6900, returned: 207, top: approval missing}
+  - {entity: CA, keyed: 1350, returned: 54, top: approval missing}
+  - {entity: UK, keyed: 1240, returned: 118, top: grade outside band for local code}
+  - {entity: NL, keyed: 410, returned: 22, top: pay group not in agreement table}
+  - {entity: DE, keyed: 515, returned: 61, top: no local code}

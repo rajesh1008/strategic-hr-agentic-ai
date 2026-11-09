@@ -1,0 +1,205 @@
+# Hartwell's Data Readiness Register, extract for five lanes, first
+# full run March 22, 2027 (synthetic). One row per data source. The
+# lawful-basis entries are Hartwell's own records, written by the
+# Group DPO's office with employment counsel; the code checks that
+# they exist and follow house rules, it does not decide the law.
+_synthetic: Invented for the book. No real employer.
+version: "1.0"
+as_of: 2027-03-22
+lanes: [US, CA, UK, NL, DE]
+sources:
+- id: D01
+  name: Core employee record
+  system: HartwellOne
+  owner: HR Shared Services lead (Megan Hale)
+  steward: Data validation, Hyderabad (Ananya Rao)
+  fields: [employee_id, name, entity, site, manager_id, hire_date,
+           home_address, bank_account, date_of_birth]
+  never: [bank_account]
+  category: ordinary
+  subjects: [US, CA, UK, NL, DE]
+  basis: {US: notice, CA: notice, UK: contract, NL: contract,
+          DE: employment}
+  retention: employment plus 7 years
+  deletion: HartwellOne archive job, yearly
+  quality: {complete: 99.2, valid: 99.6}
+  lineage: [{system: Hartwell Careers, owner: Head of TA},
+            {system: HartwellOne, owner: HR Shared Services lead},
+            {system: Validation queue, owner: Data validation lead}]
+- id: D02
+  name: Job architecture (catalog and grade)
+  system: HartwellOne
+  owner: Head of Reward
+  steward: Data validation, Hyderabad (Ananya Rao)
+  fields: [code, architecture, title, desc, mapped_grade,
+           local_code, grade]
+  category: ordinary
+  subjects: [US, CA, UK, NL, DE]
+  basis: {US: notice, CA: notice, UK: contract, NL: contract,
+          DE: employment}
+  retention: current plus superseded versions, 10 years
+  deletion: none needed (no personal data in the catalog)
+  quality: {complete: 77.3, valid: 97.0, unique: 81.8,
+            accurate: 62.5, current: 0.0}
+  quality_note: UK legacy bands, run ch12/quality
+  lineage: [{system: 2016 crosswalk spreadsheet, owner: none},
+            {system: HartwellOne, owner: Head of Reward}]
+- id: D03
+  name: Base pay and pay changes
+  system: HartwellOne
+  owner: Head of Reward
+  steward: Data validation, Hyderabad (Ananya Rao)
+  fields: [employee_id, base_pay, currency, effective_date,
+           pending_change, keyed_by, validated_by]
+  category: ordinary
+  subjects: [US, CA, UK, NL, DE]
+  basis: {US: notice, CA: notice, UK: contract, NL: contract,
+          DE: employment}
+  retention: employment plus 7 years
+  deletion: HartwellOne archive job, yearly
+  quality: {complete: 99.8, valid: 99.9, current: 96.1}
+  quality_note: current = validated within 1 business day
+  lineage: [{system: HartwellOne (keyed), owner: Country HR},
+            {system: Validation queue, owner: Data validation lead},
+            {system: HartwellOne (effective), owner: Head of Reward},
+            {system: Payroll, owner: Country payroll lead},
+            {system: AskHartwell letter tool,
+             owner: HR Shared Services lead},
+            {system: Model provider, owner: Enterprise architect,
+             via: Hartwell Gate}]
+- id: D04
+  name: Absence and sickness
+  system: HartwellOne
+  owner: HR Shared Services lead (Megan Hale)
+  fields: [employee_id, absence_type, start, end, certificate,
+           sickness_reason]
+  never: [sickness_reason, certificate]
+  category: special
+  condition: {UK: employment, NL: employment, DE: employment,
+              US: notice, CA: notice}
+  subjects: [US, CA, UK, NL, DE]
+  basis: {US: notice, CA: notice, UK: legal_obligation,
+          NL: legal_obligation, DE: employment}
+  retention: by country rule, set by the Group DPO
+  deletion: per country schedule
+  quality: {complete: 94.0}
+  lineage: [{system: AskHartwell, owner: HR Shared Services lead},
+            {system: HartwellOne, owner: HR Shared Services lead},
+            {system: Payroll, owner: Country payroll lead}]
+- id: D05
+  name: Union dues deduction
+  system: Payroll
+  owner: Employee relations lead
+  fields: [employee_id, union_code, dues_amount]
+  never: [union_code, dues_amount]
+  category: special
+  condition: {US: notice, UK: employment, CA: notice}
+  subjects: [US, CA, UK]
+  basis: {US: contract, CA: contract, UK: legal_obligation}
+  retention: employment plus 7 years
+  deletion: payroll archive job
+  quality: {complete: 99.0}
+  lineage: [{system: Payroll, owner: Country payroll lead}]
+- id: D06
+  name: Voluntary self-identification
+  system: Hartwell Careers (separate store)
+  owner: Head of People Analytics (Tom Reilly)
+  fields: [candidate_id, sex, ethnicity, disability, age_band]
+  never: [sex, ethnicity, disability, age_band]
+  category: special
+  condition: {US: notice, UK: explicit_consent, CA: consent}
+  subjects: [US, CA, UK]
+  people: applicants
+  basis: {US: notice, CA: consent, UK: consent}
+  retention: 3 years after the requisition closes
+  deletion: Careers purge job, monthly
+  quality: {complete: 61.0}
+  quality_note: share of applicants who answered at least one item
+  lineage: [{system: Hartwell Careers, owner: Head of TA},
+            {system: Audit workspace, owner: Head of People Analytics}]
+- id: D07
+  name: Site access badge events
+  system: Facilities security platform
+  owner: Group Facilities Security (outside HR)
+  fields: [badge_id, door, time, site]
+  category: ordinary
+  subjects: [UK, NL, DE]
+  basis: {UK: legitimate_interests, NL: legitimate_interests,
+          DE: employment}
+  use_limits:
+  - {lane: DE, allow: [site security, evacuation],
+     rule: "group works agreement on HR IT, annex 3"}
+  - {lane: NL, allow: [site security, evacuation],
+     rule: "ondernemingsraad consent for any new use"}
+  retention: 30 days
+  deletion: platform purge, daily
+  quality: {complete: 99.9}
+  lineage: [{system: Door controllers, owner: Group Facilities Security}]
+- id: D08
+  name: AskHartwell transcripts
+  system: AskHartwell platform
+  owner: HR Shared Services lead (Megan Hale)
+  fields: [conversation_id, employee_id, text, tool_results]
+  never: [text]
+  category: special
+  condition: {UK: employment, NL: employment, DE: employment,
+              US: notice, CA: notice}
+  subjects: [US, CA, UK, NL, DE]
+  basis: {US: notice, CA: notice, UK: legitimate_interests,
+          NL: legitimate_interests, DE: employment}
+  retention: ""
+  deletion: ""
+  quality: {}
+  lineage: [{system: AskHartwell platform, owner: HR Shared Services lead},
+            {system: Vendor platform logs, owner: none},
+            {system: Evaluation copies, owner: Head of People Analytics}]
+- id: D09
+  name: Safety certifications (Energy Services)
+  system: Learning system plus training-provider cards
+  owner: Energy Services HSE director
+  fields: [employee_id, cert_type, issued, expires, provider,
+           card_scan]
+  category: ordinary
+  subjects: [US, CA]
+  basis: {US: legal_obligation, CA: legal_obligation}
+  retention: employment plus 5 years
+  deletion: learning-system archive
+  quality: {complete: 88.4, valid: 93.0, current: 81.0}
+  quality_note: complete = has an expiry date; current = card checked in 12 months
+  lineage: [{system: Training provider card, owner: none},
+            {system: Site supervisor upload, owner: Site supervisor},
+            {system: Learning system, owner: Energy Services HSE director}]
+uses:
+- id: U1
+  name: Knowledge assistant answers "what is my pay band"
+  reads: {D01: [employee_id, entity], D02: [grade, local_code],
+          D03: [base_pay, currency]}
+  need: {D02: {accurate: 95, unique: 95}}
+  purpose: employee service
+- id: U2
+  name: Letter tool drafts an employment-verification letter
+  reads: {D01: [employee_id, name, entity, hire_date],
+          D03: [base_pay, currency, pending_change]}
+  writes: {D03: {fields: [], via: none}}
+  need: {D03: {current: 95}}
+  purpose: employee service
+- id: U3
+  name: Attrition model reads badge events in Düsseldorf
+  reads: {D07: [badge_id, time, site]}
+  purpose: performance or behavior evaluation
+  lane: DE
+- id: U4
+  name: Crew-assignment agent checks safety certifications
+  reads: {D09: [employee_id, cert_type, expires]}
+  need: {D09: {complete: 99, current: 95}}
+  purpose: work allocation
+- id: U5
+  name: Job-mapping agent proposes Hartwell Grades
+  reads: {D02: [code, title, desc]}
+  writes: {D02: {fields: [proposed_grade], via: controlled_action}}
+  need: {D02: {complete: 95}}
+  purpose: job architecture
+- id: U6
+  name: Service agent remembers a sickness reason
+  reads: {D04: [sickness_reason], D08: [text]}
+  purpose: employee service

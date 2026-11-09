@@ -1,0 +1,38 @@
+# Lineage of one field: base_pay for a Hartwell UK employee, from the
+# moment it is keyed to the letter a lender reads (synthetic). Each
+# hop names where the value sits, who answers for it there, the
+# control that checks it and the record that proves the hop happened.
+_synthetic: Invented for the book. No real employer.
+field: D03.base_pay
+subject_lane: UK
+hops:
+- {n: 1, step: keyed after approval, system: HartwellOne,
+   site: UK, owner: Country HR (Helen Marsh),
+   control: manager approval workflow, record: HartwellOne change log}
+- {n: 2, step: held as pending, system: Validation queue,
+   site: UK, owner: Data validation lead,
+   control: pending_change flag set, record: queue item}
+- {n: 3, step: validated, system: Validation queue, site: Hyderabad,
+   owner: Data validation lead (Ananya Rao),
+   control: four-eyes check against approval and band,
+   record: validation log}
+- {n: 4, step: becomes effective, system: HartwellOne,
+   site: UK, owner: Head of Reward,
+   control: effective-date rule, record: HartwellOne audit trail}
+- {n: 5, step: read by payroll, system: UK payroll, site: UK,
+   owner: UK payroll lead, control: monthly reconciliation,
+   record: payroll register}
+- {n: 6, step: read by the letter tool, system: AskHartwell,
+   site: Manila, owner: HR Shared Services lead (Megan Hale),
+   control: tool returns no salary while pending,
+   record: tool-call log}
+- {n: 7, step: sent to the model,
+   system: Hartwell Gate, site: US region,
+   owner: Enterprise architect (Nathan Cole),
+   control: gateway policy and redaction, record: gateway log}
+- {n: 8, step: letter approved, system: Controlled-action ledger,
+   site: Manila, owner: Meridian adviser,
+   control: adviser approval, record: ledger entry}
+- {n: 9, step: letter sent to the lender, system: Email,
+   site: outside Hartwell, owner: "",
+   control: "", record: copy in the employee file}
