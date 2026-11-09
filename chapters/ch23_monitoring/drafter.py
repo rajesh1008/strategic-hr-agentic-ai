@@ -63,7 +63,7 @@ def main(n: int = 3) -> None:
     rec = RunRecorder("ch23", "drafter")
     held = 0
     for k in range(1, n + 1):
-        resp = rec.create(max_tokens=1200, system=SYSTEM,
+        resp = rec.create(max_tokens=6000, system=SYSTEM,
                           **({"thinking": {"type": "between_tools"}}
                              if "sonnet" in model() else {}),
                           messages=[{"role": "user", "content":
@@ -71,7 +71,8 @@ def main(n: int = 3) -> None:
                           extra_headers=GZIP)
         draft = "".join(b.text for b in resp.content
                         if b.type == "text")
-        probs = check(draft, facts)
+        probs = check(draft, facts) if draft.strip() else \
+            [f"no draft (stopped: {resp.stop_reason})"]
         held += bool(probs)
         rec.print(f"== draft {k} on {model()}: "
                   + ("HELD" if probs else "passed to a person"))
