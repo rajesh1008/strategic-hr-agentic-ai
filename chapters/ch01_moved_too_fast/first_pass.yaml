@@ -1,0 +1,37 @@
+# Chapter 1 first pass of the Automate/Keep Line (SYNTHETIC).
+# Steps from the three Chapter 1 incidents, answered the way the
+# process owners answer Hartwell's Line in Chapter 11
+# (line_v1.yaml). Answers: Consequence, Reversibility, Rule,
+# Reservation, Sensitivity. "as_shipped" is the mode the software ran in;
+# "new" marks a step the redesign adds.
+steps:
+- {id: S1, org: Hartwell, kind: draft, answers: NYNNN,
+   as_shipped: recommend,
+   step: Rank applicants against the job description}
+- {id: S2, org: Hartwell, kind: write, answers: YNNYN,
+   as_shipped: act, line_v1: A05,
+   step: Set an application to not_progressed}
+- {id: S3, org: Hartwell, kind: write, answers: YNNYN,
+   as_shipped: act,
+   step: Email the candidate before anyone decides}
+- {id: S4, org: Hartwell, kind: write, answers: NNYNN,
+   as_shipped: new, line_v1: A06,
+   step: Email the outcome a recruiter recorded}
+- {id: S5, org: Hartwell, kind: write, answers: NYYNN,
+   as_shipped: act, line_v1: A03,
+   step: Book an interview a recruiter advanced}
+- {id: B1, org: Brightwater, kind: write, answers: YNYNN,
+   as_shipped: act,
+   step: Cancel a booked shift interview}
+- {id: B2, org: Brightwater, kind: write, answers: NYYNN,
+   as_shipped: new,
+   step: Offer new slots; the candidate picks}
+- {id: A1, org: Ashby & Lowe, kind: write, answers: YNYYN,
+   as_shipped: act,
+   step: Decline a form without the keyword}
+- {id: C1, org: Calder Bank, kind: draft, answers: NYNNY,
+   as_shipped: recommend,
+   step: Draft a disciplinary letter}
+- {id: C2, org: Calder Bank, kind: write, answers: YNNYY,
+   as_shipped: act, line_v1: G03,
+   step: Decide what the letter tells the employee}
