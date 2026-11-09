@@ -1,0 +1,208 @@
+# System-of-Record Registers (synthetic). One entry per field and
+# population: the one system that holds it, who may write it and
+# how, every copy, where an agent reads it and any agent store
+# that holds it. Hartwell's February 2027 inventory, its April
+# 2027 register, and two sector organizations.
+_synthetic: Invented for the book. No real employer.
+registers:
+- org: Hartwell
+  version: 2027-02 inventory
+  fields:
+  - field: home_address
+    sor: [HartwellOne]
+    writers:
+    - {who: employee, via: self-service}
+    - {who: vendor chatbot, via: shared integration user}
+    copies:
+    - {system: US payroll provider, refresh: nightly,
+       owner: Country payroll lead, deletion: provider purge}
+    - {system: Chatbot vendor cache, refresh: nightly,
+       owner: "", deletion: ""}
+    agent_reads: Chatbot vendor cache
+    agent_acts: true
+  - field: bank_account
+    sor: [HartwellOne, US payroll provider portal]
+    writers:
+    - {who: employee, via: self-service}
+    - {who: employee, via: provider portal}
+    copies: []
+    agent_reads: none
+    agent_acts: false
+  - field: leave_balance
+    sor: [HartwellOne]
+    writers: [{who: absence module, via: accrual rule}]
+    copies:
+    - {system: Chatbot vendor cache, refresh: nightly,
+       owner: "", deletion: ""}
+    agent_reads: Chatbot vendor cache
+    agent_acts: false
+  - field: manager_id
+    sor: [HartwellOne]
+    writers: [{who: HR shared services, via: change form}]
+    copies:
+    - {system: Hartwell Careers, refresh: nightly,
+       owner: Head of TA, deletion: Careers purge job}
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: base_pay
+    sor: [HartwellOne]
+    writers: [{who: country HR, via: change form}]
+    copies:
+    - {system: Payroll, refresh: per pay run,
+       owner: Country payroll lead, deletion: payroll archive}
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: job_grade
+    sor: [HartwellOne, 2016 crosswalk spreadsheet]
+    writers: [{who: reward team, via: change form}]
+    copies: []
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: candidate_status
+    sor: [Hartwell Careers]
+    writers:
+    - {who: recruiter, via: Careers screen}
+    - {who: Takefen Smart Shortlist, via: vendor batch}
+    copies: []
+    agent_reads: Hartwell Careers
+    agent_acts: true
+  - field: safety_cert
+    sor: [Learning system]
+    writers: [{who: site supervisor, via: upload}]
+    copies:
+    - {system: Crew scheduling, refresh: weekly,
+       owner: Energy Services HSE director,
+       deletion: scheduling archive}
+    agent_reads: Crew scheduling
+    agent_acts: true
+  agent_stores:
+  - {store: Chatbot vendor transcripts,
+     holds: [home_address, bank_account]}
+- org: Hartwell
+  version: 2027-04 register v1.0
+  fields:
+  - field: home_address
+    sor: [HartwellOne]
+    writers:
+    - {who: employee, via: self-service}
+    - {who: AskHartwell agent, via: controlled action}
+    copies:
+    - {system: US payroll provider, refresh: nightly,
+       owner: Country payroll lead, deletion: provider purge}
+    agent_reads: HartwellOne
+    agent_acts: true
+  - field: bank_account
+    sor: [HartwellOne]
+    writers:
+    - {who: employee, via: self-service}
+    - {who: AskHartwell agent, via: controlled action}
+    copies:
+    - {system: US payroll provider, refresh: per pay run,
+       owner: Country payroll lead, deletion: provider purge}
+    agent_reads: HartwellOne
+    agent_acts: true
+  - field: leave_balance
+    sor: [HartwellOne]
+    writers: [{who: absence module, via: accrual rule}]
+    copies: []
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: manager_id
+    sor: [HartwellOne]
+    writers: [{who: HR shared services, via: change form}]
+    copies:
+    - {system: Hartwell Careers, refresh: hourly,
+       owner: Head of TA, deletion: Careers purge job}
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: base_pay
+    sor: [HartwellOne]
+    writers: [{who: country HR, via: change form}]
+    copies:
+    - {system: Payroll, refresh: per pay run,
+       owner: Country payroll lead, deletion: payroll archive}
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: job_grade
+    sor: [HartwellOne, 2016 crosswalk spreadsheet]
+    exception: {until: 2027-06-30, owner: Head of Reward}
+    writers: [{who: reward team, via: change form}]
+    copies: []
+    agent_reads: HartwellOne
+    agent_acts: false
+  - field: candidate_status
+    sor: [Hartwell Careers]
+    writers:
+    - {who: recruiter, via: Careers screen}
+    - {who: screening agent, via: controlled action}
+    copies: []
+    agent_reads: Hartwell Careers
+    agent_acts: true
+  - field: safety_cert
+    sor: [Learning system]
+    writers: [{who: site supervisor, via: upload}]
+    copies:
+    - {system: Crew scheduling, refresh: hourly,
+       owner: Energy Services HSE director,
+       deletion: scheduling archive}
+    agent_reads: Learning system
+    agent_acts: true
+  agent_stores:
+  - {store: AskHartwell kept memory,
+     holds: [contact_channel, language, preferred_name]}
+- org: Aurelia Telecom
+  version: 2027-05 first draft
+  fields:
+  - field: manager_id (contact-center advisers)
+    sor: [HRIS-1 Toronto core, HRIS-4 workforce management]
+    writers:
+    - {who: HR operations, via: HRIS-1 form}
+    - {who: Quayfen team leads, via: HRIS-4 screen}
+    copies: []
+    agent_reads: HRIS-4 workforce management
+    agent_acts: true
+  - field: person_id
+    sor: [HRIS-1 Toronto core, HRIS-2 Western Canada,
+          HRIS-3 Utrecht]
+    writers: [{who: each instance, via: hire form}]
+    copies: []
+    agent_reads: HRIS-4 workforce management
+    agent_acts: false
+  - field: shift_pattern
+    sor: [HRIS-4 workforce management]
+    writers: [{who: shift-swap agent, via: controlled action}]
+    copies: []
+    agent_reads: HRIS-4 workforce management
+    agent_acts: true
+  agent_stores: []
+- org: Aurelia Telecom
+  version: 2027-06 register
+  fields:
+  - field: manager_id (contact-center advisers)
+    sor: [HRIS-1 Toronto core]
+    writers: [{who: HR operations, via: HRIS-1 form}]
+    copies:
+    - {system: HRIS-4 workforce management,
+       refresh: hourly, owner: VP People Systems,
+       deletion: follows HRIS-1}
+    agent_reads: HRIS-1 Toronto core
+    agent_acts: true
+  - field: person_id
+    sor: [Person-ID crosswalk service]
+    writers: [{who: crosswalk service, via: hire event}]
+    copies:
+    - {system: HRIS-1, refresh: on event,
+       owner: VP People Systems, deletion: follows crosswalk}
+    - {system: HRIS-2, refresh: on event,
+       owner: VP People Systems, deletion: follows crosswalk}
+    - {system: HRIS-3, refresh: on event,
+       owner: VP People Systems, deletion: follows crosswalk}
+    agent_reads: Person-ID crosswalk service
+    agent_acts: false
+  - field: shift_pattern
+    sor: [HRIS-4 workforce management]
+    writers: [{who: shift-swap agent, via: controlled action}]
+    copies: []
+    agent_reads: HRIS-4 workforce management
+    agent_acts: true
+  agent_stores: []

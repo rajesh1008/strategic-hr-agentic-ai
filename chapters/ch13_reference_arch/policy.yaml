@@ -1,0 +1,15 @@
+# Hartwell Gate policy for changes to the employee record
+# (synthetic). The agent never appears as an approver.
+tool: hris.update_employee
+version: 1
+allow:
+  - status: home_address
+    actor: rule
+    requires: [own_record, session_verified,
+               address_valid]
+  - status: bank_account
+    actor: human
+    requires: [approver_id, callback_done]
+deny_default: true
+log: [employee_id, field, value_ref, model,
+      policy_version, approver]

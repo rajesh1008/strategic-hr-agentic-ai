@@ -1,0 +1,96 @@
+# Six-view packs at Hartwell's architecture reviews (synthetic).
+# For each system, the elements its documentation actually
+# showed. views.py compares them with the required elements.
+_synthetic: Invented for the book. No real employer.
+reviews:
+- date: 2027-03-08
+  systems:
+  - id: ASK
+    name: AskHartwell service agent
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [identities, secrets, tenants, queues,
+                     observability]
+    lld: [schemas, invariants, versions, timeouts, retries]
+    sequence: [normal_path, denied_path]
+    lineage: [fields_read, system_of_record, copies]
+    recovery: [off_switch, reversal, decider]
+  - id: SCR
+    name: Careers screening assist
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [identities, secrets, tenants, queues,
+                     observability, backup]
+    lld: [schemas, invariants, versions, error_codes,
+          timeouts, idempotency]
+    sequence: [normal_path]
+    lineage: [fields_read, system_of_record, copies,
+              model_provider_hop]
+    recovery: [off_switch, decider]
+  - id: LET
+    name: Letter tool
+    hld: [users, external_systems, contracts]
+    infrastructure: [identities, secrets, observability]
+    lld: [schemas, versions, error_codes, timeouts,
+          idempotency]
+    sequence: [normal_path]
+    lineage: [fields_read, system_of_record]
+    recovery: [reversal]
+  - id: VND
+    name: Suite vendor's bundled agent
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [tenants, residency]
+    lld: []
+    sequence: [normal_path]
+    lineage: []
+    recovery: [off_switch]
+  - id: QUA
+    name: Quayfen desktop agent (draft)
+    hld: [users, external_systems]
+    infrastructure: [identities]
+    lld: []
+    sequence: [normal_path]
+    lineage: []
+    recovery: []
+- date: 2027-04-26
+  systems:
+  - id: ASK
+    name: AskHartwell service agent
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [identities, secrets, tenants, residency,
+                     queues, observability, backup]
+    lld: [schemas, invariants, versions, error_codes,
+          timeouts, idempotency, retries, approval_expiry]
+    sequence: [normal_path, denied_path, partial_failure_path]
+    lineage: [fields_read, system_of_record, copies,
+              model_provider_hop]
+    recovery: [off_switch, reversal, restore, rto, decider]
+  - id: SCR
+    name: Careers screening assist
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [identities, secrets, tenants, residency,
+                     queues, observability, backup]
+    lld: [schemas, invariants, versions, error_codes,
+          timeouts, idempotency, retries, approval_expiry]
+    sequence: [normal_path, denied_path, partial_failure_path]
+    lineage: [fields_read, system_of_record, copies,
+              model_provider_hop]
+    recovery: [off_switch, reversal, restore, rto, decider]
+  - id: LET
+    name: Letter tool
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [identities, secrets, tenants, residency,
+                     queues, observability, backup]
+    lld: [schemas, invariants, versions, error_codes,
+          timeouts, idempotency, retries, approval_expiry]
+    sequence: [normal_path, denied_path, partial_failure_path]
+    lineage: [fields_read, system_of_record, copies,
+              model_provider_hop]
+    recovery: [off_switch, reversal, restore, rto, decider]
+  - id: VND
+    name: Suite vendor's bundled agent
+    hld: [users, external_systems, trust_boundaries, contracts]
+    infrastructure: [identities, tenants, residency,
+                     observability]
+    lld: [versions, error_codes]
+    sequence: [normal_path, denied_path]
+    lineage: [fields_read, system_of_record]
+    recovery: [off_switch, decider]

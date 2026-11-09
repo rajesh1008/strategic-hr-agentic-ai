@@ -1,0 +1,64 @@
+# Trail designs (synthetic): what each design records, where,
+# for how long, and who can change it.
+_synthetic: Invented for the book. No real employer.
+designs:
+- org: Hartwell
+  name: Trail v1.0 (April 2027)
+  joined_by_id: [request, proposal, decision, dispatch,
+                 receipt, readback]
+  holds: refs
+  keep_months: {actions: 84, content: 0}
+  record_months: 12
+  high_risk: true
+  store: employer
+  agent_can_modify: false
+- org: Hartwell
+  name: Suite vendor's bundled agent, default
+  joined_by_id: [request, proposal, decision, dispatch,
+                 receipt]
+  holds: values
+  keep_months: {actions: 12, content: 12}
+  record_months: 12
+  high_risk: true
+  store: vendor
+  agent_can_modify: false
+- org: Straits Ledger
+  name: HR agent logging (2026)
+  joined_by_id: [request, proposal, decision, dispatch,
+                 receipt, readback]
+  holds: transcripts
+  keep_months: {actions: 84, content: 84}
+  record_months: 12
+  high_risk: false
+  store: employer
+  agent_can_modify: false
+- org: Straits Ledger
+  name: HR agent logging (2027)
+  joined_by_id: [request, proposal, decision, dispatch,
+                 receipt, readback]
+  holds: refs
+  keep_months: {actions: 84, content: 12}
+  record_months: 12
+  high_risk: false
+  store: employer
+  agent_can_modify: false
+- org: Fieldnote
+  name: HR suite agent log only
+  joined_by_id: [request, proposal, decision, dispatch,
+                 receipt]
+  holds: values
+  keep_months: {actions: 3, content: 3}
+  record_months: 24
+  high_risk: true
+  store: vendor
+  agent_can_modify: false
+- org: Fieldnote
+  name: Suite log plus nightly export
+  joined_by_id: [request, proposal, decision, dispatch,
+                 receipt, readback]
+  holds: refs
+  keep_months: {actions: 24, content: 3}
+  record_months: 24
+  high_risk: true
+  store: employer export
+  agent_can_modify: false

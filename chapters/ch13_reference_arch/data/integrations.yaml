@@ -1,0 +1,130 @@
+# Integration contracts (synthetic): one card per interface an
+# agent reads or writes through. Hartwell's February 2027
+# inventory of the interfaces its 2027 agents would touch, the
+# April 2027 set, and Quayfen's access to three clients' HR
+# systems for its proposed desktop agent (draft and revised).
+_synthetic: Invented for the book. No real employer.
+needs:   # freshest data each use needs, minutes
+  act: 5
+  retrieve: 1440
+sets:
+- org: Hartwell
+  version: 2027-02 inventory
+  interfaces:
+  - {id: I01, name: Chatbot reads record,
+     pattern: batch file, use: act, identity: shared,
+     fresh_min: 1440, idempotent: false, errors: false,
+     timeout_s: 0, owner: ""}
+  - {id: I02, name: Chatbot writes address,
+     pattern: point-to-point API, use: act,
+     identity: shared, fresh_min: 0, idempotent: false,
+     errors: false, timeout_s: 30, owner: ""}
+  - {id: I03, name: Chatbot reads leave,
+     pattern: batch file, use: retrieve, identity: shared,
+     fresh_min: 1440, idempotent: true, errors: true,
+     timeout_s: 0, owner: HR Shared Services lead}
+  - {id: I04, name: Benefits sync,
+     pattern: batch file, use: none, identity: shared,
+     fresh_min: 1440, idempotent: true, errors: true,
+     timeout_s: 0, owner: Benefits lead}
+  - {id: I05, name: Takefen status batch,
+     pattern: vendor batch, use: act, identity: vendor,
+     fresh_min: 0, idempotent: false, errors: false,
+     timeout_s: 0, owner: Head of TA}
+  - {id: I06, name: Careers reads requisitions,
+     pattern: point-to-point API, use: retrieve,
+     identity: service, fresh_min: 60, idempotent: true,
+     errors: true, timeout_s: 10, owner: Head of TA}
+  - {id: I07, name: Letter template service,
+     pattern: point-to-point API, use: act,
+     identity: service, fresh_min: 0, idempotent: true,
+     errors: true, timeout_s: 10,
+     owner: HR Shared Services lead}
+  - {id: I08, name: Adviser screen macros,
+     pattern: screen, use: act, identity: named,
+     fresh_min: 0, idempotent: false, errors: false,
+     timeout_s: 0, owner: HR Shared Services lead}
+  - {id: I09, name: Crew schedule reads certs,
+     pattern: batch file, use: act, identity: shared,
+     fresh_min: 10080, idempotent: true, errors: true,
+     timeout_s: 0, owner: Energy Services HSE director}
+  - {id: I10, name: Ticketing case create,
+     pattern: event, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 5, owner: HR Shared Services lead}
+- org: Hartwell
+  version: 2027-04 tool adapters v1.0
+  interfaces:
+  - {id: T01, name: get_employee_record,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 5, owner: Enterprise architect}
+  - {id: T02, name: update_employee,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 10, owner: Enterprise architect}
+  - {id: T03, name: get_leave_balance,
+     pattern: tool adapter, use: retrieve,
+     identity: service, fresh_min: 0, idempotent: true,
+     errors: true, timeout_s: 5,
+     owner: HR Shared Services lead}
+  - {id: I04, name: Benefits sync,
+     pattern: batch file, use: none, identity: service,
+     fresh_min: 1440, idempotent: true, errors: true,
+     timeout_s: 0, owner: Benefits lead}
+  - {id: T05, name: set_candidate_status,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 10, owner: Head of TA}
+  - {id: I06, name: Careers reads requisitions,
+     pattern: point-to-point API, use: retrieve,
+     identity: service, fresh_min: 60, idempotent: true,
+     errors: true, timeout_s: 10, owner: Head of TA}
+  - {id: I07, name: Letter template service,
+     pattern: point-to-point API, use: act,
+     identity: service, fresh_min: 0, idempotent: true,
+     errors: true, timeout_s: 10,
+     owner: HR Shared Services lead}
+  - {id: T08, name: Adviser desktop tools,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 10, owner: HR Shared Services lead}
+  - {id: T09, name: get_certificates,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 5, owner: Energy Services HSE director}
+  - {id: I10, name: Ticketing case create,
+     pattern: event, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 5, owner: HR Shared Services lead}
+- org: Quayfen Outsourcing
+  version: desktop agent draft
+  interfaces:
+  - {id: Q1, name: Hartwell HartwellOne,
+     pattern: screen, use: act, identity: named,
+     fresh_min: 0, idempotent: false, errors: false,
+     timeout_s: 0, owner: Quayfen automation team}
+  - {id: Q2, name: Cobbleford HR system,
+     pattern: screen, use: act, identity: named,
+     fresh_min: 0, idempotent: false, errors: false,
+     timeout_s: 0, owner: Quayfen automation team}
+  - {id: Q3, name: Aurelia HRIS-4 and mailbox,
+     pattern: screen, use: act, identity: shared,
+     fresh_min: 0, idempotent: false, errors: false,
+     timeout_s: 0, owner: Quayfen automation team}
+- org: Quayfen Outsourcing
+  version: desktop agent revised
+  interfaces:
+  - {id: Q1, name: Hartwell tools via the Gate,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 10, owner: Enterprise architect}
+  - {id: Q2, name: Cobbleford tool adapters,
+     pattern: tool adapter, use: act, identity: service,
+     fresh_min: 0, idempotent: true, errors: true,
+     timeout_s: 10, owner: Cobbleford platform team}
+  - {id: Q3, name: Aurelia HRIS-4 API,
+     pattern: point-to-point API, use: act,
+     identity: service, fresh_min: 0, idempotent: true,
+     errors: true, timeout_s: 10,
+     owner: Aurelia VP People Systems}
