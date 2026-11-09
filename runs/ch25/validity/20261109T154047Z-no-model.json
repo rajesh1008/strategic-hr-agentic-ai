@@ -1,0 +1,105 @@
+{
+  "run_id": "ch25/validity/20261109T154047Z",
+  "started_utc": "2026-11-09T15:40:47.700593+00:00",
+  "git_commit": "982657d",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "method": "M1",
+      "checks": {
+        "VAL-1": true,
+        "VAL-2": true,
+        "VAL-3": true,
+        "VAL-4": true,
+        "VAL-5": true,
+        "VAL-6": true
+      },
+      "verdict": "KEEP"
+    },
+    {
+      "method": "M2",
+      "checks": {
+        "VAL-1": false,
+        "VAL-2": false,
+        "VAL-3": true,
+        "VAL-4": false,
+        "VAL-5": false,
+        "VAL-6": false
+      },
+      "verdict": "STOP"
+    },
+    {
+      "method": "M3",
+      "checks": {
+        "VAL-1": true,
+        "VAL-2": true,
+        "VAL-3": true,
+        "VAL-4": true,
+        "VAL-5": true,
+        "VAL-6": true
+      },
+      "verdict": "KEEP"
+    },
+    {
+      "method": "M4",
+      "checks": {
+        "VAL-1": true,
+        "VAL-2": false,
+        "VAL-3": true,
+        "VAL-4": true,
+        "VAL-5": true,
+        "VAL-6": false
+      },
+      "verdict": "FIX"
+    },
+    {
+      "method": "M5",
+      "checks": {
+        "VAL-1": false,
+        "VAL-2": false,
+        "VAL-3": false,
+        "VAL-4": false,
+        "VAL-5": true,
+        "VAL-6": false
+      },
+      "verdict": "STOP"
+    },
+    {
+      "method": "M6",
+      "checks": {
+        "VAL-1": true,
+        "VAL-2": true,
+        "VAL-3": true,
+        "VAL-4": true,
+        "VAL-5": true,
+        "VAL-6": true
+      },
+      "verdict": "KEEP"
+    }
+  ],
+  "stdout": [
+    "== Hartwell assessment inventory, September 2027",
+    "M1 KEEP Field technician structured interview (FT-SI v1)",
+    "     class structured interview (0.42); evidence local",
+    "     fails: none",
+    "M2 STOP Supervisor conversation (v0)",
+    "     class unstructured interview (0.19); evidence none",
+    "     fails: VAL-1, VAL-2, VAL-4, VAL-5, VAL-6",
+    "M3 KEEP Bench fault-finding test (40 minutes)",
+    "     class work sample (0.33); evidence local",
+    "     fails: none",
+    "M4 FIX  Online mechanical reasoning test (timed)",
+    "     class cognitive ability (0.31); evidence vendor",
+    "     fails: VAL-2, VAL-6",
+    "M5 STOP Supervisor potential questionnaire",
+    "     class conscientiousness, overall (0.19); evidence vendor",
+    "     fails: VAL-1, VAL-2, VAL-3, VAL-4, VAL-6",
+    "M6 KEEP EPA 608 certificate check",
+    "     class credential (legal requirement) (-); evidence local",
+    "     fails: none",
+    "verdicts: FIX 1, KEEP 3, STOP 2"
+  ]
+}
