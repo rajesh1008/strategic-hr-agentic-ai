@@ -54,3 +54,12 @@ def test_explain_checks_catch_bad_notes():
     e = explain.check("employee", "PR-1 readback found it; "
                       "you were paid on November 19.")
     assert not e["PLAIN"]
+
+
+def test_recheck_plain_cause():
+    from chapters.ch36_table import recheck
+    assert recheck.cause_v11("A fault sent your change twice.")
+    assert not recheck.cause_v11("An error caused your bank details "
+                                 "to be changed more than once.")
+    assert not recheck.cause_v11("The agent caused the duplicate "
+                                 "and it was sent twice.")
