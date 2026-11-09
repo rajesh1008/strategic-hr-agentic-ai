@@ -1,0 +1,110 @@
+{
+  "run_id": "ch28/causal/20261109T161203Z",
+  "started_utc": "2026-11-09T16:12:03.229356+00:00",
+  "git_commit": "218481f",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "history": {
+        "none": [
+          627,
+          6908
+        ],
+        "counter": [
+          51,
+          723
+        ],
+        "market": [
+          31,
+          1364
+        ],
+        "searching": {
+          "counter": 0.6846473029045643,
+          "market": 0.06378299120234604,
+          "none": 0.07295888824551244
+        }
+      },
+      "test": {
+        "pay": {
+          "w1": [
+            13,
+            570
+          ],
+          "w2": [
+            53,
+            530
+          ],
+          "set": [
+            0.0931985834445483,
+            0.03202944007633404
+          ],
+          "cost": 8364793.039630908
+        },
+        "talk": {
+          "flagged by v2": {
+            "w1": [
+              12,
+              135
+            ],
+            "w2": [
+              4,
+              116
+            ],
+            "set_per100": 1.6354997653921255
+          },
+          "not flagged": {
+            "w1": [
+              59,
+              2311
+            ],
+            "w2": [
+              73,
+              2338
+            ],
+            "set_per100": 0.5194819390500088
+          }
+        }
+      }
+    }
+  ],
+  "stdout": [
+    "Does a raise keep people? US salaried, Hartwell (synthetic)",
+    "=== 1. history, 2025Q3 to 2027Q2: paid below 0.92 of midpoint",
+    "no raise           resigned 627/6908 = 9.1%",
+    "retention raise    resigned 51/723 = 7.1%",
+    "  naive reading: retention raises barely keep anyone",
+    "=== 2. same history, split by how the raise was assigned",
+    "market adjustment  resigned 31/1364 = 2.3%",
+    "  (assigned by the range rule to whole units)",
+    "unrecorded in HartwellOne, shown because the world is simulated:",
+    "  already looking: retention raise 68%, market 6%, no raise 7%",
+    "=== 3. retention test, Jan 10 to Apr 7, 2028: order set by coin",
+    "pay arm: paid below 0.92 of midpoint, raised to 0.95",
+    "  wave 1 (raised Jan 10)  resigned 13/570 = 2.3%",
+    "  wave 2 (raised Apr 10)  resigned 53/530 = 10.0%",
+    "  difference 7.7% (95% interval 4.9% to 10.6%)",
+    "  resignations avoided per 100 raises: 7.7",
+    "  cost of raising all 1100: $8,364,793 a year",
+    "    (illustrative midpoint)",
+    "  about 85 resignations avoided in the quarter,",
+    "    $24,628 of raise paid per resignation avoided",
+    "  world was set to: 9.3% without, 3.2% with",
+    "    people per wave to detect it: 243",
+    "talk arm: everyone else; wave 1 gets a stay talk in January",
+    "  flagged by v2  wave 1 12/135 = 8.9%",
+    "                 wave 2 4/116 = 3.4%",
+    "                 avoided per 100 talks -5.4",
+    "                   (95% interval -11.3 to 0.4)",
+    "                 world was set to 1.6 per 100",
+    "                 people per wave to detect it: 4,078",
+    "  not flagged    wave 1 59/2311 = 2.6%",
+    "                 wave 2 73/2338 = 3.1%",
+    "                 avoided per 100 talks 0.6",
+    "                   (95% interval -0.4 to 1.5)",
+    "                 world was set to 0.5 per 100",
+    "                 people per wave to detect it: 14,946"
+  ]
+}
