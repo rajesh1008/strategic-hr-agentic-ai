@@ -1,0 +1,52 @@
+# Hartwell Gate use registry (synthetic). A model call is
+# refused unless it names a registered use, comes from a caller
+# identity the use lists, asks for a model the use allows and
+# stays inside the use's budget. Owner of the registry: the
+# Hartwell Gate team (Nathan Cole); each use has an HR owner.
+registry: hartwell-gate-uses
+version: "2.0"
+uses:
+  - id: ka.hr
+    name: Knowledge assistant for HR partners and advisers
+    owner: Megan Hale
+    register_use: U1
+    status: production
+    callers: [svc-knowledge-assistant]
+    models: [claude-haiku-5-5]
+    max_question_class: PERSONAL
+    redact: true
+    max_tokens: 700
+    monthly_budget_usd: 900
+  - id: ka.manager
+    name: Knowledge assistant for people managers
+    owner: Megan Hale
+    register_use: U1
+    status: shadow
+    callers: [svc-knowledge-assistant]
+    models: [claude-haiku-5-5]
+    max_question_class: PERSONAL
+    redact: true
+    max_tokens: 700
+    monthly_budget_usd: 600
+  - id: ka.employee
+    name: Knowledge assistant for employees
+    owner: Megan Hale
+    register_use: U1
+    status: production
+    callers: [svc-knowledge-assistant, svc-askhartwell-agent]
+    models: [claude-haiku-5-5]
+    max_question_class: PERSONAL
+    redact: true
+    max_tokens: 700
+    monthly_budget_usd: 2500
+  - id: ka.eval
+    name: Knowledge assistant test runs (no user sees output)
+    owner: Tom Reilly
+    register_use: U1
+    status: production
+    callers: [svc-ka-eval]
+    models: [claude-haiku-5-5, claude-sonnet-5-5]
+    max_question_class: PERSONAL
+    redact: true
+    max_tokens: 700
+    monthly_budget_usd: 200
