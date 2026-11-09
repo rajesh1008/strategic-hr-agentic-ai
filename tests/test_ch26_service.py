@@ -24,3 +24,30 @@ def test_queue_language_before_lane():
 def test_promise_names_time():
     assert "10 minutes" in route.promise("care",
                                          route.PEOPLE["lena"])
+
+
+def test_catalog_v0_fails_and_v1_passes():
+    import yaml
+    from chapters.ch26_service import catalog as c
+    for v, want in (("0", True), ("1", False)):
+        cat = yaml.safe_load(
+            (c.DATA / f"catalog_v{v}.yaml").read_text())
+        bad = [c.check(r, cat["jurisdictions"])
+               for r in cat["actions"]]
+        assert any(bad) is want
+
+
+def test_journey_holds_access_before_right_to_work():
+    from chapters.ch26_service.journeys import ONBOARD, held
+    order = [("offer_signed", "recruiter"),
+             ("record_created", "agent"),
+             ("access_granted", "agent")]
+    assert ("access_granted", "before right_to_work") \
+        in held(ONBOARD, order)
+
+
+def test_language_and_figures():
+    from chapters.ch26_service.languages import (
+        figures, language)
+    assert language("Ти маєш 13,5 днів відпустки.") == "uk"
+    assert figures("13,5 dni; 26 listopada") == (True, True)
