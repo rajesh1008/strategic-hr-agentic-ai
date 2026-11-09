@@ -88,11 +88,14 @@ IN:
   bands: [[1, 30]]
 SG:
   label: Singapore retrenchment notification to MOM
-  source: VERIFY
+  # Employers with 10+ employees notify MOM within 5 working
+  # days after notifying any employee of retrenchment (R-571).
+  # No minimum count and no window: one retrenchment triggers.
+  source: R-571
   scope: employer
-  window: 180
+  window: 0
   employer_min: 10
-  bands: [[5, 0]]
+  bands: [[1, 0]]
 AE:
   label: UAE Art 43 individual notice (no collective)
   source: R-334

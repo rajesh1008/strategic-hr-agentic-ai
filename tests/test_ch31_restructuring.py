@@ -106,3 +106,17 @@ def test_timeline_tool_labels_floor():
         "site": "MAN", "count": 29, "start": "2028-06-01",
         "effective": "2028-06-30"}, load())
     assert "legal floor, not a plan" in out
+
+
+def test_singapore_one_retrenchment_triggers_notice():
+    # R-571: employers with 10+ employees notify MOM after telling
+    # any employee of retrenchment; no minimum count or window.
+    from datetime import date
+    from chapters.ch31_restructuring.timeline import check
+    rules = load("rules.yaml")
+    t = [{"date": date(2028, 3, 1), "n": 1, "site": "Singapore",
+          "employer": 10}]
+    x = check("SG", t, date(2028, 1, 10), rules)
+    assert x["triggered"] and x["days"] == 0 and not x["flags"]
+    t[0]["employer"] = 9
+    assert not check("SG", t, date(2028, 1, 10), rules)["triggered"]
