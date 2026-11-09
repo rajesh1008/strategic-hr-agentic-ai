@@ -7,7 +7,7 @@ address and bank-detail release short of the Shadow gate on
 three findings. This module is the release with the three
 fixes, on top of the Chapter 14 lifecycle and agent:
 
-  F1  matrix v3: an address change that starts on a later
+  F1  approval matrix v2, new rule: an address change that starts on a later
       date is not written by rule; it waits for HR services
       to apply it on the day (golden case G18)
   F2  a dispatcher that sends an approved action within five
@@ -19,7 +19,7 @@ fixes, on top of the Chapter 14 lifecycle and agent:
 
 The three levels are re-run exactly as Chapter 20 defined
 them: unit checks (no model), the golden set (v1.1, with G18
-re-expected for matrix v3) three times, and the one shared
+re-expected for the F1 rule) three times, and the one shared
 day with REC-1 to REC-6.
 
 Run:  HRAI_MODEL=no-model python -m \\
@@ -50,11 +50,11 @@ RECENT = timedelta(days=7)         # F3: closed actions shown
 G18_V3 = ("actions", {"address_change":
                       ["absent", "denied",
                        "awaiting_approval"]},
-          "matrix v3: future-dated address waits for a person")
+          "matrix v2 + F1: future-dated address waits for a person")
 
 
 class Lifecycle3(Lifecycle):
-    """Chapter 14's lifecycle with matrix v3 and a queue for
+    """Chapter 14's lifecycle with matrix v2 + F1 and a queue for
     expired approvals."""
 
     def __init__(self, *a, **k):
@@ -85,7 +85,7 @@ class Lifecycle3(Lifecycle):
                                  "not the requester's record")
             a.state = "awaiting_approval"
             a.reason = (f"{FUTURE_ROLE} to apply it on"
-                        f" {start:%B} {start.day} (matrix v3)")
+                        f" {start:%B} {start.day} (matrix v2 + F1)")
             self._log(a, "approval", "matrix",
                       "awaiting " + a.reason)
             return a
@@ -293,7 +293,7 @@ def play(rec, case: dict, extra: str = "") -> dict:
 def suite_main(k: int = 3) -> None:
     rec = RunRecorder("ch22", "release_suite")
     cs = cases()
-    rec.print(f"Golden set v1.1 + G18 for matrix v3, {len(cs)}"
+    rec.print(f"Golden set v1.1 + G18 for the F1 rule, {len(cs)}"
               f" cases x {k} runs, release with F1 to F3")
     res: dict[str, list] = {c: [] for c in cs}
     for i in range(1, k + 1):
