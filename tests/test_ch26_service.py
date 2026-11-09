@@ -37,8 +37,8 @@ def test_catalog_v0_fails_and_v1_passes():
         assert any(bad) is want
 
 
-def test_journey_holds_access_before_right_to_work():
-    from chapters.ch26_service.journeys import ONBOARD, held
+def test_onboard_holds_access_before_right_to_work():
+    from chapters.ch26_service.onboard import ONBOARD, held
     order = [("offer_signed", "recruiter"),
              ("record_created", "agent"),
              ("access_granted", "agent")]
