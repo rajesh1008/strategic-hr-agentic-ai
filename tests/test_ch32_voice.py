@@ -64,3 +64,11 @@ def test_notice_checks():
                          "learning.recommend"]
     assert c["NC-6"] == ["guarantee"]
     assert not c["NC-4"] and not c["NC-5"]
+
+
+def test_second_reader_compare_reads_records():
+    from chapters.ch32_voice import second_reader_compare as c
+    old, new = c.routed_v10(), c.routed_v12()
+    assert len(old) == 3 and len(new) == 3
+    assert {"F08", "H08"} <= set.intersection(*old)
+    assert {"F08", "H08"} <= set.intersection(*new)
