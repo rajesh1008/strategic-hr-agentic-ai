@@ -57,9 +57,18 @@ def answers(letters: str) -> dict[str, bool]:
     return {t: c == "Y" for t, c in zip(TESTS, letters)}
 
 
+FIELDS = {"id", "owner", "kind", "answers", "step", "facts"}
+
+
 def load(path: Path = HERE / "line_v1.yaml") -> dict:
     data = yaml.safe_load(path.read_text())
     for s in data["steps"]:
+        # A comma in an unquoted flow-mapping value ends the value and
+        # turns the rest into a stray key: refuse such a row outright.
+        if set(s) != FIELDS or not all(
+                isinstance(s[k], str) and s[k] for k in FIELDS):
+            raise ValueError(f"{path.name}: row {s.get('id')!r} does "
+                             f"not parse to exactly {sorted(FIELDS)}")
         s["owner_answers"] = answers(s["answers"])
         s["placement"] = place(s["kind"], s["owner_answers"])
     return data

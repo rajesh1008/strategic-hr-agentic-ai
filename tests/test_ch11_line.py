@@ -106,3 +106,23 @@ def test_placement_is_monotone_and_kind_capped():
                 if a[t] != cautious[t]:
                     q = line.place(kind, {**a, t: cautious[t]})
                     assert rank[q.mode] >= rank[p.mode], (kind, a, t)
+
+
+@pytest.mark.parametrize("name", ["line_v1.yaml", "line_v1_1.yaml"])
+def test_every_row_parses_whole(name):
+    # Rows A04, A05, A07, B02, C06, D03, E01, E04 and H02 have commas in
+    # their facts; unquoted, YAML cut each one short at the first comma.
+    d = line.load(line.HERE / name)
+    by_id = {s["id"]: s for s in d["steps"]}
+    assert len(by_id) == 64
+    assert by_id["A05"]["facts"] == (
+        "Applies in the US, UK, Netherlands, Germany and Australia.")
+    assert by_id["H02"]["facts"].endswith("the letter cannot be recalled.")
+
+
+def test_truncating_row_is_refused(tmp_path):
+    f = tmp_path / "bad.yaml"
+    f.write_text("steps:\n- {id: X01, owner: O, kind: read, answers: NYYNN,\n"
+                 "   step: S, facts: One, two.}\n")
+    with pytest.raises(ValueError):
+        line.load(f)
