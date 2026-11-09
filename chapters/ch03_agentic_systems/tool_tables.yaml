@@ -8,8 +8,12 @@ askhartwell_v2:
   tools:
     - {name: get_leave_balance, touches: HartwellOne leave,
        kind: read, scope: signed-in employee}
+    - {name: get_leave_policy, touches: policy library,
+       kind: read, scope: employee's own policy}
     - {name: get_crew_calendar, touches: HartwellOne roster,
        kind: read, scope: own crew, counts only}
+    - {name: hand_off_to_person, touches: HR service queue,
+       kind: route, scope: this conversation}
     - {name: propose_leave, touches: HartwellOne leave,
        kind: write, approver: rule or supervisor,
        readback: true}
