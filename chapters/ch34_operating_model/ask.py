@@ -1,12 +1,14 @@
 """Chapter 34: ask the operating model "who decides?".
 
 Book section "Test the charter, not the forum". Twelve
-questions go to the forum's assistant in two designs:
+questions go to the forum's assistant in three designs:
 
   slide  the operating-model slide (prose), the way most
-         operating models are written down
+         operating models are written down; NOT_SET allowed
+  pick   the same slide, told to pick the most likely role,
+         the way a busy manager asks a colleague
   table  charter v1 as rows (decides, does, prepares,
-         checks, told, record)
+         checks, told, record); NOT_SET allowed
 
 Each answer must be one role code or NOT_SET. Grading is a
 lookup in charter v1 (charter.lookup), not a model.
@@ -34,9 +36,13 @@ SYSTEM = """You answer questions about who decides what in
 Hartwell's HR operating model, using only the document
 given. For each question reply with exactly one role code
 from this list: {codes}.
-If the document does not say, reply NOT_SET. Do not guess
-from what is usual elsewhere.
+{rule}
 Reply with JSON only: {{"Q01": "CODE", ...}}"""
+RULE = {"abstain": "If the document does not say, reply "
+        "NOT_SET. Do not guess from what is usual "
+        "elsewhere.",
+        "pick": "Where the document is not explicit, pick "
+        "the most likely role."}
 
 
 def questions() -> list[dict]:
@@ -61,12 +67,14 @@ def expected(q: dict, rows: list[dict]) -> str:
     return C.lookup(rows, q["row"], q["column"])
 
 
-def ask(rec, doc: str, qs: list[dict], codes) -> dict:
+def ask(rec, doc: str, qs: list[dict], codes,
+        rule: str) -> dict:
     text = (f"Document:\n{doc}\n\nQuestions:\n" + "\n".join(
         f"{q['id']} {q['text']}" for q in qs))
     resp = rec.create(
         max_tokens=3000,
-        system=SYSTEM.format(codes=", ".join(codes)),
+        system=SYSTEM.format(codes=", ".join(codes),
+                             rule=RULE[rule]),
         messages=[{"role": "user", "content": text}],
         thinking=THINK.get(model(), {"type": "disabled"}))
     raw = "".join(b.text for b in resp.content
@@ -98,11 +106,14 @@ def main() -> None:
     c = C.load()
     rows, qs = c["versions"]["v1"], questions()
     codes = c["roles"] + ["NOT_SET"]
-    docs = {"slide": c["slide"], "table": table_text(rows)}
+    docs = {"slide": (c["slide"], "abstain"),
+            "pick": (c["slide"], "pick"),
+            "table": (table_text(rows), "abstain")}
     jobs = [(d, i) for d in docs for i in range(1, RUNS + 1)]
     with ThreadPoolExecutor(6) as ex:
         got = list(ex.map(
-            lambda j: ask(rec, docs[j[0]], qs, codes), jobs))
+            lambda j: ask(rec, *docs[j[0]][:1], qs, codes,
+                          docs[j[0]][1]), jobs))
     rec.print(f"== {model()}: 12 questions, {RUNS} runs "
               f"per design")
     rec.print("design run right not_set wrong")
@@ -110,8 +121,10 @@ def main() -> None:
         s = grade(g, qs, rows)
         rec.print(f"{d:<6} {i:>3} {s['right']:>5} "
                   f"{s['not_set']:>7} {s['wrong']:>5}")
-        rec.print("   missed: " + (", ".join(s["miss"])
-                                   or "none"))
+        bad = [m for m in s["miss"]
+               if not m.endswith("NOT_SET")]
+        for k in range(0, len(bad), 4):
+            rec.print("   wrong: " + ", ".join(bad[k:k + 4]))
         rec.note(design=d, run=i, answers=g, grade=s)
     rec.save()
 
