@@ -1,0 +1,195 @@
+# Monitoring proposals (synthetic). Each is one design an
+# owner brought to the monitoring test. Versions record how
+# the design changed. Lanes: NL, DE, UK, CA-ON, AU-NSW,
+# US-NY, US-MN. All names synthetic.
+- id: NL-1
+  version: v1
+  owner: Sanne Visser, facilities operations, Rotterdam
+  lane: NL
+  purpose: Show supervisors which engineers use the copilot
+    and how long their scanners sit idle
+  sources: [gate_log, scanner_idle]
+  alternatives: ""
+  basis: legitimate_interests
+  dpia: false
+  notice: false
+  council: none
+  staff_emotion: false
+  decision_use: individual
+  reviewer: ""
+  retention_days: 365
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: NL-1
+  version: v2
+  owner: Sanne Visser, facilities operations, Rotterdam
+  lane: NL
+  purpose: Show supervisors which engineers use the copilot
+    and how long their scanners sit idle
+  sources: [gate_log, scanner_idle]
+  alternatives: Site-level adoption counts; ask engineers
+  basis: legitimate_interests
+  dpia: true
+  notice: true
+  council: requested
+  staff_emotion: false
+  decision_use: individual
+  reviewer: ""
+  retention_days: 365
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: NL-1
+  version: v3
+  owner: Sanne Visser, facilities operations, Rotterdam
+  lane: NL
+  purpose: Count copilot use by site and month to plan
+    training
+  sources: [gate_log]
+  alternatives: Site-level adoption counts; ask engineers
+  basis: legitimate_interests
+  dpia: true
+  notice: true
+  council: consented
+  staff_emotion: false
+  decision_use: none
+  reviewer: ""
+  retention_days: 90
+  outside_hours: false
+  covert: false
+  min_group: 5
+- id: CB-1
+  version: v1
+  owner: Cobbleford insider-risk team, Edinburgh
+  lane: UK
+  purpose: Feed insider-risk alerts to the HR case agent to
+    draft conduct cases
+  sources: [dlp_alerts, badge]
+  alternatives: Investigator triage of alerts
+  basis: legal_obligation
+  dpia: true
+  notice: true
+  council: not_applicable
+  staff_emotion: false
+  decision_use: individual
+  reviewer: ""
+  retention_days: 2555
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: CB-1
+  version: v2
+  owner: Cobbleford insider-risk team, Edinburgh
+  lane: UK
+  purpose: Route insider-risk alerts to a named investigator;
+    HR opens a case only on the investigator's referral
+  sources: [dlp_alerts, badge]
+  alternatives: Investigator triage of alerts
+  basis: legal_obligation
+  dpia: true
+  notice: true
+  council: not_applicable
+  staff_emotion: false
+  decision_use: individual
+  reviewer: Head of Investigations, Edinburgh
+  retention_days: 2555
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: AT-1
+  version: v1
+  owner: Aurelia quality team, Utrecht
+  lane: NL
+  purpose: Score every adviser call, including adviser
+    sentiment, for monthly ranking
+  sources: [call_recordings]
+  alternatives: Sampled human review
+  basis: legitimate_interests
+  dpia: true
+  notice: true
+  council: requested
+  staff_emotion: true
+  decision_use: individual
+  reviewer: ""
+  retention_days: 365
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: AT-1
+  version: v2
+  owner: Aurelia quality team, Utrecht
+  lane: NL
+  purpose: Checklist on sampled calls for coaching; adverse
+    use only after a team lead listens to the call
+  sources: [call_recordings]
+  alternatives: Sampled human review
+  basis: legitimate_interests
+  dpia: true
+  notice: true
+  council: consented
+  staff_emotion: false
+  decision_use: individual
+  reviewer: Team lead who listened to the call
+  retention_days: 90
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: LK-1
+  version: v1
+  owner: Lakemont HR operations, Minnesota
+  lane: US-MN
+  purpose: Check staff sick notes against the patient record
+    when staff are also Lakemont patients
+  sources: [ehr]
+  alternatives: ""
+  basis: legitimate_interests
+  dpia: false
+  notice: true
+  council: not_applicable
+  staff_emotion: false
+  decision_use: individual
+  reviewer: HR business partner
+  retention_days: 365
+  outside_hours: false
+  covert: false
+  min_group: 1
+- id: AU-1
+  version: v1
+  owner: Hartwell Australia, Sydney depot
+  lane: AU-NSW
+  purpose: Read work-phone location after shifts to confirm
+    on-call response times
+  sources: [phone_location]
+  alternatives: Call-out log times
+  basis: legitimate_interests
+  dpia: false
+  notice: true
+  notice_days: 7
+  council: not_applicable
+  staff_emotion: false
+  decision_use: individual
+  reviewer: Depot manager
+  retention_days: 90
+  outside_hours: true
+  covert: false
+  min_group: 1
+- id: ON-1
+  version: v1
+  owner: Hartwell Canada, Toronto
+  lane: CA-ON
+  purpose: Log AskHartwell use by field staff to size the
+    service desk
+  sources: [gate_log]
+  alternatives: Ticket counts
+  basis: legitimate_interests
+  dpia: false
+  notice: false
+  council: not_applicable
+  staff_emotion: false
+  decision_use: none
+  reviewer: ""
+  retention_days: 90
+  outside_hours: false
+  covert: false
+  min_group: 5

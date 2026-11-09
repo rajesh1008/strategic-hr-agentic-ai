@@ -1,0 +1,49 @@
+# Retention schedule for the agent stack, June 2027
+# (synthetic values). days: retention of the source. Each
+# copy names its store, days, whether deletion at the source
+# deletes it, and whether NEVER-class fields are removed.
+never: [health, union_membership, bank_account, home_address]
+classes:
+  - id: RC-TRN
+    data: AskHartwell transcripts
+    days: 90
+    holds:
+      - {case: ER-2027-0418, set_by: "", review: ""}
+    copies:
+      - {store: eval_bucket_hyd, days: 365, propagates: false,
+         fields: [prompt, answer], redacted: true}
+      - {store: debug_snapshots, days: 30, propagates: false,
+         fields: [prompt, answer, tool_results],
+         redacted: false}
+  - id: RC-MEM
+    data: AskHartwell kept memory
+    days: 90
+    holds: []
+    copies:
+      - {store: memory, days: 90, propagates: true,
+         fields: [preferred_name, language, payslip_delivery],
+         redacted: true}
+  - id: RC-TRL
+    data: Trail entries (references only)
+    days: 2555
+    holds: []
+    copies:
+      - {store: siem, days: 2555, propagates: true,
+         fields: [references], redacted: true}
+  - id: RC-CALL
+    data: Aurelia call recordings (AT-1 v2)
+    days: 90
+    holds: []
+    copies:
+      - {store: checklist_results, days: 365,
+         propagates: false, derived: true,
+         fields: [item_results, quotes], redacted: true}
+  - id: RC-CV
+    data: Applicant resumes (ATS)
+    days: 730
+    holds: []
+    copies:
+      - {store: screening_cache, days: 7, propagates: true,
+         fields: [resume_text], redacted: false}
+      - {store: vector_replica, days: 3650, propagates: false,
+         fields: [resume_text], redacted: false}
