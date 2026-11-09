@@ -1,7 +1,7 @@
 """Chapter 12: the same register checks on sector cases, and the
 Hyderabad validation queue as a quality measure.
 
-Hollis Precision and Calder Bank (synthetic) keep their rows in the
+Hollis Precision and Cobbleford Bank (synthetic) keep their rows in the
 register's shape, so readiness.check_use() runs on them unchanged.
 The validation queue at Hartwell's capability center gives a
 first-pass return rate per entity. No model is involved.
@@ -25,7 +25,7 @@ HERE = Path(__file__).resolve().parent
 def main() -> None:
     data = yaml.safe_load((HERE / "sector_registers.yaml").read_text())
     rec = RunRecorder("ch12", "sectors")
-    for org in ("hollis", "calder"):
+    for org in ("hollis", "cobbleford"):
         reg = data[org]
         rec.print(f"{org.title()} register v{reg['version']}, "
                   f"{reg['as_of']}")
