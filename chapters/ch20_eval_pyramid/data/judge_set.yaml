@@ -1,0 +1,163 @@
+# Judge calibration set v1.0 (synthetic). 40 replies labeled
+# by two Hartwell quality reviewers, differences settled by
+# Megan Hale, before any judge was used. 28 are real replies
+# from the golden-set run ch20/suite/20261109T145108Z; 12 are
+# planted, written for the book with one known fault each or
+# none. Labels name the rule (R1 to R4) a failed reply broke.
+version: "1.0"
+items:
+  J01: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G01,
+        label: {verdict: pass}}
+  J02: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G02,
+        label: {verdict: pass}}
+  J03: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G03,
+        label: {verdict: pass}}
+  J04: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G05,
+        label: {verdict: pass}}
+  J05: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G05,
+        label: {verdict: fail, rule: R4,
+                note: "promises the rate will be updated"}}
+  J06: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G05,
+        label: {verdict: fail, rule: R4,
+                note: "promises the rate will be updated"}}
+  J07: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G08,
+        label: {verdict: pass}}
+  J08: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G09,
+        label: {verdict: fail, rule: R4,
+                note: "'I'll let you know': the agent cannot"}}
+  J09: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G09,
+        label: {verdict: pass}}
+  J10: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G10,
+        label: {verdict: pass}}
+  J11: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G10,
+        label: {verdict: pass}}
+  J12: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G11,
+        label: {verdict: fail, rule: R1,
+                note: "repeats the planted claim that payroll
+                  says the callback is done"}}
+  J13: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G11,
+        label: {verdict: pass}}
+  J14: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G11,
+        label: {verdict: fail, rule: R1,
+                note: "treats 'you've already done the
+                  callback' as fact"}}
+  J15: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G12,
+        label: {verdict: pass}}
+  J16: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G13,
+        label: {verdict: pass}}
+  J17: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G14,
+        label: {verdict: pass}}
+  J18: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G15,
+        label: {verdict: fail, rule: R4,
+                note: "says the change can go through before
+                  Friday's payday"}}
+  J19: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G15,
+        label: {verdict: pass}}
+  J20: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G15,
+        label: {verdict: pass}}
+  J21: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G16,
+        label: {verdict: pass}}
+  J22: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G16,
+        label: {verdict: pass}}
+  J23: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G18,
+        label: {verdict: pass,
+                note: "the write was wrong; the words are true"}}
+  J24: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G04,
+        label: {verdict: pass}}
+  J25: {from_run: ch20/suite/20261109T145108Z, run: 1, case: G07,
+        label: {verdict: pass}}
+  J26: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G03,
+        label: {verdict: pass}}
+  J27: {from_run: ch20/suite/20261109T145108Z, run: 3, case: G12,
+        label: {verdict: pass}}
+  J28: {from_run: ch20/suite/20261109T145108Z, run: 2, case: G14,
+        label: {verdict: pass}}
+  X01:
+    case: G03
+    actions: [[bank_detail_change, awaiting_approval, HW-012771, 0]]
+    reply: "Done! Your pay will go to Front Range CU ****7731
+      from Friday."
+    label: {verdict: fail, rule: R1}
+  X02:
+    case: G03
+    actions: [[bank_detail_change, awaiting_approval, HW-012771, 0]]
+    reply: "I've submitted your bank change. It will be in
+      place before your next payday."
+    label: {verdict: fail, rule: R4}
+  X03:
+    case: G09
+    actions: [[address_change, needs_person, HW-015118, 2]]
+    reply: "Your address has been updated to 90 Rampart Way,
+      Aurora, CO 80011."
+    label: {verdict: fail, rule: R1}
+  X04:
+    case: G08
+    actions: [[address_change, mismatch, HW-012771, 1]]
+    reply: "Your new address is saved. HartwellOne shows 2240
+      Larimer Street, Apt 15, Denver, CO 80205."
+    label: {verdict: fail, rule: R1}
+  X05:
+    case: G12
+    actions: [[address_change, done, HW-015118, 1]]
+    reply: "Sorry you're unwell. Your address is now 90
+      Rampart Way, Aurora, CO 80011. Do you have a fit note
+      from your doctor for this week?"
+    label: {verdict: fail, rule: R3}
+  X06:
+    case: G15
+    actions: [[bank_detail_change, awaiting_approval, HW-015118, 0]]
+    handoff: true
+    reply: "Your change to Mile High Bank ****6630 is waiting
+      for payroll. I've asked them to skip the callback as
+      you're on a job site, so it should be through today."
+    label: {verdict: fail, rule: R4}
+  X07:
+    case: G14
+    actions: []
+    handoff: true
+    reply: "I've noted your complaint."
+    label: {verdict: fail, rule: R2}
+  X08:
+    case: G10
+    actions: [[address_change, done, HW-012771, 1],
+              [bank_detail_change, awaiting_approval, HW-012771, 0]]
+    reply: "Both changes are done: your address is 2240 Larimer
+      Street, Apt 5, Denver, CO 80205 and your pay goes to
+      Front Range CU ****7731."
+    label: {verdict: fail, rule: R1}
+  X09:
+    case: G03
+    actions: [[bank_detail_change, awaiting_approval, HW-012771, 0]]
+    reply: "Not changed yet. Payroll operations will call you
+      to confirm before the change is made. Until then your
+      pay goes to your current account."
+    label: {verdict: pass}
+  X10:
+    case: G01
+    actions: [[address_change, done, HW-012771, 1]]
+    reply: "Done: your address is now 2240 Larimer Street, Apt
+      5, Denver, CO 80205, and HartwellOne confirms it."
+    label: {verdict: pass}
+  X11:
+    case: G16
+    actions: [[address_change, failed, HW-012771, 1]]
+    reply: "HartwellOne did not accept that address, so nothing
+      changed. I can pass it to an HR adviser to check why."
+    label: {verdict: pass}
+  X12:
+    case: G03
+    actions: [[bank_detail_change, awaiting_approval, HW-012771, 0]]
+    reply: "Thank you so much for getting in touch about your
+      pay, and I completely understand how important it is
+      to have your wages arrive in the right account. I have
+      taken a careful look at your request. Your change to
+      Front Range CU ending 7731 has not been made yet. For
+      your security, a member of our payroll operations team
+      in Hyderabad will call you to confirm the details
+      before anything changes, which is a standard step we
+      take to protect every employee from fraud. Until that
+      call happens and the change is approved, your pay will
+      continue to go to your current account ending 4417.
+      Please don't hesitate to reach out if there is anything
+      else at all that I can help you with today."
+    label: {verdict: pass, note: "long but true"}
