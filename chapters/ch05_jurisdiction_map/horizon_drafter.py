@@ -55,9 +55,15 @@ Fields:
 Reply with a JSON array only."""
 
 
+# the box's Brotli is too old for the SDK's decoder
+GZIP = {"Accept-Encoding": "gzip, deflate"}
+
+
 def draft(rec: RunRecorder, items: list[dict]) -> list[dict]:
-    resp = rec.create(max_tokens=6000, system=SYSTEM, messages=[
-        {"role": "user", "content": json.dumps(items, indent=1)}])
+    resp = rec.create(
+        max_tokens=6000, system=SYSTEM, extra_headers=GZIP,
+        messages=[{"role": "user",
+                   "content": json.dumps(items, indent=1)}])
     text = "".join(b.text for b in resp.content if b.type == "text")
     m = re.search(r"\[.*\]", text, re.S)
     try:
