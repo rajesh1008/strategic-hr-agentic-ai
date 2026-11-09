@@ -26,6 +26,7 @@ from .flags import flags
 from .make_data import load
 
 EDGES = [0.0, 0.80, 0.85, 0.90, 0.95, 1.0]
+SPLIT = [0.0, 0.85, 0.90, 0.93, 0.95, 1.0]
 PILOT_AT = 0.85          # the pilot's confirm-lane setting
 TARGET = 0.92            # lower bound for the confirm lane
 REVIEW_AT = 0.80         # calibrated: below this, escalate
@@ -85,6 +86,17 @@ def main(run_id: str) -> None:
                 f"{lo:.2f} to {hi:.2f}")
     p.print(f"ECE {rt.ece(pairs, EDGES):.3f}; "
             f"Brier {rt.brier(pairs):.3f}")
+    p.print("by answer   stated       n   said  right")
+    split = {}
+    for name, d in (("meets", True), ("not meets", False)):
+        split[name] = rt.reliability(
+            [(r["conf"], r["said"] == r["meets"])
+             for r in use if r["said"] is d], SPLIT)
+        for b in split[name]:
+            if b["n"]:
+                p.print(f"{name:<11} {b['lo']:.2f}-{b['hi']:.2f}"
+                        f" {b['n']:4d}  {b['said']:.2f}  "
+                        f"{b['right']:.2f}")
     kinds: dict[str, list] = {}
     for r in use:
         kinds.setdefault(r["kind"], []).append(r)
@@ -167,7 +179,7 @@ def main(run_id: str) -> None:
     p.print("routing, all 400: " + ", ".join(
         f"{k} {lanes.get(k, 0)}" for k in
         ("complete", "review", "escalate", "fail_closed")))
-    p.note(source=run_id, table=table, fit=fit,
+    p.note(source=run_id, table=table, split=split, fit=fit,
            line=line.__dict__, lanes=lanes, allfit=allfit,
            kinds={k: [len(v), sum(r["said"] == r["meets"]
                                   for r in v)]
