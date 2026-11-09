@@ -145,8 +145,9 @@ def main(config: str) -> None:
 def _short(o) -> str:
     if not isinstance(o, dict) or "meets" not in o:
         return "none"
-    return f"{'meets' if o['meets'] else 'no':<5} " \
-           f"{o.get('field_months', '?'):>3} mo"
+    m = o.get("field_months")
+    m = m if isinstance(m, int) else "?"
+    return f"{'meets' if o['meets'] else 'no':<5} {m:>3} mo"
 
 
 if __name__ == "__main__":
