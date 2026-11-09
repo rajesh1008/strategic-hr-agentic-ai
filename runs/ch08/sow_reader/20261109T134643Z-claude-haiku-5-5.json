@@ -1,0 +1,94 @@
+{
+  "run_id": "ch08/sow_reader/20261109T134643Z",
+  "started_utc": "2026-11-09T13:46:43.271105+00:00",
+  "git_commit": "7eb2032",
+  "git_dirty": false,
+  "model": "claude-haiku-5-5",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [
+    {
+      "request": {
+        "max_tokens": 2000,
+        "system": "You read a draft outsourcing statement of work for an HR team. Answer each field from the text alone. Do not judge whether a term is good or lawful.\nFields:\nline_version: Version of the client's Automate/Keep Line the SOW cites, as a string, or null\nline_notice_days: Days of notice before a new Line version binds the supplier; 0 if none stated\nincident_notify_hours: Hours the supplier has to tell the client about an incident\ntime_to_human_minutes: Target minutes from hand-off to a human adviser, or null if the SOW sets none\nreturn_window_days: Days a containment or deflection KPI waits for a repeat contact before counting a contact as resolved; 0 if it does not wait\nseat_cut: Seats the supplier commits to cut, as an integer, or 0\nseat_cut_measured: true only if the seat cut rests on a rate measured on this client's own contacts\nchanges_agent: Who may change the agent's tools or permissions: client, supplier or both\ntells_employee: Who tells an employee about an incident that affected them: client or supplier\nremote_view_is_transfer: true if the SOW treats remote viewing of UK records from abroad as a transfer\nReply with JSON only: {\"<field>\": {\"value\": ..., \"clause\": \"the clause number you relied on\"}}",
+        "messages": [
+          {
+            "role": "user",
+            "content": "# Statement of Work No. 7: HR Service Desk 2027 (vendor draft)\n\nSYNTHETIC. Invented for Strategic HR and Agentic AI, Chapter 8.\nBetween Hartwell Infrastructure & Services (\"Client\") and\nQuayfen Outsourcing (\"Supplier\"). Draft of March 15, 2027.\n\n## 3. Services\n\n3.1 Supplier shall operate the Client's HR virtual agent\n(\"Virtual Agent\") for Employees in the United States, Canada\nand the United Kingdom, and shall staff the Adviser\nqueue that receives Contacts the Virtual Agent transfers.\n\n3.2 Supplier shall operate the Virtual Agent in accordance with\nthe Client's Automate/Keep Line, version 1.0, attached as\nExhibit D, as the Client may update it from time to time.\n\n3.3 Supplier's Workforce Management team may adjust Virtual\nAgent routing, tool configuration and Adviser permissions as\nneeded to manage peak volumes.\n\n3.4 Supplier shall communicate the resolution of any Service\nIncident directly to the affected Employee.\n\n## 4. Service levels\n\n4.1 First response: 90% of Contacts answered within 60 seconds.\n\n4.2 Deflection Rate: the percentage of Contacts closed by the\nVirtual Agent without transfer to an Adviser. Target 60%. Each\nfull point above target earns the Supplier a gain-share credit\nunder Schedule 3.\n\n4.3 Escalated Contacts are handled within the Service Levels in\nsection 4.1.\n\n## 5. Commercials\n\n5.1 Based on Supplier's benchmark containment of 60% across\ncomparable clients, Supplier commits to reduce the dedicated\nHartwell seat count by 189 seats no later than September 30,\n2027, with the corresponding reduction in charges.\n\n## 6. Incidents and data\n\n6.1 Supplier shall notify Client of any Service Incident within\nseventy-two (72) hours of becoming aware of it.\n\n6.2 Supplier may engage the subcontractors listed in Schedule 5\n(Cebu facilities services; background screening partner).\n\n6.3 Advisers in the Philippines may view United Kingdom Employee\nrecords in HartwellOne. Viewing does not constitute a transfer\nof data and no additional transfer terms apply.\n"
+          }
+        ],
+        "extra_headers": {
+          "Accept-Encoding": "gzip, deflate"
+        },
+        "model": "claude-haiku-5-5"
+      },
+      "prompt_sha256": "e3c6b036645ae43227040ba937bf7b954b4f96e6a2e8dfa2ed12cb2dad5b2200",
+      "response": {
+        "id": "msg_011CgsTUKfiWvcF86QAWXnZo",
+        "model": "claude-haiku-5-5",
+        "stop_reason": "end_turn",
+        "content": [
+          {
+            "signature": "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",
+            "thinking": "",
+            "type": "thinking"
+          },
+          {
+            "citations": null,
+            "text": "```json\n{\"line_version\": {\"value\": \"1.0\", \"clause\": \"3.2\"},\n\"line_notice_days\": {\"value\": 0, \"clause\": \"3.2\"},\n\"incident_notify_hours\": {\"value\": 72, \"clause\": \"6.1\"},\n\"time_to_human_minutes\": {\"value\": 1, \"clause\": \"4.3, 4.1\"},\n\"return_window_days\": {\"value\": 0, \"clause\": \"4.2\"},\n\"seat_cut\": {\"value\": 189, \"clause\": \"5.1\"},\n\"seat_cut_measured\": {\"value\": false, \"clause\": \"5.1\"},\n\"changes_agent\": {\"value\": \"both\", \"clause\": \"3.2, 3.3\"},\n\"tells_employee\": {\"value\": \"supplier\", \"clause\": \"3.4\"},\n\"remote_view_is_transfer\": {\"value\": false, \"clause\": \"6.3\"}}\n```",
+            "type": "text"
+          }
+        ],
+        "usage": {
+          "cache_creation": {
+            "ephemeral_1h_input_tokens": 0,
+            "ephemeral_5m_input_tokens": 0
+          },
+          "cache_creation_input_tokens": 0,
+          "cache_read_input_tokens": 0,
+          "inference_geo": "global",
+          "input_tokens": 1218,
+          "output_tokens": 987,
+          "output_tokens_details": {
+            "thinking_tokens": 703
+          },
+          "server_tool_use": null,
+          "service_tier": "standard",
+          "speed": "standard"
+        }
+      }
+    }
+  ],
+  "events": [
+    {
+      "diff": [
+        [
+          "time_to_human_minutes",
+          null,
+          1
+        ],
+        [
+          "changes_agent",
+          "supplier",
+          "both"
+        ]
+      ],
+      "found": [
+        "SLA-1",
+        "SLA-3",
+        "SLA-4",
+        "SLA-5"
+      ],
+      "missed": [
+        "SLA-2"
+      ]
+    }
+  ],
+  "stdout": [
+    "SOW reader, claude-haiku-5-5: 8 of 10 fields match procurement",
+    "  time_to_human_minutes: keyed None | model 1 (clause 4.3, 4.1)",
+    "  changes_agent: keyed supplier | model both (clause 3.2, 3.3)",
+    "Routed to Megan Hale and counsel: 2",
+    "SLA checks on the model's reading: 4 of 5 failures found",
+    "  missed: SLA-2"
+  ]
+}
