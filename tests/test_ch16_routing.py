@@ -99,3 +99,12 @@ def test_person_category_fails_closed_at_any_score():
                           fail_closed=["person"])
     assert rt.route(rt.Case("x", "person", 0.99),
                     line)[0] == "fail_closed"
+
+
+def test_isotonic_pools_tied_confidences():
+    # 13 of 15 right at 0.85 must not split into a 0.00 block
+    pairs = [(0.85, i < 13) for i in range(15)]
+    pairs += [(0.90, i < 13) for i in range(17)]
+    fit = rt.isotonic(pairs)
+    assert len({hi for hi, _ in fit}) == len(fit)
+    assert abs(rt.calibrate(fit, 0.85) - 26 / 32) < 1e-9

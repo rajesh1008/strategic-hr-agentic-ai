@@ -73,10 +73,14 @@ def isotonic(pairs: list[Pair]) -> list[tuple[float, float]]:
     confidence to measured accuracy that never goes down as
     confidence goes up. Blocks with equal values merge.
     Returns (upper confidence, value)."""
-    pts = sorted(pairs)
+    tied: dict[float, list[float]] = {}  # one block per value
+    for c, r in pairs:
+        t = tied.setdefault(c, [0.0, 0.0])
+        t[0] += float(r)
+        t[1] += 1.0
     blocks: list[list[float]] = []   # [hi, sum, n]
-    for c, r in pts:
-        blocks.append([c, float(r), 1.0])
+    for c in sorted(tied):
+        blocks.append([c, tied[c][0], tied[c][1]])
         while len(blocks) > 1 and (blocks[-2][1] / blocks[-2][2]
                                    >= blocks[-1][1] / blocks[-1][2]):
             hi, s, n = blocks.pop()
