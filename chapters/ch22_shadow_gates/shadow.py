@@ -75,13 +75,15 @@ def simulate(seed: int = 22) -> list[Seen]:
                 if o != "stayed" else None
             out.append(Seen(p, bool(flags["v1"][i]),
                             bool(flags["v2"][i]),
-                            lane == "US" and know[i] >= wcut,
+                            bool(lane == "US"
+                                 and know[i] >= wcut),
                             o, wk))
     return out
 
 
 def rate(rows: list[Seen], flag: str) -> tuple[int, int]:
-    return sum(getattr(r, flag) for r in rows), len(rows)
+    return int(sum(bool(getattr(r, flag)) for r in rows)), \
+        len(rows)
 
 
 def table(rec, rows: list[Seen], flag: str) -> dict:
@@ -130,9 +132,9 @@ def lane_report(rec, rows: list[Seen], lane: str,
     sx = {s: rate([r for r in rows if r.p.sex == s
                    and r.outcome == "stayed"], flag)
           for s in sorted({r.p.sex for r in rows})}
-    rec.print("stayers flagged by sex: " + "; ".join(
-        f"{s} {k}/{m} = {k / m:.3f}" for s, (k, m)
-        in sx.items()))
+    rec.print("stayers flagged by sex code:")
+    for s, (k, m) in sx.items():
+        rec.print(f"  {s} {k}/{m} = {k / m:.3f}")
     old = [r for r in rows if getattr(r, flag)
            and r.p.band in OVER50]
     rec.print(f"flags on 50+: {len(old)} of {f}; of them"
