@@ -83,7 +83,8 @@ def check(draft: dict, user: dict, docs: dict,
         if s not in shown:
             fails.append(f"cites {s}, which it was not shown")
         elif not entitled.can_read(user, docs[s])[0]:
-            fails.append(f"cites {s}, which this user may not read")
+            fails.append(f"cites {s}, which this user may "
+                         "not read")
     if draft["route"]:
         return fails
     if not draft["sources"]:
