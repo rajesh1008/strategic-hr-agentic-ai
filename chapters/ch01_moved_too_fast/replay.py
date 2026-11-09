@@ -169,6 +169,11 @@ def live_proposals(rec: RunRecorder, policy, cands):
                           tools=TOOLS, messages=messages)
         model = resp.model
         calls = [b for b in resp.content if b.type == "tool_use"]
+        cut = resp.stop_reason == "max_tokens"
+        rec.print(f"turn {turn}: {len(calls)} tool call(s), "
+                  f"stop {resp.stop_reason}"
+                  + (" (cut off at the output limit)" if cut
+                     else ""))
         if not calls:
             break
         results = []
@@ -218,7 +223,8 @@ def diff(rec, cands, pre, ats, events) -> dict:
     p("AFTER   agent, same instruction, through the gate")
     p(f"  proposals                        {len(events):>4}")
     for (st, g), n in sorted(by.items(), key=str):
-        p(f"  {str(st):<20} {g:<5}           {n:>4}")
+        p(f"  {str(st or 'no payload'):<20} {g:<5}           "
+          f"{n:>4}")
     p(f"  candidates with no proposal      {len(no_prop):>4}")
     p(f"  applications ended               "
       f"{final['not_progressed']:>4}")
