@@ -54,6 +54,7 @@ class Row:
     low: float | None = None
     high: float | None = None
     shortfall: int = 0
+    parity: int = 0
     flags: list[str] = field(default_factory=list)
 
 
@@ -136,6 +137,7 @@ def _compare(r: Row, ref: Row) -> None:
         r.selected, r.n, ref.selected, ref.n)
     need = FOUR_FIFTHS * ref.rate * r.n
     r.shortfall = max(0, math.ceil(need - r.selected - 1e-9))
+    r.parity = max(0, round(ref.rate * r.n - r.selected))
     below, sig = r.ratio < FOUR_FIFTHS, r.p < ALPHA
     if below and sig:
         r.flags.append("AI")
