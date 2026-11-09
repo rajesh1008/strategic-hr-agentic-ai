@@ -57,11 +57,11 @@ def classify(f: dict[str, bool]) -> Result:
         return Result("not high-risk", "outside Annex III 4")
     ex = [k for k in EXEMPT if f[k]]
     if ex and f["profiling"]:
-        return Result("high-risk", "profiling: no 6(3)", pts)
+        return Result("high-risk", "profiling bars 6(3)", pts)
     if ex and not f["materially_influences"]:
         return Result("exempt (document it)",
-                      f"Art 6(3): {ex[0]}", pts)
-    return Result("high-risk", "Annex III 4", pts)
+                      f"6(3) {ex[0]}", pts)
+    return Result("high-risk", "no 6(3) exemption", pts)
 
 
 def role(s: dict) -> str:
@@ -141,17 +141,17 @@ def main() -> None:
         dp = dpia_needed(s, res, a22)
         obs = obligations(res, who, data["obligations"])
         ver = sum(1 for o in obs if not o.get("rid"))
-        rec.print(f"{s['id']:<4}{s['name'][:40]}")
         pts = "/".join(sorted({POINT[p] for p in res.points}))
-        pts = pts or "-"
-        rec.print(f"    {res.label} ({res.why}); {who}; "
-                  f"points {pts}")
         dps = "no" if not dp else (
             dp[0] if dp[0].startswith("n/a")
             else "yes: " + ", ".join(dp))
-        rec.print(f"    {a22}; DPIA {dps}")
-        rec.print(f"    AI Act duties {len(obs)}, of which "
-                  f"{ver} VERIFY")
+        rec.print(f"{s['id']:<4}{s['name']}")
+        ann = f"Annex III {pts}; " if pts else ""
+        rec.print(f"    {res.label}; {ann}{res.why}")
+        rec.print(f"    role {who}; AI Act duties {len(obs)}"
+                  f" (VERIFY {ver})")
+        rec.print(f"    GDPR: {a22}")
+        rec.print(f"    DPIA {dps}")
         rec.note(system=s["id"], label=res.label, role=who,
                  art22=a22, dpia=dp, duties=len(obs))
     print(f"\nRun record: {rec.save()}")

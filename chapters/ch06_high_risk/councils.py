@@ -58,11 +58,12 @@ def main() -> None:
     for p in cfg["plans"]:
         s, go = systems[p["system"]], p["date"]
         out = plan(s, go, cfg)
-        rec.print(f"{s['id']} {s['name'][:38]}, "
-                  f"{p['kind']} {go}")
+        rec.print(f"{s['id']} {s['name']}")
+        rec.print(f"  {p['kind']} {go}")
         for cc, body, power, ref, rid in out["rows"]:
-            rec.print(f"  {cc} {body[:16]:<16} {power[:14]:<14}"
-                      f" {ref[:40]:<40} {rid or 'VERIFY'}")
+            rec.print(f"  {cc} {body}: {power} "
+                      f"[{rid or 'VERIFY'}]")
+            rec.print(f"       {ref}")
         if not out["rows"]:
             rec.print("  no body to inform or consult")
         rec.print(f"  start by {out['start']} "
