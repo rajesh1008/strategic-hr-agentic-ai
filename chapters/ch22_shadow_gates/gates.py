@@ -52,7 +52,7 @@ def check(name: str, item: dict | None) -> list[str]:
         if item.get("status") != "met":
             bad.insert(0, item.get("status", "no status"))
         return bad
-    e = events(item["run"])
+    e = events(item["run"]) if "run" in item else {}
     if t == "equals":
         return [] if item["value"] == item["want"] else \
             [f"is '{item['value']}', intent says"
