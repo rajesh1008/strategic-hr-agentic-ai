@@ -1,0 +1,80 @@
+# _synthetic: Invented for the book. No real vendor or product.
+# Due-diligence pack v1.0 (Hartwell, April 5, 2027): twelve
+# checks, each answered with evidence the vendor supplied or
+# Hartwell measured. Status per answer: PASS, FIX (closable
+# in the contract) or FAIL. Gate checks: any FAIL rejects.
+checks:
+  DD-01: Every performance claim carries its Claim-Status grade
+  DD-02: Impact table per step and version on our records
+  DD-03: A per-decision record with inputs, reason and version
+  DD-04: Decision records exported daily to our trail
+  DD-05: 30 days' notice of model or configuration change
+  DD-06: We can switch any AI feature off within 15 minutes
+  DD-07: New AI features ship switched off
+  DD-08: AI Act roles named; instructions for use supplied
+  DD-09: Processor terms; sub-processors and model host listed
+  DD-10: No training on our data or decisions without consent
+  DD-11: Exit export of all data, decisions and logs, no fee
+  DD-12: Writes only through our adapter, own service identity
+gates: [DD-02, DD-06, DD-10, DD-12]
+vendors:
+  takefen:
+    name: Takefen renewal (Smart Shortlist, Smart Ranking v5)
+    answers:
+      DD-01: [FIX, "70% and 60% claims re-measured at 24% and 22%"]
+      DD-02: [FAIL, "audit on vendor pool only; no per-version table"]
+      DD-03: [FAIL, "score and rank kept; criterion not recorded"]
+      DD-04: [FAIL, "logs kept 90 days; no export"]
+      DD-05: [FIX, "release notes on the day of release"]
+      DD-06: [FIX, "feature flags by ticket, 2 business days"]
+      DD-07: [FAIL, "Smart Shortlist arrived switched on"]
+      DD-08: [FIX, "says the recruiter decides; no instructions"]
+      DD-09: [PASS, "DPA signed 2024; sub-processors listed"]
+      DD-10: [FIX, "aggregate model training on all tenants"]
+      DD-11: [FAIL, "derived data excluded at termination"]
+      DD-12: [FAIL, "batch status writes as an integration user"]
+  northgate:
+    name: Northgate People Systems, recruiting workflow
+    answers:
+      DD-01: [PASS, "scheduling claim tested on 40 requisitions"]
+      DD-02: [PASS, "no ranking in scope; scheduling logged"]
+      DD-03: [PASS, "event log with actor, reason and version"]
+      DD-04: [FIX, "export API exists; trail format not offered"]
+      DD-05: [FIX, "standard notice 14 days"]
+      DD-06: [PASS, "tenant switch per feature, immediate"]
+      DD-07: [PASS, "new features off by default per contract"]
+      DD-08: [PASS, "not an AI system for scheduling; documented"]
+      DD-09: [FIX, "model host for message drafts not listed"]
+      DD-10: [PASS, "no training on customer data"]
+      DD-11: [FIX, "export in 60 days; logs at extra charge"]
+      DD-12: [PASS, "writes through customer adapter supported"]
+  fit_match:
+    name: Northgate Fit Match add-on (learned fit score)
+    answers:
+      DD-01: [FIX, "45% faster shortlists, vendor data only"]
+      DD-02: [FAIL, "trained per customer; table after go-live"]
+      DD-03: [FIX, "score and top three features per decision"]
+      DD-04: [FIX, "same export API as the workflow"]
+      DD-05: [FAIL, "retrained monthly, no notice per version"]
+      DD-06: [PASS, "tenant switch per feature, immediate"]
+      DD-07: [PASS, "off until the customer turns it on"]
+      DD-08: [FIX, "provider named; instructions in draft"]
+      DD-09: [PASS, "same processor terms as the workflow"]
+      DD-10: [FAIL, "learns from the customer's past decisions"]
+      DD-11: [FIX, "the trained model is not exported"]
+      DD-12: [PASS, "score only; no write"]
+  vendor_c:
+    name: Third bidder, all-in-one recruiting agent
+    answers:
+      DD-01: [FIX, "claims from a consultancy survey"]
+      DD-02: [FIX, "offers an annual bias audit"]
+      DD-03: [PASS, "decision log with reasons"]
+      DD-04: [FIX, "weekly file export"]
+      DD-05: [FIX, "notice 7 days"]
+      DD-06: [FAIL, "agent stops only as a whole tenant"]
+      DD-07: [FIX, "new skills on by default, can be changed"]
+      DD-08: [FIX, "role allocation left to the customer"]
+      DD-09: [FIX, "model host in a second region unlisted"]
+      DD-10: [PASS, "no training on customer data"]
+      DD-11: [PASS, "full export, machine-readable, no fee"]
+      DD-12: [FAIL, "agent writes statuses with its own login"]

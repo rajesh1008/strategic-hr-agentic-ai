@@ -1,0 +1,59 @@
+# _synthetic: Invented for the book. No real employer or vendor.
+fieldnote:
+  # Two designs for the project staffing matcher (FN1).
+  designs:
+    D1:
+      name: embeddings plus a ranker trained on past staffing
+      infers: true
+      used_for_eu_staff: true
+      annex_iii: "4(b) task allocation"
+    D2:
+      name: rules over declared skills; the employee sorts
+      infers: false
+      used_for_eu_staff: true
+      annex_iii: "4(b) task allocation"
+  provider_duties: [Art 9 risk management, Art 10 data governance,
+    Art 11 technical documentation, Art 12 record-keeping,
+    Art 13 instructions for use, Art 14 human oversight,
+    Art 15 accuracy and robustness, Art 17 quality management,
+    Art 43 conformity assessment]
+westbridge:
+  # Tender for an HR casework assistant, three councils.
+  weights: {quality: 60, price: 40}
+  gates: [DD-02, DD-06, DD-10, DD-12, EQIA, ATRS]
+  bids:
+    A: {price_k: 410, quality: 71, fails: []}
+    B: {price_k: 295, quality: 64, fails: [DD-12, EQIA]}
+    C: {price_k: 365, quality: 78, fails: []}
+    D: {price_k: 450, quality: 82, fails: [ATRS]}
+brightwater:
+  # Global HRIS release 2027R1: AI add-ons as shipped.
+  addons:
+    - {id: BA01, name: job description writer, mode: drafts, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA02, name: candidate match score, mode: recommends, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA03, name: interview question generator, mode: drafts, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA04, name: video interview sentiment, mode: recommends, default_on: false, eu: true, infers_emotion: true}
+    - {id: BA05, name: shift fill suggestions, mode: recommends, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA06, name: auto-approve shift swaps, mode: acts, default_on: false, eu: true, infers_emotion: false}
+    - {id: BA07, name: flight-risk score, mode: recommends, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA08, name: policy answer assistant, mode: retrieves, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA09, name: performance review summarizer, mode: drafts, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA10, name: absence pattern alerts, mode: recommends, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA11, name: payroll anomaly flags, mode: recommends, default_on: true, eu: false, infers_emotion: false}
+    - {id: BA12, name: learning recommendations, mode: recommends, default_on: true, eu: true, infers_emotion: false}
+    - {id: BA13, name: auto-reject knockout answers, mode: acts, default_on: false, eu: true, infers_emotion: false}
+    - {id: BA14, name: org chart and directory search, mode: retrieves, default_on: true, eu: true, infers_emotion: false}
+  # Steps a person decides about another person (Line Keep
+  # side), by add-on: these may at most recommend after a
+  # Line row and, for EU staff, works-council consent.
+  about_a_person: [BA02, BA05, BA06, BA07, BA09, BA10, BA12, BA13]
+capability_center:
+  # The decision-export adapter (HW4), built in Hyderabad.
+  team: 5
+  weeks: 12
+  engineer_year_usd: 38000
+  run_people: 0.5
+  denver_owner: Jessica Tran
+  hyderabad_lead: Ananya Rao
+  northgate_quote_usd: 260000
+  northgate_quote_note: "on the roadmap for 2028"
