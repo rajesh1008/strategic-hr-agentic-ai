@@ -32,6 +32,12 @@ def placements() -> dict[str, str]:
     return {s["id"]: str(s["placement"]) for s in steps}
 
 
+def short(p: str) -> str:
+    side, mode = p.split("/")
+    mode = mode.replace("act_with_approval", "act + approval")
+    return mode if side == "automate" else f"KEEP {mode}"
+
+
 def flows(m: dict) -> set[tuple[str, str, str]]:
     """(subject country, site country, entity) for every
     service whose data leaves the country of employment."""
@@ -61,15 +67,15 @@ def main() -> None:
     m, place = load(), placements()
     rec = RunRecorder("ch08", "opsmap")
     rec.print(f"{m['map']} {m['version']} (synthetic)")
-    rec.print("id  service                      tier D/B/O"
-              "        Line")
+    rec.print("id  service                T  D/B/O"
+              "       Line ceiling")
     for s in m["services"]:
-        p = place.get(s["line"], "no agent") if s["line"] \
+        p = short(place[s["line"]]) if s["line"] \
             else "no agent"
         dbo = "/".join(s[k] for k in ("design", "build",
                                       "operate"))
-        rec.print(f"{s['id']:<4}{s['name']:<29}{s['tier']:<5}"
-                  f"{dbo:<13}{p}")
+        rec.print(f"{s['id']:<4}{s['name']:<23}{s['tier']:<3}"
+                  f"{dbo:<12}{p}")
         rec.note(service=s["id"], placement=p)
     need = flows(m)
     rec.print("")

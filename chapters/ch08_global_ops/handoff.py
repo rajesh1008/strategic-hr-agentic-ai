@@ -17,6 +17,7 @@ Run: HRAI_MODEL=no-model python -m chapters.ch08_global_ops.handoff
 """
 from __future__ import annotations
 
+import textwrap
 from dataclasses import dataclass
 from pathlib import Path
 
@@ -160,7 +161,8 @@ def main() -> None:
         rec.print(f"  {len(fails)} of {len(fs)} checks fail")
         for f in fails:
             rec.print(f"  FAIL {f.check} {CHECKS[f.check]}")
-            rec.print(f"       {f.detail}")
+            for ln in textwrap.wrap(f.detail, 52):
+                rec.print(f"       {ln}")
         rec.note(contract=c["id"],
                  results={f.check: mark(f) for f in fs})
     print(f"\nRun record: {rec.save()}")
