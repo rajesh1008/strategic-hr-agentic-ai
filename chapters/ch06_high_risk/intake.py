@@ -129,7 +129,10 @@ def main() -> None:
               f"no answer: {moves['no answer']}")
     top = ", ".join(f"{k} {n}" for k, n in
                     diff_by_fact.most_common())
-    rec.print(f"Facts that differ: {top or 'none'}")
+    lines = textwrap.wrap(f"Facts that differ: {top or 'none'}",
+                          60, subsequent_indent="    ")
+    for ln in lines:
+        rec.print(ln)
     rec.print(f"Routed to counsel: {len(routed)}")
     for s, mine, theirs, diff, note in routed:
         rec.print(f"{s['id']} counsel {mine} | model {theirs}")
