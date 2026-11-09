@@ -31,7 +31,7 @@ def main() -> None:
         rec.print(f"{org}: {len(steps)} steps, automate "
                   f"{sides['automate']}, keep {sides['keep']}")
         for s, p in placed:
-            rec.print(f"  {s['id']:<5}{s['answers']}  {str(p):<26}"
+            rec.print(f"  {s['id']:<5}{s['answers']}  {str(p):<27}"
                       f"{s['step'][:44]}")
             rec.note(org=org, step=s["id"], placement=str(p))
     print(f"\nRun record: {rec.save()}")
