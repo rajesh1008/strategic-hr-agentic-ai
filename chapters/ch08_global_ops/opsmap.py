@@ -6,8 +6,9 @@ cross-border flows the service creates. The flows are derived
 from the map, so the transfer register can be checked for
 completeness instead of written from memory.
 
-Run: HRAI_MODEL=no-model python -m chapters.ch08_global_ops.opsmap
-(writes runs/ch08/opsmap/...)
+Run: HRAI_MODEL=no-model python -m chapters.ch08_global_ops.opsmap [MAP]
+(MAP defaults to ops_map.yaml; ops_map_2027_04.yaml is the April
+snapshot. Writes runs/ch08/opsmap/...)
 """
 from __future__ import annotations
 
@@ -23,8 +24,8 @@ HERE = Path(__file__).resolve().parent
 LINE = line11.HERE / "line_v1_1.yaml"
 
 
-def load() -> dict:
-    return yaml.safe_load((HERE / "ops_map.yaml").read_text())
+def load(name: str = "ops_map.yaml") -> dict:
+    return yaml.safe_load((HERE / name).read_text())
 
 
 def placements() -> dict[str, str]:
@@ -64,7 +65,8 @@ def covered(m: dict, contract: dict) -> set:
 
 def main() -> None:
     from hrai.llm import RunRecorder
-    m, place = load(), placements()
+    import sys
+    m, place = load(*sys.argv[1:2]), placements()
     rec = RunRecorder("ch08", "opsmap")
     rec.print(f"{m['map']} {m['version']} (synthetic)")
     rec.print("id  service                T  D/B/O"
@@ -81,7 +83,7 @@ def main() -> None:
     rec.print("")
     rec.print(f"Cross-border flows the map creates: {len(need)}")
     contracts = {c["id"]: c for c in handoff.load()["contracts"]}
-    for cid in ("MER-D", "MER-R"):
+    for cid in ("QUA-D", "QUA-R"):
         gap = sorted(need - covered(m, contracts[cid]))
         rec.print(f"Register with {cid}: {len(need) - len(gap)}"
                   f" covered, {len(gap)} without a mechanism")

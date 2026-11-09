@@ -2,7 +2,7 @@
 
 SYNTHETIC. Invented for Strategic HR and Agentic AI, Chapter 8.
 Between Hartwell Infrastructure & Services ("Client") and
-Meridian Outsourcing ("Supplier"). Draft of March 15, 2027.
+Quayfen Outsourcing ("Supplier"). Draft of March 15, 2027.
 
 ## 3. Services
 

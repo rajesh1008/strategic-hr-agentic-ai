@@ -23,7 +23,7 @@ from hrai.llm import RunRecorder
 
 from . import handoff
 
-SOW = handoff.HERE / "data" / "meridian_sow_draft.md"
+SOW = handoff.HERE / "data" / "quayfen_sow_draft.md"
 FIELDS = {
     "line_version": "Version of the client's Automate/Keep"
     " Line the SOW cites, as a string, or null",
@@ -129,7 +129,7 @@ def overlay(c: dict, got: dict) -> dict:
 
 def main() -> None:
     d = handoff.load()
-    c = {x["id"]: x for x in d["contracts"]}["MER-D"]
+    c = {x["id"]: x for x in d["contracts"]}["QUA-D"]
     want = keyed(c)
     rec = RunRecorder("ch08", "sow_reader")
     got = ask(rec, SOW.read_text())

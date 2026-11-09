@@ -1,0 +1,69 @@
+# Hartwell's Global Operations Map for the agentic service desk.
+# SYNTHETIC. Every entity, number and row is invented for the book
+# (Strategic HR and Agentic AI, Chapter 8). No real employer's data.
+#
+# One row per service. line: the row id in Hartwell's Line v1.1
+# (chapters/ch11_automate_keep/line_v1_1.yaml), so the agent mode
+# comes from the Line, never from this file.
+# design / build / operate: the site that does each.
+# line: null marks work no agent touches.
+# subjects: where the employees whose data is used are employed.
+# sites: where the data is read or written to serve the request.
+map: Hartwell Global Operations Map
+version: "2027-04"
+# Snapshot of the map as first run in April 2027, kept so the
+# April run can be reproduced. Current map: ops_map.yaml.
+synthetic: true
+sites:
+  DEN: {name: Denver shared services, entity: Hartwell US,
+        country: US, kind: shared services}
+  HYD: {name: Hyderabad capability center,
+        entity: Hartwell capability center,
+        country: IN, kind: capability center}
+  MNL: {name: Quayfen Manila and Cebu,
+        entity: Quayfen Outsourcing, country: PH, kind: BPO}
+  MDL: {name: Model provider (US region),
+        entity: Model provider, country: US,
+        kind: sub-processor}
+services:
+- {id: S1, line: H03, name: Handbook questions, tier: 0,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, CA, UK], sites: [MDL, MNL]}
+- {id: S2, line: C01, name: Payslip questions, tier: 0,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, CA, UK], sites: [MDL, MNL, HYD]}
+- {id: S3, line: D01, name: Leave balance question, tier: 0,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, CA, UK], sites: [MDL, MNL]}
+- {id: S4, line: H01, name: Home address change, tier: 0,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, CA, UK], sites: [MDL, MNL, HYD]}
+- {id: S5, line: D02, name: Book leave in balance, tier: 0,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, CA, UK], sites: [MDL, MNL]}
+- {id: S6, line: H02, name: Verification letter, tier: 1,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, CA, UK], sites: [MDL, MNL, HYD]}
+- {id: S7, line: C05, name: Bank details change, tier: 1,
+   design: DEN, build: HYD, operate: HYD,
+   subjects: [US, CA, UK], sites: [MDL, MNL, HYD]}
+- {id: S8, line: B06, name: Order background check, tier: 1,
+   design: DEN, build: HYD, operate: MNL,
+   subjects: [US, UK], sites: [MNL]}
+- {id: S9, line: D03, name: Leave outside policy,
+   tier: 3, design: DEN, build: HYD, operate: DEN,
+   subjects: [US, CA, UK, AU], sites: [MDL, DEN]}
+- {id: S10, line: null, name: Validate HRIS changes, tier: 2,
+   design: DEN, build: HYD, operate: HYD,
+   subjects: [US, CA, UK, NL, DE, AU], sites: [HYD]}
+# Hartwell's own register rows: transfers inside the group and to
+# the model provider Hartwell contracts through Hartwell Gate.
+# The contract registers hold the Quayfen rows.
+group_register:
+- {from: [US, CA, UK, AU, NL, DE], to: IN,
+   recipient: Hartwell capability center,
+   mechanism: intra-group agreement (EU SCCs, UK IDTA)}
+- {from: [CA, UK, AU], to: US, recipient: Hartwell US,
+   mechanism: intra-group agreement}
+- {from: [CA, UK], to: US, recipient: Model provider,
+   mechanism: processor terms (Hartwell Gate contract)}

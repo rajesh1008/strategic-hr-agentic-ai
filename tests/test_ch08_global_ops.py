@@ -14,39 +14,39 @@ def fails(c):
             if f.ok is False}
 
 
-def test_revised_meridian_passes_every_check():
-    assert fails(C["MER-R"]) == set()
+def test_revised_quayfen_passes_every_check():
+    assert fails(C["QUA-R"]) == set()
 
 
 def test_vendor_draft_fails_ten_and_one_is_na():
-    res = handoff.check(C["MER-D"], D["rules"])
+    res = handoff.check(C["QUA-D"], D["rules"])
     assert len(res) == len(handoff.CHECKS) == 12
     assert sum(f.ok is False for f in res) == 10
     assert [f.check for f in res if f.ok is None] == ["DATA-3"]
 
 
 def test_vendor_cannot_be_answerable():
-    c = copy.deepcopy(C["MER-R"])
-    c["raci"][5]["A"] = "Meridian Outsourcing"
+    c = copy.deepcopy(C["QUA-R"])
+    c["raci"][5]["A"] = "Quayfen Outsourcing"
     assert "RACI-1" in fails(c)
 
 
 def test_agent_never_on_a_keep_row():
-    c = copy.deepcopy(C["MER-R"])
+    c = copy.deepcopy(C["QUA-R"])
     keep = [r for r in c["raci"] if r["kind"] == "keep"][0]
     keep["R"] = ["agent"]
     assert "RACI-2" in fails(c)
 
 
 def test_approver_apart_from_request_taker():
-    assert "RACI-4" in fails(C["CAL"])
-    c = copy.deepcopy(C["CAL"])
-    c["raci"][2]["R"] = ["Calder Bank"]
+    assert "RACI-4" in fails(C["COB"])
+    c = copy.deepcopy(C["COB"])
+    c["raci"][2]["R"] = ["Cobbleford Bank"]
     assert "RACI-4" not in fails(c)
 
 
 def test_remote_view_needs_a_mechanism():
-    c = copy.deepcopy(C["MER-R"])
+    c = copy.deepcopy(C["QUA-R"])
     c["transfers"][1]["mechanism"] = None
     assert "DATA-1" in fails(c)
 
@@ -62,7 +62,7 @@ def test_provider_agent_needs_its_model_host():
 
 
 def test_claimed_rate_cannot_cut_seats():
-    c = copy.deepcopy(C["MER-R"])
+    c = copy.deepcopy(C["QUA-R"])
     c["seat_cuts"][0]["status"] = "Tested on our records"
     assert "SLA-3" in fails(c)
 
@@ -70,9 +70,9 @@ def test_claimed_rate_cannot_cut_seats():
 def test_map_flows_and_register_gap():
     m = opsmap.load()
     need = opsmap.flows(m)
-    assert ("UK", "PH", "Meridian Outsourcing") in need
-    gap = need - opsmap.covered(m, C["MER-D"])
-    assert ("UK", "PH", "Meridian Outsourcing") in gap
+    assert ("UK", "PH", "Quayfen Outsourcing") in need
+    gap = need - opsmap.covered(m, C["QUA-D"])
+    assert ("UK", "PH", "Quayfen Outsourcing") in gap
 
 
 def test_map_reads_modes_from_the_line():
@@ -100,10 +100,10 @@ def test_one_quarter_cut_forces_exits():
 
 
 def test_keyed_fields_and_overlay():
-    k = sow_reader.keyed(C["MER-D"])
+    k = sow_reader.keyed(C["QUA-D"])
     assert k["seat_cut"] == 189 and not k["seat_cut_measured"]
     got = {f: {"value": v} for f, v in k.items()}
-    m = sow_reader.overlay(C["MER-D"], got)
-    base = handoff.sla(C["MER-D"], D["rules"])
+    m = sow_reader.overlay(C["QUA-D"], got)
+    base = handoff.sla(C["QUA-D"], D["rules"])
     again = handoff.sla(m, D["rules"])
     assert [f.ok for f in base] == [f.ok for f in again]

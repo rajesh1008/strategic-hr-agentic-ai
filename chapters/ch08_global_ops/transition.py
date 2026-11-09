@@ -65,7 +65,7 @@ def main() -> None:
     from hrai.llm import RunRecorder
     cfg = load()
     rec = RunRecorder("ch08", "transition")
-    rec.print(f"Meridian tier 1, {cfg['seats']} seats, "
+    rec.print(f"Quayfen tier 1, {cfg['seats']} seats, "
               f"attrition {cfg['annual_attrition']:.0%} a year"
               " (synthetic)")
     for case in cfg["cases"]:

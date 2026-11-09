@@ -24,11 +24,11 @@ rules:
   seat_cut_status: Measured in production
 contracts:
 
-- id: MER-D
+- id: QUA-D
   agent_owner: client
-  name: Meridian SOW 2027, vendor draft (March 2027)
+  name: Quayfen SOW 2027, vendor draft (March 2027)
   client: Hartwell
-  provider: Meridian Outsourcing
+  provider: Quayfen Outsourcing
   people:
     Megan Hale: Hartwell US
     Ananya Rao: Hartwell capability center
@@ -58,49 +58,49 @@ contracts:
      kind: build, R: [Hartwell capability center],
      A: Ananya Rao}
   - {id: R03, act: Change an agent tool permission,
-     kind: control, R: [Meridian Outsourcing],
-     A: Meridian Outsourcing}
+     kind: control, R: [Quayfen Outsourcing],
+     A: Quayfen Outsourcing}
   - {id: R04, act: Switch the agent off or on, kind: control,
-     R: [Meridian Outsourcing], A: Megan Hale}
+     R: [Quayfen Outsourcing], A: Megan Hale}
   - {id: R05, act: Answer and act on tier-0 requests,
      kind: operate, automate: true, R: [agent],
      A: Megan Hale}
   - {id: R06, act: Take a hand-off and work the case,
-     kind: operate, R: [Meridian Outsourcing], A: Megan Hale}
+     kind: operate, R: [Quayfen Outsourcing], A: Megan Hale}
   - {id: R07, act: Approve a verification letter,
-     kind: approve, R: [Meridian Outsourcing], A: Megan Hale,
+     kind: approve, R: [Quayfen Outsourcing], A: Megan Hale,
      apart_from: R05}
   - {id: R08, act: Approve a bank-details change,
-     kind: approve, R: [Meridian Outsourcing], A: Megan Hale,
+     kind: approve, R: [Quayfen Outsourcing], A: Megan Hale,
      apart_from: R06}
   - {id: R09, act: Detect a wrong action by readback,
      kind: operate, automate: true,
-     R: [agent, Meridian Outsourcing],
-     A: Meridian Outsourcing}
+     R: [agent, Quayfen Outsourcing],
+     A: Quayfen Outsourcing}
   - {id: R10, act: Correct the record,
      kind: operate, R: [Hartwell capability center],
      A: Megan Hale}
   - {id: R11, act: Tell the employee and put it right,
-     kind: operate, R: [Meridian Outsourcing],
-     A: Meridian Outsourcing}
+     kind: operate, R: [Quayfen Outsourcing],
+     A: Quayfen Outsourcing}
   - {id: R12, act: Report a personal-data incident,
-     kind: operate, R: [Meridian Outsourcing],
+     kind: operate, R: [Quayfen Outsourcing],
      A: Marta Kowalski}
   - {id: R13, act: Decide leave outside policy, kind: keep,
      R: [agent], A: Megan Hale}
   transfers:
   - {data: Employee records, from: [US, CA], to: PH,
-     recipient: Meridian Outsourcing, access: remote,
+     recipient: Quayfen Outsourcing, access: remote,
      mechanism: data processing agreement}
   - {data: Employee records, from: [UK], to: PH,
-     recipient: Meridian Outsourcing, access: remote view,
+     recipient: Quayfen Outsourcing, access: remote view,
      mechanism: null}
 
-- id: MER-R
+- id: QUA-R
   agent_owner: client
-  name: Meridian SOW 2027, as revised (May 2027)
+  name: Quayfen SOW 2027, as revised (May 2027)
   client: Hartwell
-  provider: Meridian Outsourcing
+  provider: Quayfen Outsourcing
   people:
     Megan Hale: Hartwell US
     Ananya Rao: Hartwell capability center
@@ -139,42 +139,42 @@ contracts:
      kind: operate, automate: true, R: [agent],
      A: Megan Hale}
   - {id: R06, act: Take a hand-off and work the case,
-     kind: operate, R: [Meridian Outsourcing], A: Megan Hale}
+     kind: operate, R: [Quayfen Outsourcing], A: Megan Hale}
   - {id: R07, act: Approve a verification letter,
-     kind: approve, R: [Meridian Outsourcing], A: Megan Hale,
+     kind: approve, R: [Quayfen Outsourcing], A: Megan Hale,
      apart_from: R05}
   - {id: R08, act: Approve a bank-details change,
      kind: approve, R: [Hartwell capability center],
      A: Megan Hale, apart_from: R06}
   - {id: R09, act: Detect a wrong action by readback,
      kind: operate, automate: true,
-     R: [agent, Meridian Outsourcing], A: Megan Hale}
+     R: [agent, Quayfen Outsourcing], A: Megan Hale}
   - {id: R10, act: Correct the record,
      kind: operate, R: [Hartwell capability center],
      A: Megan Hale}
   - {id: R11, act: Tell the employee and put it right,
      kind: operate, R: [employing entity], A: Megan Hale}
   - {id: R12, act: Report a personal-data incident,
-     kind: operate, R: [Meridian Outsourcing],
+     kind: operate, R: [Quayfen Outsourcing],
      A: Marta Kowalski}
   - {id: R13, act: Decide leave outside policy, kind: keep,
      R: [line manager], A: Megan Hale}
   transfers:
   - {data: Employee records, from: [US, CA], to: PH,
-     recipient: Meridian Outsourcing, access: remote,
+     recipient: Quayfen Outsourcing, access: remote,
      mechanism: data processing agreement}
   - {data: Employee records, from: [UK], to: PH,
-     recipient: Meridian Outsourcing, access: remote view,
+     recipient: Quayfen Outsourcing, access: remote view,
      mechanism: UK IDTA}
 
-- id: CAL
+- id: COB
   agent_owner: client
-  name: Calder Bank HR operations seats at Meridian
-  client: Calder Bank
-  provider: Meridian Outsourcing
+  name: Cobbleford Bank HR operations seats at Quayfen
+  client: Cobbleford Bank
+  provider: Quayfen Outsourcing
   people:
-    Andrew Kerr: Calder Bank
-  client_group: [Calder Bank]
+    Andrew Kerr: Cobbleford Bank
+  client_group: [Cobbleford Bank]
   line_current: "2.0"
   line_version: "2.0"
   line_notice_days: 30
@@ -188,26 +188,26 @@ contracts:
   subprocessors: []
   raci:
   - {id: C01, act: Change an agent tool permission,
-     kind: control, R: [Meridian Outsourcing],
+     kind: control, R: [Quayfen Outsourcing],
      A: Andrew Kerr}
   - {id: C02, act: Take a bank-details request,
-     kind: operate, R: [Meridian Outsourcing],
+     kind: operate, R: [Quayfen Outsourcing],
      A: Andrew Kerr}
   - {id: C03, act: Approve a bank-details change,
-     kind: approve, R: [Meridian Outsourcing],
+     kind: approve, R: [Quayfen Outsourcing],
      A: Andrew Kerr, apart_from: C02}
   - {id: C04, act: Answer policy questions, kind: operate,
      automate: true, R: [agent], A: Andrew Kerr}
   transfers:
   - {data: Employee records, from: [US, UK], to: PH,
-     recipient: Meridian Outsourcing, access: remote,
+     recipient: Quayfen Outsourcing, access: remote,
      mechanism: UK IDTA and data processing agreement}
 
 - id: AUR
   agent_owner: provider
-  name: Aurelia Telecom employee helpdesk at Meridian
+  name: Aurelia Telecom employee helpdesk at Quayfen
   client: Aurelia Telecom
-  provider: Meridian Outsourcing
+  provider: Quayfen Outsourcing
   people:
     Luc Bernard: Aurelia Telecom
   client_group: [Aurelia Telecom, Aurelia Netherlands]
@@ -226,14 +226,14 @@ contracts:
      kind: operate, automate: true, R: [agent],
      A: Luc Bernard}
   - {id: A03, act: Take a hand-off and work the case,
-     kind: operate, R: [Meridian Outsourcing],
+     kind: operate, R: [Quayfen Outsourcing],
      A: Luc Bernard}
   transfers:
   - {data: Employee records, from: [CA], to: PH,
-     recipient: Meridian Outsourcing, access: remote,
+     recipient: Quayfen Outsourcing, access: remote,
      mechanism: data processing agreement}
   - {data: Employee records, from: [NL], to: PH,
-     recipient: Meridian Outsourcing, access: remote,
+     recipient: Quayfen Outsourcing, access: remote,
      mechanism: EU SCCs, consent_needed: true,
      consent_ref: null}
 
