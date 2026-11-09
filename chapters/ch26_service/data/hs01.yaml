@@ -1,0 +1,24 @@
+# HS-01 Human route standard, v1.0 (synthetic).
+# Owner: Megan Hale, HR Shared Services lead.
+# The clock starts at the first message that asks for a
+# person or that the route rule sends to one, and stops at
+# a named person's first reply to the employee.
+version: "1.0"
+lanes:
+  care:     {priority: P1, target_min: 10}
+  pay:      {priority: P1, target_min: 10}
+  conduct:  {priority: P2, target_min: 15}
+  leave:    {priority: P2, target_min: 15}
+  adviser:  {priority: P2, target_min: 15}
+# Where each lane goes. First match wins: entity, language.
+queues:
+  - {lanes: [care, conduct], entity: Hartwell US,
+     queue: Denver care lane}
+  - {lanes: [care, conduct], entity: Hartwell UK,
+     queue: Manchester HR services}
+  - {language: fr, queue: Montréal HR services}
+  - {lanes: [care, conduct], queue: Calgary HR services}
+  - {lanes: [leave], entity: Hartwell UK,
+     queue: Manchester HR services}
+  - {lanes: [leave], queue: Denver leave team}
+  - {lanes: [pay, adviser], queue: Quayfen tier 1}
