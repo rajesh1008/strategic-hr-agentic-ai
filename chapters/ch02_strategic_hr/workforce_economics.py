@@ -13,8 +13,12 @@ from hrai.llm import REPO, RunRecorder
 from . import econ
 
 
-def report(p) -> None:
-    """Print every view through p (rec.print or list.append)."""
+def report(p, hartwell_only: bool = False) -> None:
+    """Print every view through p (rec.print or list.append).
+
+    hartwell_only drops the sector cases, so a note about
+    Hartwell cannot borrow another organization's number.
+    """
     fx = econ.load("roles.json")
     om = econ.load("operating_model.json")
     icu = econ.load("lakemont_icu.json")
@@ -64,6 +68,9 @@ def report(p) -> None:
         p(f"  {b['hours']:>6,}  {b['bucket']}")
     bad = econ.check_rights(om["decision_rights"])
     p(f"decision-rights problems: {len(bad)}")
+
+    if hartwell_only:
+        return
 
     p("")
     sp = econ.shift_premium(icu)

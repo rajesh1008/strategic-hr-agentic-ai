@@ -31,7 +31,7 @@ SYSTEM = (
 def calculator_text() -> str:
     """The calculator's report, exactly as it prints."""
     lines: list[str] = []
-    workforce_economics.report(lines.append)
+    workforce_economics.report(lines.append, hartwell_only=True)
     return "\n".join(lines)
 
 

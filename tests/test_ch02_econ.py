@@ -79,3 +79,12 @@ def test_revenue_view_inflates_the_sales_case():
 def test_manager_hours_more_than_double_fieldnote_cost():
     fn = econ.cost_per_employee(econ.load("fieldnote_people.json"))
     assert fn["all_in"] > 2 * fn["visible"]
+
+
+def test_cfo_view_carries_only_hartwell_numbers():
+    from chapters.ch02_strategic_hr import workforce_economics
+    lines: list[str] = []
+    workforce_economics.report(lines.append, hartwell_only=True)
+    text = "\n".join(lines).upper()
+    for org in ("LAKEMONT", "BRIGHTWATER", "FIELDNOTE"):
+        assert org not in text
