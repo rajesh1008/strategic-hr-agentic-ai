@@ -73,3 +73,16 @@ def test_incident_counts():
     b = incidents.brightwater(_quiet)
     assert (b["booked"], b["cancelled"], b["not_rebooked"],
             b["not_told"], b["neither"]) == (286, 83, 27, 24, 8)
+
+
+def test_updates_sent_as_a_string_are_parsed_or_denied():
+    ups, s = replay.updates_of(
+        {"updates": '[{"candidate_id": "C-0412-007"}]'})
+    assert s and ups == [{"candidate_id": "C-0412-007"}]
+    ups, s = replay.updates_of({"updates": "not json"})
+    assert s and ups == [{}]
+    ups, s = replay.updates_of({"updates": ["x", {"a": 1}]})
+    assert not s and ups == [{}, {"a": 1}]
+    policy = gate.load_policy("ats-status")
+    _, evs = replay.apply(policy, replay.load(), [{}])
+    assert evs[0]["gate"] == "DENY"

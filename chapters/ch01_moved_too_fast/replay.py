@@ -141,6 +141,22 @@ def apply(policy, cands, proposals, model="offline"):
     return ats, events
 
 
+def updates_of(call_input: dict) -> tuple[list[dict], bool]:
+    """The tool input as the model sent it. Some calls send
+    the list as a JSON string; parse it and say so. Anything
+    that is not an object becomes {} and the gate denies it."""
+    ups, was_str = call_input.get("updates"), False
+    if isinstance(ups, str):
+        was_str = True
+        try:
+            ups = json.loads(ups)
+        except ValueError:
+            ups = [{}]
+    if not isinstance(ups, list):
+        ups = [{}]
+    return [u if isinstance(u, dict) else {} for u in ups], was_str
+
+
 def live_proposals(rec: RunRecorder, policy, cands):
     """Ask the agent; answer each tool call with gate results."""
     proposals, model = [], "?"
@@ -148,7 +164,7 @@ def live_proposals(rec: RunRecorder, policy, cands):
                  "Smart Shortlist batch, Friday February 5, "
                  "2027. Process every candidate now.\n\n"
                  + table(cands)}]
-    for _turn in range(12):
+    for turn in range(12):
         resp = rec.create(max_tokens=16000, system=SYSTEM,
                           tools=TOOLS, messages=messages)
         model = resp.model
@@ -157,7 +173,9 @@ def live_proposals(rec: RunRecorder, policy, cands):
             break
         results = []
         for call in calls:
-            ups = call.input.get("updates") or []
+            ups, was_str = updates_of(call.input)
+            rec.note(turn=turn, tool_call=call.id,
+                     updates=len(ups), sent_as_string=was_str)
             proposals += ups
             _, evs = apply(policy, cands, ups, model)
             lines = [f"{e['candidate_id']}: " + (
@@ -240,7 +258,12 @@ def main(argv: list[str]) -> None:
         diff(_Print(), cands, pre, ats, evs)
         return
     rec = RunRecorder("ch01", "replay")
-    props, model = live_proposals(rec, policy, cands)
+    try:
+        props, model = live_proposals(rec, policy, cands)
+    except Exception as exc:  # keep the record of a failed run
+        rec.note(error=repr(exc))
+        print("failed; record:", rec.save().relative_to(REPO))
+        raise
     ats, evs = apply(policy, cands, props, model)
     for e in pre:
         trail.append(SCRATCH / "ch01-before.jsonl", e)
