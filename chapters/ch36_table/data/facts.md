@@ -1,0 +1,15 @@
+INC-2027-031: duplicate bank-detail changes at the US payroll provider (synthetic).
+- Tuesday, November 16, 2027, 18:00: the HartwellOne feed sent batch B-1116-1800 (52 changes: 37 bank, 15 address) to the US payroll provider.
+- 18:10: the feed retried the whole batch without checking whether the first send had arrived. The provider created 74 instructions for 37 bank changes and held all 37.
+- 18:40: 37 employees received 74 change emails between them.
+- 19:20: first call from an affected employee to Quayfen tier 1.
+- Of the 37 held changes, 23 had started as AskHartwell controlled actions and 14 were keyed by advisers. HartwellOne's ledger showed each of the agent's 23 as done, one write each, read back and matched.
+- Wednesday, November 17, 2027, 05:42: the PR-1 payroll readback found 37 bank mismatches. 06:05: incident declared, severity 2; Megan Hale, HR Shared Services lead, was incident lead.
+- 06:21: feed retry switched off; the bank-detail row paused under approval matrix v2.1.
+- 08:20: scope confirmed: 37 people, 0 payments to a wrong account, pay at risk.
+- 11:30: all 37 told by email and by text to the number on file.
+- 16:00: employment counsel recorded that no breach notification was required, with the reasons.
+- 20:02: the last of 37 reversals read back.
+- Friday, November 19, 2027, 09:00: 37 of 37 paid by direct deposit on payday.
+- First harm to last reversal read back: 25 h 52 min. Runbook v1.1 targets met 8 of 9. Missed: T1, first harm to detection, 11 h 32 min against a 4 h target.
+- DR-23-01 (Tuesday, November 23, 2027; owner Megan Hale): the feed looks up a batch before any retry (from December 10, 2027; manual resend until then); the provider rejects repeat change IDs; approval matrix v2.2 adds a reversal approver, readback and fallback to every row; PR-1 also runs at 21:00; Quayfen's cluster rule goes into the contract; the incident joins the AskHartwell golden set; a seeded-fault test of PR-1 every quarter.
