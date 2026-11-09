@@ -86,3 +86,23 @@ def test_sector_lines_place():
     assert got["LK3"] == "keep/recommend"
     assert got["LK4"] == "automate/act_with_approval"
     assert got["AL08"] == "automate/act"
+
+
+def test_placement_is_monotone_and_kind_capped():
+    """A more cautious answer never raises the mode; a read never acts."""
+    from itertools import product
+    rank = {m: i for i, m in enumerate(line.MODES)}  # 0 = most autonomous
+    cautious = {"consequence": True, "reversibility": False, "rule": False,
+                "reservation": True, "sensitivity": True}
+    for kind in line.KINDS:
+        for bits in product([True, False], repeat=5):
+            a = dict(zip(line.TESTS, bits))
+            p = line.place(kind, a)
+            if kind == "read":
+                assert p.mode == "retrieve"
+            if kind == "draft":
+                assert p.mode in ("recommend", "retrieve")
+            for t in line.TESTS:
+                if a[t] != cautious[t]:
+                    q = line.place(kind, {**a, t: cautious[t]})
+                    assert rank[q.mode] >= rank[p.mode], (kind, a, t)

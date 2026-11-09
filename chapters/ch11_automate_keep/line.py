@@ -33,17 +33,16 @@ def place(kind: str, a: dict[str, bool]) -> Placement:
     consequential = a["consequence"] and not (
         a["reversibility"] and a["rule"])
     if a["reservation"] or consequential:
-        cap = "retrieve" if a["sensitivity"] else "recommend"
-        return Placement("keep", cap)
-    if a["consequence"]:
-        return Placement("automate", "act_with_approval")
-    if kind == "write":
-        cheap = a["reversibility"] and a["rule"]
-        mode = "act" if cheap else "act_with_approval"
-        return Placement("automate", mode)
+        low = a["sensitivity"] or kind == "read"
+        return Placement("keep", "retrieve" if low else "recommend")
+    if kind == "read":
+        return Placement("automate", "retrieve")
     if kind == "draft":
         return Placement("automate", "recommend")
-    return Placement("automate", "retrieve")
+    if a["consequence"]:
+        return Placement("automate", "act_with_approval")
+    cheap = a["reversibility"] and a["rule"]
+    return Placement("automate", "act" if cheap else "act_with_approval")
 
 
 def allowed(ceiling: str, requested: str) -> bool:
