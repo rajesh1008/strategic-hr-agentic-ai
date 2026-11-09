@@ -92,9 +92,11 @@ def pick(raw: str) -> list[tuple[str, str]]:
     out = []
     for i, x in enumerate(lines):
         if x.lower().startswith("finding"):
-            nxt = x if len(x) > 40 else lines[i + 1]
+            nxt = x if len(x) > 40 or i + 1 == len(lines) \
+                else lines[i + 1]
             out.append(("finding", nxt[:160]))
-        if x.lower().startswith("recommended outcome"):
+        if (x.lower().startswith("recommended outcome")
+                and i + 1 < len(lines)):
             out.append(("first step", lines[i + 1][:160]))
     return out
 
