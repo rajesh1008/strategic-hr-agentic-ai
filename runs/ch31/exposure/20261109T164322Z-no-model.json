@@ -1,0 +1,70 @@
+{
+  "run_id": "ch31/exposure/20261109T164322Z",
+  "started_utc": "2026-11-09T16:43:22.717680+00:00",
+  "git_commit": "368c038",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "readings": {
+        "hr_admin": {
+          "exposed": 0.9,
+          "vendor": 0.54,
+          "base": 0.16422,
+          "plan": 0.22474000000000002,
+          "high": 0.25772
+        },
+        "payroll_admin": {
+          "exposed": 1.0,
+          "vendor": 0.6,
+          "base": 0.068,
+          "plan": 0.125375,
+          "high": 0.18275
+        },
+        "site_admin": {
+          "exposed": 0.75,
+          "vendor": 0.44999999999999996,
+          "base": 0.0,
+          "plan": 0.0884,
+          "high": 0.136
+        }
+      }
+    }
+  ],
+  "stdout": [
+    "Task-exposure table (synthetic), share of hours",
+    "role            exposed  vendor   base   plan   high",
+    "hr_admin            90%     54%  16.4%  22.5%  25.8%",
+    "payroll_admin      100%     60%   6.8%  12.5%  18.3%",
+    "site_admin          75%     45%   0.0%   8.8%  13.6%",
+    "vendor = exposed x 0.60, no review hours",
+    "base = Production rates only; plan = ch04 weights;",
+    "high = every Tested and Shadow rate holds; all net",
+    "of review hours (15% of absorbed hours)",
+    "",
+    "hr_admin: task, share, side, rate, status",
+    "  E letters and verifications     16% automate 62% Production",
+    "  E personal and bank details     12% automate 55% Production",
+    "  E absence and leave records     14% automate 40% Tested",
+    "  E contract-change data entry    18% automate 30% Shadow",
+    "  E employee questions            14% automate 20% Production",
+    "  E case support and notes        16% keep      0% Production",
+    "  - right-to-work checks          10% keep      0% Production",
+    "",
+    "payroll_admin: task, share, side, rate, status",
+    "  E payroll input checks          30% automate 35% Tested",
+    "  E pay queries                   20% automate 30% Production",
+    "  E starter and leaver pay        20% automate 10% Production",
+    "  E statutory pay and filings     15% keep      0% Production",
+    "  E reconciliations               15% automate 20% Tested",
+    "",
+    "site_admin: task, share, side, rate, status",
+    "  E work-order logging            25% automate 32% Shadow",
+    "  - site access and permits       25% keep      0% Production",
+    "  E timesheets and rosters        20% automate 25% Tested",
+    "  E purchase orders and invoices  15% automate 20% Tested",
+    "  E safety records and audits     15% keep      0% Production"
+  ]
+}
