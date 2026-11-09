@@ -152,8 +152,8 @@ def test(rec) -> dict:
               f" {exp_pay[1] / n:.1%} with")
     rec.print("    people per wave to detect it:"
               f" {needed(exp_pay[0] / n, (exp_pay[0] - exp_pay[1]) / n):,}")
-    rec.print("talk arm: everyone else; wave 1 gets a stay"
-              " conversation in January")
+    rec.print("talk arm: everyone else; wave 1 gets a stay talk"
+              " in January")
     res_t = {}
     for f, name in ((True, "flagged by v2"), (False, "not flagged")):
         (a, b), (c, e) = out["talk"][(f, 1)], out["talk"][(f, 2)]

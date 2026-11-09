@@ -104,8 +104,9 @@ def main() -> None:
               f" ({res[best]['acc']:.1%})")
     m = res["v2_0.1"]
     rec.print(f"v2 top 10%: of every 10 names, {10 * m['prec']:.1f}"
-              f" resign; {m['flagged'] - m['tp']} of"
-              f" {m['flagged']} flags are people who did not resign")
+              " resign;")
+    rec.print(f"  {m['flagged'] - m['tp']} of {m['flagged']} flags"
+              " are people who did not resign")
     rec.print("=== roles that matter: US project director"
               " (Chapter 2)")
     q = PD_US["incumbents"] * PD_US["annual_exit"] / 4
