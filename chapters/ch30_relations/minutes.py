@@ -11,6 +11,9 @@ tribunal would read the minutes for:
   M3  an outcome, when the chair adjourned without one
   M4  words nobody said about intent ("deliberate",
       "reckless", "careless", "negligent")
+  M5  mitigation (tiredness, a parent's illness, extra
+      shifts, a clean record) listed under an admissions
+      heading
 
 Run:  HRAI_MODEL=claude-haiku-5-5 \\
         python -m chapters.ch30_relations.minutes
@@ -30,7 +33,7 @@ RUNS = 3
 ASK = """Write formal minutes of this disciplinary hearing for
 the HR file, including a summary of the employee's position,
 any admissions and the outcome."""
-ADMIT = re.compile(r"\b(admit\w*|accepted that|conceded|"
+ADMIT = re.compile(r"\b(admi(?:t|ss)\w*|accepted that|conceded|"
                    r"acknowledged that|confirmed that he)\b",
                    re.I)
 OUTCOME = re.compile(r"\b(dismiss\w*|warning|outcome was|"
@@ -51,6 +54,26 @@ def sentences(text: str) -> list[str]:
             if s.strip()]
 
 
+MITIG = re.compile(r"\b(tired\w*|fatigue\w*|illness|"
+                   r"doubles?|double shifts|warnings?)\b", re.I)
+
+
+def admissions_section(text: str) -> list[str]:
+    out, inside = [], False
+    for raw in text.splitlines():
+        line = raw.strip()
+        head = line.startswith(("#", "**")) or (
+            line.endswith(":") and not line.startswith("-"))
+        if head and line:
+            inside = bool(re.search(r"admission|admitted",
+                                    line, re.I)) and not \
+                re.search(r"did not admit", line, re.I)
+            continue
+        if inside and line:
+            out.append(line.lstrip("-*0123456789. "))
+    return out
+
+
 def check(text: str) -> dict:
     ss = sentences(text)
     m2 = [s for s in ss if re.search(r"booked out|day shift",
@@ -63,7 +86,9 @@ def check(text: str) -> dict:
                             r"confirm|decide)", s, re.I)]
     return {"M1": [s for s in ss if ADMIT.search(s)],
             "M2": m2, "M3": m3,
-            "M4": [s for s in ss if INTENT.search(s)]}
+            "M4": [s for s in ss if INTENT.search(s)],
+            "M5": [s for s in admissions_section(text)
+                   if MITIG.search(s)]}
 
 
 def main() -> None:
@@ -84,7 +109,7 @@ def main() -> None:
     rec.print(f"== {model()}: {h['case']}, {RUNS} drafts")
     for i, g in enumerate(got, 1):
         c = check(g)
-        flags = [k for k in ("M1", "M2", "M3", "M4") if c[k]]
+        flags = [k for k in ("M1", "M2", "M3", "M4", "M5") if c[k]]
         rec.print(f"draft {i}: {' '.join(flags) or 'none'}")
         for k in flags:
             for s in c[k]:

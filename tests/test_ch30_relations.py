@@ -56,3 +56,9 @@ def test_quote_ellipsis_and_multi_ids():
            "quote": "the 17th I think", "event": "x"}]}
     r = K.file_checks(out, items)
     assert r["multi_cites"] == 1 and not r["bad_quotes"]
+
+
+def test_minutes_mitigation_under_admissions():
+    c = M.check("**Admissions**\n- He moved the truck.\n"
+                "- He was tired at the time.\n**Outcome**\nPending.")
+    assert c["M5"] == ["He was tired at the time."]
