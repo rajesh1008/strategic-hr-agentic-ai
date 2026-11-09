@@ -1,0 +1,136 @@
+{
+  "run_id": "ch19/diligence/20261109T144757Z",
+  "started_utc": "2026-11-09T14:47:57.151953+00:00",
+  "git_commit": "411eab2",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "results": {
+        "takefen": {
+          "verdict": "REJECT",
+          "gate_fail": [
+            "DD-02",
+            "DD-12"
+          ],
+          "fail": [
+            "DD-02",
+            "DD-03",
+            "DD-04",
+            "DD-07",
+            "DD-11",
+            "DD-12"
+          ],
+          "fix": [
+            "DD-01",
+            "DD-05",
+            "DD-06",
+            "DD-08",
+            "DD-10"
+          ],
+          "pass": [
+            "DD-09"
+          ]
+        },
+        "northgate": {
+          "verdict": "PROCEED",
+          "gate_fail": [],
+          "fail": [],
+          "fix": [
+            "DD-04",
+            "DD-05",
+            "DD-09",
+            "DD-11"
+          ],
+          "pass": [
+            "DD-01",
+            "DD-02",
+            "DD-03",
+            "DD-06",
+            "DD-07",
+            "DD-08",
+            "DD-10",
+            "DD-12"
+          ]
+        },
+        "fit_match": {
+          "verdict": "REJECT",
+          "gate_fail": [
+            "DD-02",
+            "DD-10"
+          ],
+          "fail": [
+            "DD-02",
+            "DD-05",
+            "DD-10"
+          ],
+          "fix": [
+            "DD-01",
+            "DD-03",
+            "DD-04",
+            "DD-08",
+            "DD-11"
+          ],
+          "pass": [
+            "DD-06",
+            "DD-07",
+            "DD-09",
+            "DD-12"
+          ]
+        },
+        "vendor_c": {
+          "verdict": "REJECT",
+          "gate_fail": [
+            "DD-06",
+            "DD-12"
+          ],
+          "fail": [
+            "DD-06",
+            "DD-12"
+          ],
+          "fix": [
+            "DD-01",
+            "DD-02",
+            "DD-04",
+            "DD-05",
+            "DD-07",
+            "DD-08",
+            "DD-09"
+          ],
+          "pass": [
+            "DD-03",
+            "DD-10",
+            "DD-11"
+          ]
+        }
+      }
+    }
+  ],
+  "stdout": [
+    "Takefen renewal (Smart Shortlist, Smart Ranking v5)",
+    "  REJECT: pass 1, fix 5, fail 6",
+    "  gate failed: DD-02, DD-12",
+    "    DD-02 audit on vendor pool only; no per-version table",
+    "    DD-03 score and rank kept; criterion not recorded",
+    "    DD-04 logs kept 90 days; no export",
+    "    DD-07 Smart Shortlist arrived switched on",
+    "    DD-11 derived data excluded at termination",
+    "    DD-12 batch status writes as an integration user",
+    "Northgate People Systems, recruiting workflow",
+    "  PROCEED: pass 8, fix 4, fail 0",
+    "  to contract: DD-04, DD-05, DD-09, DD-11",
+    "Northgate Fit Match add-on (learned fit score)",
+    "  REJECT: pass 4, fix 5, fail 3",
+    "  gate failed: DD-02, DD-10",
+    "    DD-02 trained per customer; table after go-live",
+    "    DD-05 retrained monthly, no notice per version",
+    "    DD-10 learns from the customer's past decisions",
+    "Third bidder, all-in-one recruiting agent",
+    "  REJECT: pass 3, fix 7, fail 2",
+    "  gate failed: DD-06, DD-12",
+    "    DD-06 agent stops only as a whole tenant",
+    "    DD-12 agent writes statuses with its own login"
+  ]
+}
