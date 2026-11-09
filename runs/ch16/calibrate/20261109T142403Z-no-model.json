@@ -1,0 +1,197 @@
+{
+  "run_id": "ch16/calibrate/20261109T142403Z",
+  "started_utc": "2026-11-09T14:24:03.211425+00:00",
+  "git_commit": "6dff6a7",
+  "git_dirty": false,
+  "model": "no-model",
+  "sdk": "anthropic-python 2.4.0",
+  "calls": [],
+  "events": [
+    {
+      "source": "ch16/screen_fast/20261109T141356Z",
+      "table": [
+        {
+          "lo": 0.0,
+          "hi": 0.8,
+          "n": 6,
+          "said": 0.26666666666666666,
+          "right": 0.16666666666666666,
+          "ci": [
+            0.03005258587173032,
+            0.563509436563646
+          ]
+        },
+        {
+          "lo": 0.8,
+          "hi": 0.85,
+          "n": 3,
+          "said": 0.8000000000000002,
+          "right": 0.3333333333333333,
+          "ci": [
+            0.0614903152761605,
+            0.7923450448735121
+          ]
+        },
+        {
+          "lo": 0.85,
+          "hi": 0.9,
+          "n": 66,
+          "said": 0.85,
+          "right": 0.8787878787878788,
+          "ci": [
+            0.7786234136612515,
+            0.9372822929663172
+          ]
+        },
+        {
+          "lo": 0.9,
+          "hi": 0.95,
+          "n": 248,
+          "said": 0.9147983870967742,
+          "right": 0.9233870967741935,
+          "ci": [
+            0.8834499063693462,
+            0.9504075659465858
+          ]
+        },
+        {
+          "lo": 0.95,
+          "hi": 1.0,
+          "n": 77,
+          "said": 0.9528571428571427,
+          "right": 0.948051948051948,
+          "ci": [
+            0.8739053481109362,
+            0.9796156113950607
+          ]
+        }
+      ],
+      "fit": [
+        [
+          0.97,
+          1.0
+        ]
+      ],
+      "line": {
+        "step": "A04",
+        "version": "1.0",
+        "model": "claude-haiku-5-5",
+        "complete_at": 1.0,
+        "review_at": 0.8,
+        "fail_closed": [
+          "not_meets",
+          "no_answer"
+        ],
+        "review_if": [
+          "OVERLAP",
+          "NEAR",
+          "NONFIELD",
+          "TRAINING",
+          "NO_COUNT"
+        ],
+        "owner": "Head of TA (Daniel Brooks)",
+        "review_by": "quarterly"
+      },
+      "lanes": {
+        "complete": 103,
+        "fail_closed": 228,
+        "review": 69
+      },
+      "allfit": [
+        [
+          0.85,
+          0.0
+        ],
+        [
+          0.9,
+          0.8
+        ],
+        [
+          0.93,
+          0.9411764705882353
+        ],
+        [
+          0.97,
+          1.0
+        ]
+      ],
+      "kinds": {
+        "cert_wording": [
+          44,
+          43
+        ],
+        "clear_no": [
+          46,
+          46
+        ],
+        "mixed_roles": [
+          40,
+          34
+        ],
+        "cert_pending": [
+          42,
+          42
+        ],
+        "cert_not_epa": [
+          43,
+          43
+        ],
+        "apprentice_military": [
+          20,
+          15
+        ],
+        "sum_near": [
+          54,
+          43
+        ],
+        "overlap": [
+          20,
+          13
+        ],
+        "clear_yes": [
+          67,
+          65
+        ],
+        "present_near": [
+          24,
+          18
+        ]
+      }
+    }
+  ],
+  "stdout": [
+    "Calibration of ch16/screen_fast/20261109T141356Z (claude-haiku-5-5)",
+    "applications 400; usable answers 400; right 362 (90.5%)",
+    "stated       n   said  right  95% interval",
+    "0.00-0.80    6  0.27  0.17  0.03 to 0.56",
+    "0.80-0.85    3  0.80  0.33  0.06 to 0.79",
+    "0.85-0.90   66  0.85  0.88  0.78 to 0.94",
+    "0.90-0.95  248  0.91  0.92  0.88 to 0.95",
+    "0.95-1.00   77  0.95  0.95  0.87 to 0.98",
+    "ECE 0.016; Brier 0.077",
+    "case type            n  right  mean stated",
+    "apprentice_military  20  0.75   0.92",
+    "cert_not_epa         43  1.00   0.91",
+    "cert_pending         42  1.00   0.91",
+    "cert_wording         44  0.98   0.93",
+    "clear_no             46  1.00   0.92",
+    "clear_yes            67  0.97   0.92",
+    "mixed_roles          40  0.85   0.80",
+    "overlap              20  0.65   0.88",
+    "present_near         24  0.75   0.93",
+    "sum_near             54  0.80   0.88",
+    "PILOT line (stated >= 0.85): confirm lane 170 of 400 (42.5%); right 156 (91.8%, 0.87 to 0.95); wrong advances 14",
+    "calibration map, all 'meets' answers (fit half):",
+    "  stated up to 0.85 -> right 0.00",
+    "  stated up to 0.90 -> right 0.80",
+    "  stated up to 0.93 -> right 0.94",
+    "  stated up to 0.97 -> right 1.00",
+    "flagged 'meets' answers 69; right 55",
+    "unflagged 'meets' answers 103; right 103",
+    "calibration map, unflagged 'meets' (fit half):",
+    "  stated up to 0.97 -> right 1.00",
+    "lowest safe calibrated score 1.00 (54 fit-half cases, lower bound 0.934)",
+    "NEW line on check half: confirm lane 49 of 200 (24.5%); right 49 (100.0%, 0.93 to 1.00)",
+    "routing, all 400: complete 103, review 69, escalate 0, fail_closed 228"
+  ]
+}
