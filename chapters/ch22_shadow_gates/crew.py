@@ -57,8 +57,9 @@ SYSTEM = (
     " the last day; (2) hours already booked that week plus"
     " the job's hours must not exceed 60; (3) among those who"
     " pass, prefer the fewest travel miles. If nobody passes,"
-    " say so. Reply with JSON only: {\"tech\": \"<id or"
-    " none>\", \"reason\": \"<one sentence>\"}.")
+    " say so. Check briefly, then end with one line of JSON:"
+    " {\"tech\": \"<id or none>\", \"reason\": \"<one"
+    " sentence>\"}.")
 
 
 def make() -> tuple[list[dict], list[dict]]:
@@ -163,7 +164,7 @@ def prompt(o: dict, techs: dict) -> str:
 
 
 def ask(rec, text: str) -> tuple[str | None, str]:
-    resp = rec.create(max_tokens=400, system=SYSTEM,
+    resp = rec.create(max_tokens=1200, system=SYSTEM,
                       messages=[{"role": "user",
                                  "content": text}],
                       thinking=THINK.get(model(),
@@ -171,9 +172,10 @@ def ask(rec, text: str) -> tuple[str | None, str]:
                       extra_headers=GZIP)
     raw = "".join(b.text for b in resp.content
                   if b.type == "text")
-    m = re.search(r"\{.*\}", raw, re.S)
+    # the last JSON object that names a technician
+    found = re.findall(r"\{[^{}]*\"tech\"[^{}]*\}", raw)
     try:
-        j = json.loads(m.group(0)) if m else {}
+        j = json.loads(found[-1]) if found else {}
     except json.JSONDecodeError:
         j = {}
     return j.get("tech"), j.get("reason", raw[:120])
