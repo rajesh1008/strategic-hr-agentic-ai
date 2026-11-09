@@ -12,9 +12,9 @@ from datetime import date
 from decimal import Decimal as D
 
 from . import gratuity, rules
-from .sheets import MARISOL
+from .sheets import OPENING_WEEK
 
-PROVIDER_GROSS = rules.legacy(MARISOL)   # what was paid
+PROVIDER_GROSS = rules.legacy(OPENING_WEEK)   # what was paid
 QUERY = "PQ-28-0117"
 
 PLANS = {  # 2028 medical, employee + spouse, 26 paychecks
@@ -30,16 +30,16 @@ USE = {"low": D(1000), "medium": D(6000), "high": D(25000)}
 
 
 def payslip(emp: str) -> str:
-    if emp != MARISOL.emp:
+    if emp != OPENING_WEEK.emp:
         return "no payslip access for this employee"
-    r = rules.compute(MARISOL)
+    r = rules.compute(OPENING_WEEK)
     gap = PROVIDER_GROSS - r.gross
     return "\n".join(
         ["payslip week Jan 10 to 16, 2028, paid Jan 21",
          f"provider gross paid ${PROVIDER_GROSS}",
          "provider overtime: 14 h x 1.5 x base $31.40"]
         + ["Hartwell rule recalculation:"]
-        + rules.trace(MARISOL, r)
+        + rules.trace(OPENING_WEEK, r)
         + [f"paid ${-gap} less than the rule",
            f"payroll query {QUERY} opened Jan 21 by the"
            " recalculation check; owner US payroll manager;"
@@ -48,19 +48,19 @@ def payslip(emp: str) -> str:
 
 def what_if(emp: str, day: str, hours: float,
             night: float) -> str:
-    if emp != MARISOL.emp:
+    if emp != OPENING_WEEK.emp:
         return "no access"
     idx = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat",
            "Sun"].index(day[:3].title())
-    days = list(MARISOL.days)
+    days = list(OPENING_WEEK.days)
     days[idx] += D(str(hours))
-    alt = rules.Sheet(MARISOL.emp, "TX", MARISOL.base, days,
-                      MARISOL.night + D(str(night)),
-                      MARISOL.premium, MARISOL.bonus)
-    now, new = rules.compute(MARISOL), rules.compute(alt)
+    alt = rules.Sheet(OPENING_WEEK.emp, "TX", OPENING_WEEK.base, days,
+                      OPENING_WEEK.night + D(str(night)),
+                      OPENING_WEEK.premium, OPENING_WEEK.bonus)
+    now, new = rules.compute(OPENING_WEEK), rules.compute(alt)
     return "\n".join(
         ["estimate only; this week as booked so far:"]
-        + rules.trace(MARISOL, now)
+        + rules.trace(OPENING_WEEK, now)
         + [f"with {hours} more hours on {day}:"]
         + rules.trace(alt, new)
         + [f"difference ${new.gross - now.gross} gross,"

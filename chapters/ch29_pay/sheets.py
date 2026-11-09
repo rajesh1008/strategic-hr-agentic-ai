@@ -4,7 +4,7 @@ Twenty-four hourly employees of Hartwell Energy Services
 (Texas and Colorado) and Hartwell US facilities (California),
 one week each, with the patterns that make overtime hard by
 hand: night premiums, a weekly bonus, long days, short days.
-Marisol Vega (HES-40217) is the employee in the chapter's
+Rosa Elizondo (HES-40217) is the employee in the chapter's
 opening. All synthetic.
 """
 from __future__ import annotations
@@ -14,7 +14,7 @@ from decimal import Decimal as D
 
 from .rules import Sheet
 
-MARISOL = Sheet("HES-40217", "TX", D("31.40"),
+OPENING_WEEK = Sheet("HES-40217", "TX", D("31.40"),
                 [D(12), D(12), D(12), D(12), D(6), D(0), D(0)],
                 night=D(48), premium=D("2.75"), bonus=D(150))
 

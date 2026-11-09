@@ -4,13 +4,13 @@ from decimal import Decimal as D
 
 from chapters.ch29_pay import (desk, explain, gratuity, offers,
                                rules, sectors, variance)
-from chapters.ch29_pay.sheets import MARISOL, sheets
+from chapters.ch29_pay.sheets import OPENING_WEEK, sheets
 
 
 def test_marisol_rule_and_legacy():
-    r = rules.compute(MARISOL)
+    r = rules.compute(OPENING_WEEK)
     assert r.gross == D("2233.96") and r.ot == 14
-    assert rules.legacy(MARISOL) == D("2197.40")
+    assert rules.legacy(OPENING_WEEK) == D("2197.40")
 
 
 def test_california_daily_and_double_time():
@@ -76,3 +76,11 @@ def test_answer_check_helpers():
 def test_two_month_clock():
     assert desk.add_months(date(2028, 12, 31), 2) == \
         date(2029, 2, 28)
+
+
+def test_payslip_trace_opening_week():
+    from chapters.ch29_pay import rules
+    from chapters.ch29_pay.sheets import OPENING_WEEK
+    lines = rules.trace(OPENING_WEEK)
+    assert lines[-1].endswith("2233.96")
+    assert rules.legacy(OPENING_WEEK) == rules.money(rules.D("2197.40"))
