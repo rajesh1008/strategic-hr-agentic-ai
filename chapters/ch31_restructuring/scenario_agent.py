@@ -108,7 +108,7 @@ CONSULT = re.compile(
 
 DATE = re.compile(r"(30 June|June 30)", re.I)
 YES = re.compile(r"achievable|feasible|deliverable|can be met"
-                 r"|on track|is possible", re.I)
+                 r"|on track|is possible|reachable", re.I)
 NO = re.compile(r"\bnot\b|cannot|can't|isn't|unlikely|only if"
                 r"|\bif\b", re.I)
 
