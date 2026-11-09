@@ -1,0 +1,194 @@
+# Hartwell agent ownership register (synthetic).
+# v0: as found by Olivia Grant's audit, January 31, 2028.
+# v1: as signed in DR-34-01, April 17, 2028.
+# rows: Automate/Keep Line v1.1 step IDs the agent touches,
+#       with the mode the agent runs at on that step.
+# hours: ownership hours a month written into a role
+#        description (0 = done on top of the day job).
+# bp_rights: the three HRBP rights from Chapter 2
+#        (see, switch_off, monthly_view).
+people:
+  Claire Whitfield: {role: CPO, tz: Denver}
+  Megan Hale: {role: HR Shared Services lead, tz: Denver}
+  Nathan Cole: {role: Hartwell Gate owner, tz: Denver}
+  Daniel Brooks: {role: Head of TA, tz: Denver}
+  Jessica Tran: {role: product owner hire-to-onboard,
+                 tz: Denver}
+  Erin Castillo: {role: product owner skills, tz: Denver}
+  Tom Reilly: {role: people analytics lead, tz: Denver}
+  Monica Ferraro: {role: Head of Employee Relations,
+                   tz: Denver}
+  Ananya Rao: {role: Hyderabad site head, tz: Hyderabad}
+  Vikram Desai: {role: payroll operations, tz: Hyderabad}
+  Theo Lambert: {role: product owner employee service,
+                 tz: Denver}
+  Farah Siddiqui: {role: product owner pay and benefits,
+                   tz: Denver}
+platform_owner: Nathan Cole
+not_a_person: [HR Shared Services, US payroll, Quayfen,
+               Northgate, Hyderabad build team, the forum]
+versions:
+  v0:
+    - id: svc.ask
+      name: AskHartwell service agent
+      rows: {H01: act, D02: act, C05: act_with_approval,
+             H02: act_with_approval}
+      product_owner: Megan Hale
+      stop: [Megan Hale, Ananya Rao]
+      eval: {owner: Megan Hale, every_days: 7}
+      hours: 0
+    - id: svc.tickets
+      name: tier-2 ticket desk
+      rows: {D01: retrieve, H03: retrieve}
+      product_owner: Megan Hale
+      stop: [Megan Hale]
+      eval: {owner: Megan Hale, every_days: 30}
+      hours: 0
+    - id: svc.sort
+      name: ticket sorter (run by Quayfen)
+      rows: {}
+      product_owner: Quayfen
+      stop: [Quayfen]
+      eval: {owner: null, every_days: null}
+      hours: 0
+    - id: ka
+      name: knowledge assistant (ka.hr, ka.employee,
+            ka.manager)
+      rows: {H03: retrieve, D01: retrieve, G07: retrieve}
+      product_owner: Megan Hale
+      stop: [Megan Hale, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 7}
+      hours: 0
+    - id: pay.desk
+      name: pay desk
+      rows: {C01: retrieve}
+      product_owner: US payroll
+      stop: [Vikram Desai]
+      eval: {owner: Vikram Desai, every_days: 30}
+      hours: 0
+    - id: hire.screen
+      name: A04 screening check
+      rows: {A04: recommend}
+      product_owner: Daniel Brooks
+      stop: [Daniel Brooks, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 0
+      bp_rights: []
+    - id: hire.schedule
+      name: interview scheduling (A03 v2)
+      rows: {A03: act}
+      product_owner: Jessica Tran
+      stop: [Northgate]
+      eval: {owner: Jessica Tran, every_days: 30}
+      hours: 16
+    - id: skills.suggest
+      name: skills suggestions
+      rows: {F01: recommend}
+      product_owner: Erin Castillo
+      stop: [Erin Castillo]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 20
+      bp_rights: [see]
+    - id: er.casefile
+      name: ER case-file assistant
+      rows: {G05: retrieve}
+      product_owner: Monica Ferraro
+      stop: [Monica Ferraro]
+      eval: {owner: Tom Reilly, every_days: 90}
+      hours: 0
+    - id: pa.analyst
+      name: people analytics assistant
+      rows: {}
+      product_owner: Tom Reilly
+      stop: [Tom Reilly, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 8
+    - id: line.reader
+      name: Line second reader
+      rows: {}
+      product_owner: Nathan Cole
+      stop: [Nathan Cole]
+      eval: {owner: Tom Reilly, every_days: 90}
+      hours: 0
+  v1:
+    - id: svc.ask
+      name: AskHartwell service agent
+      rows: {H01: act, D02: act, C05: act_with_approval,
+             H02: act_with_approval}
+      product_owner: Theo Lambert
+      stop: [Theo Lambert, Ananya Rao]
+      eval: {owner: Megan Hale, every_days: 7}
+      hours: 40
+    - id: svc.tickets
+      name: tier-2 ticket desk
+      rows: {D01: retrieve, H03: retrieve}
+      product_owner: Megan Hale
+      stop: [Megan Hale, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 12
+    - id: svc.sort
+      name: ticket sorter (run by Quayfen)
+      rows: {}
+      product_owner: Theo Lambert
+      stop: [Theo Lambert, Ananya Rao]
+      eval: {owner: Megan Hale, every_days: 30}
+      hours: 8
+    - id: ka
+      name: knowledge assistant (ka.hr, ka.employee,
+            ka.manager)
+      rows: {H03: retrieve, D01: retrieve, G07: retrieve}
+      product_owner: Megan Hale
+      stop: [Megan Hale, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 7}
+      hours: 24
+    - id: pay.desk
+      name: pay desk
+      rows: {C01: retrieve}
+      product_owner: Farah Siddiqui
+      stop: [Farah Siddiqui, Vikram Desai]
+      eval: {owner: Megan Hale, every_days: 30}
+      hours: 12
+    - id: hire.screen
+      name: A04 screening check
+      rows: {A04: recommend}
+      product_owner: Jessica Tran
+      stop: [Jessica Tran, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 16
+      bp_rights: [see, switch_off, monthly_view]
+    - id: hire.schedule
+      name: interview scheduling (A03 v2)
+      rows: {A03: act}
+      product_owner: Jessica Tran
+      stop: [Jessica Tran, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 16
+    - id: skills.suggest
+      name: skills suggestions
+      rows: {F01: recommend}
+      product_owner: Erin Castillo
+      stop: [Erin Castillo, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 20
+      bp_rights: [see, switch_off, monthly_view]
+    - id: er.casefile
+      name: ER case-file assistant
+      rows: {G05: retrieve}
+      product_owner: Monica Ferraro
+      stop: [Monica Ferraro, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 90}
+      hours: 6
+    - id: pa.analyst
+      name: people analytics assistant
+      rows: {}
+      product_owner: Tom Reilly
+      stop: [Tom Reilly, Ananya Rao]
+      eval: {owner: Tom Reilly, every_days: 30}
+      hours: 8
+    - id: line.reader
+      name: Line second reader
+      rows: {}
+      product_owner: Tom Reilly
+      stop: [Tom Reilly, Ananya Rao]
+      eval: {owner: Megan Hale, every_days: 90}
+      hours: 4

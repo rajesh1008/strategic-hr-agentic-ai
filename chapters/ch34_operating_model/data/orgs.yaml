@@ -1,0 +1,90 @@
+# Five organizations (synthetic) for the sizing example.
+# Hartwell's agents come from inventory.yaml v1; the rest are
+# listed here. Hours, cadences and meeting sizes are
+# illustrative assumptions, not measurements.
+# mode: highest mode the agent runs at on any step.
+# kind: built (configured and tested in-house), bundled
+#       (switched on inside a vendor product) or provider
+#       (run by a supplier under contract).
+# action_rows: Line rows where an agent acts (sampled).
+# forum: members and meetings a year.
+# reps: employee representative bodies briefed monthly.
+# roles: who holds each role; S-rules check separation.
+orgs:
+  - name: Hartwell
+    employees: 38000
+    agents: from_inventory
+    lanes: 7
+    forum: {members: 9, per_year: 12}
+    reps: 3
+    roles: {process: CoE heads and Megan Hale,
+            product: six product owners,
+            platform: Nathan Cole,
+            evaluator: Tom Reilly and Megan Hale,
+            signs: Claire Whitfield,
+            appeal: register appeal_to per step}
+  - name: Lakemont
+    employees: 9200
+    agents:
+      - {id: credential.check, mode: act_with_approval,
+         kind: built, every_days: 30}
+      - {id: roster.agent, mode: recommend, kind: built,
+         every_days: 14}
+      - {id: sched.assist, mode: retrieve, kind: bundled,
+         every_days: 90}
+    action_rows: 1
+    lanes: 1
+    forum: {members: 6, per_year: 12}
+    reps: 1
+    roles: {process: Dr. Elaine Park, product: Marcus Webb,
+            platform: IT, evaluator: Dr. Elaine Park,
+            signs: Marcus Webb, appeal: Dr. Elaine Park}
+  - name: Westbridge
+    employees: 7500
+    agents:
+      - {id: casework.assist, mode: recommend, kind: built,
+         every_days: 30}
+      - {id: hub.assist, mode: retrieve, kind: built,
+         every_days: 30}
+    action_rows: 0
+    lanes: 1
+    forum: {members: 6, per_year: 12}
+    reps: 3
+    roles: {process: Owen Lewis, product: Owen Lewis,
+            platform: IT, evaluator: partner council HR lead,
+            signs: Owen Lewis, appeal: partner council HR lead}
+  - name: Straits Ledger
+    employees: 1250
+    agents:
+      - {id: screen.agent, mode: recommend, kind: built,
+         every_days: 30}
+      - {id: hr.agent, mode: act_with_approval, kind: built,
+         every_days: 30}
+      - {id: payroll.recon, mode: act_with_approval,
+         kind: built, every_days: 30}
+    action_rows: 2
+    lanes: 3
+    forum: {members: 5, per_year: 12}
+    reps: 0
+    roles: {process: Melissa Ng, product: Ravi Menon,
+            platform: Ravi Menon, evaluator: model risk,
+            signs: Melissa Ng, appeal: Melissa Ng}
+  - name: Ashby & Lowe
+    employees: 410
+    agents:
+      - {id: suite.selfservice, mode: retrieve,
+         kind: bundled, every_days: 90}
+      - {id: suite.copilot, mode: retrieve, kind: bundled,
+         every_days: 90}
+      - {id: suite.screen, mode: recommend, kind: bundled,
+         every_days: 90}
+      - {id: bureau.assist, mode: retrieve, kind: provider,
+         every_days: 90}
+    action_rows: 0
+    lanes: 1
+    forum: {members: 2, per_year: 4}
+    reps: 0
+    roles: {process: Rachel Okafor, product: Rachel Okafor,
+            platform: suite vendor, evaluator: Rachel Okafor,
+            signs: managing director,
+            appeal: managing director}

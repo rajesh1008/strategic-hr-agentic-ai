@@ -1,0 +1,103 @@
+# Hartwell People Systems Forum charter as data (synthetic).
+# v0: Claire Whitfield's operating-model slide, turned into
+#     rows by her team, February 2028.
+# v1: the charter signed with DR-34-01, April 17, 2028.
+# decides: one role that decides. does: who carries it out.
+# prepares: who brings the decision. checks: who checks it.
+# told: who is told. record: where it is written.
+roles: [CPO, PRODUCT_OWNER, PROCESS_OWNER, PLATFORM, HRBP,
+        DPO, COUNSEL, AUDIT, FINANCE, EMPLOYEE_REP, FORUM,
+        OPERATOR, VENDOR]
+people: [CPO, PRODUCT_OWNER, PROCESS_OWNER, PLATFORM, HRBP,
+         DPO, COUNSEL, AUDIT, FINANCE, EMPLOYEE_REP]
+slide: |
+  AI in HR: our operating model. HR owns the design of
+  people systems and the Automate/Keep Line. IT owns the
+  platform and Hartwell Gate. Counsel owns the legal
+  sign-off. Every agent has an owner. The People Systems
+  Forum governs AI in HR and meets monthly; internal audit
+  attends. Vendors and service partners operate under
+  contract. Employees and their representatives are
+  designers, not stakeholders.
+versions:
+  v0:
+    - {id: D01, decision: act on a request to stop an agent,
+       decides: PLATFORM, does: PLATFORM, prepares: null,
+       checks: null, told: [], record: incident log}
+    - {id: D02, decision: switch on a new capability or
+         vendor feature, decides: FORUM, does: PLATFORM,
+       prepares: PRODUCT_OWNER, checks: COUNSEL,
+       told: [CPO], record: forum minutes}
+    - {id: D03, decision: sign a gate, decides: FORUM,
+       does: null, prepares: PRODUCT_OWNER, checks: AUDIT,
+       told: [CPO], record: gate file}
+    - {id: D07, decision: change an agent's tool scope,
+       decides: PLATFORM, does: PLATFORM,
+       prepares: PLATFORM, checks: null, told: [],
+       record: Use Registry}
+    - {id: D08, decision: notify a regulator of a personal
+         data breach, decides: COUNSEL, does: COUNSEL,
+       prepares: PRODUCT_OWNER, checks: null, told: [CPO],
+       record: null}
+    - {id: D09, decision: sample controlled actions each
+         quarter, decides: AUDIT, does: AUDIT,
+       prepares: AUDIT, checks: null, told: [FORUM],
+       record: audit file}
+    - {id: D10, decision: place hours an agent frees,
+       decides: FORUM, does: HRBP, prepares: HRBP,
+       checks: FINANCE, told: [], record: forum minutes}
+  v1:
+    - {id: D01, decision: "act on a request to stop an agent
+         (anyone may ask, including an operator)",
+       decides: PRODUCT_OWNER, does: PLATFORM,
+       prepares: null, checks: AUDIT,
+       told: [CPO, PROCESS_OWNER, HRBP],
+       record: incident log}
+    - {id: D02, decision: switch on a new capability or
+         vendor feature (it enters at the Intent gate),
+       decides: CPO, does: PLATFORM,
+       prepares: PRODUCT_OWNER, checks: COUNSEL,
+       told: [FORUM, EMPLOYEE_REP], record: gate file}
+    - {id: D03, decision: "sign a gate (Intent, Build,
+         Shadow, Production, Scale)", decides: CPO,
+       does: PLATFORM, prepares: PRODUCT_OWNER,
+       checks: AUDIT, told: [FORUM, HRBP],
+       record: gate file}
+    - {id: D04, decision: switch off agent recommendations
+         for one population pending review, decides: HRBP,
+       does: PLATFORM, prepares: null,
+       checks: PRODUCT_OWNER, told: [FORUM, PROCESS_OWNER],
+       record: Use Registry}
+    - {id: D05, decision: answer the Line test for a step
+         and name who hears appeals on it,
+       decides: PROCESS_OWNER, does: PROCESS_OWNER,
+       prepares: PRODUCT_OWNER, checks: COUNSEL,
+       told: [FORUM, HRBP], record: Line file}
+    - {id: D06, decision: raise a step above its Line
+         ceiling (a new Line version), decides: CPO,
+       does: PROCESS_OWNER, prepares: PROCESS_OWNER,
+       checks: COUNSEL, told: [FORUM, EMPLOYEE_REP],
+       record: Line file}
+    - {id: D07, decision: change an agent's tool scope,
+       decides: PRODUCT_OWNER, does: PLATFORM,
+       prepares: OPERATOR, checks: PLATFORM,
+       told: [PROCESS_OWNER], record: Use Registry}
+    - {id: D08, decision: notify a regulator of a personal
+         data breach, decides: DPO, does: DPO,
+       prepares: PRODUCT_OWNER, checks: COUNSEL,
+       told: [CPO, FORUM], record: breach log}
+    - {id: D09, decision: sample controlled actions each
+         quarter (50 per action row), decides:
+         PRODUCT_OWNER, does: AUDIT, prepares: AUDIT,
+       checks: null, told: [FORUM],
+       record: audit file}
+    - {id: D10, decision: "place hours an agent frees
+         (redeploy, absorb or reduce)", decides: HRBP,
+       does: HRBP, prepares: PROCESS_OWNER,
+       checks: FINANCE, told: [FORUM, CPO],
+       record: hours ledger}
+    - {id: D11, decision: agree go-live where a works
+         council or union has a right to agree,
+       decides: EMPLOYEE_REP, does: PROCESS_OWNER,
+       prepares: PRODUCT_OWNER, checks: COUNSEL,
+       told: [FORUM], record: gate file}
