@@ -109,7 +109,7 @@ def test_hartwell_register_counts():
     rows, qs = reg.register(wf, RULES, D)
     assert len(rows) == 17   # 16 + Ontario ESA s.8.6 (R-506)
     assert sum(1 for r in rows if r.control) == 9
-    assert any(r.rule == "CA-ON-ESA-INTERVIEWED" and not r.control
+    assert any(r.rule == "CA-ON-ESA-INTVW" and not r.control
                for r in rows)
     assert len(qs) == 2
     assert any(r.rule == "NL-WOR-27" for r in rows)
