@@ -1,0 +1,39 @@
+# Hartwell entitlement matrix (synthetic). Deny by default.
+# A rule lets a role read data classes about a person when
+# every condition is true. Conditions are computed in code
+# from HartwellOne, never taken from a request or a model.
+matrix: hartwell-entitlements
+version: "1.0"
+owner: Megan Hale (HR shared services)
+signed: Claire Whitfield, 2027-04-12
+classes:
+  directory: [name, entity, site, job]
+  profile: [about]
+  job: [grade, reports_to, unit]
+  pay: [pay]
+  band: [band]
+  absence_dates: [absence_dates]
+  absence_reason: [absence_reason]
+  union: [union]
+rules:
+  - {id: E-01, role: any, when: [self],
+     read: [job, pay, band, absence_dates,
+            absence_reason, union]}
+  - {id: D-01, role: any, when: [],
+     read: [directory, profile]}
+  - {id: M-01, role: line_manager, when: [in_line],
+     read: [job, absence_dates]}
+  - {id: M-02, role: line_manager,
+     when: [in_line, same_entity, not_unit_peer],
+     read: [pay, band]}
+  - {id: H-01, role: hr_director, when: [same_entity],
+     read: [job, pay, band, absence_dates]}
+  - {id: Q-01, role: service_adviser,
+     when: [entity_in_scope], read: [job]}
+never:
+  - {class: absence_reason, except: [E-01],
+     why: health data; self only}
+  - {class: union, except: [E-01],
+     why: union membership; self only}
+aggregates: {min_cell: 5, rule: every member readable}
+deny_default: true

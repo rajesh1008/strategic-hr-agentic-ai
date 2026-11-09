@@ -1,0 +1,19 @@
+# Hartwell US field services leave policy, as code (synthetic)
+# 2.2 counts the run of consecutive working days off,
+# including the person's own adjacent bookings, so a long
+# absence cannot pass the rule in short pieces.
+policy: hris.book_leave
+version: "2.2"
+owner: Field services HR
+rules:
+  - id: L-01
+    effect: approve_by_rule
+    when: [vacation, run_le_3_days, notice_ge_7_days,
+           within_balance, crew_at_minimum]
+  - id: L-02
+    effect: route_to_supervisor
+    when: [vacation]
+  - id: L-03
+    effect: record_no_approval
+    when: [sick]
+default: deny

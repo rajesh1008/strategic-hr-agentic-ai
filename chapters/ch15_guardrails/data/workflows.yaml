@@ -1,0 +1,103 @@
+# Hartwell workflows for the deterministic share (synthetic).
+# by: who decides or does the step. sor = system of record,
+# rule = policy engine, retrieval = search over records,
+# model = the language model, person = a named human.
+# kind: read, interpret, decide, write, tell.
+# n: executions per month (Hartwell, April 2027 volumes).
+workflows:
+  W1:
+    name: Leave booking, US field services
+    before:                         # vendor chatbot, 2026
+      - {step: who is asking, kind: read, by: sor, n: 2400}
+      - {step: what is asked, kind: interpret, by: model,
+         n: 2400}
+      - {step: read policy text, kind: read, by: retrieval,
+         n: 2400}
+      - {step: "eligible?", kind: decide, by: model, n: 2400}
+      - {step: tell the employee, kind: tell, by: model,
+         n: 2400}
+      - {step: adviser books it, kind: write, by: person,
+         n: 1900}
+    after:                          # Chapters 3, 14 and 15
+      - {step: who is asking, kind: read, by: sor, n: 2400}
+      - {step: what is asked, kind: interpret, by: model,
+         n: 2400}
+      - {step: balance and crew, kind: read, by: sor, n: 2400}
+      - {step: leave policy 2.2, kind: decide, by: rule,
+         n: 2400}
+      - {step: supervisor decides, kind: decide, by: person,
+         n: 670}
+      - {step: dispatch and receipt, kind: write, by: sor,
+         n: 2210}
+      - {step: readback, kind: read, by: sor, n: 2210}
+      - {step: tell the employee, kind: tell, by: model,
+         n: 2400}
+  W2:
+    name: Manager asks about a person's pay
+    before:                         # prompt guardrail
+      - {step: who is asking, kind: read, by: sor, n: 900}
+      - {step: what is asked, kind: interpret, by: model,
+         n: 900}
+      - {step: find the person, kind: read, by: retrieval,
+         n: 900}
+      - {step: read whole record, kind: read, by: sor, n: 900}
+      - {step: "may they see it?", kind: decide, by: model,
+         n: 900}
+      - {step: answer, kind: tell, by: model, n: 900}
+    after:                          # entitlement engine
+      - {step: who is asking, kind: read, by: sor, n: 900}
+      - {step: what is asked, kind: interpret, by: model,
+         n: 900}
+      - {step: find the person, kind: read, by: retrieval,
+         n: 900}
+      - {step: "may they see it?", kind: decide, by: rule,
+         n: 900}
+      - {step: read permitted fields, kind: read, by: sor,
+         n: 900}
+      - {step: answer, kind: tell, by: model, n: 900}
+  W3:
+    name: Home address change
+    before:                         # pilot, early 2027
+      - {step: who is asking, kind: read, by: sor, n: 1100}
+      - {step: what is asked, kind: interpret, by: model,
+         n: 1100}
+      - {step: "valid address?", kind: decide, by: model,
+         n: 1100}
+      - {step: write to HRIS, kind: write, by: model, n: 1100}
+      - {step: tell the employee, kind: tell, by: model,
+         n: 1100}
+    after:                          # Chapters 13 and 14
+      - {step: who is asking, kind: read, by: sor, n: 1100}
+      - {step: what is asked, kind: interpret, by: model,
+         n: 1100}
+      - {step: "valid address?", kind: decide, by: rule,
+         n: 1100}
+      - {step: gate policy, kind: decide, by: rule, n: 1100}
+      - {step: dispatch and receipt, kind: write, by: sor,
+         n: 1100}
+      - {step: readback, kind: read, by: sor, n: 1100}
+      - {step: tell the employee, kind: tell, by: model,
+         n: 1100}
+  W4:
+    name: Field technician screening
+    before:                         # Chapter 7, S2 prompt
+      - {step: read application, kind: read, by: sor,
+         n: 9500}
+      - {step: posted requirements, kind: decide, by: model,
+         n: 9500}
+      - {step: recommendation note, kind: tell, by: model,
+         n: 9500}
+      - {step: recruiter decides, kind: decide, by: person,
+         n: 9500}
+      - {step: status change, kind: write, by: sor, n: 9500}
+    after:                          # Chapter 15
+      - {step: read application, kind: read, by: sor,
+         n: 9500}
+      - {step: extract certificates, kind: interpret,
+         by: model, n: 9500}
+      - {step: posted requirements, kind: decide, by: rule,
+         n: 9500}
+      - {step: evidence list, kind: tell, by: rule, n: 9500}
+      - {step: recruiter decides, kind: decide, by: person,
+         n: 9500}
+      - {step: status change, kind: write, by: sor, n: 9500}

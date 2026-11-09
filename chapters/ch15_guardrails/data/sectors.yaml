@@ -1,0 +1,148 @@
+# Sector entitlement cases for Chapter 15 (all synthetic).
+# Same engine as Hartwell (entitle.py), different matrices.
+lakemont:
+  org: Lakemont Health
+  matrix:
+    version: "1.0"
+    classes:
+      directory: [name]
+      roster: [shifts]
+      credential: [license_status]
+      attendance: [attendance_points]
+      discipline: [discipline]
+      health: [accommodation_reason]
+    rules:
+      - {id: E-01, role: any, when: [self],
+         read: [roster, credential, attendance, discipline,
+                health]}
+      - {id: D-01, role: any, when: [], read: [directory]}
+      - {id: NM-01, role: nurse_manager, when: [in_line],
+         read: [roster, credential, attendance, discipline]}
+      - {id: CN-01, role: charge_nurse, when: [same_site],
+         read: [roster, credential]}
+      - {id: CN-02, role: charge_nurse,
+         when: [same_site, not_unit_peer], read: [attendance]}
+      - {id: ST-01, role: union_steward,
+         when: [member_authorized],
+         read: [attendance, discipline]}
+    never:
+      - {class: health, except: [E-01], why: health; self only}
+    aggregates: {min_cell: 5}
+  agent_ceiling: [directory, roster, credential]
+  people:
+    - {id: LK-NM-12, entity: LK, site: ICU-4, unit: null,
+       reports_to: null}
+    - {id: LK-RN-4471, entity: LK, site: ICU-4, unit: RN,
+       reports_to: LK-NM-12}
+    - {id: LK-RN-4502, entity: LK, site: ICU-4, unit: RN,
+       reports_to: LK-NM-12, authorized: [LK-ST-01]}
+    - {id: LK-RN-4519, entity: LK, site: ICU-4, unit: RN,
+       reports_to: LK-NM-12}
+    - {id: LK-ST-01, entity: LK, site: MED-2, unit: RN,
+       reports_to: null}
+  requests:
+    - {who: LK-RN-4471, roles: [charge_nurse],
+       about: LK-RN-4519, cls: attendance, expect: deny,
+       note: charge nurse reads a unit peer's attendance}
+    - {who: LK-RN-4471, roles: [charge_nurse],
+       about: LK-RN-4519, cls: credential, expect: allow,
+       note: charge nurse checks a license for the shift}
+    - {who: LK-NM-12, roles: [nurse_manager],
+       about: LK-RN-4519, cls: attendance, expect: allow,
+       note: nurse manager reads attendance}
+    - {who: LK-ST-01, roles: [union_steward],
+       about: LK-RN-4519, cls: discipline, expect: deny,
+       note: steward without the nurse's authorization}
+    - {who: LK-ST-01, roles: [union_steward],
+       about: LK-RN-4502, cls: discipline, expect: allow,
+       note: steward with written authorization}
+    - {who: LK-NM-12, roles: [nurse_manager], agent: true,
+       about: LK-RN-4519, cls: attendance, expect: deny,
+       note: scheduling agent acting for the nurse manager}
+    - {who: LK-NM-12, roles: [nurse_manager],
+       about: LK-RN-4519, cls: health, expect: deny,
+       note: nurse manager asks the accommodation reason}
+cobbleford:
+  org: Cobbleford Bank
+  matrix:
+    version: "1.0"
+    classes:
+      directory: [name]
+      leave: [leave_dates]
+      deal: [deal_code]
+    rules:
+      - {id: D-01, role: any, when: [], read: [directory]}
+      - {id: HR-01, role: hr_adviser, when: [barrier_clear],
+         read: [leave]}
+      - {id: PM-01, role: line_manager,
+         when: [in_line, barrier_clear], read: [leave, deal]}
+    never:
+      - {class: deal, except: [PM-01],
+         why: inside information; control room list only}
+    aggregates: {min_cell: 5}
+  agent_ceiling: [directory, leave]
+  people:
+    - {id: CB-IB-207, entity: CB, site: Charlotte, unit: null,
+       reports_to: CB-IB-020, private_side: true}
+    - {id: CB-IB-020, entity: CB, site: Charlotte, unit: null,
+       reports_to: null, side: private}
+    - {id: CB-HR-031, entity: CB, site: Charlotte, unit: null,
+       reports_to: null, side: public}
+    - {id: CB-HR-044, entity: CB, site: Charlotte, unit: null,
+       reports_to: null, side: private}
+  requests:
+    - {who: CB-HR-031, roles: [hr_adviser], about: CB-IB-207,
+       cls: leave, expect: deny,
+       note: public-side adviser asks a deal banker's leave}
+    - {who: CB-HR-044, roles: [hr_adviser], about: CB-IB-207,
+       cls: leave, expect: allow,
+       note: private-side adviser on the same request}
+    - {who: CB-HR-044, roles: [hr_adviser], about: CB-IB-207,
+       cls: deal, expect: deny,
+       note: private-side adviser asks the deal code}
+    - {who: CB-IB-020, roles: [line_manager],
+       about: CB-IB-207, cls: deal, expect: allow,
+       note: deal-team head reads the deal code}
+    - {who: CB-IB-020, roles: [line_manager], agent: true,
+       about: CB-IB-207, cls: deal, expect: deny,
+       note: HR assistant acting for the deal-team head}
+thorne_kessler:
+  org: Thorne Kessler
+  matrix:
+    version: "1.0"
+    classes:
+      directory: [name]
+      salary: [salary]
+      partner_pay: [profit_share]
+    rules:
+      - {id: D-01, role: any, when: [], read: [directory]}
+      - {id: HR-01, role: hr_adviser, when: [], read: [salary]}
+      - {id: CC-01, role: comp_committee,
+         when: [target_partner], read: [partner_pay]}
+    never:
+      - {class: partner_pay, except: [CC-01],
+         why: partner pay; compensation committee only}
+    aggregates: {min_cell: 5}
+  agent_ceiling: [directory, salary]
+  people:
+    - {id: TK-P-118, entity: TK, site: New York, unit: null,
+       reports_to: null, partner: true}
+    - {id: TK-S-5521, entity: TK, site: New York, unit: null,
+       reports_to: null}
+    - {id: TK-HR-07, entity: TK, site: New York, unit: null,
+       reports_to: null}
+    - {id: TK-CC-02, entity: TK, site: London, unit: null,
+       reports_to: null, partner: true}
+  requests:
+    - {who: TK-HR-07, roles: [hr_adviser], about: TK-P-118,
+       cls: partner_pay, expect: deny,
+       note: HR adviser asks a partner's profit share}
+    - {who: TK-HR-07, roles: [hr_adviser], about: TK-S-5521,
+       cls: salary, expect: allow,
+       note: HR adviser reads a staff salary}
+    - {who: TK-CC-02, roles: [comp_committee],
+       about: TK-P-118, cls: partner_pay, expect: allow,
+       note: committee member reads it}
+    - {who: TK-CC-02, roles: [comp_committee], agent: true,
+       about: TK-P-118, cls: partner_pay, expect: deny,
+       note: staff assistant acting for the committee}
