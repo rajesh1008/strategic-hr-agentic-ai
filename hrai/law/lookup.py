@@ -134,7 +134,8 @@ def _reaches(r: dict, f: Facts, chain: list[str]) -> str | None:
     need = r.get("features")
     if need and not set(need) & set(f.features):
         return None
-    if not need and TRIGGERS[r["trigger"]] > AI_LEVELS.index(f.ai):
+    level = AI_LEVELS.index(f.ai)
+    if not need and TRIGGERS[r["trigger"]] > level:
         return None
     if f.decision in r.get("unclear_decisions", []):
         return f"unclear: is '{f.decision}' a covered decision?"
