@@ -21,6 +21,14 @@ quotes comes from a recorded run in `runs/`. If the book shows it, you can read 
 | `runs/chNN/<example>/` | Recorded runs, one JSON per run: request, response, model, usage and the git commit that produced it |
 | `tests/` | Offline unit tests (no key, no network); tests marked `live` call the real API |
 
+## Also here: *Strategic HR in the Age of Agentic AI*
+
+The folder [`age-of-agentic-ai/`](age-of-agentic-ai/) holds the code listings for the companion book
+**Strategic HR in the Age of Agentic AI: Decisions, Evidence and Value for the CHRO** by Rajesh Ranjan
+Mahapatra and Abhishek Agrawal: 48 listings across 15 chapters, indexed by chapter in
+[`age-of-agentic-ai/README.md`](age-of-agentic-ai/README.md). They are standalone files and do not use
+the `hrai/` library.
+
 ## Setup
 
 Requires Python 3.11 or later.

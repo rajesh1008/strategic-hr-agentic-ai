@@ -1,0 +1,35 @@
+# Strategic HR in the Age of Agentic AI, Chapter 12: Year Two
+# Listing: Registry Entry: Payroll Pre-Check (Under the Hood)
+
+agent: payroll_pre_check
+version: 1.4.2
+owners:
+  case: payroll manager
+  rule: payroll specialist, per country
+  agent: HR technology lead
+  validator: HR analytics      # can stop
+  reviewer: payroll specialists
+  finance: controller, payroll cost centre
+permissions:
+  payroll: read
+  bank_file: hash_only
+  evidence_record: append
+models:
+  precedent_finder:
+    size: small
+    may_produce_numbers: false
+  note_writer:
+    size: large
+    may_produce_numbers: false
+test_set:
+  past_lines: 600
+  labelled_after_days: 14
+  held_out_periods: 3
+pass_marks:
+  mandatory_cleared: 1.0
+  wrong_value_in_40_reviews: 0.90
+stop_rule: >-
+  two live closes, fewer known errors
+  than the 40-line manual review
+upkeep_hours_per_year: 320
+kill_switch: agent owner
